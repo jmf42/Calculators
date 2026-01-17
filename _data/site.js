@@ -1,7 +1,7 @@
 // Site-wide configuration with environment variable support
 module.exports = {
-    name: "CalcPress",
-    url: process.env.SITE_URL || "https://calcpress.ai",
+    name: "CalcKit",
+    url: process.env.SITE_URL || "https://calc-kit.com",
     languages: [
         { code: "en", name: "English", flag: "🇺🇸" },
         { code: "es", name: "Español", flag: "🇪🇸" },
@@ -25,9 +25,9 @@ module.exports = {
         adConversionId: process.env.AD_CONVERSION_ID || "AW-CONVERSION_ID/CONVERSION_LABEL"
     },
 
-    // WordPress Plugin
+    // WordPress Plugin (keep reference for future)
     plugin: {
-        url: process.env.PLUGIN_URL || "https://wordpress.org/plugins/calcpress-ai/"
+        url: process.env.PLUGIN_URL || "#"
     },
 
     // Email service

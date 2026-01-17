@@ -67,146 +67,146 @@
             "terms": "Terms",
             "copyright": "All rights reserved",
             "relatedTitle": "Explore More Calculators",
-            "otherTools": "Recommended Tools"
+            "otherTools": "Related Tools"
         },
         "es": {
             "privacy": "Privacidad",
             "terms": "Términos",
             "copyright": "Todos los derechos reservados",
             "relatedTitle": "Explora Más Calculadoras",
-            "otherTools": "Herramientas Recomendadas"
+            "otherTools": "Herramientas Relacionadas"
         },
         "de": {
             "privacy": "Datenschutz",
             "terms": "Impressum",
             "copyright": "Alle Rechte vorbehalten",
             "relatedTitle": "Weitere Rechner entdecken",
-            "otherTools": "Empfohlene Tools"
+            "otherTools": "Ähnliche Tools"
         },
         "fr": {
             "privacy": "Confidentialité",
             "terms": "Mentions légales",
             "copyright": "Tous droits réservés",
             "relatedTitle": "Découvrez d'autres calculateurs",
-            "otherTools": "Outils Recommandés"
+            "otherTools": "Outils Similaires"
         },
         "pt": {
             "privacy": "Privacidade",
             "terms": "Termos",
             "copyright": "Todos os direitos reservados",
             "relatedTitle": "Explore Mais Calculadoras",
-            "otherTools": "Ferramentas Recomendadas"
+            "otherTools": "Ferramentas Relacionadas"
         },
         "it": {
             "privacy": "Privacy",
             "terms": "Termini",
             "copyright": "Tutti i diritti riservati",
             "relatedTitle": "Scopri Altri Calcolatori",
-            "otherTools": "Strumenti Consigliati"
+            "otherTools": "Strumenti Correlati"
         },
         "nl": {
             "privacy": "Privacy",
             "terms": "Voorwaarden",
             "copyright": "Alle rechten voorbehouden",
             "relatedTitle": "Ontdek Meer Rekenmachines",
-            "otherTools": "Aanbevolen Tools"
+            "otherTools": "Gerelateerde Tools"
         },
         "pl": {
             "privacy": "Prywatność",
             "terms": "Warunki",
             "copyright": "Wszelkie prawa zastrzeżone",
             "relatedTitle": "Odkryj Więcej Kalkulatorów",
-            "otherTools": "Polecane Narzędzia"
+            "otherTools": "Powiązane Narzędzia"
         },
         "sv": {
             "privacy": "Integritet",
             "terms": "Villkor",
             "copyright": "Alla rättigheter förbehållna",
             "relatedTitle": "Utforska Fler Kalkylatorer",
-            "otherTools": "Rekommenderade Verktyg"
+            "otherTools": "Relaterade Verktyg"
         },
         "no": {
             "privacy": "Personvern",
             "terms": "Vilkår",
             "copyright": "Alle rettigheter reservert",
             "relatedTitle": "Utforsk Flere Kalkulatorer",
-            "otherTools": "Anbefalte Verktøy"
+            "otherTools": "Relaterte Verktøy"
         },
         "da": {
             "privacy": "Privatliv",
             "terms": "Vilkår",
-            "copyright": "Alle rettigheter forbeholdes",
+            "copyright": "Alle rettigheder forbeholdes",
             "relatedTitle": "Udforsk Flere Beregnere",
-            "otherTools": "Anbefalede Værktøjer"
+            "otherTools": "Relaterede Værktøjer"
         },
         "fi": {
             "privacy": "Tietosuoja",
             "terms": "Ehdot",
             "copyright": "Kaikki oikeudet pidätetään",
             "relatedTitle": "Tutustu Muihin Laskureihin",
-            "otherTools": "Suositellut Työkalut"
+            "otherTools": "Samankaltaiset Työkalut"
         }
     },
     "cta": {
         "en": {
-            "getPlugin": "Get CalcPress Plugin",
-            "embedTitle": "Want this calculator on YOUR website?",
-            "embedDesc": "Add this professional calculator to your WordPress site with a simple shortcode."
+            "tryFree": "Try Free Calculator",
+            "embedTitle": "Need this calculator on your website?",
+            "embedDesc": "Contact us for custom calculator integrations and white-label solutions."
         },
         "es": {
-            "getPlugin": "Obtener CalcPress Plugin",
-            "embedTitle": "¿Quieres esta calculadora en TU sitio web?",
-            "embedDesc": "Agrega esta calculadora profesional a tu sitio WordPress con un simple shortcode."
+            "tryFree": "Prueba Gratis",
+            "embedTitle": "¿Necesitas esta calculadora en tu web?",
+            "embedDesc": "Contáctanos para integraciones personalizadas y soluciones de marca blanca."
         },
         "de": {
-            "getPlugin": "CalcPress Plugin holen",
-            "embedTitle": "Diesen Rechner auf IHRER Website?",
-            "embedDesc": "Fügen Sie diesen professionellen Rechner per Shortcode in Ihre WordPress-Seite ein."
+            "tryFree": "Kostenlos testen",
+            "embedTitle": "Diesen Rechner auf Ihrer Website?",
+            "embedDesc": "Kontaktieren Sie uns für individuelle Integrationen und White-Label-Lösungen."
         },
         "fr": {
-            "getPlugin": "Obtenir CalcPress Plugin",
-            "embedTitle": "Ce calculateur sur VOTRE site web?",
-            "embedDesc": "Ajoutez ce calculateur professionnel à votre site WordPress avec un simple shortcode."
+            "tryFree": "Essayer Gratuitement",
+            "embedTitle": "Ce calculateur sur votre site web?",
+            "embedDesc": "Contactez-nous pour des intégrations personnalisées et des solutions en marque blanche."
         },
         "pt": {
-            "getPlugin": "Obter CalcPress Plugin",
-            "embedTitle": "Quer esta calculadora no SEU site?",
-            "embedDesc": "Adicione esta calculadora profissional ao seu site WordPress com um simples shortcode."
+            "tryFree": "Experimente Grátis",
+            "embedTitle": "Precisa desta calculadora no seu site?",
+            "embedDesc": "Fale conosco para integrações personalizadas e soluções de marca branca."
         },
         "it": {
-            "getPlugin": "Ottieni Plugin CalcPress",
-            "embedTitle": "Vuoi questo calcolatore sul TUO sito?",
-            "embedDesc": "Aggiungi questo calcolatore professionale al tuo sito WordPress con un semplice shortcode."
+            "tryFree": "Prova Gratis",
+            "embedTitle": "Vuoi questo calcolatore sul tuo sito?",
+            "embedDesc": "Contattaci per integrazioni personalizzate e soluzioni white-label."
         },
         "nl": {
-            "getPlugin": "Download CalcPress Plugin",
-            "embedTitle": "Wilt u deze rekenmachine op UW website?",
-            "embedDesc": "Voeg deze professionele rekenmachine toe aan uw WordPress-site met een eenvoudige shortcode."
+            "tryFree": "Gratis Proberen",
+            "embedTitle": "Deze rekenmachine op uw website?",
+            "embedDesc": "Neem contact met ons op voor aangepaste integraties en white-label oplossingen."
         },
         "pl": {
-            "getPlugin": "Pobierz wtyczkę CalcPress",
-            "embedTitle": "Chcesz ten kalkulator na SWOJEJ stronie?",
-            "embedDesc": "Dodaj ten profesjonalny kalkulator do swojej witryny WordPress za pomocą prostego shortcode."
+            "tryFree": "Wypróbuj Za Darmo",
+            "embedTitle": "Potrzebujesz tego kalkulatora na swojej stronie?",
+            "embedDesc": "Skontaktuj się z nami w sprawie niestandardowych integracji i rozwiązań white-label."
         },
         "sv": {
-            "getPlugin": "Hämta CalcPress Plugin",
-            "embedTitle": "Vill du ha denna kalkylator på DIN webbplats?",
-            "embedDesc": "Lägg till denna professionella kalkylator på din WordPress-sida med en enkel shortcode."
+            "tryFree": "Prova Gratis",
+            "embedTitle": "Vill du ha denna kalkylator på din webbplats?",
+            "embedDesc": "Kontakta oss för anpassade integrationer och white-label-lösningar."
         },
         "no": {
-            "getPlugin": "Last ned CalcPress Plugin",
-            "embedTitle": "Vil du ha denne kalkulatoren på DIN nettside?",
-            "embedDesc": "Legg til denne profesjonelle kalkulatoren på ditt WordPress-nettsted med en enkel shortcode."
+            "tryFree": "Prøv Gratis",
+            "embedTitle": "Trenger du denne kalkulatoren på din nettside?",
+            "embedDesc": "Kontakt oss for tilpassede integrasjoner og white-label-løsninger."
         },
         "da": {
-            "getPlugin": "Hent CalcPress Plugin",
-            "embedTitle": "Vil du have denne beregner på DIN hjemmeside?",
-            "embedDesc": "Tilføj denne professionelle beregner til din WordPress-side med en simpel shortcode."
+            "tryFree": "Prøv Gratis",
+            "embedTitle": "Har du brug for denne beregner på din hjemmeside?",
+            "embedDesc": "Kontakt os for skræddersyede integrationer og white-label-løsninger."
         },
         "fi": {
-            "getPlugin": "Hanki CalcPress-lisäosa",
-            "embedTitle": "Haluatko tämän laskurin OMILLE sivuillesi?",
-            "embedDesc": "Lisää tämä ammattimainen laskuri WordPress-sivustollesi yksinkertaisella lyhytkoodilla."
+            "tryFree": "Kokeile Ilmaiseksi",
+            "embedTitle": "Tarvitsetko tämän laskurin sivustollesi?",
+            "embedDesc": "Ota yhteyttä räätälöityihin integraatioihin ja white-label-ratkaisuihin."
         }
     },
     "faq": {
@@ -224,75 +224,75 @@
         "fi": "Usein Kysytyt Kysymykset"
     },
     "homeTitle": {
-        "en": "CalcPress - Professional Calculators for WordPress",
-        "es": "CalcPress - Calculadoras Profesionales para WordPress",
-        "de": "CalcPress - Professionelle Rechner für WordPress",
-        "fr": "CalcPress - Calculateurs Professionnels pour WordPress",
-        "pt": "CalcPress - Calculadoras Profissionais para WordPress",
-        "it": "CalcPress - Calcolatori Professionali per WordPress",
-        "nl": "CalcPress - Professionele Rekenmachines voor WordPress",
-        "pl": "CalcPress - Profesjonalne Kalkulatory dla WordPress",
-        "sv": "CalcPress - Professionella kalkylatorer för WordPress",
-        "no": "CalcPress - Profesjonelle kalkulatorer for WordPress",
-        "da": "CalcPress - Professionelle beregnere til WordPress",
-        "fi": "CalcPress - Ammattimaiset laskurit WordPressille"
+        "en": "CalcKit - Free Professional Calculators",
+        "es": "CalcKit - Calculadoras Profesionales Gratuitas",
+        "de": "CalcKit - Kostenlose Professionelle Rechner",
+        "fr": "CalcKit - Calculateurs Professionnels Gratuits",
+        "pt": "CalcKit - Calculadoras Profissionais Gratuitas",
+        "it": "CalcKit - Calcolatori Professionali Gratuiti",
+        "nl": "CalcKit - Gratis Professionele Rekenmachines",
+        "pl": "CalcKit - Darmowe Profesjonalne Kalkulatory",
+        "sv": "CalcKit - Gratis Professionella Kalkylatorer",
+        "no": "CalcKit - Gratis Profesjonelle Kalkulatorer",
+        "da": "CalcKit - Gratis Professionelle Beregnere",
+        "fi": "CalcKit - Ilmaiset Ammattimaiset Laskurit"
     },
     "homeDesc": {
-        "en": "Add professional Mortgage, Loan, ROI, and niche calculators to your site.",
-        "es": "Agrega calculadoras profesionales de hipoteca, préstamos y más a tu sitio.",
-        "de": "Fügen Sie professionelle Hypotheken-, Kredit- und ROI-Rechner zu Ihrer Website hinzu.",
-        "fr": "Ajoutez des calculateurs d'hypothèque, de prêt et de ROI à votre site.",
-        "pt": "Adicione calculadoras profissionais de hipoteca, empréstimos e ROI ao seu site.",
-        "it": "Aggiungi calcolatori professionali di mutui, prestiti e ROI al tuo sito.",
-        "nl": "Voeg professionele hypotheek-, lening- en ROI-rekenmachines toe aan uw site.",
-        "pl": "Dodaj profesjonalne kalkulatory hipoteczne, kredytowe i ROI do swojej strony.",
-        "sv": "Lägg till professionella bolåne-, låne- och ROI-kalkylatorer på din webbplats.",
-        "no": "Legg til profesjonelle boliglåns-, låne- og ROI-kalkulatorer på nettstedet ditt.",
-        "da": "Tilføj professionelle bolig-, låne- og ROI-beregnere til din side.",
-        "fi": "Lisää ammattimaiset asuntolaina-, laina- ja ROI-laskurit sivustollesi."
+        "en": "Free online calculators for mortgages, loans, ROI, and more. Accurate, fast, and easy to use.",
+        "es": "Calculadoras online gratuitas para hipotecas, préstamos, ROI y más. Precisas, rápidas y fáciles de usar.",
+        "de": "Kostenlose Online-Rechner für Hypotheken, Kredite, ROI und mehr. Präzise, schnell und einfach zu bedienen.",
+        "fr": "Calculateurs en ligne gratuits pour hypothèques, prêts, ROI et plus. Précis, rapides et faciles à utiliser.",
+        "pt": "Calculadoras online gratuitas para hipotecas, empréstimos, ROI e mais. Precisas, rápidas e fáceis de usar.",
+        "it": "Calcolatori online gratuiti per mutui, prestiti, ROI e altro. Accurati, veloci e facili da usare.",
+        "nl": "Gratis online rekenmachines voor hypotheken, leningen, ROI en meer. Nauwkeurig, snel en gebruiksvriendelijk.",
+        "pl": "Darmowe kalkulatory online dla hipotek, kredytów, ROI i więcej. Dokładne, szybkie i łatwe w użyciu.",
+        "sv": "Gratis online-kalkylatorer för bolån, lån, ROI och mer. Exakta, snabba och enkla att använda.",
+        "no": "Gratis online-kalkulatorer for boliglån, lån, ROI og mer. Nøyaktige, raske og enkle å bruke.",
+        "da": "Gratis online-beregnere til bolig, lån, ROI og mere. Præcise, hurtige og nemme at bruge.",
+        "fi": "Ilmaiset verkkolaskurit asuntolainoille, lainoille, ROI:lle ja muille. Tarkkoja, nopeita ja helppokäyttöisiä."
     },
     "homeHero": {
-        "en": "Lead Generation Calculators for Your Website",
-        "es": "Calculadoras de Generación de Leads para tu Web",
-        "de": "Lead-Generierungs-Rechner für Ihre Website",
-        "fr": "Calculateurs de Génération de Leads pour votre Site",
-        "pt": "Calculadoras de Geração de Leads para o seu Site",
-        "it": "Calcolatori per Generare Lead per il tuo Sito",
-        "nl": "Leadgeneratie Rekenmachines voor uw Website",
-        "pl": "Kalkulatory Generujące Leady dla Twojej Strony",
-        "sv": "Leadgenererande kalkylatorer för din webbplats",
-        "no": "Leadgenererende kalkulatorer for nettstedet ditt",
-        "da": "Lead-genererende beregnere til din hjemmeside",
-        "fi": "Liidejä tuottavat laskurit verkkosivustollesi"
+        "en": "Free Financial Calculators",
+        "es": "Calculadoras Financieras Gratuitas",
+        "de": "Kostenlose Finanzrechner",
+        "fr": "Calculateurs Financiers Gratuits",
+        "pt": "Calculadoras Financeiras Gratuitas",
+        "it": "Calcolatori Finanziari Gratuiti",
+        "nl": "Gratis Financiële Rekenmachines",
+        "pl": "Darmowe Kalkulatory Finansowe",
+        "sv": "Gratis Finansiella Kalkylatorer",
+        "no": "Gratis Finansielle Kalkulatorer",
+        "da": "Gratis Finansielle Beregnere",
+        "fi": "Ilmaiset Talouslaskurit"
     },
     "homeTagline": {
-        "en": "The #1 WordPress Plugin for high-ticket niches. Add Mortgage, Solar, and Construction lead magnets in minutes.",
-        "es": "El plugin #1 para nichos de alto valor. Agrega imanes de leads de hipotecas, solar y construcción en minutos.",
-        "de": "Das Nr. 1 WordPress-Plugin für profitable Nischen. Fügen Sie Lead-Magneten für Hypotheken, Solar und Bau in Minuten hinzu.",
-        "fr": "Le plugin WordPress n°1 pour les niches rentables. Ajoutez des aimants à leads pour l'hypothèque, le solaire et la construction en quelques minutes.",
-        "pt": "O plugin WordPress nº 1 para nichos rentáveis. Adicione ímãs de leads para hipoteca, solar e construção em minutos.",
-        "it": "Il plugin WordPress n. 1 per nicchie ad alto valore. Aggiungi magneti di lead per mutui, solare e edilizia in pochi minuti.",
-        "nl": "De #1 WordPress-plugin voor winstgevende niches. Voeg lead magnets toe voor hypotheken, zonne-energie en bouw.",
-        "pl": "Wtyczka nr 1 WordPress dla dochodowych nisz. Dodaj magnety leadów dla hipotek, fotowoltaiki i budownictwa w kilka minut.",
-        "sv": "#1 WordPress-plugin för lönsamma nischer. Lägg till lead magnets för bolån, solenergi och byggnation på några minuter.",
-        "no": "#1 WordPress-plugin for lønnsomme nisjer. Legg til lead magnets for boliglån, solenergi og bygg på minutter.",
-        "da": "WordPress-plugin #1 til profitable nicher. Tilføj lead magnets til bolig, solceller og byggeri på få minutter.",
-        "fi": "WordPress-lisäosa #1 korkean katteen nisch-aloille. Lisää liidimagneetit asuntolainoille, aurinkoenergialle ja rakentamiselle minuuteissa."
+        "en": "Accurate mortgage, loan, ROI, and investment calculators. No signup required. 100% free.",
+        "es": "Calculadoras precisas de hipotecas, préstamos, ROI e inversiones. Sin registro. 100% gratis.",
+        "de": "Genaue Hypotheken-, Kredit-, ROI- und Investitionsrechner. Keine Anmeldung erforderlich. 100% kostenlos.",
+        "fr": "Calculateurs précis pour hypothèques, prêts, ROI et investissements. Sans inscription. 100% gratuit.",
+        "pt": "Calculadoras precisas de hipotecas, empréstimos, ROI e investimentos. Sem cadastro. 100% grátis.",
+        "it": "Calcolatori precisi per mutui, prestiti, ROI e investimenti. Nessuna registrazione. 100% gratuito.",
+        "nl": "Nauwkeurige hypotheek-, lening-, ROI- en investeringsrekenmachines. Geen registratie vereist. 100% gratis.",
+        "pl": "Dokładne kalkulatory hipoteczne, kredytowe, ROI i inwestycyjne. Bez rejestracji. 100% za darmo.",
+        "sv": "Exakta bolåne-, låne-, ROI- och investeringskalkylatorer. Ingen registrering krävs. 100% gratis.",
+        "no": "Nøyaktige boliglåns-, låne-, ROI- og investeringskalkulatorer. Ingen påmelding. 100% gratis.",
+        "da": "Præcise bolig-, låne-, ROI- og investeringsberegnere. Ingen tilmelding påkrævet. 100% gratis.",
+        "fi": "Tarkat asuntolaina-, laina-, ROI- ja sijoituslaskurit. Ei rekisteröitymistä. 100% ilmainen."
     },
     "stats": {
         "calculators": {
-            "en": "Niche Tools",
-            "es": "Herramientas Especializadas",
-            "de": "Nischen-Tools",
-            "fr": "Outils Spécialisés",
-            "pt": "Ferramentas Especializadas",
-            "it": "Strumenti di Nicchia",
-            "nl": "Niche Tools",
-            "pl": "Narzędzia Niszowe",
-            "sv": "Nischverktyg",
-            "no": "Nisjeverktøy",
-            "da": "Nicheværktøjer",
-            "fi": "Niche-työkalut"
+            "en": "Calculators",
+            "es": "Calculadoras",
+            "de": "Rechner",
+            "fr": "Calculateurs",
+            "pt": "Calculadoras",
+            "it": "Calcolatori",
+            "nl": "Rekenmachines",
+            "pl": "Kalkulatory",
+            "sv": "Kalkylatorer",
+            "no": "Kalkulatorer",
+            "da": "Beregnere",
+            "fi": "Laskurit"
         },
         "languages": {
             "en": "Languages",
@@ -308,33 +308,33 @@
             "da": "Sprog",
             "fi": "Kielet"
         },
-        "plugin": {
-            "en": "Plugin",
-            "es": "Plugin",
-            "de": "Plugin",
-            "fr": "Plugin",
-            "pt": "Plugin",
-            "it": "Plugin",
-            "nl": "Plugin",
-            "pl": "Wtyczka",
-            "sv": "Plugin",
-            "no": "Programtillegg",
-            "da": "Plugin",
-            "fi": "Lisäosa"
+        "free": {
+            "en": "Free Forever",
+            "es": "Gratis Siempre",
+            "de": "Für immer kostenlos",
+            "fr": "Gratuit pour toujours",
+            "pt": "Grátis Para Sempre",
+            "it": "Gratuito per Sempre",
+            "nl": "Altijd Gratis",
+            "pl": "Na Zawsze Za Darmo",
+            "sv": "Gratis För Alltid",
+            "no": "Gratis For Alltid",
+            "da": "Gratis For Altid",
+            "fi": "Ilmainen Ikuisesti"
         },
-        "pages": {
-            "en": "SEO Targets",
-            "es": "Páginas Optimizadas",
-            "de": "SEO-optimierte Seiten",
-            "fr": "Pages Optimisées",
-            "pt": "Páginas Otimizadas",
-            "it": "Pagine Ottimizzate",
-            "nl": "SEO Pagina's",
-            "pl": "Strony SEO",
-            "sv": "SEO-sidor",
-            "no": "SEO-sider",
-            "da": "SEO-sider",
-            "fi": "SEO-sivut"
+        "noSignup": {
+            "en": "No Signup",
+            "es": "Sin Registro",
+            "de": "Keine Anmeldung",
+            "fr": "Sans Inscription",
+            "pt": "Sem Cadastro",
+            "it": "Senza Registrazione",
+            "nl": "Geen Registratie",
+            "pl": "Bez Rejestracji",
+            "sv": "Ingen Registrering",
+            "no": "Ingen Registrering",
+            "da": "Ingen Tilmelding",
+            "fi": "Ei Rekisteröitymistä"
         }
     }
 }

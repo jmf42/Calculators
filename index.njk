@@ -10,8 +10,8 @@ permalink: "/{% if home.lang != 'en' %}{{ home.lang }}/{% endif %}index.html"
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ ui.homeTitle[home.lang] | default("CalcPress - Professional Calculators for WordPress") }}</title>
-    <meta name="description" content="{{ ui.homeDesc[home.lang] | default("The #1 Calculator Plugin for WordPress. Add Mortgage, Loan, ROI, and niche calculators to your site.") }}">
+    <title>{{ ui.homeTitle[home.lang] | default("CalcKit - Free Professional Calculators") }}</title>
+    <meta name="description" content="{{ ui.homeDesc[home.lang] | default("Free online calculators for mortgages, loans, ROI, and more. Accurate, fast, and easy to use.") }}">
     <link rel="icon" type="image/png" href="/assets/images/favicon.png">
     <link rel="apple-touch-icon" href="/assets/images/favicon.png">
     <meta property="og:image" content="{{ site.url }}/assets/images/og-image.png">
@@ -181,7 +181,7 @@ permalink: "/{% if home.lang != 'en' %}{{ home.lang }}/{% endif %}index.html"
 <body>
     <nav class="nav">
         <div class="container">
-            <a href="/" class="logo">CalcPress</a>
+            <a href="/" class="logo">{{ site.name }}</a>
         </div>
     </nav>
 
@@ -190,24 +190,24 @@ permalink: "/{% if home.lang != 'en' %}{{ home.lang }}/{% endif %}index.html"
             <h1>{{ ui.homeHero[home.lang] | default("Professional Calculators for Your Website") }}</h1>
             <p>{{ ui.homeTagline[home.lang] | default("The #1 Calculator Plugin for WordPress. Add niche lead magnets to your site in minutes.") }}</p>
             <div style="margin-top: 32px;">
-                <a href="{{ site.plugin.url }}" class="btn btn-primary">{{ ui.cta.getPlugin[home.lang] }}</a>
+                <a href="/{{ home.lang }}/mortgage-calculator/" class="btn btn-primary">{{ ui.cta[home.lang].tryFree | default("Try Free Calculator") }} →</a>
             </div>
             <div class="stats">
                 <div class="stat">
-                    <div class="stat-value">7</div>
-                    <div class="stat-label">{{ ui.stats.calculators[home.lang] | default("Niche Tools") }}</div>
+                    <div class="stat-value">7+</div>
+                    <div class="stat-label">{{ ui.stats.calculators[home.lang] | default("Calculators") }}</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value">5</div>
+                    <div class="stat-value">12</div>
                     <div class="stat-label">{{ ui.stats.languages[home.lang] | default("Languages") }}</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value">1</div>
-                    <div class="stat-label">{{ ui.stats.plugin[home.lang] | default("Plugin") }}</div>
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">{{ ui.stats.free[home.lang] | default("Free Forever") }}</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value">35</div>
-                    <div class="stat-label">{{ ui.stats.pages[home.lang] | default("SEO Targets") }}</div>
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">{{ ui.stats.noSignup[home.lang] | default("No Signup") }}</div>
                 </div>
             </div>
         </div>
@@ -220,7 +220,7 @@ permalink: "/{% if home.lang != 'en' %}{{ home.lang }}/{% endif %}index.html"
                 <h3>{{ calc.titles[home.lang] | default(calc.titles.en) }}</h3>
                 <p>{{ calc.subtitles[home.lang] | default(calc.subtitles.en) }}</p>
                 <div class="lang-links">
-                    <a href="/{{ home.lang }}/{{ calc.slugs[home.lang] }}/">{{ home.lang | upper }} Demo</a>
+                    <a href="/{{ home.lang }}/{{ calc.slugs[home.lang] }}/">Try Now →</a>
                 </div>
             </div>
             {%- endfor %}
@@ -229,18 +229,16 @@ permalink: "/{% if home.lang != 'en' %}{{ home.lang }}/{% endif %}index.html"
 
     <section class="cta-section">
         <div class="container">
-            <h2>{{ ui.cta.embedTitle[home.lang] }}</h2>
-            <p>{{ ui.cta.embedDesc[home.lang] }}</p>
+            <h2>{{ ui.cta[home.lang].embedTitle | default("Need custom calculators?") }}</h2>
+            <p>{{ ui.cta[home.lang].embedDesc | default("Contact us for custom calculator integrations and white-label solutions.") }}</p>
             <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 32px;">
-                <a href="{{ site.plugin.url }}" class="btn btn-primary" style="font-size: 18px; padding: 18px 36px;">{{ ui.cta.getPlugin[home.lang] }} →</a>
-                <a href="/{{ home.lang }}/mortgage-calculator/" style="display: inline-flex; align-items: center; padding: 18px 36px; border: 2px solid rgba(99, 102, 241, 0.5); border-radius: 12px; color: var(--text); text-decoration: none; font-weight: 600; font-size: 18px;">Try a Demo</a>
+                <a href="mailto:hello@calc-kit.com" class="btn btn-primary" style="font-size: 18px; padding: 18px 36px;">Contact Us →</a>
+                <a href="/{{ home.lang }}/mortgage-calculator/" style="display: inline-flex; align-items: center; padding: 18px 36px; border: 2px solid rgba(99, 102, 241, 0.5); border-radius: 12px; color: var(--text); text-decoration: none; font-weight: 600; font-size: 18px;">Try a Calculator</a>
             </div>
-        </div>
-    </section>
             <div style="margin-top: 32px; display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; color: var(--text-muted); font-size: 14px;">
-                <div>✓ 15 Professional Calculators</div>
-                <div>✓ 5 Languages Included</div>
-                <div>✓ No Coding Required</div>
+                <div>✓ 100% Free</div>
+                <div>✓ No Registration</div>
+                <div>✓ Instant Results</div>
             </div>
         </div>
     </section>
@@ -248,20 +246,17 @@ permalink: "/{% if home.lang != 'en' %}{{ home.lang }}/{% endif %}index.html"
     <footer class="footer">
         <div class="container">
             <ul class="footer-links">
-                <li><a href="{{ site.plugin.url }}" target="_blank">Get Plugin</a></li>
                 <li><a href="/privacy.html">Privacy</a></li>
                 <li><a href="/terms.html">Terms</a></li>
-                <li><a href="/refund.html">Refund</a></li>
+                <li><a href="mailto:hello@calc-kit.com">Contact</a></li>
             </ul>
             <div class="footer-lang" style="margin-top: 16px; display: flex; justify-content: center; gap: 12px; align-items: center;">
                 <span style="color: var(--text-muted); font-size: 13px;">🌐</span>
-                <a href="/" style="color: {% if home.lang == 'en' %}var(--primary-light){% else %}var(--text-muted){% endif %}; font-size: 12px; text-decoration: none; padding: 4px 8px; border-radius: 4px; {% if home.lang == 'en' %}background: rgba(99, 102, 241, 0.15);{% endif %}">EN</a>
-                <a href="/es/" style="color: {% if home.lang == 'es' %}var(--primary-light){% else %}var(--text-muted){% endif %}; font-size: 12px; text-decoration: none; padding: 4px 8px; border-radius: 4px; {% if home.lang == 'es' %}background: rgba(99, 102, 241, 0.15);{% endif %}">ES</a>
-                <a href="/de/" style="color: {% if home.lang == 'de' %}var(--primary-light){% else %}var(--text-muted){% endif %}; font-size: 12px; text-decoration: none; padding: 4px 8px; border-radius: 4px; {% if home.lang == 'de' %}background: rgba(99, 102, 241, 0.15);{% endif %}">DE</a>
-                <a href="/fr/" style="color: {% if home.lang == 'fr' %}var(--primary-light){% else %}var(--text-muted){% endif %}; font-size: 12px; text-decoration: none; padding: 4px 8px; border-radius: 4px; {% if home.lang == 'fr' %}background: rgba(99, 102, 241, 0.15);{% endif %}">FR</a>
-                <a href="/pt/" style="color: {% if home.lang == 'pt' %}var(--primary-light){% else %}var(--text-muted){% endif %}; font-size: 12px; text-decoration: none; padding: 4px 8px; border-radius: 4px; {% if home.lang == 'pt' %}background: rgba(99, 102, 241, 0.15);{% endif %}">PT</a>
+                {%- for langItem in site.languages | batch(6) | first %}
+                <a href="{% if langItem.code == 'en' %}/{% else %}/{{ langItem.code }}/{% endif %}" style="color: {% if home.lang == langItem.code %}var(--primary-light){% else %}var(--text-muted){% endif %}; font-size: 12px; text-decoration: none; padding: 4px 8px; border-radius: 4px; {% if home.lang == langItem.code %}background: rgba(99, 102, 241, 0.15);{% endif %}">{{ langItem.code | upper }}</a>
+                {%- endfor %}
             </div>
-            <p>© {{ site.year }} CalcPress. All rights reserved.</p>
+            <p>© {{ site.year }} {{ site.name }}. {{ ui.footer[home.lang].copyright | default("All rights reserved") }}.</p>
         </div>
     </footer>
     {% include "components/cookie-banner.njk" %}

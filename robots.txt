@@ -4,7 +4,7 @@ Disallow: /admin/
 Disallow: /_private/
 
 # Sitemaps
-Sitemap: https://calcpress.ai/sitemap.xml
+Sitemap: https://calc-kit.com/sitemap.xml
 
 # Disallow crawling of API endpoints (if any)
 Disallow: /api/
