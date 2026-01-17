@@ -1,0 +1,351 @@
+<!-- Email Capture Modal Component -->
+<style>
+    .email-modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(8px);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        animation: fadeIn 0.3s ease;
+    }
+
+    .email-modal-overlay.active {
+        display: flex;
+    }
+
+    .email-modal {
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        border-radius: 24px;
+        padding: 48px;
+        max-width: 500px;
+        width: 90%;
+        position: relative;
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.5);
+        animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .email-modal-close {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        color: white;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 20px;
+        transition: all 0.2s;
+    }
+
+    .email-modal-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: rotate(90deg);
+    }
+
+    .modal-icon {
+        font-size: 48px;
+        text-align: center;
+        margin-bottom: 16px;
+    }
+
+    .modal-title {
+        font-size: 28px;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 12px;
+        background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .modal-subtitle {
+        text-align: center;
+        color: #94a3b8;
+        margin-bottom: 32px;
+        font-size: 16px;
+    }
+
+    .email-form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .email-input {
+        padding: 16px 20px;
+        border: 2px solid rgba(99, 102, 241, 0.3);
+        border-radius: 12px;
+        background: rgba(15, 23, 42, 0.5);
+        color: white;
+        font-size: 16px;
+        transition: all 0.3s;
+    }
+
+    .email-input:focus {
+        outline: none;
+        border-color: #6366f1;
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+    }
+
+    .email-submit {
+        padding: 16px 32px;
+        background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+        border: none;
+        border-radius: 12px;
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .email-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.6);
+    }
+
+    .email-submit:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    .modal-benefits {
+        list-style: none;
+        margin-top: 24px;
+        padding-top: 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .modal-benefits li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+        color: #e2e8f0;
+        font-size: 14px;
+    }
+
+    .modal-benefits li::before {
+        content: "✓";
+        color: #10b981;
+        font-weight: 700;
+        font-size: 18px;
+    }
+
+    .modal-privacy {
+        text-align: center;
+        font-size: 12px;
+        color: #64748b;
+        margin-top: 16px;
+    }
+
+    .success-message {
+        display: none;
+        text-align: center;
+        padding: 24px;
+    }
+
+    .success-message.active {
+        display: block;
+    }
+
+    .success-icon {
+        font-size: 64px;
+        margin-bottom: 16px;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<div class="email-modal-overlay" id="emailModal">
+    <div class="email-modal">
+        <button class="email-modal-close" id="closeModal" aria-label="Close">×</button>
+        
+        <div id="formContainer">
+            <div class="modal-icon">🎯</div>
+            <h2 class="modal-title">Get Calculator Pro Tips</h2>
+            <p class="modal-subtitle">Join 10,000+ users getting smarter with their calculations</p>
+            
+            <form class="email-form" id="emailCaptureForm">
+                <input 
+                    type="email" 
+                    class="email-input" 
+                    id="emailInput" 
+                    placeholder="Enter your email"
+                    required
+                    aria-label="Email address"
+                />
+                <button type="submit" class="email-submit" id="submitBtn">
+                    Get Free Calculator Guide
+                </button>
+            </form>
+
+            <ul class="modal-benefits">
+                <li>Free WordPress plugin ($49 value)</li>
+                <li>Advanced calculator tutorials</li>
+                <li>Early access to new features</li>
+                <li>No spam, unsubscribe anytime</li>
+            </ul>
+
+            <p class="modal-privacy">
+                We respect your privacy. Read our <a href="/privacy.html" style="color: #6366f1;">Privacy Policy</a>
+            </p>
+        </div>
+
+        <div class="success-message" id="successMessage">
+            <div class="success-icon">🎉</div>
+            <h3 style="color: white; margin-bottom: 12px;">You're all set!</h3>
+            <p style="color: #94a3b8;">Check your email for your free calculator guide and plugin access.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    const modal = document.getElementById('emailModal');
+    const closeBtn = document.getElementById('closeModal');
+    const form = document.getElementById('emailCaptureForm');
+    const formContainer = document.getElementById('formContainer');
+    const successMessage = document.getElementById('successMessage');
+
+    // Show modal after 30 seconds or on exit intent
+    let modalShown = false;
+
+    // Timer trigger (30 seconds)
+    setTimeout(() => {
+        if (!modalShown && !localStorage.getItem('emailCaptured')) {
+            showModal();
+        }
+    }, 30000);
+
+    // Exit intent trigger
+    document.addEventListener('mouseleave', (e) => {
+        if (e.clientY < 10 && !modalShown && !localStorage.getItem('emailCaptured')) {
+            showModal();
+        }
+    });
+
+    // Scroll trigger (70% of page)
+    let scrollTriggered = false;
+    window.addEventListener('scroll', () => {
+        if (scrollTriggered) return;
+        
+        const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+        if (scrollPercent > 70 && !modalShown && !localStorage.getItem('emailCaptured')) {
+            scrollTriggered = true;
+            showModal();
+        }
+    });
+
+    function showModal() {
+        modalShown = true;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Track modal view
+        if (window.gtag) {
+            gtag('event', 'email_modal_view', {
+                event_category: 'engagement',
+                event_label: 'Email Capture Modal Shown'
+            });
+        }
+    }
+
+    function hideModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    closeBtn.addEventListener('click', hideModal);
+    
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) hideModal();
+    });
+
+    // Handle form submission
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const email = document.getElementById('emailInput').value;
+        const submitBtn = document.getElementById('submitBtn');
+        
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Subscribing...';
+
+        try {
+            // TODO: Replace with your actual email service endpoint
+            // Example: Mailchimp, ConvertKit, Sendinblue, etc.
+            const response = await fetch('/api/subscribe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ 
+                    email: email,
+                    source: 'calculator_modal',
+                    page: window.location.pathname
+                }),
+            });
+
+            if (response.ok) {
+                // Show success message
+                formContainer.style.display = 'none';
+                successMessage.classList.add('active');
+                
+                // Store in localStorage to prevent showing again
+                localStorage.setItem('emailCaptured', 'true');
+                localStorage.setItem('userEmail', email);
+                
+                // Track conversion
+                if (window.gtag) {
+                    gtag('event', 'email_signup', {
+                        event_category: 'conversion',
+                        event_label: 'Email Captured',
+                        value: 1
+                    });
+                }
+
+                // Close modal after 3 seconds
+                setTimeout(hideModal, 3000);
+            } else {
+                throw new Error('Subscription failed');
+            }
+        } catch (error) {
+            console.error('Email capture error:', error);
+            alert('Oops! Something went wrong. Please try again.');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Get Free Calculator Guide';
+        }
+    });
+
+    // Keyboard accessibility
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            hideModal();
+        }
+    });
+})();
+</script>

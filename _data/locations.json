@@ -1,0 +1,82 @@
+[
+    {
+        "id": "san-jose",
+        "name": "San Jose",
+        "state": "CA",
+        "stateFull": "California",
+        "slug": "san-jose-ca",
+        "medianPrice": 1600000
+    },
+    {
+        "id": "san-francisco",
+        "name": "San Francisco",
+        "state": "CA",
+        "stateFull": "California",
+        "slug": "san-francisco-ca",
+        "medianPrice": 1200000
+    },
+    {
+        "id": "anaheim",
+        "name": "Anaheim",
+        "state": "CA",
+        "stateFull": "California",
+        "slug": "anaheim-ca",
+        "medianPrice": 1400000
+    },
+    {
+        "id": "los-angeles",
+        "name": "Los Angeles",
+        "state": "CA",
+        "stateFull": "California",
+        "slug": "los-angeles-ca",
+        "medianPrice": 980000
+    },
+    {
+        "id": "san-diego",
+        "name": "San Diego",
+        "state": "CA",
+        "stateFull": "California",
+        "slug": "san-diego-ca",
+        "medianPrice": 900000
+    },
+    {
+        "id": "seattle",
+        "name": "Seattle",
+        "state": "WA",
+        "stateFull": "Washington",
+        "slug": "seattle-wa",
+        "medianPrice": 730000
+    },
+    {
+        "id": "honolulu",
+        "name": "Honolulu",
+        "state": "HI",
+        "stateFull": "Hawaii",
+        "slug": "honolulu-hi",
+        "medianPrice": 725000
+    },
+    {
+        "id": "boston",
+        "name": "Boston",
+        "state": "MA",
+        "stateFull": "Massachusetts",
+        "slug": "boston-ma",
+        "medianPrice": 725000
+    },
+    {
+        "id": "new-york",
+        "name": "New York",
+        "state": "NY",
+        "stateFull": "New York",
+        "slug": "new-york-ny",
+        "medianPrice": 650000
+    },
+    {
+        "id": "miami",
+        "name": "Miami",
+        "state": "FL",
+        "stateFull": "Florida",
+        "slug": "miami-fl",
+        "medianPrice": 600000
+    }
+]

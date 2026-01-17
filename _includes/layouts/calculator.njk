@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="{{ calc.lang }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ calc.title | safe }} | CalcPress</title>
+    <meta name="description" content="{{ calc.metaDescription | safe }}">
+    
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ site.url }}/{{ calc.lang }}/{{ calc.slug }}/">
+    
+    <!-- Hreflang for all languages -->
+    {%- set calcData = calculators[calc.type] -%}
+    {%- for langItem in site.languages %}
+    <link rel="alternate" hreflang="{{ langItem.code }}" href="{{ site.url }}/{{ langItem.code }}/{{ calcData.slugs[langItem.code] }}/">
+    {%- endfor %}
+    <link rel="alternate" hreflang="x-default" href="{{ site.url }}/en/{{ calcData.slugs.en }}/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ site.url }}/{{ calc.lang }}/{{ calc.slug }}/">
+    <meta property="og:title" content="{{ calc.title }}">
+    <meta property="og:description" content="{{ calc.metaDescription }}">
+    <meta property="og:image" content="{{ site.url }}/assets/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="CalcPress">
+    <meta property="og:locale" content="{{ calc.lang }}">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ calc.title }}">
+    <meta name="twitter:description" content="{{ calc.metaDescription }}">
+    <meta name="twitter:image" content="{{ site.url }}/assets/images/og-image.png">
+    
+    <!-- Additional SEO -->
+    <meta name="author" content="CalcPress">
+    <meta name="generator" content="CalcPress SEO Engine">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/images/favicon.png">
+    
+    <!-- Schema.org Calculator -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "{{ calc.title }}",
+        "description": "{{ calc.metaDescription }}",
+        "url": "{{ site.url }}/{{ calc.lang }}/{{ calc.slug }}/",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web Browser",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "{{ calc.config.currency[calc.lang] or 'USD' }}" },
+        "inLanguage": "{{ calc.lang }}",
+        "featureList": "Calculate {{ calc.config.resultLabel[calc.lang] }}",
+        "softwareRequirements": "Modern Web Browser",
+        "author": {
+            "@type": "Organization",
+            "name": "{{ site.name }}",
+            "url": "{{ site.url }}"
+        }
+    }
+    </script>
+
+    <!-- FAQ Schema -->
+    {%- if calc.faqs and calc.faqs.length > 0 %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {%- for faq in calc.faqs %}
+            {
+                "@type": "Question",
+                "name": "{{ faq.q }}",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "{{ faq.a }}"
+                }
+            }{% if not loop.last %},{% endif %}
+            {%- endfor %}
+        ]
+    }
+    </script>
+    {%- endif %}
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.gaId }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{ site.analytics.gaId }}');
+    </script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+
+<body data-calculator-type="{{ calc.type }}">
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <a href="/" class="logo">{{ site.name }}</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>{{ calc.title | safe }}</h1>
+            <p>{{ calc.subtitle | safe }}</p>
+            <div class="trust-badge">
+                <span class="edition-badge">2026 Edition</span> • <span>✓</span> Free • No signup required
+            </div>
+        </div>
+    </section>
+
+    <!-- Breadcrumbs -->
+    <div class="container" style="padding-top: 24px;">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <ol style="list-style: none; display: flex; gap: 8px; font-size: 13px; color: var(--text-dim);">
+                <li><a href="/" style="color: var(--text-dim); text-decoration: none;">CalcPress</a></li>
+                <li style="color: var(--text-dim);">/</li>
+                <li><a href="/{{ calc.lang }}/" style="color: var(--text-dim); text-decoration: none;">{{ calc.lang | upper }}</a></li>
+                <li style="color: var(--text-dim);">/</li>
+                <li style="color: var(--primary-light); font-weight: 600;">{{ calc.title }}</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Calculator -->
+    <section class="calculator-section">
+        <div class="container">
+            <div class="calculator-wrapper">
+                <div id="calculator-container"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contextual Content -->
+    {%- if calc.content %}
+    <section class="content-section">
+        <div class="container">
+            <div class="seo-content">
+                {{ calc.content | safe }}
+            </div>
+        </div>
+    </section>
+    {%- endif %}
+
+    <!-- FAQ Section -->
+    {%- if calc.faqs and calc.faqs.length > 0 %}
+    <section class="faq-section">
+        <div class="container">
+            <h2>{{ ui.faq[calc.lang] }}</h2>
+            {%- for faq in calc.faqs %}
+            <div class="faq-item">
+                <div class="faq-question">
+                    {{ faq.q }}
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>{{ faq.a }}</p>
+                </div>
+            </div>
+            {%- endfor %}
+        </div>
+    </section>
+    {%- endif %}
+
+    <!-- WordPress Plugin CTA -->
+    <div class="container">
+        {% include "partials/plugin-cta.njk" %}
+    </div>
+
+    <!-- Related Tools -->
+    <section class="content-section" style="padding-top: 0;">
+        <div class="container">
+            <span class="section-tag">{{ ui.footer[calc.lang].otherTools | default("Recommended Tools") }}</span>
+            <h2>{{ ui.footer[calc.lang].relatedTitle | default("Explore More Calculators") }}</h2>
+            <div class="related-grid">
+                {%- set count = 0 -%}
+                {%- for calcType, calcInfo in calculators -%}
+                {%- if calcType != calc.type and count < 3 -%}
+                <a href="/{{ calc.lang }}/{{ calcInfo.slugs[calc.lang] }}/" class="related-card">
+                    <h3>{{ calcInfo.titles[calc.lang] }}</h3>
+                    <p>{{ calcInfo.subtitles[calc.lang] }}</p>
+                </a>
+                {%- set count = count + 1 -%}
+                {%- endif -%}
+                {%- endfor -%}
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <ul class="footer-links">
+                {%- for calcType, calcInfo in calculators %}
+                {%- if calcType != calc.type %}
+                <li><a href="/{{ calc.lang }}/{{ calcInfo.slugs[calc.lang] }}/">{{ calcInfo.titles[calc.lang] }}</a></li>
+                {%- endif %}
+                {%- endfor %}
+                <li><a href="/privacy.html">{{ ui.footer[calc.lang].privacy }}</a></li>
+                <li><a href="/terms.html">{{ ui.footer[calc.lang].terms }}</a></li>
+            </ul>
+            <div class="footer-lang" style="margin-top: 16px; display: flex; justify-content: center; gap: 12px; align-items: center;">
+                <span style="color: var(--text-muted); font-size: 13px;">🌐</span>
+                {%- for langItem in site.languages %}
+                <a href="/{{ langItem.code }}/{{ calcData.slugs[langItem.code] }}/" style="color: {% if langItem.code == calc.lang %}var(--primary-light){% else %}var(--text-muted){% endif %}; font-size: 12px; text-decoration: none; padding: 4px 8px; border-radius: 4px; {% if langItem.code == calc.lang %}background: rgba(99, 102, 241, 0.15);{% endif %}">{{ langItem.code | upper }}</a>
+                {%- endfor %}
+            </div>
+            <p>© {{ site.year }} {{ site.name }}. {{ ui.footer[calc.lang].copyright }}.</p>
+        </div>
+    </footer>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const calculator = document.querySelector('calcpress-calculator');
+            if (calculator) {
+                calculator.addEventListener('request-pdf', (e) => {
+                    console.log('PDF requested but not available on this site.');
+                    alert('PDF reports are not available on this site yet.');
+                });
+            }
+        });
+    </script>
+
+    
+    <!-- Calculator Engine -->
+    <script src="/assets/js/calculator.js"></script>
+    
+    <!-- Analytics Tracking -->
+    <script src="/assets/js/analytics.js"></script>
+    
+    <script>
+        // Build config for this specific language
+        const calcConfig = {
+            type: "{{ calc.type }}",
+            title: "{{ calc.title | safe }}",
+            subtitle: "{{ calc.subtitle | safe }}",
+            currency: "{{ calc.config.currency[calc.lang] }}",
+            locale: "{{ calc.config.locale[calc.lang] }}",
+            fields: [
+                {%- for field in calc.config.fields %}
+                {
+                    id: "{{ field.id }}",
+                    type: "{{ field.type }}",
+                    label: "{{ field.label[calc.lang] | safe }}",
+                    default: {{ field.default }}{% if field.type != 'select' %},
+                    min: {{ field.min }},
+                    max: {{ field.max }},
+                    step: {{ field.step }}{% endif %}
+                    {%- if field.options %},
+                    options: [
+                        {%- for opt in field.options %}
+                        { value: {{ opt.value }}, label: "{{ opt.label[calc.lang] | safe }}" }{% if not loop.last %},{% endif %}
+                        {%- endfor %}
+                    ]
+                    {%- endif %}
+                }{% if not loop.last %},{% endif %}
+                {%- endfor %}
+            ],
+            formula: "{{ calc.config.formula }}",
+            resultLabel: "{{ calc.config.resultLabel[calc.lang] | safe }}",
+            breakdown: [
+                {%- for item in calc.config.breakdown %}
+                { label: "{{ item.label[calc.lang] | safe }}", formula: "{{ item.formula }}" }{% if not loop.last %},{% endif %}
+                {%- endfor %}
+            ]{% if calc.config.notices %},
+            notices: [
+                {%- for notice in calc.config.notices %}
+                {
+                    message: "{{ notice.message[calc.lang] | safe }}",
+                    condition: "{{ notice.condition }}",
+                    type: "{{ notice.type }}"
+                }{% if not loop.last %},{% endif %}
+                {%- endfor %}
+            ]
+            {% endif %}
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.getElementById('calculator-container');
+            const wrapper = document.createElement('div');
+            wrapper.className = 'calcpress-calculator';
+            wrapper.dataset.theme = 'dark';
+            wrapper.dataset.config = JSON.stringify(calcConfig);
+            container.appendChild(wrapper);
+            wrapper.appendChild(document.createElement('calcpress-calculator'));
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
+        });
+    </script>
+    {% include "components/cookie-banner.njk" %}
+</body>
+</html>

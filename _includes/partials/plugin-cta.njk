@@ -1,0 +1,67 @@
+<!-- WordPress Plugin CTA Component -->
+<section class="plugin-cta-section" style="margin: 60px 0; padding: 48px 40px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%); border-radius: 24px; border: 1px solid rgba(99, 102, 241, 0.2);">
+    <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+        <div style="font-size: 48px; margin-bottom: 16px;">🚀</div>
+        
+        <h2 style="font-size: 32px; font-weight: 800; margin-bottom: 16px; background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            Add This Calculator to YOUR WordPress Site
+        </h2>
+        
+        <p style="color: var(--text-muted); font-size: 18px; margin-bottom: 32px;">
+            Install the CalcPress AI plugin and embed any of our 15 professional calculators with a simple shortcode. No coding required.
+        </p>
+
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px;">
+            <a href="{{ site.plugin.url }}" 
+               class="btn btn-primary plugin-cta-link" 
+               data-cta-location="calculator-page-main"
+               style="display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px; background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; transition: all 0.3s;">
+                Get Plugin →
+            </a>
+            
+            <a href="/demo.html" 
+               style="display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px; background: rgba(255, 255, 255, 0.05); color: var(--text); text-decoration: none; border-radius: 12px; font-weight: 600; border: 2px solid rgba(99, 102, 241, 0.3); transition: all 0.3s;">
+                View Demo
+            </a>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: left;">
+            <div>
+                <div style="color: #10b981; font-size: 20px; margin-bottom: 8px;">✓</div>
+                <div style="font-weight: 600; margin-bottom: 4px;">15 Calculators</div>
+                <div style="color: var(--text-muted); font-size: 14px;">All tools included</div>
+            </div>
+  <div>
+                <div style="color: #10b981; font-size: 20px; margin-bottom: 8px;">✓</div>
+                <div style="font-weight: 600; margin-bottom: 4px;">5 Languages</div>
+                <div style="color: var(--text-muted); font-size: 14px;">Multilingual support</div>
+            </div>
+            <div>
+                <div style="color: #10b981; font-size: 20px; margin-bottom: 8px;">✓</div>
+                <div style="font-weight: 600; margin-bottom: 4px;">Easy Setup</div>
+                <div style="color: var(--text-muted); font-size: 14px;">5-minute installation</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// Track plugin CTA clicks
+document.querySelectorAll('.plugin-cta-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+        const location = this.dataset.ctaLocation || 'unknown';
+        
+        if (window.CalcPressAnalytics) {
+            window.CalcPressAnalytics.trackPluginClick(location);
+        }
+        
+        if (window.gtag) {
+            gtag('event', 'plugin_cta_click', {
+                event_category: 'conversion',
+                event_label: location,
+                value: 5
+            });
+        }
+    });
+});
+</script>

@@ -1,0 +1,269 @@
+---
+pagination:
+  data: collections.homePages
+  size: 1
+  alias: home
+permalink: "/{% if home.lang != 'en' %}{{ home.lang }}/{% endif %}index.html"
+---
+<!DOCTYPE html>
+<html lang="{{ home.lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ ui.homeTitle[home.lang] | default("CalcPress - Professional Calculators for WordPress") }}</title>
+    <meta name="description" content="{{ ui.homeDesc[home.lang] | default("The #1 Calculator Plugin for WordPress. Add Mortgage, Loan, ROI, and niche calculators to your site.") }}">
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/images/favicon.png">
+    <meta property="og:image" content="{{ site.url }}/assets/images/og-image.png">
+    <meta name="twitter:image" content="{{ site.url }}/assets/images/og-image.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+        /* Hero Section - Epic */
+        .hero-home { 
+            padding: 100px 0 80px; 
+            text-align: center; 
+            position: relative;
+        }
+        .hero-home::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%; transform: translateX(-50%);
+            width: 800px; height: 600px;
+            background: radial-gradient(ellipse, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero-home h1 { 
+            font-size: clamp(40px, 8vw, 64px); 
+            margin-bottom: 24px; 
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 50%, #c7d2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-home p { 
+            font-size: 20px; 
+            color: var(--text-muted); 
+            max-width: 580px; 
+            margin: 0 auto 40px;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Stats - Impactful */
+        .stats { 
+            display: flex; 
+            justify-content: center; 
+            gap: 56px; 
+            margin: 48px 0; 
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        .stat { text-align: center; }
+        .stat-value { 
+            font-size: 56px; 
+            font-weight: 800; 
+            background: var(--gradient); 
+            background-size: 200% 200%;
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 6s ease infinite;
+            letter-spacing: -0.02em;
+        }
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .stat-label { 
+            color: var(--text-muted); 
+            font-size: 13px; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px;
+            margin-top: 4px;
+        }
+        
+        /* Calculator Cards - Premium Glass */
+        .calculators-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 24px; 
+            padding: 60px 0; 
+        }
+        .calc-card { 
+            background: var(--surface); 
+            border-radius: 16px; 
+            padding: 28px; 
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); 
+            border: 1px solid var(--glass-border);
+            position: relative;
+            overflow: hidden;
+        }
+        .calc-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-subtle);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+        .calc-card:hover { 
+            transform: translateY(-6px); 
+            border-color: var(--glass-border-hover);
+            box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.5), 0 0 40px rgba(99, 102, 241, 0.12);
+        }
+        .calc-card:hover::before { opacity: 1; }
+        .calc-card h3 { 
+            font-size: 19px; 
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        .calc-card p { 
+            color: var(--text-muted); 
+            font-size: 14px; 
+            margin-bottom: 18px;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+        .lang-links { 
+            display: flex; 
+            gap: 10px; 
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        .lang-links a { 
+            background: rgba(99, 102, 241, 0.1); 
+            padding: 8px 16px; 
+            border-radius: 8px; 
+            font-size: 13px; 
+            font-weight: 600;
+            text-decoration: none; 
+            color: var(--primary-light); 
+            transition: all 0.25s ease;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+        .lang-links a:hover { 
+            color: #fff; 
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        /* CTA Section - Subtle Gradient */
+        .cta-section { 
+            padding: 80px 0; 
+            text-align: center; 
+            background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
+            position: relative;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--glass-border-hover), transparent);
+        }
+        .cta-section h2 { 
+            font-size: 36px; 
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        .cta-section p { color: var(--text-muted); margin-bottom: 28px; font-size: 18px; line-height: 1.7; }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="container">
+            <a href="/" class="logo">CalcPress</a>
+        </div>
+    </nav>
+
+    <section class="hero-home">
+        <div class="container">
+            <h1>{{ ui.homeHero[home.lang] | default("Professional Calculators for Your Website") }}</h1>
+            <p>{{ ui.homeTagline[home.lang] | default("The #1 Calculator Plugin for WordPress. Add niche lead magnets to your site in minutes.") }}</p>
+            <div style="margin-top: 32px;">
+                <a href="{{ site.plugin.url }}" class="btn btn-primary">{{ ui.cta.getPlugin[home.lang] }}</a>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value">7</div>
+                    <div class="stat-label">{{ ui.stats.calculators[home.lang] | default("Niche Tools") }}</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">5</div>
+                    <div class="stat-label">{{ ui.stats.languages[home.lang] | default("Languages") }}</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">1</div>
+                    <div class="stat-label">{{ ui.stats.plugin[home.lang] | default("Plugin") }}</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">35</div>
+                    <div class="stat-label">{{ ui.stats.pages[home.lang] | default("SEO Targets") }}</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="calculators-grid">
+            {%- for calcType, calc in calculators %}
+            <div class="calc-card">
+                <h3>{{ calc.titles[home.lang] | default(calc.titles.en) }}</h3>
+                <p>{{ calc.subtitles[home.lang] | default(calc.subtitles.en) }}</p>
+                <div class="lang-links">
+                    <a href="/{{ home.lang }}/{{ calc.slugs[home.lang] }}/">{{ home.lang | upper }} Demo</a>
+                </div>
+            </div>
+            {%- endfor %}
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>{{ ui.cta.embedTitle[home.lang] }}</h2>
+            <p>{{ ui.cta.embedDesc[home.lang] }}</p>
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 32px;">
+                <a href="{{ site.plugin.url }}" class="btn btn-primary" style="font-size: 18px; padding: 18px 36px;">{{ ui.cta.getPlugin[home.lang] }} →</a>
+                <a href="/{{ home.lang }}/mortgage-calculator/" style="display: inline-flex; align-items: center; padding: 18px 36px; border: 2px solid rgba(99, 102, 241, 0.5); border-radius: 12px; color: var(--text); text-decoration: none; font-weight: 600; font-size: 18px;">Try a Demo</a>
+            </div>
+        </div>
+    </section>
+            <div style="margin-top: 32px; display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; color: var(--text-muted); font-size: 14px;">
+                <div>✓ 15 Professional Calculators</div>
+                <div>✓ 5 Languages Included</div>
+                <div>✓ No Coding Required</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="{{ site.plugin.url }}" target="_blank">Get Plugin</a></li>
+                <li><a href="/privacy.html">Privacy</a></li>
+                <li><a href="/terms.html">Terms</a></li>
+                <li><a href="/refund.html">Refund</a></li>
+            </ul>
+            <div class="footer-lang" style="margin-top: 16px; display: flex; justify-content: center; gap: 12px; align-items: center;">
+                <span style="color: var(--text-muted); font-size: 13px;">🌐</span>
+                <a href="/" style="color: {% if home.lang == 'en' %}var(--primary-light){% else %}var(--text-muted){% endif %}; font-size: 12px; text-decoration: none; padding: 4px 8px; border-radius: 4px; {% if home.lang == 'en' %}background: rgba(99, 102, 241, 0.15);{% endif %}">EN</a>
+                <a href="/es/" style="color: {% if home.lang == 'es' %}var(--primary-light){% else %}var(--text-muted){% endif %}; font-size: 12px; text-decoration: none; padding: 4px 8px; border-radius: 4px; {% if home.lang == 'es' %}background: rgba(99, 102, 241, 0.15);{% endif %}">ES</a>
+                <a href="/de/" style="color: {% if home.lang == 'de' %}var(--primary-light){% else %}var(--text-muted){% endif %}; font-size: 12px; text-decoration: none; padding: 4px 8px; border-radius: 4px; {% if home.lang == 'de' %}background: rgba(99, 102, 241, 0.15);{% endif %}">DE</a>
+                <a href="/fr/" style="color: {% if home.lang == 'fr' %}var(--primary-light){% else %}var(--text-muted){% endif %}; font-size: 12px; text-decoration: none; padding: 4px 8px; border-radius: 4px; {% if home.lang == 'fr' %}background: rgba(99, 102, 241, 0.15);{% endif %}">FR</a>
+                <a href="/pt/" style="color: {% if home.lang == 'pt' %}var(--primary-light){% else %}var(--text-muted){% endif %}; font-size: 12px; text-decoration: none; padding: 4px 8px; border-radius: 4px; {% if home.lang == 'pt' %}background: rgba(99, 102, 241, 0.15);{% endif %}">PT</a>
+            </div>
+            <p>© {{ site.year }} CalcPress. All rights reserved.</p>
+        </div>
+    </footer>
+    {% include "components/cookie-banner.njk" %}
+</body>
+</html>

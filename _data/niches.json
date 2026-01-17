@@ -1,0 +1,1113 @@
+[
+    {
+        "baseType": "mortgage",
+        "id": "fha-loan",
+        "slugs": {
+            "en": "fha-loan-calculator",
+            "es": "calculadora-prestamo-fha",
+            "de": "fha-hypothekenrechner",
+            "fr": "calculateur-pret-fha",
+            "pt": "calculadora-emprestimo-fha",
+            "it": "calcolatore-prestito-fha",
+            "nl": "fha-lening-calculator",
+            "pl": "kalkulator-kredytu-fha",
+            "sv": "fha-lan-kalkylator",
+            "no": "fha-lan-kalkulator",
+            "da": "fha-laan-beregner",
+            "fi": "fha-laina-laskuri"
+        },
+        "titles": {
+            "en": "FHA Loan Calculator 2026",
+            "es": "Calculadora FHA 2026",
+            "de": "FHA-Rechner 2026",
+            "fr": "Calculateur FHA 2026",
+            "pt": "Calculadora FHA 2026",
+            "it": "Calcolatore FHA 2026",
+            "nl": "FHA Calculator 2026",
+            "pl": "Kalkulator Kredytu FHA",
+            "sv": "FHA-lånekalkylator",
+            "no": "FHA-lånekalkulator",
+            "da": "FHA Låneberegner 2026",
+            "fi": "FHA Lainalaskuri 2026"
+        },
+        "subtitles": {
+            "en": "Estimate monthly payments with 3.5% down payment",
+            "es": "Estima pagos con 3.5% de enganche",
+            "de": "Monatsrate mit 3,5% Anzahlung berechnen"
+        },
+        "overrides": {
+            "down": {
+                "default": 12250,
+                "label": {
+                    "en": "Down Payment (3.5%)",
+                    "es": "Pago Inicial (3.5%)",
+                    "de": "Anzahlung (3.5%)",
+                    "fr": "Apport (3.5%)",
+                    "pt": "Entrada (3.5%)",
+                    "it": "Anticipo (3.5%)",
+                    "nl": "Aanbetaling (3.5%)",
+                    "pl": "Wpłata Własna (3.5%)",
+                    "sv": "Kontantinsats (3.5%)",
+                    "no": "Egenkapital (3.5%)",
+                    "da": "Udbetaling (3.5%)",
+                    "fi": "Ksiraha (3.5%)"
+                },
+                "min": 3.5
+            }
+        }
+    },
+    {
+        "baseType": "mortgage",
+        "id": "va-loan",
+        "slugs": {
+            "en": "va-loan-calculator",
+            "es": "calculadora-prestamo-va",
+            "de": "va-hypothekenrechner",
+            "fr": "calculateur-pret-va",
+            "pt": "calculadora-emprestimo-va",
+            "it": "calcolatore-prestito-va",
+            "nl": "va-lening-calculator",
+            "pl": "kalkulator-kredytu-va",
+            "sv": "va-lan-kalkylator",
+            "no": "va-lan-kalkulator",
+            "da": "va-laan-beregner",
+            "fi": "va-laina-laskuri"
+        },
+        "titles": {
+            "en": "VA Loan Calculator ($0 Down)",
+            "es": "Calculadora VA ($0 Enganche)",
+            "de": "VA-Darlehensrechner",
+            "fr": "Calculateur Prêt VA",
+            "pt": "Calculadora Empréstimo VA",
+            "it": "Calcolatore Prestito VA",
+            "nl": "VA Lening Calculator",
+            "pl": "Kalkulator Kredytu VA",
+            "sv": "VA Lånekalkylator",
+            "no": "VA Lånekalkulator",
+            "da": "VA Låneberegner",
+            "fi": "VA Lainalaskuri"
+        },
+        "subtitles": {
+            "en": "Exclusive benefit for Veterans and active military",
+            "es": "Beneficio exclusivo para veteranos y militares",
+            "de": "Exklusiv für Veteranen"
+        },
+        "overrides": {
+            "down": {
+                "default": 0,
+                "label": {
+                    "en": "Down Payment ($0)",
+                    "es": "Pago Inicial ($0)",
+                    "de": "Anzahlung ($0)",
+                    "fr": "Apport ($0)",
+                    "pt": "Entrada ($0)",
+                    "it": "Anticipo ($0)",
+                    "nl": "Aanbetaling ($0)",
+                    "pl": "Wpłata Własna ($0)",
+                    "sv": "Kontantinsats ($0)",
+                    "no": "Egenkapital ($0)",
+                    "da": "Udbetaling ($0)",
+                    "fi": "Ksiraha ($0)"
+                }
+            }
+        }
+    },
+    {
+        "baseType": "mortgage",
+        "id": "jumbo-loan",
+        "slugs": {
+            "en": "jumbo-loan-calculator",
+            "es": "calculadora-prestamo-jumbo",
+            "de": "jumbo-hypothekenrechner",
+            "fr": "calculateur-pret-jumbo",
+            "pt": "calculadora-emprestimo-jumbo",
+            "it": "calcolatore-prestito-jumbo",
+            "nl": "jumbo-lening-calculator",
+            "pl": "kalkulator-kredytu-jumbo",
+            "sv": "jumbo-lan-kalkylator",
+            "no": "jumbo-lan-kalkulator",
+            "da": "jumbo-laan-beregner",
+            "fi": "jumbo-laina-laskuri"
+        },
+        "titles": {
+            "en": "Jumbo Loan Calculator",
+            "es": "Calculadora Préstamo Jumbo",
+            "de": "Jumbo-Hypothekenrechner",
+            "fr": "Calculateur Prêt Jumbo",
+            "pt": "Calculadora Financiamento Jumbo",
+            "it": "Calcolatore Prestito Jumbo",
+            "nl": "Jumbo Lening Calculator",
+            "pl": "Kalkulator Kredytu Jumbo",
+            "sv": "Jumbo Lånekalkylator",
+            "no": "Jumbo Lånekalkulator",
+            "da": "Jumbo Låneberegner",
+            "fi": "Jumbo Lainalaskuri"
+        },
+        "overrides": {
+            "price": {
+                "default": 1200000,
+                "min": 766550,
+                "label": {
+                    "en": "Luxury Home Price",
+                    "es": "Precio Casa de Lujo",
+                    "de": "Luxushaus Preis",
+                    "fr": "Prix Maison de Luxe",
+                    "pt": "Preço Casa de Luxo",
+                    "it": "Prezzo Casa di Lusso",
+                    "nl": "Luxe Woning Prijs",
+                    "pl": "Cena Luksusowego Domu",
+                    "sv": "Lyxhus Pris",
+                    "no": "Luksusboligpris",
+                    "da": "Luksusbolig Pris",
+                    "fi": "Luksusasunnon Hinta"
+                }
+            },
+            "down": {
+                "default": 240000
+            }
+        }
+    },
+    {
+        "baseType": "mortgage",
+        "id": "usda-loan",
+        "slugs": {
+            "en": "usda-loan-calculator",
+            "es": "calculadora-prestamo-usda",
+            "de": "usda-darlehensrechner",
+            "fr": "calculateur-pret-usda",
+            "pt": "calculadora-emprestimo-usda",
+            "it": "calcolatore-prestito-usda",
+            "nl": "usda-lening-calculator",
+            "pl": "kalkulator-kredytu-usda",
+            "sv": "usda-lan-kalkylator",
+            "no": "usda-lan-kalkulator",
+            "da": "usda-laan-beregner",
+            "fi": "usda-laina-laskuri"
+        },
+        "titles": {
+            "en": "USDA Loan Calculator",
+            "es": "Calculadora Préstamo USDA",
+            "de": "USDA-Landkreditrechner",
+            "fr": "Calculateur Prêt USDA",
+            "pt": "Calculadora Empréstimo USDA",
+            "it": "Calcolatore Prestito USDA",
+            "nl": "USDA Lening Calculator",
+            "pl": "Kalkulator Kredytu USDA",
+            "sv": "USDA Lånekalkylator",
+            "no": "USDA Lånekalkulator",
+            "da": "USDA Låneberegner",
+            "fi": "USDA Lainalaskuri"
+        },
+        "subtitles": {
+            "en": "Zero down payment loans for rural homes",
+            "es": "Préstamos con cero enganche para zonas rurales",
+            "de": "Darlehen ohne Anzahlung für ländliche Gebiete"
+        },
+        "overrides": {
+            "down": {
+                "default": 0,
+                "label": {
+                    "en": "Down Payment ($)",
+                    "es": "Pago Inicial ($)",
+                    "de": "Anzahlung ($)",
+                    "fr": "Apport ($)",
+                    "pt": "Entrada ($)",
+                    "it": "Anticipo ($)",
+                    "nl": "Aanbetaling ($)",
+                    "pl": "Wpłata Własna ($)",
+                    "sv": "Kontantinsats ($)",
+                    "no": "Egenkapital ($)",
+                    "da": "Udbetaling ($)",
+                    "fi": "Ksiraha ($)"
+                }
+            },
+            "insurance": {
+                "default": 100,
+                "label": {
+                    "en": "PMI / Insurance",
+                    "es": "Seguro PMI",
+                    "de": "Versicherung / PMI",
+                    "fr": "Assurance / PMI",
+                    "pt": "Seguro / PMI",
+                    "it": "Assicurazione / PMI",
+                    "nl": "Verzekering / PMI",
+                    "pl": "Ubezpieczenie / PMI",
+                    "sv": "Försäkring / PMI",
+                    "no": "Forsikring / PMI",
+                    "da": "Forsikring / PMI",
+                    "fi": "Vakuutus / PMI"
+                }
+            }
+        }
+    },
+    {
+        "baseType": "mortgage",
+        "id": "investment-property",
+        "slugs": {
+            "en": "investment-property-calculator",
+            "es": "calculadora-propiedad-inversion",
+            "de": "anlageimmobilien-rechner",
+            "fr": "calculateur-investissement-immobilier",
+            "pt": "calculadora-investimento-imobiliario",
+            "it": "calcolatore-investimento-immobiliare",
+            "nl": "beleggingspand-calculator",
+            "pl": "kalkulator-inwestycji-nieruchomosci",
+            "sv": "investeringsfastighet-kalkylator",
+            "no": "eiendomsinvestering-kalkulator",
+            "da": "ejendomsinvestering-beregner",
+            "fi": "sijoitusasuntolaskuri"
+        },
+        "titles": {
+            "en": "Investment Property Calculator",
+            "es": "Calculadora Propiedad de Inversión",
+            "de": "Anlageimmobilien-Rechner",
+            "fr": "Calculateur Investissement Immobilier",
+            "pt": "Calculadora Imóvel de Investimento",
+            "it": "Calcolatore Investimento Immobiliare",
+            "nl": "Vastgoedbelegging Calculator",
+            "pl": "Kalkulator Inwestycji w Nieruchomości",
+            "sv": "Investeringsfastighet Kalkylator",
+            "no": "Investeringseiendomskalkulator",
+            "da": "Ejendomsinvesteringsberegner",
+            "fi": "Sijoitusasuntolaskuri"
+        },
+        "overrides": {
+            "rate": {
+                "default": 7.5,
+                "label": {
+                    "en": "Interest Rate (Investment)",
+                    "es": "Tasa de Interés (Inversión)",
+                    "de": "Zinssatz (Anlage)",
+                    "fr": "Taux d'Intérêt (Investissement)",
+                    "pt": "Taxa de Juros (Investimento)",
+                    "it": "Tasso (Investimento)",
+                    "nl": "Rente (Belegging)",
+                    "pl": "Oprocentowanie (Inwestycja)",
+                    "sv": "Ränta (Investering)",
+                    "no": "Rente (Investering)",
+                    "da": "Rente (Investering)",
+                    "fi": "Korko (Sijoitus)"
+                }
+            },
+            "down": {
+                "default": 20,
+                "label": {
+                    "en": "Down Payment (%)",
+                    "es": "Pago Inicial (%)",
+                    "de": "Anzahlung (%)",
+                    "fr": "Apport (%)",
+                    "pt": "Entrada (%)",
+                    "it": "Anticipo (%)",
+                    "nl": "Aanbetaling (%)",
+                    "pl": "Wpłata Własna (%)",
+                    "sv": "Kontantinsats (%)",
+                    "no": "Egenkapital (%)",
+                    "da": "Udbetaling (%)",
+                    "fi": "Ksiraha (%)"
+                }
+            }
+        }
+    },
+    {
+        "baseType": "loan",
+        "id": "rv-loan",
+        "slugs": {
+            "en": "rv-loan-calculator",
+            "es": "calculadora-prestamo-rv",
+            "de": "wohnmobil-kreditrechner",
+            "fr": "calculateur-pret-camping-car",
+            "pt": "calculadora-financiamento-rv",
+            "it": "calcolatore-prestito-camper",
+            "nl": "camper-lening-calculator",
+            "pl": "kalkulator-kredytu-kamper",
+            "sv": "husbil-lan-kalkylator",
+            "no": "bobil-lan-kalkulator",
+            "da": "autocamper-laan-beregner",
+            "fi": "matkailuauto-laina-laskuri"
+        },
+        "titles": {
+            "en": "RV Loan Calculator",
+            "es": "Calculadora Préstamo RV/Caravana",
+            "de": "Wohnmobil-Finanzierungsrechner",
+            "fr": "Calculateur Prêt Camping-Car",
+            "pt": "Calculadora Financiamento Motorhome",
+            "it": "Calcolatore Prestito Camper",
+            "nl": "Camper Lening Calculator",
+            "pl": "Kalkulator Kredytu na Kampera",
+            "sv": "Husbilslån Kalkylator",
+            "no": "Bobillånkalkulator",
+            "da": "Autocamper Låneberegner",
+            "fi": "Matkailuauton Lainalaskuri"
+        },
+        "subtitles": {
+            "en": "Calculate payments for Motorhomes, 5th Wheels, and Trailers",
+            "es": "Calcula pagos para autocaravanas y remolques",
+            "de": "Raten für Wohnmobile und Wohnwagen berechnen"
+        },
+        "overrides": {
+            "amount": {
+                "default": 85000,
+                "label": {
+                    "en": "RV Price",
+                    "es": "Precio Caravana",
+                    "de": "Wohnmobil Preis",
+                    "fr": "Prix Camping-Car",
+                    "pt": "Preço Motorhome",
+                    "it": "Prezzo Camper",
+                    "nl": "Camper Prijs",
+                    "pl": "Cena Kampera",
+                    "sv": "Husbilspris",
+                    "no": "Bobilpris",
+                    "da": "Autocamper Pris",
+                    "fi": "Matkailuauton Hinta"
+                }
+            },
+            "months": {
+                "default": 120,
+                "max": 240,
+                "label": {
+                    "en": "Term (Months)",
+                    "es": "Plazo (Meses)",
+                    "de": "Laufzeit (Monate)",
+                    "fr": "Durée (Mois)",
+                    "pt": "Prazo (Meses)",
+                    "it": "Durata (Mesi)",
+                    "nl": "Looptijd (Maanden)",
+                    "pl": "Okres (Miesiące)",
+                    "sv": "Löptid (Månader)",
+                    "no": "Løpetid (Måneder)",
+                    "da": "Løbetid (Måneder)",
+                    "fi": "Laina-aika (kk)"
+                }
+            }
+        }
+    },
+    {
+        "baseType": "loan",
+        "id": "tiny-house",
+        "slugs": {
+            "en": "tiny-house-loan-calculator",
+            "es": "calculadora-prestamo-tiny-house",
+            "de": "tiny-house-finanzierungsrechner",
+            "fr": "calculateur-pret-tiny-house",
+            "pt": "calculadora-financiamento-tiny-house",
+            "it": "calcolatore-prestito-tiny-house",
+            "nl": "tiny-house-lening-calculator",
+            "pl": "kalkulator-kredytu-tiny-house",
+            "sv": "tiny-house-lan-kalkylator",
+            "no": "tiny-house-lan-kalkulator",
+            "da": "tiny-house-laan-beregner",
+            "fi": "tiny-house-laina-laskuri"
+        },
+        "titles": {
+            "en": "Tiny House Loan Calculator",
+            "es": "Calculadora Préstamo Tiny House",
+            "de": "Tiny House Finanzierungsrechner",
+            "fr": "Calculateur Prêt Tiny house",
+            "pt": "Calculadora Tiny House",
+            "it": "Calcolatore Prestito Tiny House",
+            "nl": "Tiny House Lening Calculator",
+            "pl": "Kalkulator Kredytu Tiny House",
+            "sv": "Tiny House Lånekalkylator",
+            "no": "Tiny House Lånekalkulator",
+            "da": "Tiny House Låneberegner",
+            "fi": "Tiny House Lainalaskuri"
+        },
+        "overrides": {
+            "amount": {
+                "default": 65000,
+                "label": {
+                    "en": "Tiny House Price",
+                    "es": "Precio Tiny House",
+                    "de": "Tiny House Preis",
+                    "fr": "Prix Tiny House",
+                    "pt": "Preço Tiny House",
+                    "it": "Prezzo Tiny House",
+                    "nl": "Tiny House Prijs",
+                    "pl": "Cena Tiny House",
+                    "sv": "Tiny House Pris",
+                    "no": "Tiny House Pris",
+                    "da": "Tiny House Pris",
+                    "fi": "Tiny House Hinta"
+                }
+            },
+            "rate": {
+                "default": 6.0
+            },
+            "months": {
+                "default": 84,
+                "max": 180
+            }
+        }
+    },
+    {
+        "baseType": "loan",
+        "id": "pool-loan",
+        "slugs": {
+            "en": "pool-loan-calculator",
+            "es": "calculadora-financiacion-piscina",
+            "de": "pool-finanzierungsrechner",
+            "fr": "calculateur-pret-bassin",
+            "pt": "calculadora-financiamento-piscina",
+            "it": "calcolatore-prestito-piscina",
+            "nl": "zwembad-lening-calculator",
+            "pl": "kalkulator-kredytu-na-basen",
+            "sv": "pool-lan-kalkylator",
+            "no": "basseng-lan-kalkulator",
+            "da": "pool-laan-beregner",
+            "fi": "uima-allas-laina-laskuri"
+        },
+        "titles": {
+            "en": "Swimming Pool Loan Calculator",
+            "es": "Calculadora Financiación Piscina",
+            "de": "Pool-Finanzierungsrechner",
+            "fr": "Calculateur Prêt Piscine",
+            "pt": "Calculadora Financiamento Piscina",
+            "it": "Calcolatore Prestito Piscina",
+            "nl": "Zwembad Lening Calculator",
+            "pl": "Kalkulator Kredytu na Basen",
+            "sv": "Poollånekalkylator",
+            "no": "Bassenglånekalkulator",
+            "da": "Pool Låneberegner",
+            "fi": "Uima-allaslainalaskuri"
+        },
+        "overrides": {
+            "amount": {
+                "default": 55000,
+                "label": {
+                    "en": "Pool Project Cost",
+                    "es": "Costo Proyecto Piscina",
+                    "de": "Pool Projektkosten",
+                    "fr": "Coût Projet Piscine",
+                    "pt": "Custo do Projeto",
+                    "it": "Costo Progetto Piscina",
+                    "nl": "Kosten Zwembadproject",
+                    "pl": "Koszt Projektu Basenu",
+                    "sv": "Poolprojektkostnad",
+                    "no": "Bassengprosjektkostnad",
+                    "da": "Pool Projektomkostninger",
+                    "fi": "Uima-allasprojektin Hinta"
+                }
+            },
+            "rate": {
+                "default": 8.9,
+                "label": {
+                    "en": "Unsecured Rate (%)",
+                    "es": "Tasa Sin Garantía (%)",
+                    "de": "Zinssatz ohne Sicherheit (%)",
+                    "fr": "Taux Non Garanti (%)",
+                    "pt": "Taxa sem Garantia (%)",
+                    "it": "Tasso Non Garantito (%)",
+                    "nl": "Ongedekt Tarief (%)",
+                    "pl": "Oprocentowanie Bez Zab. (%)",
+                    "sv": "Ränta utan säkerhet (%)",
+                    "no": "Rente uten sikkerhet (%)",
+                    "da": "Rente uden sikkerhed (%)",
+                    "fi": "Vakuudeton Korko (%)"
+                }
+            },
+            "months": {
+                "default": 84
+            }
+        }
+    },
+    {
+        "baseType": "loan",
+        "id": "business-loan",
+        "slugs": {
+            "en": "business-loan-calculator",
+            "es": "calculadora-prestamo-negocio",
+            "de": "geschaeftskreditrechner",
+            "fr": "calculateur-pret-professionnel",
+            "pt": "calculadora-emprestimo-empresarial",
+            "it": "calcolatore-prestito-aziendale",
+            "nl": "zakelijke-lening-calculator",
+            "pl": "kalkulator-kredytu-firmowego",
+            "sv": "foretagslan-kalkylator",
+            "no": "bedriftslan-kalkulator",
+            "da": "erhvervslaan-beregner",
+            "fi": "yrityslaina-laskuri"
+        },
+        "titles": {
+            "en": "Business Loan Calculator",
+            "es": "Calculadora Préstamo Negocio",
+            "de": "Geschäftskreditrechner",
+            "fr": "Calculateur Prêt Professionnel",
+            "pt": "Calculadora de Empréstimo Empresarial",
+            "it": "Calcolatore Prestito Aziendale",
+            "nl": "Zakelijke Lening Calculator",
+            "pl": "Kalkulator Kredytu Firmowego",
+            "sv": "Företagslån Kalkylator",
+            "no": "Bedriftslånkalkulator",
+            "da": "Erhvervslåneberegner",
+            "fi": "Yrityslainalaskuri"
+        },
+        "overrides": {
+            "amount": {
+                "default": 250000
+            },
+            "months": {
+                "default": 60,
+                "label": {
+                    "en": "Amortization Term",
+                    "es": "Plazo de Amortización",
+                    "de": "Amortisationsdauer",
+                    "fr": "Durée d'Amortissement",
+                    "pt": "Prazo de Amortização",
+                    "it": "Termine Ammortamento",
+                    "nl": "Afschrijvingstermijn",
+                    "pl": "Okres Amortyzacji",
+                    "sv": "Amorteringstid",
+                    "no": "Avskrivningstid",
+                    "da": "Amortiseringsperiode",
+                    "fi": "Lyhennysaika"
+                }
+            }
+        }
+    },
+    {
+        "baseType": "loan",
+        "id": "sba-loan",
+        "slugs": {
+            "en": "sba-loan-calculator",
+            "es": "calculadora-prestamo-sba",
+            "de": "sba-darlehensrechner",
+            "fr": "calculateur-pret-sba",
+            "pt": "calculadora-emprestimo-sba",
+            "it": "calcolatore-prestito-sba",
+            "nl": "sba-lening-calculator",
+            "pl": "kalkulator-kredytu-sba",
+            "sv": "sba-lan-kalkylator",
+            "no": "sba-lan-kalkulator",
+            "da": "sba-laan-beregner",
+            "fi": "sba-laina-laskuri"
+        },
+        "titles": {
+            "en": "SBA 7(a) Loan Calculator",
+            "es": "Calculadora Préstamo SBA 7(a)",
+            "de": "SBA 7(a) Kreditrechner",
+            "fr": "Calculateur Prêt SBA 7(a)",
+            "pt": "Calculadora Empréstimo SBA 7(a)",
+            "it": "Calcolatore Prestito SBA 7(a)",
+            "nl": "SBA 7(a) Lening Calculator",
+            "pl": "Kalkulator Kredytu SBA 7(a)",
+            "sv": "SBA 7(a) Lånekalkylator",
+            "no": "SBA 7(a) Lånekalkulator",
+            "da": "SBA Låneberegner",
+            "fi": "SBA Lainalaskuri"
+        },
+        "overrides": {
+            "amount": {
+                "default": 500000,
+                "min": 50000,
+                "max": 5000000
+            },
+            "rate": {
+                "default": 10.5,
+                "label": {
+                    "en": "SBA Interest Rate (%)",
+                    "es": "Tasa de Interés SBA (%)",
+                    "de": "SBA Zinssatz (%)",
+                    "fr": "Taux d'Intérêt SBA (%)",
+                    "pt": "Taxa de Juros SBA (%)",
+                    "it": "Tasso Interesse SBA (%)",
+                    "nl": "SBA Rente (%)",
+                    "pl": "Oprocentowanie SBA (%)",
+                    "sv": "SBA Ränta (%)",
+                    "no": "SBA Rente (%)",
+                    "da": "SBA Rente (%)",
+                    "fi": "SBA Korko (%)"
+                }
+            },
+            "months": {
+                "default": 120,
+                "max": 300
+            }
+        }
+    },
+    {
+        "baseType": "loan",
+        "id": "auto-loan",
+        "slugs": {
+            "en": "auto-loan-calculator",
+            "es": "calculadora-prestamo-auto",
+            "de": "autokreditrechner",
+            "fr": "calculateur-pret-auto",
+            "pt": "calculadora-financiamento-veiculo",
+            "it": "calcolatore-prestito-auto",
+            "nl": "autolening-calculator",
+            "pl": "kalkulator-kredytu-samochodowego",
+            "sv": "billaan-kalkylator",
+            "no": "billan-kalkulator",
+            "da": "billaan-beregner",
+            "fi": "autolaina-laskuri"
+        },
+        "titles": {
+            "en": "Auto Loan Calculator",
+            "es": "Calculadora de Préstamo Automotriz",
+            "de": "Autokreditrechner",
+            "fr": "Calculateur Prêt Auto",
+            "pt": "Calculadora Financiamento de Veículos",
+            "it": "Calcolatore Prestito Auto",
+            "nl": "Autolening Calculator",
+            "pl": "Kalkulator Kredytu Samochodowego",
+            "sv": "Billånekalkylator",
+            "no": "Billånkalkulator",
+            "da": "Billånsberegner",
+            "fi": "Autolainalaskuri"
+        },
+        "overrides": {
+            "amount": {
+                "default": 35000,
+                "label": {
+                    "en": "Car Price",
+                    "es": "Precio del Auto",
+                    "de": "Fahrzeugpreis",
+                    "fr": "Prix de la Voiture",
+                    "pt": "Preço do Carro",
+                    "it": "Prezzo Auto",
+                    "nl": "Auto Prijs",
+                    "pl": "Cena Samochodu",
+                    "sv": "Bilpris",
+                    "no": "Bilpris",
+                    "da": "Bilens Pris",
+                    "fi": "Auton Hinta"
+                }
+            },
+            "months": {
+                "default": 60,
+                "max": 84
+            }
+        }
+    },
+    {
+        "baseType": "loan",
+        "id": "boat-loan",
+        "slugs": {
+            "en": "boat-loan-calculator",
+            "es": "calculadora-prestamo-barco",
+            "de": "bootskreditrechner",
+            "fr": "calculateur-pret-bateau",
+            "pt": "calculadora-financiamento-barco",
+            "it": "calcolatore-prestito-barca",
+            "nl": "bootlening-calculator",
+            "pl": "kalkulator-kredytu-na-lodz",
+            "sv": "batlan-kalkylator",
+            "no": "batlan-kalkulator",
+            "da": "baadlaan-beregner",
+            "fi": "venelaina-laskuri"
+        },
+        "titles": {
+            "en": "Boat Loan Calculator",
+            "es": "Calculadora de Préstamo Barco",
+            "de": "Bootskreditrechner",
+            "fr": "Calculateur Prêt Bateau",
+            "pt": "Calculadora Financiamento Barco",
+            "it": "Calcolatore Prestito Barca",
+            "nl": "Bootlening Calculator",
+            "pl": "Kalkulator Kredytu na Łódź",
+            "sv": "Båtlånekalkylator",
+            "no": "Båtlånkalkulator",
+            "da": "Bådlånsberegner",
+            "fi": "Venelainalaskuri"
+        },
+        "overrides": {
+            "amount": {
+                "default": 45000,
+                "label": {
+                    "en": "Boat Price",
+                    "es": "Precio del Barco",
+                    "de": "Bootspreis",
+                    "fr": "Prix du Bateau",
+                    "pt": "Preço do Barco",
+                    "it": "Prezzo Barca",
+                    "nl": "Boot Prijs",
+                    "pl": "Cena Łodzi",
+                    "sv": "Båtpris",
+                    "no": "Båtpris",
+                    "da": "Bådens Pris",
+                    "fi": "Veneen Hinta"
+                }
+            },
+            "months": {
+                "default": 120,
+                "max": 240,
+                "label": {
+                    "en": "Term (Months)",
+                    "es": "Plazo (Meses)",
+                    "de": "Laufzeit (Monate)",
+                    "fr": "Durée (Mois)",
+                    "pt": "Prazo (Meses)",
+                    "it": "Durata (Mesi)",
+                    "nl": "Looptijd (Maanden)",
+                    "pl": "Okres (Miesiące)",
+                    "sv": "Löptid (Månader)",
+                    "no": "Løpetid (Måneder)",
+                    "da": "Løbetid (Måneder)",
+                    "fi": "Laina-aika (Kuukaudet)"
+                }
+            }
+        }
+    },
+    {
+        "baseType": "roi",
+        "id": "marketing-roi",
+        "slugs": {
+            "en": "marketing-roi-calculator",
+            "es": "calculadora-roi-marketing",
+            "de": "marketing-roi-rechner",
+            "fr": "calculateur-roi-marketing",
+            "pt": "calculadora-roi-marketing",
+            "it": "calcolatore-roi-marketing",
+            "nl": "marketing-roi-calculator",
+            "pl": "kalkulator-roi-marketingu",
+            "sv": "marknadsforing-roi-kalkylator",
+            "no": "markedsforing-roi-kalkulator",
+            "da": "markedsfoering-roi-beregner",
+            "fi": "markkinointi-roi-laskuri"
+        },
+        "titles": {
+            "en": "Marketing ROI Calculator (ROAS)",
+            "es": "Calculadora ROI Marketing",
+            "de": "Marketing-ROI-Rechner",
+            "fr": "Calculateur ROI Marketing",
+            "pt": "Calculadora ROI Marketing",
+            "it": "Calcolatore ROI Marketing",
+            "nl": "Marketing ROI Calculator",
+            "pl": "Kalkulator ROI Marketingu",
+            "sv": "Marknadsföring ROI Kalkylator",
+            "no": "Markedsføring ROI Kalkulator",
+            "da": "Marketing ROI Beregner",
+            "fi": "Markkinointi ROI Laskuri"
+        },
+        "overrides": {
+            "invested": {
+                "label": {
+                    "en": "Ad Spend / Budget",
+                    "es": "Gasto Publicidad / Presupuesto",
+                    "de": "Werbeausgaben / Budget",
+                    "fr": "Dépenses Pub / Budget",
+                    "pt": "Gasto em Anúncios",
+                    "it": "Spesa Pubblicitaria",
+                    "nl": "Advertentie Budget",
+                    "pl": "Budżet Reklamowy",
+                    "sv": "Annonsbudget",
+                    "no": "Annonsebudsjett",
+                    "da": "Annoncebudget",
+                    "fi": "Mainosbudjetti"
+                }
+            },
+            "returned": {
+                "label": {
+                    "en": "Revenue Generated",
+                    "es": "Ingresos Generados",
+                    "de": "Generierter Umsatz",
+                    "fr": "Revenus Générés",
+                    "pt": "Receita Gerada",
+                    "it": "Entrate Generate",
+                    "nl": "Gegenereerde Omzet",
+                    "pl": "Wygenerowany Przychód",
+                    "sv": "Genererade Intäkter",
+                    "no": "Genererte Inntekter",
+                    "da": "Genereret Omsætning",
+                    "fi": "Tuotettu Liikevaihto"
+                }
+            }
+        }
+    },
+    {
+        "baseType": "roi",
+        "id": "crypto-roi",
+        "slugs": {
+            "en": "crypto-roi-calculator",
+            "es": "calculadora-roi-cripto",
+            "de": "krypto-roi-rechner",
+            "fr": "calculateur-roi-crypto",
+            "pt": "calculadora-roi-cripto",
+            "it": "calcolatore-roi-crypto",
+            "nl": "crypto-roi-calculator",
+            "pl": "kalkulator-roi-krypto",
+            "sv": "krypto-roi-kalkylator",
+            "no": "krypto-roi-kalkulator",
+            "da": "krypto-roi-beregner",
+            "fi": "krypto-roi-laskuri"
+        },
+        "titles": {
+            "en": "Crypto ROI Calculator",
+            "es": "Calculadora ROI Cripto",
+            "de": "Krypto-ROI-Rechner",
+            "fr": "Calculateur ROI Crypto",
+            "pt": "Calculadora ROI Cripto",
+            "it": "Calcolatore ROI Crypto",
+            "nl": "Crypto ROI Calculator",
+            "pl": "Kalkulator ROI Krypto",
+            "sv": "Krypto ROI Kalkylator",
+            "no": "Krypto ROI Kalkulator",
+            "da": "Krypto ROI Beregner",
+            "fi": "Krypto ROI Laskuri"
+        },
+        "subtitles": {
+            "en": "Calculate gains for Bitcoin, Ethereum, and Altcoins",
+            "es": "Calcula ganancias de Bitcoin y criptomonedas",
+            "de": "Gewinne für Bitcoin und Altcoins berechnen",
+            "fr": "Calculez les gains pour Bitcoin et Altcoins",
+            "pt": "Calcule ganhos para Bitcoin e Altcoins",
+            "it": "Calcola guadagni per Bitcoin e Altcoins",
+            "nl": "Bereken winst voor Bitcoin en Altcoins",
+            "pl": "Oblicz zyski z Bitcoin i Altcoinów",
+            "sv": "Beräkna vinster för Bitcoin och Altcoins",
+            "no": "Beregn gevinst for Bitcoin og Altcoins",
+            "da": "Beregn gevinster for Bitcoin og Altcoins",
+            "fi": "Laske Bitcoinin ja Altcoinien tuotot"
+        },
+        "overrides": {
+            "invested": {
+                "default": 1000,
+                "label": {
+                    "en": "Initial Investment ($)",
+                    "es": "Inversión Inicial ($)",
+                    "de": "Inv. Kapital ($)",
+                    "fr": "Investissement Initial ($)",
+                    "pt": "Investimento Inicial ($)",
+                    "it": "Investimento Iniziale ($)",
+                    "nl": "Initiële Investering ($)",
+                    "pl": "Inwestycja Początkowa ($)",
+                    "sv": "Initial Investering ($)",
+                    "no": "Investering ($)",
+                    "da": "Investering ($)",
+                    "fi": "Sijoitus ($)"
+                }
+            },
+            "returned": {
+                "default": 2500,
+                "label": {
+                    "en": "Current Portfolio Value ($)",
+                    "es": "Valor Actual ($)",
+                    "de": "Aktueller Wert ($)",
+                    "fr": "Valeur Actuelle ($)",
+                    "pt": "Valor Atual ($)",
+                    "it": "Valore Attuale ($)",
+                    "nl": "Huidige Waarde ($)",
+                    "pl": "Wartość Obecna ($)",
+                    "sv": "Nuvarande Värde ($)",
+                    "no": "Nåværende Verdi ($)",
+                    "da": "Nuværende Værdi ($)",
+                    "fi": "Nykyinen Arvo ($)"
+                }
+            }
+        }
+    },
+    {
+        "baseType": "roi",
+        "id": "saas-metrics",
+        "slugs": {
+            "en": "saas-ltv-calculator",
+            "es": "calculadora-ltv-saas",
+            "de": "saas-ltv-rechner",
+            "fr": "calculateur-ltv-saas",
+            "pt": "calculadora-ltv-saas",
+            "it": "calcolatore-ltv-saas",
+            "nl": "saas-ltv-calculator",
+            "pl": "kalkulator-ltv-saas",
+            "sv": "saas-ltv-kalkylator",
+            "no": "saas-ltv-kalkulator",
+            "da": "saas-ltv-beregner",
+            "fi": "saas-ltv-laskuri"
+        },
+        "titles": {
+            "en": "SaaS LTV Calculator",
+            "es": "Calculadora LTV SaaS",
+            "de": "SaaS LTV-Rechner",
+            "fr": "Calculateur LTV SaaS",
+            "pt": "Calculadora LTV SaaS",
+            "it": "Calcolatore LTV SaaS",
+            "nl": "SaaS LTV Calculator",
+            "pl": "Kalkulator LTV SaaS",
+            "sv": "SaaS LTV Kalkylator",
+            "no": "SaaS LTV Kalkulator",
+            "da": "SaaS LTV Beregner",
+            "fi": "SaaS LTV Laskuri"
+        },
+        "subtitles": {
+            "en": "Calculate Customer Lifetime Value (LTV) and ROI",
+            "es": "Calcula el Valor de Vida del Cliente (LTV)",
+            "de": "Berechnen Sie den Customer Lifetime Value",
+            "fr": "Calculez la Valeur Vie Client (LTV)",
+            "pt": "Calcule o Lifetime Value (LTV)",
+            "it": "Calcola il Lifetime Value (LTV)",
+            "nl": "Bereken Customer Lifetime Value (LTV)",
+            "pl": "Oblicz Wartość Życiową Klienta (LTV)",
+            "sv": "Beräkna Livstidsvärde (LTV)",
+            "no": "Beregn Livstidsverdi (LTV)",
+            "da": "Beregn Livstidsværdi (LTV)",
+            "fi": "Laske Elinkaariarvo (LTV)"
+        },
+        "overrides": {
+            "invested": {
+                "label": {
+                    "en": "CAC (Cust. Acquisition Cost)",
+                    "es": "CAC (Costo Adquisición)",
+                    "de": "CAC (Akquisitionskosten)",
+                    "fr": "CAC (Coût Acquisition)",
+                    "pt": "CAC (Custo Aquisição)",
+                    "it": "CAC (Costo Acquisizione)",
+                    "nl": "CAC (Wervingskosten)",
+                    "pl": "Kalkulator CAC (Koszt Pozyskania)",
+                    "sv": "CAC (Anskaffningskostnad)",
+                    "no": "CAC (Anskaffelseskostnad)",
+                    "da": "CAC (Anskaffelsespris)",
+                    "fi": "CAC (Hankintakustannus)"
+                }
+            },
+            "returned": {
+                "label": {
+                    "en": "LTV (Lifetime Value)",
+                    "es": "LTV (Valor de Vida)",
+                    "de": "LTV (Lebenszeitwert)",
+                    "fr": "LTV (Valeur Vie)",
+                    "pt": "LTV (Valor Vitalício)",
+                    "it": "LTV (Valore Vita)",
+                    "nl": "LTV (Levensduurwaarde)",
+                    "pl": "LTV (Wartość Życiowa)",
+                    "sv": "LTV (Livstidsvärde)",
+                    "no": "LTV (Livstidsverdi)",
+                    "da": "LTV (Livstidsværdi)",
+                    "fi": "LTV (Elinkaariarvo)"
+                }
+            }
+        }
+    },
+    {
+        "baseType": "roi",
+        "id": "cap-rate",
+        "slugs": {
+            "en": "cap-rate-calculator",
+            "es": "calculadora-cap-rate",
+            "de": "cap-rate-rechner",
+            "fr": "calculateur-taux-capitalisation",
+            "pt": "calculadora-cap-rate",
+            "it": "calcolatore-cap-rate",
+            "nl": "cap-rate-calculator",
+            "pl": "kalkulator-cap-rate",
+            "sv": "cap-rate-kalkylator",
+            "no": "cap-rate-kalkulator",
+            "da": "cap-rate-beregner",
+            "fi": "cap-rate-laskuri"
+        },
+        "titles": {
+            "en": "Cap Rate Calculator",
+            "es": "Calculadora de Tasa de Capitalización",
+            "de": "Kapitalisierungszinssatz-Rechner",
+            "fr": "Calculateur Taux de Capitalisation",
+            "pt": "Calculadora Cap Rate",
+            "it": "Calcolatore Cap Rate",
+            "nl": "Cap Rate Calculator",
+            "pl": "Kalkulator Cap Rate",
+            "sv": "Direktavkastningskalkylator",
+            "no": "Direkteavkastningskalkulator",
+            "da": "Cap Rate Beregner",
+            "fi": "Cap Rate Laskuri"
+        },
+        "subtitles": {
+            "en": "Evaluate real estate investment profitability",
+            "es": "Evalúa la rentabilidad inmobiliaria",
+            "de": "Immobilienrentabilität bewerten",
+            "fr": "Évaluer la rentabilité immobilière",
+            "pt": "Avalie a rentabilidade imobiliária",
+            "it": "Valuta la redditività immobiliare",
+            "nl": "Beoordeel vastgoedrendement",
+            "pl": "Oceń rentowność nieruchomości",
+            "sv": "Utvärdera fastighetslönsamhet",
+            "no": "Vurder eiendomslønnsomhet",
+            "da": "Vurder ejendomsrentabilitet",
+            "fi": "Arvioi kiinteistön kannattavuus"
+        },
+        "overrides": {
+            "invested": {
+                "default": 1000000,
+                "label": {
+                    "en": "Property Value / Purchase Price",
+                    "es": "Valor Propiedad / Precio",
+                    "de": "Kaufpreis / Wert",
+                    "fr": "Valeur / Prix Achat",
+                    "pt": "Valor do Imóvel",
+                    "it": "Valore Immobile",
+                    "nl": "Woningwaarde",
+                    "pl": "Wartość Nieruchomości",
+                    "sv": "Fastighetsvärde",
+                    "no": "Eiendomsverdi",
+                    "da": "Ejendomsværdi",
+                    "fi": "Kiinteistön Arvo"
+                }
+            },
+            "returned": {
+                "default": 75000,
+                "label": {
+                    "en": "Net Operating Income (NOI)",
+                    "es": "Ingreso Operativo Neto",
+                    "de": "Nettobetriebsergebnis",
+                    "fr": "Revenu Net d'Exploitation",
+                    "pt": "Receita Operacional Líquida",
+                    "it": "Reddito Operativo Netto",
+                    "nl": "Netto Operationeel Inkomen",
+                    "pl": "Dochód Operacyjny Netto",
+                    "sv": "Driftnetto",
+                    "no": "Driftsresultat",
+                    "da": "Driftsresultat",
+                    "fi": "Nettotulot"
+                }
+            }
+        }
+    },
+    {
+        "baseType": "roofing",
+        "id": "metal-roof",
+        "slugs": {
+            "en": "metal-roof-cost-calculator",
+            "es": "calculadora-precio-techo-metal",
+            "de": "metalldach-kostenrechner",
+            "fr": "calculateur-cout-toit-metal",
+            "pt": "calculadora-custo-telhado-metal",
+            "it": "calcolatore-costo-tetto-metallo",
+            "nl": "metalen-dak-kosten-calculator",
+            "pl": "kalkulator-kosztow-dachu-metalowego",
+            "sv": "metalltak-kostnad-kalkylator",
+            "no": "metalltak-kostnad-kalkulator",
+            "da": "metaltag-pris-beregner",
+            "fi": "peltikaton-hinta-laskuri"
+        },
+        "titles": {
+            "en": "Metal Roof Cost Calculator",
+            "es": "Calculadora Costo Techo de Metal",
+            "de": "Metalldach Kostenrechner",
+            "fr": "Calculateur Coût Toiture Métal",
+            "pt": "Calculadora Telhado de Metal",
+            "it": "Calcolatore Costo Tetto in Metallo",
+            "nl": "Kosten Metalen Dak",
+            "pl": "Koszt Dachu Metalowego",
+            "sv": "Kostnad för Metalltak",
+            "no": "Pris på Metalltak",
+            "da": "Metaltag Prisberegner",
+            "fi": "Peltikaton Hintalaskuri"
+        },
+        "overrides": {
+            "material": {
+                "default": 9,
+                "label": {
+                    "en": "Material Grade (Metal)",
+                    "es": "Calidad Material (Metal)",
+                    "de": "Materialgüte (Metall)",
+                    "fr": "Qualité (Métal)",
+                    "pt": "Qualidade (Metal)",
+                    "it": "Qualità (Metallo)",
+                    "nl": "Kwaliteit (Metaal)",
+                    "pl": "Jakość (Metal)",
+                    "sv": "Kvalitet (Metall)",
+                    "no": "Kvaltiet (Metall)",
+                    "da": "Kvalitet (Metal)",
+                    "fi": "Laatu (Pelti)"
+                }
+            }
+        }
+    }
+]

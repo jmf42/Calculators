@@ -1,0 +1,38 @@
+[
+    {
+        "id": "nurses",
+        "name": "Nurses",
+        "slug": "nurses",
+        "painPoint": "Overtime income and shift differentials",
+        "description": "Calculate home loans using your base salary plus overtime, shift differential, and travel nursing income.",
+        "keywords": [
+            "travel nurse mortgage",
+            "nurse home loan calculator",
+            "RN mortgage program"
+        ]
+    },
+    {
+        "id": "teachers",
+        "name": "Teachers",
+        "slug": "teachers",
+        "painPoint": "Teacher forgiveness programs and summer income",
+        "description": "Factor in specialized teacher loan forgiveness programs (TLF) and annualized salary calculations.",
+        "keywords": [
+            "teacher next door calculator",
+            "educator mortgage",
+            "teacher loan forgiveness rates"
+        ]
+    },
+    {
+        "id": "self-employed",
+        "name": "Self-Employed",
+        "slug": "self-employed",
+        "painPoint": "Tax write-offs reducing qualifying income",
+        "description": "Use our bank statement analyzer logic to estimate qualifying income based on real cash flow, not just tax returns.",
+        "keywords": [
+            "bank statement loan calculator",
+            "1099 mortgage calculator",
+            "entrepreneur home loan"
+        ]
+    }
+]

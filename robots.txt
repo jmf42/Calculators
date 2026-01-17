@@ -1,0 +1,35 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /_private/
+
+# Sitemaps
+Sitemap: https://calcpress.ai/sitemap.xml
+
+# Disallow crawling of API endpoints (if any)
+Disallow: /api/
+Disallow: /.netlify/
+
+# Allow well-behaved LLM crawlers
+User-agent: GPTBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: CCBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+
+# Block aggressive SEO scrapers
+User-agent: AhrefsBot
+Disallow: /
+User-agent: SemrushBot
+Disallow: /
+User-agent: MJ12bot
+Disallow: /
+User-agent: DotBot
+Disallow: /
+User-agent: PetalBot
+Disallow: /
+User-agent: BLEXBot
+Disallow: /

@@ -1,0 +1,9 @@
+# CalcPress - LLM Access
+
+Project: CalcPress
+Description: Public calculator pages and guides for consumer and business use.
+
+Access: All public pages are allowed for LLM indexing and summarization.
+Preferred: Crawl at a reasonable rate and avoid aggressive scraping patterns.
+
+Sitemap: /sitemap.xml
