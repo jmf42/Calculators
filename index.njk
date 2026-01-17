@@ -250,10 +250,10 @@ permalink: "/{% if home.lang != 'en' %}{{ home.lang }}/{% endif %}index.html"
                 <li><a href="/terms.html">Terms</a></li>
                 <li><a href="mailto:hello@calc-kit.com">Contact</a></li>
             </ul>
-            <div class="footer-lang" style="margin-top: 16px; display: flex; justify-content: center; gap: 12px; align-items: center;">
+            <div class="footer-lang" style="margin-top: 16px; display: flex; justify-content: center; gap: 8px; align-items: center; flex-wrap: wrap;">
                 <span style="color: var(--text-muted); font-size: 13px;">🌐</span>
-                {%- for langItem in site.languages | batch(6) | first %}
-                <a href="{% if langItem.code == 'en' %}/{% else %}/{{ langItem.code }}/{% endif %}" style="color: {% if home.lang == langItem.code %}var(--primary-light){% else %}var(--text-muted){% endif %}; font-size: 12px; text-decoration: none; padding: 4px 8px; border-radius: 4px; {% if home.lang == langItem.code %}background: rgba(99, 102, 241, 0.15);{% endif %}">{{ langItem.code | upper }}</a>
+                {%- for langItem in site.languages %}
+                <a href="{% if langItem.code == 'en' %}/{% else %}/{{ langItem.code }}/{% endif %}" style="color: {% if home.lang == langItem.code %}var(--primary-light){% else %}var(--text-muted){% endif %}; font-size: 11px; text-decoration: none; padding: 3px 6px; border-radius: 4px; {% if home.lang == langItem.code %}background: rgba(99, 102, 241, 0.15);{% endif %}">{{ langItem.code | upper }}</a>
                 {%- endfor %}
             </div>
             <p>© {{ site.year }} {{ site.name }}. {{ ui.footer[home.lang].copyright | default("All rights reserved") }}.</p>

@@ -21,7 +21,7 @@ module.exports = {
 
     // Analytics configuration
     analytics: {
-        gaId: process.env.GA_TRACKING_ID || "G-XXXXXXXXXX",
+        gaId: process.env.GA_TRACKING_ID || "G-L98HCWCJH5",
         adConversionId: process.env.AD_CONVERSION_ID || "AW-CONVERSION_ID/CONVERSION_LABEL"
     },
 
