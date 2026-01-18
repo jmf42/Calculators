@@ -153,96 +153,292 @@
     }
 
     /**
-     * Render the local insights section
+     * Render the local insights section as a prominent banner
      */
     function renderInsightsSection(locationInfo) {
         const { type, data, displayName } = locationInfo;
         const mortgage = data.mortgage;
-
+        
         let statsHTML = '';
-
+        
         if (type === 'state') {
             statsHTML = `
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin-bottom: 24px;">
-                    <div style="background: rgba(255, 255, 255, 0.05); padding: 16px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
-                        <div style="color: rgba(255,255,255,0.6); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Median Price</div>
-                        <div style="font-size: 20px; font-weight: 700; color: #a78bfa;">$${formatNumber(mortgage.medianPrice)}</div>
+                <div class="geo-stats-grid">
+                    <div class="geo-stat-card">
+                        <div class="geo-stat-label">Median Price</div>
+                        <div class="geo-stat-value">$${formatNumber(mortgage.medianPrice)}</div>
                     </div>
-                    <div style="background: rgba(255, 255, 255, 0.05); padding: 16px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
-                        <div style="color: rgba(255,255,255,0.6); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Property Tax</div>
-                        <div style="font-size: 20px; font-weight: 700; color: #a78bfa;">${mortgage.propertyTaxRate}%</div>
+                    <div class="geo-stat-card">
+                        <div class="geo-stat-label">Property Tax</div>
+                        <div class="geo-stat-value">${mortgage.propertyTaxRate}%</div>
                     </div>
-                    <div style="background: rgba(255, 255, 255, 0.05); padding: 16px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
-                        <div style="color: rgba(255,255,255,0.6); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Home Insurance</div>
-                        <div style="font-size: 20px; font-weight: 700; color: #a78bfa;">$${formatNumber(mortgage.homeInsurance)}/yr</div>
+                    <div class="geo-stat-card">
+                        <div class="geo-stat-label">Home Insurance</div>
+                        <div class="geo-stat-value">$${formatNumber(mortgage.homeInsurance)}/yr</div>
                     </div>
-                    <div style="background: rgba(255, 255, 255, 0.05); padding: 16px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
-                        <div style="color: rgba(255,255,255,0.6); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Income Tax</div>
-                        <div style="font-size: 20px; font-weight: 700; color: ${mortgage.hasStateIncomeTax ? 'rgba(255,255,255,0.6)' : '#10b981'};">
-                            ${mortgage.hasStateIncomeTax ? 'Yes' : 'None ✓'}
-                        </div>
+                    <div class="geo-stat-card ${mortgage.hasStateIncomeTax ? '' : 'geo-stat-highlight'}">
+                        <div class="geo-stat-label">State Income Tax</div>
+                        <div class="geo-stat-value">${mortgage.hasStateIncomeTax ? 'Yes' : 'None ✓'}</div>
                     </div>
                 </div>`;
         } else {
             statsHTML = `
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-bottom: 24px;">
-                    <div style="background: rgba(255, 255, 255, 0.05); padding: 16px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
-                        <div style="color: rgba(255,255,255,0.6); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Median Price</div>
-                        <div style="font-size: 18px; font-weight: 700; color: #a78bfa;">${data.currency}${formatNumber(mortgage.medianPrice)}</div>
+                <div class="geo-stats-grid">
+                    <div class="geo-stat-card">
+                        <div class="geo-stat-label">Median Price</div>
+                        <div class="geo-stat-value">${data.currency}${formatNumber(mortgage.medianPrice)}</div>
                     </div>
-                    <div style="background: rgba(255, 255, 255, 0.05); padding: 16px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
-                        <div style="color: rgba(255,255,255,0.6); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Typical Rate</div>
-                        <div style="font-size: 18px; font-weight: 700; color: #a78bfa;">${mortgage.typicalRate}%</div>
+                    <div class="geo-stat-card">
+                        <div class="geo-stat-label">Typical Rate</div>
+                        <div class="geo-stat-value">${mortgage.typicalRate}%</div>
                     </div>
-                    <div style="background: rgba(255, 255, 255, 0.05); padding: 16px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
-                        <div style="color: rgba(255,255,255,0.6); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Loan Term</div>
-                        <div style="font-size: 18px; font-weight: 700; color: #a78bfa;">${mortgage.typicalTerm} years</div>
+                    <div class="geo-stat-card">
+                        <div class="geo-stat-label">Loan Term</div>
+                        <div class="geo-stat-value">${mortgage.typicalTerm} years</div>
                     </div>
-                    <div style="background: rgba(255, 255, 255, 0.05); padding: 16px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
-                        <div style="color: rgba(255,255,255,0.6); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Down Payment</div>
-                        <div style="font-size: 18px; font-weight: 700; color: #a78bfa;">${mortgage.downPayment}%</div>
+                    <div class="geo-stat-card">
+                        <div class="geo-stat-label">Down Payment</div>
+                        <div class="geo-stat-value">${mortgage.downPayment}%</div>
                     </div>
                 </div>`;
         }
 
         const tipsHTML = data.tips.map(tip => `
-            <li style="display: flex; align-items: flex-start; gap: 10px; padding: 10px 14px; background: rgba(255, 255, 255, 0.03); border-radius: 8px; border-left: 3px solid #6366f1;">
-                <span style="color: #10b981; flex-shrink: 0;">✓</span>
-                <span style="color: rgba(255,255,255,0.7); font-size: 13px; line-height: 1.5;">${tip}</span>
-            </li>
+            <div class="geo-tip-item">
+                <span class="geo-tip-icon">✓</span>
+                <span class="geo-tip-text">${tip}</span>
+            </div>
         `).join('');
 
         const html = `
-            <section class="geo-insights-section" style="padding: 32px 0;">
-                <div class="container" style="max-width: 900px; margin: 0 auto; padding: 0 20px;">
-                    <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%); border-radius: 16px; padding: 24px 28px; border: 1px solid rgba(99, 102, 241, 0.2);">
-                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
-                            <span style="font-size: 24px;">${type === 'state' ? '🇺🇸' : '🌍'}</span>
-                            <h2 style="font-size: 20px; font-weight: 700; margin: 0; background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                                ${displayName} Market Insights
-                            </h2>
-                            <span style="font-size: 11px; background: rgba(99, 102, 241, 0.2); color: #a78bfa; padding: 3px 8px; border-radius: 12px; margin-left: auto;">
-                                📍 Based on your location
-                            </span>
+            <style>
+                .geo-insights-banner {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    border-radius: 20px;
+                    padding: 28px 32px;
+                    margin: -30px auto 40px;
+                    max-width: 1200px;
+                    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+                    position: relative;
+                    overflow: hidden;
+                }
+                .geo-insights-banner::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 300px;
+                    height: 300px;
+                    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+                    pointer-events: none;
+                }
+                .geo-banner-header {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-bottom: 24px;
+                    gap: 16px;
+                }
+                .geo-banner-title {
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    flex: 1;
+                }
+                .geo-banner-flag {
+                    font-size: 32px;
+                    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+                }
+                .geo-banner-text h2 {
+                    font-size: 24px;
+                    font-weight: 800;
+                    margin: 0 0 4px 0;
+                    color: white;
+                    line-height: 1.2;
+                }
+                .geo-banner-text p {
+                    font-size: 14px;
+                    margin: 0;
+                    color: rgba(255,255,255,0.85);
+                    font-weight: 500;
+                }
+                .geo-toggle-btn {
+                    background: rgba(255,255,255,0.2);
+                    border: 1px solid rgba(255,255,255,0.3);
+                    color: white;
+                    padding: 8px 20px;
+                    border-radius: 12px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    font-weight: 600;
+                    backdrop-filter: blur(10px);
+                    transition: all 0.2s ease;
+                    white-space: nowrap;
+                    display: none;
+                }
+                .geo-toggle-btn:hover {
+                    background: rgba(255,255,255,0.3);
+                    transform: translateY(-1px);
+                }
+                .geo-content {
+                    transition: max-height 0.3s ease, opacity 0.3s ease;
+                }
+                .geo-content.collapsed {
+                    max-height: 0;
+                    opacity: 0;
+                    overflow: hidden;
+                }
+                .geo-stats-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                    gap: 16px;
+                    margin-bottom: 24px;
+                }
+                .geo-stat-card {
+                    background: rgba(255,255,255,0.15);
+                    backdrop-filter: blur(10px);
+                    border: 1px solid rgba(255,255,255,0.2);
+                    border-radius: 16px;
+                    padding: 18px;
+                    text-align: center;
+                    transition: transform 0.2s ease, box-shadow 0.2s ease;
+                }
+                .geo-stat-card:hover {
+                    transform: translateY(-3px);
+                    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+                }
+                .geo-stat-card.geo-stat-highlight {
+                    background: rgba(16, 185, 129, 0.2);
+                    border-color: rgba(16, 185, 129, 0.4);
+                }
+                .geo-stat-label {
+                    color: rgba(255,255,255,0.8);
+                    font-size: 11px;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                    margin-bottom: 8px;
+                }
+                .geo-stat-value {
+                    color: white;
+                    font-size: 20px;
+                    font-weight: 800;
+                    line-height: 1;
+                }
+                .geo-tips-section {
+                    background: rgba(255,255,255,0.1);
+                    backdrop-filter: blur(10px);
+                    border: 1px solid rgba(255,255,255,0.2);
+                    border-radius: 16px;
+                    padding: 24px;
+                }
+                .geo-tips-header {
+                    font-size: 16px;
+                    font-weight: 700;
+                    color: white;
+                    margin-bottom: 16px;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                }
+                .geo-tips-list {
+                    display: grid;
+                    gap: 12px;
+                }
+                .geo-tip-item {
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 12px;
+                    padding: 14px 16px;
+                    background: rgba(255,255,255,0.08);
+                    border-radius: 12px;
+                    border-left: 3px solid rgba(16, 185, 129, 0.8);
+                }
+                .geo-tip-icon {
+                    color: #10b981;
+                    font-weight: 700;
+                    flex-shrink: 0;
+                    font-size: 16px;
+                }
+                .geo-tip-text {
+                    color: rgba(255,255,255,0.95);
+                    font-size: 14px;
+                    line-height: 1.6;
+                    font-weight: 500;
+                }
+                
+                @media (max-width: 768px) {
+                    .geo-insights-banner {
+                        margin: -20px 16px 24px;
+                        padding: 20px;
+                        border-radius: 16px;
+                    }
+                    .geo-toggle-btn {
+                        display: block;
+                    }
+                    .geo-banner-header {
+                        margin-bottom: 16px;
+                    }
+                    .geo-banner-flag {
+                        font-size: 28px;
+                    }
+                    .geo-banner-text h2 {
+                        font-size: 18px;
+                    }
+                    .geo-banner-text p {
+                        font-size: 12px;
+                    }
+                    .geo-stats-grid {
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 12px;
+                        margin-bottom: 16px;
+                    }
+                    .geo-stat-card {
+                        padding: 14px;
+                    }
+                    .geo-stat-value {
+                        font-size: 18px;
+                    }
+                    .geo-tips-section {
+                        padding: 18px;
+                    }
+                    .geo-tip-item {
+                        padding: 12px 14px;
+                    }
+                    .geo-tip-text {
+                        font-size: 13px;
+                    }
+                }
+            </style>
+            <div class="geo-insights-banner">
+                <div class="geo-banner-header">
+                    <div class="geo-banner-title">
+                        <span class="geo-banner-flag">${type === 'state' ? '🇺🇸' : '🌍'}</span>
+                        <div class="geo-banner-text">
+                            <h2>${displayName} Market Insights</h2>
+                            <p>📍 Personalized data based on your location</p>
                         </div>
-                        ${statsHTML}
-                        <div>
-                            <h3 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: rgba(255,255,255,0.9);">
-                                💡 Local Tips
-                            </h3>
-                            <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 10px;">
-                                ${tipsHTML}
-                            </ul>
+                    </div>
+                    <button class="geo-toggle-btn" onclick="this.parentElement.nextElementSibling.classList.toggle('collapsed'); this.textContent = this.textContent === 'Show' ? 'Hide' : 'Show';">Hide</button>
+                </div>
+                <div class="geo-content">
+                    ${statsHTML}
+                    <div class="geo-tips-section">
+                        <div class="geo-tips-header">
+                            💡 Local Tips
+                        </div>
+                        <div class="geo-tips-list">
+                            ${tipsHTML}
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
         `;
 
         return html;
     }
 
-    /**
+        /**
      * Update calculator defaults based on location
      */
     function updateCalculatorDefaults(locationInfo) {
@@ -280,7 +476,7 @@
      * Check if page already has static local insights
      */
     function hasStaticInsights() {
-        return document.querySelector('.local-insights-section, .local-insights-card') !== null;
+        return document.querySelector('.local-insights-section, .local-insights-card, .geo-insights-banner') !== null;
     }
 
     /**
@@ -312,11 +508,11 @@
 
         console.log('CalcKit Geo: Detected', locationInfo.displayName);
 
-        // Inject insights section after calculator
+        // Inject insights banner BEFORE calculator section
         const calculatorSection = document.querySelector('.calculator-section');
         if (calculatorSection) {
             const insightsHTML = renderInsightsSection(locationInfo);
-            calculatorSection.insertAdjacentHTML('afterend', insightsHTML);
+            calculatorSection.insertAdjacentHTML('beforebegin', insightsHTML);
         }
 
         // Update calculator defaults
