@@ -1388,5 +1388,44 @@
             "da": "Lokale Tips",
             "fi": "Paikalliset Vinkit"
         }
+    },
+    "months": {
+        "january": { "en": "January", "es": "Enero", "de": "Januar", "fr": "Janvier", "pt": "Janeiro", "it": "Gennaio", "nl": "Januari", "pl": "Styczeń", "sv": "Januari", "no": "Januar", "da": "Januar", "fi": "Tammikuu" },
+        "february": { "en": "February", "es": "Febrero", "de": "Februar", "fr": "Février", "pt": "Fevereiro", "it": "Febbraio", "nl": "Februari", "pl": "Luty", "sv": "Februari", "no": "Februar", "da": "Februar", "fi": "Helmikuu" },
+        "march": { "en": "March", "es": "Marzo", "de": "März", "fr": "Mars", "pt": "Março", "it": "Marzo", "nl": "Maart", "pl": "Marzec", "sv": "Mars", "no": "Mars", "da": "Marts", "fi": "Maaliskuu" },
+        "april": { "en": "April", "es": "Abril", "de": "April", "fr": "Avril", "pt": "Abril", "it": "Aprile", "nl": "April", "pl": "Kwiecień", "sv": "April", "no": "April", "da": "April", "fi": "Huhtikuu" },
+        "may": { "en": "May", "es": "Mayo", "de": "Mai", "fr": "Mai", "pt": "Maio", "it": "Maggio", "nl": "Mei", "pl": "Maj", "sv": "Maj", "no": "Mai", "da": "Maj", "fi": "Toukokuu" },
+        "june": { "en": "June", "es": "Junio", "de": "Juni", "fr": "Juin", "pt": "Junho", "it": "Giugno", "nl": "Juni", "pl": "Czerwiec", "sv": "Juni", "no": "Juni", "da": "Juni", "fi": "Kesäkuu" },
+        "july": { "en": "July", "es": "Julio", "de": "Juli", "fr": "Juillet", "pt": "Julho", "it": "Luglio", "nl": "Juli", "pl": "Lipiec", "sv": "Juli", "no": "Juli", "da": "Juli", "fi": "Heinäkuu" },
+        "august": { "en": "August", "es": "Agosto", "de": "August", "fr": "Août", "pt": "Agosto", "it": "Agosto", "nl": "Augustus", "pl": "Sierpień", "sv": "Augusti", "no": "August", "da": "August", "fi": "Elokuu" },
+        "september": { "en": "September", "es": "Septiembre", "de": "September", "fr": "Septembre", "pt": "Setembro", "it": "Settembre", "nl": "September", "pl": "Wrzesień", "sv": "September", "no": "September", "da": "September", "fi": "Syyskuu" },
+        "october": { "en": "October", "es": "Octubre", "de": "Oktober", "fr": "Octobre", "pt": "Outubro", "it": "Ottobre", "nl": "Oktober", "pl": "Październik", "sv": "Oktober", "no": "Oktober", "da": "Oktober", "fi": "Lokakuu" },
+        "november": { "en": "November", "es": "Noviembre", "de": "November", "fr": "Novembre", "pt": "Novembro", "it": "Novembre", "nl": "November", "pl": "Listopad", "sv": "November", "no": "November", "da": "November", "fi": "Marraskuu" },
+        "december": { "en": "December", "es": "Diciembre", "de": "Dezember", "fr": "Décembre", "pt": "Dezembro", "it": "Dicembre", "nl": "December", "pl": "Grudzień", "sv": "December", "no": "Desember", "da": "December", "fi": "Joulukuu" }
+    },
+    "market": {
+        "medianHomePrice": { "en": "Median Home Price", "es": "Precio Medio de Vivienda", "de": "Durchschnittlicher Hauspreis", "fr": "Prix Médian Maison", "pt": "Preço Médio Habitação", "it": "Prezzo Medio Casa", "nl": "Gemiddelde Woningprijs", "pl": "Średnia Cena Domu", "sv": "Medianhuspris", "no": "Median boligpris", "da": "Median huspris", "fi": "Asunnon mediaanihinta" },
+        "stateIncomeTax": { "en": "State Income Tax", "es": "Impuesto Estatal", "de": "Einkommenssteuer", "fr": "Impôt d'État", "pt": "Imposto Estadual", "it": "Imposte Statali", "nl": "Staatsinkomstenbelasting", "pl": "Podatek Stanowy", "sv": "Statlig inkomstskatt", "no": "Statlig inntektsskatt", "da": "Statsindkomstskat", "fi": "Osavaltiovero" },
+        "propertyTaxRate": { "en": "Property Tax Rate", "es": "Tasa de Impuesto Predial", "de": "Grundsteuersatz", "fr": "Taux de Taxe Foncière", "pt": "Taxa de Imposto Predial", "it": "Tasso Tassa Proprietà", "nl": "Onroerendgoedbelasting", "pl": "Stawka Podatku od Nieruchomości", "sv": "Fastighetsskatt", "no": "Eiendomsskattesats", "da": "Ejendomsskattesats", "fi": "Kiinteistöveroprosentti" },
+        "avgHomeInsurance": { "en": "Avg. Home Insurance", "es": "Seguro de Hogar Promedio", "de": "Durchschn. Hausversicherung", "fr": "Assurance Habitation Moy.", "pt": "Seguro Residencial Médio", "it": "Assicurazione Casa Media", "nl": "Gem. Woonverzekering", "pl": "Średnie Ubezpieczenie Domu", "sv": "Genomsnittlig hemförsäkring", "no": "Gj.snittlig boligforsikring", "da": "Gns. husforsikring", "fi": "Keskimääräinen kotivakuutus" },
+        "yes": { "en": "Yes", "es": "Sí", "de": "Ja", "fr": "Oui", "pt": "Sim", "it": "Sì", "nl": "Ja", "pl": "Tak", "sv": "Ja", "no": "Ja", "da": "Ja", "fi": "Kyllä" },
+        "none": { "en": "None", "es": "Ninguno", "de": "Keine", "fr": "Aucun", "pt": "Nenhum", "it": "Nessuno", "nl": "Geen", "pl": "Brak", "sv": "Ingen", "no": "Ingen", "da": "Ingen", "fi": "Ei mitään" },
+        "perYear": { "en": "/yr", "es": "/año", "de": "/Jahr", "fr": "/an", "pt": "/ano", "it": "/anno", "nl": "/jaar", "pl": "/rok", "sv": "/år", "no": "/år", "da": "/år", "fi": "/vuosi" }
+    },
+    "seo": {
+        "best": { "en": "Best", "es": "Mejor", "de": "Bester", "fr": "Le meilleur", "pt": "O melhor", "it": "Il miglior", "nl": "Beste", "pl": "Najlepszy", "sv": "Bästa", "no": "Beste", "da": "Bedste", "fi": "Paras" },
+        "for": { "en": "for", "es": "para", "de": "für", "fr": "pour", "pt": "para", "it": "per", "nl": "voor", "pl": "dla", "sv": "för", "no": "for", "da": "for", "fi": "varten" },
+        "residents": { "en": "residents", "es": "residentes", "de": "Bewohner", "fr": "résidents", "pt": "residentes", "it": "residenti", "nl": "inwoners", "pl": "mieszkańcy", "sv": "invånare", "no": "innbyggere", "da": "beboere", "fi": "asukkaat" },
+        "calculateYour": { "en": "Calculate your", "es": "Calcula tus", "de": "Berechnen Sie Ihre", "fr": "Calculez vos", "pt": "Calcule seus", "it": "Calcola i tuoi", "nl": "Bereken uw", "pl": "Oblicz swoje", "sv": "Beräkna dina", "no": "Beregn dine", "da": "Beregn dine", "fi": "Laske sinun" },
+        "with": { "en": "with", "es": "con", "de": "mit", "fr": "avec", "pt": "com", "it": "con", "nl": "met", "pl": "z", "sv": "med", "no": "med", "da": "med", "fi": "kanssa" },
+        "specificRates": { "en": "specific rates", "es": "tasas específicas", "de": "spezifischen Sätzen", "fr": "taux spécifiques", "pt": "taxas específicas", "it": "tassi specifici", "nl": "specifieke tarieven", "pl": "konkretnymi stawkami", "sv": "specifika priser", "no": "spesifikke satser", "da": "specifikke satser", "fi": "erityisillä hinnoilla" },
+        "updatedFor": { "en": "Updated for", "es": "Actualizado para", "de": "Aktualisiert für", "fr": "Mis à jour pour", "pt": "Atualizado para", "it": "Aggiornato per", "nl": "Bijgewerkt voor", "pl": "Zaktualizowano na", "sv": "Uppdaterad för", "no": "Oppdatert for", "da": "Opdateret for", "fi": "Päivitetty vuodelle" },
+        "currentMarketData": { "en": "with current market data", "es": "con datos actuales del mercado", "de": "mit aktuellen Marktdaten", "fr": "avec les données actuelles du marché", "pt": "com dados atuais do mercado", "it": "con i dati attuali del mercato", "nl": "met actuele marktgegevens", "pl": "z aktualnymi danymi rynkowymi", "sv": "med aktuell marknadsdata", "no": "med gjeldende markedsdata", "da": "med aktuelle markedsdata", "fi": "nykyisillä markkinatiedoilla" },
+        "specificQuestions": { "en": "-specific questions", "es": ": preguntas específicas", "de": "-spezifische Fragen", "fr": " : questions spécifiques", "pt": ": perguntas específicas", "it": ": domande specifiche", "nl": "-specifieke vragen", "pl": " - pytania szczegółowe", "sv": "-specifika frågor", "no": "-spesifikke spørsmål", "da": "-specifikke spørgsmål", "fi": "-kohtaiset kysymykset" },
+        "uses": { "en": "uses", "es": "usa", "de": "verwendet", "fr": "utilise", "pt": "usa", "it": "usa", "nl": "gebruikt", "pl": "używa", "sv": "använder", "no": "bruker", "da": "bruger", "fi": "käyttää" },
+        "actual": { "en": "actual", "es": "real", "de": "tatsächliche", "fr": "réel", "pt": "real", "it": "reale", "nl": "werkelijke", "pl": "rzeczywista", "sv": "faktisk", "no": "faktisk", "da": "faktisk", "fi": "todellinen" },
+        "of": { "en": "of", "es": "de", "de": "von", "fr": "de", "pt": "de", "it": "di", "nl": "van", "pl": "z", "sv": "av", "no": "av", "da": "af", "fi": "of" },
+        "and": { "en": "and", "es": "y", "de": "und", "fr": "et", "pt": "e", "it": "e", "nl": "en", "pl": "i", "sv": "och", "no": "og", "da": "og", "fi": "ja" },
+        "insuranceCosts": { "en": "insurance costs", "es": "costos de seguro", "de": "Versicherungskosten", "fr": "coûts d'assurance", "pt": "custos de seguro", "it": "costi assicurativi", "nl": "verzekeringskosten", "pl": "koszty ubezpieczenia", "sv": "försäkringskostnader", "no": "forsikringskostnader", "da": "forsikringsomkostninger", "fi": "vakuutuskustannukset" }
     }
 }

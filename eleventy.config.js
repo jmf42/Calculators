@@ -132,6 +132,9 @@ module.exports = function (eleventyConfig) {
                 }
             }
 
+            // Inject Language for Frontend JS
+            config.lang = lang;
+
             // [INTERNAL MESH LOGIC]
             const childNiches = (!location && !stateData && !countryData && !isNiche) ? niches.filter(n => n.baseType === type).map(n => ({
                 title: n.titles[lang] || n.titles['en'],
