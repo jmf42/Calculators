@@ -14,10 +14,8 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     <title>{{ calc.title | safe }} | {{ site.name }}</title>
     <meta name="description" content="{{ calc.metaDescription | safe }}">
     
-    {% if site.analytics.adSenseId %}
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.analytics.adSenseId }}" crossorigin="anonymous"></script>
-    {% endif %}
+    <!-- Google AdSense Verification -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4388136005778314" crossorigin="anonymous"></script>
     
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="{{ site.url }}/{{ calc.lang }}/{{ calc.slug }}/">
@@ -36,11 +34,15 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     <meta property="og:description" content="{{ calc.metaDescription }}">
     <meta property="og:site_name" content="{{ site.name }}">
     <meta property="og:locale" content="{{ calc.lang }}">
+    <meta property="og:image" content="{{ site.url }}/assets/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ calc.title }}">
     <meta name="twitter:description" content="{{ calc.metaDescription }}">
+    <meta name="twitter:image" content="{{ site.url }}/assets/images/og-image.png">
     
     <!-- Additional SEO -->
     <meta name="author" content="{{ site.name }}">
@@ -69,6 +71,59 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
             "name": "{{ site.name }}",
             "url": "{{ site.url }}",
             "logo": "{{ site.url }}/assets/images/logo.png"
+        }
+    }
+    </script>
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "{{ site.name }}",
+                "item": "{{ site.url }}/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "{{ calc.title }}",
+                "item": "{{ site.url }}/{{ calc.lang }}/{{ calc.slug }}/"
+            }
+        ]
+    }
+    </script>
+
+    <!-- HowTo Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "{{ calc.title }}",
+        "description": "{{ calc.metaDescription }}",
+        "step": [
+            {
+                "@type": "HowToStep",
+                "name": "Enter your values",
+                "text": "Fill in the input fields with your specific numbers and requirements."
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Review the calculation",
+                "text": "The calculator instantly computes results as you type."
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Analyze the breakdown",
+                "text": "Review the detailed breakdown of costs and components."
+            }
+        ],
+        "tool": {
+            "@type": "HowToTool",
+            "name": "{{ site.name }} Calculator"
         }
     }
     </script>

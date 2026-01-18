@@ -6,19 +6,21 @@ eleventyExcludeFromCollections: true
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>{{ site.url }}/</loc>
-    <lastmod>{{ site.year }}-01-01</lastmod>
+    <lastmod>{{ site.year }}-01-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   {%- for page in collections.calculatorPages %}
   <url>
     <loc>{{ site.url }}/{{ page.lang }}/{{ page.slug }}/</loc>
-    <lastmod>{{ site.year }}-01-15</lastmod>
+    <lastmod>{{ site.year }}-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     {%- for langItem in site.languages %}
     <xhtml:link rel="alternate" hreflang="{{ langItem.code }}" href="{{ site.url }}/{{ langItem.code }}/{{ calculators[page.type].slugs[langItem.code] }}/"/>
     {%- endfor %}
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/en/{{ calculators[page.type].slugs.en }}/"/>
   </url>
   {%- endfor %}
 </urlset>
+

@@ -16,19 +16,46 @@ permalink: "/{% if home.lang != 'en' %}{{ home.lang }}/{% endif %}index.html"
     <link rel="apple-touch-icon" href="/assets/images/logo.png">
     <meta property="og:image" content="{{ site.url }}/assets/images/og-image.png">
     <meta name="twitter:image" content="{{ site.url }}/assets/images/og-image.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/style.css">
     
-    <!-- Google Search Logo Structured Data -->
+    <!-- Google AdSense Verification -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4388136005778314" crossorigin="anonymous"></script>
+
+    <!-- Google Search Logo & Organization Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
+      "name": "{{ site.name }}",
       "url": "{{ site.url }}",
-      "logo": "{{ site.url }}/assets/images/logo.png"
+      "logo": "{{ site.url }}/assets/images/logo.png",
+      "description": "{{ ui.homeDesc[home.lang] | default('Free online calculators for mortgages, loans, ROI, and more.') }}",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "hello@calc-kit.com",
+        "contactType": "customer service",
+        "availableLanguage": ["English", "Spanish", "German", "French", "Portuguese", "Italian", "Dutch", "Polish", "Swedish", "Norwegian", "Danish", "Finnish"]
+      },
+      "sameAs": []
+    }
+    </script>
+
+    <!-- WebSite Schema for Sitelinks Search Box -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "{{ site.name }}",
+      "url": "{{ site.url }}",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ site.url }}/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
     }
     </script>
     {% include "components/language-redirect.njk" %}
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <style>
         /* Hero Section - Epic */
         .hero-home { 

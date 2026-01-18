@@ -22,7 +22,7 @@ module.exports = {
     // Analytics configuration
     analytics: {
         gaId: process.env.GA_TRACKING_ID || "G-L98HCWCJH5",
-        adSenseId: process.env.ADSENSE_ID || "", // Add your pub-XXXXXXXXXXXXXXXX ID here
+        adSenseId: process.env.ADSENSE_ID || "ca-pub-4388136005778314",
         adConversionId: process.env.AD_CONVERSION_ID || "AW-CONVERSION_ID/CONVERSION_LABEL"
     },
 
