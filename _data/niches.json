@@ -33,7 +33,16 @@
         "subtitles": {
             "en": "Estimate monthly payments with 3.5% down payment",
             "es": "Estima pagos con 3.5% de enganche",
-            "de": "Monatsrate mit 3,5% Anzahlung berechnen"
+            "de": "Monatsrate mit 3,5% Anzahlung berechnen",
+            "fr": "Estimez les mensualités avec 3,5 % d'apport",
+            "pt: ": "Estime parcelas com 3,5% de entrada",
+            "it": "Stima rate mensili con il 3,5% di anticipo",
+            "nl": "Schat maandelijkse betalingen met 3,5% aanbetaling",
+            "pl": "Oszacuj raty z 3,5% wpłatą własną",
+            "sv": "Beräkna månadskostnad med 3,5 % kontantinsats",
+            "no": "Anslå månedlige betalinger med 3,5 % egenkapital",
+            "da": "Anslå månedlige ydelser med 3,5 % udbetaling",
+            "fi": "Arvioi kuukausierät 3,5 % käsirahalla"
         },
         "overrides": {
             "down": {
@@ -90,7 +99,16 @@
         "subtitles": {
             "en": "Exclusive benefit for Veterans and active military",
             "es": "Beneficio exclusivo para veteranos y militares",
-            "de": "Exklusiv für Veteranen"
+            "de": "Exklusiv für Veteranen",
+            "fr": "Avantage exclusif pour les vétérans et militaires",
+            "pt": "Benefício exclusivo para veteranos e militares",
+            "it": "Vantaggio esclusivo per veterani e militari",
+            "nl": "Exclusief voordeel voor veteranen en militairen",
+            "pl": "Ekskluzywna oferta dla weteranów i wojskowych",
+            "sv": "Exklusiv förmån för veteraner och militärpersonal",
+            "no": "Eksklusiv fordel for veteraner og militære",
+            "da": "Eksklusiv fordel for veteraner og militært personel",
+            "fi": "Yksinoikeus etu veteraaneille ja sotilaille"
         },
         "overrides": {
             "down": {
@@ -142,6 +160,20 @@
             "no": "Jumbo Lånekalkulator",
             "da": "Jumbo Låneberegner",
             "fi": "Jumbo Lainalaskuri"
+        },
+        "subtitles": {
+            "en": "Calculate payments for luxury homes exceeding loan limits",
+            "es": "Pagos para casas de lujo que exceden los límites",
+            "de": "Raten für Luxusimmobilien berechnen",
+            "fr": "Calculez les paiements pour les maisons de luxe",
+            "pt": "Calcule parcelas para casas de luxo",
+            "it": "Calcola le rate per case di lusso oltre i limiti",
+            "nl": "Bereken betalingen voor luxe huizen boven de leengrens",
+            "pl": "Oblicz raty dla luksusowych domów powyżej limitów",
+            "sv": "Beräkna betalningar för lyxhus som överstiger lånegränserna",
+            "no": "Beregn betalinger for luksusboliger over lånegrensene",
+            "da": "Beregn ydelser for luksusboliger over lånegrænsen",
+            "fi": "Laske kuukausierät luksusasunnoille yli lainarajojen"
         },
         "overrides": {
             "price": {
@@ -201,7 +233,16 @@
         "subtitles": {
             "en": "Zero down payment loans for rural homes",
             "es": "Préstamos con cero enganche para zonas rurales",
-            "de": "Darlehen ohne Anzahlung für ländliche Gebiete"
+            "de": "Darlehen ohne Anzahlung für ländliche Gebiete",
+            "fr": "Prêts sans apport pour les zones rurales",
+            "pt": "Empréstimos sem entrada para zonas rurais",
+            "it": "Prestiti senza anticipo per zone rurali",
+            "nl": "Leningen zonder aanbetaling voor landelijke woningen",
+            "pl": "Kredyty bez wpłaty własnej na domy wiejskie",
+            "sv": "Lån utan kontantinsats för landsbygdsfastigheter",
+            "no": "Lån uten egenkapital for boliger i distriktet",
+            "da": "Lån uden udbetaling til boliger på landet",
+            "fi": "Nollakorko-lainat maaseutuasunnoille"
         },
         "overrides": {
             "down": {
@@ -270,6 +311,20 @@
             "no": "Investeringseiendomskalkulator",
             "da": "Ejendomsinvesteringsberegner",
             "fi": "Sijoitusasuntolaskuri"
+        },
+        "subtitles": {
+            "en": "Calculate ROI and cash flow for rental properties",
+            "es": "Calcula el ROI y flujo de caja para alquileres",
+            "de": "ROI und Cashflow für Mietobjekte berechnen",
+            "fr": "Calculez le ROI et le flux de trésorerie locatif",
+            "pt": "Calcule o ROI e o fluxo de caixa para aluguéis",
+            "it": "Calcola il ROI e il flusso di cassa per affitti",
+            "nl": "Bereken ROI en cashflow voor huurwoningen",
+            "pl": "Oblicz ROI i przepływy pieniężne z wynajmu",
+            "sv": "Beräkna ROI och kassaflöde för hyresfastigheter",
+            "no": "Beregn ROI og kontantstrøm for utleieboliger",
+            "da": "Beregn ROI og pengestrøm for udlejningsejendomme",
+            "fi": "Laske sijoitetun pääoman tuotto ja kassavirta vuokra-asunnoille"
         },
         "overrides": {
             "rate": {
@@ -342,7 +397,16 @@
         "subtitles": {
             "en": "Calculate payments for Motorhomes, 5th Wheels, and Trailers",
             "es": "Calcula pagos para autocaravanas y remolques",
-            "de": "Raten für Wohnmobile und Wohnwagen berechnen"
+            "de": "Raten für Wohnmobile und Wohnwagen berechnen",
+            "fr": "Calculez les mensualités pour camping-cars et caravanes",
+            "pt": "Calcule parcelas para motorhomes e trailers",
+            "it": "Calcola le rate per camper e roulotte",
+            "nl": "Bereken betalingen voor campers en aanhangers",
+            "pl": "Oblicz raty na kampery i przyczepy",
+            "sv": "Beräkna betalningar för husbilar och släpvagnar",
+            "no": "Beregn betalinger for bobiler og tilhengere",
+            "da": "Beregn ydelser for autocampere og trailere",
+            "fi": "Laske kuukausierät matkailuautoille ja perävaunuille"
         },
         "overrides": {
             "amount": {
@@ -413,6 +477,20 @@
             "da": "Tiny House Låneberegner",
             "fi": "Tiny House Lainalaskuri"
         },
+        "subtitles": {
+            "en": "Finance your minimal lifestyle with a tiny home loan",
+            "es": "Financia tu estilo de vida minimalista",
+            "de": "Finanzieren Sie Ihr Tiny House",
+            "fr": "Financez votre style de vie minimaliste",
+            "pt": "Financie seu estilo de vida minimalista",
+            "it": "Finanzia il tuo stile di vita minimalista",
+            "nl": "Financier uw minimalistische levensstijl",
+            "pl": "Sfinansuj swój minimalistyczny styl życia",
+            "sv": "Finansiera din minimalistiska livsstil",
+            "no": "Finansier din minimalistiske livsstil",
+            "da": "Finansiér din minimalistiske livsstil",
+            "fi": "Rahoita minimalistinen elämäntapasi"
+        },
         "overrides": {
             "amount": {
                 "default": 65000,
@@ -470,6 +548,20 @@
             "no": "Bassenglånekalkulator",
             "da": "Pool Låneberegner",
             "fi": "Uima-allaslainalaskuri"
+        },
+        "subtitles": {
+            "en": "Estimate monthly payments for your pool project",
+            "es": "Estima los pagos mensuales para tu proyecto",
+            "de": "Monatsraten für Ihr Poolprojekt berechnen",
+            "fr": "Estimez les mensualités de votre projet piscine",
+            "pt": "Estime as parcelas mensais para seu projeto",
+            "it": "Stima le rate mensili per il tuo progetto piscina",
+            "nl": "Schat de maandelijkse lasten voor uw zwembad",
+            "pl": "Oszacuj raty na projekt basenu",
+            "sv": "Beräkna månadskostnad för ditt poolprojekt",
+            "no": "Beregn månedlige betalinger for ditt bassengprosjekt",
+            "da": "Anslå månedlige ydelser til dit pool-projekt",
+            "fi": "Arvioi kuukausierät uima-allasprojektillesi"
         },
         "overrides": {
             "amount": {
@@ -542,6 +634,20 @@
             "da": "Erhvervslåneberegner",
             "fi": "Yrityslainalaskuri"
         },
+        "subtitles": {
+            "en": "Calculate payments for business expansion and equipment",
+            "es": "Calcula pagos para expansión y equipo",
+            "de": "Raten für Expansion und Ausrüstung berechnen",
+            "fr": "Calculez les mensualités pour l'expansion et l'équipement",
+            "pt": "Calcule parcelas para expansão e equipamentos",
+            "it": "Calcola le rate per espansione e attrezzature",
+            "nl": "Bereken betalingen voor bedrijfsuitbreiding en apparatuur",
+            "pl": "Oblicz raty na rozwój firmy i sprzęt",
+            "sv": "Beräkna betalningar för företagets expansion och utrustning",
+            "no": "Beregn betalinger for bedriftsekspansjon og utstyr",
+            "da": "Beregn ydelser til erhvervsudvidelser og udstyr",
+            "fi": "Laske kuukausierät yrityksen laajentamiseen ja laitehankintoihin"
+        },
         "overrides": {
             "amount": {
                 "default": 250000
@@ -595,6 +701,20 @@
             "no": "SBA 7(a) Lånekalkulator",
             "da": "SBA Låneberegner",
             "fi": "SBA Lainalaskuri"
+        },
+        "subtitles": {
+            "en": "SBA 7(a) loan calculator for small business owners",
+            "es": "Calculadora de préstamo SBA 7(a) para pymes",
+            "de": "SBA 7(a) Kreditrechner für Kleinunternehmen",
+            "fr": "Calculateur de prêt SBA 7(a) pour PME",
+            "pt": "Calculadora de empréstimo SBA 7(a) para Pequenas Empresas",
+            "it": "Calcolatore prestito SBA 7(a) per piccole imprese",
+            "nl": "SBA 7(a) leningcalculator voor kleine ondernemers",
+            "pl": "Kalkulator kredytu SBA 7(a) dla małych firm",
+            "sv": "SBA 7(a) lånekalkylator för småföretagare",
+            "no": "SBA 7(a) lånekalkulator for småbedrifter",
+            "da": "SBA 7(a) låneberegner til små virksomheder",
+            "fi": "SBA 7(a) -lainalaskuri pienyrittäjille"
         },
         "overrides": {
             "amount": {
@@ -656,6 +776,20 @@
             "da": "Billånsberegner",
             "fi": "Autolainalaskuri"
         },
+        "subtitles": {
+            "en": "Monthly payment estimator for new and used cars",
+            "es": "Estimador de pagos para autos nuevos y usados",
+            "de": "Monatsraten für Neu- und Gebrauchtwagen",
+            "fr": "Estimateur de mensualités pour voitures neuves et d'occasion",
+            "pt": "Estimativa de parcelas para carros novos e usados",
+            "it": "Stima delle rate mensili per auto nuove e usate",
+            "nl": "Maandlasten berekenen voor nieuwe en gebruikte auto's",
+            "pl": "Szacowanie rat na nowe i używane samochody",
+            "sv": "Månadskostnadsberäkning för nya och begagnade bilar",
+            "no": "Estimer månedlige betalinger for nye og brukte biler",
+            "da": "Beregn månedlige ydelser på nye og brugte biler",
+            "fi": "Kuukausieräarvio uusille ja käytetyille autoille"
+        },
         "overrides": {
             "amount": {
                 "default": 35000,
@@ -710,6 +844,20 @@
             "no": "Båtlånkalkulator",
             "da": "Bådlånsberegner",
             "fi": "Venelainalaskuri"
+        },
+        "subtitles": {
+            "en": "Finance your next adventure on the water",
+            "es": "Financia tu próxima aventura en el agua",
+            "de": "Finanzieren Sie Ihr nächstes Wasserabenteuer",
+            "fr": "Financez votre prochaine aventure sur l'eau",
+            "pt": "Financie sua próxima aventura na água",
+            "it": "Finanzia la tua prossima avventura sull'acqua",
+            "nl": "Financier uw volgende avontuur op het water",
+            "pl": "Sfinansuj swoją kolejną przygodę na wodzie",
+            "sv": "Finansiera ditt nästa äventyr på sjön",
+            "no": "Finansier ditt neste eventyr på vannet",
+            "da": "Finansiér dit næste eventyr på vandet",
+            "fi": "Rahoita seuraava seikkailusi vesillä"
         },
         "overrides": {
             "amount": {
@@ -779,6 +927,20 @@
             "no": "Markedsføring ROI Kalkulator",
             "da": "Marketing ROI Beregner",
             "fi": "Markkinointi ROI Laskuri"
+        },
+        "subtitles": {
+            "en": "Measure the effectiveness of your advertising campaigns",
+            "es": "Mide la efectividad de tus campañas publicitarias",
+            "de": "Effektivität Ihrer Werbekampagnen messen",
+            "fr": "Mesurez l'efficacité de vos campagnes publicitaires",
+            "pt": "Meça a eficácia das suas campanhas publicitárias",
+            "it": "Misura l'efficacia delle tue campagne pubblicitarie",
+            "nl": "Meet de effectiviteit van uw advertentiecampagnes",
+            "pl": "Mierz efektywność swoich kampanii reklamowych",
+            "sv": "Mät effektiviteten i dina reklamkampanjer",
+            "no": "Mål effektiviteten av dine reklamekampanjer",
+            "da": "Mål effektiviteten af dine reklamekampagner",
+            "fi": "Mittaa mainoskampanjoidesi tehokkuutta"
         },
         "overrides": {
             "invested": {
@@ -1077,18 +1239,32 @@
             "fi": "peltikaton-hinta-laskuri"
         },
         "titles": {
-            "en": "Metal Roof Cost Calculator",
-            "es": "Calculadora Costo Techo de Metal",
-            "de": "Metalldach Kostenrechner",
-            "fr": "Calculateur Coût Toiture Métal",
-            "pt": "Calculadora Telhado de Metal",
-            "it": "Calcolatore Costo Tetto in Metallo",
-            "nl": "Kosten Metalen Dak",
-            "pl": "Koszt Dachu Metalowego",
-            "sv": "Kostnad för Metalltak",
-            "no": "Pris på Metalltak",
-            "da": "Metaltag Prisberegner",
-            "fi": "Peltikaton Hintalaskuri"
+            "en": "Metal Roofing Cost Calculator",
+            "es": "Calculadora de Techos de Metal",
+            "de": "Metalldach-Kostenrechner",
+            "fr": "Calculateur Toiture Métallique",
+            "pt": "Calculadora de Telhado de Metal",
+            "it": "Calcolatore Tetto in Metallo",
+            "nl": "Metalen Dak Calculator",
+            "pl": "Kalkulator Dachu Metalowego",
+            "sv": "Takplåtskalkylator",
+            "no": "Metalltakkalkulator",
+            "da": "Metaltag Beregner",
+            "fi": "Peltikattolaskuri"
+        },
+        "subtitles": {
+            "en": "Estimate cost for durable and long-lasting metal roofing",
+            "es": "Estima el costo de techos metálicos duraderos",
+            "de": "Kosten für langlebige Metalldächer berechnen",
+            "fr": "Estimez le coût d'une toiture métallique durable",
+            "pt": "Estime o custo de telhados metálicos duráveis",
+            "it": "Stima il costo per coperture in metallo resistenti",
+            "nl": "Schat de kosten voor duurzame metalen dakbedekking",
+            "pl": "Oszacuj koszt trwałych dachów metalowych",
+            "sv": "Beräkna kostnad för hållbart och långlivat plåttak",
+            "no": "Beregn kostnad for holdbart og langvarig metalltak",
+            "da": "Anslå prisen på holdbart metaltag",
+            "fi": "Arvioi kestävän peltikaton kustannukset"
         },
         "overrides": {
             "material": {

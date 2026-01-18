@@ -1,38 +1,179 @@
 [
     {
         "id": "nurses",
-        "name": "Nurses",
-        "slug": "nurses",
-        "painPoint": "Overtime income and shift differentials",
-        "description": "Calculate home loans using your base salary plus overtime, shift differential, and travel nursing income.",
-        "keywords": [
-            "travel nurse mortgage",
-            "nurse home loan calculator",
-            "RN mortgage program"
-        ]
+        "names": {
+            "en": "Nurses",
+            "es": "Enfermeros",
+            "de": "Pflegekräfte",
+            "fr": "Infirmières",
+            "pt": "Enfermeiros",
+            "it": "Infermieri",
+            "nl": "Verpleegkundigen",
+            "pl": "Pielęgniarki",
+            "sv": "Sjuksköterskor",
+            "no": "Sykepleiere",
+            "da": "Sygeplejersker",
+            "fi": "Sairaanhoitajat"
+        },
+        "slugs": {
+            "en": "nurses",
+            "es": "enfermeros",
+            "de": "pflegekraefte",
+            "fr": "infirmieres",
+            "pt": "enfermeiros",
+            "it": "infermieri",
+            "nl": "verpleegkundigen",
+            "pl": "pielegniarki",
+            "sv": "sjukskoterskor",
+            "no": "sykepleiere",
+            "da": "sygeplejersker",
+            "fi": "sairaanhoitajat"
+        },
+        "painPoints": {
+            "en": "Overtime income and shift differentials",
+            "es": "Ingresos por horas extras y diferencias de turno",
+            "de": "Überstundenvergütung und Schichtzulagen",
+            "fr": "Revenus d'heures supplémentaires et primes de quart",
+            "pt": "Horas extras e diferenciais de turno",
+            "it": "Retribuzione straordinari e indennità di turno",
+            "nl": "Overuren en ploegentoeslag",
+            "pl": "Nadgodziny i dodatki zmianowe",
+            "sv": "Övertid och skifttillägg",
+            "no": "Overtid og skifttillegg",
+            "da": "Overtidsbetaling og skifttillæg",
+            "fi": "Ylityökorvaukset ja vuorolisät"
+        },
+        "descriptions": {
+            "en": "Calculate home loans using your base salary plus overtime, shift differential, and travel nursing income.",
+            "es": "Calcula préstamos utilizando su salario base más horas extras y otros ingresos de enfermería.",
+            "de": "Berechnen Sie Darlehen basierend auf Grundgehalt plus Überstunden und Schichtzulagen.",
+            "fr": "Calculez les prêts immobiliers en utilisant votre salaire de base plus les heures supplémentaires.",
+            "pt": "Calcule financiamentos usando seu salário base mais horas extras e rendas adicionais.",
+            "it": "Calcola prestiti utilizzando lo stipendio base più gli straordinari e le indennità.",
+            "nl": "Bereken leningen op basis van basissalaris plus overuren en toeslagen.",
+            "pl": "Oblicz kredyt na podstawie wynagrodzenia podstawowego plus nadgodziny i dodatki.",
+            "sv": "Beräkna bolån baserat på grundlön plus övertid och skifttillägg.",
+            "no": "Beregn boliglån basert på grunnlønn pluss overtid og skifttillegg.",
+            "da": "Beregn boliglån baseret på grundløn plus overtid og skifttillæg.",
+            "fi": "Laske asuntolaina peruspalkan sekä ylitöiden ja vuorolisien perusteella."
+        }
     },
     {
         "id": "teachers",
-        "name": "Teachers",
-        "slug": "teachers",
-        "painPoint": "Teacher forgiveness programs and summer income",
-        "description": "Factor in specialized teacher loan forgiveness programs (TLF) and annualized salary calculations.",
-        "keywords": [
-            "teacher next door calculator",
-            "educator mortgage",
-            "teacher loan forgiveness rates"
-        ]
+        "names": {
+            "en": "Teachers",
+            "es": "Profesores",
+            "de": "Lehrer",
+            "fr": "Enseignants",
+            "pt": "Professores",
+            "it": "Insegnanti",
+            "nl": "Leraren",
+            "pl": "Nauczyciele",
+            "sv": "Lärare",
+            "no": "Lærere",
+            "da": "Lærere",
+            "fi": "Opettajat"
+        },
+        "slugs": {
+            "en": "teachers",
+            "es": "profesores",
+            "de": "lehrer",
+            "fr": "enseignants",
+            "pt": "professores",
+            "it": "insegnanti",
+            "nl": "leraren",
+            "pl": "nauczyciele",
+            "sv": "larare",
+            "no": "larere",
+            "da": "larere",
+            "fi": "opettajat"
+        },
+        "painPoints": {
+            "en": "Teacher forgiveness programs and summer income",
+            "es": "Programas de condonación de préstamos e ingresos de verano",
+            "de": "Schuldenerlassprogramme und Sommereinkommen",
+            "fr": "Programmes de remise de prêt et revenus d'été",
+            "pt": "Programas de perdão de dívidas e renda de verão",
+            "it": "Programmi di cancellazione del prestito e reddito estivo",
+            "nl": "Kwijtscheldingsprogramma's en zomerinkomsten",
+            "pl": "Programy umarzania kredytów i dochody letnie",
+            "sv": "Låneavskrivningsprogram och sommarinkomst",
+            "no": "Sletting av lån og sommerinntekt",
+            "da": "Gældseftergivelsesprogrammer og sommerindkomst",
+            "fi": "Lainan anteeksianto-ohjelmat ja kesätulot"
+        },
+        "descriptions": {
+            "en": "Factor in specialized teacher loan forgiveness programs (TLF) and annualized salary calculations.",
+            "es": "Considere programas de condonación especializados y cálculos de salario anualizados.",
+            "de": "Berücksichtigen Sie spezielle Schuldenerlassprogramme und Jahresgehaltsberechnungen.",
+            "fr": "Prenez en compte les programmes de remise de prêt et les calculs de salaire annualisés.",
+            "pt": "Considere programas de perdão especializados e cálculos salariais anualizados.",
+            "it": "Considera i programmi di cancellazione specializzati e i calcoli salariali annualizzati.",
+            "nl": "Houd rekening met kwijtscheldingsprogramma's en jaarsalarisberekeningen.",
+            "pl": "Uwzględnij programy umarzania kredytów oraz obliczenia wynagrodzenia rocznego.",
+            "sv": "Räkna med låneavskrivningsprogram och beräkningar för årslön.",
+            "no": "Ta hensyn til sletting av lån og beregninger for årslønn.",
+            "da": "Tag højde for gældseftergivelsesprogrammer og årslønsberegninger.",
+            "fi": "Huomioi opettajien lainan anteeksianto-ohjelmat ja vuosipalkkalaskelmat."
+        }
     },
     {
         "id": "self-employed",
-        "name": "Self-Employed",
-        "slug": "self-employed",
-        "painPoint": "Tax write-offs reducing qualifying income",
-        "description": "Use our bank statement analyzer logic to estimate qualifying income based on real cash flow, not just tax returns.",
-        "keywords": [
-            "bank statement loan calculator",
-            "1099 mortgage calculator",
-            "entrepreneur home loan"
-        ]
+        "names": {
+            "en": "Self-Employed",
+            "es": "Autónomos",
+            "de": "Selbstständig",
+            "fr": "Indépendants",
+            "pt": "Autônomos",
+            "it": "Lavoratori Autonomi",
+            "nl": "Zelfstandigen",
+            "pl": "Samozatrudnieni",
+            "sv": "Egenföretagare",
+            "no": "Selvstendig næringsdrivende",
+            "da": "Selvstændige",
+            "fi": "Itsenäiset ammatinharjoittajat"
+        },
+        "slugs": {
+            "en": "self-employed",
+            "es": "autonomos",
+            "de": "selbststaendig",
+            "fr": "independants",
+            "pt": "autonomos",
+            "it": "lavoratori-autonomi",
+            "nl": "zelfstandigen",
+            "pl": "samozatrudnieni",
+            "sv": "egenforetagare",
+            "no": "selvstendig-naeringsdrivende",
+            "da": "selvstaendige",
+            "fi": "itsenaiset-ammatinharjoittajat"
+        },
+        "painPoints": {
+            "en": "Tax write-offs reducing qualifying income",
+            "es": "Deducciones fiscales que reducen el ingreso calificable",
+            "de": "Steuerliche Absetzungen, die das anrechenbare Einkommen mindern",
+            "fr": "Déductions fiscales réduisant le revenu admissible",
+            "pt": "Deduções fiscais que reduzem a renda qualificável",
+            "it": "Deduzioni fiscali che riducono il reddito ammissibile",
+            "nl": "Fiscale aftrekposten die het kwalificerende inkomen verlagen",
+            "pl": "Odpisy podatkowe obniżające dochód kwalifikowany",
+            "sv": "Skatteavdrag som minskar den kvalificerande inkomsten",
+            "no": "Skattefradrag som reduserer kvalifiserende inntekt",
+            "da": "Skattefradrag der reducerer den kvalificerende indkomst",
+            "fi": "Verovähennykset, jotka pienentävät laskennallisia tuloja"
+        },
+        "descriptions": {
+            "en": "Use our bank statement analyzer logic to estimate qualifying income based on real cash flow, not just tax returns.",
+            "es": "Use nuestra lógica de análisis de estados de cuenta para estimar ingresos basados en flujo de caja real.",
+            "de": "Nutzen Sie unsere Kontoauszugsanalyse, um das Einkommen basierend auf dem Cashflow zu schätzen.",
+            "fr": "Utilisez notre analyse de relevés bancaires pour estimer les revenus sur le flux de trésorerie réel.",
+            "pt": "Use nossa lógica de análise de extratos para estimar renda com base no fluxo de caixa real.",
+            "it": "Usa la nostra analisi dei conti correnti per stimare il reddito basato sul flusso di cassa reale.",
+            "nl": "Gebruik onze bankafschriftenanalyse om het inkomen te schatten op basis van cashflow.",
+            "pl": "Użyj analizy wyciągów bankowych, aby oszacować dochód na podstawie przepływów pieniężnych.",
+            "sv": "Använd vår kontoutdragsanalys för att uppskatta inkomst baserat på kassaflöde.",
+            "no": "Bruk vår kontoutskriftsanalyse for å anslå inntekt basert på kontantstrøm.",
+            "da": "Brug vores kontoudtog-analyse til at anslå indkomst baseret på pengestrøm.",
+            "fi": "Käytä tilioteanalyysiamme arvioidaksesi tulot todellisen kassavirran perusteella."
+        }
     }
 ]

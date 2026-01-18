@@ -140,7 +140,14 @@ module.exports = {
                 es: "<h2>Cómo Usar Esta Calculadora de Hipoteca</h2><p>Planear la compra de tu casa comienza con entender tus obligaciones mensuales. Nuestra calculadora de hipoteca 2026 te ayuda a estimar los pagos de capital e interés, teniendo en cuenta impuestos, seguros y gastos comunes.</p>",
                 de: "<h2>So nutzen Sie diesen Hypothekenrechner</h2><p>Die Planung Ihres Hauskaufs beginnt mit dem Verständnis Ihrer monatlichen Verpflichtungen. Unser Hypothekenrechner hilft Ihnen bei der Einschätzung.</p>",
                 fr: "<h2>Comment utiliser ce calculateur d'hypothèque</h2><p>La planification de l'achat de votre maison commence par la compréhension de vos obligations mensuelles.</p>",
-                pt: "<h2>Como usar esta calculadora de hipoteca</h2><p>Planejar a compra da sua casa começa com a compreensão das suas obrigações mensais.</p>"
+                pt: "<h2>Como usar esta calculadora de hipoteca</h2><p>Planejar a compra da sua casa começa com a compreensão das suas obrigações mensais.</p>",
+                it: "<h2>Come usare questo calcolatore del mutuo</h2><p>Pianificare l'acquisto della tua casa inizia con la comprensione dei tuoi impegni mensili. Il nostro calcolatore ti aiuta a stimare le rate di capitale e interessi.</p>",
+                nl: "<h2>Hoe u deze hypotheekcalculator gebruikt</h2><p>Het plannen van de aankoop van uw huis begint met inzicht in uw maandelijkse verplichtingen. Onze calculator helpt u bij het inschatten van de betalingen.</p>",
+                pl: "<h2>Jak korzystać z tego kalkulatora hipotecznego</h2><p>Planowanie zakupu domu zaczyna się od zrozumienia miesięcznych zobowiązań. Nasz kalkulator pomoże Ci oszacować raty kapitałowo-odsetkowe.</p>",
+                sv: "<h2>Hur du använder denna bolånekalkylator</h2><p>Att planera ditt bostadsköp börjar med att förstå dina månatliga förpliktelser. Vår kalkylator hjälper dig att uppskatta betalningar för amortering och ränta.</p>",
+                no: "<h2>Hvordan du bruker denne boliglånskalkulatoren</h2><p>Planlegging av boligkjøpet starter med å forstå dine månedlige forpliktelser. Vår kalkulator hjelper deg med å estimere avdrag og renter.</p>",
+                da: "<h2>Sådan bruger du denne boliglånsberegner</h2><p>Planlægning af dit boligkøb starter med at forstå dine månedlige forpligtelser. Vores beregner hjælper dig med at estimere afdrag og renter.</p>",
+                fi: "<h2>Miten käytät tätä asuntolainalaskuria</h2><p>Asunnon oston suunnittelu alkaa kuukausittaisten velvoitteiden ymmärtämisestä. Laskurimme auttaa sinua arvioimaan lyhennyksiä ja korkoja.</p>"
             }
         },
         faqs: {
@@ -168,6 +175,41 @@ module.exports = {
                 { q: "Como a parcela é calculada?", a: "Usamos a fórmula de amortização padrão. Nossa calculadora adiciona IPTU (est. 1%), seguro (est. 0.5%) e condomínio." },
                 { q: "Qual deve ser o valor da entrada?", a: "Recomenda-se 20% para evitar seguros adicionais e conseguir melhores taxas de juros." },
                 { q: "O que é a taxa de condomínio?", a: "São pagamentos mensais para manutenção de áreas comuns, somados à prestação do financiamento." }
+            ],
+            it: [
+                { q: "Come si calcola la rata mensile del mutuo?", a: "La rata mensile è calcolata usando la formula di ammortamento standard, considerando l'importo del prestito, il tasso di interesse e la durata. Il nostro calcolatore aggiunge anche l'imposta sulla proprietà (stima 1% annuo), l'assicurazione sulla casa (stima 0.5% annuo) e le spese condominiali." },
+                { q: "Quale dovrebbe essere il mio anticipo?", a: "Un anticipo del 20% è standard per evitare l'Assicurazione Ipotecaria Privata (PMI). Tuttavia, molti prestatori accettano anche il 3-3.5% per prestiti convenzionali o FHA." },
+                { q: "Cosa sono le spese condominiali (HOA)?", a: "Le spese condominiali (Homeowners Association - HOA) sono pagamenti mensili per i servizi e la manutenzione delle aree comuni in condomini o comunità pianificate. Vengono aggiunte al pagamento del mutuo." }
+            ],
+            nl: [
+                { q: "Hoe wordt de maandelijkse hypotheekbetaling berekend?", a: "De maandelijkse betaling wordt berekend met de standaard aflossingsformule, rekening houdend met het geleende bedrag, de rentevoet en de looptijd. Onze calculator voegt ook onroerendgoedbelasting (geschat 1% jaarlijks), woonverzekering (geschat 0.5% jaarlijks) en VvE-kosten toe." },
+                { q: "Wat moet mijn aanbetaling zijn?", a: "Een aanbetaling van 20% is standaard om Private Hypotheekverzekering (PMI) te vermijden. Veel kredietverstrekkers accepteren echter zo weinig als 3-3.5% voor conventionele of FHA-leningen." },
+                { q: "Wat zijn VvE-kosten?", a: "Vereniging van Eigenaren (VvE) kosten zijn maandelijkse betalingen voor gemeenschappelijke voorzieningen en onderhoud in appartementencomplexen of geplande gemeenschappen. Ze worden bovenop uw hypotheekbetaling toegevoegd." }
+            ],
+            pl: [
+                { q: "Jak obliczana jest miesięczna rata kredytu hipotecznego?", a: "Miesięczna rata jest obliczana przy użyciu standardowej formuły amortyzacji, uwzględniającej kwotę kredytu, oprocentowanie i okres kredytowania. Nasz kalkulator dodaje również podatek od nieruchomości (szac. 1% rocznie), ubezpieczenie domu (szac. 0.5% rocznie) i opłaty wspólnoty mieszkaniowej (HOA)." },
+                { q: "Jaka powinna być moja wpłata własna?", a: "Wpłata własna w wysokości 20% jest standardem, aby uniknąć Prywatnego Ubezpieczenia Hipotecznego (PMI). Jednak wielu kredytodawców akceptuje już 3-3.5% dla kredytów konwencjonalnych lub FHA." },
+                { q: "Czym są opłaty HOA?", a: "Opłaty wspólnoty mieszkaniowej (HOA) to miesięczne płatności za udogodnienia i utrzymanie wspólnych obszarów w kondominiach lub zaplanowanych osiedlach. Są one dodawane do raty kredytu hipotecznego." }
+            ],
+            sv: [
+                { q: "Hur beräknas den månatliga bolånebetalningen?", a: "Den månatliga betalningen beräknas med standardamorteringsformeln, med hänsyn till lånebelopp, räntesats och löptid. Vår kalkylator lägger även till fastighetsskatt (uppskattningsvis 1% årligen), hemförsäkring (uppskattningsvis 0.5% årligen) och HOA-avgifter." },
+                { q: "Hur stor bör min kontantinsats vara?", a: "En kontantinsats på 20% är standard för att undvika privat bolåneförsäkring (PMI). Många långivare accepterar dock så lite som 3-3.5% för konventionella lån eller FHA-lån." },
+                { q: "Vad är HOA-avgifter?", a: "Homeowners Association (HOA) avgifter är månatliga betalningar för gemensamma bekvämligheter och underhåll i bostadsrätter eller planerade samhällen. De läggs ovanpå din bolånebetalning." }
+            ],
+            no: [
+                { q: "Hvordan beregnes den månedlige boliglånsbetalingen?", a: "Den månedlige betalingen beregnes ved hjelp av standard amortiseringsformel, med tanke på lånebeløp, rentesats og løpetid. Kalkulatoren vår legger også til eiendomsskatt (anslått 1% årlig), boligforsikring (anslått 0.5% årlig) og fellesutgifter (HOA)." },
+                { q: "Hva bør egenkapitalen min være?", a: "En egenkapital på 20% er standard for å unngå privat boliglånsforsikring (PMI). Imidlertid aksepterer mange långivere så lite som 3-3.5% for konvensjonelle lån eller FHA-lån." },
+                { q: "Hva er fellesutgifter (HOA)?", a: "Fellesutgifter (Homeowners Association - HOA) er månedlige betalinger for felles fasiliteter og vedlikehold i borettslag eller planlagte samfunn. De legges til boliglånsbetalingen din." }
+            ],
+            da: [
+                { q: "Hvordan beregnes den månedlige boliglånsbetaling?", a: "Den månedlige betaling beregnes ved hjælp af standard amortiseringsformlen, der tager højde for lånebeløb, rentesats og løbetid. Vores beregner inkluderer også ejendomsskat (anslået 1% årligt), husforsikring (anslået 0.5% årligt) og HOA-gebyrer." },
+                { q: "Hvad skal min udbetaling være?", a: "En udbetaling på 20% er standard for at undgå privat panteforsikring (PMI). Mange långivere accepterer dog så lidt som 3-3.5% for konventionelle lån eller FHA-lån." },
+                { q: "Hvad er HOA-gebyrer?", a: "Homeowners Association (HOA) gebyrer er månedlige betalinger for fælles faciliteter og vedligeholdelse i ejerlejligheder eller planlagte samfund. De lægges oven i din boliglånsbetaling." }
+            ],
+            fi: [
+                { q: "Miten kuukausittainen asuntolainan maksu lasketaan?", a: "Kuukausimaksu lasketaan käyttäen standardia lyhennyskaavaa, ottaen huomioon lainasumman, koron ja laina-ajan. Laskurimme lisää myös kiinteistöveron (arvio 1% vuodessa), kotivakuutuksen (arvio 0.5% vuodessa) ja yhtiövastikkeet (HOA)." },
+                { q: "Mikä pitäisi olla käsirahani?", a: "20% käsiraha on standardi yksityisen asuntolainavakuutuksen (PMI) välttämiseksi. Monet lainanantajat hyväksyvät kuitenkin niinkin pienen kuin 3-3.5% tavanomaisissa tai FHA-lainoissa." },
+                { q: "Mitä ovat HOA-maksut?", a: "Asunto-osakeyhtiön (HOA) maksut ovat kuukausittaisia maksuja yhteisön mukavuuksista ja ylläpidosta asunnoissa tai suunnitelluissa yhteisöissä. Ne lisätään asuntolainan maksuun." }
             ]
         }
     },
@@ -223,7 +265,7 @@ module.exports = {
             fi: "Ilmainen lainalaskuri. Laske kuukausierät ja kokonaiskorko. Lataa lyhennystaulukko PDF-muodossa."
         },
         config: {
-            currency: { en: "USD", es: "EUR", de: "EUR", fr: "EUR", pt: "BRL", it: "EUR", nl: "EUR", pl: "PLN", sv: "SEK", no: "NOK", da: "DKK", fi: "EUR" },
+            currency: { en: "USD", es: "EUR", de: "EUR", fr: "EUR", pt: "BRL", it: "EUR", nl: "NLN", pl: "PLN", sv: "SEK", no: "NOK", da: "DKK", fi: "EUR" },
             locale: { en: "en-US", es: "es-ES", de: "de-DE", fr: "fr-FR", pt: "pt-BR", it: "it-IT", nl: "nl-NL", pl: "pl-PL", sv: "sv-SE", no: "no-NO", da: "da-DK", fi: "fi-FI" },
             fields: [
                 { id: "amount", type: "number", label: { en: "Loan Amount", es: "Monto del Préstamo", de: "Kreditbetrag", fr: "Montant du Prêt", pt: "Valor do Empréstimo", it: "Importo Prestito", nl: "Leenbedrag", pl: "Kwota Kredytu", sv: "Lånebelopp", no: "Lånebeløp", da: "Lånebeløb", fi: "Lainasumma" }, default: 15000, min: 1000, max: 1000000, step: 1000, help: { en: "The total amount you want to borrow", es: "El monto total que deseas pedir prestado", de: "Der Gesamtbetrag, den Sie leihen möchten" } },
@@ -242,8 +284,15 @@ module.exports = {
             en: [{ q: "What types of loans can I calculate?", a: "This calculator works for personal loans, auto loans, and any fixed-rate installment loan." }],
             de: [{ q: "Für welche Kredite funktioniert der Rechner?", a: "Dieser Rechner funktioniert für Ratenkredite, Autokredite und Konsumentenkredite." }],
             es: [{ q: "¿Para qué tipos de préstamos sirve?", a: "Esta calculadora funciona para préstamos personales, de auto y cualquier préstamo a tasa fija." }],
-            fr: [{ q: "Pour quels types de prêts?", a: "Ce calculateur fonctionne pour les prêts personnels, auto et tout prêt à taux fixe." }],
-            pt: [{ q: "Para quais tipos de empréstimos?", a: "Esta calculadora funciona para empréstimos pessoais, de veículos e qualquer crédito com taxa fixa." }]
+            fr: [{ q: "Para qué tipos de préstamos?", a: "Ce calculateur fonctionne pour les prêts personnels, auto et tout prêt à taux fixe." }],
+            pt: [{ q: "Para quais tipos de empréstimos?", a: "Esta calculadora funciona para empréstimos pessoais, de veículos e qualquer crédito com taxa fixa." }],
+            it: [{ q: "Che tipi di prestito posso calcolare?", a: "Questo calcolatore funziona per prestiti personali, auto e qualsiasi prestito rateale a tasso fisso." }],
+            nl: [{ q: "Welke soorten leningen kan ik berekenen?", a: "Deze calculator werkt voor persoonlijke leningen, autoleningen en elke lening met een vaste rente." }],
+            pl: [{ q: "Jakie rodzaje kredytów mogę obliczyć?", a: "Ten kalkulator działa dla kredytów gotówkowych, samochodowych i wszelkich kredytów ratalnych o stałym oprocentowaniu." }],
+            sv: [{ q: "Vilka typer av lån kan jag beräkna?", a: "Denna kalkylator fungerar för privatlån, billån och alla typer av avbetalningslån med fast ränta." }],
+            no: [{ q: "Hvilke typer lån kan jeg beregne?", a: "Denne kalkulatoren fungerer for forbrukslån, billån og alle typer avbetalingslån med fast rente." }],
+            da: [{ q: "Hvilke typer lån kan jeg beregne?", a: "Denne beregner fungerer til privatlån, billån og ethvert fastforrentet afbetalingslån." }],
+            fi: [{ q: "Mitä lainoja voin laskea?", a: "Tämä laskuri sopii kulutusluotoille, autolainoille ja kaikille kiinteäkorkoisille osamaksuerille." }]
         }
     },
 
@@ -301,21 +350,42 @@ module.exports = {
             currency: { en: "USD", es: "EUR", de: "EUR", fr: "EUR", pt: "BRL", it: "EUR", nl: "EUR", pl: "PLN", sv: "SEK", no: "NOK", da: "DKK", fi: "EUR" },
             locale: { en: "en-US", es: "es-ES", de: "de-DE", fr: "fr-FR", pt: "pt-BR", it: "it-IT", nl: "nl-NL", pl: "pl-PL", sv: "sv-SE", no: "no-NO", da: "da-DK", fi: "fi-FI" },
             fields: [
-                { id: "invested", type: "number", label: { en: "Amount Invested", es: "Monto Invertido", de: "Investierter Betrag", fr: "Montant Investi", pt: "Valor Investido", it: "Importo Investito", nl: "Geïnvesteerd Bedrag", pl: "Zainwestowana Kwota", sv: "Investerat Belopp", no: "Investert Beløp", da: "Investeret Beløb", fi: "Sijoitettu Summa" }, default: 5000, min: 100, max: 10000000, step: 100 },
+                { id: "invested", type: "number", label: { en: "Amount Invested", es: "Monto Invertido", de: "Investierter Betrag", fr: "Montant du Prêt", pt: "Valor do Empréstimo", it: "Importo Investito", nl: "Geïnvesteerd Bedrag", pl: "Zainwestowana Kwota", sv: "Investerat Belopp", no: "Investert Beløp", da: "Investeret Beløb", fi: "Sijoitettu Summa" }, default: 5000, min: 100, max: 10000000, step: 100 },
                 { id: "returned", type: "number", label: { en: "Amount Returned", es: "Monto Retornado", de: "Rückfluss (Umsatz)", fr: "Montant Retourné", pt: "Valor Retornado", it: "Ritorno Totale", nl: "Opbrengst", pl: "Zwrot Ogółem", sv: "Återbetalt Belopp", no: "Beløp Returnert", da: "Returneret Beløb", fi: "Tuotto Yhteensä" }, default: 12000, min: 0, max: 100000000, step: 100 }
             ],
             formula: "((returned - invested) / invested) * 100",
             resultLabel: { en: "ROI (%)", es: "ROI (%)", de: "ROI (%)", fr: "ROI (%)", pt: "ROI (%)", it: "ROI (%)", nl: "ROI (%)", pl: "ROI (%)", sv: "ROI (%)", no: "ROI (%)", da: "ROI (%)", fi: "ROI (%)" },
             breakdown: [
                 { label: { en: "Net Profit", es: "Ganancia Neta", de: "Gewinn", fr: "Bénéfice Net", pt: "Lucro Líquido", it: "Utile Netto", nl: "Nettowinst", pl: "Zysk Netto", sv: "Nettovinst", no: "Nettofortjeneste", da: "Netto Overskud", fi: "Nettovoitto" }, formula: "returned - invested" }
-            ]
+            ],
+            content: {
+                en: "<h2>Calculate Your Return on Investment (ROI)</h2><p>Understanding the profitability of your investments is crucial for business growth. Our ROI calculator helps you quickly determine the return on various projects, from marketing campaigns to real estate.</p><h3>What is a Good ROI?</h3><p>A good ROI varies by industry and risk. Generally, an ROI above 10-15% is considered good, but some high-growth investments might aim for much higher.</p>",
+                es: "<h2>Calcula tu Retorno de Inversión (ROI)</h2><p>Comprender la rentabilidad de tus inversiones es crucial para el crecimiento empresarial. Nuestra calculadora de ROI te ayuda a determinar rápidamente el retorno de varios proyectos, desde campañas de marketing hasta bienes raíces.</p>",
+                de: "<h2>Berechnen Sie Ihren Return on Investment (ROI)</h2><p>Das Verständnis der Rentabilität Ihrer Investitionen ist entscheidend für das Geschäftswachstum. Unser ROI-Rechner hilft Ihnen, den Return on Investment für verschiedene Projekte schnell zu bestimmen, von Marketingkampagnen bis hin zu Immobilien.</p>",
+                fr: "<h2>Calculez votre Retour sur Investissement (ROI)</h2><p>Comprendre la rentabilité de vos investissements est crucial pour la croissance de l'entreprise. Notre calculateur de ROI vous aide à déterminer rapidement le retour sur divers projets, des campagnes marketing à l'immobilier.</p>",
+                pt: "<h2>Calcule seu Retorno sobre Investimento (ROI)</h2><p>Compreender a rentabilidade de seus investimentos é crucial para o crescimento dos negócios. Nossa calculadora de ROI ajuda você a determinar rapidamente o retorno de vários projetos, desde campanhas de marketing até imóveis.</p>",
+                it: "<h2>Calcola il tuo Ritorno sull'Investimento (ROI)</h2><p>Comprendere la redditività dei tuoi investimenti è fondamentale per la crescita aziendale. Il nostro calcolatore ROI ti aiuta a determinare rapidamente il ritorno su vari progetti, dalle campagne di marketing agli immobili.</p>",
+                nl: "<h2>Bereken uw Return on Investment (ROI)</h2><p>Het begrijpen van de winstgevendheid van uw investeringen is cruciaal voor bedrijfsgroei. Onze ROI-calculator helpt u snel de opbrengst van verschillende projecten te bepalen, van marketingcampagnes tot vastgoed.</p>",
+                pl: "<h2>Oblicz swój zwrot z inwestycji (ROI)</h2><p>Zrozumienie rentowności Twoich inwestycji jest kluczowe dla rozwoju biznesu. Nasz kalkulator ROI pomaga szybko określić zwrot z różnych projektów, od kampanii marketingowych po inwestycje w nieruchomości.</p>",
+                sv: "<h2>Beräkna din avkastning på investering (ROI)</h2><p>Att förstå lönsamheten i dina investeringar är avgörande för företagets tillväxt. Vår ROI-kalkylator hjälper dig att snabbt fastställa avkastningen på olika projekt.</p>",
+                no: "<h2>Beregn din avkastning på investering (ROI)</h2><p>Å forstå lønnsomheten i investeringene dine er avgjørende for vekst. Vår ROI-kalkulator hjelper deg med å raskt fastslå avkastningen på ulike prosjekter.</p>",
+                da: "<h2>Beregn dit investeringsafkast (ROI)</h2><p>At forstå rentabiliteten af dine investeringer er afgørende for virksomhedens vækst. Vores ROI-beregner hjælper dig med hurtigt at bestemme afkastet.</p>",
+                fi: "<h2>Laske sijoitetun pääoman tuotto (ROI)</h2><p>Sijoitustesi kannattavuuden ymmärtäminen on elintärkeää liiketoiminnan kasvulle. ROI-laskurimme auttaa sinua määrittämään tuoton nopeasti.</p>"
+            }
         },
         faqs: {
             en: [{ q: "What is ROI?", a: "ROI (Return on Investment) measures the profitability of an investment as a percentage of the original cost." }],
             de: [{ q: "Was ist ROI?", a: "ROI (Return on Investment) misst die Rentabilität einer Investition als Prozentsatz des eingesetzten Kapitals." }],
             es: [{ q: "¿Qué es el ROI?", a: "ROI (Retorno de Inversión) mide la rentabilidad de una inversión como porcentaje del costo original." }],
             fr: [{ q: "Qu'est-ce que le ROI?", a: "Le ROI (Retour sur Investissement) mesure la rentabilité d'un investissement en pourcentage du coût initial." }],
-            pt: [{ q: "O que é ROI?", a: "ROI (Retorno sobre Investimento) mede a rentabilidade de um investimento como percentual do custo original." }]
+            pt: [{ q: "O que é ROI?", a: "ROI (Retorno sobre Investimento) mede a rentabilidade de um investimento como percentual do custo original." }],
+            it: [{ q: "Cos'è il ROI?", a: "Il ROI (Ritorno sull'Investimento) misura la redditività di un investimento come percentuale del costo originale." }],
+            nl: [{ q: "Wat is ROI?", a: "ROI (Return on Investment) meet de winstgevendheid van een investering als percentage van de oorspronkelijke kosten." }],
+            pl: [{ q: "Co to jest ROI?", a: "ROI (zwrot z inwestycji) mierzy rentowność inwestycji jako procent pierwotnego kosztu." }],
+            sv: [{ q: "Vad är ROI?", a: "ROI (avkastning på investering) mäter lönsamheten av en investering som en procentsats av den ursprungliga kostnaden." }],
+            no: [{ q: "Hva er ROI?", a: "ROI (avkastning på investering) måler lønnsomheten av en investering som en prosentandel av den opprinnelige kostnaden." }],
+            da: [{ q: "Hvad er ROI?", a: "ROI (Return on Investment) måler rentabiliteten af en investering som en procentdel af den oprindelige pris." }],
+            fi: [{ q: "Mitä on ROI?", a: "ROI (sijoitetun pääoman tuotto) mittaa investoinnin kannattavuutta prosenttiosuutena alkuperäisestä kustannuksesta." }]
         }
     },
 
@@ -392,19 +462,24 @@ module.exports = {
                 pdfLabel: { en: "Find Venues in Budget", es: "Ver Lugares", de: "Orte Finden", fr: "Voir Lieux", pt: "Ver Locais", it: "Trova Location", nl: "Vind Locaties", pl: "Znajdź Miejsca", sv: "Hitta Platser", no: "Finn Lokaler" }
             },
             content: {
-                en: "<h2>Planning Your Wedding Budget</h2><p>A stress-free wedding starts with a realistic budget. Use our reverse-engineered budget planner to see how your total funds should be distributed across venues, catering, photography, and attire.</p><h3>The 50% Rule</h3><p>As a rule of thumb, your venue and catering will consume approximately 50% of your total budget. Allocating the remaining 50% correctly is the key to a successful event without debt.</p>",
-                es: "<h2>Planeando Tu Presupuesto de Boda</h2><p>Una boda sin estrés comienza con un presupuesto realista.</p>",
-                de: "<h2>Planen Sie Ihr Hochzeitsbudget</h2><p>Ein stressfreier Hochzeitstag beginnt mit einem realistischen Budget.</p>",
-                fr: "<h2>Planification de votre budget de mariage</h2><p>Un mariage sans stress commence par un budget réaliste.</p>",
-                pt: "<h2>Planejando seu orçamento de casamento</h2><p>Um casamento sem estresse começa com um orçamento realista.</p>"
+                pt: "<h2>Planejando seu orçamento de casamento</h2><p>Um casamento sem estresse começa com um orçamento realista.</p>",
+                it: "<h2>Pianificare il budget del tuo matrimonio</h2><p>Un matrimonio senza stress inizia con un budget realistico. Il nostro pianificatore ti aiuta a distribuire i fondi tra location, catering e altro.</p>",
+                nl: "<h2>Uw bruiloftsbudget plannen</h2><p>Een stressvrije bruiloft begint met een realistisch budget. Onze planner helpt u bij het verdelen van uw geld over locaties en catering.</p>",
+                pl: "<h2>Planowanie budżetu weselnego</h2><p>Wesele bez stresu zaczyna się od realistycznego budżetu. Nasz planer pomoże Ci rozdzielić środki na salę, catering i inne wydatki.</p>",
+                sv: "<h2>Planera din bröllopsbudget</h2><p>Ett stressfritt bröllop börjar med en realistisk budget. Vår kalkylator hjälper dig att fördela pengarna på lokal, catering och mer.</p>",
+                no: "<h2>Planlegg bryllupsbudsjettet ditt</h2><p>Ett stressfritt bryllup starter med et realistisk budsjett. Kalkulatoren vår hjelper deg med å fordele midlene på lokale, catering og mer.</p>",
+                da: "<h2>Planlægning af dit bryllupsbudget</h2><p>Et stressfrit bryllup starter med et realistisk budget. Vores beregner hjælper dig med at fordele midlerne til lokaler, catering og mere.</p>",
+                fi: "<h2>Hääbudjetin suunnittelu</h2><p>Stressitön hääpäivä alkaa realistisesta budjetista. Suunnittelutyökalumme auttaa sinua jakamaan varat juhlapaikkaan, tarjoiluun ja muuhun.</p>"
             }
         },
         faqs: {
-            en: [{ q: "How should I split my budget?", a: "Venue and catering usually take 50% of the total." }],
-            de: [{ q: "Wie teile ich mein Budget?", a: "Ort und Catering nehmen meist 50% ein." }],
-            es: [{ q: "¿Cómo dividir mi presupuesto?", a: "El lugar y la comida suelen ser el 50%." }],
-            fr: [{ q: "Comment diviser mon budget?", a: "Lieu et traiteur prennent environ 50%." }],
-            pt: [{ q: "Como dividir o orçamento?", a: "Local e buffet geralmente levam 50%." }]
+            it: [{ q: "Come dividere il budget?", a: "Location e catering di solito portano via il 50% del totale." }],
+            nl: [{ q: "Hoe verdeel ik mijn budget?", a: "Locatie en catering nemen meestal 50% van het totaal in beslag." }],
+            pl: [{ q: "Jak podzielić budżet?", a: "Miejsce i catering zazwyczaj pochłaniają 50% całości." }],
+            sv: [{ q: "Hur ska jag dela upp min budget?", a: "Lokal och catering tar vanligtvis 50% av det totala beloppet." }],
+            no: [{ q: "Hvordan bør jeg dele opp budsjettet?", a: "Lokale og catering tar vanligvis 50% av totalbeløpet." }],
+            da: [{ q: "Hvordan skal jeg opdele mit budget?", a: "Lokale og catering tager normalt 50% af det samlede beløb." }],
+            fi: [{ q: "Miten jaan budjettini?", a: "Juhlapaikka ja tarjoilu vievät yleensä 50 % kokonaissummasta." }]
         }
     },
 
@@ -436,19 +511,29 @@ module.exports = {
                 pdfLabel: { en: "Get Free Estimates", es: "Obtener Estimaciones", de: "Angebote Einholen", fr: "Obtenir Devis", pt: "Obter Estimativas", it: "Preventivi Gratuiti", nl: "Gratis Offertes", pl: "Darmowe Wyceny", sv: "Få Gratis Offerter", no: "Få Gratis Tilbud", da: "Få Gratis Tilbud", fi: "Hanki Ilmaiset Tarjoukset" }
             },
             content: {
-                en: "<h2>Is Solar Power Worth It in {{location}}?</h2><p>With rising energy costs in {{state}}, switching to solar has never been more attractive. This calculator estimates your potential for 25-year savings based on your current monthly bill and {{city}} sunlight availability.</p><h3>Understanding Solar ROI in {{location}}</h3><p>Solar panels typically pay for themselves within 6 to 9 years. After that period, the energy generated is essentially free, leading to massive long-term savings for {{city}} homeowners.</p><p><strong>🛡️ No Sales Pitch:</strong> This is an unbiased tool. We don't sell solar panels—we just help you calculate your potential savings.</p>",
-                es: "<h2>¿Vale la pena la energía solar en 2026?</h2><p>Con los costos de energía en aumento, cambiarse a solar es una excelente inversión.</p><p><strong>🛡️ Sin Vendedores:</strong> Esta es una herramienta imparcial.</p>",
-                de: "<h2>Lohnt sich Solar im Jahr 2026?</h2><p>Bei steigenden Energiekosten ist der Umstieg auf Solar attraktiver denn je.</p><p><strong>🛡️ Kein Verkaufsgespräch:</strong> Dies ist ein neutrales Tool.</p>",
-                fr: "<h2>L'énergie solaire en vaut-elle la peine en 2026?</h2><p>Avec l'augmentation des coûts de l'énergie, passer au solaire n'a jamais été aussi intéressant.</p><p><strong>🛡️ Sans Vendeurs:</strong> C'est un outil impartial.</p>",
-                pt: "<h2>Energia Solar vale a pena em 2026?</h2><p>Com o aumento dos custos de energia, a energia solar é um excelente investimento.</p><p><strong>🛡️ Sem Vendedores:</strong> Esta é uma ferramenta imparcial.</p>"
+                pt: "<h2>Energia Solar vale a pena em 2026?</h2><p>Com o aumento dos custos de energia, a energia solar é um excelente investimento.</p><p><strong>🛡️ Sem Vendedores:</strong> Esta é uma ferramenta imparcial.</p>",
+                it: "<h2>L'energia solare conviene nel 2026?</h2><p>Con l'aumento dei costi energetici, passare al solare è un investimento eccellente.</p><p><strong>🛡️ Nessun venditore:</strong> Questo è uno strumento imparziale.</p>",
+                nl: "<h2>Is zonne-energie de moeite waard in 2026?</h2><p>Met stijgende energiekosten is de overstap naar zonne-energie een uitstekende investering.</p><p><strong>🛡️ Geen verkoopverhaal:</strong> Dit is een onafhankelijke tool.</p>",
+                pl: "<h2>Czy energia słoneczna opłaca się w 2026 roku?</h2><p>Przy rosnących kosztach energii przejście na solary to doskonała inwestycja.</p><p><strong>🛡️ Bez sprzedawców:</strong> To jest bezstronne narzędzie.</p>",
+                sv: "<h2>Är solenergi värt det 2026?</h2><p>Med stigande energikostnader är byte till solenergi en utmärkt investering.</p><p><strong>🛡️ Ingen säljare:</strong> Detta är ett objektivt verktyg.</p>",
+                no: "<h2>Er solenergi verdt det i 2026?</h2><p>Med økende energikostnader er bytte til solenergi en utmerket investering.</p><p><strong>🛡️ Ingen selger:</strong> Dette er et nøytralt verktøy.</p>",
+                da: "<h2>Er solenergi det værd i 2026?</h2><p>Med stigende energiomkostninger er skiftet til solenergi en fremragende investering.</p><p><strong>🛡️ Ingen sælger:</strong> Dette è un uvildigt værktøj.</p>",
+                fi: "<h2>Kannattaako aurinkoenergia vuonna 2026?</h2><p>Energian hintojen noustessa aurinkoenergiaan siirtyminen on erinomainen investointi.</p><p><strong>🛡️ Ei myyntipuheita:</strong> Tämä on puolueeton työkalu.</p>"
             }
         },
         faqs: {
             en: [{ q: "How much can I save?", a: "Savings depend on your current bill and local sun hours." }],
-            de: [{ q: "Wie viel kann ich sparen?", a: "Ersparnisse hängen von Ihrer Rechnung und Sonnenstunden ab." }],
+            de: [{ q: "Wie viel kann ik sparen?", a: "Ersparnisse hängen von Ihrer Rechnung und Sonnenstunden ab." }],
             es: [{ q: "¿Cuánto puedo ahorrar?", a: "El ahorro depende de tu factura y horas de sol." }],
             fr: [{ q: "Combien puis-je économiser?", a: "Les économies dépendent de votre facture." }],
-            pt: [{ q: "Quanto posso economizar?", a: "A economia depende da sua conta." }]
+            pt: [{ q: "Quanto posso economizar?", a: "A economia depende da sua conta." }],
+            it: [{ q: "Quanto posso risparmiare?", a: "Il risparmio dipende dalla tua bolletta attuale e dalle ore di sole locali." }],
+            nl: [{ q: "Hoeveel kan ik besparen?", a: "Besparingen hangen af van uw huidige rekening en lokale zonuren." }],
+            pl: [{ q: "Ile mogę zaoszczędzić?", a: "Oszczędności zależą od Twojego rachunku i nasłonecznienia okolicy." }],
+            sv: [{ q: "Hur mycket kan jag spara?", a: "Besparingarna beror på din nuvarande räkning och lokala soltimmar." }],
+            no: [{ q: "Hvor mye kan jeg spare?", a: "Besparelsene avhenger av din nåværende regning og lokale soltimer." }],
+            da: [{ q: "Hvor meget kan jeg spare?", a: "Besparelser afhænger af din nåværende regning og lokale soltimer." }],
+            fi: [{ q: "Kuinka paljon voin säästää?", a: "Säästöt riippuvat nykyisestä laskustasi ja paikallisista aurinkotunneista." }]
         }
     },
 
@@ -477,19 +562,24 @@ module.exports = {
                 pdfLabel: { en: "Get Official Quote", es: "Recibir Presupuesto", de: "Angebot Erhalten", fr: "Recevoir Devis", pt: "Receber Orçamento", it: "Ricevi Preventivo", nl: "Ontvang Offerte", pl: "Otrzymaj Wycenę", sv: "Få Offert", no: "Få Tilbud", da: "Få Officielt Tilbud", fi: "Pyydä Virallinen Tarjous" }
             },
             content: {
-                en: "<h2>Flooring Project Cost Estimation</h2><p>Accurate area measurement is critical for any flooring project. Our calculator includes a waste allowance (standard 10%) and estimates both material costs and professional labor rates.</p>",
-                es: "<h2>Estimación de Costos de Suelo</h2><p>La medición precisa del área es crítica para cualquier proyecto de piso.</p>",
-                de: "<h2>Kostenschätzung für Bodenbeläge</h2><p>Eine genaue Flächenmessung ist entscheidend.</p>",
-                fr: "<h2>Estimation du coût d'un projet de revêtement de sol</h2><p>Une mesure précise de la surface est essentielle.</p>",
-                pt: "<h2>Estimativa de custo de projeto de piso</h2><p>A medição precisa da área é fundamental.</p>"
+                pt: "<h2>Estimativa de custo de projeto de piso</h2><p>A medição precisa da área é fundamental.</p>",
+                it: "<h2>Stima dei costi del progetto pavimento</h2><p>Una misurazione accurata dell\'area è fondamentale. Il nostro calcolatore include lo scarto (standard 10%) e stima sia i costi dei materiali che della manodopera.</p>",
+                nl: "<h2>Schatting van vloerkosten</h2><p>Een nauwkeurige hoogtemeting is cruciaal. Onze calculator bevat een marge (standaard 10%) en schat zowel de materiaalkosten als de arbeidskosten in.</p>",
+                pl: "<h2>Szacowanie kosztów podłogi</h2><p>Dokładny pomiar powierzchni jest kluczowy. Nasz kalkulator uwzględnia zapas (standardowo 10%) oraz szacuje zarówno koszty materiałów, jak i robocizny.</p>",
+                sv: "<h2>Kostnadsuppskattning för golvläggning</h2><p>Noggrann mätning av ytan är avgörande. Vår kalkylator inkluderar spill (standard 10%) och uppskattar både material- och arbetskostnader.</p>",
+                no: "<h2>Kostnadsestimering for gulvlegging</h2><p>Nøyaktig måling av arealet er avgjørende. Kalkulatoren vår inkluderer svinn (standard 10%) og estimerer både material- og arbeidskostnader.</p>",
+                da: "<h2>Kostnadsberegning for gulvlægning</h2><p>Nøjagtig måling af arealet er afgørende. Vores beregner inkluderer spild (standard 10%) og estimerer både materiale- og arbejdsomkostninger.</p>",
+                fi: "<h2>Lattiamateriaalien kustannusarvio</h2><p>Tarkka pinta-alan mittaus on välttämätöntä. Laskurimme sisältää hukkavaran (standardi 10 %) ja arvioi sekä materiaali- että työkustannukset.</p>"
             }
         },
         faqs: {
-            en: [{ q: "What is the average labor cost?", a: "Labor typically costs $2-$5 per sq ft." }],
-            de: [{ q: "Was kostet die Arbeit?", a: "Arbeit kostet typischerweise 20-50€ pro m²." }],
-            es: [{ q: "¿Cuál es el costo de mano de obra?", a: "La mano de obra cuesta $2-$5 por pie cuadrado." }],
-            fr: [{ q: "Quel est le coût de main d'œuvre?", a: "La main d'œuvre coûte 20-50€ par m²." }],
-            pt: [{ q: "Qual o custo da mão de obra?", a: "A mão de obra custa R$ 20-50 por m²." }]
+            it: [{ q: "Qual è il costo medio della manodopera?", a: "La manodopera costa in genere 20-50 € al m²." }],
+            nl: [{ q: "Wat zijn de gemiddelde arbeidskosten?", a: "Arbeid kost doorgaans €20-€50 per m²." }],
+            pl: [{ q: "Jaki jest średni koszt robocizny?", a: "Robocizna kosztuje zazwyczaj 80-200 zł za m²." }],
+            sv: [{ q: "Vad är den genomsnittliga arbetskostnaden?", a: "Arbete kostar vanligtvis 200-500 kr per m²." }],
+            no: [{ q: "Hva er gjennomsnittlig arbeidskostnad?", a: "Arbeid koster vanligvis 200-500 kr per m²." }],
+            da: [{ q: "Hvad er den gennemsnitlige arbejdsløn?", a: "Arbejdsløn koster typisk 150-400 kr. pr. m²." }],
+            fi: [{ q: "Mikä on keskimääräinen työkustannus?", a: "Työ maksaa yleensä 20-50 € per m²." }]
         }
     },
 
@@ -538,11 +628,14 @@ module.exports = {
                 pdfLabel: { en: "Get Your Free Quote", es: "Obtener Presupuesto Gratis", de: "Kostenloses Angebot", fr: "Devis Gratuit", pt: "Orçamento Grátis", it: "Ricevi Preventivo Gratuito", nl: "Krijg Gratis Offerte", pl: "Otrzymaj Darmową Wycenę", sv: "Få Gratis Offert", no: "Få Gratis Tilbud", da: "Få Gratis Tilbud", fi: "Pyydä Ilmainen Tarjous" }
             },
             content: {
-                en: "<h2>Roofing Replacement Cost Factors</h2><p>Replacing a roof is one of the biggest investments a homeowner makes. Total cost is influenced by roof area, pitch, and material choice (asphalt shingle vs. metal).</p>",
-                es: "<h2>Factores de Costo de Reemplazo de Techo</h2><p>Reemplazar un techo es una de las mayores inversiones de un propietario.</p>",
-                de: "<h2>Faktoren für die Kosten einer Dachsanierung</h2><p>Die Erneuerung eines Daches ist eine der größten Investitionen.</p>",
-                fr: "<h2>Facteurs de coût du remplacement d'une toiture</h2><p>Le remplacement d'un toit est l'un des investissements les plus importants.</p>",
-                pt: "<h2>Fatores de custo para substituição de telhado</h2><p>A substituição de um telhado é um dos maiores investimentos.</p>"
+                pt: "<h2>Fatores de custo para substituição de telhado</h2><p>A substituição de um telhado é um dos maiores investimentos.</p>",
+                it: "<h2>Fattori di costo per il rifacimento del tetto</h2><p>Rifare il tetto è uno dei maggiori investimenti per un proprietario di casa. Il costo totale è influenzato dall\'area, dalla pendenza e dalla scelta dei materiali.</p>",
+                nl: "<h2>Kostenfactoren voor dakvervanging</h2><p>Het vervangen van een dak is een van de grootste investeringen. De totale kosten worden beïnvloed door het dakoppervlak, de hellingsgraad en de materiaalkeuze.</p>",
+                pl: "<h2>Czynniki wpływające na koszt wymiany dachu</h2><p>Wymiana dachu to jedna z największych inwestycji. Na całkowity koszt wpływa powierzchnia, nachylenie oraz wybór materiału.</p>",
+                sv: "<h2>Kostnadsfaktorer för takbyte</h2><p>Att byta tak är en av de största investeringarna en husägare gör. Totalkostnaden påverkas av takyta, lutning och materialval.</p>",
+                no: "<h2>Kostnadsfaktorer for takbytte</h2><p>Å bytte tak er en av de største investeringene en huseier gjør. Totalkostnaden påvirkes av takareal, vinkel og materialval.</p>",
+                da: "<h2>Kostnadsfaktorer ved udskiftning af tag</h2><p>Udskiftning af et tag er en af de største investeringer. Den samlede pris påvirkes af tagareal, hældning og materialevalg.</p>",
+                fi: "<h2>Kattoremontin kustannustekijät</h2><p>Katon uusiminen on yksi suurimmista investoinneista. Kokonaiskustannuksiin vaikuttavat pinta-ala, kaltevuus ja materiaalivalinta.</p>"
             }
         },
         faqs: {
@@ -550,7 +643,14 @@ module.exports = {
             de: [{ q: "Wie lange hält ein Dach?", a: "Asphaltdächer halten 20-30 Jahre, Metalldächer 50+ Jahre." }],
             es: [{ q: "¿Cuánto dura un techo?", a: "Los techos de asfalto duran 20-30 años, los de metal 50+." }],
             fr: [{ q: "Combien de temps dure un toit?", a: "Les toits en asphalte durent 20-30 ans, en métal 50+." }],
-            pt: [{ q: "Quanto dura um telhado?", a: "Telhados de asfalto duram 20-30 anos, de metal 50+." }]
+            pt: [{ q: "Quanto dura um telhado?", a: "Telhados de asfalto duram 20-30 anos, de metal 50+." }],
+            it: [{ q: "Quanto dura un tetto?", a: "I tetti in asfalto durano 20-30 anni, quelli in metallo oltre 50 anni." }],
+            nl: [{ q: "Hoe lang gaat een dak mee?", a: "Asfaltdaken gaan 20-30 jaar mee, metalen daken 50+ jaar." }],
+            pl: [{ q: "Jak długo wytrzymuje dach?", a: "Dachy asfaltowe wytrzymują 20-30 lat, dachy metalowe ponad 50 lat." }],
+            sv: [{ q: "Hur länge håller ett tak?", a: "Asfalttak håller 20-30 år, metaltak 50+ år." }],
+            no: [{ q: "Hvor lenge varer et tak?", a: "Asfalttak varer i 20-30 år, metalltak i 50+ år." }],
+            da: [{ q: "Hvor længe holder et tag?", a: "Tagpaptage holder 20-30 år, metaltage 50+ år." }],
+            fi: [{ q: "Kuinka kauan katto kestää?", a: "Huopakatot kestävät 20-30 vuotta, peltikatot yli 50 vuotta." }]
         }
     }
 };

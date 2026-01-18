@@ -12,41 +12,23 @@ permalink: "/{% if home.lang != 'en' %}{{ home.lang }}/{% endif %}index.html"
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ ui.homeTitle[home.lang] | default("CalcKit - Free Professional Calculators") }}</title>
     <meta name="description" content="{{ ui.homeDesc[home.lang] | default("Free online calculators for mortgages, loans, ROI, and more. Accurate, fast, and easy to use.") }}">
-    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
-    <link rel="apple-touch-icon" href="/assets/images/favicon.png">
+    <link rel="icon" type="image/png" href="/assets/images/logo.png">
+    <link rel="apple-touch-icon" href="/assets/images/logo.png">
     <meta property="og:image" content="{{ site.url }}/assets/images/og-image.png">
     <meta name="twitter:image" content="{{ site.url }}/assets/images/og-image.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/style.css">
-    <script>
-        // Language Auto-detection & Redirection
-        (function() {
-            const supportedLangs = {{ site.languages | map('code') | dump | safe }};
-            const defaultLang = '{{ site.defaultLang }}';
-            
-            // 1. Check if we are already on a localized path or if this is the root
-            const path = window.location.pathname;
-            const isRoot = path === '/' || path === '/index.html';
-            
-            if (isRoot) {
-                // 2. Priority: localStorage > Browser Language > Default
-                const preferredLang = localStorage.getItem('preferred_lang');
-                let targetLang = preferredLang;
-                
-                if (!targetLang) {
-                    const browserLang = navigator.language.split('-')[0];
-                    if (supportedLangs.includes(browserLang)) {
-                        targetLang = browserLang;
-                    }
-                }
-                
-                // 3. Redirect if target is not the current default (assuming root is default)
-                if (targetLang && targetLang !== defaultLang && supportedLangs.includes(targetLang)) {
-                    window.location.href = '/' + targetLang + '/';
-                }
-            }
-        })();
+    
+    <!-- Google Search Logo Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "url": "{{ site.url }}",
+      "logo": "{{ site.url }}/assets/images/logo.png"
+    }
     </script>
+    {% include "components/language-redirect.njk" %}
     <style>
         /* Hero Section - Epic */
         .hero-home { 

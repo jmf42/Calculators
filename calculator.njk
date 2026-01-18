@@ -14,6 +14,11 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     <title>{{ calc.title | safe }} | {{ site.name }}</title>
     <meta name="description" content="{{ calc.metaDescription | safe }}">
     
+    {% if site.analytics.adSenseId %}
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.analytics.adSenseId }}" crossorigin="anonymous"></script>
+    {% endif %}
+    
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="{{ site.url }}/{{ calc.lang }}/{{ calc.slug }}/">
     
@@ -42,7 +47,8 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     <meta name="generator" content="CalcKit Engine">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+    <link rel="icon" type="image/png" href="/assets/images/logo.png">
+    <link rel="apple-touch-icon" href="/assets/images/logo.png">
     
     <!-- Schema.org Calculator -->
     <script type="application/ld+json">
@@ -61,7 +67,8 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
         "author": {
             "@type": "Organization",
             "name": "{{ site.name }}",
-            "url": "{{ site.url }}"
+            "url": "{{ site.url }}",
+            "logo": "{{ site.url }}/assets/images/logo.png"
         }
     }
     </script>
@@ -99,6 +106,7 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/{{ manifest['style.css'] | default('style.css') }}">
+    {% include "components/language-redirect.njk" %}
 </head>
 
 <body data-calculator-type="{{ calc.type }}">
