@@ -68,21 +68,22 @@
 
     /**
      * Detect user location via IP geolocation API
+     * using geojs.io (supports HTTPS and is free)
      */
     async function detectLocation() {
         try {
-            // Use ip-api.com (free, no key required, 45 req/min limit)
-            const response = await fetch('https://ip-api.com/json/?fields=status,country,countryCode,region,regionName');
+            // Use get.geojs.io (free, supports HTTPS, no rate limit issues typically)
+            // Original ip-api.com fails on HTTPS sites due to mixed content
+            const response = await fetch('https://get.geojs.io/v1/ip/geo.json');
             if (!response.ok) throw new Error('Geo API failed');
 
             const data = await response.json();
-            if (data.status !== 'success') throw new Error('Geo lookup failed');
 
             return {
                 country: data.country,
-                countryCode: data.countryCode.toLowerCase(),
-                region: data.region,
-                regionName: data.regionName
+                countryCode: data.country_code ? data.country_code.toLowerCase() : null,
+                region: data.region_code ? data.region_code.toLowerCase() : null, // CA, TX, etc.
+                regionName: data.region
             };
         } catch (error) {
             console.log('CalcKit Geo: Could not detect location', error);
