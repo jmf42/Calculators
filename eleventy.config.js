@@ -30,17 +30,19 @@ module.exports = function (eleventyConfig) {
         return languages.map(lang => ({ lang }));
     });
 
-    // Generate all calculator pages dynamically (Base + Niches + Locations)
+    // Generate all calculator pages dynamically (Base + Niches + Locations + US States + Countries)
     eleventyConfig.addCollection("calculatorPages", function (collectionApi) {
         const calculators = require("./_data/calculators.js");
         const niches = require("./_data/niches.json");
         const locations = require("./_data/locations.json");
+        const usStates = require("./_data/us-states.json");
+        const countries = require("./_data/countries.json");
         const site = require("./_data/site.js");
         const languages = site.languages.map(l => l.code);
         let pages = [];
 
         // Helper to create page object
-        const createPage = ({ type, lang, slug, title, subtitle, overrides, location = null, isNiche = false }) => {
+        const createPage = ({ type, lang, slug, title, subtitle, overrides, location = null, isNiche = false, localTips = null, localFaqs = null, currencySymbol = null, stateData = null, countryData = null }) => {
             const baseCalc = calculators[type];
             let config = JSON.parse(JSON.stringify(baseCalc.config));
 
@@ -71,6 +73,35 @@ module.exports = function (eleventyConfig) {
                 }
             }
 
+            // Apply State-specific defaults for mortgage
+            if (stateData && stateData.mortgage && type === 'mortgage') {
+                const priceField = config.fields.find(f => f.id === 'price');
+                if (priceField && stateData.mortgage.medianPrice) {
+                    priceField.default = stateData.mortgage.medianPrice;
+                }
+                // Could also apply propertyTaxRate, homeInsurance to other fields if they exist
+            }
+
+            // Apply Country-specific defaults for mortgage
+            if (countryData && countryData.mortgage && type === 'mortgage') {
+                const priceField = config.fields.find(f => f.id === 'price');
+                if (priceField && countryData.mortgage.medianPrice) {
+                    priceField.default = countryData.mortgage.medianPrice;
+                }
+                const rateField = config.fields.find(f => f.id === 'rate');
+                if (rateField && countryData.mortgage.typicalRate) {
+                    rateField.default = countryData.mortgage.typicalRate;
+                }
+                const termField = config.fields.find(f => f.id === 'term' || f.id === 'years');
+                if (termField && countryData.mortgage.typicalTerm) {
+                    termField.default = countryData.mortgage.typicalTerm;
+                }
+                const downField = config.fields.find(f => f.id === 'downPayment' || f.id === 'down');
+                if (downField && countryData.mortgage.downPayment) {
+                    downField.default = countryData.mortgage.downPayment;
+                }
+            }
+
             return {
                 type: type,
                 lang: lang,
@@ -84,9 +115,13 @@ module.exports = function (eleventyConfig) {
                 content: (baseCalc.content?.[lang] || '').replace(/{{location}}/g, location ? `${location.name}, ${location.state}` : '')
                     .replace(/{{city}}/g, location ? location.name : '')
                     .replace(/{{state}}/g, location ? location.state : ''),
-                faqs: baseCalc.faqs?.[lang] || [],
+                faqs: localFaqs || baseCalc.faqs?.[lang] || [],
                 location: location,
-                isNiche: isNiche
+                isNiche: isNiche,
+                localTips: localTips,
+                currencySymbol: currencySymbol,
+                stateData: stateData,
+                countryData: countryData
             };
         };
 
@@ -146,8 +181,60 @@ module.exports = function (eleventyConfig) {
             });
         });
 
+        // 4. Generate US State Pages (English only, for mortgage calculator)
+        Object.keys(usStates).forEach(stateKey => {
+            const state = usStates[stateKey];
+            const mortgageCalc = calculators['mortgage'];
+            if (!mortgageCalc) return;
+
+            // Create state-specific mortgage page
+            const slug = `mortgage-calculator-${state.slug}`;
+            const title = `Mortgage Calculator ${state.name} (${state.abbr}) ${site.year}`;
+            const subtitle = `Calculate mortgage payments with ${state.name} tax rates and insurance costs`;
+
+            pages.push(createPage({
+                type: 'mortgage',
+                lang: 'en',
+                slug: slug,
+                title: title,
+                subtitle: subtitle,
+                stateData: state,
+                localTips: state.mortgage?.tips || [],
+                localFaqs: state.mortgage?.faqs || []
+            }));
+        });
+
+        // 5. Generate Country Pages (in appropriate language)
+        Object.keys(countries).forEach(countryKey => {
+            const country = countries[countryKey];
+            const mortgageCalc = calculators['mortgage'];
+            if (!mortgageCalc) return;
+
+            const lang = country.language;
+            const baseSlug = mortgageCalc.slugs[lang] || mortgageCalc.slugs['en'];
+
+            // Create country-specific mortgage page
+            // URL format: /es/argentina/calculadora-hipoteca/
+            const slug = `${country.slug}/${baseSlug}`;
+            const title = `${mortgageCalc.titles[lang] || mortgageCalc.titles['en']} ${country.nameLocalized} ${site.year}`;
+            const subtitle = `${mortgageCalc.subtitles[lang] || mortgageCalc.subtitles['en']} - ${country.nameLocalized}`;
+
+            pages.push(createPage({
+                type: 'mortgage',
+                lang: lang,
+                slug: slug,
+                title: title,
+                subtitle: subtitle,
+                countryData: country,
+                currencySymbol: country.currencySymbol,
+                localTips: country.mortgage?.tips?.[lang] || country.mortgage?.tips || [],
+                localFaqs: country.mortgage?.faqs?.[lang] || country.mortgage?.faqs || []
+            }));
+        });
+
         return pages;
     });
+
 
     // Minify HTML in production
     if (process.env.NODE_ENV === 'production') {

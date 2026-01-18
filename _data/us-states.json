@@ -1,0 +1,817 @@
+{
+    "texas": {
+        "name": "Texas",
+        "abbr": "TX",
+        "slug": "texas",
+        "mortgage": {
+            "medianPrice": 340000,
+            "propertyTaxRate": 1.80,
+            "homeInsurance": 2400,
+            "hasStateIncomeTax": false,
+            "tips": [
+                "Texas has no state income tax, but property taxes average 1.8% — among the highest in the US.",
+                "Home insurance is higher in coastal and northern areas due to hurricane and tornado risk.",
+                "Apply for the homestead exemption to reduce your taxable home value by up to $100,000.",
+                "Many Texas cities have additional local property taxes on top of county rates."
+            ],
+            "faqs": [
+                {
+                    "q": "Does Texas have state income tax?",
+                    "a": "No, Texas is one of nine states with no state income tax. However, this is offset by higher property taxes (1.8% average vs. 1.1% national average)."
+                },
+                {
+                    "q": "What is a homestead exemption in Texas?",
+                    "a": "The homestead exemption reduces the taxable value of your primary residence by $100,000 for school district taxes, significantly lowering your property tax bill."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 5.0,
+            "electricRate": 0.12,
+            "tips": [
+                "Texas averages 5+ peak sun hours daily — excellent for solar.",
+                "No state solar tax credit, but the federal 30% ITC applies.",
+                "Many Texas utilities offer net metering or buyback programs.",
+                "Property tax exemption: Solar installations don't increase your property taxes."
+            ]
+        },
+        "roofing": {
+            "laborRate": 4.50,
+            "tips": [
+                "Texas experiences severe hail storms — consider impact-resistant shingles.",
+                "Metal roofing is popular in Texas due to heat reflection properties.",
+                "Get multiple quotes; prices vary significantly between DFW, Houston, and Austin."
+            ]
+        }
+    },
+    "california": {
+        "name": "California",
+        "abbr": "CA",
+        "slug": "california",
+        "mortgage": {
+            "medianPrice": 750000,
+            "propertyTaxRate": 0.76,
+            "homeInsurance": 1400,
+            "hasStateIncomeTax": true,
+            "tips": [
+                "Prop 13 limits property tax increases to 2% annually — taxes are based on purchase price, not current value.",
+                "California has the highest state income tax (up to 13.3%), factor this into affordability.",
+                "Many areas require earthquake insurance (not included in standard policies).",
+                "Consider jumbo loan requirements — conforming limits are higher in high-cost areas."
+            ],
+            "faqs": [
+                {
+                    "q": "What is Proposition 13?",
+                    "a": "Prop 13 limits property taxes to 1% of the purchase price plus local bonds, with annual increases capped at 2%. This means long-time homeowners pay much less than new buyers."
+                },
+                {
+                    "q": "Do I need earthquake insurance in California?",
+                    "a": "It's not legally required but highly recommended. The California Earthquake Authority (CEA) offers policies. Standard homeowners insurance does NOT cover earthquake damage."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 5.5,
+            "electricRate": 0.25,
+            "tips": [
+                "California has the highest electricity rates in the continental US — solar pays off fast.",
+                "NEM 3.0 changed net metering rules in 2023 — battery storage is now more valuable.",
+                "Many utilities offer time-of-use rates where solar + battery maximizes savings.",
+                "California requires solar on most new homes built after 2020."
+            ]
+        },
+        "roofing": {
+            "laborRate": 6.50,
+            "tips": [
+                "Labor costs are 30-40% higher in California than the national average.",
+                "Cool roof requirements exist in many California cities to reduce heat.",
+                "Fire-resistant roofing may be required in fire-prone areas."
+            ]
+        }
+    },
+    "florida": {
+        "name": "Florida",
+        "abbr": "FL",
+        "slug": "florida",
+        "mortgage": {
+            "medianPrice": 400000,
+            "propertyTaxRate": 0.89,
+            "homeInsurance": 4200,
+            "hasStateIncomeTax": false,
+            "tips": [
+                "Florida has NO state income tax — a major benefit for high earners.",
+                "Home insurance is the highest in the nation due to hurricane risk ($4,000-6,000/year).",
+                "Flood insurance is often required and adds $1,000-3,000+ annually.",
+                "Save Our Homes limits assessment increases to 3% per year for primary residences."
+            ],
+            "faqs": [
+                {
+                    "q": "Why is Florida home insurance so expensive?",
+                    "a": "Hurricane risk drives costs. Many national insurers have left Florida, and state-backed Citizens Insurance is often the only option. Rates average $4,000-6,000/year."
+                },
+                {
+                    "q": "Do I need flood insurance in Florida?",
+                    "a": "If you have a federally-backed mortgage in a high-risk flood zone, yes. Even in moderate zones, it's strongly recommended. Flood damage is NOT covered by standard homeowners insurance."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 5.5,
+            "electricRate": 0.13,
+            "tips": [
+                "Florida is the 'Sunshine State' with excellent solar potential.",
+                "No state income tax means you can't claim state solar credits, but federal 30% ITC applies.",
+                "Hurricane-rated solar panels are recommended and may lower insurance costs.",
+                "Florida prohibits HOAs from banning solar panels."
+            ]
+        },
+        "roofing": {
+            "laborRate": 5.00,
+            "tips": [
+                "Florida Building Code requires hurricane-rated roofing in most areas.",
+                "Metal roofing is popular for hurricane resistance and longevity.",
+                "Some insurers offer discounts for impact-resistant roofing."
+            ]
+        }
+    },
+    "new-york": {
+        "name": "New York",
+        "abbr": "NY",
+        "slug": "new-york",
+        "mortgage": {
+            "medianPrice": 550000,
+            "propertyTaxRate": 1.69,
+            "homeInsurance": 1600,
+            "hasStateIncomeTax": true,
+            "tips": [
+                "New York has high property taxes (1.69% average) plus state income tax up to 10.9%.",
+                "NYC has additional city income tax (up to 3.88%).",
+                "STAR exemption reduces school property taxes for primary residences.",
+                "Upstate NY is significantly more affordable than NYC metro area."
+            ],
+            "faqs": [
+                {
+                    "q": "What is the STAR exemption?",
+                    "a": "The School Tax Relief (STAR) program provides a property tax reduction for primary residences. Basic STAR saves about $300/year; Enhanced STAR for seniors saves about $650/year."
+                },
+                {
+                    "q": "Is it cheaper to buy upstate?",
+                    "a": "Yes. Median home prices upstate (Buffalo, Syracuse, Rochester) are $200,000-300,000 compared to $550,000+ in NYC metro and over $1M in Manhattan."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 3.5,
+            "electricRate": 0.20,
+            "tips": [
+                "NY-Sun initiative offers incentives up to $0.20/watt for residential solar.",
+                "High electricity rates make solar attractive despite fewer sun hours.",
+                "Net metering is available with full retail credit.",
+                "Property tax exemption for 15 years on solar improvements."
+            ]
+        },
+        "roofing": {
+            "laborRate": 6.00,
+            "tips": [
+                "Harsh winters require roofing rated for snow loads and ice dams.",
+                "Licensed contractor requirements are strict in NYC.",
+                "Consider ice and water shield underlayment for protection."
+            ]
+        }
+    },
+    "pennsylvania": {
+        "name": "Pennsylvania",
+        "abbr": "PA",
+        "slug": "pennsylvania",
+        "mortgage": {
+            "medianPrice": 280000,
+            "propertyTaxRate": 1.58,
+            "homeInsurance": 1100,
+            "hasStateIncomeTax": true,
+            "tips": [
+                "Pennsylvania has a flat 3.07% state income tax — one of the lowest rates.",
+                "Property taxes vary significantly by county (0.9% to over 2%).",
+                "No sales tax on home purchases or building materials.",
+                "Philadelphia has additional city wage and property taxes."
+            ],
+            "faqs": [
+                {
+                    "q": "Why do property taxes vary so much in PA?",
+                    "a": "Pennsylvania relies heavily on local property taxes to fund schools. Each of 500 school districts sets its own rate, leading to huge variations even in neighboring towns."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 3.8,
+            "electricRate": 0.14,
+            "tips": [
+                "PA offers Solar Renewable Energy Credits (SRECs) worth $20-40 per credit.",
+                "Net metering available with full retail credit.",
+                "Property tax exemption for solar improvements in some counties."
+            ]
+        },
+        "roofing": {
+            "laborRate": 4.50,
+            "tips": [
+                "Cold winters require ice dam protection and snow load considerations.",
+                "Slate roofing is traditional in PA — repairs require specialists."
+            ]
+        }
+    },
+    "illinois": {
+        "name": "Illinois",
+        "abbr": "IL",
+        "slug": "illinois",
+        "mortgage": {
+            "medianPrice": 270000,
+            "propertyTaxRate": 2.27,
+            "homeInsurance": 1300,
+            "hasStateIncomeTax": true,
+            "tips": [
+                "Illinois has the second-highest property taxes in the US (2.27% average).",
+                "Cook County (Chicago) has complex assessment and appeal systems.",
+                "Flat 4.95% state income tax applies to all income levels.",
+                "Senior citizens may qualify for a Senior Freeze to lock in assessments."
+            ],
+            "faqs": [
+                {
+                    "q": "Why are Illinois property taxes so high?",
+                    "a": "Illinois relies on property taxes for 40% of state and local revenue (vs. 30% nationally). Pension obligations also drive high local tax levies."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 4.0,
+            "electricRate": 0.13,
+            "tips": [
+                "Illinois Shines program offers significant rebates for solar installation.",
+                "SRECs in Illinois can be worth $60-80 per credit.",
+                "ComEd offers net metering with full retail credit."
+            ]
+        },
+        "roofing": {
+            "laborRate": 4.50,
+            "tips": [
+                "Chicago and northern IL require roofing rated for heavy snow loads.",
+                "Flat roofs common in Chicago require specialized maintenance."
+            ]
+        }
+    },
+    "ohio": {
+        "name": "Ohio",
+        "abbr": "OH",
+        "slug": "ohio",
+        "mortgage": {
+            "medianPrice": 220000,
+            "propertyTaxRate": 1.59,
+            "homeInsurance": 900,
+            "hasStateIncomeTax": true,
+            "tips": [
+                "Ohio offers a homestead exemption reducing taxable value by $25,000 for those 65+.",
+                "Property values are reassessed every 3 years — expect fluctuations.",
+                "State income tax ranges from 0% to 3.75% (recently reduced).",
+                "Very affordable compared to coastal states."
+            ],
+            "faqs": [
+                {
+                    "q": "What is Ohio's owner-occupancy tax reduction?",
+                    "a": "Ohio offers a 2.5% reduction in property taxes for owner-occupied homes. You must apply with your county auditor to receive this credit."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 3.8,
+            "electricRate": 0.12,
+            "tips": [
+                "Net metering available but capped at 100% of usage.",
+                "No state solar tax credit — rely on federal 30% ITC.",
+                "Some utilities offer time-of-use rates that benefit solar."
+            ]
+        },
+        "roofing": {
+            "laborRate": 4.00,
+            "tips": [
+                "Ohio winters require ice dam protection.",
+                "Asphalt shingles are most common and cost-effective."
+            ]
+        }
+    },
+    "georgia": {
+        "name": "Georgia",
+        "abbr": "GA",
+        "slug": "georgia",
+        "mortgage": {
+            "medianPrice": 350000,
+            "propertyTaxRate": 0.92,
+            "homeInsurance": 1500,
+            "hasStateIncomeTax": true,
+            "tips": [
+                "Georgia is reducing income tax to a flat 5.49% (down from 5.75%).",
+                "Homestead exemption can reduce taxable value by $2,000-$10,000.",
+                "Atlanta metro has higher prices than rest of state.",
+                "Property taxes are relatively low compared to northern states."
+            ],
+            "faqs": [
+                {
+                    "q": "What exemptions are available in Georgia?",
+                    "a": "The basic homestead exemption saves about $100/year. Seniors 65+ may qualify for additional exemptions on school taxes. Disabled veterans may be fully exempt."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 5.0,
+            "electricRate": 0.12,
+            "tips": [
+                "Georgia gets excellent sun with 5+ peak hours daily.",
+                "Georgia Power offers net metering up to 10kW systems.",
+                "No state solar incentives — federal 30% ITC is the main benefit."
+            ]
+        },
+        "roofing": {
+            "laborRate": 4.00,
+            "tips": [
+                "Hot summers mean ventilation is crucial for roof longevity.",
+                "Metal roofing is growing in popularity for heat reflection."
+            ]
+        }
+    },
+    "north-carolina": {
+        "name": "North Carolina",
+        "abbr": "NC",
+        "slug": "north-carolina",
+        "mortgage": {
+            "medianPrice": 325000,
+            "propertyTaxRate": 0.84,
+            "homeInsurance": 1400,
+            "hasStateIncomeTax": true,
+            "tips": [
+                "NC has dropped income tax to a flat 5.25% (declining to 3.99% by 2027).",
+                "Property taxes are among the lowest in the Southeast.",
+                "Charlotte and Raleigh metros have higher prices than rural areas.",
+                "No tax on Social Security benefits."
+            ],
+            "faqs": [
+                {
+                    "q": "Is North Carolina a good state for retirees?",
+                    "a": "Yes. NC doesn't tax Social Security benefits, has low property taxes, moderate climate, and lower cost of living than many states. It's consistently ranked among top retirement destinations."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 4.8,
+            "electricRate": 0.11,
+            "tips": [
+                "Duke Energy offers rebates for solar installations.",
+                "North Carolina is a top-10 state for solar capacity.",
+                "Property tax exemption for 80% of solar system value."
+            ]
+        },
+        "roofing": {
+            "laborRate": 4.00,
+            "tips": [
+                "Coastal areas require hurricane-resistant roofing.",
+                "Mountain areas need snow load considerations."
+            ]
+        }
+    },
+    "michigan": {
+        "name": "Michigan",
+        "abbr": "MI",
+        "slug": "michigan",
+        "mortgage": {
+            "medianPrice": 230000,
+            "propertyTaxRate": 1.54,
+            "homeInsurance": 1100,
+            "hasStateIncomeTax": true,
+            "tips": [
+                "Michigan has a flat 4.25% state income tax.",
+                "Property taxes capped at 5% annual increase on existing homeowners (Proposal A).",
+                "Detroit and Flint have very affordable home prices but higher taxes.",
+                "Principal Residence Exemption (PRE) reduces school taxes by 18 mills."
+            ],
+            "faqs": [
+                {
+                    "q": "What is Michigan's Principal Residence Exemption?",
+                    "a": "The PRE exempts your primary home from the 18-mill school operating tax. This can save $2,000-4,000+ annually depending on your home's value."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 3.5,
+            "electricRate": 0.16,
+            "tips": [
+                "Michigan has decent solar potential despite cloudy reputation.",
+                "DTE and Consumers Energy offer net metering.",
+                "No state solar incentives — use federal 30% ITC."
+            ]
+        },
+        "roofing": {
+            "laborRate": 4.25,
+            "tips": [
+                "Heavy lake-effect snow in some areas requires sturdy roofing.",
+                "Ice dams are common — proper ventilation is essential."
+            ]
+        }
+    },
+    "new-jersey": {
+        "name": "New Jersey",
+        "abbr": "NJ",
+        "slug": "new-jersey",
+        "mortgage": {
+            "medianPrice": 480000,
+            "propertyTaxRate": 2.49,
+            "homeInsurance": 1200,
+            "hasStateIncomeTax": true,
+            "tips": [
+                "New Jersey has the HIGHEST property taxes in the nation (2.49% average).",
+                "State income tax ranges from 1.4% to 10.75%.",
+                "Property tax relief programs include ANCHOR ($1,500 for homeowners).",
+                "School district quality varies significantly — taxes correlate with schools."
+            ],
+            "faqs": [
+                {
+                    "q": "Why are NJ property taxes so high?",
+                    "a": "NJ has 565 municipalities and 600+ school districts, each with its own budget. This fragmentation plus strong unions and pension costs drive high taxes."
+                },
+                {
+                    "q": "Are there any tax relief programs?",
+                    "a": "Yes. ANCHOR provides $1,500 for homeowners earning under $150K. Senior Freeze locks in property taxes for seniors 65+. Veterans may qualify for deductions."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 4.0,
+            "electricRate": 0.17,
+            "tips": [
+                "NJ has excellent solar incentives through the Transition Incentive (TI) program.",
+                "TRECs (Transition Renewable Energy Certificates) provide ongoing payments.",
+                "Full retail net metering available.",
+                "No sales tax on solar equipment."
+            ]
+        },
+        "roofing": {
+            "laborRate": 5.50,
+            "tips": [
+                "Labor costs are high in the NYC metro corridor.",
+                "Hurricane-rated materials recommended in coastal areas."
+            ]
+        }
+    },
+    "virginia": {
+        "name": "Virginia",
+        "abbr": "VA",
+        "slug": "virginia",
+        "mortgage": {
+            "medianPrice": 400000,
+            "propertyTaxRate": 0.82,
+            "homeInsurance": 1300,
+            "hasStateIncomeTax": true,
+            "tips": [
+                "Virginia has relatively low property taxes (0.82% average).",
+                "State income tax tops out at 5.75%.",
+                "Northern Virginia (DC suburbs) is much more expensive than the rest of state.",
+                "Virginia offers first-time homebuyer programs through VHDA."
+            ],
+            "faqs": [
+                {
+                    "q": "Is Northern Virginia more expensive?",
+                    "a": "Yes, significantly. Median prices in Arlington/Fairfax ($600K-1M) are 2-3x the state average. Southwest Virginia has homes under $200K."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 4.5,
+            "electricRate": 0.12,
+            "tips": [
+                "Virginia passed the Clean Economy Act requiring 100% clean energy by 2050.",
+                "Dominion Energy offers net metering programs.",
+                "Property tax exemption available at local level."
+            ]
+        },
+        "roofing": {
+            "laborRate": 4.50,
+            "tips": [
+                "Coastal areas (Hampton Roads) need hurricane-resistant materials.",
+                "Mountain areas need snow load considerations."
+            ]
+        }
+    },
+    "washington": {
+        "name": "Washington",
+        "abbr": "WA",
+        "slug": "washington",
+        "mortgage": {
+            "medianPrice": 580000,
+            "propertyTaxRate": 1.03,
+            "homeInsurance": 1100,
+            "hasStateIncomeTax": false,
+            "tips": [
+                "Washington has NO state income tax — only 9 states share this benefit.",
+                "High sales tax (6.5% state + local = up to 10.4%).",
+                "Seattle metro is very expensive; eastern WA is much more affordable.",
+                "Real estate excise tax (REET) of 1.1-3% applies when selling."
+            ],
+            "faqs": [
+                {
+                    "q": "What is Washington's Real Estate Excise Tax?",
+                    "a": "REET is a tax on selling property (not buying). It ranges from 1.1% to 3% depending on sale price. It's typically paid by the seller."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 3.5,
+            "electricRate": 0.10,
+            "tips": [
+                "Low electricity rates reduce solar ROI but it's still viable.",
+                "Washington has good net metering through 2029.",
+                "No state solar incentives — federal 30% ITC applies.",
+                "Eastern Washington has much better sun than Seattle."
+            ]
+        },
+        "roofing": {
+            "laborRate": 5.50,
+            "tips": [
+                "Seattle's rainy climate requires excellent waterproofing.",
+                "Moss growth on roofs is common — maintenance is important."
+            ]
+        }
+    },
+    "arizona": {
+        "name": "Arizona",
+        "abbr": "AZ",
+        "slug": "arizona",
+        "mortgage": {
+            "medianPrice": 420000,
+            "propertyTaxRate": 0.66,
+            "homeInsurance": 1200,
+            "hasStateIncomeTax": true,
+            "tips": [
+                "Arizona has a flat 2.5% income tax — among the lowest in the nation.",
+                "Property taxes are also very low (0.66% average).",
+                "Phoenix and Scottsdale are pricier; Tucson is more affordable.",
+                "HOA fees can be high in planned communities."
+            ],
+            "faqs": [
+                {
+                    "q": "What makes Arizona attractive for homebuyers?",
+                    "a": "Low taxes (2.5% flat income tax, 0.66% property tax), no tax on Social Security, warm climate, and strong job market make AZ popular for working professionals and retirees."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 6.5,
+            "electricRate": 0.12,
+            "tips": [
+                "Arizona has the BEST solar potential in the US with 6.5+ peak sun hours.",
+                "APS and SRP offer varying net metering policies — check your utility.",
+                "Federal 30% ITC is the main incentive — no state credit.",
+                "Solar pays off quickly due to excellent sun exposure."
+            ]
+        },
+        "roofing": {
+            "laborRate": 4.50,
+            "tips": [
+                "Tile roofing is dominant due to heat resistance and aesthetics.",
+                "Cool roof coatings can reduce cooling costs by 20%.",
+                "Flat roofs common in southwestern-style homes."
+            ]
+        }
+    },
+    "massachusetts": {
+        "name": "Massachusetts",
+        "abbr": "MA",
+        "slug": "massachusetts",
+        "mortgage": {
+            "medianPrice": 550000,
+            "propertyTaxRate": 1.23,
+            "homeInsurance": 1500,
+            "hasStateIncomeTax": true,
+            "tips": [
+                "Massachusetts has a flat 5% income tax (reduced from 5.1%).",
+                "Property taxes are moderate but home prices are high.",
+                "Boston metro is very expensive; western MA is more affordable.",
+                "First-time buyer programs available through MassHousing."
+            ],
+            "faqs": [
+                {
+                    "q": "What is MassHousing?",
+                    "a": "MassHousing offers affordable mortgages for first-time homebuyers with down payment assistance up to $50,000 and competitive rates. Income limits apply."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 3.8,
+            "electricRate": 0.24,
+            "tips": [
+                "MA has high electricity rates — solar pays off despite fewer sun hours.",
+                "SMART program provides incentives for new solar installations.",
+                "Net metering available with full retail credit.",
+                "No sales tax on solar equipment."
+            ]
+        },
+        "roofing": {
+            "laborRate": 6.00,
+            "tips": [
+                "Harsh winters require ice dam protection and snow guards.",
+                "Labor costs are high in the Boston metro area."
+            ]
+        }
+    },
+    "tennessee": {
+        "name": "Tennessee",
+        "abbr": "TN",
+        "slug": "tennessee",
+        "mortgage": {
+            "medianPrice": 340000,
+            "propertyTaxRate": 0.71,
+            "homeInsurance": 1400,
+            "hasStateIncomeTax": false,
+            "tips": [
+                "Tennessee has NO state income tax — a major draw for residents.",
+                "Property taxes are very low (0.71% average).",
+                "Nashville metro has seen rapid price appreciation.",
+                "High sales tax (9.55% combined state + local) offsets no income tax."
+            ],
+            "faqs": [
+                {
+                    "q": "Is Tennessee a good state for taxes?",
+                    "a": "For income: yes, there's no state income tax. But Tennessee has one of the highest sales taxes (9.55%). Property taxes are low. Overall tax burden is moderate."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 4.5,
+            "electricRate": 0.11,
+            "tips": [
+                "TVA (Tennessee Valley Authority) has low electric rates, reducing solar ROI.",
+                "No state solar incentives — rely on federal 30% ITC.",
+                "Net metering policies vary by utility."
+            ]
+        },
+        "roofing": {
+            "laborRate": 4.00,
+            "tips": [
+                "Tornadoes are a risk — consider impact-resistant materials.",
+                "Hot summers mean ventilation is important."
+            ]
+        }
+    },
+    "indiana": {
+        "name": "Indiana",
+        "abbr": "IN",
+        "slug": "indiana",
+        "mortgage": {
+            "medianPrice": 230000,
+            "propertyTaxRate": 0.85,
+            "homeInsurance": 1000,
+            "hasStateIncomeTax": true,
+            "tips": [
+                "Indiana has a low flat income tax of 3.15%.",
+                "Property taxes capped at 1% for homesteads, 2% for rentals.",
+                "Indianapolis metro is moderately priced; rural areas very affordable.",
+                "Homestead deduction and mortgage deduction available."
+            ],
+            "faqs": [
+                {
+                    "q": "What is Indiana's property tax cap?",
+                    "a": "Indiana caps property taxes at 1% of assessed value for primary residences (homesteads), 2% for apartments/rentals, and 3% for commercial. This provides predictability."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 4.0,
+            "electricRate": 0.12,
+            "tips": [
+                "Net metering available but policies vary by utility.",
+                "No state solar incentives — federal 30% ITC is the main benefit.",
+                "Some utilities offer solar buyback programs."
+            ]
+        },
+        "roofing": {
+            "laborRate": 4.00,
+            "tips": [
+                "Cold winters require proper insulation and ice dam prevention.",
+                "Asphalt shingles are the most common and economical choice."
+            ]
+        }
+    },
+    "missouri": {
+        "name": "Missouri",
+        "abbr": "MO",
+        "slug": "missouri",
+        "mortgage": {
+            "medianPrice": 250000,
+            "propertyTaxRate": 0.97,
+            "homeInsurance": 1400,
+            "hasStateIncomeTax": true,
+            "tips": [
+                "Missouri income tax tops out at 4.95% (reduced from 5.4%).",
+                "Property taxes are moderate and vary by county.",
+                "St. Louis and Kansas City metros have higher prices than rural areas.",
+                "Missouri First Place program offers down payment assistance."
+            ],
+            "faqs": [
+                {
+                    "q": "What is the Missouri First Place program?",
+                    "a": "Missouri's housing authority offers first-time buyer programs with competitive rates and down payment assistance up to 4% of the loan amount."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 4.5,
+            "electricRate": 0.11,
+            "tips": [
+                "Ameren and Evergy offer varying solar programs.",
+                "Net metering available but policies differ by utility.",
+                "No state solar tax credit — use federal 30% ITC."
+            ]
+        },
+        "roofing": {
+            "laborRate": 4.00,
+            "tips": [
+                "Tornado alley location means impact-resistant materials are wise.",
+                "Hail damage is common — check insurance coverage."
+            ]
+        }
+    },
+    "maryland": {
+        "name": "Maryland",
+        "abbr": "MD",
+        "slug": "maryland",
+        "mortgage": {
+            "medianPrice": 400000,
+            "propertyTaxRate": 1.09,
+            "homeInsurance": 1400,
+            "hasStateIncomeTax": true,
+            "tips": [
+                "Maryland has high income taxes (up to 5.75% state + local piggyback up to 3.2%).",
+                "DC suburbs (Montgomery, Howard Counties) are very expensive.",
+                "Homestead Tax Credit limits annual assessment increases to 10%.",
+                "First-time buyer programs through Maryland Mortgage Program."
+            ],
+            "faqs": [
+                {
+                    "q": "What is Maryland's local income tax?",
+                    "a": "Maryland counties levy a 'piggyback' income tax on top of state tax, ranging from 2.25% to 3.2%. Combined with state tax, you could pay up to 9% in income tax."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 4.2,
+            "electricRate": 0.14,
+            "tips": [
+                "Maryland offers a $1,000 state tax credit for solar installations.",
+                "SRECs are available and can be worth $40-80 per credit.",
+                "Net metering available with full retail credit.",
+                "No sales tax on solar equipment."
+            ]
+        },
+        "roofing": {
+            "laborRate": 5.00,
+            "tips": [
+                "Coastal areas may need hurricane considerations.",
+                "DC metro labor costs are higher than rural Maryland."
+            ]
+        }
+    },
+    "colorado": {
+        "name": "Colorado",
+        "abbr": "CO",
+        "slug": "colorado",
+        "mortgage": {
+            "medianPrice": 550000,
+            "propertyTaxRate": 0.55,
+            "homeInsurance": 2000,
+            "hasStateIncomeTax": true,
+            "tips": [
+                "Colorado has the third-lowest property tax rate in the US (0.55%).",
+                "State income tax is a flat 4.4%.",
+                "Denver metro home prices have risen dramatically — consider suburbs.",
+                "Home insurance can be high in fire-prone mountain areas."
+            ],
+            "faqs": [
+                {
+                    "q": "Why is Colorado property tax so low?",
+                    "a": "Colorado's Gallagher Amendment and TABOR limit property tax revenue. The residential assessment rate is only 6.765% of actual value, resulting in low effective rates."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 5.5,
+            "electricRate": 0.13,
+            "tips": [
+                "Colorado has 300+ days of sunshine — excellent for solar.",
+                "Xcel Energy offers rebates and community solar programs.",
+                "Net metering available with full retail credit.",
+                "Sales and property tax exemptions for solar."
+            ]
+        },
+        "roofing": {
+            "laborRate": 5.00,
+            "tips": [
+                "Hail storms are common in the Front Range — impact-resistant roofing advised.",
+                "Mountain homes need snow load and ice dam considerations."
+            ]
+        }
+    }
+}

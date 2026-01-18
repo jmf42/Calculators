@@ -1,0 +1,980 @@
+{
+    "argentina": {
+        "name": "Argentina",
+        "nameLocalized": "Argentina",
+        "language": "es",
+        "currency": "USD",
+        "currencySymbol": "$",
+        "locale": "es-AR",
+        "slug": "argentina",
+        "mortgage": {
+            "medianPrice": 85000,
+            "typicalRate": 9.5,
+            "typicalTerm": 20,
+            "downPayment": 25,
+            "tips": [
+                "La mayoría de créditos hipotecarios en Argentina se cotizan en dólares estadounidenses.",
+                "Los créditos UVA ajustan las cuotas según inflación — la cuota inicial es baja pero aumenta.",
+                "Banco Hipotecario, Banco Nación y Banco Ciudad suelen tener las mejores condiciones.",
+                "Considerá costos de escrituración: 3-5% del valor de la propiedad.",
+                "El mercado inmobiliario argentino opera mayormente en dólares cash."
+            ],
+            "faqs": [
+                {
+                    "q": "¿Qué es un crédito hipotecario UVA?",
+                    "a": "Es un crédito cuya cuota se ajusta mensualmente según el índice de inflación (CER). Las cuotas iniciales son más bajas que un crédito tradicional, pero pueden aumentar significativamente con la inflación."
+                },
+                {
+                    "q": "¿Cuánto necesito de ahorro para comprar una casa?",
+                    "a": "Los bancos argentinos típicamente piden entre 20-30% de anticipo, más 3-5% adicional para gastos de escrituración, impuestos y comisiones inmobiliarias."
+                },
+                {
+                    "q": "¿Es mejor crédito en pesos o en dólares?",
+                    "a": "Depende de tus ingresos. Si ganás en dólares, un crédito en dólares tiene sentido. Si ganás en pesos, los créditos UVA te protegen parcialmente del riesgo cambiario."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 4.5,
+            "electricRate": 0.08,
+            "tips": [
+                "Argentina tiene excelente potencial solar, especialmente en el noroeste.",
+                "El programa RenovAr ofrece incentivos para energías renovables.",
+                "Buenos Aires recibe en promedio 4.5 horas solares pico diarias.",
+                "El costo de paneles solares ha bajado significativamente en pesos."
+            ]
+        }
+    },
+    "spain": {
+        "name": "Spain",
+        "nameLocalized": "España",
+        "language": "es",
+        "currency": "EUR",
+        "currencySymbol": "€",
+        "locale": "es-ES",
+        "slug": "espana",
+        "mortgage": {
+            "medianPrice": 250000,
+            "typicalRate": 3.5,
+            "typicalTerm": 25,
+            "downPayment": 20,
+            "tips": [
+                "Los bancos españoles financian hasta el 80% del valor de tasación — necesitas 20% de entrada.",
+                "Gastos de compra (impuestos, notaría, registro, gestoría) rondan el 10-12% adicional.",
+                "Compara entre hipoteca a tipo fijo y variable (Euríbor + diferencial).",
+                "El Euríbor a 12 meses es el índice de referencia para hipotecas variables.",
+                "La nueva Ley Hipotecaria protege más al consumidor frente a cláusulas abusivas."
+            ],
+            "faqs": [
+                {
+                    "q": "¿Qué es el Euríbor?",
+                    "a": "El Euríbor es el tipo de interés al que los bancos europeos se prestan dinero entre sí. Las hipotecas variables en España suelen ser Euríbor + un diferencial (ej: Euríbor + 0.99%). Si el Euríbor sube, tu cuota sube."
+                },
+                {
+                    "q": "¿Hipoteca fija o variable?",
+                    "a": "Fija: cuota estable pero tipo inicial más alto. Variable: tipo inicial más bajo pero riesgo de subidas. Con el Euríbor alto, muchos prefieren tipo fijo para tener certeza."
+                },
+                {
+                    "q": "¿Qué impuestos pago al comprar?",
+                    "a": "Vivienda nueva: 10% IVA. Vivienda usada: 6-10% ITP según comunidad autónoma. Además: notaría (0.5%), registro (0.5%), gestoría (300-500€)."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 5.5,
+            "electricRate": 0.25,
+            "tips": [
+                "España tiene las tarifas eléctricas más altas de Europa — la solar se amortiza rápido.",
+                "El autoconsumo con excedentes te permite vender energía a la red.",
+                "Bonificaciones del IBI (hasta 50%) en muchos ayuntamientos por instalar solar.",
+                "Deducciones en el IRPF de hasta 20% del coste de instalación."
+            ]
+        }
+    },
+    "mexico": {
+        "name": "Mexico",
+        "nameLocalized": "México",
+        "language": "es",
+        "currency": "MXN",
+        "currencySymbol": "$",
+        "locale": "es-MX",
+        "slug": "mexico",
+        "mortgage": {
+            "medianPrice": 2500000,
+            "typicalRate": 11,
+            "typicalTerm": 20,
+            "downPayment": 20,
+            "tips": [
+                "Infonavit y Fovissste ofrecen créditos para trabajadores con prestaciones.",
+                "Los bancos comerciales (Banorte, BBVA, Santander) ofrecen tasas competitivas.",
+                "Considerá el CAT (Costo Anual Total) que incluye todos los gastos.",
+                "Muchos desarrolladores ofrecen financiamiento directo sin Infonavit.",
+                "Los gastos de escrituración varían del 5-8% según el estado."
+            ],
+            "faqs": [
+                {
+                    "q": "¿Qué es Infonavit?",
+                    "a": "El Instituto del Fondo Nacional de la Vivienda para los Trabajadores otorga créditos hipotecarios a trabajadores formales. Tus aportaciones patronales (5% de tu salario) sirven para el enganche y pagos."
+                },
+                {
+                    "q": "¿Puedo combinar Infonavit con un crédito bancario?",
+                    "a": "Sí, con el esquema Cofinavit usas tu crédito Infonavit más un crédito bancario para comprar una vivienda de mayor valor."
+                },
+                {
+                    "q": "¿Qué es el CAT?",
+                    "a": "El Costo Anual Total incluye la tasa de interés más todos los gastos (seguros, comisiones, avalúo). Es la mejor forma de comparar créditos entre bancos."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 5.5,
+            "electricRate": 0.10,
+            "tips": [
+                "México tiene excelente irradiación solar — de las mejores del mundo.",
+                "El esquema de Net Metering permite descontar tu generación de tu recibo.",
+                "CFE ofrece tarifas escalonadas — la solar te mantiene en tarifas bajas.",
+                "Hay deducción fiscal del 100% en el primer año para paneles solares."
+            ]
+        }
+    },
+    "colombia": {
+        "name": "Colombia",
+        "nameLocalized": "Colombia",
+        "language": "es",
+        "currency": "COP",
+        "currencySymbol": "$",
+        "locale": "es-CO",
+        "slug": "colombia",
+        "mortgage": {
+            "medianPrice": 300000000,
+            "typicalRate": 12,
+            "typicalTerm": 15,
+            "downPayment": 20,
+            "tips": [
+                "Los créditos VIS (Vivienda de Interés Social) tienen tasas preferenciales.",
+                "Bancolombia, Davivienda y BBVA son los principales prestamistas.",
+                "El subsidio 'Mi Casa Ya' cubre parte de la cuota inicial para primeros compradores.",
+                "Considerá créditos en UVR (indexados a inflación) vs tasa fija.",
+                "Los gastos notariales y de registro suman aproximadamente 2% del valor."
+            ],
+            "faqs": [
+                {
+                    "q": "¿Qué es una vivienda VIS?",
+                    "a": "Vivienda de Interés Social es una casa que cuesta hasta 150 SMMLV (aproximadamente $190 millones COP). Tienen subsidios gubernamentales y tasas más bajas."
+                },
+                {
+                    "q": "¿Qué es Mi Casa Ya?",
+                    "a": "Programa del gobierno que subsidia hasta 50 SMMLV de la cuota inicial para vivienda VIS si es tu primera propiedad y cumples requisitos de ingresos."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 4.5,
+            "electricRate": 0.15,
+            "tips": [
+                "Colombia tiene buena irradiación solar durante todo el año.",
+                "Ley 1715 ofrece beneficios tributarios para energía solar.",
+                "Net metering disponible con algunas comercializadoras.",
+                "Exención de IVA en equipos de energía solar."
+            ]
+        }
+    },
+    "chile": {
+        "name": "Chile",
+        "nameLocalized": "Chile",
+        "language": "es",
+        "currency": "UF",
+        "currencySymbol": "UF",
+        "locale": "es-CL",
+        "slug": "chile",
+        "mortgage": {
+            "medianPrice": 4500,
+            "typicalRate": 4.5,
+            "typicalTerm": 25,
+            "downPayment": 20,
+            "tips": [
+                "Los créditos hipotecarios en Chile se expresan en UF (Unidad de Fomento), indexada a inflación.",
+                "Las tasas son bajas en comparación con otros países latinoamericanos (4-5%).",
+                "Se requiere típicamente 20% de pie (cuota inicial).",
+                "Banco Estado y BancoChile tienen productos para primeros compradores.",
+                "El subsidio DS1 ayuda a familias de clase media a comprar vivienda."
+            ],
+            "faqs": [
+                {
+                    "q": "¿Qué es la UF?",
+                    "a": "La Unidad de Fomento es una unidad de cuenta que se ajusta diariamente por inflación. Tu deuda y cuota están en UF, así que el monto en pesos varía. Esto protege al banco de la inflación."
+                },
+                {
+                    "q": "¿Qué subsidios existen para vivienda?",
+                    "a": "DS1 para clase media (hasta UF 580), DS49 para sectores vulnerables, Subsidio de Integración para proyectos mixtos. Consulta en MINVU tu elegibilidad."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 5.5,
+            "electricRate": 0.18,
+            "tips": [
+                "El norte de Chile tiene la mejor radiación solar del mundo.",
+                "Net Billing permite inyectar excedentes a la red y recibir compensación.",
+                "Ley 21.118 permite sistemas de hasta 300kW bajo Net Billing.",
+                "La inversión en solar tiene exención tributaria bajo ciertas condiciones."
+            ]
+        }
+    },
+    "germany": {
+        "name": "Germany",
+        "nameLocalized": "Deutschland",
+        "language": "de",
+        "currency": "EUR",
+        "currencySymbol": "€",
+        "locale": "de-DE",
+        "slug": "deutschland",
+        "mortgage": {
+            "medianPrice": 400000,
+            "typicalRate": 3.8,
+            "typicalTerm": 30,
+            "downPayment": 20,
+            "tips": [
+                "Deutsche Banken verlangen typischerweise 20-30% Eigenkapital.",
+                "Nebenkosten (Grunderwerbsteuer, Notar, Makler) betragen ca. 10-15%.",
+                "Zinsbindung von 10-15 Jahren ist in Deutschland üblich.",
+                "KfW-Förderprogramme bieten günstige Kredite für energieeffiziente Häuser.",
+                "Sondertilgungen bis 5% pro Jahr sind oft möglich."
+            ],
+            "faqs": [
+                {
+                    "q": "Was ist die Grunderwerbsteuer?",
+                    "a": "Eine Steuer beim Immobilienkauf, die je nach Bundesland zwischen 3,5% (Bayern, Sachsen) und 6,5% (Brandenburg, NRW, Schleswig-Holstein) liegt."
+                },
+                {
+                    "q": "Was sind KfW-Förderprogramme?",
+                    "a": "Die Kreditanstalt für Wiederaufbau bietet günstige Kredite für energieeffizientes Bauen und Sanieren. Bei Effizienzhaus-Standards gibt es Tilgungszuschüsse bis 45.000€."
+                },
+                {
+                    "q": "Sollte ich eine lange Zinsbindung wählen?",
+                    "a": "Bei niedrigen Zinsen ist eine lange Zinsbindung (15-20 Jahre) empfehlenswert. Nach 10 Jahren können Sie mit 6 Monaten Frist kündigen."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 3.0,
+            "electricRate": 0.35,
+            "tips": [
+                "Deutschland hat die höchsten Strompreise in Europa — Solar lohnt sich sehr.",
+                "Einspeisevergütung (EEG) für überschüssigen Strom ins Netz.",
+                "Batteriespeicher werden immer wichtiger für Eigenverbrauch.",
+                "KfW-Kredite auch für Solaranlagen verfügbar."
+            ]
+        }
+    },
+    "austria": {
+        "name": "Austria",
+        "nameLocalized": "Österreich",
+        "language": "de",
+        "currency": "EUR",
+        "currencySymbol": "€",
+        "locale": "de-AT",
+        "slug": "osterreich",
+        "mortgage": {
+            "medianPrice": 350000,
+            "typicalRate": 4.0,
+            "typicalTerm": 30,
+            "downPayment": 20,
+            "tips": [
+                "Österreichische Banken verlangen normalerweise 20% Eigenkapital.",
+                "Nebenkosten (Grunderwerbsteuer 3,5%, Notar, Makler) circa 10%.",
+                "Variable Zinssätze sind in Österreich häufiger als in Deutschland.",
+                "Wohnbauförderung je nach Bundesland für Neubau und Sanierung.",
+                "EURIBOR ist der Referenzzinssatz für variable Kredite."
+            ],
+            "faqs": [
+                {
+                    "q": "Was ist die Wohnbauförderung?",
+                    "a": "Jedes Bundesland bietet eigene Förderungen für Wohnbau und Sanierung. Die Konditionen variieren stark — von zinsgünstigen Darlehen bis zu nicht-rückzahlbaren Zuschüssen."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 3.5,
+            "electricRate": 0.25,
+            "tips": [
+                "Österreich fördert Photovoltaik stark — bis zu 285€ pro kWp.",
+                "Einspeisevergütung für Überschussstrom verfügbar.",
+                "Kombinieren Sie mit Wärmepumpe für maximale Einsparung."
+            ]
+        }
+    },
+    "switzerland": {
+        "name": "Switzerland",
+        "nameLocalized": "Schweiz",
+        "language": "de",
+        "currency": "CHF",
+        "currencySymbol": "CHF",
+        "locale": "de-CH",
+        "slug": "schweiz",
+        "mortgage": {
+            "medianPrice": 900000,
+            "typicalRate": 2.5,
+            "typicalTerm": 25,
+            "downPayment": 20,
+            "tips": [
+                "Die Schweiz hat sehr hohe Immobilienpreise — CHF 900.000+ ist normal.",
+                "Mindestens 20% Eigenkapital erforderlich, davon 10% nicht aus Pensionskasse.",
+                "Hypothekarzinsen sind niedrig (um 2-3%).",
+                "Die Tragbarkeit (Kosten/Einkommen unter 33%) ist entscheidend.",
+                "Steuern: Eigenmietwert wird versteuert, Schuldzinsen sind abzugsfähig."
+            ],
+            "faqs": [
+                {
+                    "q": "Was ist die Tragbarkeitsrechnung?",
+                    "a": "Banken rechnen mit einem kalkulatorischen Zins von 5% plus 1% Unterhaltskosten. Diese Kosten dürfen maximal 33% Ihres Bruttoeinkommens betragen."
+                },
+                {
+                    "q": "Was ist der Eigenmietwert?",
+                    "a": "Selbstgenutzte Immobilien werden mit einem fiktiven Mietwert (60-70% der Marktmiete) als Einkommen versteuert. Im Gegenzug können Schuldzinsen und Unterhaltskosten abgezogen werden."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 3.2,
+            "electricRate": 0.22,
+            "tips": [
+                "Pronovo bietet Einmalvergütung für Solaranlagen.",
+                "Kantone haben zusätzliche Förderprogramme.",
+                "Eigenverbrauchsgemeinschaften für Mehrfamilienhäuser möglich."
+            ]
+        }
+    },
+    "france": {
+        "name": "France",
+        "nameLocalized": "France",
+        "language": "fr",
+        "currency": "EUR",
+        "currencySymbol": "€",
+        "locale": "fr-FR",
+        "slug": "france",
+        "mortgage": {
+            "medianPrice": 250000,
+            "typicalRate": 4.0,
+            "typicalTerm": 25,
+            "downPayment": 10,
+            "tips": [
+                "Le Prêt à Taux Zéro (PTZ) finance jusqu'à 40% de l'achat pour les primo-accédants.",
+                "Les taux fixes sont la norme en France — plus de 95% des prêts.",
+                "Les frais de notaire représentent 7-8% pour l'ancien, 2-3% pour le neuf.",
+                "L'assurance emprunteur est obligatoire — comparez avec la loi Lemoine.",
+                "Le taux d'endettement maximum est de 35% des revenus."
+            ],
+            "faqs": [
+                {
+                    "q": "Qu'est-ce que le PTZ?",
+                    "a": "Le Prêt à Taux Zéro est un prêt sans intérêts pour les primo-accédants, sous conditions de revenus. Il peut financer jusqu'à 40% du bien en zone tendue, 20% ailleurs."
+                },
+                {
+                    "q": "Qu'est-ce que la loi Lemoine?",
+                    "a": "Depuis 2022, vous pouvez changer d'assurance emprunteur à tout moment. Plus de délai d'un an à attendre. Économies potentielles importantes en comparant."
+                },
+                {
+                    "q": "Quels sont les frais de notaire?",
+                    "a": "7-8% du prix dans l'ancien (droits de mutation), 2-3% dans le neuf. Ces frais ne sont pas négociables — ils sont réglementés par l'État."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 3.8,
+            "electricRate": 0.20,
+            "tips": [
+                "Prime à l'autoconsommation pour les installations résidentielles.",
+                "Tarif de rachat EDF OA pour les excédents injectés.",
+                "TVA réduite à 10% pour les installations sous 3kWc.",
+                "Le sud de la France a un excellent potentiel solaire (5h+ en Méditerranée)."
+            ]
+        }
+    },
+    "belgium": {
+        "name": "Belgium",
+        "nameLocalized": "Belgique",
+        "language": "fr",
+        "currency": "EUR",
+        "currencySymbol": "€",
+        "locale": "fr-BE",
+        "slug": "belgique",
+        "mortgage": {
+            "medianPrice": 300000,
+            "typicalRate": 3.8,
+            "typicalTerm": 25,
+            "downPayment": 20,
+            "tips": [
+                "Les frais de notaire et droits d'enregistrement totalisent 12-15%.",
+                "Droits d'enregistrement: 12,5% en Wallonie/Bruxelles, 6% en Flandre pour le logement familial.",
+                "Le crédit habitation (woonbonus) a été supprimé en 2020.",
+                "Les banques belges sont strictes sur le taux d'endettement (max 33%).",
+                "Pensez au chèque-habitat wallon pour les primo-accédants."
+            ],
+            "faqs": [
+                {
+                    "q": "Pourquoi les frais sont-ils si élevés en Belgique?",
+                    "a": "Les droits d'enregistrement (impôt sur l'achat) sont de 12,5% en Wallonie et à Bruxelles. La Flandre offre 6% pour le logement familial. Ces frais s'ajoutent aux frais de notaire (1-2%)."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 3.2,
+            "electricRate": 0.35,
+            "tips": [
+                "La Belgique a des prix d'électricité très élevés — le solaire est rentable.",
+                "Les primes varient selon les régions (Flandre, Wallonie, Bruxells).",
+                "Compteur tournant à l'envers supprimé — optez pour batterie ou autoconsommation maximale."
+            ]
+        }
+    },
+    "canada-fr": {
+        "name": "Canada (Quebec)",
+        "nameLocalized": "Canada (Québec)",
+        "language": "fr",
+        "currency": "CAD",
+        "currencySymbol": "$",
+        "locale": "fr-CA",
+        "slug": "canada",
+        "mortgage": {
+            "medianPrice": 500000,
+            "typicalRate": 5.5,
+            "typicalTerm": 25,
+            "downPayment": 5,
+            "tips": [
+                "Mise de fonds minimale de 5% pour les propriétés sous 500 000$.",
+                "Assurance SCHL obligatoire si mise de fonds inférieure à 20%.",
+                "Le test de résistance exige de qualifier au taux + 2% ou 5,25%.",
+                "Les termes de 5 ans fixes sont les plus populaires au Canada.",
+                "Droits de mutation (taxe de bienvenue) varient selon la ville au Québec."
+            ],
+            "faqs": [
+                {
+                    "q": "Qu'est-ce que l'assurance SCHL?",
+                    "a": "Si votre mise de fonds est inférieure à 20%, vous devez payer une assurance prêt hypothécaire à la SCHL (ou Genworth/Canada Guaranty). Le coût varie de 2,8% à 4% du montant du prêt."
+                },
+                {
+                    "q": "Qu'est-ce que le test de résistance?",
+                    "a": "Même si votre taux est de 5%, la banque doit vérifier que vous pouvez payer à 7% (taux + 2% ou 5,25%, le plus élevé). Cela réduit votre capacité d'emprunt."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 3.5,
+            "electricRate": 0.08,
+            "tips": [
+                "L'électricité est très bon marché au Québec (hydro) — le solaire est moins rentable.",
+                "Aucune prime provinciale pour le solaire résidentiel au Québec.",
+                "Programmes de mesurage net permettent de créditer les excédents."
+            ]
+        }
+    },
+    "brazil": {
+        "name": "Brazil",
+        "nameLocalized": "Brasil",
+        "language": "pt",
+        "currency": "BRL",
+        "currencySymbol": "R$",
+        "locale": "pt-BR",
+        "slug": "brasil",
+        "mortgage": {
+            "medianPrice": 400000,
+            "typicalRate": 10,
+            "typicalTerm": 30,
+            "downPayment": 20,
+            "tips": [
+                "O programa Minha Casa Minha Vida oferece subsídios para famílias de baixa renda.",
+                "A Caixa Econômica Federal tem as melhores taxas para financiamento imobiliário.",
+                "Use o FGTS para abatir entrada ou parcelas.",
+                "Compare SAC (parcelas decrescentes) vs PRICE (parcelas fixas).",
+                "O CET (Custo Efetivo Total) mostra o verdadeiro custo do financiamento."
+            ],
+            "faqs": [
+                {
+                    "q": "Como usar o FGTS para comprar imóvel?",
+                    "a": "Você pode usar o saldo do FGTS para entrada, amortização ou quitação. Requisitos: 3 anos de trabalho com FGTS, não ter outro financiamento no SFH, não ser proprietário de imóvel na mesma cidade."
+                },
+                {
+                    "q": "Qual a diferença entre SAC e PRICE?",
+                    "a": "SAC: parcelas começam mais altas e diminuem (você paga menos juros no total). PRICE: parcelas fixas do início ao fim (mais previsível, mas paga mais juros no total)."
+                },
+                {
+                    "q": "O que é o Minha Casa Minha Vida?",
+                    "a": "Programa do governo com subsídios de até R$ 55.000 e taxas reduzidas para famílias com renda até R$ 8.000/mês. Quanto menor a renda, maior o subsídio."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 5.0,
+            "electricRate": 0.12,
+            "tips": [
+                "O Brasil tem excelente irradiação solar em todo o território.",
+                "A geração distribuída permite compensar sua conta de luz.",
+                "Financiamento pelo BNDES para sistemas solares.",
+                "Isenção de ICMS e IPI para equipamentos solares.",
+                "Marco legal da GD (Lei 14.300) garantiu direitos até 2045."
+            ]
+        }
+    },
+    "portugal": {
+        "name": "Portugal",
+        "nameLocalized": "Portugal",
+        "language": "pt",
+        "currency": "EUR",
+        "currencySymbol": "€",
+        "locale": "pt-PT",
+        "slug": "portugal",
+        "mortgage": {
+            "medianPrice": 200000,
+            "typicalRate": 4.0,
+            "typicalTerm": 30,
+            "downPayment": 10,
+            "tips": [
+                "Os bancos portugueses financiam até 90% do valor de avaliação.",
+                "IMT (Imposto Municipal sobre Transmissões) varia de 0-8% conforme valor.",
+                "Spread é a margem do banco sobre a Euribor — negocie bem.",
+                "Isenção de IMT para jovens até 35 anos em primeiras habitações até 316.772€.",
+                "A TAEG (Taxa Anual Efetiva Global) é a melhor forma de comparar ofertas."
+            ],
+            "faqs": [
+                {
+                    "q": "O que é o spread?",
+                    "a": "O spread é a margem de lucro do banco, adicionada à Euribor. Por exemplo, Euribor 3M + 1% de spread. Quanto menor o spread, melhor. Negocie com base em outros produtos (seguros, domiciliação de ordenado)."
+                },
+                {
+                    "q": "Há isenções para jovens?",
+                    "a": "Jovens até 35 anos que comprem a primeira habitação podem ter isenção de IMT para imóveis até 316.772€ e isenção parcial/total de Imposto do Selo."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 5.5,
+            "electricRate": 0.22,
+            "tips": [
+                "Portugal tem das melhores irradiações solares da Europa.",
+                "Regime de autoconsumo permite compensação na fatura.",
+                "IVA reduzido de 6% para painéis solares.",
+                "Comparticipação do Fundo Ambiental para baixos rendimentos."
+            ]
+        }
+    },
+    "italy": {
+        "name": "Italy",
+        "nameLocalized": "Italia",
+        "language": "it",
+        "currency": "EUR",
+        "currencySymbol": "€",
+        "locale": "it-IT",
+        "slug": "italia",
+        "mortgage": {
+            "medianPrice": 250000,
+            "typicalRate": 4.0,
+            "typicalTerm": 25,
+            "downPayment": 20,
+            "tips": [
+                "Le banche italiane finanziano tipicamente fino all'80% del valore.",
+                "L'imposta di registro per la prima casa è del 2% (9% per seconde case).",
+                "Il Fondo Garanzia Prima Casa copre fino al 50% per under 36.",
+                "Confronta mutuo a tasso fisso vs variabile (riferimento Euribor).",
+                "Le spese notarili e di istruttoria ammontano al 2-3% circa."
+            ],
+            "faqs": [
+                {
+                    "q": "Cos'è il Fondo Garanzia Prima Casa?",
+                    "a": "È un fondo statale che garantisce fino al 50% del mutuo per under 36 con ISEE fino a 40.000€. Questo permette di ottenere mutui fino al 100% del valore."
+                },
+                {
+                    "q": "Quali sono le agevolazioni prima casa?",
+                    "a": "Imposta di registro al 2% invece del 9%, IVA al 4% invece del 10% per nuove costruzioni, e credito d'imposta se vendi la vecchia prima casa entro un anno."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 4.5,
+            "electricRate": 0.25,
+            "tips": [
+                "Il Superbonus 110% è stato ridotto, ma restano detrazioni del 50%.",
+                "Scambio sul Posto permette di compensare produzione e consumo.",
+                "Il Sud Italia ha eccellente potenziale solare (5-6 ore di picco).",
+                "Detrazione fiscale spalmata su 10 anni."
+            ]
+        }
+    },
+    "netherlands": {
+        "name": "Netherlands",
+        "nameLocalized": "Nederland",
+        "language": "nl",
+        "currency": "EUR",
+        "currencySymbol": "€",
+        "locale": "nl-NL",
+        "slug": "nederland",
+        "mortgage": {
+            "medianPrice": 450000,
+            "typicalRate": 4.0,
+            "typicalTerm": 30,
+            "downPayment": 0,
+            "tips": [
+                "Nederland is een van de weinige landen waar je 100% kunt financieren.",
+                "Hypotheekrenteaftrek maakt de effectieve rente lager.",
+                "Overdrachtsbelasting is 2% voor woningen (0% voor starters onder bepaalde voorwaarden).",
+                "NHG (Nationale Hypotheek Garantie) geeft lagere rente bij woningen tot €435.000.",
+                "Annuïteitenhypotheek is verplicht voor nieuwe hypotheken."
+            ],
+            "faqs": [
+                {
+                    "q": "Wat is hypotheekrenteaftrek?",
+                    "a": "Je kunt de betaalde hypotheekrente aftrekken van je belastbaar inkomen. Het maximale aftrektarief is nu 37,07% en daalt de komende jaren. Dit maakt de effectieve rente lager."
+                },
+                {
+                    "q": "Wat is NHG?",
+                    "a": "De Nationale Hypotheek Garantie is een verzekering die je beschermt bij gedwongen verkoop. Het kost 0,6% eenmalig maar geeft een rentevoordeel van vaak 0,3-0,6%. Beschikbaar voor woningen tot €435.000."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 2.8,
+            "electricRate": 0.40,
+            "tips": [
+                "Nederland heeft de hoogste elektriciteitsprijzen in Europa — zonnepanelen lonen zeer.",
+                "Salderingsregeling: wat je teruglevert wordt volledig verrekend (tot 2027).",
+                "BTW op zonnepanelen is 0% voor particulieren.",
+                "Subsidie voor thuisbatterij beschikbaar."
+            ]
+        }
+    },
+    "poland": {
+        "name": "Poland",
+        "nameLocalized": "Polska",
+        "language": "pl",
+        "currency": "PLN",
+        "currencySymbol": "zł",
+        "locale": "pl-PL",
+        "slug": "polska",
+        "mortgage": {
+            "medianPrice": 500000,
+            "typicalRate": 7.5,
+            "typicalTerm": 25,
+            "downPayment": 20,
+            "tips": [
+                "Program 'Bezpieczny Kredyt 2%' oferuje dopłaty do rat dla pierwszych kupujących.",
+                "Wkład własny wynosi minimum 10-20% w zależności od banku.",
+                "WIBOR jest stopą referencyjną dla kredytów o zmiennym oprocentowaniu.",
+                "Koszty notarialne i podatki wynoszą około 3-5% wartości nieruchomości.",
+                "Rozważ kredyt z oprocentowaniem stałym na 5-7 lat."
+            ],
+            "faqs": [
+                {
+                    "q": "Co to jest Bezpieczny Kredyt 2%?",
+                    "a": "Program rządowy dla osób do 45 roku życia, kupujących pierwsze mieszkanie. Państwo dopłaca do raty, obniżając efektywne oprocentowanie do ok. 2%. Maksymalna kwota kredytu: 600.000 zł."
+                },
+                {
+                    "q": "Co to jest WIBOR?",
+                    "a": "Warsaw Interbank Offered Rate — stopa procentowa po jakiej banki pożyczają sobie pieniądze. Kredyty hipoteczne mają oprocentowanie WIBOR + marża. Wysoki WIBOR = wyższe raty."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 3.5,
+            "electricRate": 0.20,
+            "tips": [
+                "Program Mój Prąd oferuje dotacje do instalacji fotowoltaicznych.",
+                "Net-metering z rabatem 20% za energię oddaną do sieci.",
+                "Ulga termomodernizacyjna pozwala odliczyć koszty od podatku.",
+                "Bez VAT dla paneli słonecznych na budynkach mieszkalnych."
+            ]
+        }
+    },
+    "sweden": {
+        "name": "Sweden",
+        "nameLocalized": "Sverige",
+        "language": "sv",
+        "currency": "SEK",
+        "currencySymbol": "kr",
+        "locale": "sv-SE",
+        "slug": "sverige",
+        "mortgage": {
+            "medianPrice": 4000000,
+            "typicalRate": 4.5,
+            "typicalTerm": 50,
+            "downPayment": 15,
+            "tips": [
+                "Sverige kräver minst 15% kontantinsats.",
+                "Amorteringskrav: 2% per år om belåningsgrad över 70%, 1% om 50-70%.",
+                "Ränteavdrag på 30% av räntekostnader upp till 100.000 kr.",
+                "Bostadsrätter är vanligast i storstäder — kolla föreningens ekonomi.",
+                "Bolånetak på 85% av bostadens värde."
+            ],
+            "faqs": [
+                {
+                    "q": "Vad är amorteringskrav?",
+                    "a": "Sedan 2016 måste du amortera minst 1% per år om belåningsgraden överstiger 50%, och ytterligare 1% om den överstiger 70%. Detta minskar skulden över tid."
+                },
+                {
+                    "q": "Hur fungerar ränteavdrag?",
+                    "a": "Du får dra av 30% av dina räntekostnader upp till 100.000 kr per person. Räntor över detta kan dras av med 21%. Detta minskar din skatt."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 2.5,
+            "electricRate": 0.25,
+            "tips": [
+                "Grönt skatteavdrag ger 20% rabatt på installation av solceller.",
+                "Elcertifikat och ursprungsgarantier för överskottsel.",
+                "Norra Sverige har goda solförhållanden på sommaren trots latituden."
+            ]
+        }
+    },
+    "norway": {
+        "name": "Norway",
+        "nameLocalized": "Norge",
+        "language": "no",
+        "currency": "NOK",
+        "currencySymbol": "kr",
+        "locale": "nb-NO",
+        "slug": "norge",
+        "mortgage": {
+            "medianPrice": 5000000,
+            "typicalRate": 5.0,
+            "typicalTerm": 25,
+            "downPayment": 15,
+            "tips": [
+                "Norge krever minimum 15% egenkapital.",
+                "Boliglånsforskriften begrenser gjeld til 5 ganger bruttoinntekt.",
+                "Rentefradrag: 22% av rentekostnader kan trekkes fra skatten.",
+                "Oslo og Bergen har strengere krav (40% egenkapital for sekundærbolig i Oslo).",
+                "Fastrente er mindre vanlig i Norge enn i andre land."
+            ],
+            "faqs": [
+                {
+                    "q": "Hva er boliglånsforskriften?",
+                    "a": "Regelverket begrenser hvor mye du kan låne: maks 5 ganger bruttoinntekt, maks 85% belåningsgrad, og du må tåle 5% renteøkning. I Oslo er det strengere regler for sekundærboliger."
+                },
+                {
+                    "q": "Bør jeg velge fast eller flytende rente?",
+                    "a": "Flytende er vanligst i Norge og følger Nibor. Fast rente gir forutsigbarhet men er ofte dyrere. Vurder risikotoleranse og renteutsikter."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 2.0,
+            "electricRate": 0.15,
+            "tips": [
+                "Enova gir støtte til solcelleanlegg og batterier.",
+                "Lave strømpriser gjør payback lengre enn i andre land.",
+                "Midnattsol gir god produksjon om sommeren i Nord-Norge."
+            ]
+        }
+    },
+    "denmark": {
+        "name": "Denmark",
+        "nameLocalized": "Danmark",
+        "language": "da",
+        "currency": "DKK",
+        "currencySymbol": "kr",
+        "locale": "da-DK",
+        "slug": "danmark",
+        "mortgage": {
+            "medianPrice": 3500000,
+            "typicalRate": 4.0,
+            "typicalTerm": 30,
+            "downPayment": 5,
+            "tips": [
+                "Danmark har et unikt realkreditsystem med meget lave renter.",
+                "Udbetaling på minimum 5% kræves.",
+                "Tinglysningsafgift er 1,45% af købesummen + fast gebyr.",
+                "Afdragsfrihed op til 10 år er muligt (men låner kun 80%).",
+                "Flekslån adjusterer renten hvert kvartal/år — billigere men risikabelt."
+            ],
+            "faqs": [
+                {
+                    "q": "Hvad er realkreditlån?",
+                    "a": "Danske realkreditlån er obligationsbaserede og blandt de billigste i verden. Du betaler en lav rente plus bidragssats. Systemet har eksisteret i over 200 år."
+                },
+                {
+                    "q": "Hvad er forskellen på fast og variabel rente?",
+                    "a": "Fast rente: Du kender ydelsen i hele lånets løbetid. Variabel (F1, F3, F5): Lavere rente men justeres periodisk. Valget afhænger af din risikovillighed."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 2.5,
+            "electricRate": 0.35,
+            "tips": [
+                "Høje elpriser gør solceller attraktive trods få solskinstimer.",
+                "Nettoafregning: overskudsproduktion modregnes i forbrug.",
+                "Batterier bliver mere populære for at maksimere egetforbrug."
+            ]
+        }
+    },
+    "finland": {
+        "name": "Finland",
+        "nameLocalized": "Suomi",
+        "language": "fi",
+        "currency": "EUR",
+        "currencySymbol": "€",
+        "locale": "fi-FI",
+        "slug": "suomi",
+        "mortgage": {
+            "medianPrice": 300000,
+            "typicalRate": 4.5,
+            "typicalTerm": 25,
+            "downPayment": 15,
+            "tips": [
+                "Suomessa vaaditaan yleensä 15% omarahoitusosuus.",
+                "Asuntosäästöpalkkiotili (ASP) tarjoaa korkoetua ja lisälainaa ensiasunnon ostajille.",
+                "Varainsiirtovero on 2% asunto-osakkeista, 4% kiinteistöistä.",
+                "Ensiasunnon ostajat vapautetaan varainsiirtoverosta tietyin ehdoin.",
+                "Euribor on viitekorko vaihtuvakorkoisille lainoille."
+            ],
+            "faqs": [
+                {
+                    "q": "Mikä on ASP-tili?",
+                    "a": "Asuntosäästöpalkkiotili on 15-44-vuotiaille tarkoitettu säästötili. Säästämällä 2-8 vuotta saat valtion asuntolainatakauksen, ASP-lisälainan ja korkotuen."
+                },
+                {
+                    "q": "Mitä ensiasunnon ostajan verohelpotuksia on?",
+                    "a": "Alle 40-vuotiaat ensiasunnon ostajat eivät maksa varainsiirtoveroa (2-4% kauppahinnasta). Tämä voi säästää tuhansia euroja."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 2.0,
+            "electricRate": 0.15,
+            "tips": [
+                "Suomessa aurinkopaneeleilla on lyhyt, mutta intensiivinen kesäkausi.",
+                "Kotitalousvähennys mahdollistaa asennustyön vähentämisen verotuksessa.",
+                "Ylijäämäsähkön myynti verkkoon on mahdollista useilla sähköyhtiöillä."
+            ]
+        }
+    },
+    "united-kingdom": {
+        "name": "United Kingdom",
+        "nameLocalized": "United Kingdom",
+        "language": "en",
+        "currency": "GBP",
+        "currencySymbol": "£",
+        "locale": "en-GB",
+        "slug": "uk",
+        "mortgage": {
+            "medianPrice": 285000,
+            "typicalRate": 5.0,
+            "typicalTerm": 25,
+            "downPayment": 10,
+            "tips": [
+                "First-time buyers pay no Stamp Duty on properties up to £425,000.",
+                "Help to Buy ISA and Lifetime ISA provide government bonuses for deposits.",
+                "Standard Stamp Duty starts at 3% for properties £250,000-£925,000.",
+                "Fixed rates for 2-5 years are most common — longer fixes available.",
+                "Shared Ownership allows buying 25-75% of a property initially."
+            ],
+            "faqs": [
+                {
+                    "q": "What is Stamp Duty Land Tax?",
+                    "a": "SDLT is a tax on property purchases in England and Northern Ireland. First-time buyers pay nothing up to £425k, 5% from £425k-£625k. For other buyers, rates start at 3% for the portion £250k-£925k, increasing for higher values."
+                },
+                {
+                    "q": "What is a Lifetime ISA?",
+                    "a": "A LISA lets you save up to £4,000/year with a 25% government bonus (up to £1,000/year). Can be used for a first home up to £450,000 or retirement. Must be under 40 to open."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 2.8,
+            "electricRate": 0.30,
+            "tips": [
+                "High electricity prices make solar increasingly viable in the UK.",
+                "Smart Export Guarantee (SEG) pays for exported electricity.",
+                "VAT on solar panels is 0% for residential installations.",
+                "MCS certification required for SEG payments."
+            ]
+        }
+    },
+    "australia": {
+        "name": "Australia",
+        "nameLocalized": "Australia",
+        "language": "en",
+        "currency": "AUD",
+        "currencySymbol": "$",
+        "locale": "en-AU",
+        "slug": "australia",
+        "mortgage": {
+            "medianPrice": 800000,
+            "typicalRate": 6.0,
+            "typicalTerm": 30,
+            "downPayment": 20,
+            "tips": [
+                "Lenders Mortgage Insurance (LMI) required if deposit under 20%.",
+                "First Home Owner Grant (FHOG) varies by state — $10,000-$30,000 for new homes.",
+                "Stamp duty exemptions for first home buyers in most states.",
+                "RBA cash rate directly impacts variable mortgage rates.",
+                "Offset accounts are popular in Australia to reduce interest."
+            ],
+            "faqs": [
+                {
+                    "q": "What is Lenders Mortgage Insurance?",
+                    "a": "LMI is a one-off insurance premium (1-3% of loan) if your deposit is under 20%. It protects the lender, not you. Can be added to the loan or paid upfront."
+                },
+                {
+                    "q": "What is the First Home Owner Grant?",
+                    "a": "A government grant for first-time buyers purchasing or building a new home. Amounts vary by state: $10,000 (NSW, VIC, QLD), $15,000 (WA, SA), $20,000 (TAS). Usually for homes under certain values."
+                },
+                {
+                    "q": "How do offset accounts work?",
+                    "a": "An offset account is linked to your mortgage. Your savings balance 'offsets' your loan balance, so you only pay interest on the difference. $50k in offset on a $500k loan = paying interest on $450k."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 5.5,
+            "electricRate": 0.30,
+            "tips": [
+                "Australia has excellent solar potential — among the best in the world.",
+                "Small-scale Technology Certificates (STCs) reduce installation cost.",
+                "Feed-in tariffs vary by state and retailer (5-15c/kWh).",
+                "Battery rebates available in some states (SA, VIC, NSW)."
+            ]
+        }
+    },
+    "ireland": {
+        "name": "Ireland",
+        "nameLocalized": "Ireland",
+        "language": "en",
+        "currency": "EUR",
+        "currencySymbol": "€",
+        "locale": "en-IE",
+        "slug": "ireland",
+        "mortgage": {
+            "medianPrice": 350000,
+            "typicalRate": 4.0,
+            "typicalTerm": 30,
+            "downPayment": 10,
+            "tips": [
+                "First-time buyers need only 10% deposit (vs 20% for other buyers).",
+                "Help to Buy scheme provides up to €30,000 tax refund for new builds.",
+                "Stamp Duty is 1% for properties under €1 million.",
+                "First Home Scheme allows shared equity with the government.",
+                "Central Bank lending rules limit mortgages to 4x income."
+            ],
+            "faqs": [
+                {
+                    "q": "What is the Help to Buy scheme?",
+                    "a": "First-time buyers can claim a refund of income tax paid over the previous 4 years, up to 10% of the purchase price (max €30,000). Only for new builds or self-builds valued up to €500,000."
+                },
+                {
+                    "q": "What is the First Home Scheme?",
+                    "a": "The government takes an equity share (up to 30%) in your home, reducing the amount you need to borrow. You can buy back the equity over time. Available for new builds up to €475,000 (Dublin) or less elsewhere."
+                }
+            ]
+        },
+        "solar": {
+            "sunHours": 2.5,
+            "electricRate": 0.25,
+            "tips": [
+                "SEAI grants up to €2,400 for solar PV installations.",
+                "Microgeneration Support Scheme pays for exported electricity.",
+                "No VAT refund for solar in Ireland but still worthwhile."
+            ]
+        }
+    }
+}
