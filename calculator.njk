@@ -102,29 +102,50 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     {
         "@context": "https://schema.org",
         "@type": "HowTo",
-        "name": "{{ calc.title }}",
+        "name": "How to Calculate {{ calc.config.resultLabel[calc.lang] | default('Results') }} with {{ calc.title }}",
         "description": "{{ calc.metaDescription }}",
+        "dateModified": "2026-01-18",
+        "estimatedCost": {
+            "@type": "MonetaryAmount",
+            "currency": "{{ calc.config.currency[calc.lang] | default('USD') }}",
+            "value": "0"
+        },
+        "totalTime": "PT2M",
         "step": [
             {
                 "@type": "HowToStep",
-                "name": "Enter your values",
-                "text": "Fill in the input fields with your specific numbers and requirements."
+                "position": 1,
+                "name": "Enter your {{ calc.config.primaryInputLabel[calc.lang] | default('values') }}",
+                "text": "Start by entering your primary values such as price, amount, or quantity in the input fields.",
+                "url": "{{ site.url }}/{{ calc.lang }}/{{ calc.slug }}/#calculator-container"
             },
             {
                 "@type": "HowToStep",
-                "name": "Review the calculation",
-                "text": "The calculator instantly computes results as you type."
+                "position": 2,
+                "name": "Adjust additional parameters",
+                "text": "Fine-tune your calculation by adjusting rates, terms, and other variables."
             },
             {
                 "@type": "HowToStep",
+                "position": 3,
+                "name": "Review instant results",
+                "text": "See your {{ calc.config.resultLabel[calc.lang] | default('results') }} instantly calculated as you type."
+            },
+            {
+                "@type": "HowToStep",
+                "position": 4,
                 "name": "Analyze the breakdown",
-                "text": "Review the detailed breakdown of costs and components."
+                "text": "Review the detailed breakdown showing all components and costs."
             }
         ],
         "tool": {
             "@type": "HowToTool",
-            "name": "{{ site.name }} Calculator"
-        }
+            "name": "{{ site.name }} {{ calc.title }}"
+        }{% if calc.stateData or calc.countryData %},
+        "areaServed": {
+            "@type": "{% if calc.stateData %}State{% else %}Country{% endif %}",
+            "name": "{% if calc.stateData %}{{ calc.stateData.name }}{% else %}{{ calc.countryData.name }}{% endif %}"
+        }{% endif %}
     }
     </script>
 
@@ -138,13 +159,25 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
             {%- for faq in calc.faqs %}
             {
                 "@type": "Question",
-                "name": "{{ faq.q }}{% if calc.location %} in {{ calc.location.name }}{% endif %}",
+                "name": "{{ faq.q }}{% if calc.stateData %} in {{ calc.stateData.name }}{% elif calc.countryData %} {{ calc.countryData.nameLocalized }}{% elif calc.location %} in {{ calc.location.name }}{% endif %}",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "{{ faq.a }} {% if calc.location %}Use our calculator to estimate costs specifically for {{ calc.location.name }}, {{ calc.location.state }}.{% endif %}"
+                    "text": "{{ faq.a }} {% if calc.stateData %}This calculator uses {{ calc.stateData.name }}'s actual property tax rate of {{ calc.stateData.mortgage.propertyTaxRate }}% and average insurance of ${{ calc.stateData.mortgage.homeInsurance }}/year.{% elif calc.countryData %}Updated for {{ calc.countryData.nameLocalized }} with typical rates of {{ calc.countryData.mortgage.typicalRate }}% and {{ calc.countryData.mortgage.downPayment }}% down payment.{% elif calc.location %}Use our calculator to estimate costs specifically for {{ calc.location.name }}, {{ calc.location.state }}.{% endif %}"
+                }
+            }{% if not loop.last or calc.localFaqs %},{% endif %}
+            {%- endfor %}
+            {%- if calc.localFaqs %}
+            {%- for faq in calc.localFaqs %}
+            {
+                "@type": "Question",
+                "name": "{{ faq.q }}",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "{{ faq.a }}"
                 }
             }{% if not loop.last %},{% endif %}
             {%- endfor %}
+            {%- endif %}
         ]
     }
     </script>
@@ -180,6 +213,24 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
             <div class="trust-badge">
                 <span class="edition-badge">2026 {{ ui.nav[calc.lang].edition | default("Edition") }}</span> • <span>✓</span> {{ ui.stats.free[calc.lang] | default("Free") }} • {{ ui.stats.noSignup[calc.lang] | default("No signup required") }}
             </div>
+            
+            {# Freshness Signal - Last Updated Badge #}
+            <div class="freshness-badge" style="margin-top: 12px; font-size: 12px; color: rgba(255,255,255,0.6);">
+                📅 {{ ui.footer[calc.lang].lastUpdated | default("Last updated") }}: January 2026
+                {%- if calc.stateData %} • 📍 {{ calc.stateData.name }} {{ ui.localInsights.tips[calc.lang] | default("data") }}{% endif %}
+                {%- if calc.countryData %} • 📍 {{ calc.countryData.nameLocalized }} {{ ui.localInsights.tips[calc.lang] | default("data") }}{% endif %}
+            </div>
+            
+            {# Semantic Long-Tail SEO Content (screen-reader accessible but visually hidden) #}
+            <p class="sr-only seo-semantic">
+                {%- if calc.stateData %}
+                Best {{ calc.config.name[calc.lang] | default("calculator") }} for {{ calc.stateData.name }} residents. Calculate your {{ calc.config.resultLabel[calc.lang] | default("results") }} with {{ calc.stateData.name }}-specific property tax rates ({{ calc.stateData.mortgage.propertyTaxRate }}%) and insurance costs. Updated for 2026 with current {{ calc.stateData.name }} real estate market data.
+                {%- elif calc.countryData %}
+                {{ calc.config.name[calc.lang] | default("Calculator") }} {{ ui.localInsights.title[calc.lang] | default("for") }} {{ calc.countryData.nameLocalized }}. {{ ui.localInsights.tips[calc.lang] | default("Local tips") }} {{ calc.countryData.nameLocalized }} 2026. {{ calc.countryData.currencySymbol }} {{ calc.countryData.mortgage.typicalRate }}% {{ ui.localInsights.typicalRate[calc.lang] | default("typical rate") }}.
+                {%- else %}
+                Free online {{ calc.config.name[calc.lang] | default("calculator") }} 2026. {{ ui.nav[calc.lang].instantResults | default("Instant results") }}. {{ ui.stats.noSignup[calc.lang] | default("No signup required") }}. Calculate {{ calc.config.resultLabel[calc.lang] | default("results") }} instantly.
+                {%- endif %}
+            </p>
         </div>
     </section>
 
@@ -305,15 +356,35 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     {%- if calc.faqs and calc.faqs.length > 0 %}
     <section class="faq-section">
         <div class="container">
-            <h2>{{ ui.faq[calc.lang] }}</h2>
-            {%- for faq in calc.faqs %}
-            <div class="faq-item">
+            <h2>{{ ui.faq[calc.lang] }}{% if calc.stateData %} - {{ calc.stateData.name }}{% elif calc.countryData %} - {{ calc.countryData.nameLocalized }}{% endif %}</h2>
+            
+            {# Local FAQs First (if available) #}
+            {%- if calc.localFaqs %}
+            <div class="local-faqs-badge" style="margin-bottom: 20px; padding: 12px 16px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1)); border-radius: 12px; border-left: 4px solid #6366f1;">
+                <span style="font-size: 16px;">📍</span> <strong style="color: var(--primary-light);">{% if calc.stateData %}{{ calc.stateData.name }}{% elif calc.countryData %}{{ calc.countryData.nameLocalized }}{% endif %}-specific questions</strong>
+            </div>
+            {%- for faq in calc.localFaqs %}
+            <div class="faq-item local-faq">
                 <div class="faq-question">
-                    {{ faq.q }} {% if calc.location %} in {{ calc.location.name }}{% endif %}
+                    {{ faq.q }}
                     <span class="faq-icon">+</span>
                 </div>
                 <div class="faq-answer">
-                    <p>{{ faq.a }} {% if calc.location %}Use our calculator to estimate costs specifically for {{ calc.location.name }}, {{ calc.location.state }}.{% endif %}</p>
+                    <p>{{ faq.a }}</p>
+                </div>
+            </div>
+            {%- endfor %}
+            {%- endif %}
+            
+            {# Generic FAQs #}
+            {%- for faq in calc.faqs %}
+            <div class="faq-item">
+                <div class="faq-question">
+                    {{ faq.q }}{% if calc.stateData %} in {{ calc.stateData.name }}{% elif calc.countryData %} {{ calc.countryData.nameLocalized }}{% elif calc.location %} in {{ calc.location.name }}{% endif %}
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>{{ faq.a }}{% if calc.stateData %} This calculator uses {{ calc.stateData.name }}'s actual property tax rate of {{ calc.stateData.mortgage.propertyTaxRate }}%.{% elif calc.countryData %} Updated for {{ calc.countryData.nameLocalized }} with typical rates of {{ calc.countryData.mortgage.typicalRate }}%.{% elif calc.location %} Use our calculator to estimate costs specifically for {{ calc.location.name }}, {{ calc.location.state }}.{% endif %}</p>
                 </div>
             </div>
             {%- endfor %}
