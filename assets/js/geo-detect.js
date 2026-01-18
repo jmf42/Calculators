@@ -152,60 +152,124 @@
         return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     }
 
+    // Localization Dictionary for Dynamic JS Content
+    const TRANSLATIONS = {
+        en: { insights: "Market Insights", personalized: "Live Market Data", medianPrice: "Median Price", typicalRate: "Typical Rate", loanTerm: "Loan Term", downPayment: "Down Payment", sunHours: "Sun Hours", electricRate: "Electric Rate", potential: "Potential", high: "High", moderate: "Moderate", laborRate: "Labor Rate", season: "Season", active: "Active", propertyTax: "Property Tax", homeInsurance: "Home Insurance", stateTax: "State Income Tax", yes: "Yes", none: "None", unitHrs: "hrs/day", unitSqFt: "/sq.ft", show: "Show", hide: "Hide", localFactors: "Local Factors" },
+        es: { insights: "Datos de Mercado", personalized: "Datos en Tiempo Real", medianPrice: "Precio Medio", typicalRate: "Tasa Típica", loanTerm: "Plazo", downPayment: "Enganche", sunHours: "Horas de Sol", electricRate: "Tarifa Eléc.", potential: "Potencial", high: "Alto", moderate: "Moderado", laborRate: "Mano de Obra", season: "Temporada", active: "Activa", propertyTax: "Impuesto Predial", homeInsurance: "Seguro", stateTax: "Impuesto Estatal", yes: "Sí", none: "No", unitHrs: "hr/día", unitSqFt: "/pie²", show: "Mostrar", hide: "Ocultar", localFactors: "Factores Locales" },
+        de: { insights: "Markteinblicke", personalized: "Live-Marktdaten", medianPrice: "Medianpreis", typicalRate: "Typischer Zins", loanTerm: "Laufzeit", downPayment: "Anzahlung", sunHours: "Sonnenstunden", electricRate: "Strompreis", potential: "Potenzial", high: "Hoch", moderate: "Mittel", laborRate: "Arbeitskosten", season: "Saison", active: "Aktiv", propertyTax: "Grundsteuer", homeInsurance: "Versicherung", stateTax: "Einkommenssteuer", yes: "Ja", none: "Keine", unitHrs: "Std/Tag", unitSqFt: "/qf", show: "Anzeigen", hide: "Verbergen", localFactors: "Lokale Faktoren" },
+        fr: { insights: "Aperçu du Marché", personalized: "Données en Direct", medianPrice: "Prix Médian", typicalRate: "Taux Moyen", loanTerm: "Durée", downPayment: "Apport", sunHours: "Ensoleillement", electricRate: "Tarif Élec.", potential: "Potentiel", high: "Élevé", moderate: "Modéré", laborRate: "Main d'Œuvre", season: "Saison", active: "Active", propertyTax: "Taxe Foncière", homeInsurance: "Assurance", stateTax: "Impôt État", yes: "Oui", none: "Aucun", unitHrs: "h/jour", unitSqFt: "/pi²", show: "Afficher", hide: "Masquer", localFactors: "Facteurs Locaux" },
+        pt: { insights: "Dados de Mercado", personalized: "Dados ao Vivo", medianPrice: "Preço Médio", typicalRate: "Taxa Típica", loanTerm: "Prazo", downPayment: "Entrada", sunHours: "Horas de Sol", electricRate: "Tarifa", potential: "Potencial", high: "Alto", moderate: "Moderado", laborRate: "Mão de Obra", season: "Temporada", active: "Ativa", propertyTax: "IPTU", homeInsurance: "Seguro", stateTax: "Imposto Est.", yes: "Sim", none: "Não", unitHrs: "h/dia", unitSqFt: "/pé²", show: "Mostrar", hide: "Ocultar", localFactors: "Fatores Locais" },
+        it: { insights: "Dati di Mercato", personalized: "Dati in Tempo Reale", medianPrice: "Prezzo Medio", typicalRate: "Tasso Tipico", loanTerm: "Durata", downPayment: "Anticipo", sunHours: "Ore di Sole", electricRate: "Tariffa Elettr.", potential: "Potenziale", high: "Alto", moderate: "Moderato", laborRate: "Manodopera", season: "Stagione", active: "Attiva", propertyTax: "Tasse Proprietà", homeInsurance: "Assicurazione", stateTax: "Tasse Statali", yes: "Sì", none: "No", unitHrs: "ore/giorno", unitSqFt: "/mq", show: "Mostra", hide: "Nascondi", localFactors: "Fattori Locali" },
+        nl: { insights: "Marktinformatie", personalized: "Live Marktgegevens", medianPrice: "Middenprijs", typicalRate: "Typisch Tarief", loanTerm: "Looptijd", downPayment: "Aanbetaling", sunHours: "Zonuren", electricRate: "Stroomtarief", potential: "Potentieel", high: "Hoog", moderate: "Gemiddeld", laborRate: "Arbeidskosten", season: "Seizoen", active: "Actief", propertyTax: "OZB", homeInsurance: "Verzekering", stateTax: "Inkomstenbel.", yes: "Ja", none: "Geen", unitHrs: "u/dag", unitSqFt: "/vkt", show: "Tonen", hide: "Verbergen", localFactors: "Lokale Factoren" },
+        pl: { insights: "Dane Rynkowe", personalized: "Dane na Żywo", medianPrice: "Średnia Cena", typicalRate: "Typowa Stawka", loanTerm: "Okres", downPayment: "Wkład Własny", sunHours: "Godziny Słoneczne", electricRate: "Stawka za Prąd", potential: "Potencjał", high: "Wysoki", moderate: "Średni", laborRate: "Robocizna", season: "Sezon", active: "Aktywny", propertyTax: "Podatek", homeInsurance: "Ubezpieczenie", stateTax: "Podatek Stanowy", yes: "Tak", none: "Brak", unitHrs: "h/dzień", unitSqFt: "/st.kw", show: "Pokaż", hide: "Ukryj", localFactors: "Czynniki Lokalne" },
+        sv: { insights: "Marknadsinsikter", personalized: "Live Marknadsdata", medianPrice: "Medianpris", typicalRate: "Typisk Ränta", loanTerm: "Löptid", downPayment: "Kontantinsats", sunHours: "Soltimmar", electricRate: "Elpris", potential: "Potential", high: "Hög", moderate: "Måttlig", laborRate: "Arbetskostnad", season: "Säsong", active: "Aktiv", propertyTax: "Fastighetsskatt", homeInsurance: "Försäkring", stateTax: "Inkomstskatt", yes: "Ja", none: "Ingen", unitHrs: "tim/dag", unitSqFt: "/kvfot", show: "Visa", hide: "Dölj", localFactors: "Lokala Faktorer" },
+        no: { insights: "Markedsinnsikt", personalized: "Live Markedsdata", medianPrice: "Medianpris", typicalRate: "Typisk Rente", loanTerm: "Løpetid", downPayment: "Egenkapital", sunHours: "Soltimer", electricRate: "Strømpris", potential: "Potensial", high: "Høyt", moderate: "Moderat", laborRate: "Arbeidskostnad", season: "Sesong", active: "Aktiv", propertyTax: "Eiendomsskatt", homeInsurance: "Forsikring", stateTax: "Inntektsskatt", yes: "Ja", none: "Ingen", unitHrs: "t/dag", unitSqFt: "/kvfot", show: "Vis", hide: "Skjul", localFactors: "Lokale Faktorer" },
+        da: { insights: "Markedsindsigt", personalized: "Live Markedsdata", medianPrice: "Medianpris", typicalRate: "Typisk Rente", loanTerm: "Løbetid", downPayment: "Udbetaling", sunHours: "Soltimer", electricRate: "Elpris", potential: "Potentiale", high: "Højt", moderate: "Moderat", laborRate: "Arbejdsløn", season: "Sæson", active: "Aktiv", propertyTax: "Ejendomsskat", homeInsurance: "Forsikring", stateTax: "Indkomstskat", yes: "Ja", none: "Ingen", unitHrs: "b/dag", unitSqFt: "/kvfod", show: "Vis", hide: "Skjul", localFactors: "Lokale Faktorer" },
+        fi: { insights: "Markkinatiedot", personalized: "Live Markkinadata", medianPrice: "Mediaanihinta", typicalRate: "Tyypillinen Korko", loanTerm: "Laina-aika", downPayment: "Käsiraha", sunHours: "Aurinkotunnit", electricRate: "Sähkönhinta", potential: "Potentiaali", high: "Korkea", moderate: "Kohtalainen", laborRate: "Työkustannus", season: "Sesonki", active: "Aktiivinen", propertyTax: "Kiinteistövero", homeInsurance: "Vakuutus", stateTax: "Tulovero", yes: "Kyllä", none: "Ei", unitHrs: "h/pv", unitSqFt: "/neliöjalka", show: "Näytä", hide: "Piilota", localFactors: "Paikalliset Tekijät" }
+    };
+
     /**
      * Render the local insights section as a prominent banner
      */
-    function renderInsightsSection(locationInfo) {
+    function renderInsightsSection(locationInfo, calcType) {
         const { type, data, displayName } = locationInfo;
-        const mortgage = data.mortgage;
-        
+        const pageLang = detectPageLanguage();
+        const t = TRANSLATIONS[pageLang] || TRANSLATIONS['en'];
+
+        // Select data source based on calculator type
+        let sourceData, sourceKey;
+        if (calcType === 'solar') { sourceData = data.solar; sourceKey = 'solar'; }
+        else if (calcType === 'roofing') { sourceData = data.roofing; sourceKey = 'roofing'; }
+        else { sourceData = data.mortgage; sourceKey = 'mortgage'; }
+
+        if (!sourceData) return '';
+
         let statsHTML = '';
-        
-        if (type === 'state') {
+        const currency = data.currency || '$';
+        const formatNumber = (num) => new Intl.NumberFormat(pageLang).format(num);
+
+        // Generate stats grid
+        if (calcType === 'solar') {
             statsHTML = `
                 <div class="geo-stats-grid">
                     <div class="geo-stat-card">
-                        <div class="geo-stat-label">Median Price</div>
-                        <div class="geo-stat-value">$${formatNumber(mortgage.medianPrice)}</div>
+                        <div class="geo-stat-label">${t.sunHours}</div>
+                        <div class="geo-stat-value">${sourceData.sunHours} <span class="unit">${t.unitHrs}</span></div>
                     </div>
                     <div class="geo-stat-card">
-                        <div class="geo-stat-label">Property Tax</div>
-                        <div class="geo-stat-value">${mortgage.propertyTaxRate}%</div>
+                        <div class="geo-stat-label">${t.electricRate}</div>
+                        <div class="geo-stat-value">${currency}${sourceData.electricRate}<span class="unit">/kWh</span></div>
                     </div>
                     <div class="geo-stat-card">
-                        <div class="geo-stat-label">Home Insurance</div>
-                        <div class="geo-stat-value">$${formatNumber(mortgage.homeInsurance)}/yr</div>
+                        <div class="geo-stat-label">${t.potential}</div>
+                        <div class="geo-stat-value">${sourceData.sunHours > 4 ? `${t.high} 🔥` : `${t.moderate} ⛅`}</div>
                     </div>
-                    <div class="geo-stat-card ${mortgage.hasStateIncomeTax ? '' : 'geo-stat-highlight'}">
-                        <div class="geo-stat-label">State Income Tax</div>
-                        <div class="geo-stat-value">${mortgage.hasStateIncomeTax ? 'Yes' : 'None ✓'}</div>
+                </div>`;
+        } else if (calcType === 'roofing') {
+            statsHTML = `
+                <div class="geo-stats-grid">
+                    <div class="geo-stat-card">
+                        <div class="geo-stat-label">${t.laborRate}</div>
+                        <div class="geo-stat-value">${currency}${sourceData.laborRate}<span class="unit">${t.unitSqFt}</span></div>
+                    </div>
+                    <div class="geo-stat-card">
+                        <div class="geo-stat-label">${t.season}</div>
+                        <div class="geo-stat-value">${t.active}</div>
                     </div>
                 </div>`;
         } else {
-            statsHTML = `
-                <div class="geo-stats-grid">
-                    <div class="geo-stat-card">
-                        <div class="geo-stat-label">Median Price</div>
-                        <div class="geo-stat-value">${data.currency}${formatNumber(mortgage.medianPrice)}</div>
-                    </div>
-                    <div class="geo-stat-card">
-                        <div class="geo-stat-label">Typical Rate</div>
-                        <div class="geo-stat-value">${mortgage.typicalRate}%</div>
-                    </div>
-                    <div class="geo-stat-card">
-                        <div class="geo-stat-label">Loan Term</div>
-                        <div class="geo-stat-value">${mortgage.typicalTerm} years</div>
-                    </div>
-                    <div class="geo-stat-card">
-                        <div class="geo-stat-label">Down Payment</div>
-                        <div class="geo-stat-value">${mortgage.downPayment}%</div>
-                    </div>
-                </div>`;
+            // Mortgage
+            if (type === 'state') {
+                statsHTML = `
+                    <div class="geo-stats-grid">
+                        <div class="geo-stat-card">
+                            <div class="geo-stat-label">${t.medianPrice}</div>
+                            <div class="geo-stat-value">$${formatNumber(sourceData.medianPrice)}</div>
+                        </div>
+                        <div class="geo-stat-card">
+                            <div class="geo-stat-label">${t.propertyTax}</div>
+                            <div class="geo-stat-value">${sourceData.propertyTaxRate}%</div>
+                        </div>
+                        <div class="geo-stat-card">
+                            <div class="geo-stat-label">${t.homeInsurance}</div>
+                            <div class="geo-stat-value">$${formatNumber(sourceData.homeInsurance)}/yr</div>
+                        </div>
+                        <div class="geo-stat-card ${sourceData.hasStateIncomeTax ? '' : 'geo-stat-highlight'}">
+                            <div class="geo-stat-label">${t.stateTax}</div>
+                            <div class="geo-stat-value">${sourceData.hasStateIncomeTax ? t.yes : `${t.none} ✓`}</div>
+                        </div>
+                    </div>`;
+            } else {
+                statsHTML = `
+                    <div class="geo-stats-grid">
+                        <div class="geo-stat-card">
+                            <div class="geo-stat-label">${t.medianPrice}</div>
+                            <div class="geo-stat-value">${currency}${formatNumber(sourceData.medianPrice)}</div>
+                        </div>
+                        <div class="geo-stat-card">
+                            <div class="geo-stat-label">${t.typicalRate}</div>
+                            <div class="geo-stat-value">${sourceData.typicalRate}%</div>
+                        </div>
+                        <div class="geo-stat-card">
+                            <div class="geo-stat-label">${t.loanTerm}</div>
+                            <div class="geo-stat-value">${sourceData.typicalTerm} years</div>
+                        </div>
+                        <div class="geo-stat-card">
+                            <div class="geo-stat-label">${t.downPayment}</div>
+                            <div class="geo-stat-value">${sourceData.downPayment}%</div>
+                        </div>
+                    </div>`;
+            }
         }
 
-        const tipsHTML = data.tips.map(tip => `
+        const tipsList = sourceData.tips || data.tips;
+        const tips = Array.isArray(tipsList) ? tipsList : (tipsList && typeof tipsList === 'object' ? (tipsList[pageLang] || tipsList['en'] || Object.values(tipsList)[0]) : []);
+
+        const tipsHTML = tips.map(tip => `
             <div class="geo-tip-item">
-                <span class="geo-tip-icon">✓</span>
+                <span class="geo-tip-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
                 <span class="geo-tip-text">${tip}</span>
             </div>
         `).join('');
@@ -213,25 +277,33 @@
         const html = `
             <style>
                 .geo-insights-banner {
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                    border-radius: 20px;
-                    padding: 28px 32px;
-                    margin: -30px auto 40px;
-                    max-width: 1200px;
-                    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+                    background: var(--surface, #111729);
+                    border: 1px solid rgba(255, 255, 255, 0.08); /* glass-border */
+                    border-radius: 24px;
+                    padding: 32px;
+                    margin: -40px auto 40px;
+                    max-width: 900px; /* Aligned with container */
+                    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5); /* shadow-lg */
                     position: relative;
                     overflow: hidden;
+                    backdrop-filter: blur(20px);
+                    -webkit-backdrop-filter: blur(20px);
                 }
                 .geo-insights-banner::before {
                     content: '';
                     position: absolute;
-                    top: 0;
-                    right: 0;
-                    width: 300px;
-                    height: 300px;
-                    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+                    inset: 0;
+                    background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent 40%);
                     pointer-events: none;
                 }
+                .geo-insights-banner::after {
+                    content: '';
+                    position: absolute;
+                    top: 0; left: 0; right: 0;
+                    height: 1px;
+                    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.5), transparent);
+                }
+
                 .geo-banner-header {
                     display: flex;
                     align-items: center;
@@ -242,172 +314,108 @@
                 .geo-banner-title {
                     display: flex;
                     align-items: center;
-                    gap: 12px;
+                    gap: 16px;
                     flex: 1;
                 }
                 .geo-banner-flag {
                     font-size: 32px;
-                    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+                    line-height: 1;
+                    filter: drop-shadow(0 0 15px rgba(99, 102, 241, 0.3));
                 }
                 .geo-banner-text h2 {
-                    font-size: 24px;
-                    font-weight: 800;
+                    font-size: 20px;
+                    font-weight: 700;
                     margin: 0 0 4px 0;
                     color: white;
-                    line-height: 1.2;
+                    letter-spacing: -0.01em;
                 }
                 .geo-banner-text p {
-                    font-size: 14px;
+                    font-size: 13px;
                     margin: 0;
-                    color: rgba(255,255,255,0.85);
+                    color: rgba(255,255,255,0.6);
                     font-weight: 500;
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
                 }
+                
                 .geo-toggle-btn {
-                    background: rgba(255,255,255,0.2);
-                    border: 1px solid rgba(255,255,255,0.3);
-                    color: white;
-                    padding: 8px 20px;
-                    border-radius: 12px;
+                    background: rgba(255,255,255,0.05);
+                    border: 1px solid rgba(255,255,255,0.1);
+                    color: rgba(255,255,255,0.7);
+                    padding: 6px 14px;
+                    border-radius: 8px;
                     cursor: pointer;
-                    font-size: 14px;
+                    font-size: 13px;
                     font-weight: 600;
-                    backdrop-filter: blur(10px);
                     transition: all 0.2s ease;
-                    white-space: nowrap;
                     display: none;
                 }
-                .geo-toggle-btn:hover {
-                    background: rgba(255,255,255,0.3);
-                    transform: translateY(-1px);
-                }
-                .geo-content {
-                    transition: max-height 0.3s ease, opacity 0.3s ease;
-                }
-                .geo-content.collapsed {
-                    max-height: 0;
-                    opacity: 0;
-                    overflow: hidden;
-                }
+                .geo-toggle-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+
+                .geo-content { transition: max-height 0.3s ease, opacity 0.3s ease; }
+                .geo-content.collapsed { max-height: 0; opacity: 0; overflow: hidden; }
+
                 .geo-stats-grid {
                     display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-                    gap: 16px;
+                    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+                    gap: 12px;
                     margin-bottom: 24px;
                 }
                 .geo-stat-card {
-                    background: rgba(255,255,255,0.15);
-                    backdrop-filter: blur(10px);
-                    border: 1px solid rgba(255,255,255,0.2);
+                    background: rgba(0,0,0,0.2);
+                    border: 1px solid rgba(255,255,255,0.05);
                     border-radius: 16px;
-                    padding: 18px;
+                    padding: 16px;
                     text-align: center;
-                    transition: transform 0.2s ease, box-shadow 0.2s ease;
+                    transition: transform 0.2s ease;
                 }
-                .geo-stat-card:hover {
-                    transform: translateY(-3px);
-                    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-                }
+                .geo-stat-card:hover { border-color: rgba(99, 102, 241, 0.4); transform: translateY(-2px); }
                 .geo-stat-card.geo-stat-highlight {
-                    background: rgba(16, 185, 129, 0.2);
-                    border-color: rgba(16, 185, 129, 0.4);
+                    background: rgba(16, 185, 129, 0.05);
+                    border-color: rgba(16, 185, 129, 0.3);
                 }
                 .geo-stat-label {
-                    color: rgba(255,255,255,0.8);
-                    font-size: 11px;
+                    color: rgba(255,255,255,0.5);
+                    font-size: 10px;
                     font-weight: 600;
                     text-transform: uppercase;
-                    letter-spacing: 0.5px;
-                    margin-bottom: 8px;
+                    letter-spacing: 0.1em;
+                    margin-bottom: 6px;
                 }
                 .geo-stat-value {
                     color: white;
                     font-size: 20px;
-                    font-weight: 800;
+                    font-weight: 700;
                     line-height: 1;
                 }
+                .geo-stat-value .unit { font-size: 11px; margin-left: 2px; color: rgba(255,255,255,0.5); }
+
                 .geo-tips-section {
-                    background: rgba(255,255,255,0.1);
-                    backdrop-filter: blur(10px);
-                    border: 1px solid rgba(255,255,255,0.2);
+                    background: rgba(99, 102, 241, 0.03);
+                    border: 1px solid rgba(99, 102, 241, 0.1);
                     border-radius: 16px;
-                    padding: 24px;
+                    padding: 20px;
                 }
                 .geo-tips-header {
-                    font-size: 16px;
+                    font-size: 12px;
                     font-weight: 700;
-                    color: white;
-                    margin-bottom: 16px;
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
+                    color: #a5b4fc; /* primary-light */
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    margin-bottom: 14px;
+                    display: flex; align-items: center; gap: 8px;
                 }
-                .geo-tips-list {
-                    display: grid;
-                    gap: 12px;
-                }
-                .geo-tip-item {
-                    display: flex;
-                    align-items: flex-start;
-                    gap: 12px;
-                    padding: 14px 16px;
-                    background: rgba(255,255,255,0.08);
-                    border-radius: 12px;
-                    border-left: 3px solid rgba(16, 185, 129, 0.8);
-                }
-                .geo-tip-icon {
-                    color: #10b981;
-                    font-weight: 700;
-                    flex-shrink: 0;
-                    font-size: 16px;
-                }
-                .geo-tip-text {
-                    color: rgba(255,255,255,0.95);
-                    font-size: 14px;
-                    line-height: 1.6;
-                    font-weight: 500;
-                }
+                .geo-tips-list { display: grid; gap: 10px; }
+                .geo-tip-item { display: flex; align-items: flex-start; gap: 10px; }
+                .geo-tip-icon { color: #10b981; margin-top: 2px; }
+                .geo-tip-text { color: rgba(255,255,255,0.9); font-size: 13px; line-height: 1.5; }
                 
                 @media (max-width: 768px) {
-                    .geo-insights-banner {
-                        margin: -20px 16px 24px;
-                        padding: 20px;
-                        border-radius: 16px;
-                    }
-                    .geo-toggle-btn {
-                        display: block;
-                    }
-                    .geo-banner-header {
-                        margin-bottom: 16px;
-                    }
-                    .geo-banner-flag {
-                        font-size: 28px;
-                    }
-                    .geo-banner-text h2 {
-                        font-size: 18px;
-                    }
-                    .geo-banner-text p {
-                        font-size: 12px;
-                    }
-                    .geo-stats-grid {
-                        grid-template-columns: repeat(2, 1fr);
-                        gap: 12px;
-                        margin-bottom: 16px;
-                    }
-                    .geo-stat-card {
-                        padding: 14px;
-                    }
-                    .geo-stat-value {
-                        font-size: 18px;
-                    }
-                    .geo-tips-section {
-                        padding: 18px;
-                    }
-                    .geo-tip-item {
-                        padding: 12px 14px;
-                    }
-                    .geo-tip-text {
-                        font-size: 13px;
-                    }
+                    .geo-insights-banner { padding: 20px; margin: -20px 16px 32px; border-radius: 20px; }
+                    .geo-toggle-btn { display: block; }
+                    .geo-banner-header { margin-bottom: 20px; }
+                    .geo-banner-flag { font-size: 26px; }
                 }
             </style>
             <div class="geo-insights-banner">
@@ -415,17 +423,20 @@
                     <div class="geo-banner-title">
                         <span class="geo-banner-flag">${type === 'state' ? '🇺🇸' : '🌍'}</span>
                         <div class="geo-banner-text">
-                            <h2>${displayName} Market Insights</h2>
-                            <p>📍 Personalized data based on your location</p>
+                            <h2>${displayName} ${t.insights}</h2>
+                            <p>
+                                <span style="display:inline-block; width:6px; height:6px; background:#10b981; border-radius:50%;"></span>
+                                ${t.personalized}
+                            </p>
                         </div>
                     </div>
-                    <button class="geo-toggle-btn" onclick="this.parentElement.nextElementSibling.classList.toggle('collapsed'); this.textContent = this.textContent === 'Show' ? 'Hide' : 'Show';">Hide</button>
+                    <button class="geo-toggle-btn" onclick="this.parentElement.nextElementSibling.classList.toggle('collapsed'); this.textContent = this.textContent === '${t.show}' ? '${t.hide}' : '${t.show}';">${t.hide}</button>
                 </div>
                 <div class="geo-content">
                     ${statsHTML}
                     <div class="geo-tips-section">
                         <div class="geo-tips-header">
-                            💡 Local Tips
+                            ${t.localFactors}
                         </div>
                         <div class="geo-tips-list">
                             ${tipsHTML}
@@ -438,38 +449,41 @@
         return html;
     }
 
-        /**
-     * Update calculator defaults based on location
-     */
-    function updateCalculatorDefaults(locationInfo) {
+    /**
+ * Update calculator defaults based on location
+ */
+    function updateCalculatorDefaults(locationInfo, calcType) {
         const { data, type } = locationInfo;
         const mortgage = data.mortgage;
 
-        // Wait for calculator to be initialized
-        setTimeout(() => {
-            // Try to find and update price field
-            const priceInput = document.querySelector('input[name="price"], input[id*="price"], input[data-field="price"]');
-            if (priceInput && mortgage.medianPrice) {
-                // Only update if it's showing a generic default (e.g., 300000)
-                const currentValue = parseInt(priceInput.value.replace(/[^0-9]/g, ''));
-                if (currentValue === 300000 || currentValue === 0) {
-                    priceInput.value = mortgage.medianPrice;
-                    priceInput.dispatchEvent(new Event('input', { bubbles: true }));
-                }
-            }
-
-            // For country pages, also update rate
-            if (type === 'country' && mortgage.typicalRate) {
-                const rateInput = document.querySelector('input[name="rate"], input[id*="rate"], input[data-field="rate"]');
-                if (rateInput) {
-                    const currentRate = parseFloat(rateInput.value);
-                    if (currentRate === 6.5 || currentRate === 7) { // Generic defaults
-                        rateInput.value = mortgage.typicalRate;
-                        rateInput.dispatchEvent(new Event('input', { bubbles: true }));
+        // Only update if relevant to calculator type
+        if (calcType === 'mortgage') {
+            // Wait for calculator to be initialized
+            setTimeout(() => {
+                // Try to find and update price field
+                const priceInput = document.querySelector('input[name="price"], input[id*="price"], input[data-field="price"]');
+                if (priceInput && mortgage.medianPrice) {
+                    const currentValue = parseInt(priceInput.value.replace(/[^0-9]/g, ''));
+                    // Only update if placeholder or generic defaults
+                    if (!currentValue || currentValue === 300000 || currentValue === 200000) {
+                        priceInput.value = mortgage.medianPrice;
+                        priceInput.dispatchEvent(new Event('input', { bubbles: true }));
                     }
                 }
-            }
-        }, 1000);
+
+                // For country pages, also update rate
+                if (type === 'country' && mortgage.typicalRate) {
+                    const rateInput = document.querySelector('input[name="rate"], input[id*="rate"], input[data-field="rate"]');
+                    if (rateInput) {
+                        const currentRate = parseFloat(rateInput.value);
+                        if (currentRate === 6.5 || currentRate === 7) {
+                            rateInput.value = mortgage.typicalRate;
+                            rateInput.dispatchEvent(new Event('input', { bubbles: true }));
+                        }
+                    }
+                }
+            }, 1000);
+        }
     }
 
     /**
@@ -490,9 +504,23 @@
         }
 
         // Only run on calculator pages
-        if (!document.querySelector('#calculator-container, .calculator-wrapper')) {
+        const calculatorContainer = document.querySelector('#calculator-container, .calculator-wrapper');
+        const calculatorBody = document.querySelector('body[data-calculator-type]');
+
+        if (!calculatorContainer || !calculatorBody) {
             return;
         }
+
+        const calcType = calculatorBody.getAttribute('data-calculator-type');
+
+        // Define allowed types for geo-features
+        const allowedTypes = ['mortgage', 'solar', 'roofing'];
+        if (!allowedTypes.includes(calcType)) {
+            // Silently exit for other calculator types
+            return;
+        }
+
+        console.log('CalcKit Geo: Starting detection...');
 
         const location = await detectLocation();
         if (!location) return;
@@ -506,17 +534,22 @@
             return;
         }
 
+        // Check data availability for specific type
+        if (calcType === 'solar' && !locationInfo.data.solar) return;
+        if (calcType === 'roofing' && !locationInfo.data.roofing) return;
+        if (calcType === 'mortgage' && !locationInfo.data.mortgage) return;
+
         console.log('CalcKit Geo: Detected', locationInfo.displayName);
 
         // Inject insights banner BEFORE calculator section
         const calculatorSection = document.querySelector('.calculator-section');
         if (calculatorSection) {
-            const insightsHTML = renderInsightsSection(locationInfo);
+            const insightsHTML = renderInsightsSection(locationInfo, calcType);
             calculatorSection.insertAdjacentHTML('beforebegin', insightsHTML);
         }
 
         // Update calculator defaults
-        updateCalculatorDefaults(locationInfo);
+        updateCalculatorDefaults(locationInfo, calcType);
     }
 
     // Run when DOM is ready

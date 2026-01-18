@@ -66,11 +66,13 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
         "inLanguage": "{{ calc.lang }}",
         "featureList": "Calculate {{ calc.config.resultLabel[calc.lang] }}",
         "softwareRequirements": "Modern Web Browser",
-        "author": {
-            "@type": "Organization",
-            "name": "{{ site.name }}",
-            "url": "{{ site.url }}",
             "logo": "{{ site.url }}/assets/images/logo.png"
+        },
+        "reviewedBy": {
+            "@type": "Person",
+            "name": "{{ site.author.name }}",
+            "jobTitle": "{{ site.author.jobTitle }}",
+            "sameAs": "{{ site.author.sameAs[0] }}"
         }
     }
     </script>
@@ -403,19 +405,81 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
             <span class="section-tag">{{ ui.footer[calc.lang].otherTools | default("Recommended Tools") }}</span>
             <h2>{{ ui.footer[calc.lang].relatedTitle | default("Explore More Calculators") }}</h2>
             <div class="related-grid">
-                {%- set count = 0 -%}
+                {%- set related_count = 0 -%}
+                
+                {# First pass: Same Category #}
                 {%- for calcType, calcInfo in calculators -%}
-                {%- if calcType != calc.type and count < 3 -%}
+                {%- if calcType != calc.type and calcInfo.baseType == calc.baseType and related_count < 3 -%}
                 <a href="/{{ calc.lang }}/{{ calcInfo.slugs[calc.lang] }}/" class="related-card">
                     <h3>{{ calcInfo.titles[calc.lang] }}</h3>
                     <p>{{ calcInfo.subtitles[calc.lang] }}</p>
                 </a>
-                {%- set count = count + 1 -%}
+                {%- set related_count = related_count + 1 -%}
                 {%- endif -%}
                 {%- endfor -%}
+
+                {# Second pass: Others (if needed) #}
+                {%- if related_count < 3 -%}
+                {%- for calcType, calcInfo in calculators -%}
+                {%- if calcType != calc.type and calcInfo.baseType != calc.baseType and related_count < 3 -%}
+                <a href="/{{ calc.lang }}/{{ calcInfo.slugs[calc.lang] }}/" class="related-card">
+                    <h3>{{ calcInfo.titles[calc.lang] }}</h3>
+                    <p>{{ calcInfo.subtitles[calc.lang] }}</p>
+                </a>
+                {%- set related_count = related_count + 1 -%}
+                {%- endif -%}
+                {%- endfor -%}
+                {%- endif -%}
+            </div>
+        </div>
             </div>
         </div>
     </section>
+
+    <!-- [SEO LINK MESH] Specialized & Regional Tools -->
+    {%- if (calc.childNiches and calc.childNiches.length > 0) or (calc.relatedLocations and calc.relatedLocations.length > 0) %}
+    <section class="mesh-links-section" style="background: rgba(255, 255, 255, 0.02); padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <div data-mesh-container style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
+                
+                {# Specialized Calculators (Verticals) #}
+                {%- if calc.childNiches and calc.childNiches.length > 0 %}
+                <div>
+                    <h3 style="font-size: 18px; margin-bottom: 20px; color: var(--text);">
+                        🧮 {{ ui.footer[calc.lang].specializedTitle | default("Specialized Calculators") }}
+                    </h3>
+                    <ul style="list-style: none; padding: 0; display: grid; gap: 10px;">
+                        {%- for niche in calc.childNiches %}
+                        <li>
+                            <a href="/{{ calc.lang }}/{{ niche.slug }}/" style="color: var(--text-muted); text-decoration: none; font-size: 14px; transition: color 0.2s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">
+                                {{ niche.title }} →
+                            </a>
+                        </li>
+                        {%- endfor %}
+                    </ul>
+                </div>
+                {%- endif %}
+
+                {# Regional Calculators (Horizontals) #}
+                {%- if calc.relatedLocations and calc.relatedLocations.length > 0 %}
+                <div>
+                    <h3 style="font-size: 18px; margin-bottom: 20px; color: var(--text);">
+                        🌎 {{ ui.footer[calc.lang].regionalTitle | default("Nearby Locations") }}
+                    </h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                        {%- for loc in calc.relatedLocations %}
+                        <a href="/en/{{ loc.slug }}/" style="padding: 6px 12px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--text-sm); text-decoration: none; font-size: 13px; transition: background 0.2s;" onmouseover="this.style.background='rgba(99, 102, 241, 0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+                            {{ loc.name }}
+                        </a>
+                        {%- endfor %}
+                    </div>
+                </div>
+                {%- endif %}
+
+            </div>
+        </div>
+    </section>
+    {%- endif %}
 
     {% if site.analytics.adSenseId %}
     <!-- Ad Slot: Before Footer -->

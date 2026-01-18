@@ -41,6 +41,38 @@ module.exports = function (eleventyConfig) {
         const languages = site.languages.map(l => l.code);
         let pages = [];
 
+        // [CONTENT PERMUTATOR] Engine to generate unique text
+        const generateRichContent = (baseCalc, lang, location, stateData, countryData) => {
+            let content = baseCalc.content?.[lang] || '';
+
+            // 1. If we have State Data (e.g. Texas Page), inject specific data points
+            if (stateData && lang === 'en') {
+                const taxRate = stateData.mortgage?.propertyTaxRate || '1.1';
+                const insurance = stateData.mortgage?.homeInsurance || '1200';
+
+                // Templated Intro specific to State Pages
+                const stateIntros = [
+                    `<h2>Buying a Home in ${stateData.name}? Read This First.</h2><p>The real estate market in <strong>${stateData.name} (${stateData.abbr})</strong> has its own unique financial landscape. Unlike national averages, ${stateData.name} homeowners typically face a property tax rate of around <strong>${taxRate}%</strong>.</p>`,
+                    `<h2>The True Cost of Homeownership in ${stateData.name}</h2><p>Planning to buy in the ${stateData.name} area? It's critical to calculate more than just principal and interest. In ${stateData.name}, you need to account for specific property tax rates (avg. ${taxRate}%) and insurance premiums (avg. $${insurance}/year).</p>`,
+                    `<h2>${stateData.name} Mortgage Calculator: 2026 Edition</h2><p>Accurately estimating your monthly payments in ${stateData.name} requires local data. Our calculator renders a precise breakdown using ${stateData.name}'s specific average property tax of ${taxRate}%.</p>`
+                ];
+
+                // Randomly select an intro (deterministic based on name length to keep builds stable)
+                const index = stateData.name.length % stateIntros.length;
+                content = stateIntros[index] + content;
+            }
+
+            // 2. Standard Replacements
+            const locName = location ? `${location.name}, ${location.state}` : (stateData ? stateData.name : (countryData ? countryData.nameLocalized : ''));
+            const city = location ? location.name : '';
+            const state = location ? location.state : (stateData ? stateData.name : '');
+
+            return content
+                .replace(/{{location}}/g, locName)
+                .replace(/{{city}}/g, city)
+                .replace(/{{state}}/g, state);
+        };
+
         // Helper to create page object
         const createPage = ({ type, lang, slug, title, subtitle, overrides, location = null, isNiche = false, localTips = null, localFaqs = null, currencySymbol = null, stateData = null, countryData = null }) => {
             const baseCalc = calculators[type];
@@ -66,7 +98,6 @@ module.exports = function (eleventyConfig) {
 
             // Apply Location Specifics (e.g. median price)
             if (location) {
-                // Find "price" or "amount" field to set median price
                 const priceField = config.fields.find(f => f.id === 'price' || f.id === 'amount');
                 if (priceField && location.medianPrice) {
                     priceField.default = location.medianPrice;
@@ -79,7 +110,6 @@ module.exports = function (eleventyConfig) {
                 if (priceField && stateData.mortgage.medianPrice) {
                     priceField.default = stateData.mortgage.medianPrice;
                 }
-                // Could also apply propertyTaxRate, homeInsurance to other fields if they exist
             }
 
             // Apply Country-specific defaults for mortgage
@@ -102,6 +132,17 @@ module.exports = function (eleventyConfig) {
                 }
             }
 
+            // [INTERNAL MESH LOGIC]
+            const childNiches = (!location && !stateData && !countryData && !isNiche) ? niches.filter(n => n.baseType === type).map(n => ({
+                title: n.titles[lang] || n.titles['en'],
+                slug: n.slugs[lang] || n.slugs['en']
+            })) : null;
+
+            const relatedLocations = (stateData) ? Object.values(usStates).filter(s => s.slug !== stateData.slug).slice(0, 12).map(s => ({
+                name: s.name,
+                slug: `mortgage-calculator-${s.slug}`
+            })) : null;
+
             return {
                 type: type,
                 lang: lang,
@@ -112,16 +153,16 @@ module.exports = function (eleventyConfig) {
                     ? `${baseCalc.metaDescriptions[lang] || baseCalc.metaDescriptions['en']} Calculate for homes in ${location.name}, ${location.state}.`
                     : (baseCalc.metaDescriptions[lang] || baseCalc.metaDescriptions['en']),
                 config: config,
-                content: (baseCalc.content?.[lang] || '').replace(/{{location}}/g, location ? `${location.name}, ${location.state}` : '')
-                    .replace(/{{city}}/g, location ? location.name : '')
-                    .replace(/{{state}}/g, location ? location.state : ''),
+                content: generateRichContent(baseCalc, lang, location, stateData, countryData),
                 faqs: localFaqs || baseCalc.faqs?.[lang] || [],
                 location: location,
                 isNiche: isNiche,
                 localTips: localTips,
                 currencySymbol: currencySymbol,
                 stateData: stateData,
-                countryData: countryData
+                countryData: countryData,
+                childNiches: childNiches,
+                relatedLocations: relatedLocations
             };
         };
 
@@ -263,4 +304,3 @@ module.exports = function (eleventyConfig) {
         markdownTemplateEngine: "njk"
     };
 };
-

@@ -37,5 +37,17 @@ module.exports = {
     },
 
     // Environment flags
-    production: process.env.NODE_ENV === "production"
+    production: process.env.NODE_ENV === "production",
+
+    // E-E-A-T / Author Persona
+    author: {
+        name: "Juan Fontes",
+        jobTitle: "Financial Tech Lead",
+        url: "https://calc-kit.com/about", // Placeholder
+        image: "https://calc-kit.com/assets/images/author-juan.jpg", // Placeholder
+        sameAs: [
+            "https://twitter.com/juanfontes",
+            "https://linkedin.com/in/juanfontes"
+        ]
+    }
 };
