@@ -1,14 +1,16 @@
 <!-- Contact CTA Component -->
+{% set cLang = calc.lang or home.lang or "en" %}
+{% set uiCTA = ui.cta[cLang] %}
 <section class="contact-cta-section" style="margin: 60px 0; padding: 48px 40px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%); border-radius: 24px; border: 1px solid rgba(99, 102, 241, 0.2);">
     <div style="max-width: 700px; margin: 0 auto; text-align: center;">
         <div style="font-size: 48px; margin-bottom: 16px; font-family: monospace; font-weight: bold; background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">&lt;/&gt;</div>
         
         <h2 style="font-size: 28px; font-weight: 800; margin-bottom: 16px; background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-            {{ ui.cta[calc.lang].embedTitle | default("Need this calculator on your website?") }}
+            {{ uiCTA.embedTitle }}
         </h2>
         
         <p style="color: var(--text-muted); font-size: 18px; margin-bottom: 32px;">
-            {{ ui.cta[calc.lang].embedDesc | default("Contact us for custom calculator integrations and white-label solutions.") }}
+            {{ uiCTA.embedDesc }}
         </p>
 
         <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
@@ -16,25 +18,25 @@
                class="btn btn-primary contact-cta-link" 
                data-cta-location="calculator-page-main"
                style="display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px; background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; transition: all 0.3s;">
-                {{ ui.cta[calc.lang].contactUs | default("Contact Us") }} →
+                {{ uiCTA.contactUs }} →
             </a>
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: left;">
             <div>
                 <div style="color: #10b981; font-size: 20px; margin-bottom: 8px;">✓</div>
-                <div style="font-weight: 600; margin-bottom: 4px;">{{ ui.cta[calc.lang].benefit1 | default("Custom Branding") }}</div>
-                <div style="color: var(--text-muted); font-size: 14px;">{{ ui.cta[calc.lang].benefit1Desc | default("Your logo & colors") }}</div>
+                <div style="font-weight: 600; margin-bottom: 4px;">{{ uiCTA.benefit1 }}</div>
+                <div style="color: var(--text-muted); font-size: 14px;">{{ uiCTA.benefit1Desc }}</div>
             </div>
             <div>
                 <div style="color: #10b981; font-size: 20px; margin-bottom: 8px;">✓</div>
-                <div style="font-weight: 600; margin-bottom: 4px;">{{ ui.cta[calc.lang].benefit2 | default("Easy Integration") }}</div>
-                <div style="color: var(--text-muted); font-size: 14px;">{{ ui.cta[calc.lang].benefit2Desc | default("Simple embed code") }}</div>
+                <div style="font-weight: 600; margin-bottom: 4px;">{{ uiCTA.benefit2 }}</div>
+                <div style="color: var(--text-muted); font-size: 14px;">{{ uiCTA.benefit2Desc }}</div>
             </div>
             <div>
                 <div style="color: #10b981; font-size: 20px; margin-bottom: 8px;">✓</div>
-                <div style="font-weight: 600; margin-bottom: 4px;">{{ ui.cta[calc.lang].benefit3 | default("Lead Capture") }}</div>
-                <div style="color: var(--text-muted); font-size: 14px;">{{ ui.cta[calc.lang].benefit3Desc | default("Built-in forms") }}</div>
+                <div style="font-weight: 600; margin-bottom: 4px;">{{ uiCTA.benefit3 }}</div>
+                <div style="color: var(--text-muted); font-size: 14px;">{{ uiCTA.benefit3Desc }}</div>
             </div>
         </div>
     </div>

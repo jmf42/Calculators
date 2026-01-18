@@ -112,14 +112,14 @@
     <nav>
         <div class="container">
             <a href="{% if currentLang == 'en' %}/{% else %}/{{ currentLang }}/{% endif %}" class="logo">{{ site.name }}</a>
-            <a href="{% if currentLang == 'en' %}/{% else %}/{{ currentLang }}/{% endif %}" class="back-link">{{ ui.footer[currentLang].backToHome | default("← Back to Home") }}</a>
+            <a href="{% if currentLang == 'en' %}/{% else %}/{{ currentLang }}/{% endif %}" class="back-link">{{ ui.footer[currentLang].backToHome }}</a>
         </div>
     </nav>
 
     <div class="container content">
         <h1>{{ title }}</h1>
         {% if lastUpdated %}
-        <p class="last-updated">Last updated: {{ lastUpdated }}</p>
+        <p class="last-updated">{{ ui.legal[currentLang].lastUpdated }}: {{ lastUpdated }}</p>
         {% endif %}
 
         {{ content | safe }}
@@ -127,7 +127,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; {{ site.year }} {{ site.name }}. {{ ui.footer[currentLang].copyright | default("All rights reserved") }}.</p>
+            <p>&copy; {{ site.year }} {{ site.name }}. {{ ui.footer[currentLang].copyright }}.</p>
         </div>
     </footer>
 

@@ -1,4 +1,6 @@
 <!-- Email Capture Modal Component -->
+{% set lang = calc.lang or home.lang or "en" %}
+{% set uiEmail = ui.emailCapture[lang] %}
 <style>
     .email-modal-overlay {
         display: none;
@@ -186,39 +188,39 @@
         
         <div id="formContainer">
             <div class="modal-icon">🎯</div>
-            <h2 class="modal-title">Get Calculator Pro Tips</h2>
-            <p class="modal-subtitle">Join 10,000+ users getting smarter with their calculations</p>
+            <h2 class="modal-title">{{ uiEmail.title }}</h2>
+            <p class="modal-subtitle">{{ uiEmail.subtitle }}</p>
             
             <form class="email-form" id="emailCaptureForm">
                 <input 
                     type="email" 
                     class="email-input" 
                     id="emailInput" 
-                    placeholder="Enter your email"
+                    placeholder="{{ uiEmail.placeholder }}"
                     required
                     aria-label="Email address"
                 />
                 <button type="submit" class="email-submit" id="submitBtn">
-                    Get Free Calculator Guide
+                    {{ uiEmail.button }}
                 </button>
             </form>
 
             <ul class="modal-benefits">
-                <li>Free WordPress plugin ($49 value)</li>
-                <li>Advanced calculator tutorials</li>
-                <li>Early access to new features</li>
-                <li>No spam, unsubscribe anytime</li>
+                <li>{{ uiEmail.benefit1 }}</li>
+                <li>{{ uiEmail.benefit2 }}</li>
+                <li>{{ uiEmail.benefit3 }}</li>
+                <li>{{ uiEmail.benefit4 }}</li>
             </ul>
 
             <p class="modal-privacy">
-                We respect your privacy. Read our <a href="/privacy.html" style="color: #6366f1;">Privacy Policy</a>
+                {{ uiEmail.privacy }} <a href="/{{ lang }}/privacy.html" style="color: #6366f1;">{{ ui.footer[lang].privacy }}</a>
             </p>
         </div>
 
         <div class="success-message" id="successMessage">
             <div class="success-icon">🎉</div>
-            <h3 style="color: white; margin-bottom: 12px;">You're all set!</h3>
-            <p style="color: #94a3b8;">Check your email for your free calculator guide and plugin access.</p>
+            <h3 style="color: white; margin-bottom: 12px;">{{ uiEmail.successTitle }}</h3>
+            <p style="color: #94a3b8;">{{ uiEmail.successText }}</p>
         </div>
     </div>
 </div>
@@ -293,7 +295,7 @@
         const submitBtn = document.getElementById('submitBtn');
         
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Subscribing...';
+        submitBtn.textContent = '{{ uiEmail.subscribing }}';
 
         try {
             // TODO: Replace with your actual email service endpoint
@@ -337,7 +339,7 @@
             console.error('Email capture error:', error);
             alert('Oops! Something went wrong. Please try again.');
             submitBtn.disabled = false;
-            submitBtn.textContent = 'Get Free Calculator Guide';
+            submitBtn.textContent = '{{ uiEmail.button }}';
         }
     });
 

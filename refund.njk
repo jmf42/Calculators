@@ -10,7 +10,7 @@ lang: "{{ langItem.code }}"
 ---
 {% set uiLegal = ui.legal[lang] %}
 {% set uiFooter = ui.footer[lang] %}
-{% set pageTitle = uiLegal.refundTitle | default("Refund Policy") %}
+{% set pageTitle = uiLegal.refundTitle %}
 
 {% set uiRefund = ui.refundPage %}
 

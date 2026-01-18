@@ -8,31 +8,29 @@ title: Terms of Service
 permalink: "/{% if langItem.code != 'en' %}{{ langItem.code }}/{% endif %}terms.html"
 lang: "{{ langItem.code }}"
 ---
-{% set uiLegal = ui.legal[lang] %}
-{% set uiFooter = ui.footer[lang] %}
-{% set pageTitle = uiLegal.termsTitle | default("Terms of Service") %}
+{% set uiTerms = ui.termsPage[lang] %}
 
 <!-- Override layout variables -->
 {% set title = pageTitle %}
 {% set description = pageTitle + " - " + site.name %}
 
-<p>By using CalcKit (calc-kit.com), you agree to the following terms and conditions. Please read them carefully.</p>
+<p>{{ uiTerms.intro }}</p>
 
-<h2>1. Service Description</h2>
-<p>CalcKit provides free online calculators for financial planning, including mortgage, loan, ROI, and investment calculators. All calculators are provided for informational purposes only.</p>
+<h2>{{ uiTerms.s1Title }}</h2>
+<p>{{ uiTerms.s1Text }}</p>
 
-<h2>2. Free Usage</h2>
-<p>All calculators on this website are provided free of charge. You may:</p>
+<h2>{{ uiTerms.s2Title }}</h2>
+<p>{{ uiTerms.s2Text }}</p>
 <ul>
     <li>Use our calculators for personal or business planning</li>
     <li>Share calculator links with others</li>
     <li>Access calculators in multiple languages</li>
 </ul>
 
-<h2>3. Accuracy Disclaimer</h2>
-<p><strong>Important:</strong> Calculator results are estimates only. They should not be used as the sole basis for financial decisions. Always consult a qualified financial advisor, accountant, or other professional before making important financial decisions.</p>
+<h2>{{ uiTerms.s3Title }}</h2>
+<p><strong>{{ uiTerms.important }}</strong> Calculator results are estimates only. They should not be used as the sole basis for financial decisions. Always consult a qualified financial advisor, accountant, or other professional before making important financial decisions.</p>
 
-<h2>4. Restrictions</h2>
+<h2>{{ uiTerms.s4Title }}</h2>
 <p>You may NOT:</p>
 <ul>
     <li>Use the calculators for illegal or abusive purposes</li>
@@ -41,17 +39,17 @@ lang: "{{ langItem.code }}"
     <li>Use automated bots to access our services in an excessive manner</li>
 </ul>
 
-<h2>5. Intellectual Property</h2>
+<h2>{{ uiTerms.s5Title }}</h2>
 <p>CalcKit, including all code, design, and content, is the intellectual property of its creators. The name "CalcKit" and associated branding are protected.</p>
 
-<h2>6. Disclaimer of Warranties</h2>
+<h2>{{ uiTerms.s6Title }}</h2>
 <p>CalcKit is provided "as is" without warranty of any kind. We do not guarantee that the calculators will be error-free, uninterrupted, or accurate for your specific situation.</p>
 
-<h2>7. Limitation of Liability</h2>
+<h2>{{ uiTerms.s7Title }}</h2>
 <p>To the maximum extent permitted by law, CalcKit shall not be liable for any indirect, incidental, or consequential damages arising from the use of our calculators or website.</p>
 
-<h2>8. Changes to Terms</h2>
+<h2>{{ uiTerms.s8Title }}</h2>
 <p>We may update these terms from time to time. Continued use of the website after changes constitutes acceptance of the new terms.</p>
 
-<h2>9. Contact</h2>
+<h2>{{ uiTerms.s9Title }}</h2>
 <p>For questions about these terms, contact us at: <a href="mailto:hello@calc-kit.com">hello@calc-kit.com</a></p>

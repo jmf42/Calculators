@@ -10,8 +10,8 @@ lang: "{{ langItem.code }}"
 ---
 {% set uiLegal = ui.legal[lang] %}
 {% set uiFooter = ui.footer[lang] %}
-{% set pageTitle = uiLegal.privacyTitle | default("Privacy Policy") %}
-{% set lastUpdatedText = uiLegal.lastUpdated | default("Last updated") %}
+{% set pageTitle = uiLegal.privacyTitle %}
+{% set lastUpdatedText = uiLegal.lastUpdated %}
 
 {% set uiPrivacy = ui.privacyPage %}
 

@@ -21,7 +21,19 @@ class CalcKitCalculator extends HTMLElement {
             this.theme = this.closest('.calckit-calculator')?.dataset.theme || 'light';
 
             if (this.config.fields) {
+                // Parse URL Parameters for Deep Linking
+                const urlParams = new URLSearchParams(window.location.search);
+
                 this.config.fields.forEach(field => {
+                    // Check URL for override
+                    if (urlParams.has(field.id)) {
+                        const paramVal = parseFloat(urlParams.get(field.id));
+                        if (!isNaN(paramVal)) {
+                            // Override default with URL value
+                            field.default = paramVal;
+                        }
+                    }
+
                     if (field.hidden) {
                         this.state.hiddenFields.add(field.id);
                     }
@@ -103,6 +115,7 @@ class CalcKitCalculator extends HTMLElement {
                 border-radius: 24px;
                 color: ${this.theme === 'dark' ? 'var(--text-dark)' : 'var(--text-light)'};
                 transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                position: relative;
             }
             
             .calc-header { margin-bottom: 40px; text-align: center; }
@@ -182,16 +195,21 @@ class CalcKitCalculator extends HTMLElement {
             .chart-wrapper canvas { max-width: 100%; max-height: 100%; }
 
             /* Action Buttons */
-            .result-actions { margin-top: 24px; display: flex; justify-content: center; gap: 12px; }
+            .result-actions { margin-top: 24px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
             .action-btn {
-                background: rgba(255, 255, 255, 0.15); border: none; padding: 8px 16px; border-radius: 8px;
-                color: white; font-size: 13px; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 6px;
+                background: rgba(255, 255, 255, 0.15); border: none; padding: 10px 18px; border-radius: 10px;
+                color: white; font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px;
+                transition: all 0.2s;
             }
-            .action-btn:hover { background: rgba(255, 255, 255, 0.25); }
+            .action-btn:hover { background: rgba(255, 255, 255, 0.25); transform: translateY(-1px); }
             .action-btn.primary-cta {
                 background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-                font-weight: 600; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+                box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
             }
+             .action-btn.share-btn {
+                background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+            .action-btn.share-btn:hover { background: rgba(255, 255, 255, 0.2); }
             .action-btn svg { width: 16px; height: 16px; fill: currentColor; }
 
             .breakdown-item {
@@ -199,6 +217,16 @@ class CalcKitCalculator extends HTMLElement {
                 background: rgba(255, 255, 255, 0.08); border-radius: 8px; margin-bottom: 8px;
                 font-size: 13px;
             }
+
+            /* Toast Notification */
+            .toast {
+                position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(20px);
+                background: #10b981; color: white; padding: 10px 20px; border-radius: 30px;
+                font-size: 13px; font-weight: 600; opacity: 0; pointer-events: none;
+                transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.1); z-index: 10; display: flex; align-items: center; gap: 8px;
+            }
+            .toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
         `;
     }
 
@@ -230,16 +258,26 @@ class CalcKitCalculator extends HTMLElement {
                     <div id="notices-container" class="calc-notices"></div>
                     
                     <div class="result-actions">
+                         <button class="action-btn share-btn" id="share-btn" title="Copy link to this calculation">
+                            <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+                            Share
+                        </button>
+
                         <button class="action-btn" id="reset-btn">
                             <svg viewBox="0 0 24 24"><path d="M17 6A8 8 0 005 14h2a6 6 0 119-3l-2 2 7 0 0-7z"/></svg> Reset
                         </button>
                         ${this.config.proFeatures?.pdf ? `
                             <button class="action-btn primary-cta" id="pdf-btn">
                                 <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                                ${this.escapeHTML(this.config.proFeatures.pdfLabel || 'Download PDF')}
+                                PDF
                             </button>
                         ` : ''}
                     </div>
+                </div>
+                
+                <div id="toast" class="toast">
+                    <svg style="width:16px;height:16px;fill:white" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Link Copied!
                 </div>
             </div>
         `;
@@ -336,8 +374,38 @@ class CalcKitCalculator extends HTMLElement {
         const resetBtn = this.shadowRoot.getElementById('reset-btn');
         if (resetBtn) resetBtn.addEventListener('click', () => this.resetToDefaults());
 
+        const shareBtn = this.shadowRoot.getElementById('share-btn');
+        if (shareBtn) shareBtn.addEventListener('click', () => this.shareScenario());
+
         // Initial Calc
         this.calculate();
+    }
+
+    shareScenario() {
+        const url = new URL(window.location.href);
+        this.config.fields.forEach(field => {
+            // Only add if not hidden and is a valid value
+            if (this.values[field.id] !== undefined && !this.state.hiddenFields.has(field.id)) {
+                url.searchParams.set(field.id, this.values[field.id]);
+            }
+        });
+
+        navigator.clipboard.writeText(url.toString()).then(() => {
+            this.showToast('Link to this calculation copied!');
+        }).catch(err => {
+            console.error('Failed to copy', err);
+        });
+    }
+
+    showToast(message) {
+        const toast = this.shadowRoot.getElementById('toast');
+        if (toast) {
+            toast.textContent = message;
+            // Re-add icon if needed, but text serves
+            toast.innerHTML = `<svg style="width:16px;height:16px;fill:white" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> ${message}`;
+            toast.classList.add('visible');
+            setTimeout(() => toast.classList.remove('visible'), 3000);
+        }
     }
 
     handleInput(event) {

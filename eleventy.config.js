@@ -1,4 +1,29 @@
 module.exports = function (eleventyConfig) {
+    const site = require("./_data/site.js");
+    const defaultLang = site.defaultLang;
+
+    const replaceYearTokens = (value) => {
+        if (value === null || value === undefined) return value;
+        return String(value).replace(/\b2026\b/g, String(site.year));
+    };
+
+    const buildCalcUrl = (lang, slug) => `${site.url}/${lang}/${slug}/`;
+
+    const buildAlternates = ({ lang, slug, alternateSlugs, isLocalizedVariant }) => {
+        const alternates = {};
+        if (alternateSlugs && !isLocalizedVariant) {
+            Object.entries(alternateSlugs).forEach(([code, altSlug]) => {
+                if (altSlug) {
+                    alternates[code] = buildCalcUrl(code, altSlug);
+                }
+            });
+        }
+        if (!alternates[lang]) {
+            alternates[lang] = buildCalcUrl(lang, slug);
+        }
+        return alternates;
+    };
+
     // Copy static assets
     eleventyConfig.addPassthroughCopy("assets");
     eleventyConfig.addPassthroughCopy("assets/images");
@@ -25,7 +50,6 @@ module.exports = function (eleventyConfig) {
 
     // Generate homepages for all languages
     eleventyConfig.addCollection("homePages", function (collectionApi) {
-        const site = require("./_data/site.js");
         const languages = site.languages.map(l => l.code);
         return languages.map(lang => ({ lang }));
     });
@@ -37,7 +61,6 @@ module.exports = function (eleventyConfig) {
         const locations = require("./_data/locations.json");
         const usStates = require("./_data/us-states.json");
         const countries = require("./_data/countries.json");
-        const site = require("./_data/site.js");
         const languages = site.languages.map(l => l.code);
         let pages = [];
 
@@ -54,7 +77,7 @@ module.exports = function (eleventyConfig) {
                 const stateIntros = [
                     `<h2>Buying a Home in ${stateData.name}? Read This First.</h2><p>The real estate market in <strong>${stateData.name} (${stateData.abbr})</strong> has its own unique financial landscape. Unlike national averages, ${stateData.name} homeowners typically face a property tax rate of around <strong>${taxRate}%</strong>.</p>`,
                     `<h2>The True Cost of Homeownership in ${stateData.name}</h2><p>Planning to buy in the ${stateData.name} area? It's critical to calculate more than just principal and interest. In ${stateData.name}, you need to account for specific property tax rates (avg. ${taxRate}%) and insurance premiums (avg. $${insurance}/year).</p>`,
-                    `<h2>${stateData.name} Mortgage Calculator: 2026 Edition</h2><p>Accurately estimating your monthly payments in ${stateData.name} requires local data. Our calculator renders a precise breakdown using ${stateData.name}'s specific average property tax of ${taxRate}%.</p>`
+                    `<h2>${stateData.name} Mortgage Calculator: ${site.year} Edition</h2><p>Accurately estimating your monthly payments in ${stateData.name} requires local data. Our calculator renders a precise breakdown using ${stateData.name}'s specific average property tax of ${taxRate}%.</p>`
                 ];
 
                 // Randomly select an intro (deterministic based on name length to keep builds stable)
@@ -63,18 +86,24 @@ module.exports = function (eleventyConfig) {
             }
 
             // 2. Standard Replacements
-            const locName = location ? `${location.name}, ${location.state}` : (stateData ? stateData.name : (countryData ? countryData.nameLocalized : ''));
-            const city = location ? location.name : '';
-            const state = location ? location.state : (stateData ? stateData.name : '');
+            if (location && lang === 'en' && location.medianPrice) {
+                const median = new Intl.NumberFormat('en-US').format(location.medianPrice);
+                content += `<p>Local snapshot: The median home price in ${location.name}, ${location.state} is around $${median}.</p>`;
+            }
 
-            return content
+            const fallbackLocation = 'your area';
+            const locName = location ? `${location.name}, ${location.state}` : (stateData ? stateData.name : (countryData ? countryData.nameLocalized : fallbackLocation));
+            const city = location ? location.name : locName;
+            const state = location ? location.state : (stateData ? stateData.name : (countryData ? countryData.nameLocalized : fallbackLocation));
+
+            return replaceYearTokens(content)
                 .replace(/{{location}}/g, locName)
                 .replace(/{{city}}/g, city)
                 .replace(/{{state}}/g, state);
         };
 
         // Helper to create page object
-        const createPage = ({ type, lang, slug, title, subtitle, overrides, location = null, isNiche = false, localTips = null, localFaqs = null, currencySymbol = null, stateData = null, countryData = null }) => {
+        const createPage = ({ type, lang, slug, title, subtitle, overrides, location = null, isNiche = false, localTips = null, localFaqs = null, currencySymbol = null, stateData = null, countryData = null, alternateSlugs = null }) => {
             const baseCalc = calculators[type];
             let config = JSON.parse(JSON.stringify(baseCalc.config));
 
@@ -135,6 +164,15 @@ module.exports = function (eleventyConfig) {
             // Inject Language for Frontend JS
             config.lang = lang;
 
+            const isLocalizedVariant = Boolean(location || stateData || countryData);
+            const canonicalUrl = buildCalcUrl(lang, slug);
+            const alternates = buildAlternates({
+                lang,
+                slug,
+                alternateSlugs,
+                isLocalizedVariant
+            });
+
             // [INTERNAL MESH LOGIC]
             const childNiches = (!location && !stateData && !countryData && !isNiche) ? niches.filter(n => n.baseType === type).map(n => ({
                 title: n.titles[lang] || n.titles['en'],
@@ -146,15 +184,21 @@ module.exports = function (eleventyConfig) {
                 slug: `mortgage-calculator-${s.slug}`
             })) : null;
 
+            const baseMeta = baseCalc.metaDescriptions?.[lang] || baseCalc.metaDescriptions?.['en'] || '';
+            const locationSuffix = location
+                ? (type === 'mortgage'
+                    ? ` Calculate for homes in ${location.name}, ${location.state}.`
+                    : ` Calculate for ${location.name}, ${location.state}.`)
+                : '';
+            const metaDescription = replaceYearTokens(`${baseMeta}${locationSuffix}`.trim());
+
             return {
                 type: type,
                 lang: lang,
                 slug: slug,
-                title: title,
-                subtitle: subtitle,
-                metaDescription: location
-                    ? `${baseCalc.metaDescriptions[lang] || baseCalc.metaDescriptions['en']} Calculate for homes in ${location.name}, ${location.state}.`
-                    : (baseCalc.metaDescriptions[lang] || baseCalc.metaDescriptions['en']),
+                title: replaceYearTokens(title),
+                subtitle: replaceYearTokens(subtitle),
+                metaDescription: metaDescription,
                 config: config,
                 content: generateRichContent(baseCalc, lang, location, stateData, countryData),
                 faqs: localFaqs || baseCalc.faqs?.[lang] || [],
@@ -165,7 +209,10 @@ module.exports = function (eleventyConfig) {
                 stateData: stateData,
                 countryData: countryData,
                 childNiches: childNiches,
-                relatedLocations: relatedLocations
+                relatedLocations: relatedLocations,
+                canonicalUrl: canonicalUrl,
+                alternates: alternates,
+                lastmod: site.buildDate
             };
         };
 
@@ -178,7 +225,8 @@ module.exports = function (eleventyConfig) {
                     lang: lang,
                     slug: calc.slugs[lang] || calc.slugs['en'],
                     title: calc.titles[lang] || calc.titles['en'],
-                    subtitle: calc.subtitles[lang] || calc.subtitles['en']
+                    subtitle: calc.subtitles[lang] || calc.subtitles['en'],
+                    alternateSlugs: calc.slugs
                 }));
             });
         });
@@ -198,11 +246,12 @@ module.exports = function (eleventyConfig) {
                     title: niche.titles?.[lang] || niche.titles?.['en'],
                     subtitle: niche.subtitles?.[lang] || niche.subtitles?.['en'],
                     overrides: niche.overrides,
-                    isNiche: true
+                    isNiche: true,
+                    alternateSlugs: niche.slugs
                 }));
 
                 // 3. Generate Niche x Location Pages (Only for English for now to save build time/space)
-                if (lang === 'en' && locations && locations.length > 0) {
+                if (lang === 'en' && locations && locations.length > 0 && niche.baseType === 'mortgage') {
                     locations.forEach(loc => {
                         // e.g. /en/mortgage-calculator-austin-tx/
                         const locSlug = `${slug}-${loc.slug}`;

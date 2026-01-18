@@ -1,0 +1,17 @@
+{
+    "name": "CalcKit - Universal Financial Tools",
+    "short_name": "CalcKit",
+    "description": "553+ financial calculators for mortgages, solar, roofing, and more.",
+    "start_url": "/?utm_source=pwa",
+    "display": "standalone",
+    "background_color": "#0f1629",
+    "theme_color": "#6366f1",
+    "icons": [
+        {
+            "src": "/assets/images/favicon.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}
