@@ -476,6 +476,10 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
             q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
         });
     </script>
+    
+    <!-- Geo-Detection: Automatically show local market insights based on user location -->
+    <script src="/assets/js/geo-detect.js" defer></script>
+    
     {% include "components/cookie-banner.njk" %}
 </body>
 </html>
