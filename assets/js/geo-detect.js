@@ -45,16 +45,16 @@
         'gb': { name: 'United Kingdom', nameLocalized: 'United Kingdom', currency: '£', tips: ['First-time buyers pay no Stamp Duty on properties up to £425,000.', 'Lifetime ISA provides 25% government bonus for deposits.', 'Fixed rates for 2-5 years are most common.'], mortgage: { medianPrice: 285000, typicalRate: 5.0, typicalTerm: 25, downPayment: 10 } },
         'au': { name: 'Australia', nameLocalized: 'Australia', currency: '$', tips: ['Lenders Mortgage Insurance (LMI) required if deposit under 20%.', 'First Home Owner Grant varies by state — $10,000-$30,000 for new homes.', 'Offset accounts are popular to reduce interest.'], mortgage: { medianPrice: 800000, typicalRate: 6.0, typicalTerm: 30, downPayment: 20 } },
         'ie': { name: 'Ireland', nameLocalized: 'Ireland', currency: '€', tips: ['First-time buyers need only 10% deposit.', 'Help to Buy scheme provides up to €30,000 tax refund for new builds.', 'Central Bank rules limit mortgages to 4x income.'], mortgage: { medianPrice: 350000, typicalRate: 4.0, typicalTerm: 30, downPayment: 10 } },
-        'at': { name: 'Austria', nameLocalized: 'Österreich', currency: '€', tips: ['Österreichische Banken verlangen normalerweise 20% Eigenkapital.', 'Nebenkosten circa 10%.', 'Wohnbauförderung je nach Bundesland verfügbar.'], mortgage: { medianPrice: 350000, typicalRate: 4.0, typicalTerm: 30, downPayment: 20 } },
-        'ch': { name: 'Switzerland', nameLocalized: 'Schweiz', currency: 'CHF', tips: ['Die Schweiz hat sehr hohe Immobilienpreise — CHF 900.000+ ist normal.', 'Mindestens 20% Eigenkapital erforderlich.', 'Die Tragbarkeit (Kosten/Einkommen unter 33%) ist entscheidend.'], mortgage: { medianPrice: 900000, typicalRate: 2.5, typicalTerm: 25, downPayment: 20 } },
-        'be': { name: 'Belgium', nameLocalized: 'Belgique', currency: '€', tips: ['Les frais de notaire et droits d\'enregistrement totalisent 12-15%.', 'Droits d\'enregistrement: 12,5% en Wallonie/Bruxelles, 6% en Flandre.'], mortgage: { medianPrice: 300000, typicalRate: 3.8, typicalTerm: 25, downPayment: 20 } },
+        'at': { name: 'Austria', nameLocalized: 'Österreich', currency: '€', tips: { de: ['Österreichische Banken verlangen normalerweise 20% Eigenkapital.', 'Nebenkosten circa 10%.', 'Wohnbauförderung je nach Bundesland verfügbar.'], en: ['Austrian banks typically require 20% down payment.', 'Additional costs are around 10%.', 'State housing subsidies available depending on region.'] }, mortgage: { medianPrice: 350000, typicalRate: 4.0, typicalTerm: 30, downPayment: 20 } },
+        'ch': { name: 'Switzerland', nameLocalized: 'Suisse', currency: 'CHF', tips: { de: ['Die Schweiz hat sehr hohe Immobilienpreise — CHF 900.000+ ist normal.', 'Mindestens 20% Eigenkapital erforderlich.', 'Die Tragbarkeit (Kosten/Einkommen unter 33%) ist entscheidend.'], fr: ['La Suisse a des prix immobiliers très élevés — CHF 900.000+ est normal.', 'Minimum 20% d\'apport personnel requis.', 'L\'accessibilité financière (coûts/revenus sous 33%) est déterminante.'], en: ['Switzerland has very high property prices — CHF 900,000+ is normal.', 'Minimum 20% down payment required.', 'Affordability (costs/income under 33%) is key.'], it: ['La Svizzera ha prezzi immobiliari molto elevati — CHF 900.000+ è normale.', 'Minimo 20% di capitale proprio richiesto.', 'L\'accessibilità (costi/reddito sotto 33%) è fondamentale.'] }, mortgage: { medianPrice: 900000, typicalRate: 2.5, typicalTerm: 25, downPayment: 20 } },
+        'be': { name: 'Belgium', nameLocalized: 'Belgique', currency: '€', tips: { fr: ['Les frais de notaire et droits d\'enregistrement totalisent 12-15%.', 'Droits d\'enregistrement: 12,5% en Wallonie/Bruxelles, 6% en Flandre.'], nl: ['Notariskosten en registratierechten bedragen 12-15%.', 'Registratierechten: 12,5% in Wallonië/Brussel, 6% in Vlaanderen.'], en: ['Notary fees and registration taxes total 12-15%.', 'Registration tax: 12.5% in Wallonia/Brussels, 6% in Flanders.'] }, mortgage: { medianPrice: 300000, typicalRate: 3.8, typicalTerm: 25, downPayment: 20 } },
         'se': { name: 'Sweden', nameLocalized: 'Sverige', currency: 'kr', tips: ['Sverige kräver minst 15% kontantinsats.', 'Amorteringskrav: 2% per år om belåningsgrad över 70%.', 'Ränteavdrag på 30% av räntekostnader.'], mortgage: { medianPrice: 4000000, typicalRate: 4.5, typicalTerm: 50, downPayment: 15 } },
         'no': { name: 'Norway', nameLocalized: 'Norge', currency: 'kr', tips: ['Norge krever minimum 15% egenkapital.', 'Boliglånsforskriften begrenser gjeld til 5 ganger bruttoinntekt.', 'Rentefradrag: 22% av rentekostnader.'], mortgage: { medianPrice: 5000000, typicalRate: 5.0, typicalTerm: 25, downPayment: 15 } },
         'dk': { name: 'Denmark', nameLocalized: 'Danmark', currency: 'kr', tips: ['Danmark har et unikt realkreditsystem med meget lave renter.', 'Udbetaling på minimum 5% kræves.', 'Afdragsfrihed op til 10 år er muligt.'], mortgage: { medianPrice: 3500000, typicalRate: 4.0, typicalTerm: 30, downPayment: 5 } },
         'fi': { name: 'Finland', nameLocalized: 'Suomi', currency: '€', tips: ['Suomessa vaaditaan yleensä 15% omarahoitusosuus.', 'ASP-tili tarjoaa korkoetua ensiasunnon ostajille.', 'Ensiasunnon ostajat vapautetaan varainsiirtoverosta.'], mortgage: { medianPrice: 300000, typicalRate: 4.5, typicalTerm: 25, downPayment: 15 } },
         'co': { name: 'Colombia', nameLocalized: 'Colombia', currency: '$', tips: ['Los créditos VIS tienen tasas preferenciales.', 'El subsidio "Mi Casa Ya" cubre parte de la cuota inicial.', 'Los gastos notariales suman aproximadamente 2% del valor.'], mortgage: { medianPrice: 300000000, typicalRate: 12, typicalTerm: 15, downPayment: 20 } },
         'cl': { name: 'Chile', nameLocalized: 'Chile', currency: 'UF', tips: ['Los créditos hipotecarios en Chile se expresan en UF.', 'Las tasas son bajas (4-5%) comparado con otros países latinoamericanos.', 'El subsidio DS1 ayuda a familias de clase media.'], mortgage: { medianPrice: 4500, typicalRate: 4.5, typicalTerm: 25, downPayment: 20 } },
-        'ca': { name: 'Canada', nameLocalized: 'Canada', currency: '$', tips: ['Mise de fonds minimale de 5% pour les propriétés sous 500 000$.', 'Assurance SCHL obligatoire si mise de fonds inférieure à 20%.', 'Le test de résistance exige de qualifier au taux + 2%.'], mortgage: { medianPrice: 500000, typicalRate: 5.5, typicalTerm: 25, downPayment: 5 } }
+        'ca': { name: 'Canada', nameLocalized: 'Canada', currency: '$', tips: { en: ['Minimum 5% down payment for properties under $500,000.', 'CMHC insurance required if down payment is less than 20%.', 'Stress test requires qualifying at rate + 2%.'], fr: ['Mise de fonds minimale de 5% pour les propriétés sous 500 000$.', 'Assurance SCHL obligatoire si mise de fonds inférieure à 20%.', 'Le test de résistance exige de qualifier au taux + 2%.'] }, mortgage: { medianPrice: 500000, typicalRate: 5.5, typicalTerm: 25, downPayment: 5 } }
     };
 
     // State name to code mapping for US
@@ -65,6 +65,21 @@
         'washington': 'wa', 'arizona': 'az', 'massachusetts': 'ma', 'tennessee': 'tn',
         'indiana': 'in', 'missouri': 'mo', 'maryland': 'md', 'colorado': 'co'
     };
+
+    /**
+     * Detect the page language from the URL
+     */
+    function detectPageLanguage() {
+        // Extract language from URL path (e.g., /fr/calculator/ -> 'fr')
+        const pathMatch = window.location.pathname.match(/^\/([a-z]{2})\//); if (pathMatch) return pathMatch[1];
+
+        // Fallback to HTML lang attribute
+        const htmlLang = document.documentElement.lang;
+        if (htmlLang) return htmlLang.split('-')[0]; // 'en-US' -> 'en'
+
+        // Default to English
+        return 'en';
+    }
 
     /**
      * Detect user location via IP geolocation API
@@ -92,9 +107,9 @@
     }
 
     /**
-     * Get location data based on detected location
+     * Get location data based on detected location and page language
      */
-    function getLocationData(location) {
+    function getLocationData(location, pageLang = 'en') {
         if (!location) return null;
 
         // If user is in the US, try to get state data
@@ -111,10 +126,19 @@
 
         // Otherwise try country data
         if (COUNTRIES[location.countryCode]) {
+            const countryData = COUNTRIES[location.countryCode];
+
+            // Get tips in the page language if available, fallback to English or first available
+            let tips = countryData.tips;
+            if (typeof tips === 'object' && !Array.isArray(tips)) {
+                // Multilingual tips object
+                tips = tips[pageLang] || tips['en'] || tips[Object.keys(tips)[0]];
+            }
+
             return {
                 type: 'country',
-                data: COUNTRIES[location.countryCode],
-                displayName: COUNTRIES[location.countryCode].nameLocalized
+                data: { ...countryData, tips },
+                displayName: countryData.nameLocalized
             };
         }
 
@@ -277,7 +301,10 @@
         const location = await detectLocation();
         if (!location) return;
 
-        const locationInfo = getLocationData(location);
+        const pageLang = detectPageLanguage();
+        console.log('CalcKit Geo: Page language detected as', pageLang);
+
+        const locationInfo = getLocationData(location, pageLang);
         if (!locationInfo) {
             console.log('CalcKit Geo: No data for location', location);
             return;
