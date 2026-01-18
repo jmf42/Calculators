@@ -18,6 +18,35 @@ permalink: "/{% if home.lang != 'en' %}{{ home.lang }}/{% endif %}index.html"
     <meta name="twitter:image" content="{{ site.url }}/assets/images/og-image.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <script>
+        // Language Auto-detection & Redirection
+        (function() {
+            const supportedLangs = {{ site.languages | map('code') | dump | safe }};
+            const defaultLang = '{{ site.defaultLang }}';
+            
+            // 1. Check if we are already on a localized path or if this is the root
+            const path = window.location.pathname;
+            const isRoot = path === '/' || path === '/index.html';
+            
+            if (isRoot) {
+                // 2. Priority: localStorage > Browser Language > Default
+                const preferredLang = localStorage.getItem('preferred_lang');
+                let targetLang = preferredLang;
+                
+                if (!targetLang) {
+                    const browserLang = navigator.language.split('-')[0];
+                    if (supportedLangs.includes(browserLang)) {
+                        targetLang = browserLang;
+                    }
+                }
+                
+                // 3. Redirect if target is not the current default (assuming root is default)
+                if (targetLang && targetLang !== defaultLang && supportedLangs.includes(targetLang)) {
+                    window.location.href = '/' + targetLang + '/';
+                }
+            }
+        })();
+    </script>
     <style>
         /* Hero Section - Epic */
         .hero-home { 
@@ -181,16 +210,16 @@ permalink: "/{% if home.lang != 'en' %}{{ home.lang }}/{% endif %}index.html"
 <body>
     <nav class="nav">
         <div class="container">
-            <a href="/" class="logo">{{ site.name }}</a>
+            <a href="{% if home.lang == 'en' %}/{% else %}/{{ home.lang }}/{% endif %}" class="logo">{{ site.name }}</a>
         </div>
     </nav>
 
     <section class="hero-home">
         <div class="container">
-            <h1>{{ ui.homeHero[home.lang] | default("Professional Calculators for Your Website") }}</h1>
-            <p>{{ ui.homeTagline[home.lang] | default("The #1 Calculator Plugin for WordPress. Add niche lead magnets to your site in minutes.") }}</p>
+            <h1>{{ ui.homeHero[home.lang] | default("Free Financial Calculators") }}</h1>
+            <p>{{ ui.homeTagline[home.lang] | default("Accurate mortgage, loan, ROI, and investment calculators. No signup required. 100% free.") }}</p>
             <div style="margin-top: 32px;">
-                <a href="/{{ home.lang }}/mortgage-calculator/" class="btn btn-primary">{{ ui.cta[home.lang].tryFree | default("Try Free Calculator") }} →</a>
+                <a href="/{{ home.lang }}/{{ calculators.mortgage.slugs[home.lang] }}/" class="btn btn-primary">{{ ui.cta[home.lang].tryFree | default("Try Free Calculator") }} →</a>
             </div>
             <div class="stats">
                 <div class="stat">
@@ -220,7 +249,7 @@ permalink: "/{% if home.lang != 'en' %}{{ home.lang }}/{% endif %}index.html"
                 <h3>{{ calc.titles[home.lang] | default(calc.titles.en) }}</h3>
                 <p>{{ calc.subtitles[home.lang] | default(calc.subtitles.en) }}</p>
                 <div class="lang-links">
-                    <a href="/{{ home.lang }}/{{ calc.slugs[home.lang] }}/">Try Now →</a>
+                    <a href="/{{ home.lang }}/{{ calc.slugs[home.lang] }}/">{{ ui.cta[home.lang].tryNow | default("Try Now") }} →</a>
                 </div>
             </div>
             {%- endfor %}
@@ -232,13 +261,13 @@ permalink: "/{% if home.lang != 'en' %}{{ home.lang }}/{% endif %}index.html"
             <h2>{{ ui.cta[home.lang].embedTitle | default("Need custom calculators?") }}</h2>
             <p>{{ ui.cta[home.lang].embedDesc | default("Contact us for custom calculator integrations and white-label solutions.") }}</p>
             <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 32px;">
-                <a href="mailto:hello@calc-kit.com" class="btn btn-primary" style="font-size: 18px; padding: 18px 36px;">Contact Us →</a>
-                <a href="/{{ home.lang }}/mortgage-calculator/" style="display: inline-flex; align-items: center; padding: 18px 36px; border: 2px solid rgba(99, 102, 241, 0.5); border-radius: 12px; color: var(--text); text-decoration: none; font-weight: 600; font-size: 18px;">Try a Calculator</a>
+                <a href="mailto:hello@calc-kit.com" class="btn btn-primary" style="font-size: 18px; padding: 18px 36px;">{{ ui.cta[home.lang].contactUs | default("Contact Us") }} →</a>
+                <a href="/{{ home.lang }}/{{ calculators.mortgage.slugs[home.lang] }}/" style="display: inline-flex; align-items: center; padding: 18px 36px; border: 2px solid rgba(99, 102, 241, 0.5); border-radius: 12px; color: var(--text); text-decoration: none; font-weight: 600; font-size: 18px;">{{ ui.cta[home.lang].tryCalculator | default("Try a Calculator") }}</a>
             </div>
             <div style="margin-top: 32px; display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; color: var(--text-muted); font-size: 14px;">
-                <div>✓ 100% Free</div>
-                <div>✓ No Registration</div>
-                <div>✓ Instant Results</div>
+                <div>✓ {{ ui.stats.free[home.lang] | default("100% Free") }}</div>
+                <div>✓ {{ ui.stats.noSignup[home.lang] | default("No Registration") }}</div>
+                <div>✓ {{ ui.nav[home.lang].instantResults | default("Instant Results") }}</div>
             </div>
         </div>
     </section>
@@ -246,14 +275,16 @@ permalink: "/{% if home.lang != 'en' %}{{ home.lang }}/{% endif %}index.html"
     <footer class="footer">
         <div class="container">
             <ul class="footer-links">
-                <li><a href="/privacy.html">Privacy</a></li>
-                <li><a href="/terms.html">Terms</a></li>
-                <li><a href="mailto:hello@calc-kit.com">Contact</a></li>
+                <li><a href="/{{ home.lang }}/privacy.html">{{ ui.footer[home.lang].privacy | default("Privacy") }}</a></li>
+                <li><a href="/{{ home.lang }}/terms.html">{{ ui.footer[home.lang].terms | default("Terms") }}</a></li>
+                <li><a href="mailto:hello@calc-kit.com">{{ ui.footer[home.lang].contact | default("Contact") }}</a></li>
             </ul>
             <div class="footer-lang" style="margin-top: 16px; display: flex; justify-content: center; gap: 8px; align-items: center; flex-wrap: wrap;">
                 <span style="color: var(--text-muted); font-size: 13px;">🌐</span>
                 {%- for langItem in site.languages %}
-                <a href="{% if langItem.code == 'en' %}/{% else %}/{{ langItem.code }}/{% endif %}" style="color: {% if home.lang == langItem.code %}var(--primary-light){% else %}var(--text-muted){% endif %}; font-size: 11px; text-decoration: none; padding: 3px 6px; border-radius: 4px; {% if home.lang == langItem.code %}background: rgba(99, 102, 241, 0.15);{% endif %}">{{ langItem.code | upper }}</a>
+                <a href="{% if langItem.code == 'en' %}/{% else %}/{{ langItem.code }}/{% endif %}" 
+                   onclick="localStorage.setItem('preferred_lang', '{{ langItem.code }}')"
+                   style="color: {% if home.lang == langItem.code %}var(--primary-light){% else %}var(--text-muted){% endif %}; font-size: 11px; text-decoration: none; padding: 3px 6px; border-radius: 4px; {% if home.lang == langItem.code %}background: rgba(99, 102, 241, 0.15);{% endif %}">{{ langItem.code | upper }}</a>
                 {%- endfor %}
             </div>
             <p>© {{ site.year }} {{ site.name }}. {{ ui.footer[home.lang].copyright | default("All rights reserved") }}.</p>

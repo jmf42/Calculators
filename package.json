@@ -1,7 +1,7 @@
 {
-    "name": "calcpress-seo",
+    "name": "calckit-seo",
     "version": "1.0.0",
-    "description": "CalcPress SEO landing pages generator",
+    "description": "CalcKit SEO landing pages generator",
     "scripts": {
         "build": "cross-env NODE_ENV=production npm run build:assets && cross-env NODE_ENV=production eleventy",
         "build:assets": "node scripts/build-assets.js",

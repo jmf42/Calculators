@@ -16,25 +16,25 @@
                class="btn btn-primary contact-cta-link" 
                data-cta-location="calculator-page-main"
                style="display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px; background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; transition: all 0.3s;">
-                Contact Us →
+                {{ ui.cta[calc.lang].contactUs | default("Contact Us") }} →
             </a>
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: left;">
             <div>
                 <div style="color: #10b981; font-size: 20px; margin-bottom: 8px;">✓</div>
-                <div style="font-weight: 600; margin-bottom: 4px;">Custom Branding</div>
-                <div style="color: var(--text-muted); font-size: 14px;">Your logo & colors</div>
+                <div style="font-weight: 600; margin-bottom: 4px;">{{ ui.cta[calc.lang].benefit1 | default("Custom Branding") }}</div>
+                <div style="color: var(--text-muted); font-size: 14px;">{{ ui.cta[calc.lang].benefit1Desc | default("Your logo & colors") }}</div>
             </div>
             <div>
                 <div style="color: #10b981; font-size: 20px; margin-bottom: 8px;">✓</div>
-                <div style="font-weight: 600; margin-bottom: 4px;">Easy Integration</div>
-                <div style="color: var(--text-muted); font-size: 14px;">Simple embed code</div>
+                <div style="font-weight: 600; margin-bottom: 4px;">{{ ui.cta[calc.lang].benefit2 | default("Easy Integration") }}</div>
+                <div style="color: var(--text-muted); font-size: 14px;">{{ ui.cta[calc.lang].benefit2Desc | default("Simple embed code") }}</div>
             </div>
             <div>
                 <div style="color: #10b981; font-size: 20px; margin-bottom: 8px;">✓</div>
-                <div style="font-weight: 600; margin-bottom: 4px;">Lead Capture</div>
-                <div style="color: var(--text-muted); font-size: 14px;">Built-in forms</div>
+                <div style="font-weight: 600; margin-bottom: 4px;">{{ ui.cta[calc.lang].benefit3 | default("Lead Capture") }}</div>
+                <div style="color: var(--text-muted); font-size: 14px;">{{ ui.cta[calc.lang].benefit3Desc | default("Built-in forms") }}</div>
             </div>
         </div>
     </div>

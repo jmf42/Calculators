@@ -1,5 +1,5 @@
 ---
-description: Build and deploy the CalcPress site to production
+description: Build and deploy the CalcKit site to production
 ---
 
 # Deploy Workflow
@@ -40,6 +40,7 @@ npm run serve
 Opens at http://localhost:8080 with hot reload.
 
 ## Useful Links
-- **Live Site**: https://calcpress-seo.web.app
-- **GitHub**: https://github.com/jmf42/Calculators
+- **Live Site**: https://calc-kit.com (Production)
+- **Staging**: https://calcpress-seo.web.app (CalcKit Staging)
 - **Firebase Console**: https://console.firebase.google.com/project/calcpress-seo/hosting
+

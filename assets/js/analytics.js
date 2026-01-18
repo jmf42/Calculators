@@ -1,5 +1,5 @@
 /**
- * CalcPress Analytics & Conversion Tracking
+ * CalcKit Analytics & Conversion Tracking
  * Tracks calculator usage, conversions, and user behavior
  */
 
@@ -206,7 +206,7 @@
     });
 
     // Expose to global scope for manual tracking
-    window.CalcPressAnalytics = Analytics;
+    window.CalcKitAnalytics = Analytics;
 
     // Track page load
     if (window.gtag) {

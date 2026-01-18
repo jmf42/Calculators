@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ lang | default('en') }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }} - CalcPress AI</title>
-    <meta name="description" content="{{ description | default('Legal information for CalcPress AI.') }}">
+    <title>{{ title }} - {{ site.name }}</title>
+    {% set currentLang = lang | default('en') %}
+    <meta name="description" content="{{ description | default(ui.footer[currentLang].privacy | default('Privacy') + ' - ' + site.name) }}">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -109,8 +110,8 @@
 
     <nav>
         <div class="container">
-            <a href="/" class="logo">CalcPress AI</a>
-            <a href="/" class="back-link">← Back to Home</a>
+            <a href="{% if currentLang == 'en' %}/{% else %}/{{ currentLang }}/{% endif %}" class="logo">{{ site.name }}</a>
+            <a href="{% if currentLang == 'en' %}/{% else %}/{{ currentLang }}/{% endif %}" class="back-link">{{ ui.footer[currentLang].backToHome | default("← Back to Home") }}</a>
         </div>
     </nav>
 
@@ -125,7 +126,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 CalcPress AI. All rights reserved.</p>
+            <p>&copy; {{ site.year }} {{ site.name }}. {{ ui.footer[currentLang].copyright | default("All rights reserved") }}.</p>
         </div>
     </footer>
 

@@ -1,6 +1,6 @@
-# CalcPress - LLM Access
+# CalcKit - LLM Access
 
-Project: CalcPress
+Project: CalcKit
 Description: Public calculator pages and guides for consumer and business use.
 
 Access: All public pages are allowed for LLM indexing and summarization.

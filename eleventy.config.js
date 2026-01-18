@@ -13,6 +13,11 @@ module.exports = function (eleventyConfig) {
         return JSON.stringify(value);
     });
 
+    // Add filter for mapping arrays
+    eleventyConfig.addFilter("map", function (array, key) {
+        return array.map(item => item[key]);
+    });
+
     // Add filter for getting translation
     eleventyConfig.addFilter("t", function (key, lang, translations) {
         return translations[lang]?.[key] || translations['en']?.[key] || key;
@@ -25,80 +30,119 @@ module.exports = function (eleventyConfig) {
         return languages.map(lang => ({ lang }));
     });
 
-    // Generate all calculator pages dynamically (Base + Niches)
+    // Generate all calculator pages dynamically (Base + Niches + Locations)
     eleventyConfig.addCollection("calculatorPages", function (collectionApi) {
         const calculators = require("./_data/calculators.js");
         const niches = require("./_data/niches.json");
+        const locations = require("./_data/locations.json");
         const site = require("./_data/site.js");
         const languages = site.languages.map(l => l.code);
         let pages = [];
+
+        // Helper to create page object
+        const createPage = ({ type, lang, slug, title, subtitle, overrides, location = null, isNiche = false }) => {
+            const baseCalc = calculators[type];
+            let config = JSON.parse(JSON.stringify(baseCalc.config));
+
+            // Apply Overrides
+            if (overrides) {
+                Object.keys(overrides).forEach(fieldId => {
+                    const field = config.fields.find(f => f.id === fieldId);
+                    if (field) {
+                        const override = overrides[fieldId];
+                        if (override.default) field.default = override.default;
+                        if (override.min) field.min = override.min;
+                        if (override.max) field.max = override.max;
+                        if (override.label && override.label[lang]) {
+                            field.label[lang] = override.label[lang];
+                        } else if (override.label && override.label['en']) {
+                            field.label[lang] = override.label['en'];
+                        }
+                    }
+                });
+            }
+
+            // Apply Location Specifics (e.g. median price)
+            if (location) {
+                // Find "price" or "amount" field to set median price
+                const priceField = config.fields.find(f => f.id === 'price' || f.id === 'amount');
+                if (priceField && location.medianPrice) {
+                    priceField.default = location.medianPrice;
+                }
+            }
+
+            return {
+                type: type,
+                lang: lang,
+                slug: slug,
+                title: title,
+                subtitle: subtitle,
+                metaDescription: location
+                    ? `${baseCalc.metaDescriptions[lang] || baseCalc.metaDescriptions['en']} Calculate for homes in ${location.name}, ${location.state}.`
+                    : (baseCalc.metaDescriptions[lang] || baseCalc.metaDescriptions['en']),
+                config: config,
+                content: (baseCalc.content?.[lang] || '').replace(/{{location}}/g, location ? `${location.name}, ${location.state}` : '')
+                    .replace(/{{city}}/g, location ? location.name : '')
+                    .replace(/{{state}}/g, location ? location.state : ''),
+                faqs: baseCalc.faqs?.[lang] || [],
+                location: location,
+                isNiche: isNiche
+            };
+        };
 
         // 1. Generate Base Calculator Pages
         Object.keys(calculators).forEach(calcType => {
             const calc = calculators[calcType];
             languages.forEach(lang => {
-                // Skip if language not fully supported in base calculator yet (fallback to English title if missing)
-                const title = calc.titles[lang] || calc.titles['en'];
-                const slug = calc.slugs[lang] || calc.slugs['en'];
-
-                pages.push({
+                pages.push(createPage({
                     type: calcType,
                     lang: lang,
-                    slug: slug,
-                    title: title,
-                    subtitle: calc.subtitles[lang] || calc.subtitles['en'],
-                    metaDescription: calc.metaDescriptions[lang] || calc.metaDescriptions['en'],
-                    config: calc.config, // Use base config
-                    content: calc.content?.[lang] || calc.content?.['en'] || '',
-                    faqs: calc.faqs?.[lang] || calc.faqs?.['en'] || []
-                });
+                    slug: calc.slugs[lang] || calc.slugs['en'],
+                    title: calc.titles[lang] || calc.titles['en'],
+                    subtitle: calc.subtitles[lang] || calc.subtitles['en']
+                }));
             });
         });
 
-        // 2. Generate Niche Pages (Overrides)
+        // 2. Generate Niche Pages
         niches.forEach(niche => {
-            const baseCalc = calculators[niche.baseType];
-            if (!baseCalc) return;
+            if (!calculators[niche.baseType]) return;
 
             languages.forEach(lang => {
                 const slug = niche.slugs[lang];
-                if (!slug) return; // Skip if no slug for this language
+                if (!slug) return;
 
-                // Create a Deep Copy of config to avoid mutating base
-                let nicheConfig = JSON.parse(JSON.stringify(baseCalc.config));
-
-                // Apply Overrides (e.g. Default Loan Amount, Label Changes)
-                if (niche.overrides) {
-                    Object.keys(niche.overrides).forEach(fieldId => {
-                        const field = nicheConfig.fields.find(f => f.id === fieldId);
-                        if (field) {
-                            const override = niche.overrides[fieldId];
-                            if (override.default) field.default = override.default;
-                            if (override.min) field.min = override.min;
-                            if (override.max) field.max = override.max;
-                            if (override.label && override.label[lang]) {
-                                field.label[lang] = override.label[lang];
-                            } else if (override.label && override.label['en']) {
-                                // Fallback to English label override if specific lang missing
-                                field.label[lang] = override.label['en'];
-                            }
-                        }
-                    });
-                }
-
-                pages.push({
-                    type: niche.baseType, // Keep base type for template logic
-                    isNiche: true,
-                    nicheId: niche.id,
+                pages.push(createPage({
+                    type: niche.baseType,
                     lang: lang,
                     slug: slug,
                     title: niche.titles?.[lang] || niche.titles?.['en'],
-                    subtitle: niche.subtitles?.[lang] || niche.subtitles?.['en'] || '',
-                    metaDescription: baseCalc.metaDescriptions[lang], // Reuse base meta for now, ideally override too
-                    config: nicheConfig,
-                    content: baseCalc.content?.[lang] || '', // Reuse base content
-                    faqs: baseCalc.faqs?.[lang] || [] // Reuse base FAQs
-                });
+                    subtitle: niche.subtitles?.[lang] || niche.subtitles?.['en'],
+                    overrides: niche.overrides,
+                    isNiche: true
+                }));
+
+                // 3. Generate Niche x Location Pages (Only for English for now to save build time/space)
+                if (lang === 'en' && locations && locations.length > 0) {
+                    locations.forEach(loc => {
+                        // e.g. /en/mortgage-calculator-austin-tx/
+                        const locSlug = `${slug}-${loc.slug}`;
+                        // e.g. "Mortgage Calculator Austin, TX"
+                        const baseTitle = niche.titles?.['en'] || calculators[niche.baseType].titles['en'];
+                        const locTitle = `${baseTitle} ${loc.name}, ${loc.state}`;
+
+                        pages.push(createPage({
+                            type: niche.baseType,
+                            lang: lang,
+                            slug: locSlug,
+                            title: locTitle,
+                            subtitle: `Calculate ${niche.baseType} for homes in ${loc.name}, ${loc.stateFull}`,
+                            overrides: niche.overrides,
+                            location: loc,
+                            isNiche: true
+                        }));
+                    });
+                }
             });
         });
 
@@ -132,3 +176,4 @@ module.exports = function (eleventyConfig) {
         markdownTemplateEngine: "njk"
     };
 };
+

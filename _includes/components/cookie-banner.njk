@@ -1,12 +1,13 @@
+{% set cLang = calc.lang or home.lang or currentLang or lang or 'en' %}
 <div id="cookie-consent" class="cookie-banner" style="display: none;">
     <div class="cookie-content">
         <p>
-            We use cookies to improve your experience and for ad personalization. 
-            By continuing, you agree to our <a href="/privacy/">Privacy Policy</a>.
+            {{ ui.cookie[cLang].message }} 
+            <a href="{% if cLang == 'en' %}/{% else %}/{{ cLang }}/{% endif %}privacy.html">{{ ui.cookie[cLang].privacy }}</a>.
         </p>
         <div class="cookie-buttons">
-            <button id="accept-cookies" class="btn btn-primary btn-sm">Accept</button>
-            <button id="decline-cookies" class="btn btn-outline btn-sm">Decline</button>
+            <button id="accept-cookies" class="btn btn-primary btn-sm">{{ ui.cookie[cLang].accept }}</button>
+            <button id="decline-cookies" class="btn btn-outline btn-sm">{{ ui.cookie[cLang].decline }}</button>
         </div>
     </div>
 </div>

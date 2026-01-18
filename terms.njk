@@ -1,10 +1,20 @@
 ---
+pagination:
+  data: site.languages
+  size: 1
+  alias: langItem
 layout: layouts/legal.njk
 title: Terms of Service
-description: Terms of Service for CalcKit - Free Online Calculators.
-lastUpdated: January 17, 2026
-permalink: /terms.html
+permalink: "/{% if langItem.code != 'en' %}{{ langItem.code }}/{% endif %}terms.html"
+lang: "{{ langItem.code }}"
 ---
+{% set uiLegal = ui.legal[lang] %}
+{% set uiFooter = ui.footer[lang] %}
+{% set pageTitle = uiLegal.termsTitle | default("Terms of Service") %}
+
+<!-- Override layout variables -->
+{% set title = pageTitle %}
+{% set description = pageTitle + " - " + site.name %}
 
 <p>By using CalcKit (calc-kit.com), you agree to the following terms and conditions. Please read them carefully.</p>
 

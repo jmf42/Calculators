@@ -11,7 +11,7 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ calc.title | safe }} | CalcPress</title>
+    <title>{{ calc.title | safe }} | {{ site.name }}</title>
     <meta name="description" content="{{ calc.metaDescription | safe }}">
     
     <meta name="robots" content="index, follow">
@@ -29,7 +29,7 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     <meta property="og:url" content="{{ site.url }}/{{ calc.lang }}/{{ calc.slug }}/">
     <meta property="og:title" content="{{ calc.title }}">
     <meta property="og:description" content="{{ calc.metaDescription }}">
-    <meta property="og:site_name" content="CalcPress">
+    <meta property="og:site_name" content="{{ site.name }}">
     <meta property="og:locale" content="{{ calc.lang }}">
     
     <!-- Twitter Card -->
@@ -38,8 +38,8 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     <meta name="twitter:description" content="{{ calc.metaDescription }}">
     
     <!-- Additional SEO -->
-    <meta name="author" content="CalcPress">
-    <meta name="generator" content="CalcPress SEO Engine">
+    <meta name="author" content="{{ site.name }}">
+    <meta name="generator" content="CalcKit Engine">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
@@ -76,10 +76,10 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
             {%- for faq in calc.faqs %}
             {
                 "@type": "Question",
-                "name": "{{ faq.q }}",
+                "name": "{{ faq.q }}{% if calc.location %} in {{ calc.location.name }}{% endif %}",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "{{ faq.a }}"
+                    "text": "{{ faq.a }} {% if calc.location %}Use our calculator to estimate costs specifically for {{ calc.location.name }}, {{ calc.location.state }}.{% endif %}"
                 }
             }{% if not loop.last %},{% endif %}
             {%- endfor %}
@@ -105,7 +105,7 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     <!-- Navigation -->
     <nav class="nav">
         <div class="container">
-            <a href="/" class="logo">{{ site.name }}</a>
+            <a href="{% if calc.lang == 'en' %}/{% else %}/{{ calc.lang }}/{% endif %}" class="logo">{{ site.name }}</a>
         </div>
     </nav>
 
@@ -115,23 +115,12 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
             <h1>{{ calc.title | safe }}</h1>
             <p>{{ calc.subtitle | safe }}</p>
             <div class="trust-badge">
-                <span class="edition-badge">2026 Edition</span> • <span>✓</span> Free • No signup required
+                <span class="edition-badge">2026 {{ ui.nav[calc.lang].edition | default("Edition") }}</span> • <span>✓</span> {{ ui.stats.free[calc.lang] | default("Free") }} • {{ ui.stats.noSignup[calc.lang] | default("No signup required") }}
             </div>
         </div>
     </section>
 
-    <!-- Breadcrumbs -->
-    <div class="container" style="padding-top: 24px;">
-        <nav class="breadcrumbs" aria-label="Breadcrumb">
-            <ol style="list-style: none; display: flex; gap: 8px; font-size: 13px; color: var(--text-dim);">
-                <li><a href="/" style="color: var(--text-dim); text-decoration: none;">CalcPress</a></li>
-                <li style="color: var(--text-dim);">/</li>
-                <li><a href="/{{ calc.lang }}/" style="color: var(--text-dim); text-decoration: none;">{{ calc.lang | upper }}</a></li>
-                <li style="color: var(--text-dim);">/</li>
-                <li style="color: var(--primary-light); font-weight: 600;">{{ calc.title }}</li>
-            </ol>
-        </nav>
-    </div>
+
 
     <!-- Calculator -->
     <section class="calculator-section">
@@ -161,11 +150,11 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
             {%- for faq in calc.faqs %}
             <div class="faq-item">
                 <div class="faq-question">
-                    {{ faq.q }}
+                    {{ faq.q }} {% if calc.location %} in {{ calc.location.name }}{% endif %}
                     <span class="faq-icon">+</span>
                 </div>
                 <div class="faq-answer">
-                    <p>{{ faq.a }}</p>
+                    <p>{{ faq.a }} {% if calc.location %}Use our calculator to estimate costs specifically for {{ calc.location.name }}, {{ calc.location.state }}.{% endif %}</p>
                 </div>
             </div>
             {%- endfor %}
@@ -207,16 +196,18 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
                 <li><a href="/{{ calc.lang }}/{{ calcInfo.slugs[calc.lang] }}/">{{ calcInfo.titles[calc.lang] }}</a></li>
                 {%- endif %}
                 {%- endfor %}
-                <li><a href="/privacy.html">{{ ui.footer[calc.lang].privacy }}</a></li>
-                <li><a href="/terms.html">{{ ui.footer[calc.lang].terms }}</a></li>
+                <li><a href="{% if calc.lang == 'en' %}/{% else %}/{{ calc.lang }}/{% endif %}privacy.html">{{ ui.footer[calc.lang].privacy | default("Privacy Policy") }}</a></li>
+                <li><a href="{% if calc.lang == 'en' %}/{% else %}/{{ calc.lang }}/{% endif %}terms.html">{{ ui.footer[calc.lang].terms | default("Terms of Service") }}</a></li>
             </ul>
             <div class="footer-lang" style="margin-top: 16px; display: flex; justify-content: center; gap: 12px; align-items: center;">
                 <span style="color: var(--text-muted); font-size: 13px;">🌐</span>
                 {%- for langItem in site.languages %}
-                <a href="/{{ langItem.code }}/{{ calcData.slugs[langItem.code] }}/" style="color: {% if langItem.code == calc.lang %}var(--primary-light){% else %}var(--text-muted){% endif %}; font-size: 12px; text-decoration: none; padding: 4px 8px; border-radius: 4px; {% if langItem.code == calc.lang %}background: rgba(99, 102, 241, 0.15);{% endif %}">{{ langItem.code | upper }}</a>
+                <a href="/{{ langItem.code }}/{{ calculators[calc.type].slugs[langItem.code] }}/" 
+                   onclick="localStorage.setItem('preferred_lang', '{{ langItem.code }}')"
+                   style="color: {% if langItem.code == calc.lang %}var(--primary-light){% else %}var(--text-muted){% endif %}; font-size: 12px; text-decoration: none; padding: 4px 8px; border-radius: 4px; {% if langItem.code == calc.lang %}background: rgba(99, 102, 241, 0.15);{% endif %}">{{ langItem.code | upper }}</a>
                 {%- endfor %}
             </div>
-            <p>© {{ site.year }} {{ site.name }}. {{ ui.footer[calc.lang].copyright }}.</p>
+            <p>© {{ site.year }} {{ site.name }}. {{ ui.footer[calc.lang].copyright | default("All rights reserved") }}.</p>
         </div>
     </footer>
 
@@ -224,11 +215,11 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const calculator = document.querySelector('calcpress-calculator');
+            const calculator = document.querySelector('calckit-calculator');
             if (calculator) {
                 calculator.addEventListener('request-pdf', (e) => {
-                    console.log('PDF Requested - Lead capture disabled');
-                    alert('PDF Generation is a Pro feature available in the plugin.');
+                    console.log('PDF requested but not available on this site.');
+                    alert("{{ ui.alerts.pdfNotAvailable[calc.lang] | default('PDF reports are not available on this site yet.') }}");
                 });
             }
         });
@@ -256,9 +247,15 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
                     type: "{{ field.type }}",
                     label: "{{ field.label[calc.lang] | safe }}",
                     default: {{ field.default }}{% if field.type != 'select' %},
-                    min: {{ field.min }},
                     max: {{ field.max }},
-                    step: {{ field.step }}{% endif %}
+                    step: {{ field.step }}{% endif %}{% if field.help %},
+                    help: "{{ field.help[calc.lang] | safe }}"{% endif %}{% if field.description %},
+                    description: "{{ field.description[calc.lang] | safe }}"{% endif %}{% if field.toggle %},
+                    toggle: {
+                        target: "{{ field.toggle.target }}",
+                        label: "{{ field.toggle.label[calc.lang] | safe }}"
+                    }{% endif %}{% if field.hidden %},
+                    hidden: {{ field.hidden }}{% endif %}
                     {%- if field.options %},
                     options: [
                         {%- for opt in field.options %}
@@ -291,11 +288,15 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
         document.addEventListener('DOMContentLoaded', function() {
             const container = document.getElementById('calculator-container');
             const wrapper = document.createElement('div');
-            wrapper.className = 'calcpress-calculator';
+            wrapper.className = 'calckit-calculator';
             wrapper.dataset.theme = 'dark';
-            wrapper.dataset.config = JSON.stringify(calcConfig);
+            
+            // Build config for this specific language
+            const initialConfig = JSON.stringify(calcConfig);
+            wrapper.dataset.config = initialConfig;
+            
             container.appendChild(wrapper);
-            wrapper.appendChild(document.createElement('calcpress-calculator'));
+            wrapper.appendChild(document.createElement('calckit-calculator'));
         });
 
         // FAQ Accordion

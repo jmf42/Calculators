@@ -25,9 +25,9 @@ module.exports = {
         adConversionId: process.env.AD_CONVERSION_ID || "AW-CONVERSION_ID/CONVERSION_LABEL"
     },
 
-    // WordPress Plugin (keep reference for future)
-    plugin: {
-        url: process.env.PLUGIN_URL || "#"
+    // Custom Integrations (keep reference for future)
+    integrations: {
+        url: process.env.INTEGRATION_URL || "#"
     },
 
     // Email service

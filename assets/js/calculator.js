@@ -1,9 +1,9 @@
 /**
- * CalcPress AI - Universal Calculator Engine
+ * CalcKit - Universal Calculator Engine
  * Web Component based calculator with Shadow DOM
  */
 
-class CalcPressCalculator extends HTMLElement {
+class CalcKitCalculator extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
@@ -14,11 +14,11 @@ class CalcPressCalculator extends HTMLElement {
 
     connectedCallback() {
         try {
-            const configAttr = this.closest('.calcpress-calculator')?.dataset.config;
+            const configAttr = this.closest('.calckit-calculator')?.dataset.config;
             // Decode HTML entities in the config string before parsing to handle escaped characters from Nunjucks
             const decodedConfig = this.decodeHtml(configAttr);
             this.config = JSON.parse(decodedConfig || '{}');
-            this.theme = this.closest('.calcpress-calculator')?.dataset.theme || 'light';
+            this.theme = this.closest('.calckit-calculator')?.dataset.theme || 'light';
 
             // Initialize state from config
             if (this.config.fields) {
@@ -35,7 +35,7 @@ class CalcPressCalculator extends HTMLElement {
             this.render();
             this.attachEventListeners();
         } catch (error) {
-            console.error('CalcPress Error:', error);
+            console.error('CalcKit Error:', error);
             this.shadowRoot.innerHTML = '<div class="error">Calculator configuration error</div>';
         }
     }
@@ -265,6 +265,32 @@ class CalcPressCalculator extends HTMLElement {
                 border-color: var(--primary);
                 box-shadow: 0 0 0 4px var(--primary-glow), 0 8px 20px rgba(99, 102, 241, 0.2);
                 background: ${this.theme === 'dark' ? '#1e2740' : '#ffffff'};
+            }
+            
+            /* Validation states */
+            input[type="number"].is-valid {
+                border-color: var(--success);
+            }
+            
+            input[type="number"].is-invalid {
+                border-color: var(--error);
+                animation: shake 0.3s ease;
+            }
+            
+            input[type="number"].is-clamped {
+                border-color: var(--warning);
+                animation: pulse-warning 0.5s ease;
+            }
+            
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-4px); }
+                75% { transform: translateX(4px); }
+            }
+            
+            @keyframes pulse-warning {
+                0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+                50% { box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.3); }
             }
             
             /* Custom select arrow */
@@ -506,35 +532,56 @@ class CalcPressCalculator extends HTMLElement {
             
             .chart-container {
                 position: relative;
-                height: 200px;
-                margin: 24px 0;
+                height: 180px;
+                margin: 20px 0 16px;
                 padding: 16px;
-                background: rgba(255, 255, 255, 0.06);
-                border-radius: 14px;
+                background: rgba(255, 255, 255, 0.03);
+                border-radius: 12px;
             }
             
             .result-breakdown {
-                margin-top: 24px;
+                margin-top: 28px;
                 padding-top: 24px;
-                border-top: 1px solid rgba(255,255,255,0.18);
+                border-top: 1px solid rgba(255,255,255,0.12);
             }
             
             .breakdown-item {
                 display: flex;
                 justify-content: space-between;
-                padding: 14px 18px;
-                opacity: 0.95;
-                font-size: 14px;
-                background: rgba(255, 255, 255, 0.08);
-                border-radius: 10px;
+                align-items: center;
+                padding: 12px 14px;
+                font-size: 13px;
+                background: rgba(255, 255, 255, 0.04);
+                border-radius: 8px;
                 margin-bottom: 8px;
-                transition: all 0.25s ease;
+                transition: all 0.2s ease;
                 border-left: 3px solid transparent;
+                position: relative;
+                animation: slideInBreakdown 0.3s ease forwards;
+                opacity: 0;
+                transform: translateX(-8px);
+            }
+            
+            /* Staggered entrance animation for breakdown items */
+            .breakdown-item:nth-child(1) { animation-delay: 0ms; }
+            .breakdown-item:nth-child(2) { animation-delay: 60ms; }
+            .breakdown-item:nth-child(3) { animation-delay: 120ms; }
+            .breakdown-item:nth-child(4) { animation-delay: 180ms; }
+            .breakdown-item:nth-child(5) { animation-delay: 240ms; }
+            .breakdown-item:nth-child(6) { animation-delay: 300ms; }
+            .breakdown-item:nth-child(7) { animation-delay: 360ms; }
+            
+            @keyframes slideInBreakdown {
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
             }
             
             .breakdown-item:hover {
-                background: rgba(255, 255, 255, 0.14);
-                border-left-color: rgba(255, 255, 255, 0.6);
+                background: rgba(255, 255, 255, 0.12);
+                transform: translateX(4px);
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 0 20px rgba(99, 102, 241, 0.1);
             }
             
             .breakdown-item:last-child {
@@ -543,9 +590,8 @@ class CalcPressCalculator extends HTMLElement {
             
             /* Breakdown item visual hierarchy */
             .breakdown-item:first-child {
-                background: rgba(255, 255, 255, 0.15);
+                background: rgba(255, 255, 255, 0.1);
                 font-weight: 600;
-                border-left-color: #10b981;
             }
             
             .breakdown-item .item-value {
@@ -554,13 +600,13 @@ class CalcPressCalculator extends HTMLElement {
             }
             
             /* Loading Spinner */
-            .calcpress-loader {
+            .calckit-loader {
                 display: flex;
                 align-items: center;
                 padding: 60px;
             }
             
-            .calcpress-spinner {
+            .calckit-spinner {
                 width: 48px;
                 height: 48px;
                 border: 4px solid rgba(99, 102, 241, 0.1);
@@ -934,6 +980,10 @@ class CalcPressCalculator extends HTMLElement {
                     <div id="notices-container" class="calc-notices" aria-live="polite"></div>
                     
                     <div class="result-actions">
+                        <button class="action-btn" id="reset-btn" title="Reset to defaults">
+                            <svg viewBox="0 0 24 24"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+                            Reset
+                        </button>
                         ${this.config.proFeatures?.pdf ? `
                             <button class="action-btn primary-cta" id="pdf-btn" title="${this.escapeHTML(this.config.proFeatures.pdfLabel || 'Download PDF')}">
                                 <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
@@ -1124,6 +1174,40 @@ class CalcPressCalculator extends HTMLElement {
                 }));
             });
         }
+
+        // Setup reset button
+        const resetBtn = this.shadowRoot.getElementById('reset-btn');
+        if (resetBtn) {
+            resetBtn.addEventListener('click', () => {
+                this.resetToDefaults();
+            });
+        }
+    }
+
+    resetToDefaults() {
+        // Reset all values to their defaults from config
+        this.values = {};
+        if (this.config.fields) {
+            this.config.fields.forEach(field => {
+                const defaultVal = field.default !== undefined ? field.default :
+                    (field.type === 'select' && field.options?.length ? field.options[0].value : 0);
+                this.values[field.id] = defaultVal;
+            });
+        }
+
+        // Reset hidden fields state
+        this.state.hiddenFields = new Set();
+        if (this.config.fields) {
+            this.config.fields.forEach(field => {
+                if (field.hidden) {
+                    this.state.hiddenFields.add(field.id);
+                }
+            });
+        }
+
+        // Re-render and recalculate
+        this.render();
+        this.attachEventListeners();
     }
 
     toggleField(targetId, currentId) {
@@ -1416,21 +1500,57 @@ class CalcPressCalculator extends HTMLElement {
 
     handleInput(event) {
         const fieldId = event.target.dataset.fieldId;
-        const value = parseFloat(event.target.value) || 0;
+        let value = parseFloat(event.target.value);
+
+        // Handle NaN (empty or invalid input)
+        if (isNaN(value)) {
+            value = 0;
+        }
+
+        // Get min/max constraints
+        const min = parseFloat(event.target.min);
+        const max = parseFloat(event.target.max);
+        let wasClamped = false;
+
+        // Clamp value to valid range for number inputs
+        if (event.target.type === 'number' && !isNaN(min) && !isNaN(max)) {
+            if (value < min) {
+                value = min;
+                wasClamped = true;
+            } else if (value > max) {
+                value = max;
+                wasClamped = true;
+            }
+
+            // Apply visual feedback for clamping (on blur to avoid constant flashing)
+            if (wasClamped) {
+                event.target.classList.remove('is-valid', 'is-invalid');
+                event.target.classList.add('is-clamped');
+                // Update the input value to the clamped value
+                event.target.value = value;
+                // Remove clamped class after animation
+                setTimeout(() => {
+                    event.target.classList.remove('is-clamped');
+                }, 500);
+            } else {
+                event.target.classList.remove('is-clamped', 'is-invalid');
+            }
+        }
+
         this.values[fieldId] = value;
 
         // Update range value display and slider fill
         if (event.target.type === 'range') {
-            const valueDisplay = this.shadowRoot.getElementById(`${fieldId} -value`);
+            const valueDisplay = this.shadowRoot.getElementById(`${fieldId}-value`);
             if (valueDisplay) {
                 valueDisplay.textContent = this.formatNumber(value);
             }
 
             // Update slider fill progress
-            const min = parseFloat(event.target.min) || 0;
-            const max = parseFloat(event.target.max) || 100;
-            const progress = ((value - min) / (max - min)) * 100;
-            event.target.style.setProperty('--slider-progress', `${progress}% `);
+            const sliderMin = parseFloat(event.target.min) || 0;
+            const sliderMax = parseFloat(event.target.max) || 100;
+            const progress = ((value - sliderMin) / (sliderMax - sliderMin)) * 100;
+            event.target.style.setProperty('--slider-progress', `${progress}%`);
             event.target.setAttribute('aria-valuenow', value);
         }
 
@@ -1449,7 +1569,7 @@ class CalcPressCalculator extends HTMLElement {
         this.calculate();
 
         // Haptic feedback for interactions (if supported)
-        this.triggerHaptic(5);
+        this.triggerHaptic(wasClamped ? 20 : 5);
     }
 
     triggerHaptic(pattern) {
@@ -1563,15 +1683,18 @@ class CalcPressCalculator extends HTMLElement {
             isActive: (id) => !this.state.hiddenFields.has(id)
         };
 
-        // Color palette for chart and breakdown syncing (Indigo, Purple, Pink, Blue, Emerald, Amber, Cyan)
+        // Refined color palette - elegant, lighter, professional tones
         const palette = [
-            'rgba(99, 102, 241, 0.8)',
-            'rgba(168, 85, 247, 0.8)',
-            'rgba(236, 72, 153, 0.8)',
-            'rgba(59, 130, 246, 0.8)',
-            'rgba(16, 185, 129, 0.8)',
-            'rgba(245, 158, 11, 0.8)',
-            'rgba(6, 182, 212, 0.8)'
+            '#3b82f6',  // Blue - Primary (clean, trustworthy)
+            '#10b981',  // Emerald (fresh, positive)
+            '#6366f1',  // Indigo (sophisticated)
+            '#14b8a6',  // Teal (modern, calming)
+            '#8b5cf6',  // Violet (accent, subtle)
+            '#f59e0b',  // Amber (warm accent)
+            '#06b6d4',  // Cyan (light, airy)
+            '#64748b',  // Slate (neutral, professional)
+            '#22c55e',  // Green (growth, money)
+            '#0ea5e9'   // Sky blue (open, friendly)
         ];
 
         // Calculate all items first to share between text list and chart
@@ -1665,16 +1788,24 @@ class CalcPressCalculator extends HTMLElement {
         const canvas = this.shadowRoot.getElementById('resultChart');
         if (!canvas) return;
 
-        const layout = this.theme === 'dark' ? 'dark' : 'light';
         const labels = dataItems.map(i => i.label);
         const data = dataItems.map(i => i.value);
         const backgroundColors = dataItems.map(i => i.color);
 
+        // Create gradient colors for a more premium look
+        const ctx = canvas.getContext('2d');
+        const gradientColors = backgroundColors.map(color => {
+            // Parse the solid color and create a subtle gradient effect
+            return color;
+        });
 
         // Destroy existing chart if any
         if (this.chartInstance) {
             this.chartInstance.destroy();
         }
+
+        // Calculate total for center display
+        const total = data.reduce((sum, val) => sum + val, 0);
 
         this.chartInstance = new Chart(canvas, {
             type: 'doughnut',
@@ -1682,18 +1813,58 @@ class CalcPressCalculator extends HTMLElement {
                 labels: labels,
                 datasets: [{
                     data: data,
-                    backgroundColor: backgroundColors,
-                    borderWidth: 0
+                    backgroundColor: gradientColors,
+                    borderWidth: 0,
+                    borderRadius: 2,
+                    spacing: 2,
+                    hoverOffset: 4,
+                    hoverBorderWidth: 0
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                cutout: '72%',
+                layout: {
+                    padding: 8
+                },
+                animation: {
+                    animateRotate: true,
+                    animateScale: false,
+                    duration: 600,
+                    easing: 'easeOutQuad'
+                },
                 plugins: {
                     legend: {
-                        position: 'bottom',
-                        labels: {
-                            color: this.theme === 'dark' ? '#f3f4f6' : '#374151'
+                        display: false  // We use custom breakdown list instead
+                    },
+                    tooltip: {
+                        enabled: true,
+                        backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                        titleColor: '#f8fafc',
+                        bodyColor: '#e2e8f0',
+                        borderColor: 'rgba(148, 163, 184, 0.2)',
+                        borderWidth: 1,
+                        padding: 10,
+                        cornerRadius: 6,
+                        displayColors: true,
+                        boxWidth: 8,
+                        boxHeight: 8,
+                        boxPadding: 4,
+                        titleFont: {
+                            size: 12,
+                            weight: '600'
+                        },
+                        bodyFont: {
+                            size: 11,
+                            weight: '400'
+                        },
+                        callbacks: {
+                            label: (context) => {
+                                const value = context.parsed;
+                                const percentage = ((value / total) * 100).toFixed(1);
+                                return ` ${this.formatCurrency(value)} (${percentage}%)`;
+                            }
                         }
                     }
                 }
@@ -1857,15 +2028,16 @@ class CalcPressCalculator extends HTMLElement {
 }
 
 // Register the custom element
-if (!customElements.get('calcpress-calculator')) {
-    customElements.define('calcpress-calculator', CalcPressCalculator);
+if (!customElements.get('calckit-calculator')) {
+    // Define the custom element
+    customElements.define('calckit-calculator', CalcKitCalculator);
 }
 
 // Initialize calculators on page load
 document.addEventListener('DOMContentLoaded', function () {
-    const calculators = document.querySelectorAll('.calcpress-calculator');
+    const calculators = document.querySelectorAll('.calckit-calculator');
     calculators.forEach(container => {
-        const calculator = document.createElement('calcpress-calculator');
+        const calculator = document.createElement('calckit-calculator');
         container.innerHTML = '';
         container.appendChild(calculator);
     });
