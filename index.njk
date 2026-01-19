@@ -12,7 +12,7 @@ permalink: "/{% if home.lang != 'en' %}{{ home.lang }}/{% endif %}index.html"
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ ui.homeTitle[home.lang] }}</title>
     <meta name="description" content="{{ ui.homeDesc[home.lang] }}">
-    {% set homePath = home.lang == site.defaultLang ? '/' : '/' + home.lang + '/' %}
+    {% set homePath = '/' if home.lang == site.defaultLang else '/' + home.lang + '/' %}
     <link rel="canonical" href="{{ site.url }}{{ homePath }}">
     {%- for langItem in site.languages %}
     <link rel="alternate" hreflang="{{ langItem.code }}" href="{{ site.url }}{% if langItem.code == site.defaultLang %}/{% else %}/{{ langItem.code }}/{% endif %}">

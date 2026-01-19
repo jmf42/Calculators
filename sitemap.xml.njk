@@ -5,7 +5,7 @@ eleventyExcludeFromCollections: true
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   {%- for home in collections.homePages %}
-  {%- set homePath = home.lang == site.defaultLang ? '/' : '/' + home.lang + '/' %}
+  {%- set homePath = '/' if home.lang == site.defaultLang else '/' + home.lang + '/' %}
   <url>
     <loc>{{ site.url }}{{ homePath }}</loc>
     <lastmod>{{ site.buildDate }}</lastmod>
@@ -34,7 +34,7 @@ eleventyExcludeFromCollections: true
   {%- set legalPages = ["privacy", "terms", "refund"] -%}
   {%- for slug in legalPages %}
   {%- for langItem in site.languages %}
-  {%- set legalPath = langItem.code == site.defaultLang ? '/' + slug + '.html' : '/' + langItem.code + '/' + slug + '.html' %}
+  {%- set legalPath = '/' + slug + '.html' if langItem.code == site.defaultLang else '/' + langItem.code + '/' + slug + '.html' %}
   <url>
     <loc>{{ site.url }}{{ legalPath }}</loc>
     <lastmod>{{ site.buildDate }}</lastmod>
