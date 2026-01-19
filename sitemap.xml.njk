@@ -4,23 +4,47 @@ eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  {%- for home in collections.homePages %}
+  {%- set homePath = home.lang == site.defaultLang ? '/' : '/' + home.lang + '/' %}
   <url>
-    <loc>{{ site.url }}/</loc>
-    <lastmod>{{ site.year }}-01-18</lastmod>
+    <loc>{{ site.url }}{{ homePath }}</loc>
+    <lastmod>{{ site.buildDate }}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  {%- for page in collections.calculatorPages %}
-  <url>
-    <loc>{{ site.url }}/{{ page.lang }}/{{ page.slug }}/</loc>
-    <lastmod>{{ site.year }}-01-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>{% if home.lang == site.defaultLang %}1.0{% else %}0.9{% endif %}</priority>
     {%- for langItem in site.languages %}
-    <xhtml:link rel="alternate" hreflang="{{ langItem.code }}" href="{{ site.url }}/{{ langItem.code }}/{{ calculators[page.type].slugs[langItem.code] }}/"/>
+    <xhtml:link rel="alternate" hreflang="{{ langItem.code }}" href="{{ site.url }}{% if langItem.code == site.defaultLang %}/{% else %}/{{ langItem.code }}/{% endif %}"/>
     {%- endfor %}
-    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/en/{{ calculators[page.type].slugs.en }}/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/"/>
   </url>
   {%- endfor %}
-</urlset>
 
+  {%- for page in collections.calculatorPages %}
+  <url>
+    <loc>{{ page.canonicalUrl }}</loc>
+    <lastmod>{{ page.lastmod }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    {%- for langCode, href in page.alternates %}
+    <xhtml:link rel="alternate" hreflang="{{ langCode }}" href="{{ href }}"/>
+    {%- endfor %}
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ page.alternates[site.defaultLang] or page.canonicalUrl }}"/>
+  </url>
+  {%- endfor %}
+
+  {%- set legalPages = ["privacy", "terms", "refund"] -%}
+  {%- for slug in legalPages %}
+  {%- for langItem in site.languages %}
+  {%- set legalPath = langItem.code == site.defaultLang ? '/' + slug + '.html' : '/' + langItem.code + '/' + slug + '.html' %}
+  <url>
+    <loc>{{ site.url }}{{ legalPath }}</loc>
+    <lastmod>{{ site.buildDate }}</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    {%- for altLang in site.languages %}
+    <xhtml:link rel="alternate" hreflang="{{ altLang.code }}" href="{{ site.url }}{% if altLang.code == site.defaultLang %}/{% else %}/{{ altLang.code }}/{% endif %}{{ slug }}.html"/>
+    {%- endfor %}
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}/{{ slug }}.html"/>
+  </url>
+  {%- endfor %}
+  {%- endfor %}
+</urlset>

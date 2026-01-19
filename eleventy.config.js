@@ -175,7 +175,7 @@ module.exports = function (eleventyConfig) {
 
             // [INTERNAL MESH LOGIC]
             const childNiches = (!location && !stateData && !countryData && !isNiche) ? niches.filter(n => n.baseType === type).map(n => ({
-                title: n.titles[lang] || n.titles['en'],
+                title: replaceYearTokens(n.titles[lang] || n.titles['en']),
                 slug: n.slugs[lang] || n.slugs['en']
             })) : null;
 

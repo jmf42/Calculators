@@ -6,6 +6,12 @@
     <title>{{ title }} - {{ site.name }}</title>
     {% set currentLang = lang | default('en') %}
     <meta name="description" content="{{ description | default(ui.footer[currentLang].privacy | default('Privacy') + ' - ' + site.name) }}">
+    {% set legalSlug = page.fileSlug %}
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    {%- for langItem in site.languages %}
+    <link rel="alternate" hreflang="{{ langItem.code }}" href="{{ site.url }}{% if langItem.code == site.defaultLang %}/{% else %}/{{ langItem.code }}/{% endif %}{{ legalSlug }}.html">
+    {%- endfor %}
+    <link rel="alternate" hreflang="x-default" href="{{ site.url }}/{{ legalSlug }}.html">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>

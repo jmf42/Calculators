@@ -18,18 +18,19 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4388136005778314" crossorigin="anonymous"></script>
     
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="{{ site.url }}/{{ calc.lang }}/{{ calc.slug }}/">
+    <link rel="canonical" href="{{ calc.canonicalUrl }}">
     
     <!-- Hreflang for all languages -->
-    {%- set calcData = calculators[calc.type] -%}
-    {%- for langItem in site.languages %}
-    <link rel="alternate" hreflang="{{ langItem.code }}" href="{{ site.url }}/{{ langItem.code }}/{{ calcData.slugs[langItem.code] }}/">
+    {%- if calc.alternates %}
+    {%- for langCode, href in calc.alternates %}
+    <link rel="alternate" hreflang="{{ langCode }}" href="{{ href }}">
     {%- endfor %}
-    <link rel="alternate" hreflang="x-default" href="{{ site.url }}/en/{{ calcData.slugs[calc.lang or 'en'] }}/">
+    <link rel="alternate" hreflang="x-default" href="{{ calc.alternates[site.defaultLang] or calc.canonicalUrl }}">
+    {%- endif %}
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ site.url }}/{{ calc.lang }}/{{ calc.slug }}/">
+    <meta property="og:url" content="{{ calc.canonicalUrl }}">
     <meta property="og:title" content="{{ calc.title }}">
     <meta property="og:description" content="{{ calc.metaDescription }}">
     <meta property="og:site_name" content="{{ site.name }}">
@@ -122,7 +123,7 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
                 "position": 1,
                 "name": "Enter your {{ calc.config.primaryInputLabel[calc.lang or 'en'] | default('values') }}",
                 "text": "Start by entering your primary values such as price, amount, or quantity in the input fields.",
-                "url": "{{ site.url }}/{{ calc.lang }}/{{ calc.slug }}/#calculator-container"
+                "url": "{{ calc.canonicalUrl }}#calculator-container"
             },
             {
                 "@type": "HowToStep",
@@ -478,10 +479,10 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
             </ul>
             <div class="footer-lang" style="margin-top: 16px; display: flex; justify-content: center; gap: 12px; align-items: center;">
                 <span style="color: var(--text-muted); font-size: 13px;">🌐</span>
-                {%- for langItem in site.languages %}
-                <a href="/{{ langItem.code }}/{{ calculators[calc.type].slugs[langItem.code] }}/" 
-                   onclick="localStorage.setItem('preferred_lang', '{{ langItem.code }}')"
-                   style="color: {% if langItem.code == calc.lang %}var(--primary-light){% else %}var(--text-muted){% endif %}; font-size: 12px; text-decoration: none; padding: 4px 8px; border-radius: 4px; {% if langItem.code == calc.lang %}background: rgba(99, 102, 241, 0.15);{% endif %}">{{ langItem.code | upper }}</a>
+                {%- for langCode, href in calc.alternates %}
+                <a href="{{ href }}" 
+                   onclick="localStorage.setItem('preferred_lang', '{{ langCode }}')"
+                   style="color: {% if langCode == calc.lang %}var(--primary-light){% else %}var(--text-muted){% endif %}; font-size: 12px; text-decoration: none; padding: 4px 8px; border-radius: 4px; {% if langCode == calc.lang %}background: rgba(99, 102, 241, 0.15);{% endif %}">{{ langCode | upper }}</a>
                 {%- endfor %}
             </div>
             <p>© {{ site.year }} {{ site.name }}. {{ ui.footer[calc.lang or 'en'].copyright | default("All rights reserved") }}.</p>

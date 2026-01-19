@@ -8,6 +8,7 @@
         // 1. Get path information
         const path = window.location.pathname;
         const isRoot = path === '/' || path === '/index.html';
+        if (!isRoot) return;
         
         // 2. Determine preferred language
         // Priority: localStorage > Browser Language > Default
@@ -23,28 +24,7 @@
         
         // 3. Handle redirection
         if (targetLang && targetLang !== currentLang && supportedLangs.includes(targetLang)) {
-            // Avoid redirecting if we just came from a manual language switch (should be handled by localStorage)
-            // But if we are on the wrong language landing page, we should try to find the correct one
-            
-            let redirectUrl = null;
-            
-            // Scenario A: On root/home - redirect to localized home
-            if (isRoot) {
-                redirectUrl = targetLang === defaultLang ? '/' : '/' + targetLang + '/';
-            } 
-            // Scenario B: On a localized page - try to find the equivalent page for targetLang
-            else {
-                const alternate = document.querySelector('link[rel="alternate"][hreflang="' + targetLang + '"]');
-                if (alternate) {
-                    redirectUrl = alternate.href;
-                } else if (storedLang) {
-                    // Fallback: If they have a stored preference but the page doesn't exist in that lang,
-                    // maybe don't redirect to root to avoid losing their context, 
-                    // or redirect to the home of their language if it's a first-time landing.
-                    // For now, only redirect if we have a specific alternate link or it's the root.
-                }
-            }
-            
+            const redirectUrl = targetLang === defaultLang ? '/' : '/' + targetLang + '/';
             if (redirectUrl && redirectUrl !== window.location.href) {
                 window.location.href = redirectUrl;
             }
