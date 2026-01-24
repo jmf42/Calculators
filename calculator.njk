@@ -11,72 +11,114 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ calc.title | safe }} | {{ site.name }}</title>
-    <meta name="description" content="{{ calc.metaDescription | safe }}">
+    <title>{{ calc.title | escape }} | {{ site.name | escape }}</title>
+    <meta name="description" content="{{ calc.metaDescription | escape }}">
     
     <!-- Google AdSense Verification -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4388136005778314" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.analytics.adSenseId }}" crossorigin="anonymous"></script>
     
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="{{ calc.canonicalUrl }}">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="{{ calc.canonicalUrl | canonicalUrl }}">
     
     <!-- Hreflang for all languages -->
     {%- if calc.alternates %}
     {%- for langCode, href in calc.alternates %}
-    <link rel="alternate" hreflang="{{ langCode }}" href="{{ href }}">
+    <link rel="alternate" hreflang="{{ langCode }}" href="{{ href | canonicalUrl }}">
     {%- endfor %}
-    <link rel="alternate" hreflang="x-default" href="{{ calc.alternates[site.defaultLang] or calc.canonicalUrl }}">
+    <link rel="alternate" hreflang="x-default" href="{{ (calc.alternates[site.defaultLang] or calc.canonicalUrl) | canonicalUrl }}">
     {%- endif %}
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ calc.canonicalUrl }}">
-    <meta property="og:title" content="{{ calc.title }}">
-    <meta property="og:description" content="{{ calc.metaDescription }}">
-    <meta property="og:site_name" content="{{ site.name }}">
-    <meta property="og:locale" content="{{ calc.lang }}">
+    <meta property="og:url" content="{{ calc.canonicalUrl | canonicalUrl }}">
+    <meta property="og:title" content="{{ calc.title | escape }}">
+    <meta property="og:description" content="{{ calc.metaDescription | escape }}">
+    <meta property="og:site_name" content="{{ site.name | escape }}">
+    <meta property="og:locale" content="{{ ((calc.config.locale[calc.lang] or calc.lang) | replace('-', '_')) | escape }}">
+    {%- if calc.alternates %}
+    {%- for langCode, href in calc.alternates %}
+    {%- if langCode != calc.lang %}
+    <meta property="og:locale:alternate" content="{{ ((calc.config.locale[langCode] or langCode) | replace('-', '_')) | escape }}">
+    {%- endif %}
+    {%- endfor %}
+    {%- endif %}
     <meta property="og:image" content="{{ site.url }}/assets/images/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="{{ calc.title | escape }}">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ calc.title }}">
-    <meta name="twitter:description" content="{{ calc.metaDescription }}">
+    <meta name="twitter:title" content="{{ calc.title | escape }}">
+    <meta name="twitter:description" content="{{ calc.metaDescription | escape }}">
     <meta name="twitter:image" content="{{ site.url }}/assets/images/og-image.png">
+    <meta name="twitter:image:alt" content="{{ calc.title | escape }}">
     
     <!-- Additional SEO -->
     <meta name="author" content="{{ site.name }}">
     <meta name="generator" content="CalcKit Engine">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/assets/images/logo.png">
-    <link rel="apple-touch-icon" href="/assets/images/logo.png">
+    <link rel="icon" type="image/png" href="/assets/images/logo_calculator.png">
+    <link rel="apple-touch-icon" href="/assets/images/logo_calculator.png">
+
+    {%- set howTo = ui.howTo or {} -%}
+    {%- if calc.howTo and calc.howTo[calc.lang or 'en'] -%}
+        {%- set howToSteps = calc.howTo[calc.lang or 'en'] -%}
+    {%- else -%}
+        {%- set howToSteps = [
+            {
+                name: (howTo.step1Name[calc.lang or 'en'] if howTo.step1Name else "Enter your values"),
+                text: (howTo.step1Text[calc.lang or 'en'] if howTo.step1Text else "Fill in the required fields to start the calculation.")
+            },
+            {
+                name: (howTo.step2Name[calc.lang or 'en'] if howTo.step2Name else "Review the result"),
+                text: (howTo.step2Text[calc.lang or 'en'] if howTo.step2Text else "Check the main result to understand the estimate.")
+            },
+            {
+                name: (howTo.step3Name[calc.lang or 'en'] if howTo.step3Name else "Inspect the breakdown"),
+                text: (howTo.step3Text[calc.lang or 'en'] if howTo.step3Text else "Use the breakdown to see how the total is composed.")
+            },
+            {
+                name: (howTo.step4Name[calc.lang or 'en'] if howTo.step4Name else "Adjust and compare"),
+                text: (howTo.step4Text[calc.lang or 'en'] if howTo.step4Text else "Tweak inputs to explore different scenarios.")
+            }
+        ] -%}
+    {%- endif -%}
     
     <!-- Schema.org Calculator -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "@id": "{{ calc.canonicalUrl }}#app",
-        "name": "{{ calc.title }}",
-        "description": "{{ calc.metaDescription }}",
-        "url": "{{ calc.canonicalUrl }}",
-        "applicationCategory": "FinanceApplication",
-        "operatingSystem": "Web Browser",
+        "@id": {{ ((calc.canonicalUrl | canonicalUrl) ~ "#app") | jsonify | safe }},
+        "name": {{ calc.title | jsonify | safe }},
+        "description": {{ calc.metaDescription | jsonify | safe }},
+        "url": {{ (calc.canonicalUrl | canonicalUrl) | jsonify | safe }},
+        "image": {{ (site.url + "/assets/images/og-image.png") | jsonify | safe }},
+        "applicationCategory": {{ calc.appCategory | jsonify | safe }},
+        "operatingSystem": {{ "Web Browser" | jsonify | safe }},
+        "dateModified": {{ site.buildDate | jsonify | safe }},
         "offers": {
             "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "{{ calc.config.currency[calc.lang] or 'USD' }}"
+            "price": 0,
+            "priceCurrency": {{ (calc.config.currency[calc.lang] or 'USD') | jsonify | safe }}
         },
-        "inLanguage": "{{ calc.lang }}",
-        "featureList": "Calculate {{ calc.config.resultLabel[calc.lang] }}",
-        "softwareRequirements": "Modern Web Browser",
+        "inLanguage": {{ calc.lang | jsonify | safe }},
+        {% set featureText = "Calculate " ~ (calc.config.resultLabel[calc.lang] | default('Results')) %}
+        "featureList": {{ featureText | jsonify | safe }},
+        "softwareRequirements": {{ "Modern Web Browser" | jsonify | safe }},
+        "publisher": {
+            "@type": "Organization",
+            "name": {{ site.name | jsonify | safe }},
+            "url": {{ site.url | jsonify | safe }},
+            "logo": {{ (site.url + "/assets/images/logo.png") | jsonify | safe }}
+        },
         "author": {
             "@type": "Person",
-            "name": "{{ site.author.name }}",
-            "jobTitle": "{{ site.author.jobTitle }}",
-            "sameAs": {{ site.author.sameAs | dump | safe }}
+            "name": {{ site.author.name | jsonify | safe }},
+            "jobTitle": {{ site.author.jobTitle | jsonify | safe }},
+            "sameAs": {{ site.author.sameAs | jsonify | safe }}
         }
     }
     </script>
@@ -90,14 +132,14 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
             {
                 "@type": "ListItem",
                 "position": 1,
-                "name": "{{ site.name }}",
-                "item": "{{ site.url }}/"
+                "name": {{ site.name | jsonify | safe }},
+                "item": {{ (site.url + "/") | canonicalUrl | jsonify | safe }}
             },
             {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "{{ calc.title }}",
-                "item": "{{ calc.canonicalUrl }}"
+                "name": {{ calc.title | jsonify | safe }},
+                "item": {{ (calc.canonicalUrl | canonicalUrl) | jsonify | safe }}
             }
         ]
     }
@@ -108,49 +150,35 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     {
         "@context": "https://schema.org",
         "@type": "HowTo",
-        "name": "How to Calculate {{ calc.config.resultLabel[calc.lang or 'en'] | default('Results') }} with {{ calc.title }}",
-        "description": "{{ calc.metaDescription }}",
-        "dateModified": "{{ site.buildDate }}",
+        {% set howToName = "How to Calculate " ~ (calc.config.resultLabel[calc.lang or 'en'] | default('Results')) ~ " with " ~ calc.title %}
+        "name": {{ howToName | jsonify | safe }},
+        "description": {{ calc.metaDescription | jsonify | safe }},
+        "dateModified": {{ site.buildDate | jsonify | safe }},
         "estimatedCost": {
             "@type": "MonetaryAmount",
-            "currency": "{{ calc.config.currency[calc.lang or 'en'] | default('USD') }}",
-            "value": "0"
+            "currency": {{ (calc.config.currency[calc.lang or 'en'] | default('USD')) | jsonify | safe }},
+            "value": 0
         },
         "totalTime": "PT2M",
         "step": [
+            {%- for step in howToSteps %}
             {
                 "@type": "HowToStep",
-                "position": 1,
-                "name": "Enter your {{ calc.config.primaryInputLabel[calc.lang or 'en'] | default('values') }}",
-                "text": "Start by entering your primary values such as price, amount, or quantity in the input fields.",
-                "url": "{{ calc.canonicalUrl }}#calculator-container"
-            },
-            {
-                "@type": "HowToStep",
-                "position": 2,
-                "name": "Adjust additional parameters",
-                "text": "Fine-tune your calculation by adjusting rates, terms, and other variables."
-            },
-            {
-                "@type": "HowToStep",
-                "position": 3,
-                "name": "Review instant results",
-                "text": "See your {{ calc.config.resultLabel[calc.lang or 'en'] | default('results') }} instantly calculated as you type."
-            },
-            {
-                "@type": "HowToStep",
-                "position": 4,
-                "name": "Analyze the breakdown",
-                "text": "Review the detailed breakdown showing all components and costs."
-            }
+                "position": {{ loop.index }},
+                "name": {{ step.name | jsonify | safe }},
+                "text": {{ step.text | jsonify | safe }},
+                "url": {{ ((calc.canonicalUrl | canonicalUrl) ~ "#calculator-container") | jsonify | safe }}
+            }{% if not loop.last %},{% endif %}
+            {%- endfor %}
         ],
         "tool": {
             "@type": "HowToTool",
-            "name": "{{ site.name }} {{ calc.title }}"
+            {% set toolName = site.name ~ " " ~ calc.title %}
+            "name": {{ toolName | jsonify | safe }}
         }{% if calc.stateData or calc.countryData %},
         "areaServed": {
             "@type": "{% if calc.stateData %}State{% else %}Country{% endif %}",
-            "name": "{% if calc.stateData %}{{ calc.stateData.name }}{% else %}{{ calc.countryData.name }}{% endif %}"
+            "name": {% if calc.stateData %}{{ calc.stateData.name | jsonify | safe }}{% else %}{{ (calc.countryData.nameLocalized or calc.countryData.name) | jsonify | safe }}{% endif %}
         }{% endif %}
     }
     </script>
@@ -165,10 +193,22 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
             {%- for faq in calc.faqs %}
             {
                 "@type": "Question",
-                "name": "{{ faq.q }}{% if calc.stateData %} in {{ calc.stateData.name }}{% elif calc.countryData %} {{ calc.countryData.nameLocalized }}{% elif calc.location %} in {{ calc.location.name }}{% endif %}",
+                {% set faqSuffix = "" %}
+                {% if calc.stateData %}{% set faqSuffix = " in " ~ calc.stateData.name %}{% elif calc.countryData %}{% set faqSuffix = " " ~ (calc.countryData.nameLocalized or calc.countryData.name) %}{% elif calc.location %}{% set faqSuffix = " in " ~ calc.location.name %}{% endif %}
+                {% set faqName = faq.q ~ faqSuffix %}
+                "name": {{ faqName | jsonify | safe }},
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "{{ faq.a }} {% if calc.stateData %}This calculator uses {{ calc.stateData.name }}'s actual property tax rate of {{ calc.stateData.mortgage.propertyTaxRate }}% and average insurance of ${{ calc.stateData.mortgage.homeInsurance }}/year.{% elif calc.countryData %}Updated for {{ calc.countryData.nameLocalized }} with typical rates of {{ calc.countryData.mortgage.typicalRate }}% and {{ calc.countryData.mortgage.downPayment }}% down payment.{% elif calc.location %}Use our calculator to estimate costs specifically for {{ calc.location.name }}, {{ calc.location.state }}.{% endif %}"
+                    {% set answerExtra = "" %}
+                    {% if calc.stateData %}
+                        {% set answerExtra = " This calculator uses " ~ calc.stateData.name ~ "'s actual property tax rate of " ~ (calc.stateData.mortgage.propertyTaxRate | default('')) ~ "% and average insurance of $" ~ (calc.stateData.mortgage.homeInsurance | default('')) ~ "/year." %}
+                    {% elif calc.countryData %}
+                        {% set answerExtra = " Updated for " ~ (calc.countryData.nameLocalized or calc.countryData.name) ~ " with typical rates of " ~ (calc.countryData.mortgage.typicalRate | default('')) ~ "% and " ~ (calc.countryData.mortgage.downPayment | default('')) ~ "% down payment." %}
+                    {% elif calc.location %}
+                        {% set answerExtra = " Use our calculator to estimate costs specifically for " ~ calc.location.name ~ ", " ~ calc.location.state ~ "." %}
+                    {% endif %}
+                    {% set answerText = faq.a ~ answerExtra %}
+                    "text": {{ answerText | jsonify | safe }}
                 }
             }{% if not loop.last or calc.localFaqs %},{% endif %}
             {%- endfor %}
@@ -176,10 +216,10 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
             {%- for faq in calc.localFaqs %}
             {
                 "@type": "Question",
-                "name": "{{ faq.q }}",
+                "name": {{ faq.q | jsonify | safe }},
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "{{ faq.a }}"
+                    "text": {{ faq.a | jsonify | safe }}
                 }
             }{% if not loop.last %},{% endif %}
             {%- endfor %}
@@ -209,25 +249,38 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     <!-- Navigation -->
     <nav class="nav">
         <div class="container">
-            <a href="{% if calc.lang == 'en' %}/{% else %}/{{ calc.lang }}/{% endif %}" class="logo">{{ site.name }}</a>
+            <a href="{% if calc.lang == site.defaultLang %}/{% else %}/{{ calc.lang }}{% endif %}" class="logo">
+                <img class="logo-mark" src="/assets/images/logo_calculator.png" alt="" aria-hidden="true" style="width: 32px; height: 32px;">
+                <span class="logo-type">{{ site.name }}</span>
+            </a>
+            <div class="nav-links">
+                <a href="{% if calc.lang == site.defaultLang %}/{% else %}/{{ calc.lang }}{% endif %}" class="nav-btn">
+                    <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                    {{ ui.nav[calc.lang or 'en'].home }}
+                </a>
+            </div>
         </div>
     </nav>
 
     <!-- Hero -->
     <section class="hero">
         <div class="container">
+            <!-- Breadcrumbs (Visual) -->
+            <nav aria-label="Breadcrumb" class="breadcrumbs" style="margin-bottom: 16px; font-size: 14px; color: var(--text-muted);">
+                <ol style="list-style: none; padding: 0; margin: 0; display: flex; gap: 8px; flex-wrap: wrap;">
+                    <li><a href="{% if calc.lang == site.defaultLang %}/{% else %}/{{ calc.lang }}{% endif %}" style="color: var(--text-muted); text-decoration: none; opacity: 0.8; transition: opacity 0.2s;">{{ ui.nav[calc.lang or 'en'].home }}</a></li>
+                    <li aria-hidden="true" style="opacity: 0.5;">/</li>
+                    <li><span aria-current="page" style="color: var(--primary-light); font-weight: 500;">{{ calc.title }}</span></li>
+                </ol>
+            </nav>
+
             <h1>{{ calc.title | safe }}</h1>
             <p>{{ calc.subtitle | safe }}</p>
             <div class="trust-badge">
                 <span class="edition-badge">{{ site.year }} {{ ui.nav[calc.lang or 'en'].edition }}</span> • <span>✓</span> {{ ui.stats.free[calc.lang or 'en'] }} • {{ ui.stats.noSignup[calc.lang or 'en'] }}
             </div>
             
-            {# Freshness Signal - Last Updated Badge #}
-            <div class="freshness-badge" style="margin-top: 12px; font-size: 12px; color: rgba(255,255,255,0.6);">
-                📅 {{ ui.footer[calc.lang or 'en'].lastUpdated }}: {{ site.buildDate }}
-                {%- if calc.stateData %} • 📍 {{ calc.stateData.name }} {{ ui.localInsights.tips[calc.lang or 'en'] }}{% endif %}
-                {%- if calc.countryData %} • 📍 {{ calc.countryData.nameLocalized }} {{ ui.localInsights.tips[calc.lang or 'en'] }}{% endif %}
-            </div>
+            {# Freshness Signal moved to below calculator #}
         </div>
     </section>
 
@@ -236,42 +289,69 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     <!-- Calculator -->
     <section class="calculator-section">
         <div class="container">
+	            <div class="utility-bar">
+                    <!-- Mobile Back Link (kept for small screens) -->
+	                <a href="{% if calc.lang == site.defaultLang %}/{% else %}/{{ calc.lang }}{% endif %}" class="back-nav" style="display: none;">
+	                    <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+	                    {{ ui.nav[calc.lang or 'en'].backToCalculators }}
+	                </a>
+	            </div>
             <div class="calculator-wrapper">
                 <div id="calculator-container"></div>
+            </div>
+            
+            {# Freshness Signal - Moved Here #}
+            <div class="freshness-badge" style="margin-top: 24px; display: flex; justify-content: center; gap: 8px; font-size: 13px; color: var(--text-muted); opacity: 0.7;">
+                <span class="freshness-label">{{ ui.footer[calc.lang or 'en'].lastUpdated }}:</span>
+                <span class="freshness-date">{{ site.buildDate }}</span>
+                {%- if calc.stateData %}<span class="freshness-sep">•</span><span class="freshness-loc">{{ calc.stateData.name }} {{ ui.localInsights.tips[calc.lang or 'en'] }}</span>{% endif %}
+                {%- if calc.countryData %}<span class="freshness-sep">•</span><span class="freshness-loc">{{ calc.countryData.nameLocalized }} {{ ui.localInsights.tips[calc.lang or 'en'] }}</span>{% endif %}
             </div>
         </div>
     </section>
 
+    {%- if ui.howTo %}
+    <section class="content-section">
+        <div class="container">
+            <div class="seo-content">
+                <h2>{{ ui.howTo.title[calc.lang or 'en'] }}</h2>
+                <ol>
+                    {%- for step in howToSteps %}
+                    <li><strong>{{ step.name }}:</strong> {{ step.text }}</li>
+                    {%- endfor %}
+                </ol>
+            </div>
+        </div>
+    </section>
+    {%- endif %}
+
+    {# TODO: Configure actual AdSense slot IDs before enabling
     {% if site.analytics.adSenseId %}
     <!-- Ad Slot: Below Calculator -->
     <div class="container ad-container" style="margin: 2rem auto; text-align: center;">
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="{{ site.analytics.adSenseId }}"
-             data-ad-slot="YOUR_DESIRED_SLOT_ID_1"
+             data-ad-slot="SLOT_ID_1"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
     {% endif %}
+    #}
 
     {# Local Market Insights Section #}
     {%- if calc.localTips and calc.localTips.length > 0 %}
     <section class="local-insights-section" style="padding: 40px 0;">
         <div class="container">
-            <div class="local-insights-card" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(168, 85, 247, 0.08) 100%); border-radius: 20px; padding: 32px 40px; border: 1px solid rgba(99, 102, 241, 0.15);">
-                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;">
-                    <span style="font-size: 28px;">
-                        {%- if calc.stateData %}🇺🇸{% elif calc.countryData %}🌍{% endif %}
-                    </span>
-                    <h2 style="font-size: 24px; font-weight: 700; margin: 0; background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                        {%- if calc.stateData %}
-                            {{ calc.stateData.name }} {{ (ui.localInsights.title[calc.lang or 'en']) if ui.localInsights else "Market Insights" }}
-                        {%- elif calc.countryData %}
-                            {{ calc.countryData.nameLocalized }} - {{ (ui.localInsights.title[calc.lang or 'en']) if ui.localInsights else "Market Insights" }}
-                        {%- endif %}
-                    </h2>
-                </div>
+	            <div class="local-insights-card" style="background: var(--surface); border-radius: 20px; padding: 32px 40px; border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: var(--shadow-sm);">
+	                <div class="insights-header" style="margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between;">
+	                    <h3 style="margin: 0; font-size: 24px; font-weight: 800; color: var(--text);">{{ ui.calculator.localInsightsTitle[calc.lang or 'en'] }}</h3>
+	                    <div class="live-badge" style="background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 6px; border: 1px solid rgba(16, 185, 129, 0.2);">
+	                        <span class="dot" style="width: 8px; height: 8px; background: #10b981; border-radius: 50%; display: inline-block; box-shadow: 0 0 10px #10b981;"></span>
+	                        {{ ui.calculator.liveDataBadge[calc.lang or 'en'] }}
+	                    </div>
+	                </div>
 
                 {# State-specific data display #}
                 {%- if calc.stateData and calc.stateData.mortgage and ui['market'] %}
@@ -327,6 +407,55 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     </section>
     {%- endif %}
 
+    {%- if calc.seo and calc.seo.useCases %}
+    <section class="content-section who-uses-section">
+        <div class="container">
+            <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; color: var(--text);">{{ ui.seo.whoUsesThis[calc.lang or 'en'] }}</h2>
+            <div class="who-uses-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+                {%- for useCase in calc.seo.useCases %}
+                <div class="who-uses-card" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(168, 85, 247, 0.05) 100%); padding: 20px 24px; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.08); display: flex; align-items: flex-start; gap: 14px;">
+                    <span style="font-size: 20px; flex-shrink: 0;">{% if loop.index == 1 %}👤{% elif loop.index == 2 %}🎯{% else %}📊{% endif %}</span>
+                    <div>
+                        <span style="font-size: 11px; font-weight: 600; color: var(--primary-light); text-transform: uppercase; letter-spacing: 0.5px;">{{ ui.seo.perfectFor[calc.lang or 'en'] }}</span>
+                        <p style="margin: 4px 0 0 0; color: var(--text); font-size: 15px; line-height: 1.5;">{{ useCase }}</p>
+                    </div>
+                </div>
+                {%- endfor %}
+            </div>
+            
+            {%- if calc.seo.synonyms %}
+            <div class="synonyms-note" style="margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.05); text-align: center;">
+                <p style="color: var(--text-muted); font-size: 14px; font-style: italic; opacity: 0.8;">
+                    {{ ui.seo.alsoKnownAs[calc.lang or 'en'] }} 
+                    <span style="color: var(--text-muted); font-weight: 500;">{{ calc.seo.synonyms | join(", ") }}.</span>
+                </p>
+            </div>
+            {%- endif %}
+        </div>
+    </section>
+    {%- endif %}
+
+    {%- if ui.eeat %}
+    <section class="content-section">
+        <div class="container">
+            <div class="seo-content">
+                <h2>{{ ui.eeat.title[calc.lang or 'en'] }}</h2>
+                <p><strong>{{ ui.eeat.methodologyLabel[calc.lang or 'en'] }}:</strong> {{ ui.eeat.methodologyText[calc.lang or 'en'] }}</p>
+                <p><strong>{{ ui.eeat.authorLabel[calc.lang or 'en'] }}:</strong> {{ site.author.name }}, {{ site.author.jobTitle }}</p>
+                <p><strong>{{ ui.eeat.lastUpdatedLabel[calc.lang or 'en'] }}:</strong> {{ site.buildDate }}</p>
+                <p><strong>{{ ui.eeat.disclaimerLabel[calc.lang or 'en'] }}:</strong> {{ ui.eeat.disclaimerText[calc.lang or 'en'] }}</p>
+                {%- if site.author.sameAs and site.author.sameAs.length > 0 %}
+                <p><strong>{{ ui.eeat.profilesLabel[calc.lang or 'en'] }}:</strong>
+                    {%- for profileUrl in site.author.sameAs %}
+                    <a href="{{ profileUrl }}" target="_blank" rel="nofollow noopener">{{ profileUrl | replace("https://", "") }}</a>{% if not loop.last %}, {% endif %}
+                    {%- endfor %}
+                </p>
+                {%- endif %}
+            </div>
+        </div>
+    </section>
+    {%- endif %}
+
     <!-- FAQ Section -->
     {%- if calc.faqs and calc.faqs.length > 0 %}
     <section class="faq-section">
@@ -373,57 +502,103 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     </div>
 
     <!-- Related Tools -->
-    <section class="content-section" style="padding-top: 0;">
+    <section class="content-section related-tools-section">
         <div class="container">
-            <span class="section-tag">{{ ui.footer[calc.lang or 'en'].otherTools | default("Recommended Tools") }}</span>
-            <h2>{{ ui.footer[calc.lang or 'en'].relatedTitle | default("Explore More Calculators") }}</h2>
+            <div class="section-header">
+                <span class="section-tag">{{ ui.footer[calc.lang or 'en'].otherTools | default("Recommended Tools") }}</span>
+                <h2>{{ ui.footer[calc.lang or 'en'].relatedTitle | default("Explore More Calculators") }}</h2>
+            </div>
             <div class="related-grid">
                 {%- set related_count = 0 -%}
                 
-                {# First pass: Same Category #}
-                {%- for calcType, calcInfo in calculators -%}
-                {%- if calcType != calc.type and calcInfo.baseType == calc.baseType and related_count < 3 -%}
-                <a href="/{{ calc.lang }}/{{ calcInfo.slugs[calc.lang or 'en'] }}/" class="related-card">
-                    <h3>{{ calcInfo.titles[calc.lang or 'en'] }}</h3>
-                    <p>{{ calcInfo.subtitles[calc.lang or 'en'] }}</p>
-                </a>
-                {%- set related_count = related_count + 1 -%}
+                {# Priority 1: Manually Curated Related Calculators (SEO Mesh) #}
+                {%- if calc.seo and calc.seo.relatedCalculators -%}
+                    {%- for relatedSlug in calc.seo.relatedCalculators -%}
+                        {%- for calcType, calcInfo in calculators -%}
+                            {# Check if the slug matches the related ID (e.g. 'solar') #}
+                            {%- if calcType == relatedSlug and related_count < 3 -%}
+                                <a href="/{{ calc.lang }}/{{ calcInfo.slugs[calc.lang or 'en'] }}" class="related-card priority-link">
+                                    <div class="related-card-content">
+                                        <h3>{{ calcInfo.titles[calc.lang or 'en'] }}</h3>
+                                        <p>{{ calcInfo.subtitles[calc.lang or 'en'] }}</p>
+                                    </div>
+                                    <span class="related-card-arrow">→</span>
+                                </a>
+                                {%- set related_count = related_count + 1 -%}
+                            {%- endif -%}
+                        {%- endfor -%}
+                    {%- endfor -%}
                 {%- endif -%}
-                {%- endfor -%}
 
-                {# Second pass: Others (if needed) #}
+                {# Priority 2: Same Category (Automatic) #}
                 {%- if related_count < 3 -%}
-                {%- for calcType, calcInfo in calculators -%}
-                {%- if calcType != calc.type and calcInfo.baseType != calc.baseType and related_count < 3 -%}
-                <a href="/{{ calc.lang }}/{{ calcInfo.slugs[calc.lang or 'en'] }}/" class="related-card">
-                    <h3>{{ calcInfo.titles[calc.lang or 'en'] }}</h3>
-                    <p>{{ calcInfo.subtitles[calc.lang or 'en'] }}</p>
-                </a>
-                {%- set related_count = related_count + 1 -%}
+                    {%- for calcType, calcInfo in calculators -%}
+                        {# Skip if it's the current calculator OR if it was already added via manual list #}
+                        {%- set is_manual = false -%}
+                        {%- if calc.seo and calc.seo.relatedCalculators -%}
+                            {%- for manual in calc.seo.relatedCalculators -%}
+                                {%- if manual == calcType %}{% set is_manual = true %}{% endif -%}
+                            {%- endfor -%}
+                        {%- endif -%}
+
+                        {%- if calcType != calc.type and calcInfo.baseType == calc.baseType and not is_manual and related_count < 3 -%}
+                            <a href="/{{ calc.lang }}/{{ calcInfo.slugs[calc.lang or 'en'] }}" class="related-card">
+                                <div class="related-card-content">
+                                    <h3>{{ calcInfo.titles[calc.lang or 'en'] }}</h3>
+                                    <p>{{ calcInfo.subtitles[calc.lang or 'en'] }}</p>
+                                </div>
+                                <span class="related-card-arrow">→</span>
+                            </a>
+                            {%- set related_count = related_count + 1 -%}
+                        {%- endif -%}
+                    {%- endfor -%}
                 {%- endif -%}
-                {%- endfor -%}
+
+                {# Priority 3: Others (Fill the grid) #}
+                {%- if related_count < 3 -%}
+                    {%- for calcType, calcInfo in calculators -%}
+                        {# Skip if current, manual, or same category (already handled) #}
+                        {%- set is_manual = false -%}
+                        {%- if calc.seo and calc.seo.relatedCalculators -%}
+                            {%- for manual in calc.seo.relatedCalculators -%}
+                                {%- if manual == calcType %}{% set is_manual = true %}{% endif -%}
+                            {%- endfor -%}
+                        {%- endif -%}
+                        
+                        {%- if calcType != calc.type and calcInfo.baseType != calc.baseType and not is_manual and related_count < 3 -%}
+                            <a href="/{{ calc.lang }}/{{ calcInfo.slugs[calc.lang or 'en'] }}" class="related-card">
+                                <div class="related-card-content">
+                                    <h3>{{ calcInfo.titles[calc.lang or 'en'] }}</h3>
+                                    <p>{{ calcInfo.subtitles[calc.lang or 'en'] }}</p>
+                                </div>
+                                <span class="related-card-arrow">→</span>
+                            </a>
+                            {%- set related_count = related_count + 1 -%}
+                        {%- endif -%}
+                    {%- endfor -%}
                 {%- endif -%}
             </div>
         </div>
     </section>
 
     <!-- [SEO LINK MESH] Specialized & Regional Tools -->
-    {%- if (calc.childNiches and calc.childNiches.length > 0) or (calc.relatedLocations and calc.relatedLocations.length > 0) %}
-    <section class="mesh-links-section" style="background: rgba(255, 255, 255, 0.02); padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.05);">
+    {%- if (calc.childNiches and calc.childNiches.length > 0) or (calc.relatedLocations and calc.relatedLocations.length > 0) or (calc.featuredLocations and calc.featuredLocations.length > 0) %}
+    <section class="mesh-links-section">
         <div class="container">
-            <div data-mesh-container style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
+            <div class="mesh-grid" data-mesh-container>
                 
                 {# Specialized Calculators (Verticals) #}
                 {%- if calc.childNiches and calc.childNiches.length > 0 %}
-                <div>
-                    <h3 style="font-size: 18px; margin-bottom: 20px; color: var(--text);">
-                        🧮 {{ ui.footer[calc.lang or 'en'].specializedTitle }}
+                <div class="mesh-card">
+                    <h3 class="mesh-title">
+                        <span class="mesh-icon">🧮</span> {{ ui.footer[calc.lang or 'en'].specializedTitle }}
                     </h3>
-                    <ul style="list-style: none; padding: 0; display: grid; gap: 10px;">
+                    <ul class="mesh-list">
                         {%- for niche in calc.childNiches %}
                         <li>
-                            <a href="/{{ calc.lang }}/{{ niche.slug }}/" style="color: var(--text-muted); text-decoration: none; font-size: 14px; transition: color 0.2s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">
-                                {{ niche.title }} →
+                            <a href="/{{ calc.lang }}/{{ niche.slug }}" class="mesh-link">
+                                <span class="mesh-link-text">{{ niche.title }}</span>
+                                <span class="mesh-link-arrow">→</span>
                             </a>
                         </li>
                         {%- endfor %}
@@ -433,17 +608,36 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
 
                 {# Regional Calculators (Horizontals) #}
                 {%- if calc.relatedLocations and calc.relatedLocations.length > 0 %}
-                <div>
-                    <h3 style="font-size: 18px; margin-bottom: 20px; color: var(--text);">
-                        🌎 {{ ui.footer[calc.lang or 'en'].regionalTitle }}
+                <div class="mesh-card">
+                    <h3 class="mesh-title">
+                        <span class="mesh-icon">🌎</span> {{ ui.footer[calc.lang or 'en'].regionalTitle }}
                     </h3>
-                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                    <div class="mesh-pill-list">
                         {%- for loc in calc.relatedLocations %}
-                        <a href="/en/{{ loc.slug }}/" style="padding: 6px 12px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--text-sm); text-decoration: none; font-size: 13px; transition: background 0.2s;" onmouseover="this.style.background='rgba(99, 102, 241, 0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
-                            {{ loc.name }}
-                        </a>
+	                        <a href="/{{ calc.lang }}/{{ loc.slug }}" class="mesh-pill">
+	                            {{ loc.name }}
+	                        </a>
                         {%- endfor %}
                     </div>
+                </div>
+                {%- endif %}
+
+                {# Featured Cities for Niche Pages #}
+                {%- if calc.featuredLocations and calc.featuredLocations.length > 0 %}
+                <div class="mesh-card">
+                    <h3 class="mesh-title">
+                        <span class="mesh-icon">📍</span> {{ ui.footer[calc.lang or 'en'].regionalTitle }}
+                    </h3>
+                    <ul class="mesh-list">
+                        {%- for loc in calc.featuredLocations %}
+                        <li>
+                            <a href="/{{ calc.lang }}/{{ loc.slug }}" class="mesh-link">
+                                <span class="mesh-link-text">{{ loc.name }}, {{ loc.state }}</span>
+                                <span class="mesh-link-arrow">→</span>
+                            </a>
+                        </li>
+                        {%- endfor %}
+                    </ul>
                 </div>
                 {%- endif %}
 
@@ -452,18 +646,20 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     </section>
     {%- endif %}
 
+    {# TODO: Configure actual AdSense slot IDs before enabling
     {% if site.analytics.adSenseId %}
     <!-- Ad Slot: Before Footer -->
     <div class="container ad-container" style="margin: 2rem auto; text-align: center;">
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="{{ site.analytics.adSenseId }}"
-             data-ad-slot="YOUR_DESIRED_SLOT_ID_2"
+             data-ad-slot="SLOT_ID_2"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
     {% endif %}
+    #}
 
     <!-- Footer -->
     <footer class="footer">
@@ -471,11 +667,11 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
             <ul class="footer-links">
                 {%- for calcType, calcInfo in calculators %}
                 {%- if calcType != calc.type %}
-                <li><a href="/{{ calc.lang }}/{{ calcInfo.slugs[calc.lang or 'en'] }}/">{{ calcInfo.titles[calc.lang or 'en'] }}</a></li>
+	                <li><a href="/{{ calc.lang }}/{{ calcInfo.slugs[calc.lang or 'en'] }}">{{ calcInfo.titles[calc.lang or 'en'] }}</a></li>
                 {%- endif %}
                 {%- endfor %}
-                <li><a href="{% if calc.lang == 'en' %}/{% else %}/{{ calc.lang }}/{% endif %}privacy.html">{{ ui.footer[calc.lang or 'en'].privacy | default("Privacy Policy") }}</a></li>
-                <li><a href="{% if calc.lang == 'en' %}/{% else %}/{{ calc.lang }}/{% endif %}terms.html">{{ ui.footer[calc.lang or 'en'].terms | default("Terms of Service") }}</a></li>
+                <li><a href="{% if calc.lang == 'en' %}{% else %}/{{ calc.lang }}{% endif %}/privacy">{{ ui.footer[calc.lang or 'en'].privacy | default("Privacy Policy") }}</a></li>
+                <li><a href="{% if calc.lang == 'en' %}{% else %}/{{ calc.lang }}{% endif %}/terms">{{ ui.footer[calc.lang or 'en'].terms | default("Terms of Service") }}</a></li>
             </ul>
             <div class="footer-lang" style="margin-top: 16px; display: flex; justify-content: center; gap: 12px; align-items: center;">
                 <span style="color: var(--text-muted); font-size: 13px;">🌐</span>
@@ -496,7 +692,6 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
             const calculator = document.querySelector('calckit-calculator');
             if (calculator) {
                 calculator.addEventListener('request-pdf', (e) => {
-                    console.log('PDF requested but not available on this site.');
                     alert("{{ ui.alerts.pdfNotAvailable[calc.lang or 'en'] }}");
                 });
             }
@@ -510,72 +705,102 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     <!-- Analytics Tracking -->
     <script src="/assets/js/{{ manifest['analytics.js'] | default('analytics.js') }}"></script>
     
-    <script>
-        // Build config for this specific language
-        const calcConfig = {
-            type: "{{ calc.type }}",
-            title: "{{ calc.title | safe }}",
-            subtitle: "{{ calc.subtitle | safe }}",
-            currency: "{{ calc.config.currency[calc.lang or 'en'] }}",
-            locale: "{{ calc.config.locale[calc.lang or 'en'] }}",
-            fields: [
-                {%- for field in calc.config.fields %}
-                {
-                    id: "{{ field.id }}",
-                    type: "{{ field.type }}",
-                    label: "{{ field.label[calc.lang or 'en'] | safe }}",
-                    default: {{ field.default }}{% if field.type != 'select' %},
-                    max: {{ field.max }},
-                    step: {{ field.step }}{% endif %}{% if field.help %},
-                    help: "{{ field.help[calc.lang or 'en'] | safe }}"{% endif %}{% if field.description %},
-                    description: "{{ field.description[calc.lang or 'en'] | safe }}"{% endif %}{% if field.toggle %},
-                    toggle: {
-                        target: "{{ field.toggle.target }}",
-                        label: "{{ field.toggle.label[calc.lang or 'en'] | safe }}"
-                    }{% endif %}{% if field.hidden %},
-                    hidden: {{ field.hidden }}{% endif %}
-                    {%- if field.options %},
-                    options: [
-                        {%- for opt in field.options %}
-                        { value: {{ opt.value }}, label: "{{ opt.label[calc.lang or 'en'] | safe }}" }{% if not loop.last %},{% endif %}
-                        {%- endfor %}
-                    ]
-                    {%- endif %}
-                }{% if not loop.last %},{% endif %}
-                {%- endfor %}
-            ],
-            formula: "{{ calc.config.formula }}",
-            resultLabel: "{{ calc.config.resultLabel[calc.lang or 'en'] | safe }}",
-            breakdown: [
-                {%- for item in calc.config.breakdown %}
-                { label: "{{ item.label[calc.lang or 'en'] | safe }}", formula: "{{ item.formula }}" }{% if not loop.last %},{% endif %}
-                {%- endfor %}
-            ]{% if calc.config.notices %},
-            notices: [
-                {%- for notice in calc.config.notices %}
-                {
-                    message: "{{ notice.message[calc.lang or 'en'] | safe }}",
-                    condition: "{{ notice.condition }}",
-                    type: "{{ notice.type }}"
-                }{% if not loop.last %},{% endif %}
-                {%- endfor %}
-            ]
-            {% endif %}
-        };
+	    <script>
+	        // Build config for this specific language
+	        const calcConfig = {
+	            lang: {{ calc.lang | dump | safe }},
+		            type: {{ calc.type | dump | safe }},
+	            title: {{ calc.title | striptags | dump | safe }},
+	            subtitle: {{ calc.subtitle | striptags | dump | safe }},
+	            currency: "{{ calc.config.currency[calc.lang or 'en'] }}",
+	            currencySymbol: "{{ calc.currencySymbol or calc.config.currencySymbol or '$' }}",
+	            locale: "{{ calc.config.locale[calc.lang or 'en'] }}",
+	            resultLabel: {{ (calc.config.resultLabel[calc.lang or 'en'] or calc.config.resultLabel.en or calc.config.resultLabel) | dump | safe }},
+	            {%- if calc.config.resultFormat %}
+	            resultFormat: {{ calc.config.resultFormat | dump | safe }},
+	            {%- endif %}
+	            {%- if calc.config.chart is defined %}
+	            chart: {{ calc.config.chart | dump | safe }},
+	            {%- endif %}
+	            {%- if calc.config.proFeatures %}
+	            proFeatures: {{ calc.config.proFeatures | dump | safe }},
+	            {%- endif %}
+	            fields: [
+	                {%- for field in calc.config.fields %}
+	                {
+	                    id: "{{ field.id }}",
+	                    type: "{{ field.type }}",
+	                    label: {{ (field.label[calc.lang or 'en'] or field.label.en or field.label) | dump | safe }},
+		                    default: {{ field.default | dump | safe }}{% if field.type != 'select' %}{% if field.min is defined %},
+	                    min: {{ field.min }}{% endif %}{% if field.max is defined %},
+	                    max: {{ field.max }}{% endif %}{% if field.step is defined %},
+	                    step: {{ field.step }}{% endif %}{% endif %}{% if field.help %},
+	                    help: {{ (field.help[calc.lang or 'en'] or field.help.en or field.help) | dump | safe }}{% endif %}{% if field.description %},
+	                    description: {{ (field.description[calc.lang or 'en'] or field.description.en or field.description) | dump | safe }}{% endif %}{% if field.format %},
+	                    format: {{ field.format | dump | safe }}{% endif %}{% if field.unit %},
+	                    unit: {{ field.unit | dump | safe }}{% endif %}{% if field.toggle %},
+		                    toggle: {
+		                        target: {{ field.toggle.target | dump | safe }},
+		                        label: {{ (field.toggle.label[calc.lang or 'en'] or field.toggle.label.en or field.toggle.label) | dump | safe }}
+		                    }{% endif %}{% if field.hidden %},
+	                    hidden: {{ field.hidden }}{% endif %}
+	                    {%- if field.options %},
+	                    options: [
+	                        {%- for opt in field.options %}
+		                        { value: {{ opt.value | dump | safe }}, label: {{ (opt.label[calc.lang or 'en'] or opt.label.en or opt.label) | dump | safe }} }{% if not loop.last %},{% endif %}
+		                        {%- endfor %}
+		                    ]
+	                    {%- endif %}
+	                }{% if not loop.last %},{% endif %}
+	                {%- endfor %}
+	            ],
+		            formula: {{ calc.config.formula | dump | safe }},
+	            breakdown: [
+	                {%- for item in calc.config.breakdown %}
+	                {
+	                    label: {{ (item.label[calc.lang or 'en'] or item.label.en or item.label) | dump | safe }},
+		                    formula: {{ item.formula | dump | safe }}{% if item.format %},
+		                    format: {{ item.format | dump | safe }}{% endif %}{% if item.tooltip %},
+		                    tooltip: {{ (item.tooltip[calc.lang or 'en'] or item.tooltip.en or item.tooltip) | dump | safe }}{% endif %}
+		                }{% if not loop.last %},{% endif %}
+	                {%- endfor %}
+	            ]
+	            {%- if calc.config.metrics %},
+	            metrics: [
+	                {%- for item in calc.config.metrics %}
+	                {
+	                    label: {{ (item.label[calc.lang or 'en'] or item.label.en or item.label) | dump | safe }},
+	                    formula: {{ item.formula | dump | safe }}{% if item.format %},
+	                    format: {{ item.format | dump | safe }}{% endif %}{% if item.condition %},
+	                    condition: {{ item.condition | dump | safe }}{% endif %}{% if item.tooltip %},
+	                    tooltip: {{ (item.tooltip[calc.lang or 'en'] or item.tooltip.en or item.tooltip) | dump | safe }}{% endif %}
+	                }{% if not loop.last %},{% endif %}
+	                {%- endfor %}
+	            ]
+	            {%- endif %}
+	            {% if calc.config.notices %},
+	            notices: [
+	                {%- for notice in calc.config.notices %}
+	                {
+	                    message: {{ (notice.message[calc.lang or 'en'] or notice.message.en or notice.message) | dump | safe }},
+		                    {%- if notice.condition %}
+		                    condition: {{ notice.condition | dump | safe }},
+		                    {%- endif %}
+		                    type: {{ notice.type | dump | safe }}
+		                }{% if not loop.last %},{% endif %}
+		                {%- endfor %}
+		            ]
+	            {% endif %}
+	        };
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const container = document.getElementById('calculator-container');
-            const wrapper = document.createElement('div');
-            wrapper.className = 'calckit-calculator';
-            wrapper.dataset.theme = 'dark';
-            
-            // Build config for this specific language
-            const initialConfig = JSON.stringify(calcConfig);
-            wrapper.dataset.config = initialConfig;
-            
-            container.appendChild(wrapper);
-            wrapper.appendChild(document.createElement('calckit-calculator'));
-        });
+        window.calcConfig = calcConfig;
+        if (window.mountCalcKit) {
+            window.mountCalcKit();
+        } else {
+            document.addEventListener('DOMContentLoaded', () => {
+                if (window.mountCalcKit) window.mountCalcKit();
+            });
+        }
 
         // FAQ Accordion
         document.querySelectorAll('.faq-question').forEach(q => {

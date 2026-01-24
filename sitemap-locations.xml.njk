@@ -1,0 +1,42 @@
+---
+permalink: /sitemap-locations.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  {# US State Pages #}
+  {%- for page in collections.calculatorPages %}
+  {%- if page.stateData %}
+  <url>
+    <loc>{{ page.canonicalUrl | canonicalUrl }}</loc>
+    <lastmod>{{ page.lastmod }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  {%- endif %}
+  {%- endfor %}
+
+  {# Country Pages #}
+  {%- for page in collections.calculatorPages %}
+  {%- if page.countryData %}
+  <url>
+    <loc>{{ page.canonicalUrl | canonicalUrl }}</loc>
+    <lastmod>{{ page.lastmod }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  {%- endif %}
+  {%- endfor %}
+
+  {# City/Location Pages #}
+  {%- for page in collections.calculatorPages %}
+  {%- if page.location %}
+  <url>
+    <loc>{{ page.canonicalUrl | canonicalUrl }}</loc>
+    <lastmod>{{ page.lastmod }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  {%- endif %}
+  {%- endfor %}
+</urlset>

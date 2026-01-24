@@ -10,37 +10,52 @@ permalink: "/{% if home.lang != 'en' %}{{ home.lang }}/{% endif %}index.html"
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ ui.homeTitle[home.lang] }}</title>
-    <meta name="description" content="{{ ui.homeDesc[home.lang] }}">
-    {% set homePath = '/' if home.lang == site.defaultLang else '/' + home.lang + '/' %}
-    <link rel="canonical" href="{{ site.url }}{{ homePath }}">
+    <title>{{ ui.homeTitle[home.lang] | escape }}</title>
+    <meta name="description" content="{{ ui.homeDesc[home.lang] | escape }}">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    {% set homePath = '/' if home.lang == site.defaultLang else '/' + home.lang %}
+    <link rel="canonical" href="{{ (site.url + homePath) | canonicalUrl }}">
     {%- for langItem in site.languages %}
-    <link rel="alternate" hreflang="{{ langItem.code }}" href="{{ site.url }}{% if langItem.code == site.defaultLang %}/{% else %}/{{ langItem.code }}/{% endif %}">
+    {% set altHomePath = '/' if langItem.code == site.defaultLang else '/' + langItem.code %}
+    <link rel="alternate" hreflang="{{ langItem.code }}" href="{{ (site.url + altHomePath) | canonicalUrl }}">
     {%- endfor %}
-    <link rel="alternate" hreflang="x-default" href="{{ site.url }}/">
-    <link rel="icon" type="image/png" href="/assets/images/logo.png">
-    <link rel="apple-touch-icon" href="/assets/images/logo.png">
+    <link rel="alternate" hreflang="x-default" href="{{ (site.url + '/') | canonicalUrl }}">
+    <link rel="icon" type="image/png" href="/assets/images/logo_calculator.png">
+    <link rel="apple-touch-icon" href="/assets/images/logo_calculator.png">
+    {% set canonicalHomeUrl = ((site.url + homePath) | canonicalUrl) %}
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ canonicalHomeUrl }}">
+    <meta property="og:title" content="{{ ui.homeTitle[home.lang] | escape }}">
+    <meta property="og:description" content="{{ ui.homeDesc[home.lang] | escape }}">
+    <meta property="og:site_name" content="{{ site.name | escape }}">
     <meta property="og:image" content="{{ site.url }}/assets/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="{{ site.name | escape }}">
     <meta name="twitter:image" content="{{ site.url }}/assets/images/og-image.png">
+    <meta name="twitter:image:alt" content="{{ site.name | escape }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ ui.homeTitle[home.lang] | escape }}">
+    <meta name="twitter:description" content="{{ ui.homeDesc[home.lang] | escape }}">
     <link rel="manifest" href="/assets/site.webmanifest">
     <meta name="theme-color" content="#6366f1">
     
     <!-- Google AdSense Verification -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4388136005778314" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.analytics.adSenseId }}" crossorigin="anonymous"></script>
 
     <!-- Google Search Logo & Organization Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "{{ site.name }}",
-      "url": "{{ site.url }}",
-      "logo": "{{ site.url }}/assets/images/logo.png",
-      "description": "{{ ui.homeDesc[home.lang] }}",
+      "name": {{ site.name | jsonify | safe }},
+      "url": {{ site.url | jsonify | safe }},
+      "logo": {{ (site.url + "/assets/images/logo.png") | jsonify | safe }},
+      "description": {{ ui.homeDesc[home.lang] | jsonify | safe }},
       "contactPoint": {
         "@type": "ContactPoint",
-        "email": "hello@calc-kit.com",
-        "contactType": "customer service",
+        "email": {{ "worthit.tuliai@gmail.com" | jsonify | safe }},
+        "contactType": {{ "customer service" | jsonify | safe }},
         "availableLanguage": ["English", "Spanish", "German", "French", "Portuguese", "Italian", "Dutch", "Polish", "Swedish", "Norwegian", "Danish", "Finnish"]
       },
       "sameAs": []
@@ -52,8 +67,8 @@ permalink: "/{% if home.lang != 'en' %}{{ home.lang }}/{% endif %}index.html"
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "name": "{{ site.name }}",
-      "url": "{{ site.url }}"
+      "name": {{ site.name | jsonify | safe }},
+      "url": {{ site.url | jsonify | safe }}
     }
     </script>
     {% include "components/language-redirect.njk" %}
@@ -135,15 +150,20 @@ permalink: "/{% if home.lang != 'en' %}{{ home.lang }}/{% endif %}index.html"
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
             gap: 24px; 
             padding: 60px 0; 
+            scroll-margin-top: 100px;
         }
         .calc-card { 
             background: var(--surface); 
             border-radius: 16px; 
             padding: 28px; 
             transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); 
-            border: 1px solid var(--glass-border);
+            border: var(--glass-border);
             position: relative;
             overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            cursor: pointer;
         }
         .calc-card::before {
             content: '';
@@ -221,21 +241,55 @@ permalink: "/{% if home.lang != 'en' %}{{ home.lang }}/{% endif %}index.html"
 </head>
 <body>
     <nav class="nav">
-        <div class="container">
-            <a href="{% if home.lang == 'en' %}/{% else %}/{{ home.lang }}/{% endif %}" class="logo">{{ site.name }}</a>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <a href="{% if home.lang == 'en' %}/{% else %}/{{ home.lang }}/{% endif %}" class="logo">
+                <img class="logo-mark" src="/assets/images/logo_calculator.png" alt="" aria-hidden="true" style="width: 32px; height: 32px;">
+                <span class="logo-type">{{ site.name }}</span>
+            </a>
+            <div class="nav-links" style="display: flex; align-items: center; gap: 16px;">
+                <a href="{% if home.lang == 'en' %}/{% else %}/{{ home.lang }}/{% endif %}" class="nav-btn">
+                    <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                    {{ ui.nav[home.lang].home }}
+                </a>
+                <div class="lang-dropdown" style="position: relative;">
+                    <button class="nav-btn lang-toggle" style="background: transparent; border: none; cursor: pointer; display: flex; align-items: center; gap: 6px;" aria-label="Select Language">
+                        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                        {{ home.lang | upper }}
+                        <svg viewBox="0 0 24 24" style="width: 14px; height: 14px; fill: currentColor;"><path d="M7 10l5 5 5-5z"/></svg>
+                    </button>
+                    <div class="lang-menu" style="display: none; position: absolute; top: 100%; right: 0; margin-top: 8px; background: var(--surface); border: 1px solid var(--glass-border); border-radius: 12px; padding: 8px; min-width: 120px; z-index: 1000; box-shadow: 0 10px 40px rgba(0,0,0,0.3);">
+                        {%- for langItem in site.languages %}
+                        <a href="{% if langItem.code == 'en' %}/{% else %}/{{ langItem.code }}{% endif %}" 
+                           onclick="localStorage.setItem('preferred_lang', '{{ langItem.code }}')"
+                           style="display: block; padding: 8px 12px; color: {% if home.lang == langItem.code %}var(--primary-light){% else %}var(--text-muted){% endif %}; text-decoration: none; font-size: 13px; border-radius: 6px; transition: background 0.2s;"
+                           onmouseover="this.style.background='rgba(99,102,241,0.1)'" onmouseout="this.style.background='transparent'">{{ langItem.name }}</a>
+                        {%- endfor %}
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
+    <script>
+        document.querySelector('.lang-toggle')?.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const menu = this.nextElementSibling;
+            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+        });
+        document.addEventListener('click', function() {
+            document.querySelector('.lang-menu').style.display = 'none';
+        });
+    </script>
 
     <section class="hero-home">
         <div class="container">
             <h1>{{ ui.homeHero[home.lang] }}</h1>
             <p>{{ ui.homeTagline[home.lang] }}</p>
             <div style="margin-top: 32px;">
-                <a href="/{{ home.lang }}/{{ calculators.mortgage.slugs[home.lang] }}/" class="btn btn-primary">{{ ui.cta[home.lang].tryFree }} →</a>
+                <a href="#calculators" class="btn btn-primary">{{ ui.cta[home.lang].tryFree }} →</a>
             </div>
             <div class="stats">
                 <div class="stat">
-                    <div class="stat-value">7+</div>
+                    <div class="stat-value">8</div>
                     <div class="stat-label">{{ ui.stats.calculators[home.lang] }}</div>
                 </div>
                 <div class="stat">
@@ -254,16 +308,16 @@ permalink: "/{% if home.lang != 'en' %}{{ home.lang }}/{% endif %}index.html"
         </div>
     </section>
 
-    <section class="container">
+    <section class="container" id="calculators">
         <div class="calculators-grid">
             {%- for calcType, calc in calculators %}
-            <div class="calc-card">
+            <a class="calc-card" href="/{{ home.lang }}/{{ calc.slugs[home.lang] }}">
                 <h3>{{ calc.titles[home.lang] }}</h3>
                 <p>{{ calc.subtitles[home.lang] }}</p>
                 <div class="lang-links">
-                    <a href="/{{ home.lang }}/{{ calc.slugs[home.lang] }}/">{{ ui.cta[home.lang].tryNow }} →</a>
+                    <span style="background: rgba(99, 102, 241, 0.1); padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; color: var(--primary-light); border: 1px solid rgba(99, 102, 241, 0.2);">{{ ui.cta[home.lang].tryNow }} →</span>
                 </div>
-            </div>
+            </a>
             {%- endfor %}
         </div>
     </section>
@@ -273,8 +327,8 @@ permalink: "/{% if home.lang != 'en' %}{{ home.lang }}/{% endif %}index.html"
             <h2>{{ ui.cta[home.lang].embedTitle }}</h2>
             <p>{{ ui.cta[home.lang].embedDesc }}</p>
             <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 32px;">
-                <a href="mailto:hello@calc-kit.com" class="btn btn-primary" style="font-size: 18px; padding: 18px 36px;">{{ ui.cta[home.lang].contactUs }} →</a>
-                <a href="/{{ home.lang }}/{{ calculators.mortgage.slugs[home.lang] }}/" style="display: inline-flex; align-items: center; padding: 18px 36px; border: 2px solid rgba(99, 102, 241, 0.5); border-radius: 12px; color: var(--text); text-decoration: none; font-weight: 600; font-size: 18px;">{{ ui.cta[home.lang].tryCalculator }}</a>
+                <a href="mailto:worthit.tuliai@gmail.com" class="btn btn-primary" style="font-size: 18px; padding: 18px 36px;">{{ ui.cta[home.lang].contactUs }} →</a>
+                <a href="/{{ home.lang }}/{{ calculators.mortgage.slugs[home.lang] }}" class="btn btn-secondary" style="font-size: 18px; padding: 18px 36px;">{{ ui.cta[home.lang].tryCalculator }}</a>
             </div>
             <div style="margin-top: 32px; display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; color: var(--text-muted); font-size: 14px;">
                 <div>✓ {{ ui.stats.free[home.lang] }}</div>
@@ -287,14 +341,15 @@ permalink: "/{% if home.lang != 'en' %}{{ home.lang }}/{% endif %}index.html"
     <footer class="footer">
         <div class="container">
             <ul class="footer-links">
-                <li><a href="/{{ home.lang }}/privacy.html">{{ ui.footer[home.lang].privacy }}</a></li>
-                <li><a href="/{{ home.lang }}/terms.html">{{ ui.footer[home.lang].terms }}</a></li>
-                <li><a href="mailto:hello@calc-kit.com">{{ ui.footer[home.lang].contact }}</a></li>
+                {% set langPrefix = '' if home.lang == 'en' else '/' + home.lang %}
+                <li><a href="{{ langPrefix }}/privacy">{{ ui.footer[home.lang].privacy }}</a></li>
+                <li><a href="{{ langPrefix }}/terms">{{ ui.footer[home.lang].terms }}</a></li>
+                <li><a href="mailto:worthit.tuliai@gmail.com">{{ ui.footer[home.lang].contact }}</a></li>
             </ul>
             <div class="footer-lang" style="margin-top: 16px; display: flex; justify-content: center; gap: 8px; align-items: center; flex-wrap: wrap;">
                 <span style="color: var(--text-muted); font-size: 13px;">🌐</span>
                 {%- for langItem in site.languages %}
-                <a href="{% if langItem.code == 'en' %}/{% else %}/{{ langItem.code }}/{% endif %}" 
+                <a href="{% if langItem.code == 'en' %}/{% else %}/{{ langItem.code }}{% endif %}" 
                    onclick="localStorage.setItem('preferred_lang', '{{ langItem.code }}')"
                    style="color: {% if home.lang == langItem.code %}var(--primary-light){% else %}var(--text-muted){% endif %}; font-size: 11px; text-decoration: none; padding: 3px 6px; border-radius: 4px; {% if home.lang == langItem.code %}background: rgba(99, 102, 241, 0.15);{% endif %}">{{ langItem.code | upper }}</a>
                 {%- endfor %}

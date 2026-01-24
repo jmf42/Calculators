@@ -1,0 +1,15 @@
+---
+permalink: /indexnow-submit.json/index.html
+eleventyExcludeFromCollections: true
+---
+{
+  "host": "{{ site.url | replace('https://', '') }}",
+  "key": "a79605b18e16e4aafa64c31327230914",
+  "keyLocation": "{{ site.url }}/a79605b18e16e4aafa64c31327230914.txt",
+  "urlList": [
+    {% for stateKey, state in usStates %}"{{ site.url }}/en/mortgage-calculator-{{ state.slug }}/",
+    {% endfor %}
+    "{{ site.url }}/en/mortgage-rates-by-state/",
+    "{{ site.url }}/en/solar-savings-by-state/"
+  ]
+}

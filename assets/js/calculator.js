@@ -11,6 +11,8 @@ class CalcKitCalculator extends HTMLElement {
         this.values = {};
         this.state = { hiddenFields: new Set() };
         this.chart = null; // Chart.js instance
+        this.lang = 'en';
+        this.defaults = null;
     }
 
     connectedCallback() {
@@ -19,12 +21,26 @@ class CalcKitCalculator extends HTMLElement {
             const decodedConfig = this.decodeHtml(configAttr);
             this.config = JSON.parse(decodedConfig || '{}');
             this.theme = this.closest('.calckit-calculator')?.dataset.theme || 'light';
+            this.lang = this.config.lang || document.documentElement.lang || 'en';
+            this.config.lang = this.lang;
 
             if (this.config.fields) {
                 // Parse URL Parameters for Deep Linking
                 const urlParams = new URLSearchParams(window.location.search);
 
                 this.config.fields.forEach(field => {
+                    // Normalize template-provided values (string vs {en: "..."} objects)
+                    field.label = this.resolveText(field.label);
+                    if (field.help) field.help = this.resolveText(field.help);
+                    if (field.description) field.description = this.resolveText(field.description);
+                    if (field.toggle?.label) field.toggle.label = this.resolveText(field.toggle.label);
+                    if (Array.isArray(field.options)) {
+                        field.options = field.options.map(opt => ({
+                            ...opt,
+                            label: this.resolveText(opt.label)
+                        }));
+                    }
+
                     // Check URL for override
                     if (urlParams.has(field.id)) {
                         const paramVal = parseFloat(urlParams.get(field.id));
@@ -38,6 +54,12 @@ class CalcKitCalculator extends HTMLElement {
                         this.state.hiddenFields.add(field.id);
                     }
                 });
+
+                // Cache defaults after URL overrides so "Reset" returns to a sensible baseline.
+                this.defaults = {
+                    values: Object.fromEntries(this.config.fields.map(f => [f.id, f.default ?? f.min ?? 0])),
+                    hiddenFields: new Set(this.state.hiddenFields)
+                };
             }
 
             this.loadChartJs();
@@ -54,8 +76,9 @@ class CalcKitCalculator extends HTMLElement {
     loadChartJs() {
         if (!window.Chart) {
             const script = document.createElement('script');
-            script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+            script.src = 'https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js';
             script.async = true;
+            script.onload = () => this.calculate();
             document.head.appendChild(script);
         }
     }
@@ -130,7 +153,26 @@ class CalcKitCalculator extends HTMLElement {
             
             .calc-subtitle { font-size: 15px; color: ${this.theme === 'dark' ? 'var(--text-muted-dark)' : '#6b7280'}; margin: 0; }
             
-            .calc-field { margin-bottom: 28px; position: relative; }
+
+            .calc-fields {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            
+            @media (min-width: 640px) {
+                .calc-fields {
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 24px 32px;
+                }
+                /* Make the last odd item span full width if desired, or let it flow */
+                 .calc-field:last-child:nth-child(odd) {
+                    grid-column: 1 / -1;
+                }
+            }
+            
+            .calc-field { margin-bottom: 0; position: relative; }
+
             
             .field-label {
                 display: flex; justify-content: space-between; align-items: center;
@@ -140,14 +182,15 @@ class CalcKitCalculator extends HTMLElement {
             }
             
             .input-wrapper { position: relative; display: flex; align-items: center; }
-            .input-prefix, .input-suffix {
+            .input-prefix, .input-suffix, .input-currency-symbol {
                 position: absolute; color: ${this.theme === 'dark' ? '#9ca3af' : '#6b7280'};
-                font-weight: 500; font-size: 15px; pointer-events: none; z-index: 1;
+                font-weight: 600; font-size: 16px; pointer-events: none; z-index: 1;
+                min-width: 28px; text-align: center;
             }
-            .input-prefix { left: 16px; }
-            .input-suffix { right: 16px; }
-            .has-prefix input { padding-left: 36px; }
-            .has-suffix input { padding-right: 40px; }
+            .input-prefix, .input-currency-symbol { left: 14px; }
+            .input-suffix { right: 14px; }
+            .has-prefix input, .is-currency-input input { padding-left: 52px !important; text-align: left; }
+            .has-suffix input { padding-right: 52px !important; }
             
             .field-help {
                 display: inline-flex; align-items: center; justify-content: center;
@@ -159,9 +202,21 @@ class CalcKitCalculator extends HTMLElement {
             
             .calc-result {
                 margin-top: 40px; padding: 36px 32px;
-                background: linear-gradient(145deg, rgba(79, 70, 229, 1) 0%, rgba(139, 92, 246, 0.95) 50%, rgba(217, 70, 239, 0.9) 100%);
+                background: linear-gradient(165deg, #1a1f35 0%, #0f1525 100%);
+                border: 1px solid rgba(99, 102, 241, 0.25);
                 backdrop-filter: blur(20px); border-radius: 20px; text-align: center; color: #ffffff;
-                box-shadow: 0 30px 60px -15px rgba(99, 102, 241, 0.5);
+                box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            }
+            
+            .result-label {
+                font-size: 13px; font-weight: 600; text-transform: uppercase;
+                letter-spacing: 0.1em; color: rgba(255, 255, 255, 0.7); margin-bottom: 8px;
+            }
+            .result-value {
+                font-size: 42px; font-weight: 800; 
+                background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%);
+                -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+                background-clip: text; text-shadow: 0 0 40px rgba(6, 182, 212, 0.4);
             }
             
             input[type="number"], select {
@@ -171,7 +226,29 @@ class CalcKitCalculator extends HTMLElement {
                 background: ${this.theme === 'dark' ? 'var(--surface-dark)' : '#f9fafb'};
                 color: ${this.theme === 'dark' ? 'var(--text-dark)' : '#1f2937'};
                 box-sizing: border-box;
+                transition: border-color 0.2s ease, box-shadow 0.2s ease;
             }
+            input[type="number"]:focus, select:focus {
+                outline: none;
+                border-color: var(--primary);
+                box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+            }
+            
+            /* Error States */
+            input.input-error {
+                border-color: var(--error) !important;
+                box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+            }
+            .field-error-message {
+                color: var(--error);
+                font-size: 12px;
+                margin-top: 6px;
+                display: none;
+                align-items: center;
+                gap: 4px;
+            }
+            .field-error-message.visible { display: flex; }
+            .field-error-message svg { width: 14px; height: 14px; fill: var(--error); }
 
             /* Range Slider Styling */
             input[type="range"] {
@@ -197,25 +274,74 @@ class CalcKitCalculator extends HTMLElement {
             /* Action Buttons */
             .result-actions { margin-top: 24px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
             .action-btn {
-                background: rgba(255, 255, 255, 0.15); border: none; padding: 10px 18px; border-radius: 10px;
-                color: white; font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px;
-                transition: all 0.2s;
+                background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.1); padding: 12px 20px; border-radius: 12px;
+                color: ${this.theme === 'dark' ? '#e2e8f0' : '#4b5563'}; font-size: 14px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px;
+                transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             }
-            .action-btn:hover { background: rgba(255, 255, 255, 0.25); transform: translateY(-1px); }
+            .action-btn:hover { background: rgba(255, 255, 255, 0.12); transform: translateY(-2px); border-color: rgba(255, 255, 255, 0.2); }
             .action-btn.primary-cta {
                 background: linear-gradient(135deg, #10b981 0%, #059669 100%);
                 box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
             }
              .action-btn.share-btn {
-                background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);
+                background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+                border-color: rgba(139, 92, 246, 0.4);
+                color: #ffffff;
+                box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
             }
-            .action-btn.share-btn:hover { background: rgba(255, 255, 255, 0.2); }
+            .action-btn.share-btn:hover { 
+                background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+                box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+                color: #fff; 
+            }
             .action-btn svg { width: 16px; height: 16px; fill: currentColor; }
 
             .breakdown-item {
-                display: flex; justify-content: space-between; padding: 12px 14px;
-                background: rgba(255, 255, 255, 0.08); border-radius: 8px; margin-bottom: 8px;
-                font-size: 13px;
+                display: flex; justify-content: space-between; align-items: center;
+                padding: 14px 16px;
+                background: rgba(6, 182, 212, 0.08); 
+                border: 1px solid rgba(6, 182, 212, 0.15);
+                border-radius: 10px; margin-bottom: 8px;
+                font-size: 14px;
+            }
+            .breakdown-item span:first-child {
+                color: rgba(255, 255, 255, 0.85); font-weight: 500;
+            }
+            .breakdown-item span:last-child {
+                color: #ffffff; font-weight: 700;
+            }
+
+            .result-metrics {
+                margin-top: 20px;
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+            .metric-card {
+                background: linear-gradient(145deg, rgba(99, 102, 241, 0.12), rgba(99, 102, 241, 0.05));
+                border: 1px solid rgba(99, 102, 241, 0.25);
+                border-radius: 14px;
+                padding: 16px 18px;
+                text-align: left;
+                transition: transform 0.2s ease, border-color 0.2s ease;
+            }
+            .metric-card:hover {
+                transform: translateY(-2px);
+                border-color: rgba(99, 102, 241, 0.4);
+            }
+            .metric-label {
+                font-size: 11px;
+                color: rgba(255, 255, 255, 0.7);
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                margin-bottom: 8px;
+                font-weight: 600;
+            }
+            .metric-value {
+                font-size: 20px;
+                font-weight: 800;
+                line-height: 1.2;
+                color: #ffffff;
             }
 
             /* Toast Notification */
@@ -227,6 +353,14 @@ class CalcKitCalculator extends HTMLElement {
                 box-shadow: 0 10px 25px rgba(0,0,0,0.1); z-index: 10; display: flex; align-items: center; gap: 8px;
             }
             .toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+            .metric-help {
+                display: inline-flex; align-items: center; justify-content: center;
+                width: 14px; height: 14px; border-radius: 50%;
+                background: rgba(255,255,255,0.2);
+                color: rgba(255,255,255,0.8);
+                font-size: 9px; margin-left: 6px; cursor: help;
+            }
         `;
     }
 
@@ -255,24 +389,29 @@ class CalcKitCalculator extends HTMLElement {
                         <div class="result-breakdown" id="breakdown"></div>
                     ` : ''}
 
+                    ${Array.isArray(this.config.metrics) && this.config.metrics.length ? `
+                        <div class="result-metrics" id="metrics"></div>
+                    ` : ''}
+
                     <div id="notices-container" class="calc-notices"></div>
                     
-                    <div class="result-actions">
-                         <button class="action-btn share-btn" id="share-btn" title="Copy link to this calculation">
-                            <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
-                            Share
-                        </button>
+                </div>
+                
+                <div class="result-actions">
+                     <button class="action-btn share-btn" id="share-btn" title="Copy link to this calculation">
+                        <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+                        Share
+                    </button>
 
-                        <button class="action-btn" id="reset-btn">
-                            <svg viewBox="0 0 24 24"><path d="M17 6A8 8 0 005 14h2a6 6 0 119-3l-2 2 7 0 0-7z"/></svg> Reset
+                    <button class="action-btn" id="reset-btn">
+                        <svg viewBox="0 0 24 24"><path d="M17 6A8 8 0 005 14h2a6 6 0 119-3l-2 2 7 0 0-7z"/></svg> Reset
+                    </button>
+                    ${this.config.proFeatures?.pdf ? `
+                        <button class="action-btn primary-cta" id="pdf-btn">
+                            <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                            PDF
                         </button>
-                        ${this.config.proFeatures?.pdf ? `
-                            <button class="action-btn primary-cta" id="pdf-btn">
-                                <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                                PDF
-                            </button>
-                        ` : ''}
-                    </div>
+                    ` : ''}
                 </div>
                 
                 <div id="toast" class="toast">
@@ -284,7 +423,7 @@ class CalcKitCalculator extends HTMLElement {
     }
 
     renderField(field) {
-        let defaultValue = field.default || (field.min || 0);
+        const defaultValue = field.default ?? field.min ?? 0;
         if (this.values[field.id] === undefined) this.values[field.id] = defaultValue;
         const currentValue = this.values[field.id];
         const isHidden = this.state.hiddenFields.has(field.id);
@@ -303,32 +442,47 @@ class CalcKitCalculator extends HTMLElement {
             ).join('');
             controlHTML = `<select id="${field.id}" data-field-id="${field.id}">${options}</select>`;
         } else {
-            const isPercentage = field.label.includes('%') || (field.id === 'rate' || field.id === 'taxRate');
-            const isCurrency = field.label.includes('$') || (field.id === 'price' || field.id === 'down');
+            const format = field.format;
+            const isPercentage = format === 'percent';
+            const isCurrency = format === 'currency';
+            const hasUnit = Boolean(field.unit) && !isPercentage;
+
+            // Symbols on the left
+            const showPrefix = isCurrency;
+            const prefixText = isCurrency ? this.getCurrencySymbol() : '';
+
+            // Symbols on the right
+            const showSuffix = isPercentage || hasUnit;
+            const suffixText = isPercentage ? '%' : (hasUnit ? field.unit : '');
 
             controlHTML = `
-                <div class="input-wrapper ${isPercentage ? 'has-suffix' : ''} ${isCurrency ? 'has-prefix' : ''}">
-                    ${isCurrency ? `<span class="input-prefix">${this.config.currencySymbol || '$'}</span>` : ''}
+                <div class="input-wrapper ${showPrefix ? 'has-prefix' : ''} ${isCurrency ? 'is-currency-input' : ''}">
+                    ${showPrefix ? `<span class="input-prefix">${this.escapeHTML(prefixText)}</span>` : ''}
                     <input type="number" id="${field.id}" value="${currentValue}"
                         min="${field.min || 0}" max="${field.max || 1e9}" step="${field.step || 1}"
                         data-field-id="${field.id}" />
-                    ${isPercentage ? '<span class="input-suffix">%</span>' : ''}
+                    
+                    ${showSuffix ? `<span class="input-suffix">${this.escapeHTML(suffixText)}</span>` : ''}
                 </div>
                 ${showSlider ? `
                     <input type="range" id="${field.id}-range" value="${currentValue}"
                         min="${field.min || 0}" max="${field.max}" step="${field.step || 1}"
                         data-sync-id="${field.id}" />
                 ` : ''}
-             `;
+            `;
         }
 
         return `
             <div class="calc-field" ${hiddenAttr} data-id="${field.id}">
                 <label class="field-label" for="${field.id}">
-                    <span>${this.escapeHTML(field.label)}</span>
+                    <span>
+                        ${this.escapeHTML(field.label)}
+                        ${field.help ? `<span class="field-help" title="${this.escapeHTML(field.help)}" aria-label="${this.escapeHTML(field.help)}">?</span>` : ''}
+                    </span>
                     ${field.toggle ? `<a href="#" class="calc-field-toggle" data-target="${field.toggle.target}" data-current="${field.id}">${field.toggle.label}</a>` : ''}
                 </label>
                 ${controlHTML}
+                <div class="field-error-message" data-error-for="${field.id}"></div>
             </div>
         `;
     }
@@ -337,6 +491,13 @@ class CalcKitCalculator extends HTMLElement {
         // Input validation and syncing
         this.shadowRoot.querySelectorAll('input, select').forEach(input => {
             if (input.type === 'range') return; // Handled separately
+
+            // Auto-select input value on focus for better UX
+            input.addEventListener('focus', (e) => {
+                if (e.target.type === 'number') {
+                    e.target.select();
+                }
+            });
 
             input.addEventListener('input', (e) => {
                 this.handleInput(e);
@@ -402,7 +563,7 @@ class CalcKitCalculator extends HTMLElement {
         if (toast) {
             toast.textContent = message;
             // Re-add icon if needed, but text serves
-            toast.innerHTML = `<svg style="width:16px;height:16px;fill:white" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> ${message}`;
+            toast.innerHTML = `<svg style="width:16px;height:16px;fill:white" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg> ${message}`;
             toast.classList.add('visible');
             setTimeout(() => toast.classList.remove('visible'), 3000);
         }
@@ -410,9 +571,93 @@ class CalcKitCalculator extends HTMLElement {
 
     handleInput(event) {
         const fieldId = event.target.dataset.fieldId;
-        const value = parseFloat(event.target.value);
-        this.values[fieldId] = isNaN(value) ? 0 : value;
+        const rawValue = event.target.value;
+        const value = parseFloat(rawValue);
+        const field = this.config.fields.find(f => f.id === fieldId);
+
+        // Get error elements
+        const inputEl = event.target;
+        const errorEl = this.shadowRoot.querySelector(`[data-error-for="${fieldId}"]`);
+
+        // Validation
+        let errorMessage = '';
+        if (rawValue === '' || rawValue === null) {
+            errorMessage = '';
+            this.values[fieldId] = field?.default ?? 0;
+        } else if (isNaN(value)) {
+            errorMessage = this.getErrorText('invalidNumber');
+            this.values[fieldId] = 0;
+        } else if (field?.min !== undefined && value < field.min) {
+            errorMessage = this.getErrorText('minValue').replace('{min}', field.min);
+            this.values[fieldId] = value;
+        } else if (field?.max !== undefined && value > field.max) {
+            errorMessage = this.getErrorText('maxValue').replace('{max}', this.formatNumber(field.max));
+            this.values[fieldId] = value;
+        } else {
+            this.values[fieldId] = value;
+        }
+
+        // Show/hide error
+        if (errorMessage) {
+            inputEl.classList.add('input-error');
+            if (errorEl) {
+                errorEl.textContent = errorMessage;
+                errorEl.classList.add('visible');
+            }
+        } else {
+            inputEl.classList.remove('input-error');
+            if (errorEl) errorEl.classList.remove('visible');
+        }
+
         this.calculate();
+    }
+
+    getErrorText(key) {
+        const errors = {
+            invalidNumber: {
+                en: 'Please enter a valid number',
+                es: 'Ingresa un número válido',
+                de: 'Bitte geben Sie eine gültige Zahl ein',
+                fr: 'Veuillez entrer un nombre valide',
+                pt: 'Digite um número válido',
+                it: 'Inserisci un numero valido',
+                nl: 'Voer een geldig nummer in',
+                pl: 'Wprowadź prawidłową liczbę',
+                sv: 'Ange ett giltigt nummer',
+                no: 'Skriv inn et gyldig tall',
+                da: 'Indtast et gyldigt nummer',
+                fi: 'Anna kelvollinen numero'
+            },
+            minValue: {
+                en: 'Minimum value is {min}',
+                es: 'El valor mínimo es {min}',
+                de: 'Mindestwert ist {min}',
+                fr: 'La valeur minimale est {min}',
+                pt: 'O valor mínimo é {min}',
+                it: 'Il valore minimo è {min}',
+                nl: 'Minimumwaarde is {min}',
+                pl: 'Minimalna wartość to {min}',
+                sv: 'Minsta värdet är {min}',
+                no: 'Minimumsverdi er {min}',
+                da: 'Minimumsværdi er {min}',
+                fi: 'Minimiarvo on {min}'
+            },
+            maxValue: {
+                en: 'Maximum value is {max}',
+                es: 'El valor máximo es {max}',
+                de: 'Maximalwert ist {max}',
+                fr: 'La valeur maximale est {max}',
+                pt: 'O valor máximo é {max}',
+                it: 'Il valore massimo è {max}',
+                nl: 'Maximumwaarde is {max}',
+                pl: 'Maksymalna wartość to {max}',
+                sv: 'Största värdet är {max}',
+                no: 'Maksimumsverdi er {max}',
+                da: 'Maksimumsværdi er {max}',
+                fi: 'Maksimiarvo on {max}'
+            }
+        };
+        return errors[key]?.[this.lang] || errors[key]?.['en'] || '';
     }
 
     calculate() {
@@ -423,22 +668,23 @@ class CalcKitCalculator extends HTMLElement {
 
         // Update Result
         const resultEl = this.shadowRoot.getElementById('result-value');
-        if (resultEl) resultEl.textContent = this.formatCurrency(result);
+        if (resultEl) resultEl.textContent = this.formatValue(result, this.config.resultFormat ?? 'currency');
 
         // Update Breakdown & Chart
         if (this.config.breakdown) {
             const breakdownData = this.config.breakdown.map(item => ({
                 label: item.label[this.config.lang || 'en'] || item.label, // Handle lang obj or string
-                value: this.evaluateFormula(item.formula, { ...context, result })
+                value: this.evaluateFormula(item.formula, { ...context, result }),
+                format: item.format
             }));
 
             // Render List
             const listEl = this.shadowRoot.getElementById('breakdown');
             if (listEl) {
                 listEl.innerHTML = breakdownData.map(item => `
-                    <div class="breakdown-item">
+                <div class="breakdown-item">
                         <span>${item.label}</span>
-                        <span style="font-weight:700">${this.formatCurrency(item.value)}</span>
+                        <span style="font-weight:700">${this.formatValue(item.value, item.format ?? 'currency')}</span>
                     </div>
                 `).join('');
             }
@@ -447,13 +693,55 @@ class CalcKitCalculator extends HTMLElement {
             this.updateChart(breakdownData);
         }
 
+        // Metrics
+        if (Array.isArray(this.config.metrics) && this.config.metrics.length) {
+            const metricsData = this.config.metrics
+                .filter(item => !item.condition || this.evaluateFormula(item.condition, { ...context, result }))
+                .map(item => ({
+                    label: item.label[this.config.lang || 'en'] || item.label,
+                    value: this.evaluateFormula(item.formula, { ...context, result }),
+                    format: item.format,
+                    tooltip: item.tooltip ? (item.tooltip[this.config.lang || 'en'] || item.tooltip) : null
+                }));
+
+            const metricsEl = this.shadowRoot.getElementById('metrics');
+            if (metricsEl) {
+                metricsEl.innerHTML = metricsData.map(item => `
+                <div class="metric-card" ${item.tooltip ? `title="${this.escapeHTML(item.tooltip)}"` : ''}>
+                        <div class="metric-label">
+                            ${this.escapeHTML(item.label)} 
+                            ${item.tooltip ? `<span class="metric-help">?</span>` : ''}
+                        </div>
+                        <div class="metric-value">${this.formatValue(item.value, item.format ?? 'number')}</div>
+                    </div>
+                `).join('');
+
+                // Add click listeners for mobile-friendly tooltips
+                metricsEl.querySelectorAll('.metric-card').forEach(card => {
+                    card.addEventListener('click', () => {
+                        const tooltip = card.getAttribute('title');
+                        if (tooltip) this.showToast(tooltip);
+                    });
+                });
+            }
+        }
+
         // Notices
         if (this.config.notices) {
             const noticesEl = this.shadowRoot.getElementById('notices-container');
             if (noticesEl) {
                 const notices = this.config.notices
                     .filter(n => !n.condition || this.evaluateFormula(n.condition, { ...context, result }))
-                    .map(n => `<div class="notice-item ${n.type}">${n.message[this.config.lang || 'en'] || n.message}</div>`);
+                    .map(n => {
+                        // Simple template interpolation for specific variables if needed, 
+                        // but primarily just render the message.
+                        let msg = n.message[this.config.lang || 'en'] || n.message;
+                        // Basic interpolation for ${result} or fixed variables could go here if we implemented a parser,
+                        // but for now we rely on pre-calculated logic or simple strings to avoid the user's issue.
+                        // We will replace basic ${result} pattern manually if found.
+                        msg = msg.replace(/\${Math.abs\(result\).toLocaleString\(\)}/g, this.formatValue(Math.abs(result), 'currency'));
+                        return `<div class="notice-item ${n.type}">${this.escapeHTML(msg)}</div>`;
+                    });
                 noticesEl.innerHTML = notices.join('');
             }
         }
@@ -461,9 +749,25 @@ class CalcKitCalculator extends HTMLElement {
 
     updateChart(data) {
         const canvas = this.shadowRoot.getElementById('resultChart');
-        if (!canvas || !window.Chart) return;
+        if (!canvas) return;
 
-        const chartColors = ['#6366f1', '#10b981', '#f59e0b', '#ec4899', '#8b5cf6', '#3b82f6'];
+        if (!window.Chart) {
+            this.pendingChartData = data;
+            this.chartInitAttempts = (this.chartInitAttempts || 0) + 1;
+            if (this.chartInitAttempts <= 20) {
+                clearTimeout(this.chartInitRetry);
+                this.chartInitRetry = setTimeout(() => {
+                    this.chartInitRetry = null;
+                    this.updateChart(this.pendingChartData || data);
+                }, 200);
+            }
+            return;
+        }
+
+        this.chartInitAttempts = 0;
+        this.pendingChartData = null;
+
+        const chartColors = ['#6366f1', '#8b5cf6', '#3b82f6', '#0ea5e9', '#06b6d4', '#14b8a6'];
         const values = data.map(d => Math.max(0, d.value)); // No negatives
         const labels = data.map(d => d.label);
 
@@ -491,7 +795,11 @@ class CalcKitCalculator extends HTMLElement {
                         legend: { display: false },
                         tooltip: {
                             callbacks: {
-                                label: (ctx) => ` ${ctx.label}: ${this.formatCurrency(ctx.raw)}`
+                                label: (ctx) => {
+                                    const item = data?.[ctx.dataIndex];
+                                    const formatted = this.formatValue(ctx.raw, item?.format ?? 'currency');
+                                    return ` ${ctx.label}: ${formatted} `;
+                                }
                             }
                         }
                     },
@@ -521,7 +829,7 @@ class CalcKitCalculator extends HTMLElement {
         doc.setTextColor(60);
         doc.text(title, 14, 30);
         doc.setFontSize(10);
-        doc.text(`Generated: ${date}`, 14, 36);
+        doc.text(`Generated: ${date} `, 14, 36);
 
         // Inputs Section
         doc.setFontSize(12);
@@ -530,7 +838,7 @@ class CalcKitCalculator extends HTMLElement {
 
         const inputBody = this.config.fields
             .filter(f => !this.state.hiddenFields.has(f.id))
-            .map(f => [f.label[this.config.lang || 'en'] || f.label, this.values[f.id]]);
+            .map(f => [f.label[this.config.lang || 'en'] || f.label, this.formatFieldValue(f, this.values[f.id])]);
 
         doc.autoTable({
             startY: 55,
@@ -543,7 +851,7 @@ class CalcKitCalculator extends HTMLElement {
         // Results Section
         const resultY = doc.lastAutoTable.finalY + 15;
         doc.setFontSize(12);
-        doc.text("Payment Breakdown", 14, resultY);
+        doc.text("Results", 14, resultY);
 
         // Calculate Breakdown Data
         const context = { ...this.values, result: 0, isActive: (id) => !this.state.hiddenFields.has(id) };
@@ -552,18 +860,39 @@ class CalcKitCalculator extends HTMLElement {
 
         doc.setFontSize(18);
         doc.setTextColor(0, 150, 0);
-        doc.text(`Total: ${this.formatCurrency(result)} / month`, 14, resultY + 10);
+        const resultLabel = this.config.resultLabel || 'Result';
+        const resultText = `${resultLabel}: ${this.formatValue(result, this.config.resultFormat ?? 'currency')} `;
+        doc.text(resultText, 14, resultY + 10);
 
         if (this.config.breakdown) {
             const breakdownData = this.config.breakdown.map(item => [
                 item.label[this.config.lang || 'en'] || item.label,
-                this.formatCurrency(this.evaluateFormula(item.formula, context))
+                this.formatValue(this.evaluateFormula(item.formula, context), item.format ?? 'currency')
             ]);
 
             doc.autoTable({
                 startY: resultY + 15,
-                head: [['Component', 'Cost']],
+                head: [['Item', 'Value']],
                 body: breakdownData,
+                theme: 'striped'
+            });
+        }
+
+        if (Array.isArray(this.config.metrics) && this.config.metrics.length) {
+            const metricsData = this.config.metrics.map(item => [
+                item.label[this.config.lang || 'en'] || item.label,
+                this.formatValue(this.evaluateFormula(item.formula, context), item.format ?? 'number')
+            ]);
+
+            const metricsY = doc.lastAutoTable?.finalY ? (doc.lastAutoTable.finalY + 12) : (resultY + 20);
+            doc.setFontSize(12);
+            doc.setTextColor(0);
+            doc.text("Key Metrics", 14, metricsY);
+
+            doc.autoTable({
+                startY: metricsY + 5,
+                head: [['Metric', 'Value']],
+                body: metricsData,
                 theme: 'striped'
             });
         }
@@ -571,27 +900,99 @@ class CalcKitCalculator extends HTMLElement {
         // Footer
         doc.setFontSize(8);
         doc.setTextColor(150);
-        doc.text("Generated by CalcKit - The Mortgage Calculator Authority", 14, 280);
+        doc.text("Generated by CalcKit", 14, 280);
 
-        doc.save(`${title.replace(/ /g, '_')}_Report.pdf`);
+        doc.save(`${title.replace(/ /g, '_')} _Report.pdf`);
     }
 
     // Helpers
     evaluateFormula(formula, context) {
         try {
-            const func = new Function(...Object.keys(context), `return ${formula};`);
+            const func = new Function(...Object.keys(context), `return ${formula}; `);
             return func(...Object.values(context));
-        } catch (e) { return 0; }
+        } catch (e) { return NaN; }
     }
 
     formatCurrency(val) {
+        if (!Number.isFinite(val)) return '--';
         return new Intl.NumberFormat(this.config.locale || 'en-US', {
             style: 'currency', currency: this.config.currency || 'USD'
         }).format(val);
     }
 
-    formatNumber(val) {
-        return new Intl.NumberFormat(this.config.locale || 'en-US').format(val);
+    formatNumber(val, options = {}) {
+        if (!Number.isFinite(val)) return '--';
+        return new Intl.NumberFormat(this.config.locale || 'en-US', options).format(val);
+    }
+
+    formatPercent(val, options = {}) {
+        if (!Number.isFinite(val)) return '--';
+        const maximumFractionDigits = options.maximumFractionDigits ?? 2;
+        const minimumFractionDigits = options.minimumFractionDigits ?? 0;
+        return `${this.formatNumber(val, { maximumFractionDigits, minimumFractionDigits })}% `;
+    }
+
+    normalizeFormat(format) {
+        if (format === undefined || format === null) return null;
+        if (typeof format === 'string') return { type: format };
+        if (typeof format === 'object') return format;
+        return null;
+    }
+
+    formatValue(val, format) {
+        if (!Number.isFinite(val)) return '--';
+        const spec = this.normalizeFormat(format) || this.normalizeFormat(this.config.resultFormat) || { type: 'currency' };
+
+        if (spec.type === 'currency') return this.formatCurrency(val);
+        if (spec.type === 'percent') return this.formatPercent(val, spec);
+        if (spec.type === 'number') return this.formatNumber(val, spec);
+        if (spec.type === 'unit') {
+            const unit = spec.unit || '';
+            const formatted = this.formatNumber(val, spec);
+            return unit ? `${formatted} ${unit} ` : formatted;
+        }
+
+        return this.formatNumber(val);
+    }
+
+    formatFieldValue(field, val) {
+        const spec = this.normalizeFormat(field?.format) || { type: 'number' };
+        let formatted = this.formatValue(val, spec);
+        if (!field?.unit || formatted === '--') return formatted;
+
+        if (spec.type === 'percent') return formatted;
+        if (spec.type === 'currency') return `${formatted}/${field.unit}`;
+        return `${formatted} ${field.unit}`;
+    }
+
+    resolveText(value) {
+        if (value === undefined || value === null) return '';
+        if (typeof value === 'string') return value;
+        if (typeof value === 'object') {
+            const lang = this.lang || 'en';
+            if (value[lang]) return value[lang];
+            if (value.en) return value.en;
+            const fallback = Object.values(value).find(val => typeof val === 'string');
+            return fallback || '';
+        }
+        return String(value);
+    }
+
+    getCurrencySymbol() {
+        if (this.config.currencySymbol) return this.config.currencySymbol;
+        try {
+            const formatter = new Intl.NumberFormat(this.config.locale || 'en-US', {
+                style: 'currency',
+                currency: this.config.currency || 'USD',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            });
+            // Get the formatted string and remove the digits and separators to isolate the symbol
+            const formatted = formatter.format(0);
+            return formatted.replace(/[0-9\s.,]/g, '').trim() || '$';
+        } catch (e) {
+            return '$';
+        }
     }
 
     escapeHTML(str) {
@@ -612,11 +1013,116 @@ class CalcKitCalculator extends HTMLElement {
         this.attachEventListeners();
     }
 
+    updateConfig(updates) {
+        if (!updates) return;
+        this.config = { ...this.config, ...updates };
+
+        // Update lang if changed
+        if (updates.lang) this.lang = updates.lang;
+
+        // Re-render essentially everything
+        this.render();
+        this.attachEventListeners();
+
+        // Recalculate
+        this.calculate();
+    }
+
     resetToDefaults() {
-        this.values = {};
-        this.state.hiddenFields.clear();
-        this.connectedCallback();
+        if (!this.defaults) return;
+
+        // Reset to cached default values
+        this.values = { ...this.defaults.values };
+        this.state.hiddenFields = new Set(this.defaults.hiddenFields);
+
+        // Update all input elements in the shadow DOM to match defaults
+        this.config.fields.forEach(field => {
+            const input = this.shadowRoot.getElementById(field.id);
+            const slider = this.shadowRoot.getElementById(`${field.id}-range`);
+            const defaultVal = this.defaults.values[field.id];
+
+            if (input) {
+                input.value = defaultVal;
+                input.classList.remove('input-error');
+            }
+            if (slider) {
+                slider.value = defaultVal;
+            }
+
+            // Clear any error messages
+            const errorEl = this.shadowRoot.querySelector(`[data-error-for="${field.id}"]`);
+            if (errorEl) errorEl.classList.remove('visible');
+
+            // Handle visibility
+            const fieldEl = this.shadowRoot.querySelector(`[data-id="${field.id}"]`);
+            if (fieldEl) {
+                if (this.state.hiddenFields.has(field.id)) {
+                    fieldEl.setAttribute('hidden', '');
+                } else {
+                    fieldEl.removeAttribute('hidden');
+                }
+            }
+        });
+
+        // Recalculate with new values
+        this.calculate();
+
+        // Show confirmation toast
+        this.showToast('Reset to defaults');
     }
 }
 
 customElements.define('calckit-calculator', CalcKitCalculator);
+
+// Mount helper for pages that provide config via window.calcConfig.
+window.mountCalcKit = async function mountCalcKit() {
+    const container = document.getElementById('calculator-container');
+    if (!container) return;
+
+    let wrapper = container.querySelector('.calckit-calculator');
+    if (!wrapper) {
+        if (!window.calcConfig) return;
+        wrapper = document.createElement('div');
+        wrapper.className = 'calckit-calculator';
+        wrapper.dataset.theme = 'dark';
+        wrapper.dataset.config = JSON.stringify(window.calcConfig);
+        container.appendChild(wrapper);
+    } else if (!wrapper.dataset.config && window.calcConfig) {
+        wrapper.dataset.config = JSON.stringify(window.calcConfig);
+    }
+
+    if (wrapper.querySelector('calckit-calculator')) return;
+
+    // Ensure custom element is defined before creating it
+    await customElements.whenDefined('calckit-calculator');
+
+    // Use the constructor directly to ensure proper initialization with shadow DOM
+    const CalcKitClass = customElements.get('calckit-calculator');
+    let calculatorElement = null;
+
+    if (CalcKitClass) {
+        try {
+            calculatorElement = new CalcKitClass();
+        } catch (e) {
+            console.error('[CalcKit] Component creation failed', e);
+        }
+    } else {
+        // Fallback: try document.createElement
+        try {
+            calculatorElement = document.createElement('calckit-calculator');
+        } catch (error) {
+            console.error('CalcKit: Failed to create element', error);
+            return;
+        }
+    }
+
+    if (calculatorElement) {
+        wrapper.appendChild(calculatorElement);
+    }
+};
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => window.mountCalcKit());
+} else {
+    window.mountCalcKit();
+}

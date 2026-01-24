@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "CalcKit SEO landing pages generator",
     "scripts": {
-        "build": "cross-env NODE_ENV=production npm run build:assets && cross-env NODE_ENV=production eleventy",
+        "build": "npm run clean && cross-env NODE_ENV=production npm run build:assets && cross-env NODE_ENV=production eleventy",
         "build:assets": "node scripts/build-assets.js",
         "serve": "npm run build:assets && cross-env NODE_ENV=development eleventy --serve",
         "clean": "rm -rf _site",
@@ -13,6 +13,6 @@
         "@11ty/eleventy": "^2.0.1",
         "cross-env": "^10.1.0",
         "esbuild": "^0.27.2",
-        "html-minifier": "^4.0.0"
+        "html-minifier-terser": "^7.2.0"
     }
 }

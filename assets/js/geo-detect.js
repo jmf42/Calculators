@@ -6,6 +6,10 @@
 (function () {
     'use strict';
 
+    // Debug mode - set to false in production
+    const DEBUG = window.CALCKIT_DEBUG || false;
+    const log = (...args) => { if (DEBUG) console.log(...args); };
+
     // US States data (key = state code lowercase)
     const US_STATES = {
         'tx': { name: 'Texas', abbr: 'TX', mortgage: { medianPrice: 340000, propertyTaxRate: 1.80, homeInsurance: 2400, hasStateIncomeTax: false, tips: ['Texas has no state income tax, but property taxes average 1.8% — among the highest in the US.', 'Home insurance is higher in coastal and northern areas due to hurricane and tornado risk.', 'Apply for the homestead exemption to reduce your taxable home value by up to $100,000.', 'Many Texas cities have additional local property taxes on top of county rates.'] } },
@@ -32,29 +36,29 @@
 
     // Countries data (key = country code lowercase)
     const COUNTRIES = {
-        'ar': { name: 'Argentina', nameLocalized: 'Argentina', currency: '$', tips: ['La mayoría de créditos hipotecarios en Argentina se cotizan en dólares estadounidenses.', 'Los créditos UVA ajustan las cuotas según inflación.', 'Considerá costos de escrituración: 3-5% del valor de la propiedad.'], mortgage: { medianPrice: 85000, typicalRate: 9.5, typicalTerm: 20, downPayment: 25 } },
-        'es': { name: 'Spain', nameLocalized: 'España', currency: '€', tips: ['Los bancos españoles financian hasta el 80% del valor de tasación.', 'Gastos de compra rondan el 10-12% adicional.', 'El Euríbor es el índice de referencia para hipotecas variables.'], mortgage: { medianPrice: 250000, typicalRate: 3.5, typicalTerm: 25, downPayment: 20 } },
-        'mx': { name: 'Mexico', nameLocalized: 'México', currency: '$', tips: ['Infonavit y Fovissste ofrecen créditos para trabajadores con prestaciones.', 'Considerá el CAT (Costo Anual Total) que incluye todos los gastos.', 'Los gastos de escrituración varían del 5-8% según el estado.'], mortgage: { medianPrice: 2500000, typicalRate: 11, typicalTerm: 20, downPayment: 20 } },
-        'de': { name: 'Germany', nameLocalized: 'Deutschland', currency: '€', tips: ['Deutsche Banken verlangen typischerweise 20-30% Eigenkapital.', 'Nebenkosten betragen ca. 10-15%.', 'KfW-Förderprogramme bieten günstige Kredite für energieeffiziente Häuser.'], mortgage: { medianPrice: 400000, typicalRate: 3.8, typicalTerm: 30, downPayment: 20 } },
-        'fr': { name: 'France', nameLocalized: 'France', currency: '€', tips: ['Le Prêt à Taux Zéro (PTZ) finance jusqu\'à 40% pour les primo-accédants.', 'Les frais de notaire représentent 7-8% pour l\'ancien.', 'Le taux d\'endettement maximum est de 35% des revenus.'], mortgage: { medianPrice: 250000, typicalRate: 4.0, typicalTerm: 25, downPayment: 10 } },
-        'br': { name: 'Brazil', nameLocalized: 'Brasil', currency: 'R$', tips: ['O programa Minha Casa Minha Vida oferece subsídios para famílias de baixa renda.', 'Use o FGTS para abatir entrada ou parcelas.', 'Compare SAC vs PRICE para tipo de amortização.'], mortgage: { medianPrice: 400000, typicalRate: 10, typicalTerm: 30, downPayment: 20 } },
-        'pt': { name: 'Portugal', nameLocalized: 'Portugal', currency: '€', tips: ['Os bancos portugueses financiam até 90% do valor de avaliação.', 'Isenção de IMT para jovens até 35 anos em primeiras habitações.', 'O spread é a margem do banco sobre a Euribor — negocie bem.'], mortgage: { medianPrice: 200000, typicalRate: 4.0, typicalTerm: 30, downPayment: 10 } },
-        'it': { name: 'Italy', nameLocalized: 'Italia', currency: '€', tips: ['Le banche italiane finanziano tipicamente fino all\'80% del valore.', 'L\'imposta di registro per la prima casa è del 2%.', 'Il Fondo Garanzia Prima Casa copre fino al 50% per under 36.'], mortgage: { medianPrice: 250000, typicalRate: 4.0, typicalTerm: 25, downPayment: 20 } },
-        'nl': { name: 'Netherlands', nameLocalized: 'Nederland', currency: '€', tips: ['Nederland is een van de weinige landen waar je 100% kunt financieren.', 'Hypotheekrenteaftrek maakt de effectieve rente lager.', 'NHG geeft lagere rente bij woningen tot €435.000.'], mortgage: { medianPrice: 450000, typicalRate: 4.0, typicalTerm: 30, downPayment: 0 } },
-        'pl': { name: 'Poland', nameLocalized: 'Polska', currency: 'zł', tips: ['Program "Bezpieczny Kredyt 2%" oferuje dopłaty do rat.', 'Wkład własny wynosi minimum 10-20%.', 'WIBOR jest stopą referencyjną dla kredytów o zmiennym oprocentowaniu.'], mortgage: { medianPrice: 500000, typicalRate: 7.5, typicalTerm: 25, downPayment: 20 } },
-        'gb': { name: 'United Kingdom', nameLocalized: 'United Kingdom', currency: '£', tips: ['First-time buyers pay no Stamp Duty on properties up to £425,000.', 'Lifetime ISA provides 25% government bonus for deposits.', 'Fixed rates for 2-5 years are most common.'], mortgage: { medianPrice: 285000, typicalRate: 5.0, typicalTerm: 25, downPayment: 10 } },
-        'au': { name: 'Australia', nameLocalized: 'Australia', currency: '$', tips: ['Lenders Mortgage Insurance (LMI) required if deposit under 20%.', 'First Home Owner Grant varies by state — $10,000-$30,000 for new homes.', 'Offset accounts are popular to reduce interest.'], mortgage: { medianPrice: 800000, typicalRate: 6.0, typicalTerm: 30, downPayment: 20 } },
-        'ie': { name: 'Ireland', nameLocalized: 'Ireland', currency: '€', tips: ['First-time buyers need only 10% deposit.', 'Help to Buy scheme provides up to €30,000 tax refund for new builds.', 'Central Bank rules limit mortgages to 4x income.'], mortgage: { medianPrice: 350000, typicalRate: 4.0, typicalTerm: 30, downPayment: 10 } },
-        'at': { name: 'Austria', nameLocalized: 'Österreich', currency: '€', tips: { de: ['Österreichische Banken verlangen normalerweise 20% Eigenkapital.', 'Nebenkosten circa 10%.', 'Wohnbauförderung je nach Bundesland verfügbar.'], en: ['Austrian banks typically require 20% down payment.', 'Additional costs are around 10%.', 'State housing subsidies available depending on region.'] }, mortgage: { medianPrice: 350000, typicalRate: 4.0, typicalTerm: 30, downPayment: 20 } },
-        'ch': { name: 'Switzerland', nameLocalized: 'Suisse', currency: 'CHF', tips: { de: ['Die Schweiz hat sehr hohe Immobilienpreise — CHF 900.000+ ist normal.', 'Mindestens 20% Eigenkapital erforderlich.', 'Die Tragbarkeit (Kosten/Einkommen unter 33%) ist entscheidend.'], fr: ['La Suisse a des prix immobiliers très élevés — CHF 900.000+ est normal.', 'Minimum 20% d\'apport personnel requis.', 'L\'accessibilité financière (coûts/revenus sous 33%) est déterminante.'], en: ['Switzerland has very high property prices — CHF 900,000+ is normal.', 'Minimum 20% down payment required.', 'Affordability (costs/income under 33%) is key.'], it: ['La Svizzera ha prezzi immobiliari molto elevati — CHF 900.000+ è normale.', 'Minimo 20% di capitale proprio richiesto.', 'L\'accessibilità (costi/reddito sotto 33%) è fondamentale.'] }, mortgage: { medianPrice: 900000, typicalRate: 2.5, typicalTerm: 25, downPayment: 20 } },
-        'be': { name: 'Belgium', nameLocalized: 'Belgique', currency: '€', tips: { fr: ['Les frais de notaire et droits d\'enregistrement totalisent 12-15%.', 'Droits d\'enregistrement: 12,5% en Wallonie/Bruxelles, 6% en Flandre.'], nl: ['Notariskosten en registratierechten bedragen 12-15%.', 'Registratierechten: 12,5% in Wallonië/Brussel, 6% in Vlaanderen.'], en: ['Notary fees and registration taxes total 12-15%.', 'Registration tax: 12.5% in Wallonia/Brussels, 6% in Flanders.'] }, mortgage: { medianPrice: 300000, typicalRate: 3.8, typicalTerm: 25, downPayment: 20 } },
-        'se': { name: 'Sweden', nameLocalized: 'Sverige', currency: 'kr', tips: ['Sverige kräver minst 15% kontantinsats.', 'Amorteringskrav: 2% per år om belåningsgrad över 70%.', 'Ränteavdrag på 30% av räntekostnader.'], mortgage: { medianPrice: 4000000, typicalRate: 4.5, typicalTerm: 50, downPayment: 15 } },
-        'no': { name: 'Norway', nameLocalized: 'Norge', currency: 'kr', tips: ['Norge krever minimum 15% egenkapital.', 'Boliglånsforskriften begrenser gjeld til 5 ganger bruttoinntekt.', 'Rentefradrag: 22% av rentekostnader.'], mortgage: { medianPrice: 5000000, typicalRate: 5.0, typicalTerm: 25, downPayment: 15 } },
-        'dk': { name: 'Denmark', nameLocalized: 'Danmark', currency: 'kr', tips: ['Danmark har et unikt realkreditsystem med meget lave renter.', 'Udbetaling på minimum 5% kræves.', 'Afdragsfrihed op til 10 år er muligt.'], mortgage: { medianPrice: 3500000, typicalRate: 4.0, typicalTerm: 30, downPayment: 5 } },
-        'fi': { name: 'Finland', nameLocalized: 'Suomi', currency: '€', tips: ['Suomessa vaaditaan yleensä 15% omarahoitusosuus.', 'ASP-tili tarjoaa korkoetua ensiasunnon ostajille.', 'Ensiasunnon ostajat vapautetaan varainsiirtoverosta.'], mortgage: { medianPrice: 300000, typicalRate: 4.5, typicalTerm: 25, downPayment: 15 } },
-        'co': { name: 'Colombia', nameLocalized: 'Colombia', currency: '$', tips: ['Los créditos VIS tienen tasas preferenciales.', 'El subsidio "Mi Casa Ya" cubre parte de la cuota inicial.', 'Los gastos notariales suman aproximadamente 2% del valor.'], mortgage: { medianPrice: 300000000, typicalRate: 12, typicalTerm: 15, downPayment: 20 } },
-        'cl': { name: 'Chile', nameLocalized: 'Chile', currency: 'UF', tips: ['Los créditos hipotecarios en Chile se expresan en UF.', 'Las tasas son bajas (4-5%) comparado con otros países latinoamericanos.', 'El subsidio DS1 ayuda a familias de clase media.'], mortgage: { medianPrice: 4500, typicalRate: 4.5, typicalTerm: 25, downPayment: 20 } },
-        'ca': { name: 'Canada', nameLocalized: 'Canada', currency: '$', tips: { en: ['Minimum 5% down payment for properties under $500,000.', 'CMHC insurance required if down payment is less than 20%.', 'Stress test requires qualifying at rate + 2%.'], fr: ['Mise de fonds minimale de 5% pour les propriétés sous 500 000$.', 'Assurance SCHL obligatoire si mise de fonds inférieure à 20%.', 'Le test de résistance exige de qualifier au taux + 2%.'] }, mortgage: { medianPrice: 500000, typicalRate: 5.5, typicalTerm: 25, downPayment: 5 } }
+        'ar': { name: 'Argentina', nameLocalized: 'Argentina', currency: '$', currencyCode: 'ARS', locale: 'es-AR', tips: ['La mayoría de créditos hipotecarios en Argentina se cotizan en dólares estadounidenses.', 'Los créditos UVA ajustan las cuotas según inflación.', 'Considerá costos de escrituración: 3-5% del valor de la propiedad.'], mortgage: { medianPrice: 85000, typicalRate: 9.5, typicalTerm: 20, downPayment: 25 } },
+        'es': { name: 'Spain', nameLocalized: 'España', currency: '€', currencyCode: 'EUR', locale: 'es-ES', tips: ['Los bancos españoles financian hasta el 80% del valor de tasación.', 'Gastos de compra rondan el 10-12% adicional.', 'El Euríbor es el índice de referencia para hipotecas variables.'], mortgage: { medianPrice: 250000, typicalRate: 3.5, typicalTerm: 25, downPayment: 20 } },
+        'mx': { name: 'Mexico', nameLocalized: 'México', currency: '$', currencyCode: 'MXN', locale: 'es-MX', tips: ['Infonavit y Fovissste ofrecen créditos para trabajadores con prestaciones.', 'Considerá el CAT (Costo Anual Total) que incluye todos los gastos.', 'Los gastos de escrituración varían del 5-8% según el estado.'], mortgage: { medianPrice: 2500000, typicalRate: 11, typicalTerm: 20, downPayment: 20 } },
+        'de': { name: 'Germany', nameLocalized: 'Deutschland', currency: '€', currencyCode: 'EUR', locale: 'de-DE', tips: ['Deutsche Banken verlangen typischerweise 20-30% Eigenkapital.', 'Nebenkosten betragen ca. 10-15%.', 'KfW-Förderprogramme bieten günstige Kredite für energieeffiziente Häuser.'], mortgage: { medianPrice: 400000, typicalRate: 3.8, typicalTerm: 30, downPayment: 20 } },
+        'fr': { name: 'France', nameLocalized: 'France', currency: '€', currencyCode: 'EUR', locale: 'fr-FR', tips: ['Le Prêt à Taux Zéro (PTZ) finance jusqu\'à 40% pour les primo-accédants.', 'Les frais de notaire représentent 7-8% pour l\'ancien.', 'Le taux d\'endettement maximum est de 35% des revenus.'], mortgage: { medianPrice: 250000, typicalRate: 4.0, typicalTerm: 25, downPayment: 10 } },
+        'br': { name: 'Brazil', nameLocalized: 'Brasil', currency: 'R$', currencyCode: 'BRL', locale: 'pt-BR', tips: ['O programa Minha Casa Minha Vida oferece subsídios para famílias de baixa renda.', 'Use o FGTS para abatir entrada ou parcelas.', 'Compare SAC vs PRICE para tipo de amortização.'], mortgage: { medianPrice: 400000, typicalRate: 10, typicalTerm: 30, downPayment: 20 } },
+        'pt': { name: 'Portugal', nameLocalized: 'Portugal', currency: '€', currencyCode: 'EUR', locale: 'pt-PT', tips: ['Os bancos portugueses financiam até 90% do valor de avaliação.', 'Isenção de IMT para jovens até 35 anos em primeiras habitações.', 'O spread é a margem do banco sobre a Euribor — negocie bem.'], mortgage: { medianPrice: 200000, typicalRate: 4.0, typicalTerm: 30, downPayment: 10 } },
+        'it': { name: 'Italy', nameLocalized: 'Italia', currency: '€', currencyCode: 'EUR', locale: 'it-IT', tips: ['Le banche italiane finanziano tipicamente fino all\'80% del valore.', 'L\'imposta di registro per la prima casa è del 2%.', 'Il Fondo Garanzia Prima Casa copre fino al 50% per under 36.'], mortgage: { medianPrice: 250000, typicalRate: 4.0, typicalTerm: 25, downPayment: 20 } },
+        'nl': { name: 'Netherlands', nameLocalized: 'Nederland', currency: '€', currencyCode: 'EUR', locale: 'nl-NL', tips: ['Nederland is een van de weinige landen waar je 100% kunt financieren.', 'Hypotheekrenteaftrek maakt de effectieve rente lager.', 'NHG geeft lagere rente bij woningen tot €435.000.'], mortgage: { medianPrice: 450000, typicalRate: 4.0, typicalTerm: 30, downPayment: 0 } },
+        'pl': { name: 'Poland', nameLocalized: 'Polska', currency: 'zł', currencyCode: 'PLN', locale: 'pl-PL', tips: ['Program "Bezpieczny Kredyt 2%" oferuje dopłaty do rat.', 'Wkład własny wynosi minimum 10-20%.', 'WIBOR jest stopą referencyjną dla kredytów o zmiennym oprocentowaniu.'], mortgage: { medianPrice: 500000, typicalRate: 7.5, typicalTerm: 25, downPayment: 20 } },
+        'gb': { name: 'United Kingdom', nameLocalized: 'United Kingdom', currency: '£', currencyCode: 'GBP', locale: 'en-GB', tips: ['First-time buyers pay no Stamp Duty on properties up to £425,000.', 'Lifetime ISA provides 25% government bonus for deposits.', 'Fixed rates for 2-5 years are most common.'], mortgage: { medianPrice: 285000, typicalRate: 5.0, typicalTerm: 25, downPayment: 10 } },
+        'au': { name: 'Australia', nameLocalized: 'Australia', currency: '$', currencyCode: 'AUD', locale: 'en-AU', tips: ['Lenders Mortgage Insurance (LMI) required if deposit under 20%.', 'First Home Owner Grant varies by state — $10,000-$30,000 for new homes.', 'Offset accounts are popular to reduce interest.'], mortgage: { medianPrice: 800000, typicalRate: 6.0, typicalTerm: 30, downPayment: 20 } },
+        'ie': { name: 'Ireland', nameLocalized: 'Ireland', currency: '€', currencyCode: 'EUR', locale: 'en-IE', tips: ['First-time buyers need only 10% deposit.', 'Help to Buy scheme provides up to €30,000 tax refund for new builds.', 'Central Bank rules limit mortgages to 4x income.'], mortgage: { medianPrice: 350000, typicalRate: 4.0, typicalTerm: 30, downPayment: 10 } },
+        'at': { name: 'Austria', nameLocalized: 'Österreich', currency: '€', currencyCode: 'EUR', locale: 'de-AT', tips: { de: ['Österreichische Banken verlangen normalerweise 20% Eigenkapital.', 'Nebenkosten circa 10%.', 'Wohnbauförderung je nach Bundesland verfügbar.'], en: ['Austrian banks typically require 20% down payment.', 'Additional costs are around 10%.', 'State housing subsidies available depending on region.'] }, mortgage: { medianPrice: 350000, typicalRate: 4.0, typicalTerm: 30, downPayment: 20 } },
+        'ch': { name: 'Switzerland', nameLocalized: 'Suisse', currency: 'CHF', currencyCode: 'CHF', locale: 'de-CH', tips: { de: ['Die Schweiz hat sehr hohe Immobilienpreise — CHF 900.000+ ist normal.', 'Mindestens 20% Eigenkapital erforderlich.', 'Die Tragbarkeit (Kosten/Einkommen unter 33%) ist entscheidend.'], fr: ['La Suisse a des prix immobiliers très élevés — CHF 900.000+ est normal.', 'Minimum 20% d\'apport personnel requis.', 'L\'accessibilité financière (coûts/revenus sous 33%) est déterminante.'], en: ['Switzerland has very high property prices — CHF 900,000+ is normal.', 'Minimum 20% down payment required.', 'Affordability (costs/income under 33%) is key.'], it: ['La Svizzera ha prezzi immobiliari molto elevati — CHF 900.000+ è normale.', 'Minimo 20% di capitale proprio richiesto.', 'L\'accessibilità (costi/reddito sotto 33%) è fondamentale.'] }, mortgage: { medianPrice: 900000, typicalRate: 2.5, typicalTerm: 25, downPayment: 20 } },
+        'be': { name: 'Belgium', nameLocalized: 'Belgique', currency: '€', currencyCode: 'EUR', locale: 'nl-BE', tips: { fr: ['Les frais de notaire et droits d\'enregistrement totalisent 12-15%.', 'Droits d\'enregistrement: 12,5% en Wallonie/Bruxelles, 6% en Flandre.'], nl: ['Notariskosten en registratierechten bedragen 12-15%.', 'Registratierechten: 12,5% in Wallonië/Brussel, 6% in Vlaanderen.'], en: ['Notary fees and registration taxes total 12-15%.', 'Registration tax: 12.5% in Wallonia/Brussels, 6% in Flanders.'] }, mortgage: { medianPrice: 300000, typicalRate: 3.8, typicalTerm: 25, downPayment: 20 } },
+        'se': { name: 'Sweden', nameLocalized: 'Sverige', currency: 'kr', currencyCode: 'SEK', locale: 'sv-SE', tips: ['Sverige kräver minst 15% kontantinsats.', 'Amorteringskrav: 2% per år om belåningsgrad över 70%.', 'Ränteavdrag på 30% av räntekostnader.'], mortgage: { medianPrice: 4000000, typicalRate: 4.5, typicalTerm: 50, downPayment: 15 } },
+        'no': { name: 'Norway', nameLocalized: 'Norge', currency: 'kr', currencyCode: 'NOK', locale: 'no-NO', tips: ['Norge krever minimum 15% egenkapital.', 'Boliglånsforskriften begrenser gjeld til 5 ganger bruttoinntekt.', 'Rentefradrag: 22% av rentekostnader.'], mortgage: { medianPrice: 5000000, typicalRate: 5.0, typicalTerm: 25, downPayment: 15 } },
+        'dk': { name: 'Denmark', nameLocalized: 'Danmark', currency: 'kr', currencyCode: 'DKK', locale: 'da-DK', tips: ['Danmark har et unikt realkreditsystem med meget lave renter.', 'Udbetaling på minimum 5% kræves.', 'Afdragsfrihed op til 10 år er muligt.'], mortgage: { medianPrice: 3500000, typicalRate: 4.0, typicalTerm: 30, downPayment: 5 } },
+        'fi': { name: 'Finland', nameLocalized: 'Suomi', currency: '€', currencyCode: 'EUR', locale: 'fi-FI', tips: ['Suomessa vaaditaan yleensä 15% omarahoitusosuus.', 'ASP-tili tarjoaa korkoetua ensiasunnon ostajille.', 'Ensiasunnon ostajat vapautetaan varainsiirtoverosta.'], mortgage: { medianPrice: 300000, typicalRate: 4.5, typicalTerm: 25, downPayment: 15 } },
+        'co': { name: 'Colombia', nameLocalized: 'Colombia', currency: '$', currencyCode: 'COP', locale: 'es-CO', tips: ['Los créditos VIS tienen tasas preferenciales.', 'El subsidio "Mi Casa Ya" cubre parte de la cuota inicial.', 'Los gastos notariales suman aproximadamente 2% del valor.'], mortgage: { medianPrice: 300000000, typicalRate: 12, typicalTerm: 15, downPayment: 20 } },
+        'cl': { name: 'Chile', nameLocalized: 'Chile', currency: 'UF', currencyCode: 'CLF', locale: 'es-CL', tips: ['Los créditos hipotecarios en Chile se expresan en UF.', 'Las tasas son bajas (4-5%) comparado con otros países latinoamericanos.', 'El subsidio DS1 ayuda a familias de clase media.'], mortgage: { medianPrice: 4500, typicalRate: 4.5, typicalTerm: 25, downPayment: 20 } },
+        'ca': { name: 'Canada', nameLocalized: 'Canada', currency: '$', currencyCode: 'CAD', locale: 'en-CA', tips: { en: ['Minimum 5% down payment for properties under $500,000.', 'CMHC insurance required if down payment is less than 20%.', 'Stress test requires qualifying at rate + 2%.'], fr: ['Mise de fonds minimale de 5% pour les propriétés sous 500 000$.', 'Assurance SCHL obligatoire si mise de fonds inférieure à 20%.', 'Le test de résistance exige de qualifier au taux + 2%.'] }, mortgage: { medianPrice: 500000, typicalRate: 5.5, typicalTerm: 25, downPayment: 5 } }
     };
 
     // State name to code mapping for US
@@ -101,7 +105,7 @@
                 regionName: data.region
             };
         } catch (error) {
-            console.log('CalcKit Geo: Could not detect location', error);
+            log('CalcKit Geo: Could not detect location', error);
             return null;
         }
     }
@@ -456,16 +460,27 @@
         const { data, type } = locationInfo;
         const mortgage = data.mortgage;
 
+        const calculatorEl = document.querySelector('calckit-calculator');
+        if (calculatorEl && calculatorEl.updateConfig && data.currencyCode) {
+            calculatorEl.updateConfig({
+                currency: data.currencyCode,
+                locale: data.locale || 'en-US',
+                currencySymbol: data.currency // Explicit symbol override
+            });
+        }
+
         // Only update if relevant to calculator type
         if (calcType === 'mortgage') {
             // Wait for calculator to be initialized
             setTimeout(() => {
+                const root = calculatorEl ? calculatorEl.shadowRoot : document;
+
                 // Try to find and update price field
-                const priceInput = document.querySelector('input[name="price"], input[id*="price"], input[data-field="price"]');
+                const priceInput = root.querySelector('input[id*="principal"], input[id*="price"], input[data-field="price"]');
                 if (priceInput && mortgage.medianPrice) {
                     const currentValue = parseInt(priceInput.value.replace(/[^0-9]/g, ''));
                     // Only update if placeholder or generic defaults
-                    if (!currentValue || currentValue === 300000 || currentValue === 200000) {
+                    if (!currentValue || currentValue === 300000 || currentValue === 200000 || currentValue === 350000) {
                         priceInput.value = mortgage.medianPrice;
                         priceInput.dispatchEvent(new Event('input', { bubbles: true }));
                     }
@@ -473,10 +488,10 @@
 
                 // For country pages, also update rate
                 if (type === 'country' && mortgage.typicalRate) {
-                    const rateInput = document.querySelector('input[name="rate"], input[id*="rate"], input[data-field="rate"]');
+                    const rateInput = root.querySelector('input[id*="rate"], input[data-field="rate"]');
                     if (rateInput) {
                         const currentRate = parseFloat(rateInput.value);
-                        if (currentRate === 6.5 || currentRate === 7) {
+                        if (currentRate === 6.5 || currentRate === 7 || currentRate === 9.5) {
                             rateInput.value = mortgage.typicalRate;
                             rateInput.dispatchEvent(new Event('input', { bubbles: true }));
                         }
@@ -499,7 +514,7 @@
     async function init() {
         // Don't run if page already has static local insights
         if (hasStaticInsights()) {
-            console.log('CalcKit Geo: Page has static insights, skipping dynamic injection');
+            log('CalcKit Geo: Page has static insights, skipping dynamic injection');
             return;
         }
 
@@ -520,17 +535,17 @@
             return;
         }
 
-        console.log('CalcKit Geo: Starting detection...');
+        log('CalcKit Geo: Starting detection...');
 
         const location = await detectLocation();
         if (!location) return;
 
         const pageLang = detectPageLanguage();
-        console.log('CalcKit Geo: Page language detected as', pageLang);
+        log('CalcKit Geo: Page language detected as', pageLang);
 
         const locationInfo = getLocationData(location, pageLang);
         if (!locationInfo) {
-            console.log('CalcKit Geo: No data for location', location);
+            log('CalcKit Geo: No data for location', location);
             return;
         }
 
@@ -539,7 +554,7 @@
         if (calcType === 'roofing' && !locationInfo.data.roofing) return;
         if (calcType === 'mortgage' && !locationInfo.data.mortgage) return;
 
-        console.log('CalcKit Geo: Detected', locationInfo.displayName);
+        log('CalcKit Geo: Detected', locationInfo.displayName);
 
         // Inject insights banner BEFORE calculator section
         const calculatorSection = document.querySelector('.calculator-section');

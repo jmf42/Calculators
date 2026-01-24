@@ -1,0 +1,97 @@
+---
+layout: layouts/legal.njk
+permalink: /en/free-calculator-widget/index.html
+title: "Free Embeddable Calculator Widget"
+description: "Add a free mortgage calculator widget to your website. Copy and paste, works on any site. Powered by CalcKit."
+lang: en
+---
+
+<style>
+.widget-preview { background: #1a1a2e; border-radius: 12px; padding: 24px; margin: 2rem 0; text-align: center; }
+.widget-preview iframe { border: none; border-radius: 8px; }
+.code-block { background: #0f172a; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 16px; margin: 1rem 0; overflow-x: auto; }
+.code-block code { color: #a5b4fc; font-size: 0.85rem; white-space: pre-wrap; word-break: break-all; }
+.copy-btn { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin-top: 1rem; font-weight: 600; }
+.copy-btn:hover { filter: brightness(1.1); }
+.benefits { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0; }
+.benefit { background: var(--surface); border-radius: 10px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1); }
+.benefit h3 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--primary); }
+.benefit p { font-size: 0.9rem; color: var(--text-muted); margin: 0; }
+</style>
+
+<p>Add a <strong>free mortgage calculator</strong> to your real estate, finance, or blog website. Just copy the code below—no signup required.</p>
+
+<h2>Live Preview</h2>
+<div class="widget-preview">
+<iframe src="/embed/mortgage-calculator/" width="420" height="380" title="Mortgage Calculator Widget"></iframe>
+</div>
+
+<h2>Embed Code</h2>
+<p>Copy this code and paste it into your website's HTML:</p>
+
+<div class="code-block">
+<code id="embed-code">&lt;iframe 
+  src="https://calc-kit.com/embed/mortgage-calculator/" 
+  width="420" 
+  height="380" 
+  title="Mortgage Calculator"
+  style="border: none; border-radius: 8px;"
+&gt;&lt;/iframe&gt;
+&lt;p style="font-size: 12px; text-align: center;"&gt;
+  Calculator by &lt;a href="https://calc-kit.com"&gt;CalcKit&lt;/a&gt;
+&lt;/p&gt;</code>
+</div>
+<button class="copy-btn" onclick="copyCode()">📋 Copy Embed Code</button>
+
+<script>
+function copyCode() {
+  const code = document.getElementById('embed-code').textContent;
+  navigator.clipboard.writeText(code).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = '📋 Copy Embed Code', 2000);
+  });
+}
+</script>
+
+<h2>Why Use This Widget?</h2>
+<div class="benefits">
+<div class="benefit">
+<h3>🆓 100% Free</h3>
+<p>No cost, no subscription, no hidden fees. Use forever.</p>
+</div>
+<div class="benefit">
+<h3>⚡ Fast & Lightweight</h3>
+<p>Under 5KB. Won't slow down your page speed scores.</p>
+</div>
+<div class="benefit">
+<h3>📱 Responsive</h3>
+<p>Works perfectly on mobile, tablet, and desktop.</p>
+</div>
+<div class="benefit">
+<h3>🔒 No Tracking</h3>
+<p>We don't track your visitors. Privacy-first design.</p>
+</div>
+<div class="benefit">
+<h3>🎨 Clean Design</h3>
+<p>Modern dark theme that fits most website styles.</p>
+</div>
+<div class="benefit">
+<h3>🔄 Always Updated</h3>
+<p>We maintain the calculator—you get updates automatically.</p>
+</div>
+</div>
+
+<h2>Customization Options</h2>
+<p>Adjust the <code>width</code> and <code>height</code> attributes to fit your layout:</p>
+<ul>
+<li><strong>Sidebar widget:</strong> width="320" height="400"</li>
+<li><strong>Full-width:</strong> width="100%" height="420"</li>
+<li><strong>Mobile-optimized:</strong> width="100%" height="380"</li>
+</ul>
+
+<h2>Terms of Use</h2>
+<p>This widget is free for any website. We only ask that you keep the "Calculator by CalcKit" attribution link visible. This helps us keep the service free for everyone.</p>
+
+<h2>Need a Custom Calculator?</h2>
+<p>Want a white-label version, custom branding, or a specialized calculator type? <a href="mailto:worthit.tuliai@gmail.com">Contact us</a> to discuss enterprise options.</p>

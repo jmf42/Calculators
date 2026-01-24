@@ -16,11 +16,11 @@
         "medianPrice": 1200000
     },
     {
-        "id": "anaheim",
-        "name": "Anaheim",
+        "id": "irvine",
+        "name": "Irvine",
         "state": "CA",
         "stateFull": "California",
-        "slug": "anaheim-ca",
+        "slug": "irvine-ca",
         "medianPrice": 1400000
     },
     {
@@ -38,6 +38,14 @@
         "stateFull": "California",
         "slug": "san-diego-ca",
         "medianPrice": 900000
+    },
+    {
+        "id": "oakland",
+        "name": "Oakland",
+        "state": "CA",
+        "stateFull": "California",
+        "slug": "oakland-ca",
+        "medianPrice": 850000
     },
     {
         "id": "seattle",
@@ -78,5 +86,693 @@
         "stateFull": "Florida",
         "slug": "miami-fl",
         "medianPrice": 600000
+    },
+    {
+        "id": "denver",
+        "name": "Denver",
+        "state": "CO",
+        "stateFull": "Colorado",
+        "slug": "denver-co",
+        "medianPrice": 620000
+    },
+    {
+        "id": "austin",
+        "name": "Austin",
+        "state": "TX",
+        "stateFull": "Texas",
+        "slug": "austin-tx",
+        "medianPrice": 550000
+    },
+    {
+        "id": "portland",
+        "name": "Portland",
+        "state": "OR",
+        "stateFull": "Oregon",
+        "slug": "portland-or",
+        "medianPrice": 520000
+    },
+    {
+        "id": "salt-lake-city",
+        "name": "Salt Lake City",
+        "state": "UT",
+        "stateFull": "Utah",
+        "slug": "salt-lake-city-ut",
+        "medianPrice": 510000
+    },
+    {
+        "id": "nashville",
+        "name": "Nashville",
+        "state": "TN",
+        "stateFull": "Tennessee",
+        "slug": "nashville-tn",
+        "medianPrice": 480000
+    },
+    {
+        "id": "phoenix",
+        "name": "Phoenix",
+        "state": "AZ",
+        "stateFull": "Arizona",
+        "slug": "phoenix-az",
+        "medianPrice": 450000
+    },
+    {
+        "id": "raleigh",
+        "name": "Raleigh",
+        "state": "NC",
+        "stateFull": "North Carolina",
+        "slug": "raleigh-nc",
+        "medianPrice": 440000
+    },
+    {
+        "id": "charlotte",
+        "name": "Charlotte",
+        "state": "NC",
+        "stateFull": "North Carolina",
+        "slug": "charlotte-nc",
+        "medianPrice": 400000
+    },
+    {
+        "id": "washington-dc",
+        "name": "Washington",
+        "state": "DC",
+        "stateFull": "District of Columbia",
+        "slug": "washington-dc",
+        "medianPrice": 620000
+    },
+    {
+        "id": "atlanta",
+        "name": "Atlanta",
+        "state": "GA",
+        "stateFull": "Georgia",
+        "slug": "atlanta-ga",
+        "medianPrice": 400000
+    },
+    {
+        "id": "tampa",
+        "name": "Tampa",
+        "state": "FL",
+        "stateFull": "Florida",
+        "slug": "tampa-fl",
+        "medianPrice": 380000
+    },
+    {
+        "id": "orlando",
+        "name": "Orlando",
+        "state": "FL",
+        "stateFull": "Florida",
+        "slug": "orlando-fl",
+        "medianPrice": 370000
+    },
+    {
+        "id": "jacksonville",
+        "name": "Jacksonville",
+        "state": "FL",
+        "stateFull": "Florida",
+        "slug": "jacksonville-fl",
+        "medianPrice": 340000
+    },
+    {
+        "id": "chicago",
+        "name": "Chicago",
+        "state": "IL",
+        "stateFull": "Illinois",
+        "slug": "chicago-il",
+        "medianPrice": 350000
+    },
+    {
+        "id": "houston",
+        "name": "Houston",
+        "state": "TX",
+        "stateFull": "Texas",
+        "slug": "houston-tx",
+        "medianPrice": 340000
+    },
+    {
+        "id": "dallas",
+        "name": "Dallas",
+        "state": "TX",
+        "stateFull": "Texas",
+        "slug": "dallas-tx",
+        "medianPrice": 380000
+    },
+    {
+        "id": "fort-worth",
+        "name": "Fort Worth",
+        "state": "TX",
+        "stateFull": "Texas",
+        "slug": "fort-worth-tx",
+        "medianPrice": 340000
+    },
+    {
+        "id": "san-antonio",
+        "name": "San Antonio",
+        "state": "TX",
+        "stateFull": "Texas",
+        "slug": "san-antonio-tx",
+        "medianPrice": 290000
+    },
+    {
+        "id": "philadelphia",
+        "name": "Philadelphia",
+        "state": "PA",
+        "stateFull": "Pennsylvania",
+        "slug": "philadelphia-pa",
+        "medianPrice": 320000
+    },
+    {
+        "id": "pittsburgh",
+        "name": "Pittsburgh",
+        "state": "PA",
+        "stateFull": "Pennsylvania",
+        "slug": "pittsburgh-pa",
+        "medianPrice": 250000
+    },
+    {
+        "id": "minneapolis",
+        "name": "Minneapolis",
+        "state": "MN",
+        "stateFull": "Minnesota",
+        "slug": "minneapolis-mn",
+        "medianPrice": 350000
+    },
+    {
+        "id": "las-vegas",
+        "name": "Las Vegas",
+        "state": "NV",
+        "stateFull": "Nevada",
+        "slug": "las-vegas-nv",
+        "medianPrice": 420000
+    },
+    {
+        "id": "sacramento",
+        "name": "Sacramento",
+        "state": "CA",
+        "stateFull": "California",
+        "slug": "sacramento-ca",
+        "medianPrice": 520000
+    },
+    {
+        "id": "fresno",
+        "name": "Fresno",
+        "state": "CA",
+        "stateFull": "California",
+        "slug": "fresno-ca",
+        "medianPrice": 380000
+    },
+    {
+        "id": "long-beach",
+        "name": "Long Beach",
+        "state": "CA",
+        "stateFull": "California",
+        "slug": "long-beach-ca",
+        "medianPrice": 820000
+    },
+    {
+        "id": "kansas-city",
+        "name": "Kansas City",
+        "state": "MO",
+        "stateFull": "Missouri",
+        "slug": "kansas-city-mo",
+        "medianPrice": 280000
+    },
+    {
+        "id": "columbus",
+        "name": "Columbus",
+        "state": "OH",
+        "stateFull": "Ohio",
+        "slug": "columbus-oh",
+        "medianPrice": 290000
+    },
+    {
+        "id": "cleveland",
+        "name": "Cleveland",
+        "state": "OH",
+        "stateFull": "Ohio",
+        "slug": "cleveland-oh",
+        "medianPrice": 180000
+    },
+    {
+        "id": "cincinnati",
+        "name": "Cincinnati",
+        "state": "OH",
+        "stateFull": "Ohio",
+        "slug": "cincinnati-oh",
+        "medianPrice": 250000
+    },
+    {
+        "id": "indianapolis",
+        "name": "Indianapolis",
+        "state": "IN",
+        "stateFull": "Indiana",
+        "slug": "indianapolis-in",
+        "medianPrice": 260000
+    },
+    {
+        "id": "milwaukee",
+        "name": "Milwaukee",
+        "state": "WI",
+        "stateFull": "Wisconsin",
+        "slug": "milwaukee-wi",
+        "medianPrice": 220000
+    },
+    {
+        "id": "detroit",
+        "name": "Detroit",
+        "state": "MI",
+        "stateFull": "Michigan",
+        "slug": "detroit-mi",
+        "medianPrice": 100000
+    },
+    {
+        "id": "grand-rapids",
+        "name": "Grand Rapids",
+        "state": "MI",
+        "stateFull": "Michigan",
+        "slug": "grand-rapids-mi",
+        "medianPrice": 300000
+    },
+    {
+        "id": "baltimore",
+        "name": "Baltimore",
+        "state": "MD",
+        "stateFull": "Maryland",
+        "slug": "baltimore-md",
+        "medianPrice": 220000
+    },
+    {
+        "id": "st-louis",
+        "name": "St. Louis",
+        "state": "MO",
+        "stateFull": "Missouri",
+        "slug": "st-louis-mo",
+        "medianPrice": 200000
+    },
+    {
+        "id": "new-orleans",
+        "name": "New Orleans",
+        "state": "LA",
+        "stateFull": "Louisiana",
+        "slug": "new-orleans-la",
+        "medianPrice": 280000
+    },
+    {
+        "id": "memphis",
+        "name": "Memphis",
+        "state": "TN",
+        "stateFull": "Tennessee",
+        "slug": "memphis-tn",
+        "medianPrice": 180000
+    },
+    {
+        "id": "louisville",
+        "name": "Louisville",
+        "state": "KY",
+        "stateFull": "Kentucky",
+        "slug": "louisville-ky",
+        "medianPrice": 240000
+    },
+    {
+        "id": "oklahoma-city",
+        "name": "Oklahoma City",
+        "state": "OK",
+        "stateFull": "Oklahoma",
+        "slug": "oklahoma-city-ok",
+        "medianPrice": 220000
+    },
+    {
+        "id": "tucson",
+        "name": "Tucson",
+        "state": "AZ",
+        "stateFull": "Arizona",
+        "slug": "tucson-az",
+        "medianPrice": 320000
+    },
+    {
+        "id": "albuquerque",
+        "name": "Albuquerque",
+        "state": "NM",
+        "stateFull": "New Mexico",
+        "slug": "albuquerque-nm",
+        "medianPrice": 320000
+    },
+    {
+        "id": "boise",
+        "name": "Boise",
+        "state": "ID",
+        "stateFull": "Idaho",
+        "slug": "boise-id",
+        "medianPrice": 480000
+    },
+    {
+        "id": "richmond",
+        "name": "Richmond",
+        "state": "VA",
+        "stateFull": "Virginia",
+        "slug": "richmond-va",
+        "medianPrice": 350000
+    },
+    {
+        "id": "virginia-beach",
+        "name": "Virginia Beach",
+        "state": "VA",
+        "stateFull": "Virginia",
+        "slug": "virginia-beach-va",
+        "medianPrice": 340000
+    },
+    {
+        "id": "colorado-springs",
+        "name": "Colorado Springs",
+        "state": "CO",
+        "stateFull": "Colorado",
+        "slug": "colorado-springs-co",
+        "medianPrice": 450000
+    },
+    {
+        "id": "omaha",
+        "name": "Omaha",
+        "state": "NE",
+        "stateFull": "Nebraska",
+        "slug": "omaha-ne",
+        "medianPrice": 280000
+    },
+    {
+        "id": "reno",
+        "name": "Reno",
+        "state": "NV",
+        "stateFull": "Nevada",
+        "slug": "reno-nv",
+        "medianPrice": 520000
+    },
+    {
+        "id": "spokane",
+        "name": "Spokane",
+        "state": "WA",
+        "stateFull": "Washington",
+        "slug": "spokane-wa",
+        "medianPrice": 380000
+    },
+    {
+        "id": "tacoma",
+        "name": "Tacoma",
+        "state": "WA",
+        "stateFull": "Washington",
+        "slug": "tacoma-wa",
+        "medianPrice": 480000
+    },
+    {
+        "id": "madison",
+        "name": "Madison",
+        "state": "WI",
+        "stateFull": "Wisconsin",
+        "slug": "madison-wi",
+        "medianPrice": 400000
+    },
+    {
+        "id": "des-moines",
+        "name": "Des Moines",
+        "state": "IA",
+        "stateFull": "Iowa",
+        "slug": "des-moines-ia",
+        "medianPrice": 250000
+    },
+    {
+        "id": "wichita",
+        "name": "Wichita",
+        "state": "KS",
+        "stateFull": "Kansas",
+        "slug": "wichita-ks",
+        "medianPrice": 210000
+    },
+    {
+        "id": "tulsa",
+        "name": "Tulsa",
+        "state": "OK",
+        "stateFull": "Oklahoma",
+        "slug": "tulsa-ok",
+        "medianPrice": 220000
+    },
+    {
+        "id": "lexington",
+        "name": "Lexington",
+        "state": "KY",
+        "stateFull": "Kentucky",
+        "slug": "lexington-ky",
+        "medianPrice": 290000
+    },
+    {
+        "id": "hartford",
+        "name": "Hartford",
+        "state": "CT",
+        "stateFull": "Connecticut",
+        "slug": "hartford-ct",
+        "medianPrice": 280000
+    },
+    {
+        "id": "providence",
+        "name": "Providence",
+        "state": "RI",
+        "stateFull": "Rhode Island",
+        "slug": "providence-ri",
+        "medianPrice": 380000
+    },
+    {
+        "id": "buffalo",
+        "name": "Buffalo",
+        "state": "NY",
+        "stateFull": "New York",
+        "slug": "buffalo-ny",
+        "medianPrice": 220000
+    },
+    {
+        "id": "rochester",
+        "name": "Rochester",
+        "state": "NY",
+        "stateFull": "New York",
+        "slug": "rochester-ny",
+        "medianPrice": 200000
+    },
+    {
+        "id": "albany",
+        "name": "Albany",
+        "state": "NY",
+        "stateFull": "New York",
+        "slug": "albany-ny",
+        "medianPrice": 280000
+    },
+    {
+        "id": "charleston",
+        "name": "Charleston",
+        "state": "SC",
+        "stateFull": "South Carolina",
+        "slug": "charleston-sc",
+        "medianPrice": 480000
+    },
+    {
+        "id": "greenville",
+        "name": "Greenville",
+        "state": "SC",
+        "stateFull": "South Carolina",
+        "slug": "greenville-sc",
+        "medianPrice": 320000
+    },
+    {
+        "id": "birmingham",
+        "name": "Birmingham",
+        "state": "AL",
+        "stateFull": "Alabama",
+        "slug": "birmingham-al",
+        "medianPrice": 210000
+    },
+    {
+        "id": "huntsville",
+        "name": "Huntsville",
+        "state": "AL",
+        "stateFull": "Alabama",
+        "slug": "huntsville-al",
+        "medianPrice": 320000
+    },
+    {
+        "id": "anchorage",
+        "name": "Anchorage",
+        "state": "AK",
+        "stateFull": "Alaska",
+        "slug": "anchorage-ak",
+        "medianPrice": 380000
+    },
+    {
+        "id": "little-rock",
+        "name": "Little Rock",
+        "state": "AR",
+        "stateFull": "Arkansas",
+        "slug": "little-rock-ar",
+        "medianPrice": 220000
+    },
+    {
+        "id": "baton-rouge",
+        "name": "Baton Rouge",
+        "state": "LA",
+        "stateFull": "Louisiana",
+        "slug": "baton-rouge-la",
+        "medianPrice": 240000
+    },
+    {
+        "id": "portland-me",
+        "name": "Portland",
+        "state": "ME",
+        "stateFull": "Maine",
+        "slug": "portland-me",
+        "medianPrice": 480000
+    },
+    {
+        "id": "manchester",
+        "name": "Manchester",
+        "state": "NH",
+        "stateFull": "New Hampshire",
+        "slug": "manchester-nh",
+        "medianPrice": 420000
+    },
+    {
+        "id": "burlington",
+        "name": "Burlington",
+        "state": "VT",
+        "stateFull": "Vermont",
+        "slug": "burlington-vt",
+        "medianPrice": 450000
+    },
+    {
+        "id": "wilmington",
+        "name": "Wilmington",
+        "state": "DE",
+        "stateFull": "Delaware",
+        "slug": "wilmington-de",
+        "medianPrice": 320000
+    },
+    {
+        "id": "fargo",
+        "name": "Fargo",
+        "state": "ND",
+        "stateFull": "North Dakota",
+        "slug": "fargo-nd",
+        "medianPrice": 290000
+    },
+    {
+        "id": "sioux-falls",
+        "name": "Sioux Falls",
+        "state": "SD",
+        "stateFull": "South Dakota",
+        "slug": "sioux-falls-sd",
+        "medianPrice": 320000
+    },
+    {
+        "id": "billings",
+        "name": "Billings",
+        "state": "MT",
+        "stateFull": "Montana",
+        "slug": "billings-mt",
+        "medianPrice": 380000
+    },
+    {
+        "id": "bozeman",
+        "name": "Bozeman",
+        "state": "MT",
+        "stateFull": "Montana",
+        "slug": "bozeman-mt",
+        "medianPrice": 720000
+    },
+    {
+        "id": "cheyenne",
+        "name": "Cheyenne",
+        "state": "WY",
+        "stateFull": "Wyoming",
+        "slug": "cheyenne-wy",
+        "medianPrice": 340000
+    },
+    {
+        "id": "jackson",
+        "name": "Jackson",
+        "state": "MS",
+        "stateFull": "Mississippi",
+        "slug": "jackson-ms",
+        "medianPrice": 180000
+    },
+    {
+        "id": "charleston-wv",
+        "name": "Charleston",
+        "state": "WV",
+        "stateFull": "West Virginia",
+        "slug": "charleston-wv",
+        "medianPrice": 180000
+    },
+    {
+        "id": "savannah",
+        "name": "Savannah",
+        "state": "GA",
+        "stateFull": "Georgia",
+        "slug": "savannah-ga",
+        "medianPrice": 350000
+    },
+    {
+        "id": "durham",
+        "name": "Durham",
+        "state": "NC",
+        "stateFull": "North Carolina",
+        "slug": "durham-nc",
+        "medianPrice": 420000
+    },
+    {
+        "id": "fort-lauderdale",
+        "name": "Fort Lauderdale",
+        "state": "FL",
+        "stateFull": "Florida",
+        "slug": "fort-lauderdale-fl",
+        "medianPrice": 480000
+    },
+    {
+        "id": "west-palm-beach",
+        "name": "West Palm Beach",
+        "state": "FL",
+        "stateFull": "Florida",
+        "slug": "west-palm-beach-fl",
+        "medianPrice": 450000
+    },
+    {
+        "id": "naples",
+        "name": "Naples",
+        "state": "FL",
+        "stateFull": "Florida",
+        "slug": "naples-fl",
+        "medianPrice": 620000
+    },
+    {
+        "id": "sarasota",
+        "name": "Sarasota",
+        "state": "FL",
+        "stateFull": "Florida",
+        "slug": "sarasota-fl",
+        "medianPrice": 480000
+    },
+    {
+        "id": "santa-fe",
+        "name": "Santa Fe",
+        "state": "NM",
+        "stateFull": "New Mexico",
+        "slug": "santa-fe-nm",
+        "medianPrice": 580000
+    },
+    {
+        "id": "scottsdale",
+        "name": "Scottsdale",
+        "state": "AZ",
+        "stateFull": "Arizona",
+        "slug": "scottsdale-az",
+        "medianPrice": 720000
+    },
+    {
+        "id": "boulder",
+        "name": "Boulder",
+        "state": "CO",
+        "stateFull": "Colorado",
+        "slug": "boulder-co",
+        "medianPrice": 850000
     }
 ]

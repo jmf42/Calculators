@@ -1,10 +1,18 @@
+---
+permalink: /robots.txt
+eleventyExcludeFromCollections: true
+---
 User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /_private/
 
-# Sitemaps
-Sitemap: https://calc-kit.com/sitemap.xml
+# Sitemaps - Prioritized by importance
+Sitemap: {{ (site.url + "/sitemap-index.xml") | canonicalUrl }}
+Sitemap: {{ (site.url + "/sitemap-core.xml") | canonicalUrl }}
+Sitemap: {{ (site.url + "/sitemap-calculators.xml") | canonicalUrl }}
+Sitemap: {{ (site.url + "/sitemap-locations.xml") | canonicalUrl }}
+Sitemap: {{ (site.url + "/sitemap-legal.xml") | canonicalUrl }}
 
 # Disallow crawling of API endpoints (if any)
 Disallow: /api/

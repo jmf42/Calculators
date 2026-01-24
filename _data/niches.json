@@ -1285,5 +1285,712 @@
                 }
             }
         }
+    },
+    {
+        "baseType": "crypto",
+        "id": "bitcoin-profit",
+        "slugs": {
+            "en": "bitcoin-profit-calculator",
+            "es": "calculadora-ganancias-bitcoin",
+            "de": "bitcoin-gewinnrechner",
+            "fr": "calculateur-profits-bitcoin",
+            "pt": "calculadora-lucro-bitcoin",
+            "it": "calcolatore-profitti-bitcoin",
+            "nl": "bitcoin-winst-calculator",
+            "pl": "kalkulator-zyskow-bitcoin",
+            "sv": "bitcoin-vinstkalkylator",
+            "no": "bitcoin-gevinstkalkulator",
+            "da": "bitcoin-gevinstberegner",
+            "fi": "bitcoin-tuottolaskuri"
+        },
+        "titles": {
+            "en": "Bitcoin Profit Calculator 2026 • BTC ROI",
+            "es": "Calculadora de Ganancias Bitcoin 2026",
+            "de": "Bitcoin Gewinnrechner 2026 • BTC ROI",
+            "fr": "Calculateur de Profits Bitcoin 2026",
+            "pt": "Calculadora de Lucro Bitcoin 2026",
+            "it": "Calcolatore Profitti Bitcoin 2026",
+            "nl": "Bitcoin Winst Calculator 2026",
+            "pl": "Kalkulator Zyskow Bitcoin 2026",
+            "sv": "Bitcoin Vinstkalkylator 2026",
+            "no": "Bitcoin Gevinstkalkulator 2026",
+            "da": "Bitcoin Gevinstberegner 2026",
+            "fi": "Bitcoin Tuottolaskuri 2026"
+        },
+        "subtitles": {
+            "en": "Calculate your BTC trading profit, fees, and ROI",
+            "es": "Calcula tus ganancias de trading con BTC",
+            "de": "Berechnen Sie Ihren BTC-Handelsgewinn",
+            "fr": "Calculez vos profits de trading BTC",
+            "pt": "Calcule seu lucro de trading BTC",
+            "it": "Calcola i tuoi profitti di trading BTC",
+            "nl": "Bereken uw BTC handelswinst",
+            "pl": "Oblicz swoj zysk z handlu BTC",
+            "sv": "Berakna din BTC-handelsvinst",
+            "no": "Beregn din BTC-handelsfortjeneste",
+            "da": "Beregn din BTC-handelsgevinst",
+            "fi": "Laske BTC-kaupan voittosi"
+        },
+        "overrides": {
+            "entryPrice": {
+                "default": 95000
+            },
+            "exitPrice": {
+                "default": 105000
+            }
+        }
+    },
+    {
+        "baseType": "crypto",
+        "id": "ethereum-profit",
+        "slugs": {
+            "en": "ethereum-profit-calculator",
+            "es": "calculadora-ganancias-ethereum",
+            "de": "ethereum-gewinnrechner",
+            "fr": "calculateur-profits-ethereum",
+            "pt": "calculadora-lucro-ethereum",
+            "it": "calcolatore-profitti-ethereum",
+            "nl": "ethereum-winst-calculator",
+            "pl": "kalkulator-zyskow-ethereum",
+            "sv": "ethereum-vinstkalkylator",
+            "no": "ethereum-gevinstkalkulator",
+            "da": "ethereum-gevinstberegner",
+            "fi": "ethereum-tuottolaskuri"
+        },
+        "titles": {
+            "en": "Ethereum Profit Calculator 2026 • ETH ROI",
+            "es": "Calculadora de Ganancias Ethereum 2026",
+            "de": "Ethereum Gewinnrechner 2026 • ETH ROI",
+            "fr": "Calculateur de Profits Ethereum 2026",
+            "pt": "Calculadora de Lucro Ethereum 2026",
+            "it": "Calcolatore Profitti Ethereum 2026",
+            "nl": "Ethereum Winst Calculator 2026",
+            "pl": "Kalkulator Zyskow Ethereum 2026",
+            "sv": "Ethereum Vinstkalkylator 2026",
+            "no": "Ethereum Gevinstkalkulator 2026",
+            "da": "Ethereum Gevinstberegner 2026",
+            "fi": "Ethereum Tuottolaskuri 2026"
+        },
+        "subtitles": {
+            "en": "Calculate your ETH trading profit and gas fees",
+            "es": "Calcula tus ganancias de trading con ETH",
+            "de": "Berechnen Sie Ihren ETH-Gewinn inkl. Gas",
+            "fr": "Calculez vos profits ETH et frais de gas",
+            "pt": "Calcule seu lucro ETH e taxas de gas",
+            "it": "Calcola profitti ETH e commissioni gas",
+            "nl": "Bereken ETH winst en gas kosten",
+            "pl": "Oblicz zysk ETH i oplaty gas",
+            "sv": "Berakna ETH-vinst och gasavgifter",
+            "no": "Beregn ETH-gevinst og gassavgifter",
+            "da": "Beregn ETH-gevinst og gasgebyrer",
+            "fi": "Laske ETH-voitto ja gas-kulut"
+        },
+        "overrides": {
+            "entryPrice": {
+                "default": 3200
+            },
+            "exitPrice": {
+                "default": 3800
+            },
+            "fees": {
+                "default": 25
+            }
+        }
+    },
+    {
+        "baseType": "crypto",
+        "id": "solana-profit",
+        "slugs": {
+            "en": "solana-profit-calculator",
+            "es": "calculadora-ganancias-solana",
+            "de": "solana-gewinnrechner",
+            "fr": "calculateur-profits-solana",
+            "pt": "calculadora-lucro-solana",
+            "it": "calcolatore-profitti-solana",
+            "nl": "solana-winst-calculator",
+            "pl": "kalkulator-zyskow-solana",
+            "sv": "solana-vinstkalkylator",
+            "no": "solana-gevinstkalkulator",
+            "da": "solana-gevinstberegner",
+            "fi": "solana-tuottolaskuri"
+        },
+        "titles": {
+            "en": "Solana Profit Calculator 2026 • SOL ROI",
+            "es": "Calculadora de Ganancias Solana 2026",
+            "de": "Solana Gewinnrechner 2026 • SOL ROI",
+            "fr": "Calculateur de Profits Solana 2026",
+            "pt": "Calculadora de Lucro Solana 2026",
+            "it": "Calcolatore Profitti Solana 2026",
+            "nl": "Solana Winst Calculator 2026",
+            "pl": "Kalkulator Zyskow Solana 2026",
+            "sv": "Solana Vinstkalkylator 2026",
+            "no": "Solana Gevinstkalkulator 2026",
+            "da": "Solana Gevinstberegner 2026",
+            "fi": "Solana Tuottolaskuri 2026"
+        },
+        "subtitles": {
+            "en": "Calculate your SOL trading profit with low fees",
+            "es": "Calcula tus ganancias SOL con bajas comisiones",
+            "de": "SOL-Gewinn mit niedrigen Gebuhren berechnen",
+            "fr": "Calculez vos profits SOL avec frais reduits",
+            "pt": "Calcule seu lucro SOL com taxas baixas",
+            "it": "Calcola profitti SOL con basse commissioni",
+            "nl": "Bereken SOL winst met lage kosten",
+            "pl": "Oblicz zysk SOL z niskimi oplatami",
+            "sv": "Berakna SOL-vinst med laga avgifter",
+            "no": "Beregn SOL-gevinst med lave avgifter",
+            "da": "Beregn SOL-gevinst med lave gebyrer",
+            "fi": "Laske SOL-voitto alhaisilla kuluilla"
+        },
+        "overrides": {
+            "entryPrice": {
+                "default": 180
+            },
+            "exitPrice": {
+                "default": 220
+            },
+            "fees": {
+                "default": 2
+            }
+        }
+    },
+    {
+        "baseType": "crypto",
+        "id": "xrp-profit",
+        "slugs": {
+            "en": "xrp-profit-calculator",
+            "es": "calculadora-ganancias-xrp",
+            "de": "xrp-gewinnrechner",
+            "fr": "calculateur-profits-xrp",
+            "pt": "calculadora-lucro-xrp",
+            "it": "calcolatore-profitti-xrp",
+            "nl": "xrp-winst-calculator",
+            "pl": "kalkulator-zyskow-xrp",
+            "sv": "xrp-vinstkalkylator",
+            "no": "xrp-gevinstkalkulator",
+            "da": "xrp-gevinstberegner",
+            "fi": "xrp-tuottolaskuri"
+        },
+        "titles": {
+            "en": "XRP Profit Calculator 2026 • Ripple ROI",
+            "es": "Calculadora de Ganancias XRP 2026",
+            "de": "XRP Gewinnrechner 2026 • Ripple ROI",
+            "fr": "Calculateur de Profits XRP 2026",
+            "pt": "Calculadora de Lucro XRP 2026",
+            "it": "Calcolatore Profitti XRP 2026",
+            "nl": "XRP Winst Calculator 2026",
+            "pl": "Kalkulator Zyskow XRP 2026",
+            "sv": "XRP Vinstkalkylator 2026",
+            "no": "XRP Gevinstkalkulator 2026",
+            "da": "XRP Gevinstberegner 2026",
+            "fi": "XRP Tuottolaskuri 2026"
+        },
+        "subtitles": {
+            "en": "Calculate your XRP/Ripple trading profit",
+            "es": "Calcula tus ganancias de trading con XRP",
+            "de": "Berechnen Sie Ihren XRP/Ripple-Gewinn",
+            "fr": "Calculez vos profits de trading XRP",
+            "pt": "Calcule seu lucro de trading XRP",
+            "it": "Calcola i tuoi profitti di trading XRP",
+            "nl": "Bereken uw XRP handelswinst",
+            "pl": "Oblicz swoj zysk z handlu XRP",
+            "sv": "Berakna din XRP-handelsvinst",
+            "no": "Beregn din XRP-handelsfortjeneste",
+            "da": "Beregn din XRP-handelsgevinst",
+            "fi": "Laske XRP-kaupan voittosi"
+        },
+        "overrides": {
+            "entryPrice": {
+                "default": 2.2,
+                "step": 0.01
+            },
+            "exitPrice": {
+                "default": 2.8,
+                "step": 0.01
+            },
+            "fees": {
+                "default": 5
+            }
+        }
+    },
+    {
+        "baseType": "crypto",
+        "id": "dogecoin-profit",
+        "slugs": {
+            "en": "dogecoin-profit-calculator",
+            "es": "calculadora-ganancias-dogecoin",
+            "de": "dogecoin-gewinnrechner",
+            "fr": "calculateur-profits-dogecoin",
+            "pt": "calculadora-lucro-dogecoin",
+            "it": "calcolatore-profitti-dogecoin",
+            "nl": "dogecoin-winst-calculator",
+            "pl": "kalkulator-zyskow-dogecoin",
+            "sv": "dogecoin-vinstkalkylator",
+            "no": "dogecoin-gevinstkalkulator",
+            "da": "dogecoin-gevinstberegner",
+            "fi": "dogecoin-tuottolaskuri"
+        },
+        "titles": {
+            "en": "Dogecoin Profit Calculator 2026 • DOGE ROI",
+            "es": "Calculadora de Ganancias Dogecoin 2026",
+            "de": "Dogecoin Gewinnrechner 2026 • DOGE ROI",
+            "fr": "Calculateur de Profits Dogecoin 2026",
+            "pt": "Calculadora de Lucro Dogecoin 2026",
+            "it": "Calcolatore Profitti Dogecoin 2026",
+            "nl": "Dogecoin Winst Calculator 2026",
+            "pl": "Kalkulator Zyskow Dogecoin 2026",
+            "sv": "Dogecoin Vinstkalkylator 2026",
+            "no": "Dogecoin Gevinstkalkulator 2026",
+            "da": "Dogecoin Gevinstberegner 2026",
+            "fi": "Dogecoin Tuottolaskuri 2026"
+        },
+        "subtitles": {
+            "en": "Calculate your DOGE meme coin profit and ROI",
+            "es": "Calcula tus ganancias de la meme coin DOGE",
+            "de": "DOGE Meme-Coin Gewinn berechnen",
+            "fr": "Calculez vos profits DOGE meme coin",
+            "pt": "Calcule seu lucro DOGE meme coin",
+            "it": "Calcola profitti DOGE meme coin",
+            "nl": "Bereken DOGE meme coin winst",
+            "pl": "Oblicz zysk DOGE meme coin",
+            "sv": "Berakna DOGE meme coin vinst",
+            "no": "Beregn DOGE meme coin gevinst",
+            "da": "Beregn DOGE meme coin gevinst",
+            "fi": "Laske DOGE meme coin voitto"
+        },
+        "overrides": {
+            "entryPrice": {
+                "default": 0.32,
+                "step": 0.01
+            },
+            "exitPrice": {
+                "default": 0.45,
+                "step": 0.01
+            },
+            "fees": {
+                "default": 3
+            }
+        }
+    },
+    {
+        "baseType": "mortgage",
+        "id": "heloc",
+        "slugs": {
+            "en": "heloc-calculator",
+            "es": "calculadora-heloc",
+            "de": "heloc-rechner",
+            "fr": "calculateur-heloc",
+            "pt": "calculadora-heloc",
+            "it": "calcolatore-heloc",
+            "nl": "heloc-calculator",
+            "pl": "kalkulator-heloc",
+            "sv": "heloc-kalkylator",
+            "no": "heloc-kalkulator",
+            "da": "heloc-beregner",
+            "fi": "heloc-laskuri"
+        },
+        "titles": {
+            "en": "HELOC Calculator 2026",
+            "es": "Calculadora HELOC 2026",
+            "de": "HELOC-Rechner 2026",
+            "fr": "Calculateur HELOC 2026",
+            "pt": "Calculadora HELOC 2026",
+            "it": "Calcolatore HELOC 2026",
+            "nl": "HELOC Calculator 2026",
+            "pl": "Kalkulator HELOC 2026",
+            "sv": "HELOC-kalkylator 2026",
+            "no": "HELOC-kalkulator 2026",
+            "da": "HELOC-beregner 2026",
+            "fi": "HELOC-laskuri 2026"
+        },
+        "subtitles": {
+            "en": "Home Equity Line of Credit payment estimator",
+            "es": "Estimador de línea de crédito con garantía hipotecaria",
+            "de": "Eigenheimkredit Zahlungsrechner",
+            "fr": "Estimateur de paiement ligne de crédit hypothécaire",
+            "pt": "Estimador de linha de crédito com garantia imobiliária",
+            "it": "Stimatore pagamento linea di credito ipotecario",
+            "nl": "Schatting eigen vermogen kredietlijn",
+            "pl": "Kalkulator linii kredytowej pod zastaw nieruchomości",
+            "sv": "Beräkning av bostadskredit",
+            "no": "Beregning av boliglån",
+            "da": "Beregning af boligkredit",
+            "fi": "Asuntoluoton laskuri"
+        },
+        "overrides": {
+            "rate": {
+                "default": 8.5,
+                "label": {
+                    "en": "HELOC Rate (%)",
+                    "es": "Tasa HELOC (%)",
+                    "de": "HELOC-Zinssatz (%)"
+                }
+            },
+            "principal": {
+                "default": 50000,
+                "label": {
+                    "en": "Credit Line Amount",
+                    "es": "Monto Línea de Crédito",
+                    "de": "Kreditlinienbetrag"
+                }
+            }
+        },
+        "metaDescription": {
+            "en": "Calculate HELOC payments instantly. Estimated monthly interest-only payments and repayment phase costs for Home Equity Lines of Credit.",
+            "es": "Calcula pagos de HELOC al instante. Estima pagos de solo intereses y fase de pago.",
+            "de": "HELOC-Zahlungen sofort berechnen. Geschätzte monatliche Zinszahlungen und Rückzahlungsphasenkosten."
+        },
+        "faqs": {
+            "en": [
+                { "q": "What is a HELOC?", "a": "A Home Equity Line of Credit (HELOC) is a revolving credit line secured by your home equity. Unlike a loan, you can borrow, repay, and borrow again during the draw period, paying interest only on what you use." },
+                { "q": "How does the Draw Period work?", "a": "During the draw period (typically 10 years), you can withdraw funds and often pay interest-only. After this ends, the repayment period begins (usually 20 years), and you must pay back both principal and interest." },
+                { "q": "HELOC vs Home Equity Loan?", "a": "A HELOC has variable rates and works like a credit card (borrow as needed). A Home Equity Loan provides a lump sum with a fixed interest rate and fixed monthly payments." },
+                { "q": "Are HELOC rates variable?", "a": "Yes, most HELOCs have variable interest rates tied to the Prime Rate. This means your monthly payment can fluctuate over time unless you find a lender offering a fixed-rate option." },
+                { "q": "Is HELOC interest tax deductible?", "a": "Under current law (through 2025), interest on home equity debt is tax-deductible only if the funds are used to buy, build, or substantially improve the taxpayer's home that secures the loan." }
+            ]
+        }
+    },
+    {
+        "baseType": "mortgage",
+        "id": "15-year-mortgage",
+        "slugs": {
+            "en": "15-year-mortgage-calculator",
+            "es": "calculadora-hipoteca-15-anos",
+            "de": "15-jahre-hypothekenrechner",
+            "fr": "calculateur-hypotheque-15-ans",
+            "pt": "calculadora-hipoteca-15-anos",
+            "it": "calcolatore-mutuo-15-anni",
+            "nl": "15-jaar-hypotheek-calculator",
+            "pl": "kalkulator-hipoteki-15-lat",
+            "sv": "15-ars-bolanekalkylator",
+            "no": "15-ars-boliglanskalkulator",
+            "da": "15-aars-realkredit-beregner",
+            "fi": "15-vuoden-asuntolaina-laskuri"
+        },
+        "titles": {
+            "en": "15-Year Mortgage Calculator",
+            "es": "Calculadora Hipoteca 15 Años",
+            "de": "15-Jahres-Hypothekenrechner",
+            "fr": "Calculateur Hypothèque 15 Ans",
+            "pt": "Calculadora Hipoteca 15 Anos",
+            "it": "Calcolatore Mutuo 15 Anni",
+            "nl": "15-Jarige Hypotheek Calculator",
+            "pl": "Kalkulator Hipoteki 15 Lat",
+            "sv": "15-årigt Bolånekalkylator",
+            "no": "15-års Boliglånskalkulator",
+            "da": "15-års Realkredit Beregner",
+            "fi": "15 Vuoden Asuntolaina Laskuri"
+        },
+        "subtitles": {
+            "en": "Compare savings vs 30-year mortgage",
+            "es": "Compara ahorros vs hipoteca de 30 años",
+            "de": "Vergleichen Sie Ersparnisse vs 30-Jahres-Hypothek",
+            "fr": "Comparez les économies vs hypothèque 30 ans",
+            "pt": "Compare economia vs hipoteca de 30 anos",
+            "it": "Confronta i risparmi vs mutuo 30 anni",
+            "nl": "Vergelijk besparing vs 30-jarige hypotheek",
+            "pl": "Porównaj oszczędności z hipoteką 30-letnią",
+            "sv": "Jämför besparingar vs 30-årigt bolån",
+            "no": "Sammenlign besparelser vs 30-års lån",
+            "da": "Sammenlign besparelse vs 30-årigt lån",
+            "fi": "Vertaa säästöjä 30 vuoden lainaan"
+        },
+        "overrides": {
+            "years": {
+                "default": 15,
+                "max": 15
+            }
+        }
+    },
+    {
+        "baseType": "mortgage",
+        "id": "biweekly-mortgage",
+        "slugs": {
+            "en": "biweekly-mortgage-calculator",
+            "es": "calculadora-hipoteca-quincenal",
+            "de": "zweiwochentliche-hypothekenrechner",
+            "fr": "calculateur-hypotheque-bimensuel",
+            "pt": "calculadora-hipoteca-quinzenal",
+            "it": "calcolatore-mutuo-bisettimanale",
+            "nl": "tweewekelijkse-hypotheek-calculator",
+            "pl": "kalkulator-hipoteki-dwutygodniowej",
+            "sv": "varannan-vecka-bolanekalkylator",
+            "no": "annenhver-uke-boliglanskalkulator",
+            "da": "hver-anden-uge-realkredit-beregner",
+            "fi": "kahden-viikon-asuntolaina-laskuri"
+        },
+        "titles": {
+            "en": "Biweekly Mortgage Calculator",
+            "es": "Calculadora Hipoteca Quincenal",
+            "de": "Zweiwöchentlicher Hypothekenrechner",
+            "fr": "Calculateur Hypothèque Bimensuel",
+            "pt": "Calculadora Hipoteca Quinzenal",
+            "it": "Calcolatore Mutuo Bisettimanale",
+            "nl": "Tweewekelijkse Hypotheek Calculator",
+            "pl": "Kalkulator Hipoteki Dwutygodniowej",
+            "sv": "Varannan-vecka Bolånekalkylator",
+            "no": "Annenhver-uke Boliglånskalkulator",
+            "da": "Hver-anden-uge Realkredit Beregner",
+            "fi": "Kahden Viikon Asuntolaina Laskuri"
+        },
+        "subtitles": {
+            "en": "Pay off your mortgage 4-6 years faster",
+            "es": "Paga tu hipoteca 4-6 años más rápido",
+            "de": "Bezahlen Sie Ihre Hypothek 4-6 Jahre schneller ab",
+            "fr": "Remboursez votre hypothèque 4-6 ans plus vite",
+            "pt": "Quite sua hipoteca 4-6 anos mais rápido",
+            "it": "Estingui il mutuo 4-6 anni prima",
+            "nl": "Betaal uw hypotheek 4-6 jaar sneller af",
+            "pl": "Spłać hipotekę 4-6 lat szybciej",
+            "sv": "Betala av ditt bolån 4-6 år snabbare",
+            "no": "Betal ned lånet 4-6 år raskere",
+            "da": "Betal dit lån af 4-6 år hurtigere",
+            "fi": "Maksa lainasi 4-6 vuotta nopeammin"
+        },
+        "overrides": {}
+    },
+    {
+        "baseType": "mortgage",
+        "id": "arm-mortgage",
+        "slugs": {
+            "en": "arm-mortgage-calculator",
+            "es": "calculadora-hipoteca-variable",
+            "de": "variable-hypothekenrechner",
+            "fr": "calculateur-hypotheque-taux-variable",
+            "pt": "calculadora-hipoteca-taxa-variavel",
+            "it": "calcolatore-mutuo-tasso-variabile",
+            "nl": "variabele-hypotheek-calculator",
+            "pl": "kalkulator-hipoteki-zmiennej",
+            "sv": "rorlig-ranta-bolanekalkylator",
+            "no": "flytende-rente-boliglanskalkulator",
+            "da": "variabel-rente-realkredit-beregner",
+            "fi": "vaihtuvakorkoinen-asuntolaina-laskuri"
+        },
+        "titles": {
+            "en": "ARM Mortgage Calculator",
+            "es": "Calculadora Hipoteca Tasa Variable",
+            "de": "Variable Hypothekenrechner",
+            "fr": "Calculateur Hypothèque Taux Variable",
+            "pt": "Calculadora Hipoteca Taxa Variável",
+            "it": "Calcolatore Mutuo Tasso Variabile",
+            "nl": "Variabele Hypotheek Calculator",
+            "pl": "Kalkulator Hipoteki Zmiennej",
+            "sv": "Rörlig Ränta Bolånekalkylator",
+            "no": "Flytende Rente Boliglånskalkulator",
+            "da": "Variabel Rente Realkredit Beregner",
+            "fi": "Vaihtuvakorkoinen Asuntolaina Laskuri"
+        },
+        "subtitles": {
+            "en": "5/1, 7/1, 10/1 Adjustable Rate Mortgage",
+            "es": "Hipoteca de tasa ajustable 5/1, 7/1, 10/1",
+            "de": "5/1, 7/1, 10/1 Anpassbare Hypothek",
+            "fr": "Hypothèque à taux ajustable 5/1, 7/1, 10/1",
+            "pt": "Hipoteca de taxa ajustável 5/1, 7/1, 10/1",
+            "it": "Mutuo a tasso variabile 5/1, 7/1, 10/1",
+            "nl": "5/1, 7/1, 10/1 Aanpasbare Hypotheek",
+            "pl": "Hipoteka o zmiennej stopie 5/1, 7/1, 10/1",
+            "sv": "5/1, 7/1, 10/1 Justerbar Ränta",
+            "no": "5/1, 7/1, 10/1 Justerbar Rente",
+            "da": "5/1, 7/1, 10/1 Justerbar Rente",
+            "fi": "5/1, 7/1, 10/1 Säädettävä Korko"
+        },
+        "overrides": {
+            "rate": {
+                "default": 5.5,
+                "label": {
+                    "en": "Initial ARM Rate (%)",
+                    "es": "Tasa Inicial ARM (%)",
+                    "de": "Anfänglicher ARM-Zinssatz (%)"
+                }
+            }
+        }
+    },
+    {
+        "baseType": "mortgage",
+        "id": "home-affordability",
+        "slugs": {
+            "en": "home-affordability-calculator",
+            "es": "calculadora-capacidad-compra-casa",
+            "de": "erschwinglichkeitsrechner",
+            "fr": "calculateur-capacite-achat",
+            "pt": "calculadora-capacidade-compra-imovel",
+            "it": "calcolatore-accessibilita-casa",
+            "nl": "betaalbaarheid-woning-calculator",
+            "pl": "kalkulator-zdolnosci-kredytowej",
+            "sv": "bostadsrad-kalkylator",
+            "no": "boligoverkommelighet-kalkulator",
+            "da": "boligoverkommelighed-beregner",
+            "fi": "asunnon-kohtuuhintaisuus-laskuri"
+        },
+        "titles": {
+            "en": "Home Affordability Calculator",
+            "es": "Calculadora Capacidad de Compra",
+            "de": "Erschwinglichkeitsrechner",
+            "fr": "Calculateur Capacité d'Achat",
+            "pt": "Calculadora Capacidade de Compra",
+            "it": "Calcolatore Accessibilità Casa",
+            "nl": "Betaalbaarheid Woning Calculator",
+            "pl": "Kalkulator Zdolności Kredytowej",
+            "sv": "Bostadsråd Kalkylator",
+            "no": "Boligoverkommelighet Kalkulator",
+            "da": "Boligoverkommelighed Beregner",
+            "fi": "Asunnon Kohtuuhintaisuus Laskuri"
+        },
+        "subtitles": {
+            "en": "How much house can you afford?",
+            "es": "¿Cuánta casa puedes pagar?",
+            "de": "Wie viel Haus können Sie sich leisten?",
+            "fr": "Quel montant pouvez-vous vous permettre?",
+            "pt": "Quanto de casa você pode pagar?",
+            "it": "Quanta casa puoi permetterti?",
+            "nl": "Hoeveel huis kunt u zich veroorloven?",
+            "pl": "Ile domu możesz sobie pozwolić?",
+            "sv": "Hur mycket bostad har du råd med?",
+            "no": "Hvor mye bolig har du råd til?",
+            "da": "Hvor meget bolig har du råd til?",
+            "fi": "Minkä hintaisen asunnon sinulla on varaa?"
+        },
+        "overrides": {}
+    },
+    {
+        "baseType": "mortgage",
+        "id": "dti",
+        "slugs": {
+            "en": "dti-calculator",
+            "es": "calculadora-dti",
+            "de": "dti-rechner",
+            "fr": "calculateur-dti",
+            "pt": "calculadora-dti",
+            "it": "calcolatore-dti",
+            "nl": "dti-calculator",
+            "pl": "kalkulator-dti",
+            "sv": "dti-kalkylator",
+            "no": "dti-kalkulator",
+            "da": "dti-beregner",
+            "fi": "dti-laskuri"
+        },
+        "titles": {
+            "en": "Debt-to-Income (DTI) Calculator",
+            "es": "Calculadora Deuda-Ingreso (DTI)",
+            "de": "Schulden-Einkommens-Verhältnis Rechner",
+            "fr": "Calculateur Ratio Endettement",
+            "pt": "Calculadora Dívida-Renda (DTI)",
+            "it": "Calcolatore Rapporto Debito-Reddito",
+            "nl": "Schuld-Inkomen Ratio Calculator",
+            "pl": "Kalkulator Wskaźnika Zadłużenia",
+            "sv": "Skuld-Inkomst Kalkylator",
+            "no": "Gjeld-Inntekt Kalkulator",
+            "da": "Gæld-Indkomst Beregner",
+            "fi": "Velka-Tulosuhde Laskuri"
+        },
+        "subtitles": {
+            "en": "Check if you qualify for a mortgage",
+            "es": "Verifica si calificas para una hipoteca",
+            "de": "Prüfen Sie Ihre Hypothekenberechtigung",
+            "fr": "Vérifiez votre éligibilité hypothécaire",
+            "pt": "Verifique se você se qualifica para hipoteca",
+            "it": "Verifica se ti qualifichi per un mutuo",
+            "nl": "Controleer of u in aanmerking komt",
+            "pl": "Sprawdź czy kwalifikujesz się na hipotekę",
+            "sv": "Kontrollera om du kvalificerar dig",
+            "no": "Sjekk om du kvalifiserer deg",
+            "da": "Tjek om du kvalificerer dig",
+            "fi": "Tarkista täytätkö vaatimukset"
+        },
+        "overrides": {}
+    },
+    {
+        "baseType": "mortgage",
+        "id": "closing-cost",
+        "slugs": {
+            "en": "closing-cost-calculator",
+            "es": "calculadora-costos-cierre",
+            "de": "abschlusskosten-rechner",
+            "fr": "calculateur-frais-cloture",
+            "pt": "calculadora-custos-fechamento",
+            "it": "calcolatore-costi-chiusura",
+            "nl": "sluitingskosten-calculator",
+            "pl": "kalkulator-kosztow-zamkniecia",
+            "sv": "avslutningskostnader-kalkylator",
+            "no": "avslutningskostnader-kalkulator",
+            "da": "afslutningsomkostninger-beregner",
+            "fi": "sulkemiskustannukset-laskuri"
+        },
+        "titles": {
+            "en": "Closing Cost Calculator",
+            "es": "Calculadora Costos de Cierre",
+            "de": "Abschlusskosten Rechner",
+            "fr": "Calculateur Frais de Clôture",
+            "pt": "Calculadora Custos de Fechamento",
+            "it": "Calcolatore Costi di Chiusura",
+            "nl": "Sluitingskosten Calculator",
+            "pl": "Kalkulator Kosztów Zamknięcia",
+            "sv": "Avslutningskostnader Kalkylator",
+            "no": "Avslutningskostnader Kalkulator",
+            "da": "Afslutningsomkostninger Beregner",
+            "fi": "Sulkemiskustannukset Laskuri"
+        },
+        "subtitles": {
+            "en": "Estimate fees for buying a home",
+            "es": "Estima costos para comprar una casa",
+            "de": "Schätzen Sie die Gebühren für den Hauskauf",
+            "fr": "Estimez les frais d'achat immobilier",
+            "pt": "Estime os custos de compra de imóvel",
+            "it": "Stima i costi per l'acquisto di una casa",
+            "nl": "Schat de kosten voor het kopen van een huis",
+            "pl": "Oszacuj koszty zakupu domu",
+            "sv": "Uppskatta avgifter för bostadsköp",
+            "no": "Anslå kostnader for boligkjøp",
+            "da": "Anslå omkostninger ved boligkøb",
+            "fi": "Arvioi asunnon ostokustannukset"
+        },
+        "overrides": {}
+    },
+    {
+        "baseType": "mortgage",
+        "id": "amortization",
+        "slugs": {
+            "en": "amortization-calculator",
+            "es": "calculadora-amortizacion",
+            "de": "tilgungsrechner",
+            "fr": "calculateur-amortissement",
+            "pt": "calculadora-amortizacao",
+            "it": "calcolatore-ammortamento",
+            "nl": "aflossing-calculator",
+            "pl": "kalkulator-amortyzacji",
+            "sv": "amortering-kalkylator",
+            "no": "amortisering-kalkulator",
+            "da": "afdrag-beregner",
+            "fi": "lyhennys-laskuri"
+        },
+        "titles": {
+            "en": "Amortization Calculator",
+            "es": "Calculadora de Amortización",
+            "de": "Tilgungsrechner",
+            "fr": "Calculateur d'Amortissement",
+            "pt": "Calculadora de Amortização",
+            "it": "Calcolatore di Ammortamento",
+            "nl": "Aflossing Calculator",
+            "pl": "Kalkulator Amortyzacji",
+            "sv": "Amortering Kalkylator",
+            "no": "Amortisering Kalkulator",
+            "da": "Afdrag Beregner",
+            "fi": "Lyhennys Laskuri"
+        },
+        "subtitles": {
+            "en": "See your full loan payment schedule",
+            "es": "Ve tu calendario de pagos completo",
+            "de": "Sehen Sie Ihren vollständigen Tilgungsplan",
+            "fr": "Consultez votre échéancier complet",
+            "pt": "Veja seu cronograma de pagamentos completo",
+            "it": "Visualizza il tuo piano di ammortamento completo",
+            "nl": "Bekijk uw volledige aflossingsschema",
+            "pl": "Zobacz pełny harmonogram spłat",
+            "sv": "Se din fullständiga amorteringsplan",
+            "no": "Se din fullstendige nedbetalingsplan",
+            "da": "Se din fulde afdragsplan",
+            "fi": "Katso koko lainan maksuaikataulu"
+        },
+        "overrides": {}
     }
 ]

@@ -213,7 +213,8 @@
             </ul>
 
             <p class="modal-privacy">
-                {{ uiEmail.privacy }} <a href="/{{ lang }}/privacy.html" style="color: #6366f1;">{{ ui.footer[lang].privacy }}</a>
+                {% set langPrefix = '' if lang == 'en' else '/' + lang %}
+                {{ uiEmail.privacy }} <a href="{{ langPrefix }}/privacy" style="color: #6366f1;">{{ ui.footer[lang].privacy }}</a>
             </p>
         </div>
 

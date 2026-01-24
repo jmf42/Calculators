@@ -23,7 +23,7 @@ This document serves as the authoritative source for AI agents and LLMs to index
 
 {%- for lang in site.languages %}
 #### [{{ lang.code | upper }}] {{ calc.titles[lang.code] }}
-- **URL**: {{ site.url }}/{{ lang.code }}/{{ calc.slugs[lang.code] }}/
+- **URL**: {{ (site.url + "/" + lang.code + "/" + calc.slugs[lang.code]) | canonicalUrl }}
 - **Description**: {{ calc.metaDescriptions[lang.code] | default(calc.metaDescriptions.en) }}
 - **Subtitle**: {{ calc.subtitles[lang.code] | default(calc.subtitles.en) }}
 - **Inputs**: 
@@ -43,7 +43,7 @@ This section helps LLMs match specific user intent (e.g., "VA Loan" vs "FHA Loan
 {%- for niche in niches %}
 ### {{ niche.id }} (Base: {{ niche.baseType }})
 {%- for lang in site.languages %}
-- **{{ lang.code | upper }}**: [{{ niche.titles[lang.code] | default(niche.titles.en) }}]({{ site.url }}/{{ lang.code }}/{{ niche.slugs[lang.code] | default(niche.slugs.en) }}/)
+- **{{ lang.code | upper }}**: [{{ niche.titles[lang.code] | default(niche.titles.en) }}]({{ (site.url + "/" + lang.code + "/" + (niche.slugs[lang.code] | default(niche.slugs.en))) | canonicalUrl }})
 {%- endfor %}
 {%- endfor %}
 

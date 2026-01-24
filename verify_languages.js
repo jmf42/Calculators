@@ -1,7 +1,7 @@
 const site = require('./_data/site.js');
 const calculators = require('./_data/calculators.js');
 const niches = require('./_data/niches.json');
-const ui = require('./_data/i18n/ui.json');
+const ui = require('./_data/ui.json');
 
 const languages = site.languages.map(l => l.code);
 console.log(`Verifying ${languages.length} languages: ${languages.join(', ')}`);

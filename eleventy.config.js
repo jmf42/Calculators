@@ -7,7 +7,43 @@ module.exports = function (eleventyConfig) {
         return String(value).replace(/\b2026\b/g, String(site.year));
     };
 
-    const buildCalcUrl = (lang, slug) => `${site.url}/${lang}/${slug}/`;
+    // Canonical URL format must match hosting behavior:
+    // - Firebase `cleanUrls: true` => no `.html`
+    // - Firebase `trailingSlash: false` => no trailing slash (except root)
+    const buildCalcUrl = (lang, slug) => `${site.url}/${lang}/${slug}`;
+
+    const canonicalizeUrl = (input) => {
+        if (input === null || input === undefined) return input;
+        const raw = String(input).trim();
+        if (!raw) return raw;
+
+        const absolute = raw.startsWith("http://") || raw.startsWith("https://")
+            ? raw
+            : site.url.replace(/\/$/, "") + (raw.startsWith("/") ? raw : `/${raw}`);
+
+        try {
+            const url = new URL(absolute);
+            url.search = "";
+            url.hash = "";
+
+            if (url.pathname.endsWith("/index.html")) {
+                url.pathname = url.pathname.slice(0, -"/index.html".length) || "/";
+            }
+            if (url.pathname.endsWith(".html")) {
+                url.pathname = url.pathname.slice(0, -".html".length) || "/";
+            }
+            if (url.pathname.length > 1 && url.pathname.endsWith("/")) {
+                url.pathname = url.pathname.slice(0, -1);
+            }
+            if (!url.pathname) {
+                url.pathname = "/";
+            }
+
+            return url.toString();
+        } catch {
+            return absolute;
+        }
+    };
 
     const buildAlternates = ({ lang, slug, alternateSlugs, isLocalizedVariant }) => {
         const alternates = {};
@@ -24,10 +60,129 @@ module.exports = function (eleventyConfig) {
         return alternates;
     };
 
+    const appCategoryMap = {
+        mortgage: "FinanceApplication",
+        loan: "FinanceApplication",
+        roi: "BusinessApplication",
+        wedding: "LifestyleApplication",
+        solar: "BusinessApplication",
+        flooring: "BusinessApplication",
+        roofing: "BusinessApplication"
+    };
+
+    const locationMetaSuffixes = {
+        en: {
+            cityMortgage: " Calculate for homes in {{city}}, {{region}}.",
+            city: " Calculate for {{city}}, {{region}}.",
+            state: " Updated for {{state}} mortgage rates, taxes, and insurance.",
+            country: " Updated for {{country}} with mortgage rates, taxes, and typical down payment."
+        },
+        es: {
+            cityMortgage: " Calcula para viviendas en {{city}}, {{region}}.",
+            city: " Calcula para {{city}}, {{region}}.",
+            state: " Actualizado para tasas, impuestos y seguros hipotecarios de {{state}}.",
+            country: " Actualizado para {{country}} con tasas hipotecarias, impuestos y pago inicial típicos."
+        },
+        de: {
+            cityMortgage: " Für Häuser in {{city}}, {{region}} berechnen.",
+            city: " Für {{city}}, {{region}} berechnen.",
+            state: " Aktualisiert für {{state}}-Hypothekenzinsen, Steuern und Versicherungen.",
+            country: " Aktualisiert für {{country}} mit Hypothekenzinsen, Steuern und typischer Anzahlung."
+        },
+        fr: {
+            cityMortgage: " Calculez pour des maisons à {{city}}, {{region}}.",
+            city: " Calculez pour {{city}}, {{region}}.",
+            state: " Mis à jour pour les taux, taxes et assurances hypothécaires de {{state}}.",
+            country: " Mis à jour pour {{country}} avec taux hypothécaires, taxes et apport typiques."
+        },
+        pt: {
+            cityMortgage: " Calcule para imóveis em {{city}}, {{region}}.",
+            city: " Calcule para {{city}}, {{region}}.",
+            state: " Atualizado para taxas, impostos e seguros de hipoteca de {{state}}.",
+            country: " Atualizado para {{country}} com taxas de hipoteca, impostos e entrada típica."
+        },
+        it: {
+            cityMortgage: " Calcola per case a {{city}}, {{region}}.",
+            city: " Calcola per {{city}}, {{region}}.",
+            state: " Aggiornato per tassi, imposte e assicurazioni ipotecarie di {{state}}.",
+            country: " Aggiornato per {{country}} con tassi ipotecari, imposte e anticipo tipici."
+        },
+        nl: {
+            cityMortgage: " Bereken voor woningen in {{city}}, {{region}}.",
+            city: " Bereken voor {{city}}, {{region}}.",
+            state: " Bijgewerkt voor hypotheekrentes, belastingen en verzekeringen van {{state}}.",
+            country: " Bijgewerkt voor {{country}} met hypotheekrentes, belastingen en typische aanbetaling."
+        },
+        pl: {
+            cityMortgage: " Oblicz dla domów w {{city}}, {{region}}.",
+            city: " Oblicz dla {{city}}, {{region}}.",
+            state: " Zaktualizowane o stawki, podatki i ubezpieczenia hipoteczne w {{state}}.",
+            country: " Zaktualizowane dla {{country}} z typowymi stopami hipotecznymi, podatkami i wkładem własnym."
+        },
+        sv: {
+            cityMortgage: " Beräkna för bostäder i {{city}}, {{region}}.",
+            city: " Beräkna för {{city}}, {{region}}.",
+            state: " Uppdaterat för {{state}}-bolåneräntor, skatter och försäkringar.",
+            country: " Uppdaterat för {{country}} med bolåneräntor, skatter och typisk kontantinsats."
+        },
+        no: {
+            cityMortgage: " Beregn for boliger i {{city}}, {{region}}.",
+            city: " Beregn for {{city}}, {{region}}.",
+            state: " Oppdatert for {{state}}-boliglånsrenter, skatter og forsikring.",
+            country: " Oppdatert for {{country}} med boliglånsrenter, skatter og typisk egenkapital."
+        },
+        da: {
+            cityMortgage: " Beregn for boliger i {{city}}, {{region}}.",
+            city: " Beregn for {{city}}, {{region}}.",
+            state: " Opdateret til {{state}}-boliglånsrenter, skatter og forsikringer.",
+            country: " Opdateret til {{country}} med boliglånsrenter, skatter og typisk udbetaling."
+        },
+        fi: {
+            cityMortgage: " Laske asunnoille paikassa {{city}}, {{region}}.",
+            city: " Laske {{city}}, {{region}}.",
+            state: " Päivitetty {{state}}-asuntolainakoroille, veroille ja vakuutuksille.",
+            country: " Päivitetty {{country}}-tyypillisille asuntolainakoroille, veroille ja käsirahalle."
+        }
+    };
+
+    const fillTemplate = (template, values) => {
+        if (!template) return "";
+        return template.replace(/\{\{(\w+)\}\}/g, (match, key) => values[key] || "");
+    };
+
+    const buildLocationMetaSuffix = ({ lang, type, location, stateData, countryData }) => {
+        const suffixes = locationMetaSuffixes[lang] || locationMetaSuffixes.en;
+        const fallback = locationMetaSuffixes.en;
+
+        if (location) {
+            const template = (type === "mortgage" ? suffixes.cityMortgage : suffixes.city)
+                || (type === "mortgage" ? fallback.cityMortgage : fallback.city)
+                || "";
+            return fillTemplate(template, {
+                city: location.name,
+                region: location.stateFull || location.state
+            });
+        }
+
+        if (stateData) {
+            const template = suffixes.state || fallback.state || "";
+            return fillTemplate(template, { state: stateData.name });
+        }
+
+        if (countryData) {
+            const template = suffixes.country || fallback.country || "";
+            return fillTemplate(template, { country: countryData.nameLocalized || countryData.name });
+        }
+
+        return "";
+    };
+
     // Copy static assets
     eleventyConfig.addPassthroughCopy("assets");
     eleventyConfig.addPassthroughCopy("assets/images");
-    eleventyConfig.addPassthroughCopy("robots.txt");
+
+    // Never publish internal agent workflows/configs
+    eleventyConfig.ignores.add(".agent/**");
 
     // Watch for changes
     eleventyConfig.addWatchTarget("_data/");
@@ -48,6 +203,17 @@ module.exports = function (eleventyConfig) {
         return translations[lang]?.[key] || translations['en']?.[key] || key;
     });
 
+    // Canonicalize URLs across templates/sitemap (cleanUrls + no trailing slash)
+    eleventyConfig.addFilter("canonicalUrl", function (value) {
+        return canonicalizeUrl(value);
+    });
+
+    // Add filter for formatting numbers
+    eleventyConfig.addFilter("formatNumber", function (value) {
+        if (!value) return "0";
+        return new Intl.NumberFormat('en-US').format(value);
+    });
+
     // Generate homepages for all languages
     eleventyConfig.addCollection("homePages", function (collectionApi) {
         const languages = site.languages.map(l => l.code);
@@ -59,8 +225,9 @@ module.exports = function (eleventyConfig) {
         const calculators = require("./_data/calculators.js");
         const niches = require("./_data/niches.json");
         const locations = require("./_data/locations.json");
-        const usStates = require("./_data/us-states.json");
+        const usStates = require("./_data/usStates.json");
         const countries = require("./_data/countries.json");
+        const contentMixins = require("./_data/contentMixins.js");
         const languages = site.languages.map(l => l.code);
         let pages = [];
 
@@ -68,33 +235,73 @@ module.exports = function (eleventyConfig) {
         const generateRichContent = (baseCalc, lang, location, stateData, countryData) => {
             let content = baseCalc.content?.[lang] || '';
 
-            // 1. If we have State Data (e.g. Texas Page), inject specific data points
-            if (stateData && lang === 'en') {
-                const taxRate = stateData.mortgage?.propertyTaxRate || '1.1';
-                const insurance = stateData.mortgage?.homeInsurance || '1200';
+            // Only enhance content for English programmatic pages (State/Location)
+            if (lang === 'en' && (stateData || location)) {
+                const mixinType = baseCalc.baseType === 'mortgage' ? 'mortgage' :
+                    baseCalc.baseType === 'loan' ? 'loan' : 'generic';
+                const mixins = contentMixins[mixinType] || contentMixins.generic;
 
-                // Templated Intro specific to State Pages
-                const stateIntros = [
-                    `<h2>Buying a Home in ${stateData.name}? Read This First.</h2><p>The real estate market in <strong>${stateData.name} (${stateData.abbr})</strong> has its own unique financial landscape. Unlike national averages, ${stateData.name} homeowners typically face a property tax rate of around <strong>${taxRate}%</strong>.</p>`,
-                    `<h2>The True Cost of Homeownership in ${stateData.name}</h2><p>Planning to buy in the ${stateData.name} area? It's critical to calculate more than just principal and interest. In ${stateData.name}, you need to account for specific property tax rates (avg. ${taxRate}%) and insurance premiums (avg. $${insurance}/year).</p>`,
-                    `<h2>${stateData.name} Mortgage Calculator: ${site.year} Edition</h2><p>Accurately estimating your monthly payments in ${stateData.name} requires local data. Our calculator renders a precise breakdown using ${stateData.name}'s specific average property tax of ${taxRate}%.</p>`
-                ];
+                const locName = stateData ? stateData.name : location.name;
+                const seed = locName.length; // Deterministic seed
 
-                // Randomly select an intro (deterministic based on name length to keep builds stable)
-                const index = stateData.name.length % stateIntros.length;
-                content = stateIntros[index] + content;
+                // Helper to pick mixin
+                const pickMixin = (arr, offset) => {
+                    const template = arr[(seed + offset) % arr.length];
+                    return template.replace(/\{\{location\}\}/g, locName)
+                        .replace(/\{\{year\}\}/g, site.year)
+                        .replace(/\{\{title\}\}/g, baseCalc.titles['en']);
+                };
+
+                const intro = pickMixin(mixins.intros, 0);
+                const marketCtx = pickMixin(mixins.marketContext, 1);
+                const closer = pickMixin(mixins.closers, 2);
+
+                // Specific Data Injection
+                let dataGraph = "";
+                if (baseCalc.baseType === 'mortgage' && stateData) {
+                    const tax = stateData.mortgage.propertyTaxRate;
+                    const insurance = stateData.mortgage.homeInsurance;
+                    dataGraph = `<p>Specific to <strong>${locName}</strong>, this calculator factors in the average property tax rate of <strong>${tax}%</strong> and annual home insurance of <strong>$${insurance}</strong>, which significantly affects your monthly payment.</p>`;
+                }
+
+                // Reassemble Content: Intro -> Data -> Original Content (truncated) -> Market -> Closer
+                // We keep some of the original content but wrap it
+                content = `
+                    <div class="generated-content">
+                        <h2>Buying in ${locName}?</h2>
+                        <p class="lead">${intro}</p>
+                        ${dataGraph}
+                        ${content}
+                        <h3>Local Market Context</h3>
+                        <p>${marketCtx}</p>
+                        <h3>Next Steps</h3>
+                        <p>${closer}</p>
+                    </div>
+                `;
             }
 
             // 2. Standard Replacements
             if (location && lang === 'en' && location.medianPrice) {
                 const median = new Intl.NumberFormat('en-US').format(location.medianPrice);
-                content += `<p>Local snapshot: The median home price in ${location.name}, ${location.state} is around $${median}.</p>`;
+                const downPayment = Math.round(location.medianPrice * 0.2);
+                const downPaymentFormatted = new Intl.NumberFormat('en-US').format(downPayment);
+                content += `<h2>${location.name} Home Price Snapshot</h2>`;
+                content += `<ul><li>Median home price: <strong>$${median}</strong></li><li>20% down payment example: <strong>$${downPaymentFormatted}</strong></li></ul>`;
             }
 
             const fallbackLocation = 'your area';
             const locName = location ? `${location.name}, ${location.state}` : (stateData ? stateData.name : (countryData ? countryData.nameLocalized : fallbackLocation));
             const city = location ? location.name : locName;
             const state = location ? location.state : (stateData ? stateData.name : (countryData ? countryData.nameLocalized : fallbackLocation));
+
+            // 3. Inject SEO Keywords for Reach - REMOVED (Handled in template now)
+            // const seoData = baseCalc.seo?.[lang] || baseCalc.seo?.['en'];
+            // if (seoData && (seoData.synonyms || seoData.relatedTerms)) {
+            //     const terms = [...(seoData.synonyms || []), ...(seoData.relatedTerms || [])].slice(0, 8);
+            //     if (terms.length > 0 && !content.includes('Common Searches')) {
+            //         content += `<div class="seo-terms"><h3>Common Searches</h3><ul>${terms.map(t => `<li>${t}</li>`).join('')}</ul></div>`;
+            //     }
+            // }
 
             return replaceYearTokens(content)
                 .replace(/{{location}}/g, locName)
@@ -103,7 +310,7 @@ module.exports = function (eleventyConfig) {
         };
 
         // Helper to create page object
-        const createPage = ({ type, lang, slug, title, subtitle, overrides, location = null, isNiche = false, localTips = null, localFaqs = null, currencySymbol = null, stateData = null, countryData = null, alternateSlugs = null }) => {
+        const createPage = ({ type, lang, slug, title, subtitle, overrides, location = null, isNiche = false, localTips = null, localFaqs = null, metaDescription = null, faqs = null, currencySymbol = null, stateData = null, countryData = null, alternateSlugs = null }) => {
             const baseCalc = calculators[type];
             let config = JSON.parse(JSON.stringify(baseCalc.config));
 
@@ -161,6 +368,23 @@ module.exports = function (eleventyConfig) {
                 }
             }
 
+            const resolvedCurrencyCode = countryData?.currency || config.currency?.[lang] || 'USD';
+            const resolvedLocaleCode = countryData?.locale || config.locale?.[lang] || 'en-US';
+            const resolvedCurrencySymbol = currencySymbol || countryData?.currencySymbol || null;
+
+            if (!config.currency) {
+                config.currency = {};
+            }
+            if (!config.locale) {
+                config.locale = {};
+            }
+
+            config.currency[lang] = resolvedCurrencyCode;
+            config.locale[lang] = resolvedLocaleCode;
+            if (resolvedCurrencySymbol) {
+                config.currencySymbol = resolvedCurrencySymbol;
+            }
+
             // Inject Language for Frontend JS
             config.lang = lang;
 
@@ -184,13 +408,29 @@ module.exports = function (eleventyConfig) {
                 slug: `mortgage-calculator-${s.slug}`
             })) : null;
 
-            const baseMeta = baseCalc.metaDescriptions?.[lang] || baseCalc.metaDescriptions?.['en'] || '';
-            const locationSuffix = location
-                ? (type === 'mortgage'
-                    ? ` Calculate for homes in ${location.name}, ${location.state}.`
-                    : ` Calculate for ${location.name}, ${location.state}.`)
-                : '';
-            const metaDescription = replaceYearTokens(`${baseMeta}${locationSuffix}`.trim());
+            // Only show featuredLocations for mortgage niches (since only mortgage has location pages)
+            const baseCalcType = calculators[type]?.baseType || type;
+            const featuredLocations = (lang === 'en' && isNiche && !location && !stateData && !countryData && baseCalcType === 'mortgage')
+                ? locations.filter(loc => loc.medianPrice).slice(0, 12).map(loc => ({
+                    name: loc.name,
+                    state: loc.state,
+                    slug: `${slug}-${loc.slug}`
+                }))
+                : null;
+
+            const baseMeta = metaDescription || baseCalc.metaDescription?.[lang] || baseCalc.metaDescription?.['en'] || baseCalc.metaDescriptions?.[lang] || baseCalc.metaDescriptions?.['en'] || '';
+            const locationSuffix = buildLocationMetaSuffix({
+                lang,
+                type,
+                location,
+                stateData,
+                countryData
+            });
+            const computedMetaDescription = replaceYearTokens(`${baseMeta}${locationSuffix}`.trim());
+            const seo = baseCalc.seo?.[lang] || baseCalc.seo?.en || null;
+            const baseFaqs = faqs || baseCalc.faqs?.[lang] || [];
+            const mergedFaqs = seo?.faqBoost ? baseFaqs.concat(seo.faqBoost) : baseFaqs;
+            const appCategory = appCategoryMap[type] || "UtilitiesApplication";
 
             return {
                 type: type,
@@ -198,21 +438,24 @@ module.exports = function (eleventyConfig) {
                 slug: slug,
                 title: replaceYearTokens(title),
                 subtitle: replaceYearTokens(subtitle),
-                metaDescription: metaDescription,
+                metaDescription: computedMetaDescription,
                 config: config,
                 content: generateRichContent(baseCalc, lang, location, stateData, countryData),
-                faqs: localFaqs || baseCalc.faqs?.[lang] || [],
+                faqs: mergedFaqs,
+                seo: seo,
                 location: location,
                 isNiche: isNiche,
                 localTips: localTips,
-                currencySymbol: currencySymbol,
+                currencySymbol: resolvedCurrencySymbol,
                 stateData: stateData,
                 countryData: countryData,
                 childNiches: childNiches,
                 relatedLocations: relatedLocations,
+                featuredLocations: featuredLocations,
                 canonicalUrl: canonicalUrl,
                 alternates: alternates,
-                lastmod: site.buildDate
+                lastmod: site.buildDate,
+                appCategory: appCategory
             };
         };
 
@@ -245,6 +488,8 @@ module.exports = function (eleventyConfig) {
                     slug: slug,
                     title: niche.titles?.[lang] || niche.titles?.['en'],
                     subtitle: niche.subtitles?.[lang] || niche.subtitles?.['en'],
+                    metaDescription: niche.metaDescription?.[lang] || niche.metaDescription?.['en'],
+                    faqs: niche.faqs?.[lang] || niche.faqs?.['en'],
                     overrides: niche.overrides,
                     isNiche: true,
                     alternateSlugs: niche.slugs
@@ -253,6 +498,9 @@ module.exports = function (eleventyConfig) {
                 // 3. Generate Niche x Location Pages (Only for English for now to save build time/space)
                 if (lang === 'en' && locations && locations.length > 0 && niche.baseType === 'mortgage') {
                     locations.forEach(loc => {
+                        if (!loc.medianPrice) {
+                            return;
+                        }
                         // e.g. /en/mortgage-calculator-austin-tx/
                         const locSlug = `${slug}-${loc.slug}`;
                         // e.g. "Mortgage Calculator Austin, TX"
@@ -333,7 +581,7 @@ module.exports = function (eleventyConfig) {
     if (process.env.NODE_ENV === 'production') {
         eleventyConfig.addTransform("htmlmin", function (content) {
             if (this.page.outputPath && this.page.outputPath.endsWith(".html")) {
-                let minified = require("html-minifier").minify(content, {
+                let minified = require("html-minifier-terser").minify(content, {
                     useShortDoctype: true,
                     removeComments: true,
                     collapseWhitespace: true

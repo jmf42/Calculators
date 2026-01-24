@@ -1,0 +1,120 @@
+---
+layout: layouts/legal.njk
+permalink: /en/solar-savings-by-state/index.html
+title: "Solar Panel ROI by State 2026"
+description: "Compare solar panel savings across all 50 US states. See sun hours, electricity rates, and payback periods."
+lang: en
+---
+
+<style>
+.comparison-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1.5rem 0; }
+.comparison-table th { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 10px 6px; text-align: left; position: sticky; top: 0; }
+.comparison-table td { padding: 8px 6px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.comparison-table tbody tr:hover { background: rgba(245,158,11,0.1); }
+.table-container { overflow-x: auto; max-height: 500px; overflow-y: auto; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); }
+.btn-small { display: inline-block; padding: 4px 8px; background: #f59e0b; color: white; border-radius: 4px; text-decoration: none; font-size: 0.75rem; }
+.highlight-excellent { color: #10b981; font-weight: 700; }
+.highlight-good { color: #22c55e; font-weight: 600; }
+.highlight-poor { color: #f59e0b; }
+.insights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0; }
+.insight-card { background: var(--surface); border-radius: 10px; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); }
+.insight-card.excellent { border-color: #10b981; }
+.insight-card.warning { border-color: #f59e0b; }
+.insight-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+.insight-card ol, .insight-card ul { margin: 0; padding-left: 1rem; font-size: 0.85rem; }
+.insight-card li { margin: 0.3rem 0; }
+.insight-card .small { font-size: 0.7rem; opacity: 0.7; margin-top: 0.5rem; }
+</style>
+
+<p>Solar panel ROI varies by state. <strong>Hawaii</strong> ($0.43/kWh electricity) sees 4-5 year payback, while states with cheap power like <strong>Louisiana</strong> ($0.11/kWh) see 12-15 year payback.</p>
+
+<div class="table-container">
+<table class="comparison-table">
+<thead>
+<tr>
+<th>State</th>
+<th>Peak Sun Hrs</th>
+<th>Electric Rate</th>
+<th>Annual Savings*</th>
+<th>Payback</th>
+<th>Calculator</th>
+</tr>
+</thead>
+<tbody>
+{% for stateKey, state in usStates %}
+{% if state.solar %}
+{% set annualProduction = state.solar.sunHours * 365 * 6 %}
+{% set annualSavings = annualProduction * state.solar.electricRate %}
+{% set systemCost = 18000 * 0.7 %}
+{% set payback = systemCost / annualSavings %}
+<tr>
+<td><strong>{{ state.name }}</strong></td>
+<td>{{ state.solar.sunHours }} hrs</td>
+<td>${{ state.solar.electricRate }}</td>
+<td>${{ annualSavings | round | formatNumber }}</td>
+<td class="{% if payback < 7 %}highlight-excellent{% elif payback < 10 %}highlight-good{% elif payback > 14 %}highlight-poor{% endif %}">{{ payback | round(1) }} yrs</td>
+<td><a href="/en/solar-panel-calculator-{{ state.slug }}/" class="btn-small">Calc →</a></td>
+</tr>
+{% endif %}
+{% endfor %}
+</tbody>
+</table>
+</div>
+<p style="font-size: 0.8rem; color: var(--text-muted);">*Based on 6kW system with 30% federal tax credit.</p>
+
+<div class="insights-grid">
+<div class="insight-card excellent">
+<h3>🌟 Best States for Solar</h3>
+<ol>
+<li><strong>Hawaii</strong> — 4-5 yrs</li>
+<li><strong>California</strong> — 6-7 yrs</li>
+<li><strong>Massachusetts</strong> — 6-7 yrs</li>
+<li><strong>New York</strong> — 7-8 yrs</li>
+<li><strong>Connecticut</strong> — 7-8 yrs</li>
+</ol>
+<p class="small">High rates + incentives = fast ROI</p>
+</div>
+<div class="insight-card">
+<h3>☀️ Most Sunshine</h3>
+<ol>
+<li><strong>Arizona</strong> — 6.5 hrs/day</li>
+<li><strong>Nevada</strong> — 6.0 hrs</li>
+<li><strong>New Mexico</strong> — 6.0 hrs</li>
+<li><strong>California</strong> — 5.5 hrs</li>
+<li><strong>Utah</strong> — 5.5 hrs</li>
+</ol>
+</div>
+<div class="insight-card">
+<h3>💸 Highest Electric Rates</h3>
+<ol>
+<li><strong>Hawaii</strong> — $0.43/kWh</li>
+<li><strong>Rhode Island</strong> — $0.23</li>
+<li><strong>Connecticut</strong> — $0.22</li>
+<li><strong>Alaska</strong> — $0.22</li>
+<li><strong>Massachusetts</strong> — $0.22</li>
+</ol>
+</div>
+<div class="insight-card warning">
+<h3>⏳ Longest Payback</h3>
+<ol>
+<li><strong>Washington</strong> — 14+ yrs</li>
+<li><strong>Oregon</strong> — 13+ yrs</li>
+<li><strong>Idaho</strong> — 13+ yrs</li>
+<li><strong>Kentucky</strong> — 13+ yrs</li>
+<li><strong>Louisiana</strong> — 12+ yrs</li>
+</ol>
+<p class="small">Low rates = slower ROI</p>
+</div>
+</div>
+
+<h2>Key Factors for Solar ROI</h2>
+<ul>
+<li><strong>Electricity Rate:</strong> Higher = more savings. States over $0.15/kWh see excellent ROI.</li>
+<li><strong>Sun Hours:</strong> More sun = more production. Even cloudy states work with high rates.</li>
+<li><strong>Federal Tax Credit:</strong> 30% ITC applies everywhere through 2032.</li>
+<li><strong>State Incentives:</strong> SC (25%), IA (15%), NM (10%) stack on federal.</li>
+<li><strong>Net Metering:</strong> Full retail rate (CA, MA, NJ) maximizes savings.</li>
+</ul>
+
+<h2>2026 Federal Solar Tax Credit</h2>
+<p>The 30% Investment Tax Credit (ITC) on system cost runs through 2032. On a $20K system, that's $6K credit.</p>

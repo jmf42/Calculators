@@ -1,0 +1,106 @@
+---
+layout: layouts/legal.njk
+permalink: /en/mortgage-rates-by-state/index.html
+title: "Mortgage Costs by State 2026"
+description: "Compare property tax rates, home insurance costs, and median home prices across all 50 US states."
+lang: en
+---
+
+<style>
+.comparison-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1.5rem 0; }
+.comparison-table th { background: var(--primary); color: white; padding: 10px 6px; text-align: left; position: sticky; top: 0; cursor: pointer; }
+.comparison-table th:hover { filter: brightness(1.2); }
+.comparison-table td { padding: 8px 6px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.comparison-table tbody tr:hover { background: rgba(99,102,241,0.1); }
+.table-container { overflow-x: auto; max-height: 500px; overflow-y: auto; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); }
+.btn-small { display: inline-block; padding: 4px 8px; background: var(--primary); color: white; border-radius: 4px; text-decoration: none; font-size: 0.75rem; }
+.highlight-good { color: #10b981; font-weight: 600; }
+.insights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0; }
+.insight-card { background: var(--surface); border-radius: 10px; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); }
+.insight-card h3 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--primary); }
+.insight-card ol, .insight-card ul { margin: 0; padding-left: 1rem; font-size: 0.85rem; }
+.insight-card li { margin: 0.3rem 0; }
+.insight-card .small { font-size: 0.7rem; opacity: 0.7; margin-top: 0.5rem; }
+</style>
+
+<p>Location dramatically affects your total mortgage costs. A $400,000 home in <strong>Texas</strong> costs $7,200/year in property taxes (1.8%), while the same home in <strong>Hawaii</strong> costs just $1,120/year (0.28%).</p>
+
+<div class="table-container">
+<table class="comparison-table" id="statesTable">
+<thead>
+<tr>
+<th>State</th>
+<th>Median Price</th>
+<th>Property Tax</th>
+<th>Annual Tax ($400K)</th>
+<th>Insurance</th>
+<th>Income Tax?</th>
+<th>Calculator</th>
+</tr>
+</thead>
+<tbody>
+{% for stateKey, state in usStates %}
+<tr>
+<td><strong>{{ state.name }}</strong></td>
+<td>${{ state.mortgage.medianPrice | formatNumber }}</td>
+<td>{{ state.mortgage.propertyTaxRate }}%</td>
+<td>${{ (400000 * state.mortgage.propertyTaxRate / 100) | round | formatNumber }}</td>
+<td>${{ state.mortgage.homeInsurance | formatNumber }}</td>
+<td>{% if state.mortgage.hasStateIncomeTax %}Yes{% else %}<span class="highlight-good">No</span>{% endif %}</td>
+<td><a href="/en/mortgage-calculator-{{ state.slug }}/" class="btn-small">Calc →</a></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+
+<div class="insights-grid">
+<div class="insight-card">
+<h3>🏆 Lowest Property Taxes</h3>
+<ol>
+<li><strong>Hawaii</strong> — 0.28%</li>
+<li><strong>Alabama</strong> — 0.41%</li>
+<li><strong>Louisiana</strong> — 0.55%</li>
+<li><strong>Delaware</strong> — 0.57%</li>
+<li><strong>South Carolina</strong> — 0.57%</li>
+</ol>
+</div>
+<div class="insight-card">
+<h3>⚠️ Highest Property Taxes</h3>
+<ol>
+<li><strong>New Jersey</strong> — 2.49%</li>
+<li><strong>Illinois</strong> — 2.27%</li>
+<li><strong>New Hampshire</strong> — 2.18%</li>
+<li><strong>Connecticut</strong> — 2.15%</li>
+<li><strong>Vermont</strong> — 1.90%</li>
+</ol>
+</div>
+<div class="insight-card">
+<h3>💰 No State Income Tax</h3>
+<ul>
+<li>Alaska, Florida, Nevada</li>
+<li>South Dakota, Texas</li>
+<li>Washington, Wyoming</li>
+<li>Tennessee (phased out)</li>
+<li>New Hampshire (div only)</li>
+</ul>
+</div>
+<div class="insight-card">
+<h3>🏠 Most Affordable</h3>
+<ol>
+<li><strong>West Virginia</strong> — $160K</li>
+<li><strong>Mississippi</strong> — $175K</li>
+<li><strong>Arkansas</strong> — $195K</li>
+<li><strong>Iowa</strong> — $200K</li>
+<li><strong>Oklahoma</strong> — $200K</li>
+</ol>
+</div>
+</div>
+
+<h2>How to Use This Data</h2>
+<p>When comparing mortgage costs across states, consider the <strong>total cost of ownership</strong>—not just home price:</p>
+<ul>
+<li><strong>Property Tax:</strong> Paid annually on assessed value. Rates: 0.28% (Hawaii) to 2.49% (New Jersey).</li>
+<li><strong>Home Insurance:</strong> Required by lenders. Coastal states cost $2,000-3,500/yr vs. $900-1,200/yr elsewhere.</li>
+<li><strong>State Income Tax:</strong> 9 states have none, but often have higher property/sales taxes.</li>
+</ul>

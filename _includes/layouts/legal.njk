@@ -3,16 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }} - {{ site.name }}</title>
+    <title>{{ title | escape }} - {{ site.name | escape }}</title>
     {% set currentLang = lang | default('en') %}
-    <meta name="description" content="{{ description | default(ui.footer[currentLang].privacy | default('Privacy') + ' - ' + site.name) }}">
+    <meta name="description" content="{{ (description | default(ui.footer[currentLang].privacy | default('Privacy') + ' - ' + site.name)) | escape }}">
     {% set legalSlug = page.fileSlug %}
-    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    {% set canonicalLegalUrl = (site.url + page.url) | canonicalUrl %}
+    <link rel="canonical" href="{{ canonicalLegalUrl }}">
     {%- for langItem in site.languages %}
-    <link rel="alternate" hreflang="{{ langItem.code }}" href="{{ site.url }}{% if langItem.code == site.defaultLang %}/{% else %}/{{ langItem.code }}/{% endif %}{{ legalSlug }}.html">
+    {% set altLegalPath = '/' + legalSlug if langItem.code == site.defaultLang else '/' + langItem.code + '/' + legalSlug %}
+    <link rel="alternate" hreflang="{{ langItem.code }}" href="{{ (site.url + altLegalPath) | canonicalUrl }}">
     {%- endfor %}
-    <link rel="alternate" hreflang="x-default" href="{{ site.url }}/{{ legalSlug }}.html">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+    <link rel="alternate" hreflang="x-default" href="{{ (site.url + '/' + legalSlug) | canonicalUrl }}">
+    <link rel="icon" type="image/png" href="/assets/images/logo_calculator.png">
+    <link rel="apple-touch-icon" href="/assets/images/logo_calculator.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ canonicalLegalUrl }}">
+    <meta property="og:title" content="{{ (title ~ ' - ' ~ site.name) | escape }}">
+    <meta property="og:description" content="{{ (description | default(ui.footer[currentLang].privacy | default('Privacy') + ' - ' + site.name)) | escape }}">
+    <meta property="og:site_name" content="{{ site.name | escape }}">
+    <meta property="og:image" content="{{ site.url }}/assets/images/og-image.png">
+    <meta property="og:image:alt" content="{{ site.name | escape }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ (title ~ ' - ' ~ site.name) | escape }}">
+    <meta name="twitter:description" content="{{ (description | default(ui.footer[currentLang].privacy | default('Privacy') + ' - ' + site.name)) | escape }}">
+    <meta name="twitter:image" content="{{ site.url }}/assets/images/og-image.png">
+    <meta name="twitter:image:alt" content="{{ site.name | escape }}">
+    <link rel="manifest" href="/assets/site.webmanifest">
+    <meta name="theme-color" content="#6366f1">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -52,13 +70,31 @@
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            font-weight: 850;
+            text-decoration: none;
+            letter-spacing: -0.03em;
+            color: var(--text);
+        }
+
+        .logo-mark {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.10), 0 10px 30px rgba(0, 0, 0, 0.35);
+            flex: 0 0 auto;
+        }
+
+        .logo-type {
+            line-height: 1;
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-decoration: none;
+            filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.22));
         }
 
         .back-link {
@@ -117,8 +153,11 @@
 
     <nav>
         <div class="container">
-            <a href="{% if currentLang == 'en' %}/{% else %}/{{ currentLang }}/{% endif %}" class="logo">{{ site.name }}</a>
-            <a href="{% if currentLang == 'en' %}/{% else %}/{{ currentLang }}/{% endif %}" class="back-link">{{ ui.footer[currentLang].backToHome }}</a>
+            <a href="{% if currentLang == 'en' %}/{% else %}/{{ currentLang }}{% endif %}" class="logo">
+                <img class="logo-mark" src="/assets/images/logo_calculator.png" alt="" aria-hidden="true" style="width: 32px; height: 32px;">
+                <span class="logo-type">{{ site.name }}</span>
+            </a>
+            <a href="{% if currentLang == 'en' %}/{% else %}/{{ currentLang }}{% endif %}" class="back-link">{{ ui.footer[currentLang].backToHome }}</a>
         </div>
     </nav>
 

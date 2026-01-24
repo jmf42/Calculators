@@ -6,8 +6,8 @@ pagination:
 layout: layouts/legal.njk
 title: Privacy Policy
 permalink: "/{% if langItem.code != 'en' %}{{ langItem.code }}/{% endif %}privacy.html"
-lang: "{{ langItem.code }}"
 ---
+{% set lang = langItem.code %}
 {% set uiLegal = ui.legal[lang] %}
 {% set uiFooter = ui.footer[lang] %}
 {% set pageTitle = uiLegal.privacyTitle %}
@@ -70,4 +70,4 @@ lang: "{{ langItem.code }}"
 <p>{{ uiPrivacy.changesText[lang] }}</p>
 
 <h2>{{ uiPrivacy.contactTitle[lang] }}</h2>
-<p>{{ uiPrivacy.contactText[lang] }} <a href="mailto:hello@calc-kit.com">hello@calc-kit.com</a></p>
+<p>{{ uiPrivacy.contactText[lang] }} <a href="mailto:worthit.tuliai@gmail.com">worthit.tuliai@gmail.com</a></p>

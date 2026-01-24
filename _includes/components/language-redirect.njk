@@ -24,7 +24,7 @@
         
         // 3. Handle redirection
         if (targetLang && targetLang !== currentLang && supportedLangs.includes(targetLang)) {
-            const redirectUrl = targetLang === defaultLang ? '/' : '/' + targetLang + '/';
+            const redirectUrl = targetLang === defaultLang ? '/' : '/' + targetLang;
             if (redirectUrl && redirectUrl !== window.location.href) {
                 window.location.href = redirectUrl;
             }

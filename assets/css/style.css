@@ -7,9 +7,12 @@
     --primary-glow-intense: rgba(99, 102, 241, 0.9);
 
     /* Accent Colors - Neon Vibes */
-    --accent-purple: #bd5cf9; /* Brighter Purple */
-    --accent-pink: #f43f5e;   /* Rose */
-    --accent-cyan: #06b6d4;   /* Cyan */
+    --accent-purple: #bd5cf9;
+    /* Brighter Purple */
+    --accent-pink: #f43f5e;
+    /* Rose */
+    --accent-cyan: #06b6d4;
+    /* Cyan */
     --success: #10b981;
     --warning: #f59e0b;
     --error: #ef4444;
@@ -27,10 +30,10 @@
     --text-dim: #64748b;
 
     /* Gradients - Electric */
-    --gradient: linear-gradient(135deg, #6366f1 0%, #bd5cf9 50%, #f43f5e 100%);
-    --gradient-text: linear-gradient(135deg, #818cf8 0%, #d8b4fe 50%, #fca5a5 100%);
-    --gradient-subtle: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(189, 92, 249, 0.1) 100%);
-    --gradient-mesh: 
+    --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+    --gradient-text: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
+    --gradient-subtle: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.1) 100%);
+    --gradient-mesh:
         radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.15), transparent 25%),
         radial-gradient(circle at 85% 30%, rgba(244, 63, 94, 0.1), transparent 25%);
 
@@ -81,7 +84,8 @@ body::before {
 }
 
 .container {
-    max-width: 900px; /* Slightly wider for modern feel */
+    max-width: 900px;
+    /* Slightly wider for modern feel */
     margin: 0 auto;
     padding: 0 24px;
     position: relative;
@@ -108,15 +112,30 @@ body::before {
 }
 
 .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     font-size: 24px;
     font-weight: 800;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
     text-decoration: none;
     letter-spacing: -0.03em;
     filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.3));
+}
+
+.logo-mark {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    object-fit: contain;
+    flex: 0 0 auto;
+}
+
+.logo-type {
+    line-height: 1;
+    background: linear-gradient(135deg, white 0%, #a5b4fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* Hero Section */
@@ -177,10 +196,44 @@ body::before {
 .calculator-wrapper {
     background: var(--surface);
     border-radius: 24px;
-    padding: 2px; /* For border gradient */
+    padding: 2px;
+    /* For border gradient */
     position: relative;
     box-shadow: var(--shadow-neon);
     background-image: linear-gradient(145deg, rgba(99, 102, 241, 0.3), rgba(189, 92, 249, 0.1));
+}
+
+.utility-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.back-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.back-nav svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+}
+
+.back-nav:hover {
+    color: var(--text);
+    border-color: rgba(129, 140, 248, 0.5);
+    background: rgba(99, 102, 241, 0.12);
 }
 
 #calculator-container {
@@ -229,8 +282,15 @@ body::before {
 }
 
 @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Content & FAQs */
@@ -316,7 +376,312 @@ body::before {
 }
 
 /* Responsive */
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--gradient);
+    color: white;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(189, 92, 249, 0.5);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Nav Button Icon Fix */
+.nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.nav-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+}
+
+.nav-btn:hover {
+    color: var(--text);
+    border-color: rgba(129, 140, 248, 0.5);
+    background: rgba(99, 102, 241, 0.12);
+}
+
 @media (max-width: 600px) {
-    .hero h1 { font-size: 36px; }
-    .smart-cta-btn { width: 100%; justify-content: center; }
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .smart-cta-btn,
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Related Tools */
+.related-tools-section {
+    padding-top: 40px;
+}
+
+.section-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+
+.section-header h2 {
+    margin-bottom: 0;
+}
+
+.section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    color: var(--accent-cyan);
+    background: rgba(6, 182, 212, 0.12);
+    border: 1px solid rgba(6, 182, 212, 0.2);
+    width: fit-content;
+}
+
+.related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.related-card {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 20px 22px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    text-decoration: none;
+    color: var(--text);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.related-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.16), transparent 45%),
+        radial-gradient(circle at 90% 0%, rgba(244, 63, 94, 0.12), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.related-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(129, 140, 248, 0.5);
+    box-shadow: var(--shadow-md);
+}
+
+.related-card:hover::before {
+    opacity: 1;
+}
+
+.related-card-content {
+    position: relative;
+    z-index: 1;
+}
+
+.related-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.related-card p {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.related-card-arrow {
+    position: relative;
+    z-index: 1;
+    font-size: 20px;
+    color: var(--primary-light);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.related-card:hover .related-card-arrow {
+    transform: translateX(4px);
+    color: var(--accent-pink);
+}
+
+/* Mesh Links */
+.mesh-links-section {
+    padding: 56px 0;
+    background: linear-gradient(180deg, rgba(3, 5, 8, 0) 0%, rgba(15, 23, 42, 0.7) 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.mesh-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+.mesh-card {
+    position: relative;
+    padding: 22px;
+    border-radius: 18px;
+    background: rgba(17, 23, 41, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+.mesh-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 85% 15%, rgba(99, 102, 241, 0.18), transparent 45%);
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.mesh-title {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    color: var(--text);
+}
+
+.mesh-icon {
+    font-size: 18px;
+    filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.6));
+}
+
+.mesh-list {
+    position: relative;
+    z-index: 1;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 10px;
+}
+
+.mesh-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.mesh-link:hover {
+    color: var(--text);
+    background: rgba(99, 102, 241, 0.14);
+    transform: translateX(2px);
+}
+
+.mesh-link-arrow {
+    color: var(--primary-light);
+    font-size: 16px;
+}
+
+.mesh-pill-list {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.mesh-pill {
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    font-size: 13px;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.mesh-pill:hover {
+    background: rgba(99, 102, 241, 0.2);
+    color: var(--text);
+    border-color: rgba(99, 102, 241, 0.35);
+}
+
+@media (max-width: 700px) {
+    .related-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .related-card-arrow {
+        align-self: flex-end;
+    }
+
+    .mesh-grid {
+        grid-template-columns: 1fr;
+    }
 }
