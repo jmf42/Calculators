@@ -18,6 +18,7 @@ async function build() {
             entryPoints: [
                 'assets/js/calculator.js',
                 'assets/js/analytics.js',
+                'assets/js/geo-detect.js',
                 'assets/css/style.css'
             ],
             entryNames: isProd ? '[dir]/[name].[hash]' : '[dir]/[name]',
@@ -68,6 +69,7 @@ async function build() {
             const manifest = {
                 "calculator.js": "calculator.js",
                 "analytics.js": "analytics.js",
+                "geo-detect.js": "geo-detect.js",
                 "style.css": "style.css"
             };
             const dataDir = path.resolve(__dirname, '../_data');

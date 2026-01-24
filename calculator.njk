@@ -809,7 +809,7 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     </script>
     
     <!-- Geo-Detection: Automatically show local market insights based on user location -->
-    <script src="/assets/js/geo-detect.js" defer></script>
+    <script src="/assets/js/{{ manifest['geo-detect.js'] | default('geo-detect.js') }}" defer></script>
     
     {% include "components/cookie-banner.njk" %}
 </body>
