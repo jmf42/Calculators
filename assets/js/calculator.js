@@ -99,6 +99,12 @@ class CalcKitCalculator extends HTMLElement {
     }
 
     render() {
+        // Destroy existing chart to prevent memory leaks and ensure clean re-render of canvas
+        if (this.chart) {
+            this.chart.destroy();
+            this.chart = null;
+        }
+
         const styles = this.getStyles();
         const html = this.getHTML();
 
