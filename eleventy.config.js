@@ -233,75 +233,80 @@ module.exports = function (eleventyConfig) {
 
         // [CONTENT PERMUTATOR] Engine to generate unique text
         const generateRichContent = (baseCalc, lang, location, stateData, countryData) => {
-            let content = baseCalc.content?.[lang] || '';
-
-            // Only enhance content for English programmatic pages (State/Location)
-            if (lang === 'en' && (stateData || location)) {
-                const mixinType = baseCalc.baseType === 'mortgage' ? 'mortgage' :
-                    baseCalc.baseType === 'loan' ? 'loan' : 'generic';
-                const mixins = contentMixins[mixinType] || contentMixins.generic;
-
-                const locName = stateData ? stateData.name : location.name;
-                const seed = locName.length; // Deterministic seed
-
-                // Helper to pick mixin
-                const pickMixin = (arr, offset) => {
-                    const template = arr[(seed + offset) % arr.length];
-                    return template.replace(/\{\{location\}\}/g, locName)
-                        .replace(/\{\{year\}\}/g, site.year)
-                        .replace(/\{\{title\}\}/g, baseCalc.titles['en']);
-                };
-
-                const intro = pickMixin(mixins.intros, 0);
-                const marketCtx = pickMixin(mixins.marketContext, 1);
-                const closer = pickMixin(mixins.closers, 2);
-
-                // Specific Data Injection
-                let dataGraph = "";
-                if (baseCalc.baseType === 'mortgage' && stateData) {
-                    const tax = stateData.mortgage.propertyTaxRate;
-                    const insurance = stateData.mortgage.homeInsurance;
-                    dataGraph = `<p>Specific to <strong>${locName}</strong>, this calculator factors in the average property tax rate of <strong>${tax}%</strong> and annual home insurance of <strong>$${insurance}</strong>, which significantly affects your monthly payment.</p>`;
-                }
-
-                // Reassemble Content: Intro -> Data -> Original Content (truncated) -> Market -> Closer
-                // We keep some of the original content but wrap it
-                content = `
-                    <div class="generated-content">
-                        <h2>Buying in ${locName}?</h2>
-                        <p class="lead">${intro}</p>
-                        ${dataGraph}
-                        ${content}
-                        <h3>Local Market Context</h3>
-                        <p>${marketCtx}</p>
-                        <h3>Next Steps</h3>
-                        <p>${closer}</p>
-                    </div>
-                `;
-            }
-
-            // 2. Standard Replacements
-            if (location && lang === 'en' && location.medianPrice) {
-                const median = new Intl.NumberFormat('en-US').format(location.medianPrice);
-                const downPayment = Math.round(location.medianPrice * 0.2);
-                const downPaymentFormatted = new Intl.NumberFormat('en-US').format(downPayment);
-                content += `<h2>${location.name} Home Price Snapshot</h2>`;
-                content += `<ul><li>Median home price: <strong>$${median}</strong></li><li>20% down payment example: <strong>$${downPaymentFormatted}</strong></li></ul>`;
+            // Handle content as an object (localized) or string (fallback to English)
+            let content = '';
+            if (typeof baseCalc.content === 'object') {
+                content = baseCalc.content[lang] || baseCalc.content['en'] || '';
+            } else {
+                content = (lang === 'en') ? (baseCalc.content || '') : '';
             }
 
             const fallbackLocation = 'your area';
-            const locName = location ? `${location.name}, ${location.state}` : (stateData ? stateData.name : (countryData ? countryData.nameLocalized : fallbackLocation));
+            const locName = location ? `${location.name}, ${location.state}` : (stateData ? stateData.name : (countryData ? (countryData.nameLocalized || countryData.name) : fallbackLocation));
             const city = location ? location.name : locName;
-            const state = location ? location.state : (stateData ? stateData.name : (countryData ? countryData.nameLocalized : fallbackLocation));
+            const state = location ? location.state : (stateData ? stateData.name : (countryData ? (countryData.nameLocalized || countryData.name) : fallbackLocation));
 
-            // 3. Inject SEO Keywords for Reach - REMOVED (Handled in template now)
-            // const seoData = baseCalc.seo?.[lang] || baseCalc.seo?.['en'];
-            // if (seoData && (seoData.synonyms || seoData.relatedTerms)) {
-            //     const terms = [...(seoData.synonyms || []), ...(seoData.relatedTerms || [])].slice(0, 8);
-            //     if (terms.length > 0 && !content.includes('Common Searches')) {
-            //         content += `<div class="seo-terms"><h3>Common Searches</h3><ul>${terms.map(t => `<li>${t}</li>`).join('')}</ul></div>`;
-            //     }
-            // }
+            // Enhance content with Content Mixins if available
+            // Now supports ALL languages if mixins exist
+            if (stateData || location || countryData) {
+                const mixinType = baseCalc.baseType === 'mortgage' ? 'mortgage' :
+                    (baseCalc.baseType === 'loan' ? 'loan' : 'generic');
+
+                // key into contentMixins[type][lang]
+                const mixins = contentMixins[mixinType]?.[lang] || contentMixins[mixinType]?.['en'] || contentMixins.generic['en'];
+
+                if (mixins) {
+                    const seed = locName.length; // Deterministic seed
+                    const pickMixin = (arr, offset) => {
+                        if (!arr || arr.length === 0) return "";
+                        return arr[(seed + offset) % arr.length];
+                    };
+
+                    const intro = pickMixin(mixins.intros, 0);
+                    const marketCtx = pickMixin(mixins.marketContext, 1);
+                    const closer = pickMixin(mixins.closers, 2);
+
+                    // Data derivation for placeholders
+                    const taxRate = stateData?.mortgage?.propertyTaxRate || '1.2'; // Default avg
+                    const insuranceCost = stateData?.mortgage?.homeInsurance || '1200'; // Default avg
+                    const downPayment = (countryData?.mortgage?.downPayment || 20) + '%';
+
+                    const fillPlaceholders = (text) => {
+                        return text
+                            .replace(/\{\{location\}\}/g, locName)
+                            .replace(/\{\{year\}\}/g, site.year)
+                            .replace(/\{\{title\}\}/g, baseCalc.titles[lang] || baseCalc.titles['en'])
+                            .replace(/\{\{tax_rate\}\}/g, taxRate)
+                            .replace(/\{\{insurance_cost\}\}/g, formatNumber(insuranceCost)) // Helper needed? formatNumber is a filter not available here directly
+                            .replace(/\{\{down_payment\}\}/g, downPayment);
+                    };
+
+                    // Simple number formatter helper for inside this function
+                    const formatNumber = (val) => new Intl.NumberFormat(lang === 'en' ? 'en-US' : (lang === 'de' ? 'de-DE' : 'en-US')).format(val);
+
+                    // Reassemble Content
+                    content = `
+                        <div class="generated-content">
+                            <h2>${lang === 'es' ? '¿Comprando en' : (lang === 'de' ? 'Kaufen in' : 'Buying in')} ${locName}?</h2>
+                            <p class="lead">${fillPlaceholders(intro)}</p>
+                            ${content}
+                            <h3>${lang === 'es' ? 'Contexto de Mercado' : (lang === 'de' ? 'Marktkontext' : 'Local Market Context')}</h3>
+                            <p>${fillPlaceholders(marketCtx)}</p>
+                            <h3>${lang === 'es' ? 'Próximos Pasos' : (lang === 'de' ? 'Nächste Schritte' : 'Next Steps')}</h3>
+                            <p>${fillPlaceholders(closer)}</p>
+                        </div>
+                    `;
+                }
+            }
+
+            // 2. Standard Replacements for inner content vars
+            if (location && lang === 'en' && location.medianPrice) {
+                const median = new Intl.NumberFormat('en-US').format(location.medianPrice);
+                const downVal = Math.round(location.medianPrice * 0.2);
+                const downFormatted = new Intl.NumberFormat('en-US').format(downVal);
+                content += `<h2>${location.name} Home Price Snapshot</h2>`;
+                content += `<ul><li>Median home price: <strong>$${median}</strong></li><li>20% down payment example: <strong>$${downFormatted}</strong></li></ul>`;
+            }
 
             return replaceYearTokens(content)
                 .replace(/{{location}}/g, locName)
@@ -495,27 +500,72 @@ module.exports = function (eleventyConfig) {
                     alternateSlugs: niche.slugs
                 }));
 
-                // 3. Generate Niche x Location Pages (Only for English for now to save build time/space)
-                if (lang === 'en' && locations && locations.length > 0 && niche.baseType === 'mortgage') {
+                // 3. Generate Niche x Location Pages (Expanded for high-value Loan niches & International Cities)
+                if (locations && locations.length > 0 && (niche.baseType === 'mortgage' || niche.id === 'pool-loan' || niche.id === 'business-loan' || niche.id === 'rv-loan' || niche.id === 'solar')) {
                     locations.forEach(loc => {
-                        if (!loc.medianPrice) {
-                            return;
+                        // Logic Branch: International vs US
+                        let isIntl = !!loc.country;
+                        let targetCountry = isIntl ? countries[loc.country] : null;
+
+                        // Filter 1: Language Match
+                        // If it's an International City (e.g. Berlin), ONLY generate for its native language (e.g. 'de')
+                        if (isIntl) {
+                            if (targetCountry.language !== lang) return;
+                        } else {
+                            // US Cities: Only generate for English
+                            if (lang !== 'en') return;
+                            // US Logic: Skip mortgage if no price
+                            if (!loc.medianPrice && niche.baseType === 'mortgage') return;
                         }
-                        // e.g. /en/mortgage-calculator-austin-tx/
-                        const locSlug = `${slug}-${loc.slug}`;
-                        // e.g. "Mortgage Calculator Austin, TX"
-                        const baseTitle = niche.titles?.['en'] || calculators[niche.baseType].titles['en'];
-                        const locTitle = `${baseTitle} ${loc.name}, ${loc.state}`;
+
+                        // e.g. /en/pool-loan-calculator-san-francisco-ca/ OR /de/berlin/wohnmobil-kreditrechner/
+                        let locSlug = "";
+                        if (isIntl) {
+                            // /de/berlin/wohnmobil-kreditrechner/
+                            locSlug = `${loc.slug}/${slug}`;
+                        } else {
+                            // /en/pool-loan-calculator-san-francisco-ca/
+                            locSlug = `${slug}-${loc.slug}`;
+                        }
+
+                        // [SEO TITLES] Dynamic generation for CTR
+                        let locTitle = "";
+                        let locSubtitle = "";
+                        // Fallback title to English if current lang unavailable (shouldn't happen due to filter, but safe)
+                        const baseTitle = niche.titles?.[lang] || niche.titles?.['en'] || calculators[niche.baseType].titles['en'];
+                        const baseSubtitle = niche.subtitles?.[lang] || niche.subtitles?.['en'];
+
+                        if (isIntl) {
+                            // International Format: "Wohnmobil Kreditrechner Berlin 2026"
+                            locTitle = `${baseTitle} ${loc.name} ${site.year}`;
+                            locSubtitle = `${baseSubtitle} - ${loc.name}, ${targetCountry.nameLocalized}`;
+                        } else {
+                            // US Format (Existing)
+                            if (niche.id === 'pool-loan') {
+                                locTitle = `${loc.name} Pool Financing ${site.year} | Loan Calculator`;
+                                locSubtitle = `Compare pool loan rates in ${loc.name}, ${loc.stateFull}`;
+                            } else if (niche.id === 'business-loan') {
+                                locTitle = `${loc.name} Business Loans ${site.year} | Calculator`;
+                                locSubtitle = `Estimate payments for business expansion in ${loc.name}, ${loc.stateFull}`;
+                            } else {
+                                locTitle = `${loc.name} Mortgage Calculator ${site.year}`;
+                                locSubtitle = `Calculate mortgage payments for homes in ${loc.name}, ${loc.stateFull}`;
+                            }
+                        }
 
                         pages.push(createPage({
                             type: niche.baseType,
                             lang: lang,
                             slug: locSlug,
                             title: locTitle,
-                            subtitle: `Calculate ${niche.baseType} for homes in ${loc.name}, ${loc.stateFull}`,
+                            subtitle: locSubtitle,
                             overrides: niche.overrides,
                             location: loc,
-                            isNiche: true
+                            isNiche: true,
+                            // Content Salt Injection
+                            countryData: targetCountry, // Inject Country Data for Intl Cities
+                            localTips: targetCountry?.mortgage?.tips?.[lang] || targetCountry?.mortgage?.tips || [], // Inherit Country Tips
+                            currencySymbol: targetCountry?.currencySymbol // Force currency
                         }));
                     });
                 }
@@ -545,32 +595,69 @@ module.exports = function (eleventyConfig) {
             }));
         });
 
-        // 5. Generate Country Pages (in appropriate language)
+        // 5. Generate Country Pages (Expanded for all applicable niches)
         Object.keys(countries).forEach(countryKey => {
             const country = countries[countryKey];
-            const mortgageCalc = calculators['mortgage'];
-            if (!mortgageCalc) return;
-
             const lang = country.language;
-            const baseSlug = mortgageCalc.slugs[lang] || mortgageCalc.slugs['en'];
 
-            // Create country-specific mortgage page
-            // URL format: /es/argentina/calculadora-hipoteca/
-            const slug = `${country.slug}/${baseSlug}`;
-            const title = `${mortgageCalc.titles[lang] || mortgageCalc.titles['en']} ${country.nameLocalized} ${site.year}`;
-            const subtitle = `${mortgageCalc.subtitles[lang] || mortgageCalc.subtitles['en']} - ${country.nameLocalized}`;
+            // Loop through ALL niches to find valid ones for this country
+            niches.forEach(niche => {
+                const baseSlug = niche.slugs[lang] || niche.slugs['en'];
+                if (!baseSlug) return;
 
-            pages.push(createPage({
-                type: 'mortgage',
-                lang: lang,
-                slug: slug,
-                title: title,
-                subtitle: subtitle,
-                countryData: country,
-                currencySymbol: country.currencySymbol,
-                localTips: country.mortgage?.tips?.[lang] || country.mortgage?.tips || [],
-                localFaqs: country.mortgage?.faqs?.[lang] || country.mortgage?.faqs || []
-            }));
+                // Allow specific niche types for country pages
+                // Mortgage is always allowed. Loans/Business/Sun are allowed if they have translations or valid defaults.
+                if (niche.baseType === 'mortgage' || niche.id === 'rv-loan' || niche.id === 'business-loan' || niche.id === 'solar') {
+
+                    // URL: /de/deutschland/wohnmobil-kreditrechner/
+                    const slug = `${country.slug}/${baseSlug}`;
+
+                    // Titles: "Wohnmobil Kreditrechner Deutschland 2026"
+                    const nicheTitle = niche.titles[lang] || niche.titles['en'];
+                    const title = `${nicheTitle} ${country.nameLocalized} ${site.year}`;
+                    const subtitle = `${niche.subtitles[lang] || niche.subtitles['en']} - ${country.nameLocalized}`;
+
+                    pages.push(createPage({
+                        type: niche.baseType,
+                        lang: lang,
+                        slug: slug,
+                        title: title,
+                        subtitle: subtitle,
+                        countryData: country,
+                        currencySymbol: country.currencySymbol,
+                        localTips: country.mortgage?.tips?.[lang] || country.mortgage?.tips || [],
+                        localFaqs: country.mortgage?.faqs?.[lang] || country.mortgage?.faqs || [],
+                        overrides: niche.overrides, // Important for niche defaults
+                        isNiche: true
+                    }));
+                }
+            });
+
+            // Also generate the base Mortgage Calculator for the country (Legacy support)
+            // This might duplicate the loop above if 'mortgage' is in niches, but we need to ensure the BASE mortgage calc exists too.
+            const mortgageCalc = calculators['mortgage'];
+            if (mortgageCalc) {
+                const baseSlug = mortgageCalc.slugs[lang] || mortgageCalc.slugs['en'];
+                const slug = `${country.slug}/${baseSlug}`;
+
+                // Check if we already added this via niches loop to avoid dupe
+                if (!pages.find(p => p.slug === slug)) {
+                    const title = `${mortgageCalc.titles[lang] || mortgageCalc.titles['en']} ${country.nameLocalized} ${site.year}`;
+                    const subtitle = `${mortgageCalc.subtitles[lang] || mortgageCalc.subtitles['en']} - ${country.nameLocalized}`;
+
+                    pages.push(createPage({
+                        type: 'mortgage',
+                        lang: lang,
+                        slug: slug,
+                        title: title,
+                        subtitle: subtitle,
+                        countryData: country,
+                        currencySymbol: country.currencySymbol,
+                        localTips: country.mortgage?.tips?.[lang] || country.mortgage?.tips || [],
+                        localFaqs: country.mortgage?.faqs?.[lang] || country.mortgage?.faqs || []
+                    }));
+                }
+            }
         });
 
         return pages;

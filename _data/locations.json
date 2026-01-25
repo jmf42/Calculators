@@ -774,5 +774,138 @@
         "stateFull": "Colorado",
         "slug": "boulder-co",
         "medianPrice": 850000
+    },
+    {
+        "id": "berlin",
+        "name": "Berlin",
+        "country": "germany",
+        "slug": "berlin",
+        "medianPrice": 500000
+    },
+    {
+        "id": "hamburg",
+        "name": "Hamburg",
+        "country": "germany",
+        "slug": "hamburg",
+        "medianPrice": 550000
+    },
+    {
+        "id": "munich",
+        "name": "München",
+        "country": "germany",
+        "slug": "munchen",
+        "medianPrice": 850000
+    },
+    {
+        "id": "frankfurt",
+        "name": "Frankfurt",
+        "country": "germany",
+        "slug": "frankfurt",
+        "medianPrice": 600000
+    },
+    {
+        "id": "paris",
+        "name": "Paris",
+        "country": "france",
+        "slug": "paris",
+        "medianPrice": 650000
+    },
+    {
+        "id": "lyon",
+        "name": "Lyon",
+        "country": "france",
+        "slug": "lyon",
+        "medianPrice": 450000
+    },
+    {
+        "id": "marseille",
+        "name": "Marseille",
+        "country": "france",
+        "slug": "marseille",
+        "medianPrice": 350000
+    },
+    {
+        "id": "madrid",
+        "name": "Madrid",
+        "country": "spain",
+        "slug": "madrid",
+        "medianPrice": 400000
+    },
+    {
+        "id": "barcelona",
+        "name": "Barcelona",
+        "country": "spain",
+        "slug": "barcelona",
+        "medianPrice": 450000
+    },
+    {
+        "id": "valencia",
+        "name": "Valencia",
+        "country": "spain",
+        "slug": "valencia",
+        "medianPrice": 250000
+    },
+    {
+        "id": "rome",
+        "name": "Roma",
+        "country": "italy",
+        "slug": "roma",
+        "medianPrice": 450000
+    },
+    {
+        "id": "milan",
+        "name": "Milano",
+        "country": "italy",
+        "slug": "milano",
+        "medianPrice": 550000
+    },
+    {
+        "id": "naples",
+        "name": "Napoli",
+        "country": "italy",
+        "slug": "napoli",
+        "medianPrice": 300000
+    },
+    {
+        "id": "amsterdam",
+        "name": "Amsterdam",
+        "country": "netherlands",
+        "slug": "amsterdam",
+        "medianPrice": 600000
+    },
+    {
+        "id": "rotterdam",
+        "name": "Rotterdam",
+        "country": "netherlands",
+        "slug": "rotterdam",
+        "medianPrice": 400000
+    },
+    {
+        "id": "brussels",
+        "name": "Bruxelles",
+        "country": "belgium",
+        "slug": "bruxelles",
+        "medianPrice": 350000
+    },
+    {
+        "id": "antwerp",
+        "name": "Antwerpen",
+        "country": "belgium",
+        "slug": "antwerpen",
+        "medianPrice": 320000
+    },
+    {
+        "id": "vienna",
+        "name": "Wien",
+        "country": "austria",
+        "slug": "wien",
+        "medianPrice": 550000
+    },
+    {
+        "id": "zurich",
+        "name": "Zürich",
+        "country": "switzerland",
+        "slug": "zurich",
+        "medianPrice": 1200000
     }
 ]
