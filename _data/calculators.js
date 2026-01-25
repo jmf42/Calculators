@@ -138,8 +138,8 @@ module.exports = {
                 { label: { en: "HOA", fi: "Yhtiövastike", de: "Hausgeld", es: "Gastos Comunes", fr: "Charges", pt: "Condomínio", it: "Spese Condominiali", nl: "VvE", pl: "Czynsz", sv: "Månadsavgift", no: "Fellesutgifter", da: "Ejerforening" }, formula: "hoa", format: "currency" }
             ],
             metrics: [
-                { label: { en: "Total Loan Amount", de: "Nettodarlehensbetrag", es: "Monto neto del préstamo" }, formula: "principal - down", format: "currency" },
-                { label: { en: "Total Interest Paid", de: "Gesamte Zinskosten", es: "Total de intereses pagados" }, formula: "rate > 0 ? ((((principal - down) * (rate/100/12) * Math.pow(1 + rate/100/12, years*12) / (Math.pow(1 + rate/100/12, years*12) - 1)) * years * 12) - (principal - down)) : 0", format: "currency" }
+                { label: { en: "Total Loan Amount", de: "Nettodarlehensbetrag", es: "Monto neto del préstamo", fr: "Montant du Prêt", pt: "Valor do Empréstimo", it: "Importo del Prestito", nl: "Leningbedrag", pl: "Kwota Kredytu", sv: "Lånebelopp", no: "Lånebeløp", da: "Lånebeløb", fi: "Lainan Määrä" }, formula: "principal - down", format: "currency" },
+                { label: { en: "Total Interest Paid", de: "Gesamte Zinskosten", es: "Total de intereses", fr: "Intérêts Totaux", pt: "Juros Totais", it: "Interessi Totali", nl: "Totale Rente", pl: "Suma Odsetek", sv: "Total Ränta", no: "Total Rente", da: "Samlede Renter", fi: "Kokonaiskorko" }, formula: "rate > 0 ? ((((principal - down) * (rate/100/12) * Math.pow(1 + rate/100/12, years*12) / (Math.pow(1 + rate/100/12, years*12) - 1)) * years * 12) - (principal - down)) : 0", format: "currency" }
             ]
         }
     },

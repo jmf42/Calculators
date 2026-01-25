@@ -303,12 +303,20 @@ class CalcKitCalculator extends HTMLElement {
                 border: 1px solid rgba(6, 182, 212, 0.15);
                 border-radius: 10px; margin-bottom: 8px;
                 font-size: 14px;
+                gap: 12px;
             }
             .breakdown-item span:first-child {
                 color: rgba(255, 255, 255, 0.85); font-weight: 500;
+                word-break: break-word;
+                overflow-wrap: anywhere;
+                flex: 1;
             }
             .breakdown-item span:last-child {
                 color: #ffffff; font-weight: 700;
+                word-break: break-word;
+                overflow-wrap: anywhere;
+                text-align: right;
+                flex-shrink: 0;
             }
 
             .result-metrics {
@@ -324,6 +332,10 @@ class CalcKitCalculator extends HTMLElement {
                 padding: 16px 18px;
                 text-align: left;
                 transition: transform 0.2s ease, border-color 0.2s ease;
+                min-height: 70px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
             }
             .metric-card:hover {
                 transform: translateY(-2px);
@@ -336,23 +348,49 @@ class CalcKitCalculator extends HTMLElement {
                 letter-spacing: 0.1em;
                 margin-bottom: 8px;
                 font-weight: 600;
+                word-break: break-word;
+                overflow-wrap: anywhere;
+                line-height: 1.4;
             }
             .metric-value {
                 font-size: 20px;
                 font-weight: 800;
                 line-height: 1.2;
                 color: #ffffff;
+                word-break: break-word;
+                overflow-wrap: anywhere;
             }
 
             /* Toast Notification */
+            /* Toast Notification - Enhanced Visibility */
             .toast {
-                position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(20px);
-                background: #10b981; color: white; padding: 10px 20px; border-radius: 30px;
-                font-size: 13px; font-weight: 600; opacity: 0; pointer-events: none;
-                transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-                box-shadow: 0 10px 25px rgba(0,0,0,0.1); z-index: 10; display: flex; align-items: center; gap: 8px;
+                position: fixed; 
+                bottom: 30px; 
+                left: 50%; 
+                transform: translateX(-50%) translateY(50px);
+                background: rgba(16, 185, 129, 0.95); 
+                color: white; 
+                padding: 12px 24px; 
+                border-radius: 50px;
+                font-size: 14px; 
+                font-weight: 600; 
+                opacity: 0; 
+                pointer-events: none;
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1); 
+                z-index: 9999; 
+                display: flex; 
+                align-items: center; 
+                gap: 10px;
+                backdrop-filter: blur(8px);
+                width: max-content;
+                max-width: 90vw;
             }
-            .toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+            .toast.visible { 
+                opacity: 1; 
+                transform: translateX(-50%) translateY(0); 
+                pointer-events: auto;
+            }
 
             .metric-help {
                 display: inline-flex; align-items: center; justify-content: center;
@@ -360,6 +398,122 @@ class CalcKitCalculator extends HTMLElement {
                 background: rgba(255,255,255,0.2);
                 color: rgba(255,255,255,0.8);
                 font-size: 9px; margin-left: 6px; cursor: help;
+            }
+
+            /* Mobile Responsive Styles */
+            @media (max-width: 639px) {
+                .calc-container {
+                    padding: 24px 20px;
+                }
+
+                .calc-header {
+                    margin-bottom: 28px;
+                }
+
+                .calc-title {
+                    font-size: clamp(24px, 6vw, 28px);
+                }
+
+                .calc-subtitle {
+                    font-size: 14px;
+                }
+
+                .calc-fields {
+                    grid-template-columns: 1fr;
+                    gap: 18px;
+                }
+
+                .calc-field:last-child:nth-child(odd) {
+                    grid-column: 1;
+                }
+
+                .field-label {
+                    font-size: 11px;
+                }
+
+                input[type="number"], select {
+                    font-size: 15px;
+                    padding: 14px 16px;
+                }
+
+                .input-prefix, .input-suffix, .input-currency-symbol {
+                    font-size: 14px;
+                    min-width: 24px;
+                }
+
+                .has-prefix input, .is-currency-input input {
+                    padding-left: 44px !important;
+                }
+
+                .has-suffix input {
+                    padding-right: 44px !important;
+                }
+
+                .calc-result {
+                    margin-top: 32px;
+                    padding: 24px 20px;
+                }
+
+                .result-label {
+                    font-size: 11px;
+                }
+
+                .result-value {
+                    font-size: 32px;
+                }
+
+                .result-metrics {
+                    gap: 10px;
+                }
+
+                .metric-card {
+                    padding: 12px 14px;
+                    min-height: 65px;
+                }
+
+                .metric-label {
+                    font-size: 9px;
+                    letter-spacing: 0.05em;
+                    line-height: 1.3;
+                }
+
+                .metric-value {
+                    font-size: 14px;
+                    line-height: 1.1;
+                }
+
+                .breakdown-item {
+                    padding: 10px 12px;
+                    font-size: 12px;
+                    gap: 8px;
+                    flex-wrap: wrap;
+                }
+
+                .breakdown-item span:first-child {
+                    font-size: 11px;
+                }
+
+                .breakdown-item span:last-child {
+                    font-size: 12px;
+                }
+
+                .result-actions {
+                    flex-direction: column;
+                    gap: 10px;
+                    margin-top: 20px;
+                }
+
+                .action-btn {
+                    width: 100%;
+                    justify-content: center;
+                    padding: 10px 16px;
+                    font-size: 13px;
+                }
+
+                .chart-wrapper {
+                    height: 180px;
+                    margin: 20px 0;
+                }
             }
         `;
     }
@@ -399,12 +553,13 @@ class CalcKitCalculator extends HTMLElement {
                 
                 <div class="result-actions">
                      <button class="action-btn share-btn" id="share-btn" title="Copy link to this calculation">
-                        <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M18 16c-.8 0-1.5.3-2 .8l-7-4c.1-.3.1-.5.1-.8s0-.5-.1-.8l7-4c.5.5 1.2.8 2 .8 1.7 0 3-1.3 3-3s-1.3-3-3-3-3 1.3-3 3c0 .3 0 .5.1.8l-7 4c-.5-.5-1.2-.8-2-.8-1.7 0-3 1.3-3 3s1.3 3 3 3c.8 0 1.5-.3 2-.8l7 4c-.1.3-.1.5-.1.8 0 1.7 1.3 3 3 3s3-1.3 3-3-1.3-3-3-3z"/></svg>
                         Share
                     </button>
 
                     <button class="action-btn" id="reset-btn">
-                        <svg viewBox="0 0 24 24"><path d="M17 6A8 8 0 005 14h2a6 6 0 119-3l-2 2 7 0 0-7z"/></svg> Reset
+                        <svg viewBox="0 0 24 24"><path d="M12 4V1L8 5l4 4V6c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6H4c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8z"/></svg>
+                        Reset
                     </button>
                     ${this.config.proFeatures?.pdf ? `
                         <button class="action-btn primary-cta" id="pdf-btn">
@@ -915,8 +1070,13 @@ class CalcKitCalculator extends HTMLElement {
 
     formatCurrency(val) {
         if (!Number.isFinite(val)) return '--';
+        // Remove .00 for whole numbers to reduce clutter
+        const isWholeNumber = val === Math.floor(val);
         return new Intl.NumberFormat(this.config.locale || 'en-US', {
-            style: 'currency', currency: this.config.currency || 'USD'
+            style: 'currency',
+            currency: this.config.currency || 'USD',
+            minimumFractionDigits: isWholeNumber ? 0 : 2,
+            maximumFractionDigits: isWholeNumber ? 0 : 2
         }).format(val);
     }
 

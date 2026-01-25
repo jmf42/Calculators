@@ -266,12 +266,12 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     <section class="hero">
         <div class="container">
             <!-- Breadcrumbs (Visual) -->
-            <nav aria-label="Breadcrumb" class="breadcrumbs" style="margin-bottom: 16px; font-size: 14px; color: var(--text-muted);">
-                <ol style="list-style: none; padding: 0; margin: 0; display: flex; gap: 8px; flex-wrap: wrap;">
-                    <li><a href="{% if calc.lang == site.defaultLang %}/{% else %}/{{ calc.lang }}{% endif %}" style="color: var(--text-muted); text-decoration: none; opacity: 0.8; transition: opacity 0.2s;">{{ ui.nav[calc.lang or 'en'].home }}</a></li>
-                    <li aria-hidden="true" style="opacity: 0.5;">/</li>
-                    <li><span aria-current="page" style="color: var(--primary-light); font-weight: 500;">{{ calc.title }}</span></li>
-                </ol>
+            <nav aria-label="Breadcrumb" class="breadcrumbs" style="margin-bottom: 20px;">
+                <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); line-height: 1.4;">
+                    <a href="{% if calc.lang == site.defaultLang %}/{% else %}/{{ calc.lang }}{% endif %}" style="color: var(--text-muted); text-decoration: none; opacity: 0.8; white-space: nowrap;">{{ ui.nav[calc.lang or 'en'].home }}</a>
+                    <span style="opacity: 0.4;">/</span>
+                    <span aria-current="page" style="color: var(--primary-light); font-weight: 600;">{{ calc.title }}</span>
+                </div>
             </nav>
 
             <h1>{{ calc.title | safe }}</h1>
