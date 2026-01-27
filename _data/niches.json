@@ -263,6 +263,9 @@
                     "a": "Syötä tietosi ilmaiseen fha-loan-laskuriimme nähdäksesi arvioidut maksut."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "Calculate FHA loan payments with just 3.5% down in 2026. See monthly costs, PMI, and qualification requirements."
         }
     },
     {
@@ -283,7 +286,7 @@
             "fi": "va-laina-laskuri"
         },
         "titles": {
-            "en": "VA Loan Calculator ($0 Down)",
+            "en": "VA Loan Calculator 2026 ($0 Down)",
             "es": "Calculadora VA ($0 Enganche)",
             "de": "VA-Darlehensrechner",
             "fr": "Calculateur Prêt VA",
@@ -527,6 +530,9 @@
                     "a": "Syötä tietosi ilmaiseen va-loan-laskuriimme nähdäksesi arvioidut maksut."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "Free VA loan calculator for veterans 2026. $0 down payment, no PMI. See your monthly mortgage payment instantly."
         }
     },
     {
@@ -547,7 +553,7 @@
             "fi": "jumbo-laina-laskuri"
         },
         "titles": {
-            "en": "Jumbo Loan Calculator",
+            "en": "Jumbo Loan Calculator 2026",
             "es": "Calculadora Préstamo Jumbo",
             "de": "Jumbo-Hypothekenrechner",
             "fr": "Calculateur Prêt Jumbo",
@@ -793,6 +799,9 @@
                     "a": "Syötä tietosi ilmaiseen jumbo-loan-laskuriimme nähdäksesi arvioidut maksut."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "Calculate jumbo loan payments for homes over $766,550 in 2026. Compare rates and see monthly costs."
         }
     },
     {
@@ -813,7 +822,7 @@
             "fi": "usda-laina-laskuri"
         },
         "titles": {
-            "en": "USDA Loan Calculator",
+            "en": "USDA Loan Calculator 2026",
             "es": "Calculadora Préstamo USDA",
             "de": "USDA-Landkreditrechner",
             "fr": "Calculateur Prêt USDA",
@@ -1071,6 +1080,9 @@
                     "a": "Syötä tietosi ilmaiseen USDA-laina-laskuriimme nähdäksesi arvioidut maksut."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "USDA loan calculator 2026. $0 down for rural properties. Check eligibility and monthly payments."
         }
     },
     {
@@ -1091,7 +1103,7 @@
             "fi": "sijoitusasuntolaskuri"
         },
         "titles": {
-            "en": "Investment Property Calculator",
+            "en": "Investment Property Calculator 2026",
             "es": "Calculadora Propiedad de Inversión",
             "de": "Anlageimmobilien-Rechner",
             "fr": "Calculateur Investissement Immobilier",
@@ -1349,6 +1361,9 @@
                     "a": "Syötä tietosi ilmaiseen Sijoitusasunto-laskuriimme nähdäksesi arvioidut maksut."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "Investment property mortgage calculator 2026. Calculate rental income, cash flow, and ROI."
         }
     },
     {
@@ -1369,7 +1384,7 @@
             "fi": "matkailuauto-laina-laskuri"
         },
         "titles": {
-            "en": "RV Loan Calculator",
+            "en": "RV Loan Calculator 2026",
             "es": "Calculadora Préstamo RV/Caravana",
             "de": "Wohnmobil-Finanzierungsrechner",
             "fr": "Calculateur Prêt Camping-Car",
@@ -1628,6 +1643,9 @@
                     "a": "Syötä tietosi ilmaiseen Matkailuautolaina-laskuriimme nähdäksesi arvioidut maksut."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "RV loan calculator 2026. Calculate monthly payments for motorhomes and campers. Compare rates and terms."
         }
     },
     {
@@ -1648,7 +1666,7 @@
             "fi": "tiny-house-laina-laskuri"
         },
         "titles": {
-            "en": "Tiny House Loan Calculator",
+            "en": "Tiny House Loan Calculator 2026",
             "es": "Calculadora Préstamo Tiny House",
             "de": "Tiny House Finanzierungsrechner",
             "fr": "Calculateur Prêt Tiny house",
@@ -1896,6 +1914,9 @@
                     "a": "Syötä tietosi ilmaiseen Tiny House Laina-laskuriimme nähdäksesi arvioidut maksut."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "Tiny house loan calculator 2026. Finance your small home with payments you can afford."
         }
     },
     {
@@ -1916,7 +1937,7 @@
             "fi": "uima-allas-laina-laskuri"
         },
         "titles": {
-            "en": "Swimming Pool Loan Calculator",
+            "en": "Swimming Pool Loan Calculator 2026",
             "es": "Calculadora Financiación Piscina",
             "de": "Pool-Finanzierungsrechner",
             "fr": "Calculateur Prêt Piscine",
@@ -2177,6 +2198,9 @@
                     "a": "Syötä tietosi ilmaiseen Uima-allaslaina-laskuriimme nähdäksesi arvioidut maksut."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "Swimming pool financing calculator 2026. See monthly payments for in-ground and above-ground pools."
         }
     },
     {
@@ -2197,7 +2221,7 @@
             "fi": "yrityslaina-laskuri"
         },
         "titles": {
-            "en": "Business Loan Calculator",
+            "en": "Business Loan Calculator 2026",
             "es": "Calculadora Préstamo Negocio",
             "de": "Geschäftskreditrechner",
             "fr": "Calculateur Prêt Professionnel",
@@ -2441,6 +2465,9 @@
                     "a": "Syötä tietosi ilmaiseen Yrityslaina-laskuriimme nähdäksesi arvioidut maksut."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "Business loan calculator 2026. Estimate monthly payments for equipment, expansion, or working capital."
         }
     },
     {
@@ -2461,7 +2488,7 @@
             "fi": "sba-laina-laskuri"
         },
         "titles": {
-            "en": "SBA 7(a) Loan Calculator",
+            "en": "SBA 72026 (a) Loan Calculator",
             "es": "Calculadora Préstamo SBA 7(a)",
             "de": "SBA 7(a) Kreditrechner",
             "fr": "Calculateur Prêt SBA 7(a)",
@@ -2711,6 +2738,9 @@
                     "a": "Syötä tietosi ilmaiseen SBA-laina-laskuriimme nähdäksesi arvioidut maksut."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "SBA 7(a) loan calculator 2026. Calculate payments for government-backed small business loans."
         }
     },
     {
@@ -2731,7 +2761,7 @@
             "fi": "autolaina-laskuri"
         },
         "titles": {
-            "en": "Auto Loan Calculator",
+            "en": "Auto Loan Calculator 2026",
             "es": "Calculadora de Préstamo Automotriz",
             "de": "Autokreditrechner",
             "fr": "Calculateur Prêt Auto",
@@ -2976,6 +3006,9 @@
                     "a": "Syötä tietosi ilmaiseen Autolaina-laskuriimme nähdäksesi arvioidut maksut."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "Auto loan calculator 2026. Calculate car payments, compare rates, and see total interest costs."
         }
     },
     {
@@ -2996,7 +3029,7 @@
             "fi": "venelaina-laskuri"
         },
         "titles": {
-            "en": "Boat Loan Calculator",
+            "en": "Boat Loan Calculator 2026",
             "es": "Calculadora de Préstamo Barco",
             "de": "Bootskreditrechner",
             "fr": "Calculateur Prêt Bateau",
@@ -3255,6 +3288,9 @@
                     "a": "Syötä tietosi ilmaiseen Venelaina-laskuriimme nähdäksesi arvioidut maksut."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "Boat loan calculator 2026. Finance your yacht, sailboat, or fishing boat with affordable payments."
         }
     },
     {
@@ -3275,7 +3311,7 @@
             "fi": "markkinointi-roi-laskuri"
         },
         "titles": {
-            "en": "Marketing ROI Calculator (ROAS)",
+            "en": "Marketing ROI Calculator 2026 (ROAS)",
             "es": "Calculadora ROI Marketing",
             "de": "Marketing-ROI-Rechner",
             "fr": "Calculateur ROI Marketing",
@@ -3531,6 +3567,9 @@
                     "a": "Meidän Markkinointi ROI antaa arvioita syöttämiesi tietojen perusteella. Kysy aina neuvoa talousneuvojalta."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "Marketing ROI calculator 2026. Calculate ROAS and measure campaign performance instantly."
         }
     },
     {
@@ -3551,7 +3590,7 @@
             "fi": "krypto-roi-laskuri"
         },
         "titles": {
-            "en": "Crypto ROI Calculator",
+            "en": "Crypto ROI Calculator 2026",
             "es": "Calculadora ROI Cripto",
             "de": "Krypto-ROI-Rechner",
             "fr": "Calculateur ROI Crypto",
@@ -3809,6 +3848,9 @@
                     "a": "Meidän Krypto ROI antaa arvioita syöttämiesi tietojen perusteella. Kysy aina neuvoa talousneuvojalta."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "Crypto ROI calculator 2026. Track your investment returns across Bitcoin, Ethereum, and altcoins."
         }
     },
     {
@@ -3829,7 +3871,7 @@
             "fi": "saas-ltv-laskuri"
         },
         "titles": {
-            "en": "SaaS LTV Calculator",
+            "en": "SaaS LTV Calculator 2026",
             "es": "Calculadora LTV SaaS",
             "de": "SaaS LTV-Rechner",
             "fr": "Calculateur LTV SaaS",
@@ -4085,6 +4127,9 @@
                     "a": "Syötä tietosi ilmaiseen SaaS Mittarit-laskuriimme nähdäksesi arvioidut maksut."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "SaaS LTV calculator 2026. Calculate customer lifetime value, CAC payback, and growth metrics."
         }
     },
     {
@@ -4105,7 +4150,7 @@
             "fi": "cap-rate-laskuri"
         },
         "titles": {
-            "en": "Cap Rate Calculator",
+            "en": "Cap Rate Calculator 2026",
             "es": "Calculadora de Tasa de Capitalización",
             "de": "Kapitalisierungszinssatz-Rechner",
             "fr": "Calculateur Taux de Capitalisation",
@@ -4363,6 +4408,9 @@
                     "a": "Syötä tietosi ilmaiseen Cap Rate-laskuriimme nähdäksesi arvioidut maksut."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "Cap rate calculator 2026. Evaluate real estate investment returns and property valuations."
         }
     },
     {
@@ -4383,7 +4431,7 @@
             "fi": "peltikaton-hinta-laskuri"
         },
         "titles": {
-            "en": "Metal Roofing Cost Calculator",
+            "en": "Metal Roofing Cost Calculator 2026",
             "es": "Calculadora de Techos de Metal",
             "de": "Metalldach-Kostenrechner",
             "fr": "Calculateur Toiture Métallique",
@@ -4624,6 +4672,9 @@
                     "a": "Syötä tietosi ilmaiseen Peltikaton Hinta-laskuriimme nähdäksesi arvioidut maksut."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "Metal roofing cost calculator 2026. Compare prices for standing seam, corrugated, and metal shingles."
         }
     },
     {
@@ -4874,6 +4925,9 @@
                     "a": "Meidän Bitcoin Voitto antaa arvioita syöttämiesi tietojen perusteella. Kysy aina neuvoa talousneuvojalta."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "Bitcoin profit calculator 2026. Calculate BTC gains, fees, and ROI for your trades instantly."
         }
     },
     {
@@ -5127,6 +5181,9 @@
                     "a": "Meidän Ethereum Voitto antaa arvioita syöttämiesi tietojen perusteella. Kysy aina neuvoa talousneuvojalta."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "Ethereum profit calculator 2026. Calculate ETH gains, gas fees, and investment returns."
         }
     },
     {
@@ -5380,6 +5437,9 @@
                     "a": "Meidän Solana Voitto antaa arvioita syöttämiesi tietojen perusteella. Kysy aina neuvoa talousneuvojalta."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "Solana profit calculator 2026. Calculate SOL trading profits and portfolio performance."
         }
     },
     {
@@ -5635,6 +5695,9 @@
                     "a": "Meidän XRP Voitto antaa arvioita syöttämiesi tietojen perusteella. Kysy aina neuvoa talousneuvojalta."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "XRP Ripple profit calculator 2026. Calculate gains and track your XRP investment returns."
         }
     },
     {
@@ -5890,6 +5953,9 @@
                     "a": "Meidän Dogecoin Voitto antaa arvioita syöttämiesi tietojen perusteella. Kysy aina neuvoa talousneuvojalta."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "Dogecoin profit calculator 2026. Calculate DOGE gains, meme coin ROI, and trading profits."
         }
     },
     {
@@ -6191,7 +6257,7 @@
             "fi": "15-vuoden-asuntolaina-laskuri"
         },
         "titles": {
-            "en": "15-Year Mortgage Calculator",
+            "en": "15-Year Mortgage Calculator 2026",
             "es": "Calculadora Hipoteca 15 Años",
             "de": "15-Jahres-Hypothekenrechner",
             "fr": "Calculateur Hypothèque 15 Ans",
@@ -6419,6 +6485,9 @@
                     "a": "Syötä tietosi ilmaiseen 15 Vuoden Asuntolaina-laskuriimme nähdäksesi arvioidut maksut."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "15-year mortgage calculator 2026. Save thousands in interest with shorter loan terms."
         }
     },
     {
@@ -6439,7 +6508,7 @@
             "fi": "kahden-viikon-asuntolaina-laskuri"
         },
         "titles": {
-            "en": "Biweekly Mortgage Calculator",
+            "en": "Biweekly Mortgage Calculator 2026",
             "es": "Calculadora Hipoteca Quincenal",
             "de": "Zweiwöchentlicher Hypothekenrechner",
             "fr": "Calculateur Hypothèque Bimensuel",
@@ -6662,6 +6731,9 @@
                     "a": "Syötä tietosi ilmaiseen Kahden Viikon Asuntolaina-laskuriimme nähdäksesi arvioidut maksut."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "Biweekly mortgage calculator 2026. Pay off your home faster and save on interest."
         }
     },
     {
@@ -6682,7 +6754,7 @@
             "fi": "vaihtuvakorkoinen-asuntolaina-laskuri"
         },
         "titles": {
-            "en": "ARM Mortgage Calculator",
+            "en": "ARM Mortgage Calculator 2026",
             "es": "Calculadora Hipoteca Tasa Variable",
             "de": "Variable Hypothekenrechner",
             "fr": "Calculateur Hypothèque Taux Variable",
@@ -6914,6 +6986,9 @@
                     "a": "Syötä tietosi ilmaiseen Vaihtuvakorkoinen Laina-laskuriimme nähdäksesi arvioidut maksut."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "ARM mortgage calculator 2026. Compare adjustable-rate mortgages with fixed rates and see payment changes over time."
         }
     },
     {
@@ -6934,7 +7009,7 @@
             "fi": "asunnon-kohtuuhintaisuus-laskuri"
         },
         "titles": {
-            "en": "Home Affordability Calculator",
+            "en": "Home Affordability Calculator 2026",
             "es": "Calculadora Capacidad de Compra",
             "de": "Erschwinglichkeitsrechner",
             "fr": "Calculateur Capacité d'Achat",
@@ -7157,6 +7232,9 @@
                     "a": "Syötä tietosi ilmaiseen Asuntolainan Määra-laskuriimme nähdäksesi arvioidut maksut."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "Home affordability calculator 2026. See how much house you can afford based on your income."
         }
     },
     {
@@ -7177,7 +7255,7 @@
             "fi": "dti-laskuri"
         },
         "titles": {
-            "en": "Debt-to-Income (DTI) Calculator",
+            "en": "Debt-to-Income 2026 (DTI) Calculator",
             "es": "Calculadora Deuda-Ingreso (DTI)",
             "de": "Schulden-Einkommens-Verhältnis Rechner",
             "fr": "Calculateur Ratio Endettement",
@@ -7400,6 +7478,9 @@
                     "a": "Syötä tietosi ilmaiseen Velka-Tulo-laskuriimme nähdäksesi arvioidut maksut."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "Debt-to-income calculator 2026. Check your DTI ratio for mortgage qualification."
         }
     },
     {
@@ -7420,18 +7501,18 @@
             "fi": "sulkemiskustannukset-laskuri"
         },
         "titles": {
-            "en": "Closing Cost Calculator",
-            "es": "Calculadora Costos de Cierre",
-            "de": "Abschlusskosten Rechner",
-            "fr": "Calculateur Frais de Clôture",
-            "pt": "Calculadora Custos de Fechamento",
-            "it": "Calcolatore Costi di Chiusura",
-            "nl": "Sluitingskosten Calculator",
-            "pl": "Kalkulator Kosztów Zamknięcia",
-            "sv": "Avslutningskostnader Kalkylator",
-            "no": "Avslutningskostnader Kalkulator",
-            "da": "Afslutningsomkostninger Beregner",
-            "fi": "Sulkemiskustannukset Laskuri"
+            "en": "Free Closing Cost Calculator 2026",
+            "es": "Calculadora Costos de Cierre 2026 Gratis",
+            "de": "Abschlusskosten Rechner 2026 Kostenlos",
+            "fr": "Calculateur Frais de Clôture 2026 Gratuit",
+            "pt": "Calculadora Custos de Fechamento 2026 Grátis",
+            "it": "Calcolatore Costi di Chiusura 2026 Gratuito",
+            "nl": "Gratis Sluitingskosten Calculator 2026",
+            "pl": "Darmowy Kalkulator Kosztów Zamknięcia 2026",
+            "sv": "Gratis Avslutningskostnader Kalkylator 2026",
+            "no": "Gratis Avslutningskostnader Kalkulator 2026",
+            "da": "Gratis Afslutningsomkostninger Beregner 2026",
+            "fi": "Ilmainen Sulkemiskustannukset Laskuri 2026"
         },
         "subtitles": {
             "en": "Estimate fees for buying a home",
@@ -7446,6 +7527,20 @@
             "no": "Anslå kostnader for boligkjøp",
             "da": "Anslå omkostninger ved boligkøb",
             "fi": "Arvioi asunnon ostokustannukset"
+        },
+        "metaDescription": {
+            "en": "Estimate closing costs for buying a home in 2026. Calculate title insurance, appraisal, lender fees, and more. See your total fees instantly.",
+            "es": "Calcula los costos de cierre para comprar una casa en 2026. Incluye seguro de título, tasación y cargos del prestamista.",
+            "de": "Berechnen Sie Ihre Abschlusskosten beim Hauskauf 2026. Inklusive Notarkosten, Grundbucheintrag und Bankgebühren.",
+            "fr": "Estimez les frais de clôture pour l'achat d'une maison en 2026. Frais de notaire, assurance titre et frais bancaires.",
+            "pt": "Calcule os custos de fechamento para comprar uma casa em 2026. Inclui taxas de cartório, avaliação e taxas do banco.",
+            "it": "Calcola i costi di chiusura per l'acquisto di una casa nel 2026. Include spese notarili, perizia e commissioni bancarie.",
+            "nl": "Bereken sluitingskosten voor het kopen van een huis in 2026. Inclusief notariskosten, taxatie en bankkosten.",
+            "pl": "Oblicz koszty zamknięcia przy zakupie domu w 2026. Opłaty notarialne, wycena i prowizje bankowe.",
+            "sv": "Beräkna avslutningskostnader för husköp 2026. Lagfart, pantbrev och lånegebyr.",
+            "no": "Beregn avslutningskostnader for boligkjøp 2026. Dokumentavgift, tinglysing og bankgebyrer.",
+            "da": "Beregn afslutningsomkostninger ved boligkøb 2026. Tinglysningsafgift og låneomkostninger.",
+            "fi": "Laske asunnon ostokustannukset 2026. Sisältää varainsiirtoveron, lainkulut ja pankkikulut."
         },
         "overrides": {},
         "seo": {
@@ -7573,8 +7668,12 @@
         "faqs": {
             "en": [
                 {
-                    "q": "How to compute Closing Costs?",
-                    "a": "Enter your loan details into our free Closing Costs calculator to see your estimated payments and savings."
+                    "q": "What are typical closing costs in 2026?",
+                    "a": "Closing costs typically range from 2-5% of the home price. For a $400,000 home, expect $8,000-$20,000 in fees including title insurance, appraisal, attorney fees, escrow, and lender origination charges."
+                },
+                {
+                    "q": "Who pays closing costs, buyer or seller?",
+                    "a": "Buyers typically pay 2-5% of the home price in closing costs. Sellers usually pay 6-10% (mostly agent commissions). In some markets, sellers may offer to cover part of the buyer's closing costs."
                 }
             ],
             "es": [
@@ -7663,7 +7762,7 @@
             "fi": "lyhennys-laskuri"
         },
         "titles": {
-            "en": "Amortization Calculator",
+            "en": "Amortization Calculator 2026",
             "es": "Calculadora de Amortización",
             "de": "Tilgungsrechner",
             "fr": "Calculateur d'Amortissement",
@@ -7886,6 +7985,9 @@
                     "a": "Syötä tietosi ilmaiseen Lyhennys-laskuriimme nähdäksesi arvioidut maksut."
                 }
             ]
+        },
+        "metaDescription": {
+            "en": "Amortization schedule calculator 2026. See your loan payoff breakdown month by month."
         }
     }
 ]

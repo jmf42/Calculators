@@ -1095,7 +1095,7 @@ module.exports = {
             da: "krypto-gevinstberegner"
         },
         metaDescriptions: {
-            en: "Calculate crypto trading profits, fees, and ROI instantly. Support for Bitcoin, Ethereum, and Altcoins.",
+            en: "Free crypto calculator for Bitcoin, Ethereum & altcoin profit. See ROI, fees, and break-even price instantly.",
             de: "Berechnen Sie Krypto-Gewinne, Gebühren und ROI sofort.",
             es: "Calcula ganancias de trading cripto, tarifas y ROI al instante.",
             fr: "Calculez les profits de trading crypto, frais et ROI instantanément.",
