@@ -1,0 +1,45 @@
+Verifying 12 languages: en, es, de, fr, pt, it, nl, pl, sv, no, da, fi
+Calculator keys: mortgage, loan, roi, crypto, solar, wedding, flooring, roofing
+--- Verifying Calculators ---
+Checking calculator: mortgage
+Checking calculator: loan
+Checking calculator: roi
+Checking calculator: crypto
+Checking calculator: solar
+Checking calculator: wedding
+Checking calculator: flooring
+Checking calculator: roofing
+
+--- Verifying Niches ---
+
+--- Verifying UI ---
+
+--- Verification Complete ---
+Found 27 errors:
+- Warning: Niche [heloc] overrides field [rate] label in EN but missing [fr].
+- Warning: Niche [heloc] overrides field [rate] label in EN but missing [pt].
+- Warning: Niche [heloc] overrides field [rate] label in EN but missing [it].
+- Warning: Niche [heloc] overrides field [rate] label in EN but missing [nl].
+- Warning: Niche [heloc] overrides field [rate] label in EN but missing [pl].
+- Warning: Niche [heloc] overrides field [rate] label in EN but missing [sv].
+- Warning: Niche [heloc] overrides field [rate] label in EN but missing [no].
+- Warning: Niche [heloc] overrides field [rate] label in EN but missing [da].
+- Warning: Niche [heloc] overrides field [rate] label in EN but missing [fi].
+- Warning: Niche [heloc] overrides field [principal] label in EN but missing [fr].
+- Warning: Niche [heloc] overrides field [principal] label in EN but missing [pt].
+- Warning: Niche [heloc] overrides field [principal] label in EN but missing [it].
+- Warning: Niche [heloc] overrides field [principal] label in EN but missing [nl].
+- Warning: Niche [heloc] overrides field [principal] label in EN but missing [pl].
+- Warning: Niche [heloc] overrides field [principal] label in EN but missing [sv].
+- Warning: Niche [heloc] overrides field [principal] label in EN but missing [no].
+- Warning: Niche [heloc] overrides field [principal] label in EN but missing [da].
+- Warning: Niche [heloc] overrides field [principal] label in EN but missing [fi].
+- Warning: Niche [arm-mortgage] overrides field [rate] label in EN but missing [fr].
+- Warning: Niche [arm-mortgage] overrides field [rate] label in EN but missing [pt].
+- Warning: Niche [arm-mortgage] overrides field [rate] label in EN but missing [it].
+- Warning: Niche [arm-mortgage] overrides field [rate] label in EN but missing [nl].
+- Warning: Niche [arm-mortgage] overrides field [rate] label in EN but missing [pl].
+- Warning: Niche [arm-mortgage] overrides field [rate] label in EN but missing [sv].
+- Warning: Niche [arm-mortgage] overrides field [rate] label in EN but missing [no].
+- Warning: Niche [arm-mortgage] overrides field [rate] label in EN but missing [da].
+- Warning: Niche [arm-mortgage] overrides field [rate] label in EN but missing [fi].

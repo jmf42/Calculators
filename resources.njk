@@ -1,0 +1,75 @@
+---
+pagination:
+  data: site.languages
+  size: 1
+  alias: langItem
+permalink: "/{% if langItem.code != 'en' %}{{ langItem.code }}/{% endif %}resources/index.html"
+---
+<!DOCTYPE html>
+<html lang="{{ langItem.code }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ ui.resources.title[langItem.code] }} | {{ site.name }}</title>
+    <meta name="description" content="{{ ui.resources.description[langItem.code] }}">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/png" href="/assets/images/logo_calculator.png">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    {% include "components/language-redirect.njk" %}
+</head>
+<body>
+    <nav class="nav">
+        <div class="container">
+            <a href="{% if langItem.code == 'en' %}/{% else %}/{{ langItem.code }}{% endif %}" class="logo">
+                <img class="logo-mark" src="/assets/images/logo_calculator.png" alt="" aria-hidden="true" style="width: 32px; height: 32px;">
+                <span class="logo-type">{{ site.name }}</span>
+            </a>
+            <div class="nav-links">
+                <a href="{% if langItem.code == 'en' %}/{% else %}/{{ langItem.code }}{% endif %}" class="nav-btn">
+                     ← {{ ui.nav[langItem.code].home }}
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" style="padding: 80px 0 60px;">
+        <div class="container" style="max-width: 800px;">
+            <h1>{{ ui.resources.title[langItem.code] }}</h1>
+            <p class="lead" style="font-size: 20px; color: var(--text-muted); line-height: 1.6;">{{ ui.resources.description[langItem.code] }}</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container" style="max-width: 800px;">
+            <div class="resource-grid" style="display: grid; gap: 32px;">
+                {% for article in collections.articlePages %}
+                    {% if article.lang == langItem.code %}
+                        <div class="card" style="padding: 32px;">
+                            <h2 style="margin-top: 0; margin-bottom: 12px; font-size: 24px;">
+                                <a href="/{{ article.lang }}/{{ article.slug }}" style="color: var(--text); text-decoration: none;">{{ article.title }}</a>
+                            </h2>
+                            <p style="color: var(--text-muted); margin-bottom: 24px;">{{ article.metaDescription }}</p>
+                            <a href="/{{ article.lang }}/{{ article.slug }}" class="btn btn-primary-outline">{{ ui.resources.readMore[langItem.code] }} →</a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-bottom: 16px;">
+                {% set langPrefix = '' if langItem.code == 'en' else '/' + langItem.code %}
+                <a href="{{ langPrefix }}/about" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">{{ ui.about.title[langItem.code] }}</a>
+                <a href="{{ langPrefix }}/resources" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">{{ ui.resources.title[langItem.code] }}</a>
+                <a href="{{ langPrefix }}/contact" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">{{ ui.contact.title[langItem.code] }}</a>
+                <a href="{{ langPrefix }}/privacy" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">{{ ui.footer[langItem.code].privacy }}</a>
+                <a href="{{ langPrefix }}/terms" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">{{ ui.footer[langItem.code].terms }}</a>
+            </div>
+            <p style="text-align: center; color: var(--text-muted);">© {{ site.year }} {{ site.name }}.</p>
+        </div>
+    </footer>
+</body>
+</html>

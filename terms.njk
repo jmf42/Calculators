@@ -5,12 +5,17 @@ pagination:
   alias: langItem
 layout: layouts/legal.njk
 title: Terms of Service
-permalink: "/{% if langItem.code != 'en' %}{{ langItem.code }}/{% endif %}terms.html"
-lang: "{{ langItem.code }}"
+permalink: "/{% if langItem.code != 'en' %}{{ langItem.code }}/{% endif %}terms/index.html"
 ---
+{% set lang = langItem.code %}
+{% set uiLegal = ui.legal[lang] %}
+{% set uiFooter = ui.footer[lang] %}
+{% set pageTitle = uiLegal.termsTitle %}
+{% set lastUpdatedText = uiLegal.lastUpdated %}
+
 {% set uiTerms = ui.termsPage[lang] %}
 
-<!-- Override layout variables -->
+{# Override layout variables #}
 {% set title = pageTitle %}
 {% set description = pageTitle + " - " + site.name %}
 
@@ -22,34 +27,34 @@ lang: "{{ langItem.code }}"
 <h2>{{ uiTerms.s2Title }}</h2>
 <p>{{ uiTerms.s2Text }}</p>
 <ul>
-    <li>Use our calculators for personal or business planning</li>
-    <li>Share calculator links with others</li>
-    <li>Access calculators in multiple languages</li>
+    <li>{{ ui.termsContent.freeUseList1[lang] | default("Use our calculators for personal or business planning") }}</li>
+    <li>{{ ui.termsContent.freeUseList2[lang] | default("Share calculator links with others") }}</li>
+    <li>{{ ui.termsContent.freeUseList3[lang] | default("Access calculators in multiple languages") }}</li>
 </ul>
 
 <h2>{{ uiTerms.s3Title }}</h2>
-<p><strong>{{ uiTerms.important }}</strong> Calculator results are estimates only. They should not be used as the sole basis for financial decisions. Always consult a qualified financial advisor, accountant, or other professional before making important financial decisions.</p>
+<p><strong>{{ uiTerms.important }}</strong> {{ ui.termsContent.accuracyText[lang] | default("Calculator results are estimates only. They should not be used as the sole basis for financial decisions. Always consult a qualified financial advisor.") }}</p>
 
 <h2>{{ uiTerms.s4Title }}</h2>
-<p>You may NOT:</p>
+<p>{{ ui.termsContent.restrictionsIntro[lang] | default("You may NOT:") }}</p>
 <ul>
-    <li>Use the calculators for illegal or abusive purposes</li>
-    <li>Attempt to scrape, copy, or redistribute our calculator code</li>
-    <li>Attempt to bypass security or access controls on our services</li>
-    <li>Use automated bots to access our services in an excessive manner</li>
+    <li>{{ ui.termsContent.restrictionsList1[lang] | default("Use the calculators for illegal or abusive purposes") }}</li>
+    <li>{{ ui.termsContent.restrictionsList2[lang] | default("Attempt to scrape, copy, or redistribute our calculator code") }}</li>
+    <li>{{ ui.termsContent.restrictionsList3[lang] | default("Attempt to bypass security or access controls on our services") }}</li>
+    <li>{{ ui.termsContent.restrictionsList4[lang] | default("Use automated bots to access our services excessively") }}</li>
 </ul>
 
 <h2>{{ uiTerms.s5Title }}</h2>
-<p>CalcKit, including all code, design, and content, is the intellectual property of its creators. The name "CalcKit" and associated branding are protected.</p>
+<p>{{ ui.termsContent.intellectualPropertyText[lang] | default("CalcKit, including all code, design, and content, is the intellectual property of its creators. The name 'CalcKit' and associated branding are protected.") }}</p>
 
 <h2>{{ uiTerms.s6Title }}</h2>
-<p>CalcKit is provided "as is" without warranty of any kind. We do not guarantee that the calculators will be error-free, uninterrupted, or accurate for your specific situation.</p>
+<p>{{ ui.termsContent.disclaimerText[lang] | default("CalcKit is provided 'as is' without warranty of any kind. We do not guarantee that the calculators will be error-free, uninterrupted, or accurate for your specific situation.") }}</p>
 
 <h2>{{ uiTerms.s7Title }}</h2>
-<p>To the maximum extent permitted by law, CalcKit shall not be liable for any indirect, incidental, or consequential damages arising from the use of our calculators or website.</p>
+<p>{{ ui.termsContent.liabilityText[lang] | default("To the maximum extent permitted by law, CalcKit shall not be liable for any indirect, incidental, or consequential damages arising from the use of our calculators or website.") }}</p>
 
 <h2>{{ uiTerms.s8Title }}</h2>
-<p>We may update these terms from time to time. Continued use of the website after changes constitutes acceptance of the new terms.</p>
+<p>{{ ui.termsContent.changesText[lang] | default("We may update these terms from time to time. Continued use of the website after changes constitutes acceptance of the new terms.") }}</p>
 
 <h2>{{ uiTerms.s9Title }}</h2>
-<p>For questions about these terms, contact us at: <a href="mailto:worthit.tuliai@gmail.com">worthit.tuliai@gmail.com</a></p>
+<p>{{ ui.termsContent.contactText[lang] | default("For questions about these terms, contact us at:") }} <a href="mailto:worthit.tuliai@gmail.com">worthit.tuliai@gmail.com</a></p>

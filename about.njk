@@ -1,0 +1,82 @@
+---
+pagination:
+  data: site.languages
+  size: 1
+  alias: langItem
+permalink: "/{% if langItem.code != 'en' %}{{ langItem.code }}/{% endif %}about/index.html"
+---
+<!DOCTYPE html>
+<html lang="{{ langItem.code }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ ui.about.title[langItem.code] }} | {{ site.name }}</title>
+    <meta name="description" content="{{ ui.about.description[langItem.code] }}">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/png" href="/assets/images/logo_calculator.png">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    {% include "components/language-redirect.njk" %}
+</head>
+<body>
+    <nav class="nav">
+        <div class="container">
+            <a href="{% if langItem.code == 'en' %}/{% else %}/{{ langItem.code }}{% endif %}" class="logo">
+                <img class="logo-mark" src="/assets/images/logo_calculator.png" alt="" aria-hidden="true" style="width: 32px; height: 32px;">
+                <span class="logo-type">{{ site.name }}</span>
+            </a>
+            <div class="nav-links">
+                <a href="{% if langItem.code == 'en' %}/{% else %}/{{ langItem.code }}{% endif %}" class="nav-btn">
+                     ← {{ ui.nav[langItem.code].home }}
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" style="padding: 80px 0 60px;">
+        <div class="container" style="max-width: 800px;">
+            <h1>{{ ui.about.heroTitle[langItem.code] }}</h1>
+            <p class="lead" style="font-size: 20px; color: var(--text-muted); line-height: 1.6;">{{ ui.about.heroSubtitle[langItem.code] }}</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container" style="max-width: 800px;">
+            <div class="prose">
+                <h2>{{ ui.about.methodologyTitle[langItem.code] }}</h2>
+                <p>{{ ui.about.methodologyText[langItem.code] }}</p>
+                
+                <div style="background: var(--surface); padding: 24px; border-radius: 12px; border: 1px solid var(--border); margin: 32px 0;">
+                    <h3 style="margin-top: 0;">{{ ui.about.dataSourcesTitle[langItem.code] }}</h3>
+                    <ul style="margin-bottom: 0;">
+                        <li><strong>Federal Reserve (FRED):</strong> Interest rate trends and economic data.</li>
+                        <li><strong>Bureau of Labor Statistics (BLS):</strong> Inflation and CPI data.</li>
+                        <li><strong>Zillow Research:</strong> Housing market trends and home values.</li>
+                        <li><strong>CoinGecko API:</strong> Real-time cryptocurrency pricing.</li>
+                    </ul>
+                </div>
+
+                <h2>{{ ui.about.missionTitle[langItem.code] }}</h2>
+                <p>{{ ui.about.missionText[langItem.code] }}</p>
+
+                <h2>{{ ui.about.teamTitle[langItem.code] }}</h2>
+                <p>{{ ui.about.teamText[langItem.code] }}</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-bottom: 16px;">
+                {% set langPrefix = '' if langItem.code == 'en' else '/' + langItem.code %}
+                <a href="{{ langPrefix }}/about" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">{{ ui.about.title[langItem.code] }}</a>
+                <a href="{{ langPrefix }}/resources" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">{{ ui.resources.title[langItem.code] }}</a>
+                <a href="{{ langPrefix }}/contact" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">{{ ui.contact.title[langItem.code] }}</a>
+                <a href="{{ langPrefix }}/privacy" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">{{ ui.footer[langItem.code].privacy }}</a>
+                <a href="{{ langPrefix }}/terms" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">{{ ui.footer[langItem.code].terms }}</a>
+            </div>
+            <p style="text-align: center; color: var(--text-muted);">© {{ site.year }} {{ site.name }}.</p>
+        </div>
+    </footer>
+</body>
+</html>

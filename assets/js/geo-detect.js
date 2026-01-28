@@ -61,13 +61,383 @@
         'ca': { name: 'Canada', nameLocalized: 'Canada', currency: '$', currencyCode: 'CAD', locale: 'en-CA', tips: { en: ['Minimum 5% down payment for properties under $500,000.', 'CMHC insurance required if down payment is less than 20%.', 'Stress test requires qualifying at rate + 2%.'], fr: ['Mise de fonds minimale de 5% pour les propriétés sous 500 000$.', 'Assurance SCHL obligatoire si mise de fonds inférieure à 20%.', 'Le test de résistance exige de qualifier au taux + 2%.'] }, mortgage: { medianPrice: 500000, typicalRate: 5.5, typicalTerm: 25, downPayment: 5 } }
     };
 
-    // State name to code mapping for US
+    // Cryptocurrency Tax Data by Country (2025-2026)
+    const CRYPTO_TAX_DATA = {
+        // US - Federal rates, varies by state
+        'us': {
+            name: { en: 'United States', es: 'Estados Unidos', de: 'USA', fr: 'États-Unis', pt: 'Estados Unidos', it: 'Stati Uniti', nl: 'Verenigde Staten', pl: 'Stany Zjednoczone', sv: 'USA', no: 'USA', da: 'USA', fi: 'Yhdysvallat' },
+            flag: '🇺🇸',
+            shortTermRate: '10-37%',
+            longTermRate: '0-20%',
+            holdingPeriod: 12,
+            holdingBenefit: true,
+            exemption: null,
+            tips: {
+                en: ['Short-term gains (<1 year) taxed as ordinary income (10-37%).', 'Long-term gains (>1 year) taxed at 0%, 15%, or 20%.', 'Every crypto trade is a taxable event — even crypto-to-crypto swaps.', 'IRS Form 8949 required for all cryptocurrency transactions.'],
+                es: ['Ganancias a corto plazo (<1 año) gravadas como ingreso ordinario (10-37%).', 'Ganancias a largo plazo (>1 año) tienen tasas de 0%, 15%, o 20%.', 'Cada operación cripto es un evento imponible — incluso swaps.', 'El formulario IRS 8949 es obligatorio para todas las transacciones.']
+            }
+        },
+        // Germany - Tax-free after 1 year!
+        'de': {
+            name: { en: 'Germany', es: 'Alemania', de: 'Deutschland', fr: 'Allemagne', pt: 'Alemanha', it: 'Germania', nl: 'Duitsland', pl: 'Niemcy', sv: 'Tyskland', no: 'Tyskland', da: 'Tyskland', fi: 'Saksa' },
+            flag: '🇩🇪',
+            shortTermRate: '0-45%',
+            longTermRate: '0%',
+            holdingPeriod: 12,
+            holdingBenefit: true,
+            exemption: '€600',
+            tips: {
+                en: ['Crypto is TAX-FREE if held >1 year — major advantage for HODLers!', 'Short-term gains under €600/year are also tax-free (Freigrenze).', 'Exceeding €600 makes the ENTIRE gain taxable, not just the excess.', 'Keep purchase date records to prove your holding period.'],
+                de: ['Krypto ist STEUERFREI wenn länger als 1 Jahr gehalten!', 'Kurzfristige Gewinne unter 600€/Jahr sind auch steuerfrei (Freigrenze).', 'Bei Überschreitung von 600€ wird der GESAMTE Gewinn steuerpflichtig.', 'Führen Sie Aufzeichnungen über Kaufdaten als Nachweis.']
+            }
+        },
+        // UK
+        'gb': {
+            name: { en: 'United Kingdom', es: 'Reino Unido', de: 'Großbritannien', fr: 'Royaume-Uni', pt: 'Reino Unido', it: 'Regno Unito', nl: 'Verenigd Koninkrijk', pl: 'Wielka Brytania', sv: 'Storbritannien', no: 'Storbritannia', da: 'Storbritannien', fi: 'Iso-Britannia' },
+            flag: '🇬🇧',
+            shortTermRate: '10-20%',
+            longTermRate: '10-20%',
+            holdingPeriod: null,
+            holdingBenefit: false,
+            exemption: '£3,000',
+            tips: {
+                en: ['Capital Gains Tax: 10% (basic rate) or 20% (higher rate).', '£3,000 annual CGT-free allowance (2025-2026).', 'Crypto-to-crypto trades are taxable — not just fiat conversions.', 'Frequent trading may be classified as income (up to 45%).']
+            }
+        },
+        // France - Flat tax
+        'fr': {
+            name: { en: 'France', es: 'Francia', de: 'Frankreich', fr: 'France', pt: 'França', it: 'Francia', nl: 'Frankrijk', pl: 'Francja', sv: 'Frankrike', no: 'Frankrike', da: 'Frankrig', fi: 'Ranska' },
+            flag: '🇫🇷',
+            shortTermRate: '30%',
+            longTermRate: '30%',
+            holdingPeriod: null,
+            holdingBenefit: false,
+            exemption: '€305',
+            tips: {
+                en: ['France applies a 30% flat tax (PFU) on all crypto gains.', 'Annual gains under €305 are tax-exempt.', 'Professional traders pay up to 45% + social charges.', 'Strict reporting requirements for all transactions.'],
+                fr: ['La France applique un prélèvement forfaitaire unique (PFU) de 30%.', 'Les gains annuels inférieurs à 305€ sont exonérés.', 'Les traders professionnels paient jusqu\'à 45% + charges sociales.', 'Déclaration obligatoire de toutes les transactions.']
+            }
+        },
+        // Spain
+        'es': {
+            name: { en: 'Spain', es: 'España', de: 'Spanien', fr: 'Espagne', pt: 'Espanha', it: 'Spagna', nl: 'Spanje', pl: 'Hiszpania', sv: 'Spanien', no: 'Spania', da: 'Spanien', fi: 'Espanja' },
+            flag: '🇪🇸',
+            shortTermRate: '19-28%',
+            longTermRate: '19-28%',
+            holdingPeriod: null,
+            holdingBenefit: false,
+            exemption: null,
+            tips: {
+                en: ['Capital gains taxed at 19-28% depending on amount.', 'Modelo 720: mandatory for foreign exchange accounts.', 'All crypto swaps and trades are taxable events.', 'Increasing enforcement on crypto tax compliance.'],
+                es: ['Ganancias de capital gravadas al 19-28% según el monto.', 'Modelo 720: obligatorio para cuentas en exchanges extranjeros.', 'Todos los intercambios y swaps cripto son hechos imponibles.', 'Mayor fiscalización sobre cumplimiento fiscal cripto.']
+            }
+        },
+        // Portugal - Great for holders
+        'pt': {
+            name: { en: 'Portugal', es: 'Portugal', de: 'Portugal', fr: 'Portugal', pt: 'Portugal', it: 'Portogallo', nl: 'Portugal', pl: 'Portugalia', sv: 'Portugal', no: 'Portugal', da: 'Portugal', fi: 'Portugali' },
+            flag: '🇵🇹',
+            shortTermRate: '28%',
+            longTermRate: '0%',
+            holdingPeriod: 12,
+            holdingBenefit: true,
+            exemption: null,
+            tips: {
+                en: ['Crypto is TAX-FREE if held >365 days!', 'Short-term gains (<1 year) taxed at 28%.', 'Professional/frequent traders classified as business income.', 'Since 2023, only long-term holders benefit from exemption.'],
+                pt: ['Cripto é ISENTO se mantido por mais de 365 dias!', 'Ganhos de curto prazo (<1 ano) tributados a 28%.', 'Traders frequentes classificados como renda empresarial.', 'Desde 2023, só holders de longo prazo têm isenção.']
+            }
+        },
+        // Italy
+        'it': {
+            name: { en: 'Italy', es: 'Italia', de: 'Italien', fr: 'Italie', pt: 'Itália', it: 'Italia', nl: 'Italië', pl: 'Włochy', sv: 'Italien', no: 'Italia', da: 'Italien', fi: 'Italia' },
+            flag: '🇮🇹',
+            shortTermRate: '26%',
+            longTermRate: '26%',
+            holdingPeriod: null,
+            holdingBenefit: false,
+            exemption: '€2,000',
+            tips: {
+                en: ['Flat 26% tax on all crypto capital gains.', 'First €2,000 in annual gains is tax-exempt.', '2023 amnesty program available for past gains.', 'Mandatory declaration of crypto holdings.'],
+                it: ['Imposta fissa del 26% su tutte le plusvalenze crypto.', 'I primi 2.000€ di guadagni annuali sono esenti.', 'Sanatoria 2023 disponibile per guadagni passati.', 'Dichiarazione obbligatoria delle cripto possedute.']
+            }
+        },
+        // Netherlands - Wealth tax
+        'nl': {
+            name: { en: 'Netherlands', es: 'Países Bajos', de: 'Niederlande', fr: 'Pays-Bas', pt: 'Países Baixos', it: 'Paesi Bassi', nl: 'Nederland', pl: 'Holandia', sv: 'Nederländerna', no: 'Nederland', da: 'Holland', fi: 'Alankomaat' },
+            flag: '🇳🇱',
+            shortTermRate: '~32%',
+            longTermRate: '~32%',
+            holdingPeriod: null,
+            holdingBenefit: false,
+            exemption: '€57,000',
+            tips: {
+                en: ['Wealth tax system — not capital gains.', 'Tax on assumed 4% return at ~32% = ~1.3% of assets.', '€57K (single) or €114K (couple) exempt.', 'Tax based on Jan 1 holdings, regardless of sales.'],
+                nl: ['Vermogensbelasting — geen vermogenswinstbelasting.', 'Belasting op fictief rendement ~4% tegen ~32%.', '€57K (single) of €114K (paar) vrijgesteld.', 'Belasting op basis van 1 januari bezit.']
+            }
+        },
+        // Poland
+        'pl': {
+            name: { en: 'Poland', es: 'Polonia', de: 'Polen', fr: 'Pologne', pt: 'Polônia', it: 'Polonia', nl: 'Polen', pl: 'Polska', sv: 'Polen', no: 'Polen', da: 'Polen', fi: 'Puola' },
+            flag: '🇵🇱',
+            shortTermRate: '19%',
+            longTermRate: '19%',
+            holdingPeriod: null,
+            holdingBenefit: false,
+            exemption: null,
+            tips: {
+                en: ['Flat 19% tax on crypto capital gains.', 'Losses can be carried forward for 5 years.', 'Each sale or exchange is a taxable event.', 'Clear, simple crypto tax rules.'],
+                pl: ['Zryczałtowany 19% podatek od zysków krypto.', 'Straty można odliczać przez 5 lat.', 'Każda sprzedaż lub wymiana to zdarzenie podatkowe.', 'Przejrzyste zasady opodatkowania krypto.']
+            }
+        },
+        // Sweden
+        'se': {
+            name: { en: 'Sweden', es: 'Suecia', de: 'Schweden', fr: 'Suède', pt: 'Suécia', it: 'Svezia', nl: 'Zweden', pl: 'Szwecja', sv: 'Sverige', no: 'Sverige', da: 'Sverige', fi: 'Ruotsi' },
+            flag: '🇸🇪',
+            shortTermRate: '30%',
+            longTermRate: '30%',
+            holdingPeriod: null,
+            holdingBenefit: false,
+            exemption: null,
+            tips: {
+                en: ['30% flat tax on crypto capital gains.', 'Must report all trades on annual tax return.', 'Strict reporting requirements.', 'Crypto-to-crypto trades are taxable events.'],
+                sv: ['30% platt skatt på kryptovinster.', 'Alla affärer måste redovisas i årsdeklarationen.', 'Strikta rapporteringskrav.', 'Krypto-till-krypto byten är skattepliktiga.']
+            }
+        },
+        // Norway
+        'no': {
+            name: { en: 'Norway', es: 'Noruega', de: 'Norwegen', fr: 'Norvège', pt: 'Noruega', it: 'Norvegia', nl: 'Noorwegen', pl: 'Norwegia', sv: 'Norge', no: 'Norge', da: 'Norge', fi: 'Norja' },
+            flag: '🇳🇴',
+            shortTermRate: '22%',
+            longTermRate: '22%',
+            holdingPeriod: null,
+            holdingBenefit: false,
+            exemption: null,
+            tips: {
+                en: ['22% flat tax on crypto gains.', 'All crypto must be reported as wealth.', 'Tightening enforcement on undeclared crypto.', 'Track all trades for accurate reporting.'],
+                no: ['22% flat skatt på kryptogevinster.', 'All krypto må rapporteres som formue.', 'Strammer inn på urapportert krypto.', 'Spor alle handler for nøyaktig rapportering.']
+            }
+        },
+        // Denmark
+        'dk': {
+            name: { en: 'Denmark', es: 'Dinamarca', de: 'Dänemark', fr: 'Danemark', pt: 'Dinamarca', it: 'Danimarca', nl: 'Denemarken', pl: 'Dania', sv: 'Danmark', no: 'Danmark', da: 'Danmark', fi: 'Tanska' },
+            flag: '🇩🇰',
+            shortTermRate: '37-52%',
+            longTermRate: '37-52%',
+            holdingPeriod: null,
+            holdingBenefit: false,
+            exemption: null,
+            tips: {
+                en: ['Crypto taxed as personal income (up to 52%).', 'Classification as speculation vs business affects rate.', 'One of the highest crypto tax rates in Europe.', 'Hobby trading may qualify for lower treatment.'],
+                da: ['Kryptogevinster beskattes som personlig indkomst (op til 52%).', 'Klassificering som spekulation vs erhverv påvirker sats.', 'En af de højeste kryptoskattesatser i Europa.', 'Hobbyhandel kan kvalificere til lavere skat.']
+            }
+        },
+        // Finland
+        'fi': {
+            name: { en: 'Finland', es: 'Finlandia', de: 'Finnland', fr: 'Finlande', pt: 'Finlândia', it: 'Finlandia', nl: 'Finland', pl: 'Finlandia', sv: 'Finland', no: 'Finland', da: 'Finland', fi: 'Suomi' },
+            flag: '🇫🇮',
+            shortTermRate: '30-34%',
+            longTermRate: '30-34%',
+            holdingPeriod: null,
+            holdingBenefit: false,
+            exemption: null,
+            tips: {
+                en: ['Capital gains: 30% (≤30K) or 34% (above).', 'All crypto sales and swaps are taxable.', 'Detailed transaction reporting required.', 'Mining income taxed as earned income.'],
+                fi: ['Myyntivoitot: 30% (≤30.000€) tai 34% (yli).', 'Kaikki kryptomyynnit ja -vaihdot ovat verotettavia.', 'Yksityiskohtainen tapahtumaraportointi vaadittu.', 'Louhintatulo verotetaan ansiotulona.']
+            }
+        },
+        // Switzerland - No capital gains tax!
+        'ch': {
+            name: { en: 'Switzerland', es: 'Suiza', de: 'Schweiz', fr: 'Suisse', pt: 'Suíça', it: 'Svizzera', nl: 'Zwitserland', pl: 'Szwajcaria', sv: 'Schweiz', no: 'Sveits', da: 'Schweiz', fi: 'Sveitsi' },
+            flag: '🇨🇭',
+            shortTermRate: '0%',
+            longTermRate: '0%',
+            holdingPeriod: null,
+            holdingBenefit: false,
+            exemption: 'Unlimited',
+            tips: {
+                en: ['NO capital gains tax for private investors!', 'Crypto treated as personal movable assets.', 'Professional traders ARE taxed — consult advisor.', 'Wealth tax applies based on Dec 31 market value.'],
+                de: ['KEINE Kapitalertragssteuer für Privatanleger!', 'Krypto wird als bewegliches Privatvermögen behandelt.', 'Professionelle Trader werden besteuert.', 'Vermögenssteuer basiert auf 31.12. Marktwert.'],
+                fr: ['PAS d\'impôt sur les gains en capital pour les privés!', 'Cryptos traitées comme biens mobiliers privés.', 'Les traders pro SONT imposés — consultez un conseiller.', 'L\'impôt fortune s\'applique sur la valeur au 31 déc.']
+            }
+        },
+        // Austria
+        'at': {
+            name: { en: 'Austria', es: 'Austria', de: 'Österreich', fr: 'Autriche', pt: 'Áustria', it: 'Austria', nl: 'Oostenrijk', pl: 'Austria', sv: 'Österrike', no: 'Østerrike', da: 'Østrig', fi: 'Itävalta' },
+            flag: '🇦🇹',
+            shortTermRate: '27.5%',
+            longTermRate: '27.5%',
+            holdingPeriod: null,
+            holdingBenefit: false,
+            exemption: null,
+            tips: {
+                en: ['Flat 27.5% tax on realized crypto gains.', 'Crypto before March 2021 may have grandfathered rules.', 'Staking and lending rewards are taxable.', 'Clear, consistent crypto taxation.'],
+                de: ['Pauschal 27,5% Steuer auf realisierte Krypto-Gewinne.', 'Vor März 2021 erworbene Krypto kann Altregeln haben.', 'Staking- und Lending-Erträge sind steuerpflichtig.', 'Klare, konsistente Kryptobesteuerung.']
+            }
+        },
+        // Belgium
+        'be': {
+            name: { en: 'Belgium', es: 'Bélgica', de: 'Belgien', fr: 'Belgique', pt: 'Bélgica', it: 'Belgio', nl: 'België', pl: 'Belgia', sv: 'Belgien', no: 'Belgia', da: 'Belgien', fi: 'Belgia' },
+            flag: '🇧🇪',
+            shortTermRate: '0-33%',
+            longTermRate: '0%',
+            holdingPeriod: null,
+            holdingBenefit: true,
+            exemption: 'Case-by-case',
+            tips: {
+                en: ['Private investors may be TAX-FREE ("good housekeeping").', 'Speculative gains can be taxed at 33%.', 'Classification depends on trading frequency.', 'Keep records to prove passive investment.'],
+                fr: ['Les investisseurs privés peuvent être EXONÉRÉS.', 'Les gains spéculatifs taxés à 33%.', 'Classification dépend de la fréquence de trading.', 'Gardez des preuves d\'investissement passif.'],
+                nl: ['Particuliere beleggers kunnen VRIJGESTELD zijn.', 'Speculatieve winsten belast tegen 33%.', 'Classificatie hangt af van handelsfrequentie.', 'Bewaar bewijzen van passief beleggen.']
+            }
+        },
+        // Canada
+        'ca_country': {
+            name: { en: 'Canada', es: 'Canadá', de: 'Kanada', fr: 'Canada', pt: 'Canadá', it: 'Canada', nl: 'Canada', pl: 'Kanada', sv: 'Kanada', no: 'Canada', da: 'Canada', fi: 'Kanada' },
+            flag: '🇨🇦',
+            shortTermRate: '~25%',
+            longTermRate: '~25%',
+            holdingPeriod: null,
+            holdingBenefit: false,
+            exemption: null,
+            tips: {
+                en: ['Only 50% of capital gains are taxable!', 'Effective rate is half your marginal rate.', 'Crypto-to-crypto trades are taxable events.', 'CRA actively auditing crypto investors.'],
+                fr: ['Seulement 50% des gains en capital imposables!', 'Le taux effectif = moitié de votre taux marginal.', 'Les échanges crypto-crypto sont imposables.', 'L\'ARC audite activement les investisseurs crypto.']
+            }
+        },
+        // Australia
+        'au': {
+            name: { en: 'Australia', es: 'Australia', de: 'Australien', fr: 'Australie', pt: 'Austrália', it: 'Australia', nl: 'Australië', pl: 'Australia', sv: 'Australien', no: 'Australia', da: 'Australien', fi: 'Australia' },
+            flag: '🇦🇺',
+            shortTermRate: 'Marginal rate',
+            longTermRate: '50% discount',
+            holdingPeriod: 12,
+            holdingBenefit: true,
+            exemption: null,
+            tips: {
+                en: ['Hold 12+ months for 50% CGT discount!', 'Short-term gains at marginal rate (up to 45%).', '$10,000 personal use exemption available.', 'ATO tracks crypto via exchange data.']
+            }
+        },
+        // Ireland
+        'ie': {
+            name: { en: 'Ireland', es: 'Irlanda', de: 'Irland', fr: 'Irlande', pt: 'Irlanda', it: 'Irlanda', nl: 'Ierland', pl: 'Irlandia', sv: 'Irland', no: 'Irland', da: 'Irland', fi: 'Irlanti' },
+            flag: '🇮🇪',
+            shortTermRate: '33%',
+            longTermRate: '33%',
+            holdingPeriod: null,
+            holdingBenefit: false,
+            exemption: '€1,270',
+            tips: {
+                en: ['Flat 33% Capital Gains Tax on crypto.', '€1,270 annual CGT-free allowance.', 'Self-assessment required; file by Oct 31.', 'All disposals including swaps are taxable.']
+            }
+        },
+        // Brazil
+        'br': {
+            name: { en: 'Brazil', es: 'Brasil', de: 'Brasilien', fr: 'Brésil', pt: 'Brasil', it: 'Brasile', nl: 'Brazilië', pl: 'Brazylia', sv: 'Brasilien', no: 'Brasil', da: 'Brasilien', fi: 'Brasilia' },
+            flag: '🇧🇷',
+            shortTermRate: '15-22.5%',
+            longTermRate: '15-22.5%',
+            holdingPeriod: null,
+            holdingBenefit: false,
+            exemption: 'R$35,000/month',
+            tips: {
+                en: ['Monthly sales under R$35,000 are TAX-FREE!', 'Gains above taxed at 15-22.5%.', 'Report crypto monthly to tax authority.', 'Strict reporting requirements.'],
+                pt: ['Vendas mensais abaixo de R$35.000 são ISENTAS!', 'Ganhos acima tributados em 15-22,5%.', 'Declare cripto mensalmente à Receita.', 'Regras estritas de declaração.']
+            }
+        },
+        // Mexico
+        'mx': {
+            name: { en: 'Mexico', es: 'México', de: 'Mexiko', fr: 'Mexique', pt: 'México', it: 'Messico', nl: 'Mexico', pl: 'Meksyk', sv: 'Mexiko', no: 'Mexico', da: 'Mexico', fi: 'Meksiko' },
+            flag: '🇲🇽',
+            shortTermRate: '~35%',
+            longTermRate: '~35%',
+            holdingPeriod: null,
+            holdingBenefit: false,
+            exemption: null,
+            tips: {
+                en: ['Crypto gains generally taxed as income (up to 35%).', 'Tax treatment varies by circumstances.', 'No specific crypto tax law yet.', 'Consult a local tax advisor.'],
+                es: ['Ganancias cripto gravadas como ingreso (hasta 35%).', 'Tratamiento fiscal varía según circunstancias.', 'Aún no hay ley fiscal específica para cripto.', 'Consulta con un asesor fiscal local.']
+            }
+        },
+        // Argentina
+        'ar': {
+            name: { en: 'Argentina', es: 'Argentina', de: 'Argentinien', fr: 'Argentine', pt: 'Argentina', it: 'Argentina', nl: 'Argentinië', pl: 'Argentyna', sv: 'Argentina', no: 'Argentina', da: 'Argentina', fi: 'Argentiina' },
+            flag: '🇦🇷',
+            shortTermRate: '15%',
+            longTermRate: '15%',
+            holdingPeriod: null,
+            holdingBenefit: false,
+            exemption: null,
+            tips: {
+                en: ['15% tax on crypto capital gains.', 'High inflation makes crypto popular.', 'FX controls affect conversions.', 'Keep detailed records.'],
+                es: ['15% de impuesto sobre ganancias cripto.', 'La alta inflación hace cripto popular.', 'Controles cambiarios afectan conversiones.', 'Mantén registros detallados.']
+            }
+        },
+        // Colombia
+        'co_country': {
+            name: { en: 'Colombia', es: 'Colombia', de: 'Kolumbien', fr: 'Colombie', pt: 'Colômbia', it: 'Colombia', nl: 'Colombia', pl: 'Kolumbia', sv: 'Colombia', no: 'Colombia', da: 'Colombia', fi: 'Kolumbia' },
+            flag: '🇨🇴',
+            shortTermRate: '0-10%',
+            longTermRate: '0-10%',
+            holdingPeriod: null,
+            holdingBenefit: false,
+            exemption: 'Foreign gains',
+            tips: {
+                en: ['Foreign source gains may be tax-exempt.', 'Domestic crypto gains: 0-10%.', 'Crypto treated as intangible property.', 'Regulations evolving — consult expert.'],
+                es: ['Ganancias de fuentes extranjeras pueden estar exentas.', 'Ganancias cripto domésticas: 0-10%.', 'Cripto tratado como propiedad intangible.', 'Regulaciones evolucionando — consulta experto.']
+            }
+        },
+        // Chile
+        'cl': {
+            name: { en: 'Chile', es: 'Chile', de: 'Chile', fr: 'Chili', pt: 'Chile', it: 'Cile', nl: 'Chili', pl: 'Chile', sv: 'Chile', no: 'Chile', da: 'Chile', fi: 'Chile' },
+            flag: '🇨🇱',
+            shortTermRate: '25-40%',
+            longTermRate: '25-40%',
+            holdingPeriod: null,
+            holdingBenefit: false,
+            exemption: null,
+            tips: {
+                en: ['Crypto may be taxed as business income (25-40%).', 'Classification depends on trading frequency.', 'Clearer regulations in development.', 'Keep detailed trade records.'],
+                es: ['Cripto puede tributar como renta empresarial (25-40%).', 'Clasificación depende de frecuencia de operaciones.', 'Regulaciones más claras en desarrollo.', 'Mantén registros detallados de operaciones.']
+            }
+        }
+    };
+
+    // US State-specific crypto tax notes (state taxes on top of federal)
+    const US_STATE_CRYPTO = {
+        // No state income tax states
+        'tx': { stateTax: false, notes: { en: 'Texas: No state income tax on crypto gains!', es: 'Texas: ¡Sin impuesto estatal sobre ganancias cripto!' } },
+        'fl': { stateTax: false, notes: { en: 'Florida: No state income tax on crypto gains!', es: 'Florida: ¡Sin impuesto estatal sobre ganancias cripto!' } },
+        'nv': { stateTax: false, notes: { en: 'Nevada: No state income tax on crypto gains!', es: 'Nevada: ¡Sin impuesto estatal sobre ganancias cripto!' } },
+        'wy': { stateTax: false, notes: { en: 'Wyoming: No state income tax + crypto-friendly regulations!', es: 'Wyoming: ¡Sin impuesto estatal + regulaciones cripto-friendly!' } },
+        'sd': { stateTax: false, notes: { en: 'South Dakota: No state income tax on crypto gains!', es: 'Dakota del Sur: ¡Sin impuesto estatal!' } },
+        'tn': { stateTax: false, notes: { en: 'Tennessee: No state income tax on crypto gains!', es: 'Tennessee: ¡Sin impuesto estatal sobre ganancias cripto!' } },
+        'nh': { stateTax: false, notes: { en: 'New Hampshire: No state income tax on crypto gains!', es: 'New Hampshire: ¡Sin impuesto estatal!' } },
+        'ak': { stateTax: false, notes: { en: 'Alaska: No state income tax on crypto gains!', es: 'Alaska: ¡Sin impuesto estatal!' } },
+        'wa': { stateTax: false, notes: { en: 'Washington: No income tax (7% on cap gains >$270K).', es: 'Washington: Sin impuesto (7% en ganancias >$270K).' } },
+        // High tax states
+        'ca': { stateTax: true, taxRate: '13.3%', notes: { en: 'California: Up to 13.3% state tax — highest in USA.', es: 'California: Hasta 13.3% estatal — el más alto de EE.UU.' } },
+        'ny': { stateTax: true, taxRate: '10.9%', notes: { en: 'New York: Up to 10.9% (+3.88% NYC tax).', es: 'Nueva York: Hasta 10.9% (+3.88% NYC).' } },
+        'nj': { stateTax: true, taxRate: '10.75%', notes: { en: 'New Jersey: Up to 10.75% state tax.', es: 'Nueva Jersey: Hasta 10.75% estatal.' } },
+        'or': { stateTax: true, taxRate: '9.9%', notes: { en: 'Oregon: Up to 9.9% state tax on crypto.', es: 'Oregon: Hasta 9.9% estatal.' } },
+        'mn': { stateTax: true, taxRate: '9.85%', notes: { en: 'Minnesota: Up to 9.85% state tax.', es: 'Minnesota: Hasta 9.85% estatal.' } },
+        // Medium tax states
+        'il': { stateTax: true, taxRate: '4.95%', notes: { en: 'Illinois: Flat 4.95% state tax.', es: 'Illinois: 4.95% fijo estatal.' } },
+        'ma': { stateTax: true, taxRate: '5%', notes: { en: 'Massachusetts: 5% flat tax (+4% surtax on >$1M).', es: 'Massachusetts: 5% fijo (+4% en >$1M).' } },
+        'co': { stateTax: true, taxRate: '4.4%', notes: { en: 'Colorado: Flat 4.4% state tax.', es: 'Colorado: 4.4% fijo estatal.' } },
+        'az': { stateTax: true, taxRate: '2.5%', notes: { en: 'Arizona: Flat 2.5% state tax.', es: 'Arizona: 2.5% fijo estatal.' } },
+        'ga': { stateTax: true, taxRate: '5.49%', notes: { en: 'Georgia: Flat 5.49% state tax.', es: 'Georgia: 5.49% fijo estatal.' } },
+        'nc': { stateTax: true, taxRate: '4.5%', notes: { en: 'North Carolina: Flat 4.5% state tax.', es: 'Carolina del Norte: 4.5% fijo estatal.' } },
+        'pa': { stateTax: true, taxRate: '3.07%', notes: { en: 'Pennsylvania: Flat 3.07% state tax.', es: 'Pennsylvania: 3.07% fijo estatal.' } },
+        'oh': { stateTax: true, taxRate: '3.75%', notes: { en: 'Ohio: Up to 3.75% state tax.', es: 'Ohio: Hasta 3.75% estatal.' } },
+        'mi': { stateTax: true, taxRate: '4.25%', notes: { en: 'Michigan: Flat 4.25% state tax.', es: 'Michigan: 4.25% fijo estatal.' } },
+        'va': { stateTax: true, taxRate: '5.75%', notes: { en: 'Virginia: Up to 5.75% state tax.', es: 'Virginia: Hasta 5.75% estatal.' } }
+    };
     const STATE_NAME_TO_CODE = {
         'texas': 'tx', 'california': 'ca', 'florida': 'fl', 'new york': 'ny',
         'pennsylvania': 'pa', 'illinois': 'il', 'ohio': 'oh', 'georgia': 'ga',
         'north carolina': 'nc', 'michigan': 'mi', 'new jersey': 'nj', 'virginia': 'va',
         'washington': 'wa', 'arizona': 'az', 'massachusetts': 'ma', 'tennessee': 'tn',
-        'indiana': 'in', 'missouri': 'mo', 'maryland': 'md', 'colorado': 'co'
+        'indiana': 'in', 'missouri': 'mo', 'maryland': 'md', 'colorado': 'co',
+        'nevada': 'nv', 'wyoming': 'wy', 'south dakota': 'sd', 'new hampshire': 'nh',
+        'alaska': 'ak', 'oregon': 'or', 'minnesota': 'mn'
     };
 
     /**
@@ -158,18 +528,18 @@
 
     // Localization Dictionary for Dynamic JS Content
     const TRANSLATIONS = {
-        en: { insights: "Market Insights", personalized: "Live Market Data", medianPrice: "Median Price", typicalRate: "Typical Rate", loanTerm: "Loan Term", downPayment: "Down Payment", sunHours: "Sun Hours", electricRate: "Electric Rate", potential: "Potential", high: "High", moderate: "Moderate", laborRate: "Labor Rate", season: "Season", active: "Active", propertyTax: "Property Tax", homeInsurance: "Home Insurance", stateTax: "State Income Tax", yes: "Yes", none: "None", unitHrs: "hrs/day", unitSqFt: "/sq.ft", unitKwh: "/kWh", unitYr: "/yr", years: "years", show: "Show", hide: "Hide", localFactors: "Local Factors" },
-        es: { insights: "Datos de Mercado", personalized: "Datos en Tiempo Real", medianPrice: "Precio Medio", typicalRate: "Tasa Típica", loanTerm: "Plazo", downPayment: "Enganche", sunHours: "Horas de Sol", electricRate: "Tarifa Eléc.", potential: "Potencial", high: "Alto", moderate: "Moderado", laborRate: "Mano de Obra", season: "Temporada", active: "Activa", propertyTax: "Impuesto Predial", homeInsurance: "Seguro", stateTax: "Impuesto Estatal", yes: "Sí", none: "No", unitHrs: "hr/día", unitSqFt: "/pie²", unitKwh: "/kWh", unitYr: "/año", years: "años", show: "Mostrar", hide: "Ocultar", localFactors: "Factores Locales" },
-        de: { insights: "Markteinblicke", personalized: "Live-Marktdaten", medianPrice: "Medianpreis", typicalRate: "Typischer Zins", loanTerm: "Laufzeit", downPayment: "Anzahlung", sunHours: "Sonnenstunden", electricRate: "Strompreis", potential: "Potenzial", high: "Hoch", moderate: "Mittel", laborRate: "Arbeitskosten", season: "Saison", active: "Aktiv", propertyTax: "Grundsteuer", homeInsurance: "Versicherung", stateTax: "Einkommenssteuer", yes: "Ja", none: "Keine", unitHrs: "Std/Tag", unitSqFt: "/qf", unitKwh: "/kWh", unitYr: "/Jahr", years: "Jahre", show: "Anzeigen", hide: "Verbergen", localFactors: "Lokale Faktoren" },
-        fr: { insights: "Aperçu du Marché", personalized: "Données en Direct", medianPrice: "Prix Médian", typicalRate: "Taux Moyen", loanTerm: "Durée", downPayment: "Apport", sunHours: "Ensoleillement", electricRate: "Tarif Élec.", potential: "Potentiel", high: "Élevé", moderate: "Modéré", laborRate: "Main d'Œuvre", season: "Saison", active: "Active", propertyTax: "Taxe Foncière", homeInsurance: "Assurance", stateTax: "Impôt État", yes: "Oui", none: "Aucun", unitHrs: "h/jour", unitSqFt: "/pi²", unitKwh: "/kWh", unitYr: "/an", years: "ans", show: "Afficher", hide: "Masquer", localFactors: "Facteurs Locaux" },
-        pt: { insights: "Dados de Mercado", personalized: "Dados ao Vivo", medianPrice: "Preço Médio", typicalRate: "Taxa Típica", loanTerm: "Prazo", downPayment: "Entrada", sunHours: "Horas de Sol", electricRate: "Tarifa", potential: "Potencial", high: "Alto", moderate: "Moderado", laborRate: "Mão de Obra", season: "Temporada", active: "Ativa", propertyTax: "IPTU", homeInsurance: "Seguro", stateTax: "Imposto Est.", yes: "Sim", none: "Não", unitHrs: "h/dia", unitSqFt: "/pé²", unitKwh: "/kWh", unitYr: "/ano", years: "anos", show: "Mostrar", hide: "Ocultar", localFactors: "Fatores Locais" },
-        it: { insights: "Dati di Mercato", personalized: "Dati in Tempo Reale", medianPrice: "Prezzo Medio", typicalRate: "Tasso Tipico", loanTerm: "Durata", downPayment: "Anticipo", sunHours: "Ore di Sole", electricRate: "Tariffa Elettr.", potential: "Potenziale", high: "Alto", moderate: "Moderato", laborRate: "Manodopera", season: "Stagione", active: "Attiva", propertyTax: "Tasse Proprietà", homeInsurance: "Assicurazione", stateTax: "Tasse Statali", yes: "Sì", none: "No", unitHrs: "ore/giorno", unitSqFt: "/mq", unitKwh: "/kWh", unitYr: "/anno", years: "anni", show: "Mostra", hide: "Nascondi", localFactors: "Fattori Locali" },
-        nl: { insights: "Marktinformatie", personalized: "Live Marktgegevens", medianPrice: "Middenprijs", typicalRate: "Typisch Tarief", loanTerm: "Looptijd", downPayment: "Aanbetaling", sunHours: "Zonuren", electricRate: "Stroomtarief", potential: "Potentieel", high: "Hoog", moderate: "Gemiddeld", laborRate: "Arbeidskosten", season: "Seizoen", active: "Actief", propertyTax: "OZB", homeInsurance: "Verzekering", stateTax: "Inkomstenbel.", yes: "Ja", none: "Geen", unitHrs: "u/dag", unitSqFt: "/vkt", unitKwh: "/kWh", unitYr: "/jr", years: "jaar", show: "Tonen", hide: "Verbergen", localFactors: "Lokale Factoren" },
-        pl: { insights: "Dane Rynkowe", personalized: "Dane na Żywo", medianPrice: "Średnia Cena", typicalRate: "Typowa Stawka", loanTerm: "Okres", downPayment: "Wkład Własny", sunHours: "Godziny Słoneczne", electricRate: "Stawka za Prąd", potential: "Potencjał", high: "Wysoki", moderate: "Średni", laborRate: "Robocizna", season: "Sezon", active: "Aktywny", propertyTax: "Podatek", homeInsurance: "Ubezpieczenie", stateTax: "Podatek Stanowy", yes: "Tak", none: "Brak", unitHrs: "h/dzień", unitSqFt: "/st.kw", unitKwh: "/kWh", unitYr: "/rok", years: "lat", show: "Pokaż", hide: "Ukryj", localFactors: "Czynniki Lokalne" },
-        sv: { insights: "Marknadsinsikter", personalized: "Live Marknadsdata", medianPrice: "Medianpris", typicalRate: "Typisk Ränta", loanTerm: "Löptid", downPayment: "Kontantinsats", sunHours: "Soltimmar", electricRate: "Elpris", potential: "Potential", high: "Hög", moderate: "Måttlig", laborRate: "Arbetskostnad", season: "Säsong", active: "Aktiv", propertyTax: "Fastighetsskatt", homeInsurance: "Försäkring", stateTax: "Inkomstskatt", yes: "Ja", none: "Ingen", unitHrs: "tim/dag", unitSqFt: "/kvfot", unitKwh: "/kWh", unitYr: "/år", years: "år", show: "Visa", hide: "Dölj", localFactors: "Lokala Faktorer" },
-        no: { insights: "Markedsinnsikt", personalized: "Live Markedsdata", medianPrice: "Medianpris", typicalRate: "Typisk Rente", loanTerm: "Løpetid", downPayment: "Egenkapital", sunHours: "Soltimer", electricRate: "Strømpris", potential: "Potensial", high: "Høyt", moderate: "Moderat", laborRate: "Arbeidskostnad", season: "Sesong", active: "Aktiv", propertyTax: "Eiendomsskatt", homeInsurance: "Forsikring", stateTax: "Inntektsskatt", yes: "Ja", none: "Ingen", unitHrs: "t/dag", unitSqFt: "/kvfot", unitKwh: "/kWh", unitYr: "/år", years: "år", show: "Vis", hide: "Skjul", localFactors: "Lokale Faktorer" },
-        da: { insights: "Markedsindsigt", personalized: "Live Markedsdata", medianPrice: "Medianpris", typicalRate: "Typisk Rente", loanTerm: "Løbetid", downPayment: "Udbetaling", sunHours: "Soltimer", electricRate: "Elpris", potential: "Potentiale", high: "Højt", moderate: "Moderat", laborRate: "Arbejdsløn", season: "Sæson", active: "Aktiv", propertyTax: "Ejendomsskat", homeInsurance: "Forsikring", stateTax: "Indkomstskat", yes: "Ja", none: "Ingen", unitHrs: "b/dag", unitSqFt: "/kvfod", unitKwh: "/kWh", unitYr: "/år", years: "år", show: "Vis", hide: "Skjul", localFactors: "Lokale Faktorer" },
-        fi: { insights: "Markkinatiedot", personalized: "Live Markkinadata", medianPrice: "Mediaanihinta", typicalRate: "Tyypillinen Korko", loanTerm: "Laina-aika", downPayment: "Käsiraha", sunHours: "Aurinkotunnit", electricRate: "Sähkönhinta", potential: "Potentiaali", high: "Korkea", moderate: "Kohtalainen", laborRate: "Työkustannus", season: "Sesonki", active: "Aktiivinen", propertyTax: "Kiinteistövero", homeInsurance: "Vakuutus", stateTax: "Tulovero", yes: "Kyllä", none: "Ei", unitHrs: "h/pv", unitSqFt: "/neliöjalka", unitKwh: "/kWh", unitYr: "/vuosi", years: "vuotta", show: "Näytä", hide: "Piilota", localFactors: "Paikalliset Tekijät" }
+        en: { insights: "Market Insights", personalized: "Live Market Data", medianPrice: "Median Price", typicalRate: "Typical Rate", loanTerm: "Loan Term", downPayment: "Down Payment", sunHours: "Sun Hours", electricRate: "Electric Rate", potential: "Potential", high: "High", moderate: "Moderate", laborRate: "Labor Rate", season: "Season", active: "Active", propertyTax: "Property Tax", homeInsurance: "Home Insurance", stateTax: "State Income Tax", yes: "Yes", none: "None", unitHrs: "hrs/day", unitSqFt: "/sq.ft", unitKwh: "/kWh", unitYr: "/yr", years: "years", show: "Show", hide: "Hide", localFactors: "Local Factors", cryptoInsights: "Crypto Tax Insights", capitalGains: "Capital Gains Tax", shortTerm: "Short-term", longTerm: "Long-term", holdBenefit: "Holding Benefit", months: "months", taxFree: "Tax-Free", afterHold: "after holding", year: "year", exemption: "Exemption", disclaimer: "Tax laws change frequently. Consult a qualified tax professional.", cryptoFactors: "Key Tax Considerations", taxYear: "Tax Year" },
+        es: { insights: "Datos de Mercado", personalized: "Datos en Tiempo Real", medianPrice: "Precio Medio", typicalRate: "Tasa Típica", loanTerm: "Plazo", downPayment: "Enganche", sunHours: "Horas de Sol", electricRate: "Tarifa Eléc.", potential: "Potencial", high: "Alto", moderate: "Moderado", laborRate: "Mano de Obra", season: "Temporada", active: "Activa", propertyTax: "Impuesto Predial", homeInsurance: "Seguro", stateTax: "Impuesto Estatal", yes: "Sí", none: "No", unitHrs: "hr/día", unitSqFt: "/pie²", unitKwh: "/kWh", unitYr: "/año", years: "años", show: "Mostrar", hide: "Ocultar", localFactors: "Factores Locales", cryptoInsights: "Impuestos Cripto", capitalGains: "Impuesto Ganancias", shortTerm: "Corto plazo", longTerm: "Largo plazo", holdBenefit: "Beneficio Holding", months: "meses", taxFree: "Libre de Impuestos", afterHold: "después de mantener", year: "año", exemption: "Exención", disclaimer: "Las leyes fiscales cambian. Consulta a un profesional.", cryptoFactors: "Consideraciones Fiscales", taxYear: "Año Fiscal" },
+        de: { insights: "Markteinblicke", personalized: "Live-Marktdaten", medianPrice: "Medianpreis", typicalRate: "Typischer Zins", loanTerm: "Laufzeit", downPayment: "Anzahlung", sunHours: "Sonnenstunden", electricRate: "Strompreis", potential: "Potenzial", high: "Hoch", moderate: "Mittel", laborRate: "Arbeitskosten", season: "Saison", active: "Aktiv", propertyTax: "Grundsteuer", homeInsurance: "Versicherung", stateTax: "Einkommenssteuer", yes: "Ja", none: "Keine", unitHrs: "Std/Tag", unitSqFt: "/qf", unitKwh: "/kWh", unitYr: "/Jahr", years: "Jahre", show: "Anzeigen", hide: "Verbergen", localFactors: "Lokale Faktoren", cryptoInsights: "Krypto-Steuer Info", capitalGains: "Kapitalertragssteuer", shortTerm: "Kurzfristig", longTerm: "Langfristig", holdBenefit: "Haltefrist-Vorteil", months: "Monate", taxFree: "Steuerfrei", afterHold: "nach Halten von", year: "Jahr", exemption: "Freibetrag", disclaimer: "Steuergesetze ändern sich. Konsultieren Sie einen Steuerberater.", cryptoFactors: "Steuer-Hinweise", taxYear: "Steuerjahr" },
+        fr: { insights: "Aperçu du Marché", personalized: "Données en Direct", medianPrice: "Prix Médian", typicalRate: "Taux Moyen", loanTerm: "Durée", downPayment: "Apport", sunHours: "Ensoleillement", electricRate: "Tarif Élec.", potential: "Potentiel", high: "Élevé", moderate: "Modéré", laborRate: "Main d'Œuvre", season: "Saison", active: "Active", propertyTax: "Taxe Foncière", homeInsurance: "Assurance", stateTax: "Impôt État", yes: "Oui", none: "Aucun", unitHrs: "h/jour", unitSqFt: "/pi²", unitKwh: "/kWh", unitYr: "/an", years: "ans", show: "Afficher", hide: "Masquer", localFactors: "Facteurs Locaux", cryptoInsights: "Fiscalité Crypto", capitalGains: "Impôt Plus-Values", shortTerm: "Court terme", longTerm: "Long terme", holdBenefit: "Avantage Détention", months: "mois", taxFree: "Exonéré", afterHold: "après détention de", year: "an", exemption: "Exonération", disclaimer: "Les lois fiscales changent fréquemment. Consultez un professionnel.", cryptoFactors: "Points Clés Fiscaux", taxYear: "Année Fiscale" },
+        pt: { insights: "Dados de Mercado", personalized: "Dados ao Vivo", medianPrice: "Preço Médio", typicalRate: "Taxa Típica", loanTerm: "Prazo", downPayment: "Entrada", sunHours: "Horas de Sol", electricRate: "Tarifa", potential: "Potencial", high: "Alto", moderate: "Moderado", laborRate: "Mão de Obra", season: "Temporada", active: "Ativa", propertyTax: "IPTU", homeInsurance: "Seguro", stateTax: "Imposto Est.", yes: "Sim", none: "Não", unitHrs: "h/dia", unitSqFt: "/pé²", unitKwh: "/kWh", unitYr: "/ano", years: "anos", show: "Mostrar", hide: "Ocultar", localFactors: "Fatores Locais", cryptoInsights: "Impostos Cripto", capitalGains: "Imposto Ganhos", shortTerm: "Curto prazo", longTerm: "Longo prazo", holdBenefit: "Benefício de Hold", months: "meses", taxFree: "Isento", afterHold: "após manter por", year: "ano", exemption: "Isenção", disclaimer: "Leis fiscais mudam frequentemente. Consulte um profissional.", cryptoFactors: "Pontos Fiscais", taxYear: "Ano Fiscal" },
+        it: { insights: "Dati di Mercato", personalized: "Dati in Tempo Reale", medianPrice: "Prezzo Medio", typicalRate: "Tasso Tipico", loanTerm: "Durata", downPayment: "Anticipo", sunHours: "Ore di Sole", electricRate: "Tariffa Elettr.", potential: "Potenziale", high: "Alto", moderate: "Moderato", laborRate: "Manodopera", season: "Stagione", active: "Attiva", propertyTax: "Tasse Proprietà", homeInsurance: "Assicurazione", stateTax: "Tasse Statali", yes: "Sì", none: "No", unitHrs: "ore/giorno", unitSqFt: "/mq", unitKwh: "/kWh", unitYr: "/anno", years: "anni", show: "Mostra", hide: "Nascondi", localFactors: "Fattori Locali", cryptoInsights: "Tasse Crypto", capitalGains: "Imposta Plusvalenze", shortTerm: "Breve termine", longTerm: "Lungo termine", holdBenefit: "Vantaggio Detenzione", months: "mesi", taxFree: "Esente", afterHold: "dopo detenzione", year: "anno", exemption: "Esenzione", disclaimer: "Le leggi fiscali cambiano. Consulta un professionista.", cryptoFactors: "Punti Fiscali Chiave", taxYear: "Anno Fiscale" },
+        nl: { insights: "Marktinformatie", personalized: "Live Marktgegevens", medianPrice: "Middenprijs", typicalRate: "Typisch Tarief", loanTerm: "Looptijd", downPayment: "Aanbetaling", sunHours: "Zonuren", electricRate: "Stroomtarief", potential: "Potentieel", high: "Hoog", moderate: "Gemiddeld", laborRate: "Arbeidskosten", season: "Seizoen", active: "Actief", propertyTax: "OZB", homeInsurance: "Verzekering", stateTax: "Inkomstenbel.", yes: "Ja", none: "Geen", unitHrs: "u/dag", unitSqFt: "/vkt", unitKwh: "/kWh", unitYr: "/jr", years: "jaar", show: "Tonen", hide: "Verbergen", localFactors: "Lokale Factoren", cryptoInsights: "Crypto Belasting", capitalGains: "Vermogenswinstbelasting", shortTerm: "Kort termijn", longTerm: "Lang termijn", holdBenefit: "Houdperiode Voordeel", months: "maanden", taxFree: "Belastingvrij", afterHold: "na houding van", year: "jaar", exemption: "Vrijstelling", disclaimer: "Belastingwetten veranderen. Raadpleeg een professional.", cryptoFactors: "Fiscale Overwegingen", taxYear: "Belastingjaar" },
+        pl: { insights: "Dane Rynkowe", personalized: "Dane na Żywo", medianPrice: "Średnia Cena", typicalRate: "Typowa Stawka", loanTerm: "Okres", downPayment: "Wkład Własny", sunHours: "Godziny Słoneczne", electricRate: "Stawka za Prąd", potential: "Potencjał", high: "Wysoki", moderate: "Średni", laborRate: "Robocizna", season: "Sezon", active: "Aktywny", propertyTax: "Podatek", homeInsurance: "Ubezpieczenie", stateTax: "Podatek Stanowy", yes: "Tak", none: "Brak", unitHrs: "h/dzień", unitSqFt: "/st.kw", unitKwh: "/kWh", unitYr: "/rok", years: "lat", show: "Pokaż", hide: "Ukryj", localFactors: "Czynniki Lokalne", cryptoInsights: "Podatki Crypto", capitalGains: "Podatek od zysków", shortTerm: "Krótkoterminowe", longTerm: "Długoterminowe", holdBenefit: "Korzyść z trzymania", months: "miesięcy", taxFree: "Bez podatku", afterHold: "po trzymaniu", year: "rok", exemption: "Zwolnienie", disclaimer: "Przepisy podatkowe się zmieniają. Skonsultuj się z ekspertem.", cryptoFactors: "Kwestie Podatkowe", taxYear: "Rok Podatkowy" },
+        sv: { insights: "Marknadsinsikter", personalized: "Live Marknadsdata", medianPrice: "Medianpris", typicalRate: "Typisk Ränta", loanTerm: "Löptid", downPayment: "Kontantinsats", sunHours: "Soltimmar", electricRate: "Elpris", potential: "Potential", high: "Hög", moderate: "Måttlig", laborRate: "Arbetskostnad", season: "Säsong", active: "Aktiv", propertyTax: "Fastighetsskatt", homeInsurance: "Försäkring", stateTax: "Inkomstskatt", yes: "Ja", none: "Ingen", unitHrs: "tim/dag", unitSqFt: "/kvfot", unitKwh: "/kWh", unitYr: "/år", years: "år", show: "Visa", hide: "Dölj", localFactors: "Lokala Faktorer", cryptoInsights: "Kryptoskatt Info", capitalGains: "Kapitalvinstskatt", shortTerm: "Kort sikt", longTerm: "Lång sikt", holdBenefit: "Innehavsfördel", months: "månader", taxFree: "Skattefritt", afterHold: "efter innehav", year: "år", exemption: "Undantag", disclaimer: "Skattelagar ändras. Konsultera en expert.", cryptoFactors: "Skatteöverväganden", taxYear: "Skatteår" },
+        no: { insights: "Markedsinnsikt", personalized: "Live Markedsdata", medianPrice: "Medianpris", typicalRate: "Typisk Rente", loanTerm: "Løpetid", downPayment: "Egenkapital", sunHours: "Soltimer", electricRate: "Strømpris", potential: "Potensial", high: "Høyt", moderate: "Moderat", laborRate: "Arbeidskostnad", season: "Sesong", active: "Aktiv", propertyTax: "Eiendomsskatt", homeInsurance: "Forsikring", stateTax: "Inntektsskatt", yes: "Ja", none: "Ingen", unitHrs: "t/dag", unitSqFt: "/kvfot", unitKwh: "/kWh", unitYr: "/år", years: "år", show: "Vis", hide: "Skjul", localFactors: "Lokale Faktorer", cryptoInsights: "Krypto Skatt", capitalGains: "Gevinstskatt", shortTerm: "Kortsiktig", longTerm: "Langsiktig", holdBenefit: "Holdingsfordel", months: "måneder", taxFree: "Skattefritt", afterHold: "etter holding", year: "år", exemption: "Unntak", disclaimer: "Skattelover endres. Konsulter en ekspert.", cryptoFactors: "Skattem essige forhold", taxYear: "Skatteår" },
+        da: { insights: "Markedsindsigt", personalized: "Live Markedsdata", medianPrice: "Medianpris", typicalRate: "Typisk Rente", loanTerm: "Løbetid", downPayment: "Udbetaling", sunHours: "Soltimer", electricRate: "Elpris", potential: "Potentiale", high: "Højt", moderate: "Moderat", laborRate: "Arbejdsløn", season: "Sæson", active: "Aktiv", propertyTax: "Ejendomsskat", homeInsurance: "Forsikring", stateTax: "Indkomstskat", yes: "Ja", none: "Ingen", unitHrs: "b/dag", unitSqFt: "/kvfod", unitKwh: "/kWh", unitYr: "/år", years: "år", show: "Vis", hide: "Skjul", localFactors: "Lokale Faktorer", cryptoInsights: "Krypto Skat", capitalGains: "Kapitalgevinstskat", shortTerm: "Kort sigt", longTerm: "Lang sigt", holdBenefit: "Holdingsfordel", months: "måneder", taxFree: "Skattefri", afterHold: "efter holding", year: "år", exemption: "Fritagelse", disclaimer: "Skattelove ændrer sig. Konsulter en ekspert.", cryptoFactors: "Skatteovervejelser", taxYear: "Skatteår" },
+        fi: { insights: "Markkinatiedot", personalized: "Live Markkinadata", medianPrice: "Mediaanihinta", typicalRate: "Tyypillinen Korko", loanTerm: "Laina-aika", downPayment: "Käsiraha", sunHours: "Aurinkotunnit", electricRate: "Sähkönhinta", potential: "Potentiaali", high: "Korkea", moderate: "Kohtalainen", laborRate: "Työkustannus", season: "Sesonki", active: "Aktiivinen", propertyTax: "Kiinteistövero", homeInsurance: "Vakuutus", stateTax: "Tulovero", yes: "Kyllä", none: "Ei", unitHrs: "h/pv", unitSqFt: "/neliöjalka", unitKwh: "/kWh", unitYr: "/vuosi", years: "vuotta", show: "Näytä", hide: "Piilota", localFactors: "Paikalliset Tekijät", cryptoInsights: "Krypto Verotus", capitalGains: "Luovutusvoittovero", shortTerm: "Lyhyt aika", longTerm: "Pitkä aika", holdBenefit: "Pitoajan etu", months: "kuukautta", taxFree: "Verovapaa", afterHold: "pitoajan jälkeen", year: "vuosi", exemption: "Vapautus", disclaimer: "Verolait muuttuvat. Konsultoi asiantuntijaa.", cryptoFactors: "Veronäkökohdat", taxYear: "Verovuosi" }
     };
 
     /**
@@ -454,6 +824,295 @@
     }
 
     /**
+     * Render crypto tax insights section
+     */
+    function renderCryptoInsightsSection(location, pageLang) {
+        const t = TRANSLATIONS[pageLang] || TRANSLATIONS['en'];
+
+        // Get country code, handling CA for Canada vs CA for California
+        let countryCode = location.countryCode;
+        let stateCode = location.region?.toLowerCase();
+
+        // Handle Canada (country code 'ca' conflicts with California state)
+        let cryptoData = null;
+        let displayName = '';
+        let flag = '🌍';
+        let stateNote = null;
+
+        // Helper to get localized country name from object or string
+        const getLocalizedName = (nameObj, lang) => {
+            if (typeof nameObj === 'string') return nameObj;
+            return nameObj[lang] || nameObj['en'] || Object.values(nameObj)[0] || '';
+        };
+
+        if (countryCode === 'us') {
+            cryptoData = CRYPTO_TAX_DATA['us'];
+            displayName = getLocalizedName(cryptoData.name, pageLang);
+            flag = '🇺🇸';
+            // Add state-specific note if available
+            if (stateCode && US_STATE_CRYPTO[stateCode]) {
+                const stateInfo = US_STATE_CRYPTO[stateCode];
+                stateNote = stateInfo.notes[pageLang] || stateInfo.notes['en'];
+            }
+        } else if (countryCode === 'ca') {
+            // Canada the country
+            cryptoData = CRYPTO_TAX_DATA['ca_country'];
+            displayName = getLocalizedName(cryptoData.name, pageLang);
+            flag = '🇨🇦';
+        } else if (countryCode === 'co') {
+            // Colombia the country (not Colorado)
+            cryptoData = CRYPTO_TAX_DATA['co_country'];
+            displayName = getLocalizedName(cryptoData.name, pageLang);
+            flag = '🇨🇴';
+        } else if (CRYPTO_TAX_DATA[countryCode]) {
+            cryptoData = CRYPTO_TAX_DATA[countryCode];
+            displayName = getLocalizedName(cryptoData.name, pageLang);
+            flag = cryptoData.flag;
+        }
+
+        if (!cryptoData) {
+            log('CalcKit Geo: No crypto tax data for', countryCode);
+            return '';
+        }
+
+        // Get tips in user's language, fallback to English
+        const tips = cryptoData.tips[pageLang] || cryptoData.tips['en'] || Object.values(cryptoData.tips)[0];
+
+        // Build hold benefit text
+        let holdBenefitHTML = '';
+        if (cryptoData.holdingBenefit && cryptoData.holdingPeriod) {
+            holdBenefitHTML = `
+                <div class="geo-stat-card geo-stat-highlight">
+                    <div class="geo-stat-label">${t.holdBenefit}</div>
+                    <div class="geo-stat-value">${cryptoData.holdingPeriod} ${t.months}</div>
+                </div>`;
+        }
+
+        // Build exemption text
+        let exemptionHTML = '';
+        if (cryptoData.exemption) {
+            exemptionHTML = `
+                <div class="geo-stat-card">
+                    <div class="geo-stat-label">${t.exemption}</div>
+                    <div class="geo-stat-value">${cryptoData.exemption}</div>
+                </div>`;
+        }
+
+        // If long term rate is 0%, show TAX-FREE highlight
+        const longTermIsFree = cryptoData.longTermRate === '0%';
+
+        const tipsHTML = tips.map(tip => `
+            <div class="geo-tip-item">
+                <span class="geo-tip-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+                <span class="geo-tip-text">${tip}</span>
+            </div>
+        `).join('');
+
+        // Add state-specific tip if available
+        const stateTipHTML = stateNote ? `
+            <div class="geo-tip-item">
+                <span class="geo-tip-icon" style="color: #f59e0b;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                </span>
+                <span class="geo-tip-text"><strong>📍 ${US_STATES[stateCode]?.name || stateCode.toUpperCase()}:</strong> ${stateNote}</span>
+            </div>
+        ` : '';
+
+        const html = `
+            <style>
+                .geo-insights-banner {
+                    background: var(--surface, #111729);
+                    border: 1px solid rgba(255, 255, 255, 0.08);
+                    border-radius: 24px;
+                    padding: 32px;
+                    margin: -40px auto 40px;
+                    max-width: 900px;
+                    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+                    position: relative;
+                    overflow: hidden;
+                    backdrop-filter: blur(20px);
+                    -webkit-backdrop-filter: blur(20px);
+                }
+                .geo-insights-banner::before {
+                    content: '';
+                    position: absolute;
+                    inset: 0;
+                    background: radial-gradient(circle at top right, rgba(245, 158, 11, 0.15), transparent 40%);
+                    pointer-events: none;
+                }
+                .geo-insights-banner::after {
+                    content: '';
+                    position: absolute;
+                    top: 0; left: 0; right: 0;
+                    height: 1px;
+                    background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.5), transparent);
+                }
+                .geo-banner-header {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-bottom: 24px;
+                    gap: 16px;
+                }
+                .geo-banner-title {
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+                    flex: 1;
+                }
+                .geo-banner-flag {
+                    font-size: 32px;
+                    line-height: 1;
+                    filter: drop-shadow(0 0 15px rgba(245, 158, 11, 0.3));
+                }
+                .geo-banner-text h2 {
+                    font-size: 20px;
+                    font-weight: 700;
+                    margin: 0 0 4px 0;
+                    color: white;
+                    letter-spacing: -0.01em;
+                }
+                .geo-banner-text p {
+                    font-size: 13px;
+                    margin: 0;
+                    color: rgba(255,255,255,0.6);
+                    font-weight: 500;
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                }
+                .geo-toggle-btn {
+                    background: rgba(255,255,255,0.05);
+                    border: 1px solid rgba(255,255,255,0.1);
+                    color: rgba(255,255,255,0.7);
+                    padding: 6px 14px;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    font-size: 13px;
+                    font-weight: 600;
+                    transition: all 0.2s ease;
+                    display: block;
+                }
+                .geo-toggle-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+                .geo-content { transition: max-height 0.3s ease, opacity 0.3s ease; }
+                .geo-content.collapsed { max-height: 0; opacity: 0; overflow: hidden; }
+                .geo-stats-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+                    gap: 12px;
+                    margin-bottom: 24px;
+                }
+                .geo-stat-card {
+                    background: rgba(0,0,0,0.2);
+                    border: 1px solid rgba(255,255,255,0.05);
+                    border-radius: 16px;
+                    padding: 16px;
+                    text-align: center;
+                    transition: transform 0.2s ease;
+                }
+                .geo-stat-card:hover { border-color: rgba(245, 158, 11, 0.4); transform: translateY(-2px); }
+                .geo-stat-card.geo-stat-highlight {
+                    background: rgba(16, 185, 129, 0.08);
+                    border-color: rgba(16, 185, 129, 0.3);
+                }
+                .geo-stat-label {
+                    color: rgba(255,255,255,0.5);
+                    font-size: 10px;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    margin-bottom: 6px;
+                }
+                .geo-stat-value {
+                    color: white;
+                    font-size: 20px;
+                    font-weight: 700;
+                    line-height: 1;
+                }
+                .geo-stat-value .unit { font-size: 11px; margin-left: 2px; color: rgba(255,255,255,0.5); }
+                .geo-tips-section {
+                    background: rgba(245, 158, 11, 0.03);
+                    border: 1px solid rgba(245, 158, 11, 0.1);
+                    border-radius: 16px;
+                    padding: 20px;
+                }
+                .geo-tips-header {
+                    font-size: 12px;
+                    font-weight: 700;
+                    color: #fbbf24;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    margin-bottom: 14px;
+                    display: flex; align-items: center; gap: 8px;
+                }
+                .geo-tips-list { display: grid; gap: 10px; }
+                .geo-tip-item { display: flex; align-items: flex-start; gap: 10px; }
+                .geo-tip-icon { color: #10b981; margin-top: 2px; }
+                .geo-tip-text { color: rgba(255,255,255,0.9); font-size: 13px; line-height: 1.5; }
+                .geo-disclaimer {
+                    margin-top: 16px;
+                    padding: 12px;
+                    background: rgba(255,255,255,0.03);
+                    border-radius: 8px;
+                    font-size: 11px;
+                    color: rgba(255,255,255,0.5);
+                    text-align: center;
+                }
+                @media (max-width: 768px) {
+                    .geo-insights-banner { padding: 20px; margin: -20px 16px 32px; border-radius: 20px; }
+                    .geo-banner-header { margin-bottom: 20px; }
+                    .geo-banner-flag { font-size: 26px; }
+                }
+            </style>
+            <div class="geo-insights-banner">
+                <div class="geo-banner-header">
+                    <div class="geo-banner-title">
+                        <span class="geo-banner-flag">${flag}</span>
+                        <div class="geo-banner-text">
+                            <h2>${displayName} ${t.cryptoInsights}</h2>
+                            <p>
+                                <span style="display:inline-block; width:6px; height:6px; background:#f59e0b; border-radius:50%;"></span>
+                                2025-2026 ${t.taxYear || 'Tax Year'}
+                            </p>
+                        </div>
+                    </div>
+                    <button class="geo-toggle-btn" onclick="this.parentElement.nextElementSibling.classList.toggle('collapsed'); this.textContent = this.textContent === '${t.show}' ? '${t.hide}' : '${t.show}';">${t.hide}</button>
+                </div>
+                <div class="geo-content">
+                    <div class="geo-stats-grid">
+                        <div class="geo-stat-card">
+                            <div class="geo-stat-label">${t.shortTerm}</div>
+                            <div class="geo-stat-value">${cryptoData.shortTermRate}</div>
+                        </div>
+                        <div class="geo-stat-card ${longTermIsFree ? 'geo-stat-highlight' : ''}">
+                            <div class="geo-stat-label">${t.longTerm}</div>
+                            <div class="geo-stat-value">${longTermIsFree ? `${t.taxFree} ✓` : cryptoData.longTermRate}</div>
+                        </div>
+                        ${holdBenefitHTML}
+                        ${exemptionHTML}
+                    </div>
+                    <div class="geo-tips-section">
+                        <div class="geo-tips-header">
+                            ₿ ${t.cryptoFactors}
+                        </div>
+                        <div class="geo-tips-list">
+                            ${tipsHTML}
+                            ${stateTipHTML}
+                        </div>
+                    </div>
+                    <div class="geo-disclaimer">
+                        ⚠️ ${t.disclaimer}
+                    </div>
+                </div>
+            </div>
+        `;
+
+        return html;
+    }
+
+    /**
  * Update calculator defaults based on location
  */
     function updateCalculatorDefaults(locationInfo, calcType) {
@@ -529,7 +1188,7 @@
         const calcType = calculatorBody.getAttribute('data-calculator-type');
 
         // Define allowed types for geo-features
-        const allowedTypes = ['mortgage', 'solar', 'roofing'];
+        const allowedTypes = ['mortgage', 'solar', 'roofing', 'crypto'];
         if (!allowedTypes.includes(calcType)) {
             // Silently exit for other calculator types
             return;
@@ -542,6 +1201,19 @@
 
         const pageLang = detectPageLanguage();
         log('CalcKit Geo: Page language detected as', pageLang);
+
+        // Handle crypto calculator separately - only needs country code
+        if (calcType === 'crypto') {
+            const calculatorSection = document.querySelector('.calculator-section');
+            if (calculatorSection && location.countryCode) {
+                const cryptoInsightsHTML = renderCryptoInsightsSection(location, pageLang);
+                if (cryptoInsightsHTML) {
+                    calculatorSection.insertAdjacentHTML('beforebegin', cryptoInsightsHTML);
+                    log('CalcKit Geo: Crypto tax insights rendered for', location.countryCode);
+                }
+            }
+            return;
+        }
 
         const locationInfo = getLocationData(location, pageLang);
         if (!locationInfo) {

@@ -1,5 +1,6 @@
 module.exports = function (eleventyConfig) {
     const site = require("./_data/site.js");
+    const articles = require("./_data/articles.js");
     const defaultLang = site.defaultLang;
 
     const replaceYearTokens = (value) => {
@@ -660,6 +661,33 @@ module.exports = function (eleventyConfig) {
             }
         });
 
+        return pages;
+    });
+
+    eleventyConfig.addCollection("articlePages", collection => {
+        const pages = [];
+        const languages = site.languages.map(l => l.code);
+
+        articles.forEach(article => {
+            languages.forEach(lang => {
+                const slug = article.slugs[lang];
+                // Fallback to English content if current lang missing (optional, or just skip)
+                const content = article.content[lang] || article.content['en'];
+
+                if (slug && content) {
+                    pages.push({
+                        id: article.id,
+                        lang: lang,
+                        slug: slug,
+                        title: article.titles[lang] || article.titles['en'],
+                        metaDescription: article.metaDescription[lang] || article.metaDescription['en'],
+                        content: content,
+                        alternates: article.slugs, // For hreflang
+                        canonicalUrl: buildCalcUrl(lang, slug)
+                    });
+                }
+            });
+        });
         return pages;
     });
 

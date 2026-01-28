@@ -40,13 +40,14 @@ module.exports = {
     // Environment flags
     production: process.env.NODE_ENV === "production",
 
-    // E-E-A-T / Author Persona
+    // E-E-A-T / Brand Authority
     author: {
-        name: "Juan Fontes",
-        jobTitle: "Financial Tech Lead",
+        name: "CalcKit Research Team",
+        jobTitle: "Financial Data Analysts",
         sameAs: [
-            "https://twitter.com/juanfontes",
-            "https://linkedin.com/in/juanfontes"
+            "https://www.federalreserve.gov",
+            "https://www.bls.gov",
+            "https://www.zillow.com/research/data/"
         ]
     }
 };

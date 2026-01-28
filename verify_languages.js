@@ -5,6 +5,7 @@ const ui = require('./_data/ui.json');
 
 const languages = site.languages.map(l => l.code);
 console.log(`Verifying ${languages.length} languages: ${languages.join(', ')}`);
+console.log(`Calculator keys: ${Object.keys(calculators).join(', ')}`);
 
 const errors = [];
 
@@ -15,14 +16,15 @@ function checkText(obj, path, requiredLangs) {
     }
     requiredLangs.forEach(lang => {
         if (!obj[lang]) {
+            // console.log(`DEBUG: Missing [${lang}] for ${path}`);
             errors.push(`Missing [${lang}] translation for ${path}`);
         }
     });
 }
 
-// 1. Verify Calculators
-console.log('\n--- Verifying Calculators ---');
+console.log('--- Verifying Calculators ---');
 for (const [key, calc] of Object.entries(calculators)) {
+    console.log(`Checking calculator: ${key}`);
     checkText(calc.slugs, `calculators.${key}.slugs`, languages);
     checkText(calc.titles, `calculators.${key}.titles`, languages);
     checkText(calc.subtitles, `calculators.${key}.subtitles`, languages);

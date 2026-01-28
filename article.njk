@@ -1,0 +1,74 @@
+---
+pagination:
+  data: collections.articlePages
+  size: 1
+  alias: pageData
+permalink: "{{ pageData.lang }}/{{ pageData.slug }}/index.html"
+---
+<!DOCTYPE html>
+<html lang="{{ pageData.lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ pageData.title }} | {{ site.name }}</title>
+    <meta name="description" content="{{ pageData.metaDescription }}">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ pageData.canonicalUrl | canonicalUrl }}">
+    
+    <!-- Hreflang -->
+    {%- if pageData.alternates %}
+    {%- for langCode, href in pageData.alternates %}
+    <link rel="alternate" hreflang="{{ langCode }}" href="{{ href | canonicalUrl }}">
+    {%- endfor %}
+    <link rel="alternate" hreflang="x-default" href="{{ (pageData.alternates[site.defaultLang]) | canonicalUrl }}">
+    {%- endif %}
+
+    <link rel="icon" type="image/png" href="/assets/images/logo_calculator.png">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    {% include "components/language-redirect.njk" %}
+</head>
+<body>
+    <nav class="nav">
+        <div class="container">
+            <a href="{% if pageData.lang == 'en' %}/{% else %}/{{ pageData.lang }}{% endif %}" class="logo">
+                <img class="logo-mark" src="/assets/images/logo_calculator.png" alt="" aria-hidden="true" style="width: 32px; height: 32px;">
+                <span class="logo-type">{{ site.name }}</span>
+            </a>
+            <div class="nav-links">
+                <a href="{% if pageData.lang == 'en' %}/{% else %}/{{ pageData.lang }}{% endif %}" class="nav-btn">
+                     ← {{ ui.nav[pageData.lang].home }}
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <article class="hero" style="padding: 80px 0 40px;">
+        <div class="container" style="max-width: 800px;">
+            <h1>{{ pageData.title }}</h1>
+            <p class="lead" style="font-size: 20px; color: var(--text-muted); line-height: 1.6;">{{ pageData.metaDescription }}</p>
+        </div>
+    </article>
+
+    <section class="content-section">
+        <div class="container" style="max-width: 800px;">
+            <div class="prose guide-content">
+                {{ pageData.content | safe }}
+            </div>
+            
+            <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border);">
+                 <p style="color: var(--text-muted); font-size: 14px;">Written by <strong>{{ site.author.name }}</strong> • Data Sources: <a href="/{{ pageData.lang }}/about">Methodology</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AdSense Slot (Optional) -->
+    <!-- <div class="container ad-container" style="margin: 2rem auto; text-align: center;">...</div> -->
+
+    <footer class="footer">
+        <div class="container">
+            <p style="text-align: center; color: var(--text-muted);">© {{ site.year }} {{ site.name }}.</p>
+        </div>
+    </footer>
+</body>
+</html>

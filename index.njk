@@ -342,9 +342,11 @@ permalink: "/{% if home.lang != 'en' %}{{ home.lang }}/{% endif %}index.html"
         <div class="container">
             <ul class="footer-links">
                 {% set langPrefix = '' if home.lang == 'en' else '/' + home.lang %}
+                <li><a href="{{ langPrefix }}/about">{{ ui.about.title[home.lang] }}</a></li>
+                <li><a href="{{ langPrefix }}/resources">{{ ui.resources.title[home.lang] }}</a></li>
+                <li><a href="{{ langPrefix }}/contact">{{ ui.contact.title[home.lang] }}</a></li>
                 <li><a href="{{ langPrefix }}/privacy">{{ ui.footer[home.lang].privacy }}</a></li>
                 <li><a href="{{ langPrefix }}/terms">{{ ui.footer[home.lang].terms }}</a></li>
-                <li><a href="mailto:worthit.tuliai@gmail.com">{{ ui.footer[home.lang].contact }}</a></li>
             </ul>
             <div class="footer-lang" style="margin-top: 16px; display: flex; justify-content: center; gap: 8px; align-items: center; flex-wrap: wrap;">
                 <span style="color: var(--text-muted); font-size: 13px;">🌐</span>

@@ -670,6 +670,10 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
 	                <li><a href="/{{ calc.lang }}/{{ calcInfo.slugs[calc.lang or 'en'] }}">{{ calcInfo.titles[calc.lang or 'en'] }}</a></li>
                 {%- endif %}
                 {%- endfor %}
+                {% set langPrefix = '' if calc.lang == 'en' else '/' + calc.lang %}
+                <li><a href="{{ langPrefix }}/about">{{ ui.about.title[calc.lang or 'en'] }}</a></li>
+                <li><a href="{{ langPrefix }}/resources">{{ ui.resources.title[calc.lang or 'en'] }}</a></li>
+                <li><a href="{{ langPrefix }}/contact">{{ ui.contact.title[calc.lang or 'en'] }}</a></li>
                 <li><a href="{% if calc.lang == 'en' %}{% else %}/{{ calc.lang }}{% endif %}/privacy">{{ ui.footer[calc.lang or 'en'].privacy | default("Privacy Policy") }}</a></li>
                 <li><a href="{% if calc.lang == 'en' %}{% else %}/{{ calc.lang }}{% endif %}/terms">{{ ui.footer[calc.lang or 'en'].terms | default("Terms of Service") }}</a></li>
             </ul>

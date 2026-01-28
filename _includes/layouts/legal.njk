@@ -172,6 +172,14 @@
 
     <footer>
         <div class="container">
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-bottom: 16px;">
+                {% set langPrefix = '' if currentLang == 'en' else '/' + currentLang %}
+                <a href="{{ langPrefix }}/about" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">{{ ui.about.title[currentLang] }}</a>
+                <a href="{{ langPrefix }}/resources" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">{{ ui.resources.title[currentLang] }}</a>
+                <a href="{{ langPrefix }}/contact" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">{{ ui.contact.title[currentLang] }}</a>
+                <a href="{{ langPrefix }}/privacy" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">{{ ui.footer[currentLang].privacy }}</a>
+                <a href="{{ langPrefix }}/terms" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">{{ ui.footer[currentLang].terms }}</a>
+            </div>
             <p>&copy; {{ site.year }} {{ site.name }}. {{ ui.footer[currentLang].copyright }}.</p>
         </div>
     </footer>
