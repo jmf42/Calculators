@@ -238,6 +238,8 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
         gtag('config', '{{ site.analytics.gaId }}');
     </script>
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/{{ manifest['style.css'] | default('style.css') }}">
     <link rel="manifest" href="/assets/site.webmanifest">
@@ -250,7 +252,7 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     <nav class="nav">
         <div class="container">
             <a href="{% if calc.lang == site.defaultLang %}/{% else %}/{{ calc.lang }}{% endif %}" class="logo">
-                <img class="logo-mark" src="/assets/images/logo_calculator.png" alt="" aria-hidden="true" style="width: 32px; height: 32px;">
+                <img class="logo-mark" src="/assets/images/logo_calculator.png" width="32" height="32" alt="" aria-hidden="true" style="width: 32px; height: 32px;">
                 <span class="logo-type">{{ site.name }}</span>
             </a>
             <div class="nav-links">

@@ -1,0 +1,122 @@
+Verifying 12 languages: en, es, de, fr, pt, it, nl, pl, sv, no, da, fi
+Calculator keys: mortgage, loan, roi, crypto, solar, wedding, flooring, roofing
+--- Verifying Calculators ---
+Checking calculator: mortgage
+Checking calculator: loan
+Checking calculator: roi
+Checking calculator: crypto
+Checking calculator: solar
+Checking calculator: wedding
+Checking calculator: flooring
+Checking calculator: roofing
+
+--- Verifying Niches ---
+
+--- Verifying UI ---
+
+--- Verification Complete ---
+Found 104 errors:
+- Missing [fr] translation for calculators.crypto.notices[0].message
+- Missing [pt] translation for calculators.crypto.notices[0].message
+- Missing [it] translation for calculators.crypto.notices[0].message
+- Missing [nl] translation for calculators.crypto.notices[0].message
+- Missing [pl] translation for calculators.crypto.notices[0].message
+- Missing [sv] translation for calculators.crypto.notices[0].message
+- Missing [no] translation for calculators.crypto.notices[0].message
+- Missing [da] translation for calculators.crypto.notices[0].message
+- Missing [fi] translation for calculators.crypto.notices[0].message
+- Missing [fr] translation for calculators.crypto.notices[1].message
+- Missing [pt] translation for calculators.crypto.notices[1].message
+- Missing [it] translation for calculators.crypto.notices[1].message
+- Missing [nl] translation for calculators.crypto.notices[1].message
+- Missing [pl] translation for calculators.crypto.notices[1].message
+- Missing [sv] translation for calculators.crypto.notices[1].message
+- Missing [no] translation for calculators.crypto.notices[1].message
+- Missing [da] translation for calculators.crypto.notices[1].message
+- Missing [fi] translation for calculators.crypto.notices[1].message
+- Missing [es] translation for calculators.crypto.config.currency
+- Missing [fr] translation for calculators.crypto.config.currency
+- Missing [pt] translation for calculators.crypto.config.currency
+- Missing [it] translation for calculators.crypto.config.currency
+- Missing [nl] translation for calculators.crypto.config.currency
+- Missing [pl] translation for calculators.crypto.config.currency
+- Missing [sv] translation for calculators.crypto.config.currency
+- Missing [no] translation for calculators.crypto.config.currency
+- Missing [da] translation for calculators.crypto.config.currency
+- Missing [fi] translation for calculators.crypto.config.currency
+- Missing [es] translation for calculators.crypto.config.locale
+- Missing [fr] translation for calculators.crypto.config.locale
+- Missing [pt] translation for calculators.crypto.config.locale
+- Missing [it] translation for calculators.crypto.config.locale
+- Missing [nl] translation for calculators.crypto.config.locale
+- Missing [pl] translation for calculators.crypto.config.locale
+- Missing [sv] translation for calculators.crypto.config.locale
+- Missing [no] translation for calculators.crypto.config.locale
+- Missing [da] translation for calculators.crypto.config.locale
+- Missing [fi] translation for calculators.crypto.config.locale
+- Missing [fr] translation for calculators.crypto.fields.taxRate.help
+- Missing [pt] translation for calculators.crypto.fields.taxRate.help
+- Missing [it] translation for calculators.crypto.fields.taxRate.help
+- Missing [nl] translation for calculators.crypto.fields.taxRate.help
+- Missing [pl] translation for calculators.crypto.fields.taxRate.help
+- Missing [sv] translation for calculators.crypto.fields.taxRate.help
+- Missing [no] translation for calculators.crypto.fields.taxRate.help
+- Missing [da] translation for calculators.crypto.fields.taxRate.help
+- Missing [fi] translation for calculators.crypto.fields.taxRate.help
+- Missing [de] translation for calculators.crypto.fields.targetMultiplier.help
+- Missing [fr] translation for calculators.crypto.fields.targetMultiplier.help
+- Missing [pt] translation for calculators.crypto.fields.targetMultiplier.help
+- Missing [it] translation for calculators.crypto.fields.targetMultiplier.help
+- Missing [nl] translation for calculators.crypto.fields.targetMultiplier.help
+- Missing [pl] translation for calculators.crypto.fields.targetMultiplier.help
+- Missing [sv] translation for calculators.crypto.fields.targetMultiplier.help
+- Missing [no] translation for calculators.crypto.fields.targetMultiplier.help
+- Missing [da] translation for calculators.crypto.fields.targetMultiplier.help
+- Missing [fi] translation for calculators.crypto.fields.targetMultiplier.help
+- Missing [de] translation for calculators.crypto.metrics[2].tooltip
+- Missing [fr] translation for calculators.crypto.metrics[2].tooltip
+- Missing [pt] translation for calculators.crypto.metrics[2].tooltip
+- Missing [it] translation for calculators.crypto.metrics[2].tooltip
+- Missing [nl] translation for calculators.crypto.metrics[2].tooltip
+- Missing [pl] translation for calculators.crypto.metrics[2].tooltip
+- Missing [sv] translation for calculators.crypto.metrics[2].tooltip
+- Missing [no] translation for calculators.crypto.metrics[2].tooltip
+- Missing [da] translation for calculators.crypto.metrics[2].tooltip
+- Missing [fi] translation for calculators.crypto.metrics[2].tooltip
+- Missing [de] translation for calculators.crypto.metrics[3].tooltip
+- Missing [fr] translation for calculators.crypto.metrics[3].tooltip
+- Missing [pt] translation for calculators.crypto.metrics[3].tooltip
+- Missing [it] translation for calculators.crypto.metrics[3].tooltip
+- Missing [nl] translation for calculators.crypto.metrics[3].tooltip
+- Missing [pl] translation for calculators.crypto.metrics[3].tooltip
+- Missing [sv] translation for calculators.crypto.metrics[3].tooltip
+- Missing [no] translation for calculators.crypto.metrics[3].tooltip
+- Missing [da] translation for calculators.crypto.metrics[3].tooltip
+- Missing [fi] translation for calculators.crypto.metrics[3].tooltip
+- Warning: Niche [heloc] overrides field [rate] label in EN but missing [fr].
+- Warning: Niche [heloc] overrides field [rate] label in EN but missing [pt].
+- Warning: Niche [heloc] overrides field [rate] label in EN but missing [it].
+- Warning: Niche [heloc] overrides field [rate] label in EN but missing [nl].
+- Warning: Niche [heloc] overrides field [rate] label in EN but missing [pl].
+- Warning: Niche [heloc] overrides field [rate] label in EN but missing [sv].
+- Warning: Niche [heloc] overrides field [rate] label in EN but missing [no].
+- Warning: Niche [heloc] overrides field [rate] label in EN but missing [da].
+- Warning: Niche [heloc] overrides field [rate] label in EN but missing [fi].
+- Warning: Niche [heloc] overrides field [principal] label in EN but missing [fr].
+- Warning: Niche [heloc] overrides field [principal] label in EN but missing [pt].
+- Warning: Niche [heloc] overrides field [principal] label in EN but missing [it].
+- Warning: Niche [heloc] overrides field [principal] label in EN but missing [nl].
+- Warning: Niche [heloc] overrides field [principal] label in EN but missing [pl].
+- Warning: Niche [heloc] overrides field [principal] label in EN but missing [sv].
+- Warning: Niche [heloc] overrides field [principal] label in EN but missing [no].
+- Warning: Niche [heloc] overrides field [principal] label in EN but missing [da].
+- Warning: Niche [heloc] overrides field [principal] label in EN but missing [fi].
+- Warning: Niche [arm-mortgage] overrides field [rate] label in EN but missing [fr].
+- Warning: Niche [arm-mortgage] overrides field [rate] label in EN but missing [pt].
+- Warning: Niche [arm-mortgage] overrides field [rate] label in EN but missing [it].
+- Warning: Niche [arm-mortgage] overrides field [rate] label in EN but missing [nl].
+- Warning: Niche [arm-mortgage] overrides field [rate] label in EN but missing [pl].
+- Warning: Niche [arm-mortgage] overrides field [rate] label in EN but missing [sv].
+- Warning: Niche [arm-mortgage] overrides field [rate] label in EN but missing [no].
+- Warning: Niche [arm-mortgage] overrides field [rate] label in EN but missing [da].
+- Warning: Niche [arm-mortgage] overrides field [rate] label in EN but missing [fi].

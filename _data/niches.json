@@ -801,7 +801,18 @@
             ]
         },
         "metaDescription": {
-            "en": "Calculate jumbo loan payments for homes over $766,550 in 2026. Compare rates and see monthly costs."
+            "en": "Free Jumbo Loan Calculator 2026 — Instantly calculate payments for luxury homes over $766,550. Compare jumbo mortgage rates & see true monthly costs. No signup!",
+            "es": "Calculadora Préstamo Jumbo Gratis 2026 — Calcula pagos para casas de lujo sobre $766,550. Sin registro.",
+            "de": "Jumbo-Hypothekenrechner 2026 — Berechnen Sie Raten für Luxusimmobilien über 766.550$. Kostenlos!",
+            "fr": "Calculateur Prêt Jumbo Gratuit 2026 — Calculez les mensualités pour maisons de luxe. Sans inscription!",
+            "pt": "Calculadora Jumbo Grátis 2026 — Calcule parcelas para imóveis de luxo acima de $766.550. Sem cadastro!",
+            "it": "Calcolatore Mutuo Jumbo Gratuito 2026 — Calcola le rate per case di lusso oltre $766.550. Senza registrazione!",
+            "nl": "Gratis Jumbo Lening Calculator 2026 — Bereken betalingen voor luxe woningen boven $766.550.",
+            "pl": "Darmowy Kalkulator Kredytu Jumbo 2026 — Oblicz raty dla luksusowych domów powyżej $766,550.",
+            "sv": "Gratis Jumbo Lånekalkylator 2026 — Beräkna betalningar för lyxhus över $766,550.",
+            "no": "Gratis Jumbo Lånekalkulator 2026 — Beregn betalinger for luksusboliger over $766,550.",
+            "da": "Gratis Jumbo Låneberegner 2026 — Beregn ydelser for luksusboliger over $766,550.",
+            "fi": "Ilmainen Jumbo Lainalaskuri 2026 — Laske kuukausierät luksusasunnoille yli $766,550."
         }
     },
     {
@@ -6009,7 +6020,16 @@
                 "label": {
                     "en": "HELOC Rate (%)",
                     "es": "Tasa HELOC (%)",
-                    "de": "HELOC-Zinssatz (%)"
+                    "de": "HELOC-Zinssatz (%)",
+                    "fr": "Taux HELOC (%)",
+                    "pt": "Taxa HELOC (%)",
+                    "it": "Tasso HELOC (%)",
+                    "nl": "HELOC Rente (%)",
+                    "pl": "Oprocentowanie HELOC (%)",
+                    "sv": "HELOC-ränta (%)",
+                    "no": "HELOC-rente (%)",
+                    "da": "HELOC Rente (%)",
+                    "fi": "HELOC Korko (%)"
                 }
             },
             "principal": {
@@ -6017,7 +6037,16 @@
                 "label": {
                     "en": "Credit Line Amount",
                     "es": "Monto Línea de Crédito",
-                    "de": "Kreditlinienbetrag"
+                    "de": "Kreditlinienbetrag",
+                    "fr": "Montant de la Ligne de Crédit",
+                    "pt": "Valor da Linha de Crédito",
+                    "it": "Importo Linea di Credito",
+                    "nl": "Kredietlimiet Bedrag",
+                    "pl": "Kwota Linii Kredytowej",
+                    "sv": "Kreditutrymme",
+                    "no": "Kredittramme",
+                    "da": "Kreditmaksimum",
+                    "fi": "Luottoraja"
                 }
             }
         },
@@ -6787,7 +6816,16 @@
                 "label": {
                     "en": "Initial ARM Rate (%)",
                     "es": "Tasa Inicial ARM (%)",
-                    "de": "Anfänglicher ARM-Zinssatz (%)"
+                    "de": "Anfänglicher ARM-Zinssatz (%)",
+                    "fr": "Taux Initial ARM (%)",
+                    "pt": "Taxa Inicial ARM (%)",
+                    "it": "Tasso Iniziale ARM (%)",
+                    "nl": "Initieel ARM-tarief (%)",
+                    "pl": "Początkowe Oprocentowanie ARM (%)",
+                    "sv": "Initial ARM-ränta (%)",
+                    "no": "Initial ARM-rente (%)",
+                    "da": "Indledende ARM Rente (%)",
+                    "fi": "ARM Alkukorko (%)"
                 }
             }
         },

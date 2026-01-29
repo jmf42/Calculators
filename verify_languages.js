@@ -16,7 +16,6 @@ function checkText(obj, path, requiredLangs) {
     }
     requiredLangs.forEach(lang => {
         if (!obj[lang]) {
-            // console.log(`DEBUG: Missing [${lang}] for ${path}`);
             errors.push(`Missing [${lang}] translation for ${path}`);
         }
     });
@@ -30,11 +29,31 @@ for (const [key, calc] of Object.entries(calculators)) {
     checkText(calc.subtitles, `calculators.${key}.subtitles`, languages);
     checkText(calc.metaDescriptions, `calculators.${key}.metaDescriptions`, languages);
 
+    // Check notices
+    if (calc.config && calc.config.notices) {
+        calc.config.notices.forEach((notice, index) => {
+            checkText(notice.message, `calculators.${key}.notices[${index}].message`, languages);
+        });
+    }
+
+    // Check config currency/locale
+    if (calc.config) {
+        if (calc.config.currency) {
+            checkText(calc.config.currency, `calculators.${key}.config.currency`, languages);
+        }
+        if (calc.config.locale) {
+            checkText(calc.config.locale, `calculators.${key}.config.locale`, languages);
+        }
+    }
+
     // Check config fields
     if (calc.config && calc.config.fields) {
         calc.config.fields.forEach(field => {
             if (field.label) {
                 checkText(field.label, `calculators.${key}.fields.${field.id}.label`, languages);
+            }
+            if (field.help) {
+                checkText(field.help, `calculators.${key}.fields.${field.id}.help`, languages);
             }
         });
     }
@@ -48,6 +67,18 @@ for (const [key, calc] of Object.entries(calculators)) {
     if (calc.config && calc.config.breakdown) {
         calc.config.breakdown.forEach((item, index) => {
             checkText(item.label, `calculators.${key}.breakdown[${index}]`, languages);
+        });
+    }
+
+    // Check config metrics tooltips
+    if (calc.config && calc.config.metrics) {
+        calc.config.metrics.forEach((metric, index) => {
+            if (metric.label) {
+                checkText(metric.label, `calculators.${key}.metrics[${index}].label`, languages);
+            }
+            if (metric.tooltip) {
+                checkText(metric.tooltip, `calculators.${key}.metrics[${index}].tooltip`, languages);
+            }
         });
     }
 }

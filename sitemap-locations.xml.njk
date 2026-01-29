@@ -16,7 +16,7 @@ eleventyExcludeFromCollections: true
   {%- endif %}
   {%- endfor %}
 
-  {# Country Pages #}
+  {# Country Pages - Include hreflang for all language variants #}
   {%- for page in collections.calculatorPages %}
   {%- if page.countryData %}
   <url>
@@ -24,6 +24,12 @@ eleventyExcludeFromCollections: true
     <lastmod>{{ page.lastmod }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    {%- if page.alternates %}
+    {%- for langCode, href in page.alternates %}
+    <xhtml:link rel="alternate" hreflang="{{ langCode }}" href="{{ href | canonicalUrl }}"/>
+    {%- endfor %}
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ (page.alternates[site.defaultLang] or page.canonicalUrl) | canonicalUrl }}"/>
+    {%- endif %}
   </url>
   {%- endif %}
   {%- endfor %}

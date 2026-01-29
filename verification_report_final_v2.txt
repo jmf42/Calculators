@@ -1,0 +1,18 @@
+Verifying 12 languages: en, es, de, fr, pt, it, nl, pl, sv, no, da, fi
+Calculator keys: mortgage, loan, roi, crypto, solar, wedding, flooring, roofing
+--- Verifying Calculators ---
+Checking calculator: mortgage
+Checking calculator: loan
+Checking calculator: roi
+Checking calculator: crypto
+Checking calculator: solar
+Checking calculator: wedding
+Checking calculator: flooring
+Checking calculator: roofing
+
+--- Verifying Niches ---
+
+--- Verifying UI ---
+
+--- Verification Complete ---
+✅ All checks passed!

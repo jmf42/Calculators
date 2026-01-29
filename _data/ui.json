@@ -2730,5 +2730,139 @@
             "da": "Læs Guide",
             "fi": "Lue Opas"
         }
+    },
+    "whyTrust": {
+        "en": {
+            "title": "Why Trust CalcKit?",
+            "accurateTitle": "Accurate Formulas",
+            "accurateDesc": "Industry-standard calculations used by financial professionals worldwide.",
+            "privacyTitle": "Privacy First",
+            "privacyDesc": "No data collection, no signup required. Your calculations stay on your device.",
+            "globalTitle": "Global Support",
+            "globalDesc": "Available in 12 languages with localized data for 50+ countries.",
+            "dataLabel": "Data Sources:",
+            "dataSources": "Federal Reserve (FRED), Bureau of Labor Statistics, Zillow Research, CoinGecko API. Updated daily."
+        },
+        "es": {
+            "title": "¿Por Qué Confiar en CalcKit?",
+            "accurateTitle": "Fórmulas Precisas",
+            "accurateDesc": "Cálculos estándar de la industria utilizados por profesionales financieros en todo el mundo.",
+            "privacyTitle": "Privacidad Primero",
+            "privacyDesc": "Sin recolección de datos, sin registro requerido. Tus cálculos permanecen en tu dispositivo.",
+            "globalTitle": "Soporte Global",
+            "globalDesc": "Disponible en 12 idiomas con datos localizados para más de 50 países.",
+            "dataLabel": "Fuentes de Datos:",
+            "dataSources": "Federal Reserve (FRED), Bureau of Labor Statistics, Zillow Research, CoinGecko API. Actualizado diariamente."
+        },
+        "de": {
+            "title": "Warum CalcKit Vertrauen?",
+            "accurateTitle": "Präzise Formeln",
+            "accurateDesc": "Branchenstandard-Berechnungen, die von Finanzexperten weltweit verwendet werden.",
+            "privacyTitle": "Datenschutz Zuerst",
+            "privacyDesc": "Keine Datenerfassung, keine Registrierung erforderlich. Ihre Berechnungen bleiben auf Ihrem Gerät.",
+            "globalTitle": "Globale Unterstützung",
+            "globalDesc": "Verfügbar in 12 Sprachen mit lokalisierten Daten für über 50 Länder.",
+            "dataLabel": "Datenquellen:",
+            "dataSources": "Federal Reserve (FRED), Bureau of Labor Statistics, Zillow Research, CoinGecko API. Täglich aktualisiert."
+        },
+        "fr": {
+            "title": "Pourquoi Faire Confiance à CalcKit ?",
+            "accurateTitle": "Formules Précises",
+            "accurateDesc": "Calculs standards utilisés par les professionnels de la finance dans le monde entier.",
+            "privacyTitle": "Confidentialité d'Abord",
+            "privacyDesc": "Aucune collecte de données, aucune inscription requise. Vos calculs restent sur votre appareil.",
+            "globalTitle": "Support Mondial",
+            "globalDesc": "Disponible en 12 langues avec des données localisées pour plus de 50 pays.",
+            "dataLabel": "Sources de Données :",
+            "dataSources": "Federal Reserve (FRED), Bureau of Labor Statistics, Zillow Research, CoinGecko API. Mis à jour quotidiennement."
+        },
+        "pt": {
+            "title": "Por Que Confiar no CalcKit?",
+            "accurateTitle": "Fórmulas Precisas",
+            "accurateDesc": "Cálculos padrão da indústria usados por profissionais financeiros em todo o mundo.",
+            "privacyTitle": "Privacidade em Primeiro",
+            "privacyDesc": "Sem coleta de dados, sem cadastro necessário. Seus cálculos ficam no seu dispositivo.",
+            "globalTitle": "Suporte Global",
+            "globalDesc": "Disponível em 12 idiomas com dados localizados para mais de 50 países.",
+            "dataLabel": "Fontes de Dados:",
+            "dataSources": "Federal Reserve (FRED), Bureau of Labor Statistics, Zillow Research, CoinGecko API. Atualizado diariamente."
+        },
+        "it": {
+            "title": "Perché Fidarsi di CalcKit?",
+            "accurateTitle": "Formule Precise",
+            "accurateDesc": "Calcoli standard del settore utilizzati da professionisti finanziari in tutto il mondo.",
+            "privacyTitle": "Privacy Prima di Tutto",
+            "privacyDesc": "Nessuna raccolta dati, nessuna registrazione richiesta. I tuoi calcoli restano sul tuo dispositivo.",
+            "globalTitle": "Supporto Globale",
+            "globalDesc": "Disponibile in 12 lingue con dati localizzati per oltre 50 paesi.",
+            "dataLabel": "Fonti Dati:",
+            "dataSources": "Federal Reserve (FRED), Bureau of Labor Statistics, Zillow Research, CoinGecko API. Aggiornato quotidianamente."
+        },
+        "nl": {
+            "title": "Waarom CalcKit Vertrouwen?",
+            "accurateTitle": "Nauwkeurige Formules",
+            "accurateDesc": "Industriestandaard berekeningen gebruikt door financiële professionals wereldwijd.",
+            "privacyTitle": "Privacy Eerst",
+            "privacyDesc": "Geen gegevensverzameling, geen registratie vereist. Uw berekeningen blijven op uw apparaat.",
+            "globalTitle": "Wereldwijde Ondersteuning",
+            "globalDesc": "Beschikbaar in 12 talen met gelokaliseerde gegevens voor meer dan 50 landen.",
+            "dataLabel": "Gegevensbronnen:",
+            "dataSources": "Federal Reserve (FRED), Bureau of Labor Statistics, Zillow Research, CoinGecko API. Dagelijks bijgewerkt."
+        },
+        "pl": {
+            "title": "Dlaczego Zaufać CalcKit?",
+            "accurateTitle": "Dokładne Formuły",
+            "accurateDesc": "Standardowe obliczenia branżowe stosowane przez profesjonalistów finansowych na całym świecie.",
+            "privacyTitle": "Prywatność Przede Wszystkim",
+            "privacyDesc": "Brak zbierania danych, brak potrzeby rejestracji. Twoje obliczenia pozostają na urządzeniu.",
+            "globalTitle": "Globalne Wsparcie",
+            "globalDesc": "Dostępny w 12 językach z lokalnymi danymi dla ponad 50 krajów.",
+            "dataLabel": "Źródła Danych:",
+            "dataSources": "Federal Reserve (FRED), Bureau of Labor Statistics, Zillow Research, CoinGecko API. Aktualizowane codziennie."
+        },
+        "sv": {
+            "title": "Varför Lita på CalcKit?",
+            "accurateTitle": "Exakta Formler",
+            "accurateDesc": "Branschstandardberäkningar som används av finansexperter världen över.",
+            "privacyTitle": "Integritet Först",
+            "privacyDesc": "Ingen datainsamling, ingen registrering krävs. Dina beräkningar stannar på din enhet.",
+            "globalTitle": "Globalt Stöd",
+            "globalDesc": "Tillgängligt på 12 språk med lokaliserad data för 50+ länder.",
+            "dataLabel": "Datakällor:",
+            "dataSources": "Federal Reserve (FRED), Bureau of Labor Statistics, Zillow Research, CoinGecko API. Uppdateras dagligen."
+        },
+        "no": {
+            "title": "Hvorfor Stole på CalcKit?",
+            "accurateTitle": "Nøyaktige Formler",
+            "accurateDesc": "Bransjestandardberegninger brukt av finanseksperter over hele verden.",
+            "privacyTitle": "Personvern Først",
+            "privacyDesc": "Ingen datainnsamling, ingen registrering nødvendig. Beregningene dine forblir på enheten din.",
+            "globalTitle": "Global Støtte",
+            "globalDesc": "Tilgjengelig på 12 språk med lokalisert data for 50+ land.",
+            "dataLabel": "Datakilder:",
+            "dataSources": "Federal Reserve (FRED), Bureau of Labor Statistics, Zillow Research, CoinGecko API. Oppdatert daglig."
+        },
+        "da": {
+            "title": "Hvorfor Stole på CalcKit?",
+            "accurateTitle": "Præcise Formler",
+            "accurateDesc": "Branchestandardberegninger brugt af finanseksperter verden over.",
+            "privacyTitle": "Privatliv Først",
+            "privacyDesc": "Ingen dataindsamling, ingen registrering påkrævet. Dine beregninger forbliver på din enhed.",
+            "globalTitle": "Global Support",
+            "globalDesc": "Tilgængelig på 12 sprog med lokaliserede data for 50+ lande.",
+            "dataLabel": "Datakilder:",
+            "dataSources": "Federal Reserve (FRED), Bureau of Labor Statistics, Zillow Research, CoinGecko API. Opdateret dagligt."
+        },
+        "fi": {
+            "title": "Miksi Luottaa CalcKitiin?",
+            "accurateTitle": "Tarkat Kaavat",
+            "accurateDesc": "Toimialan standardilaskelmat, joita rahoitusalan ammattilaiset käyttävät maailmanlaajuisesti.",
+            "privacyTitle": "Yksityisyys Ensin",
+            "privacyDesc": "Ei tietojen keräämistä, ei rekisteröintiä. Laskelmasi pysyvät laitteellasi.",
+            "globalTitle": "Globaali Tuki",
+            "globalDesc": "Saatavilla 12 kielellä lokalisoidulla datalla yli 50 maalle.",
+            "dataLabel": "Datalähteet:",
+            "dataSources": "Federal Reserve (FRED), Bureau of Labor Statistics, Zillow Research, CoinGecko API. Päivitetään päivittäin."
+        }
     }
 }

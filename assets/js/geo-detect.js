@@ -256,7 +256,9 @@
             tips: {
                 en: ['NO capital gains tax for private investors!', 'Crypto treated as personal movable assets.', 'Professional traders ARE taxed — consult advisor.', 'Wealth tax applies based on Dec 31 market value.'],
                 de: ['KEINE Kapitalertragssteuer für Privatanleger!', 'Krypto wird als bewegliches Privatvermögen behandelt.', 'Professionelle Trader werden besteuert.', 'Vermögenssteuer basiert auf 31.12. Marktwert.'],
-                fr: ['PAS d\'impôt sur les gains en capital pour les privés!', 'Cryptos traitées comme biens mobiliers privés.', 'Les traders pro SONT imposés — consultez un conseiller.', 'L\'impôt fortune s\'applique sur la valeur au 31 déc.']
+                fr: ['PAS d\'impôt sur les gains en capital pour les privés!', 'Cryptos traitées comme biens mobiliers privés.', 'Les traders pro SONT imposés — consultez un conseiller.', 'L\'impôt fortune s\'applique sur la valeur au 31 déc.'],
+                pt: ['NÃO há imposto sobre mais-valias para investidores privados!', 'Cripto é tratado como bens móveis pessoais.', 'Traders profissionais SÃO tributados — consulte um consultor.', 'Imposto sobre riqueza aplica-se baseado no valor em 31 de dez.'],
+                it: ['NESSUNA imposta sulle plusvalenze per investitori privati!', 'Le cripto sono trattate come beni mobili personali.', 'I trader professionisti SONO tassati — consulta un consulente.', 'L\'imposta patrimoniale si applica sul valore di mercato al 31 dicembre.']
             }
         },
         // Austria
@@ -543,6 +545,19 @@
     };
 
     /**
+     * Sanitize HTML to prevent XSS
+     */
+    function escapeHtml(unsafe) {
+        if (typeof unsafe !== 'string') return unsafe;
+        return unsafe
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+    /**
      * Render the local insights section as a prominent banner
      */
     function renderInsightsSection(locationInfo, calcType) {
@@ -568,11 +583,11 @@
                 <div class="geo-stats-grid">
                     <div class="geo-stat-card">
                         <div class="geo-stat-label">${t.sunHours}</div>
-                        <div class="geo-stat-value">${sourceData.sunHours} <span class="unit">${t.unitHrs}</span></div>
+                        <div class="geo-stat-value">${escapeHtml(String(sourceData.sunHours))} <span class="unit">${t.unitHrs}</span></div>
                     </div>
                     <div class="geo-stat-card">
                         <div class="geo-stat-label">${t.electricRate}</div>
-                        <div class="geo-stat-value">${currency}${sourceData.electricRate}<span class="unit">${t.unitKwh}</span></div>
+                        <div class="geo-stat-value">${currency}${escapeHtml(String(sourceData.electricRate))}<span class="unit">${t.unitKwh}</span></div>
                     </div>
                     <div class="geo-stat-card">
                         <div class="geo-stat-label">${t.potential}</div>
@@ -584,7 +599,7 @@
                 <div class="geo-stats-grid">
                     <div class="geo-stat-card">
                         <div class="geo-stat-label">${t.laborRate}</div>
-                        <div class="geo-stat-value">${currency}${sourceData.laborRate}<span class="unit">${t.unitSqFt}</span></div>
+                        <div class="geo-stat-value">${currency}${escapeHtml(String(sourceData.laborRate))}<span class="unit">${t.unitSqFt}</span></div>
                     </div>
                     <div class="geo-stat-card">
                         <div class="geo-stat-label">${t.season}</div>
@@ -602,7 +617,7 @@
                         </div>
                         <div class="geo-stat-card">
                             <div class="geo-stat-label">${t.propertyTax}</div>
-                            <div class="geo-stat-value">${sourceData.propertyTaxRate}%</div>
+                            <div class="geo-stat-value">${escapeHtml(String(sourceData.propertyTaxRate))}%</div>
                         </div>
                         <div class="geo-stat-card">
                             <div class="geo-stat-label">${t.homeInsurance}</div>
@@ -622,15 +637,15 @@
                         </div>
                         <div class="geo-stat-card">
                             <div class="geo-stat-label">${t.typicalRate}</div>
-                            <div class="geo-stat-value">${sourceData.typicalRate}%</div>
+                            <div class="geo-stat-value">${escapeHtml(String(sourceData.typicalRate))}%</div>
                         </div>
                         <div class="geo-stat-card">
                             <div class="geo-stat-label">${t.loanTerm}</div>
-                            <div class="geo-stat-value">${sourceData.typicalTerm} ${t.years}</div>
+                            <div class="geo-stat-value">${escapeHtml(String(sourceData.typicalTerm))} ${t.years}</div>
                         </div>
                         <div class="geo-stat-card">
                             <div class="geo-stat-label">${t.downPayment}</div>
-                            <div class="geo-stat-value">${sourceData.downPayment}%</div>
+                            <div class="geo-stat-value">${escapeHtml(String(sourceData.downPayment))}%</div>
                         </div>
                     </div>`;
             }
@@ -644,7 +659,7 @@
                 <span class="geo-tip-icon">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </span>
-                <span class="geo-tip-text">${tip}</span>
+                <span class="geo-tip-text">${escapeHtml(tip)}</span>
             </div>
         `).join('');
 
@@ -884,7 +899,7 @@
             holdBenefitHTML = `
                 <div class="geo-stat-card geo-stat-highlight">
                     <div class="geo-stat-label">${t.holdBenefit}</div>
-                    <div class="geo-stat-value">${cryptoData.holdingPeriod} ${t.months}</div>
+                    <div class="geo-stat-value">${escapeHtml(String(cryptoData.holdingPeriod))} ${t.months}</div>
                 </div>`;
         }
 
@@ -894,7 +909,7 @@
             exemptionHTML = `
                 <div class="geo-stat-card">
                     <div class="geo-stat-label">${t.exemption}</div>
-                    <div class="geo-stat-value">${cryptoData.exemption}</div>
+                    <div class="geo-stat-value">${escapeHtml(cryptoData.exemption)}</div>
                 </div>`;
         }
 
@@ -906,7 +921,7 @@
                 <span class="geo-tip-icon">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </span>
-                <span class="geo-tip-text">${tip}</span>
+                <span class="geo-tip-text">${escapeHtml(tip)}</span>
             </div>
         `).join('');
 
@@ -916,7 +931,7 @@
                 <span class="geo-tip-icon" style="color: #f59e0b;">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
                 </span>
-                <span class="geo-tip-text"><strong>📍 ${US_STATES[stateCode]?.name || stateCode.toUpperCase()}:</strong> ${stateNote}</span>
+                <span class="geo-tip-text"><strong>📍 ${escapeHtml(US_STATES[stateCode]?.name || stateCode.toUpperCase())}:</strong> ${escapeHtml(stateNote)}</span>
             </div>
         ` : '';
 
@@ -1084,11 +1099,11 @@
                     <div class="geo-stats-grid">
                         <div class="geo-stat-card">
                             <div class="geo-stat-label">${t.shortTerm}</div>
-                            <div class="geo-stat-value">${cryptoData.shortTermRate}</div>
+                            <div class="geo-stat-value">${escapeHtml(cryptoData.shortTermRate)}</div>
                         </div>
                         <div class="geo-stat-card ${longTermIsFree ? 'geo-stat-highlight' : ''}">
                             <div class="geo-stat-label">${t.longTerm}</div>
-                            <div class="geo-stat-value">${longTermIsFree ? `${t.taxFree} ✓` : cryptoData.longTermRate}</div>
+                            <div class="geo-stat-value">${longTermIsFree ? `${t.taxFree} ✓` : escapeHtml(cryptoData.longTermRate)}</div>
                         </div>
                         ${holdBenefitHTML}
                         ${exemptionHTML}

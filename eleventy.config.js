@@ -285,15 +285,38 @@ module.exports = function (eleventyConfig) {
                     // Simple number formatter helper for inside this function
                     const formatNumber = (val) => new Intl.NumberFormat(lang === 'en' ? 'en-US' : (lang === 'de' ? 'de-DE' : 'en-US')).format(val);
 
+                    // Localized Headers Map
+                    const headers = {
+                        buying: {
+                            en: "Buying in", es: "¿Comprando en", de: "Kaufen in", fr: "Acheter à", pt: "Comprando em",
+                            it: "Comprare casa a", nl: "Kopen in", pl: "Kupno domu w", sv: "Köpa bostad i", no: "Kjøpe bolig i",
+                            da: "Køb af bolig i", fi: "Asunnon ostaminen"
+                        },
+                        context: {
+                            en: "Local Market Context", es: "Contexto de Mercado", de: "Marktkontext", fr: "Contexte du Marché",
+                            pt: "Contexto de Mercado", it: "Contesto di Mercato", nl: "Marktcontext", pl: "Kontekst Rynkowy",
+                            sv: "Marknadskontext", no: "Markedskontekst", da: "Markedskontekst", fi: "Markkinatilanne"
+                        },
+                        next: {
+                            en: "Next Steps", es: "Próximos Pasos", de: "Nächste Schritte", fr: "Prochaines Étapes",
+                            pt: "Próximos Passos", it: "Prossimi Passi", nl: "Volgende Stappen", pl: "Następne Kroki",
+                            sv: "Nästa Steg", no: "Neste Steg", da: "Næste Skridt", fi: "Seuraavat Vaiheet"
+                        }
+                    };
+
+                    const buyingHeader = `${headers.buying[lang] || headers.buying.en} ${locName}?`;
+                    const contextHeader = headers.context[lang] || headers.context.en;
+                    const nextHeader = headers.next[lang] || headers.next.en;
+
                     // Reassemble Content
                     content = `
                         <div class="generated-content">
-                            <h2>${lang === 'es' ? '¿Comprando en' : (lang === 'de' ? 'Kaufen in' : 'Buying in')} ${locName}?</h2>
+                            <h2>${buyingHeader}</h2>
                             <p class="lead">${fillPlaceholders(intro)}</p>
                             ${content}
-                            <h3>${lang === 'es' ? 'Contexto de Mercado' : (lang === 'de' ? 'Marktkontext' : 'Local Market Context')}</h3>
+                            <h3>${contextHeader}</h3>
                             <p>${fillPlaceholders(marketCtx)}</p>
-                            <h3>${lang === 'es' ? 'Próximos Pasos' : (lang === 'de' ? 'Nächste Schritte' : 'Next Steps')}</h3>
+                            <h3>${nextHeader}</h3>
                             <p>${fillPlaceholders(closer)}</p>
                         </div>
                     `;

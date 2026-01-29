@@ -105,12 +105,83 @@ const mixins = {
                 "Klaar voor {{location}}? Gebruik deze cijfers inclusief ${{insurance_cost}} verzekering voor gesprekken met kredietverstrekkers.",
                 "Slimme kopers in {{location}} plannen alles. We hopen dat deze tool helpt."
             ]
+        },
+        pl: {
+            intros: [
+                "Kupno domu w {{location}} to duży krok. Z podatkami od nieruchomości około {{tax_rate}}% i kosztami ubezpieczenia około ${{insurance_cost}}, ważne jest poznanie rzeczywistej raty.",
+                "Szukasz na rynku {{location}}? Nasz Kalkulator {{year}} szacuje typowe koszty, w tym stawkę podatkową {{tax_rate}}%.",
+                "Planujesz kupić w {{location}}? Nie daj się zaskoczyć {{tax_rate}}% podatkiem. Oblicz całkowitą ratę natychmiast."
+            ],
+            marketContext: [
+                "W {{location}} stawka podatkowa {{tax_rate}}% może znacząco wpłynąć na dostępność. Banki zwracają też uwagę na średnie ubezpieczenie ${{insurance_cost}}.",
+                "Zrozumienie kosztów w {{location}}, takich jak {{tax_rate}}% podatku, pomaga ustalić realistyczny budżet."
+            ],
+            closers: [
+                "Gotowy na {{location}}? Użyj tych szacunków, w tym czynnika ubezpieczenia ${{insurance_cost}}, w rozmowach z kredytodawcami.",
+                "Mądrzy kupujący w {{location}} planują wszystkie koszty. Mamy nadzieję, że to narzędzie pomoże."
+            ]
+        },
+        sv: {
+            intros: [
+                "Att köpa bostad i {{location}} är ett stort steg. Med fastighetsskatter runt {{tax_rate}}% och försäkringskostnader på cirka ${{insurance_cost}} är det viktigt att veta din verkliga månadskostnad.",
+                "Navigerar du på {{location}}-marknaden? Vår kalkylator {{year}} uppskattar typiska kostnader, inklusive {{tax_rate}}% skattesats.",
+                "Planerar du att köpa i {{location}}? Bli inte överraskad av {{tax_rate}}% fastighetsskatt. Beräkna din totala månadskostnad direkt."
+            ],
+            marketContext: [
+                "I {{location}} kan skattesatsen på {{tax_rate}}% påverka överkomligheten betydligt. Banker tittar också på den genomsnittliga försäkringen på ${{insurance_cost}}.",
+                "Att förstå {{location}}s specifika kostnader som {{tax_rate}}% skatt hjälper dig att sätta en realistisk budget."
+            ],
+            closers: [
+                "Redo för {{location}}? Använd dessa uppskattningar, inklusive försäkringsfaktorn ${{insurance_cost}}, för samtal med långivare.",
+                "Smarta köpare i {{location}} planerar för totala kostnader. Vi hoppas att detta verktyg hjälper dig."
+            ]
+        },
+        no: {
+            intros: [
+                "Å kjøpe bolig i {{location}} er et stort skritt. Med eiendomsskatt rundt {{tax_rate}}% og forsikringskostnader på ca. ${{insurance_cost}}, er det viktig å vite din faktiske månedlige betaling.",
+                "Navigerer du i {{location}}-markedet? Vår kalkulator {{year}} estimerer typiske kostnader, inkludert {{tax_rate}}% skattesats.",
+                "Planlegger du å kjøpe i {{location}}? Ikke bli overrasket av {{tax_rate}}% eiendomsskatt. Beregn din totale månedlige betaling umiddelbart."
+            ],
+            marketContext: [
+                "I {{location}} kan skattesatsen på {{tax_rate}}% påvirke overkommeligheten betydelig. Banker ser også på gjennomsnittlig forsikring på ${{insurance_cost}}.",
+                "Å forstå {{location}}s spesifikke kostnader som {{tax_rate}}% skatt hjelper deg med å sette et realistisk budsjett."
+            ],
+            closers: [
+                "Klar for {{location}}? Bruk disse estimatene, inkludert forsikringsfaktoren ${{insurance_cost}}, i samtaler med långivere.",
+                "Smarte kjøpere i {{location}} planlegger for totale kostnader. Vi håper dette verktøyet hjelper deg."
+            ]
+        },
+        da: {
+            intros: [
+                "At købe bolig i {{location}} er et stort skridt. Med ejendomsskatter omkring {{tax_rate}}% og forsikringsomkostninger på ca. ${{insurance_cost}}, er det vigtigt at kende din reelle månedlige ydelse.",
+                "Navigerer du på {{location}}-markedet? Vores beregner {{year}} estimerer typiske omkostninger, inklusive {{tax_rate}}% skattesats.",
+                "Planlægger du at købe i {{location}}? Bliv ikke overrasket af {{tax_rate}}% ejendomsskat. Beregn din samlede månedlige ydelse med det samme."
+            ],
+            marketContext: [
+                "I {{location}} kan skattesatsen på {{tax_rate}}% påvirke overkommeligheden betydeligt. Banker ser også på gennemsnitsforsikringen på ${{insurance_cost}}.",
+                "At forstå {{location}}s specifikke omkostninger som {{tax_rate}}% skat hjælper dig med at sætte et realistisk budget."
+            ],
+            closers: [
+                "Klar til {{location}}? Brug disse estimater, inklusive forsikringsfaktoren ${{insurance_cost}}, i samtaler med långivere.",
+                "Kloge købere i {{location}} planlægger for samlede omkostninger. Vi håber, dette værktøj hjælper dig."
+            ]
+        },
+        fi: {
+            intros: [
+                "Asunnon ostaminen paikassa {{location}} on iso askel. Kiinteistöverojen ollessa noin {{tax_rate}}% ja vakuutuskustannusten noin ${{insurance_cost}}, on tärkeää tietää todellinen kuukausimaksusi.",
+                "Navigoidko {{location}}-markkinoilla? Laskurimme {{year}} arvioi tyypilliset kustannukset, mukaan lukien {{tax_rate}}% verokanta.",
+                "Suunnitteletko ostoa paikassa {{location}}? Älä anna {{tax_rate}}% kiinteistöveron yllättää. Laske kokonaiskuukausimaksusi välittömästi."
+            ],
+            marketContext: [
+                "Paikassa {{location}} {{tax_rate}}% verokanta voi vaikuttaa merkittävästi saatavuuteen. Pankit tarkastelevat myös keskimääräistä vakuutusta ${{insurance_cost}}.",
+                "{{location}}n erityisten kustannusten, kuten {{tax_rate}}% veron, ymmärtäminen auttaa asettamaan realistisen budjetin."
+            ],
+            closers: [
+                "Valmis kohteeseen {{location}}? Käytä näitä arvioita, mukaan lukien vakuutustekijä ${{insurance_cost}}, keskusteluissa lainanantajien kanssa.",
+                "Älykkäät ostajat paikassa {{location}} suunnittelevat kokonaiskustannukset. Toivomme, että tämä työkalu auttaa sinua."
+            ]
         }
     },
-    // Fallback for languages not explicitly defined above helps prevent crashes, 
-    // though ideally we'd have all 12. For brevity in this artifact, mapping to English 
-    // or simple generic ones is safer than creating broken objects.
-    // simpler generic ones for loan/other types
     loan: {
         en: {
             intros: [
@@ -139,8 +210,147 @@ const mixins = {
                 "Planea tus finanzas en {{location}} con estas cifras precisas.",
                 "Esperamos que esto te ayude a conseguir el mejor préstamo en {{location}}."
             ]
+        },
+        de: {
+            intros: [
+                "Einen Kredit in {{location}} aufnehmen? Präzise Schätzungen inklusive lokaler Zinsen sind der Schlüssel.",
+                "Berechnen Sie Ihre Raten für Kreditbedarf in {{location}} sofort."
+            ],
+            marketContext: [
+                "Zinssätze in {{location}} variieren. Nutzen Sie diese Schätzung zum Vergleichen.",
+                "Die Kenntnis Ihrer Gesamtkosten in {{location}} stärkt Ihre Entscheidungen."
+            ],
+            closers: [
+                "Planen Sie Ihre Finanzen in {{location}} mit diesen präzisen Zahlen.",
+                "Wir hoffen, dies hilft Ihnen, den besten Kredit in {{location}} zu sichern."
+            ]
+        },
+        fr: {
+            intros: [
+                "Prendre un prêt à {{location}} ? Des estimations précises sont essentielles.",
+                "Calculez vos mensualités pour vos besoins d'emprunt à {{location}} instantanément."
+            ],
+            marketContext: [
+                "Les taux à {{location}} varient. Utilisez cette estimation pour comparer.",
+                "Connaître votre coût total à {{location}} renforce vos décisions financières."
+            ],
+            closers: [
+                "Planifiez vos finances à {{location}} avec ces chiffres précis.",
+                "Nous espérons que cela vous aidera à obtenir le meilleur prêt à {{location}}."
+            ]
+        },
+        pt: {
+            intros: [
+                "Fazendo um empréstimo em {{location}}? Estimativas precisas são fundamentais.",
+                "Calcule suas parcelas para necessidades de crédito em {{location}} instantaneamente."
+            ],
+            marketContext: [
+                "As taxas em {{location}} variam. Use esta estimativa para pesquisar com confiança.",
+                "Saber seu custo total em {{location}} fortalece suas decisões financeiras."
+            ],
+            closers: [
+                "Planeje suas finanças em {{location}} com estes números precisos.",
+                "Esperamos que isso ajude você a garantir o melhor empréstimo em {{location}}."
+            ]
+        },
+        it: {
+            intros: [
+                "Prendere un prestito a {{location}}? Stime precise sono fondamentali.",
+                "Calcola le tue rate per le esigenze di prestito a {{location}} istantaneamente."
+            ],
+            marketContext: [
+                "I tassi a {{location}} variano. Usa questa stima per confrontare con sicurezza.",
+                "Conoscere il costo totale a {{location}} potenzia le tue decisioni finanziarie."
+            ],
+            closers: [
+                "Pianifica le tue finanze a {{location}} con queste cifre precise.",
+                "Speriamo che questo ti aiuti a garantire il miglior prestito a {{location}}."
+            ]
+        },
+        nl: {
+            intros: [
+                "Een lening afsluiten in {{location}}? Nauwkeurige schattingen zijn essentieel.",
+                "Bereken uw betalingen voor leenbehoeften in {{location}} direct."
+            ],
+            marketContext: [
+                "Tarieven in {{location}} variëren. Gebruik deze schatting om te vergelijken.",
+                "Het kennen van uw totale kosten in {{location}} versterkt uw beslissingen."
+            ],
+            closers: [
+                "Plan uw financiën in {{location}} met deze precieze cijfers.",
+                "We hopen dat dit u helpt de beste lening in {{location}} te vinden."
+            ]
+        },
+        pl: {
+            intros: [
+                "Bierzesz pożyczkę w {{location}}? Dokładne szacunki są kluczowe.",
+                "Oblicz swoje raty dla potrzeb pożyczkowych w {{location}} natychmiast."
+            ],
+            marketContext: [
+                "Stawki w {{location}} są różne. Użyj tego szacunku do porównania.",
+                "Znajomość całkowitego kosztu w {{location}} wzmacnia Twoje decyzje."
+            ],
+            closers: [
+                "Zaplanuj swoje finanse w {{location}} dzięki tym precyzyjnym liczbom.",
+                "Mamy nadzieję, że pomoże Ci to uzyskać najlepszą pożyczkę w {{location}}."
+            ]
+        },
+        sv: {
+            intros: [
+                "Tar du ett lån i {{location}}? Exakta uppskattningar är nyckeln.",
+                "Beräkna dina betalningar för lånebehov i {{location}} direkt."
+            ],
+            marketContext: [
+                "Räntorna i {{location}} varierar. Använd denna uppskattning för att jämföra.",
+                "Att känna till din totala kostnad i {{location}} styrker dina beslut."
+            ],
+            closers: [
+                "Planera din ekonomi i {{location}} med dessa exakta siffror.",
+                "Vi hoppas att detta hjälper dig att säkra det bästa lånet i {{location}}."
+            ]
+        },
+        no: {
+            intros: [
+                "Tar du opp lån i {{location}}? Nøyaktige estimater er nøkkelen.",
+                "Beregn dine betalinger for lånebehov i {{location}} umiddelbart."
+            ],
+            marketContext: [
+                "Rentene i {{location}} varierer. Bruk dette estimatet for å sammenligne.",
+                "Å vite din totale kostnad i {{location}} styrker dine beslutninger."
+            ],
+            closers: [
+                "Planlegg din økonomi i {{location}} med disse presise tallene.",
+                "Vi håper dette hjelper deg å sikre det beste lånet i {{location}}."
+            ]
+        },
+        da: {
+            intros: [
+                "Optager du lån i {{location}}? Præcise estimater er nøglen.",
+                "Beregn dine ydelser for lånebehov i {{location}} med det samme."
+            ],
+            marketContext: [
+                "Renterne i {{location}} varierer. Brug dette estimat til at sammenligne.",
+                "At kende dine samlede omkostninger i {{location}} styrker dine beslutninger."
+            ],
+            closers: [
+                "Planlæg din økonomi i {{location}} med disse præcise tal.",
+                "Vi håber, dette hjælper dig med at sikre det bedste lån i {{location}}."
+            ]
+        },
+        fi: {
+            intros: [
+                "Otatko lainaa paikassa {{location}}? Tarkat arviot ovat avainasemassa.",
+                "Laske maksusi lainatarpeisiin paikassa {{location}} välittömästi."
+            ],
+            marketContext: [
+                "Korot paikassa {{location}} vaihtelevat. Käytä tätä arviota vertailuun.",
+                "Kokonaiskustannustesi tunteminen paikassa {{location}} vahvistaa päätöksiäsi."
+            ],
+            closers: [
+                "Suunnittele taloutesi paikassa {{location}} näillä tarkoilla luvuilla.",
+                "Toivomme, että tämä auttaa sinua saamaan parhaan lainan paikassa {{location}}."
+            ]
         }
-        // ... (can extend)
     },
     generic: {
         en: {
@@ -152,6 +362,56 @@ const mixins = {
             intros: ["Bienvenido a la {{title}} para {{location}}."],
             marketContext: ["Adaptado a las condiciones de {{location}}."],
             closers: ["Usa estos resultados para planear tu futuro en {{location}}."]
+        },
+        de: {
+            intros: ["Willkommen beim {{title}} für {{location}}."],
+            marketContext: ["Zugeschnitten auf die Marktbedingungen in {{location}}."],
+            closers: ["Nutzen Sie diese Ergebnisse für Ihre Planung in {{location}}."]
+        },
+        fr: {
+            intros: ["Bienvenue sur le {{title}} pour {{location}}."],
+            marketContext: ["Adapté aux conditions du marché de {{location}}."],
+            closers: ["Utilisez ces résultats pour planifier votre avenir à {{location}}."]
+        },
+        pt: {
+            intros: ["Bem-vindo à {{title}} para {{location}}."],
+            marketContext: ["Adaptado às condições de mercado de {{location}}."],
+            closers: ["Use estes resultados para planejar seu futuro em {{location}}."]
+        },
+        it: {
+            intros: ["Benvenuto al {{title}} per {{location}}."],
+            marketContext: ["Adattato alle condizioni di mercato di {{location}}."],
+            closers: ["Usa questi risultati per pianificare il tuo futuro a {{location}}."]
+        },
+        nl: {
+            intros: ["Welkom bij de {{title}} voor {{location}}."],
+            marketContext: ["Afgestemd op de marktomstandigheden in {{location}}."],
+            closers: ["Gebruik deze resultaten om uw toekomst in {{location}} te plannen."]
+        },
+        pl: {
+            intros: ["Witamy w {{title}} dla {{location}}."],
+            marketContext: ["Dostosowane do warunków rynkowych w {{location}}."],
+            closers: ["Wykorzystaj te wyniki, aby zaplanować swoją przyszłość w {{location}}."]
+        },
+        sv: {
+            intros: ["Välkommen till {{title}} för {{location}}."],
+            marketContext: ["Skräddarsydd för marknadsförhållandena i {{location}}."],
+            closers: ["Använd dessa resultat för att planera din framtid i {{location}}."]
+        },
+        no: {
+            intros: ["Velkommen til {{title}} for {{location}}."],
+            marketContext: ["Skreddersydd for markedsforholdene i {{location}}."],
+            closers: ["Bruk disse resultatene til å planlegge fremtiden i {{location}}."]
+        },
+        da: {
+            intros: ["Velkommen til {{title}} for {{location}}."],
+            marketContext: ["Skræddersyet til markedsforholdene i {{location}}."],
+            closers: ["Brug disse resultater til at planlægge din fremtid i {{location}}."]
+        },
+        fi: {
+            intros: ["Tervetuloa {{title}} -laskuriin paikassa {{location}}."],
+            marketContext: ["Räätälöity markkinaolosuhteisiin paikassa {{location}}."],
+            closers: ["Käytä näitä tuloksia suunnitellaksesi tulevaisuuttasi paikassa {{location}}."]
         }
     }
 };
@@ -161,10 +421,6 @@ const supportedLangs = ['en', 'es', 'de', 'fr', 'pt', 'it', 'nl', 'pl', 'sv', 'n
 supportedLangs.forEach(lang => {
     ['mortgage', 'loan', 'generic'].forEach(type => {
         if (!mixins[type][lang]) {
-            // Fallback to English but maybe simple replace? 
-            // Better to alias it to English to avoid crashes, 
-            // assuming the template engine handles it or we accept English content on those pages for now 
-            // (step 1 of improvement).
             mixins[type][lang] = mixins[type]['en'];
         }
     });
