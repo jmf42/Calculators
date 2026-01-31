@@ -382,6 +382,10 @@ class CalcKitCalculator extends HTMLElement {
 
             this.render();
             this.attachEventListeners();
+
+            // Initial calculation to populate text results immediately
+            // The chart will lazy-load via the retry mechanism in updateChart
+            this.calculate();
         } catch (error) {
             console.error('CalcKit Error:', error);
             this.shadowRoot.innerHTML = `<div class="error">${this.escapeHTML(this.getUIText('configError'))}</div>`;
@@ -389,13 +393,21 @@ class CalcKitCalculator extends HTMLElement {
     }
 
     loadChartJs() {
-        if (!window.Chart) {
-            const script = document.createElement('script');
-            script.src = 'https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js';
-            script.async = true;
-            script.onload = () => this.calculate();
-            document.head.appendChild(script);
+        if (window.Chart) {
+            // If Chart is already loaded, ensure we calculate (though connectedCallback does it too)
+            return;
         }
+
+        // Check if script is already present but not loaded
+        if (document.querySelector('script[src*="chart.umd.min.js"]')) {
+            return;
+        }
+
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js';
+        script.async = true;
+        script.onload = () => this.calculate();
+        document.head.appendChild(script);
     }
 
     loadPdfLib() {
