@@ -445,6 +445,13 @@ module.exports = {
                         <li><strong>Auto Loans:</strong> Often 5-12% APR with terms from 36-72 months.</li>
                         <li><strong>Debt Consolidation:</strong> Compare your current rates to potential savings.</li>
                     </ul>
+                    
+                    <h4>Hidden Fees to Watch For</h4>
+                    <p>Ask about <strong>origination fees</strong> (1-8% of loan amount) and <strong>prepayment penalties</strong>. These can increase your effective APR significantly.</p>
+
+                    <h4>How to Lower Your APR</h4>
+                    <p>Improving your credit score by even 20 points can save you thousands. Consider a co-signer if your rate is above 15%.</p>
+                    
                     <p>A shorter term means higher payments but <strong>less total interest</strong>. Use the calculator to find your sweet spot.</p>
                 </div>
             `,
@@ -457,6 +464,13 @@ module.exports = {
                         <li><strong>Préstamos de Coche:</strong> A menudo 5-12% TAE con plazos de 36-72 meses.</li>
                         <li><strong>Consolidación de Deuda:</strong> Compara tus tasas actuales con ahorros potenciales.</li>
                     </ul>
+
+                    <h4>Comisiones Ocultas a Vigilar</h4>
+                    <p>Pregunta por las <strong>comisiones de apertura</strong> (1-8% del monto) y <strong>penalizaciones por pago anticipado</strong>. Estas pueden aumentar tu TAE significativamente.</p>
+
+                    <h4>Cómo Bajar tu TAE</h4>
+                    <p>Mejorar tu puntaje crediticio aunque sea 20 puntos puede ahorrarte miles. Considera un aval si tu tasa supera el 15%.</p>
+
                     <p>Un plazo más corto significa pagos mensuales más altos pero <strong>menos interés total</strong>. Usa la calculadora para encontrar tu equilibrio ideal.</p>
                 </div>
             `,
@@ -469,6 +483,13 @@ module.exports = {
                         <li><strong>Autokredite:</strong> Oft 5-12% effektiver Jahreszins mit Laufzeiten von 36-72 Monaten.</li>
                         <li><strong>Schuldenkonsolidierung:</strong> Vergleichen Sie Ihre aktuellen Zinssätze mit potenziellen Einsparungen.</li>
                     </ul>
+
+                    <h4>Versteckte Gebühren beachten</h4>
+                    <p>Fragen Sie nach <strong>Bearbeitungsgebühren</strong> (1-8% der Kreditsumme) und <strong>Vorfälligkeitsentschädigungen</strong>. Diese können Ihren effektiven Jahreszins erheblich erhöhen.</p>
+
+                    <h4>So senken Sie Ihren Zins</h4>
+                    <p>Eine Verbesserung Ihrer Bonität (Schufa) kann Tausende sparen. Erwägen Sie einen Mitunterzeichner, wenn Ihr Zins über 15% liegt.</p>
+
                     <p>Eine kürzere Laufzeit bedeutet höhere Raten, aber <strong>weniger Gesamtzinsen</strong>. Nutzen Sie den Rechner, um das optimale Gleichgewicht zu finden.</p>
                 </div>
             `,
@@ -481,6 +502,13 @@ module.exports = {
                         <li><strong>Prêts Auto:</strong> Souvent 5-12% TAEG avec des durées de 36 à 72 mois.</li>
                         <li><strong>Rachat de Crédit:</strong> Comparez vos taux actuels avec les économies potentielles.</li>
                     </ul>
+
+                    <h4>Frais Cachés à Surveiller</h4>
+                    <p>Demandez les <strong>frais de dossier</strong> (1-8% du montant) et les <strong>pénalités de remboursement anticipé</strong>. Ils peuvent augmenter votre TAEG.</p>
+
+                    <h4>Comment réduire votre taux</h4>
+                    <p>Améliorer votre score de crédit peut vous faire économiser des milliers d'euros. Envisagez un co-emprunteur si votre taux dépasse 15%.</p>
+
                     <p>Une durée plus courte signifie des mensualités plus élevées mais <strong>moins d'intérêts totaux</strong>. Utilisez la calculatrice pour trouver votre équilibre.</p>
                 </div>
             `,
@@ -493,6 +521,13 @@ module.exports = {
                         <li><strong>Empréstimos de Carro:</strong> Muitas vezes 5-12% CET com prazos de 36-72 meses.</li>
                         <li><strong>Consolidação de Dívida:</strong> Compare suas taxas atuais com as economias potenciais.</li>
                     </ul>
+
+                    <h4>Taxas Ocultas para Ficar Atento</h4>
+                    <p>Pergunte sobre <strong>taxas de abertura</strong> (1-8% do valor) e <strong>multas por pagamento antecipado</strong>. Elas podem aumentar seu custo efetivo.</p>
+
+                    <h4>Como Baixar sua Taxa</h4>
+                    <p>Melhorar seu score de crédito pode economizar milhares. Considere um avalista se sua taxa estiver acima de 15%.</p>
+
                     <p>Um prazo mais curto significa parcelas mais altas, mas <strong>menos juros totais</strong>. Use a calculadora para encontrar o seu ponto ideal.</p>
                 </div>
             `,
@@ -505,6 +540,13 @@ module.exports = {
                         <li><strong>Prestiti Auto:</strong> Spesso 5-12% TAEG con durate da 36 a 72 mesi.</li>
                         <li><strong>Consolidamento Debiti:</strong> Confronta i tuoi tassi attuali con il potenziale risparmio.</li>
                     </ul>
+
+                    <h4>Spese Nascoste da Tenere d'Occhio</h4>
+                    <p>Chiedi delle <strong>spese di istruttoria</strong> (1-8% dell'importo) e delle <strong>penali per estinzione anticipata</strong>. Possono aumentare significativamente il tuo TAEG.</p>
+
+                    <h4>Come Abbassare il Tuo Tasso</h4>
+                    <p>Migliorare il tuo punteggio di credito può farti risparmiare migliaia di euro. Valuta un garante se il tasso supera il 15%.</p>
+
                     <p>Una durata più breve significa rate più alte ma <strong>meno interessi totali</strong>. Usa il calcolatore per trovare il tuo equilibrio.</p>
                 </div>
             `,
@@ -517,6 +559,13 @@ module.exports = {
                         <li><strong>Autoleningen:</strong> Vaak 5-12% JKP met looptijden van 36-72 maanden.</li>
                         <li><strong>Schuldconsolidatie:</strong> Vergelijk uw huidige tarieven met potentiële besparingen.</li>
                     </ul>
+
+                    <h4>Verborgen kosten om op te letten</h4>
+                    <p>Vraag naar <strong>afsluitkosten</strong> (1-8% van het bedrag) en <strong>boetes voor vervroegde aflossing</strong>. Deze kunnen uw effectieve rente verhogen.</p>
+
+                    <h4>Hoe u uw rente kunt verlagen</h4>
+                    <p>Het verbeteren van uw kredietscore kan u duizenden euro's besparen. Overweeg een medeschuldenaar als uw rente boven de 15% ligt.</p>
+
                     <p>Een kortere looptijd betekent hogere betalingen, maar <strong>minder totale rente</strong>. Gebruik de calculator om uw ideale balans te vinden.</p>
                 </div>
             `,
@@ -529,6 +578,13 @@ module.exports = {
                         <li><strong>Kredyty samochodowe:</strong> Często 5-12% RRSO z okresem od 36 do 72 miesięcy.</li>
                         <li><strong>Konsolidacja zadłużenia:</strong> Porównaj swoje obecne stawki z potencjalnymi oszczędnościami.</li>
                     </ul>
+
+                    <h4>Ukryte opłaty, na które trzeba uważać</h4>
+                    <p>Pytaj o <strong>prowizję za udzielenie</strong> (1-8% kwoty) i <strong>opłaty za wcześniejszą spłatę</strong>. Mogą one znacznie zwiększyć rzeczywiste RRSO.</p>
+
+                    <h4>Jak obniżyć oprocentowanie</h4>
+                    <p>Poprawa zdolności kredytowej może zaoszczędzić tysiące. Rozważ współkredytobiorcę, jeśli Twoja stawka wynosi powyżej 15%.</p>
+
                     <p>Krótszy okres oznacza wyższe raty, ale <strong>mniejszą sumę odsetek</strong>. Skorzystaj z kalkulatora, aby znaleźć optymalne rozwiązanie.</p>
                 </div>
             `,
@@ -541,6 +597,13 @@ module.exports = {
                         <li><strong>Billån:</strong> Ofta 5-12 % effektiv ränta med löptid på 36-72 månader.</li>
                         <li><strong>Skuldsanering:</strong> Jämför dina nuvarande räntor med potentiella besparingar.</li>
                     </ul>
+
+                    <h4>Dolda avgifter att se upp för</h4>
+                    <p>Fråga om <strong>uppläggningsavgifter</strong> (1-8 % av beloppet) och <strong>avgifter för förtidslösen</strong>. Dessa kan öka din effektiva ränta avsevärt.</p>
+
+                    <h4>Hur du sänker din ränta</h4>
+                    <p>Att förbättra din kreditvärdighet kan spara tusenlappar. Överväg en medlåntagare om din ränta är över 15 %.</p>
+
                     <p>En kortare löptid innebär högre månadskostnad men <strong>mindre total ränta</strong>. Använd kalkylatorn för att hitta rätt balans.</p>
                 </div>
             `,
@@ -553,6 +616,13 @@ module.exports = {
                         <li><strong>Billån:</strong> Ofte 5-12 % effektiv rente med løpetid fra 36-72 måneder.</li>
                         <li><strong>Gjeldsordning:</strong> Sammenlign dine nåværende renter med potensielle besparelser.</li>
                     </ul>
+
+                    <h4>Skjulte gebyrer å se opp for</h4>
+                    <p>Spør om <strong>etableringsgebyrer</strong> (1-8 % av beløpet) og <strong>gebyrer for førtidig innfrielse</strong>. Disse kan øke den effektive renten betydelig.</p>
+
+                    <h4>Hvordan senke renten</h4>
+                    <p>Å forbedre kredittscoren din kan spare deg for tusenvis. Vurder en medlåntaker hvis renten din er over 15 %.</p>
+
                     <p>En kortere løpetid betyr høyere betalinger, men <strong>mindre total rente</strong>. Bruk kalkulatoren for å finne ditt ideelle nivå.</p>
                 </div>
             `,
@@ -565,6 +635,13 @@ module.exports = {
                         <li><strong>Billån:</strong> Ofte 5-12 % ÅOP med løbetider fra 36-72 måneder.</li>
                         <li><strong>Gældskonsolidering:</strong> Sammenlign dine nuværende renter med potentielle besparelser.</li>
                     </ul>
+
+                    <h4>Skjulte gebyrer du skal holde øje med</h4>
+                    <p>Spørg til <strong>oprettelsesgebyrer</strong> (1-8 % af beløbet) og <strong>gebyrer for førtidig indfrielse</strong>. Disse kan øge din ÅOP betydeligt.</p>
+
+                    <h4>Sådan sænker du din rente</h4>
+                    <p>At forbedre din kreditvurdering kan spare dig for tusindvis af kroner. Overvej en medansøger, hvis din rente er over 15 %.</p>
+
                     <p>En kortere løbetid betyder højere ydelser, men <strong>færre samlede renter</strong>. Brug beregneren til at finde din balance.</p>
                 </div>
             `,
@@ -577,9 +654,16 @@ module.exports = {
                         <li><strong>Autolainat:</strong> Usein 5-12 % todellinen vuosikorko 36-72 kuukauden maksuajalla.</li>
                         <li><strong>Velkojen yhdistäminen:</strong> Vertaa nykyisiä korkojasi mahdollisiin säästöihin.</li>
                     </ul>
+
+                    <h4>Piilokulut, joita on syytä varoa</h4>
+                    <p>Kysy <strong>avausmaksuista</strong> (1-8 % lainasummasta) ja <strong>ennenaikaisen takaisinmaksun kuluista</strong>. Nämä voivat nostaa todellista vuosikorkoa merkittävästi.</p>
+
+                    <h4>Miten alentaa korkoa</h4>
+                    <p>Luottotietojen parantaminen voi säästää tuhansia. Harkitse rinnakkaishakijaa, jos korkosi on yli 15 %.</p>
+
                     <p>Lyhyempi maksuaika tarkoittaa suurempia eriä, mutta <strong>pienempiä kokonaiskorkoja</strong>. Käytä laskuria löytääksesi sinulle sopivan tasapainon.</p>
                 </div>
-            `
+            `,
         },
         seo: {
             en: {
@@ -1053,7 +1137,7 @@ module.exports = {
     crypto: {
         baseType: "crypto",
         titles: {
-            en: "Crypto Profit Calculator 2026 • ROI & Fees",
+            en: "Crypto Profit Calculator 2026 • Bitcoin & ETH ROI + Tax",
             fi: "Kryptolaskuri 2026 • ROI ja Kulut",
             de: "Krypto-Rechner 2026 • Gewinn & Gebühren",
             es: "Calculadora Cripto 2026 • Ganancias y Tarifas",
@@ -1095,7 +1179,7 @@ module.exports = {
             da: "krypto-gevinstberegner"
         },
         metaDescriptions: {
-            en: "🔥 Free Crypto Profit Calculator — Calculate Bitcoin, Ethereum & altcoin gains instantly. See ROI, fees & your break-even price. No signup!",
+            en: "🔥 Free crypto profit calculator — instantly calculate Bitcoin, ETH & altcoin gains. See ROI, fees, taxes & break-even price. No signup required.",
             de: "Berechnen Sie Krypto-Gewinne, Gebühren und ROI sofort.",
             es: "Calcula ganancias de trading cripto, tarifas y ROI al instante.",
             fr: "Calculez les profits de trading crypto, frais et ROI instantanément.",
@@ -1112,166 +1196,438 @@ module.exports = {
             en: `
                 <div class="prose">
                     <h3>Plan Your Crypto Trades Like a Pro</h3>
-                    <p>Don't enter a trade blind. This calculator helps you <strong>plan before you buy</strong> and <strong>know your exit</strong> before you sell.</p>
+                    <p>Don't enter a trade blind. This calculator helps you <strong>plan before you buy</strong> and <strong>know your exit</strong> before you sell. Whether you're trading Bitcoin, Ethereum, Solana, or any altcoin, knowing your numbers is the difference between amateur and professional trading.</p>
                     <ul>
-                        <li><strong>Target Multiplier:</strong> Set your goal (2x, 3x, 10x) and instantly see the exit price you need</li>
+                        <li><strong>Net Profit:</strong> See your actual take-home after fees and taxes</li>
                         <li><strong>Break-Even Price:</strong> Know the minimum price to recover your investment + fees</li>
                         <li><strong>ROI %:</strong> See your percentage gain/loss at a glance</li>
-                        <li><strong>Coins Purchased:</strong> Know exactly how many tokens you'll own</li>
+                        <li><strong>Tax Estimation:</strong> Factor in capital gains tax to see your real take-home profit</li>
                     </ul>
-                    <p><strong>Pro tip:</strong> Use the Target Multiplier to set realistic profit targets. If hitting 2x requires an absurd price, maybe it's not the right entry.</p>
+                    <p><strong>Pro tip:</strong> Always calculate your break-even price before entering a trade. If it's too close to your buy price, even a small fee can put you in the red.</p>
+
+                    <h3>How to Calculate Crypto Profit & Loss</h3>
+                    <p>Understanding how cryptocurrency profit is calculated is essential for every trader and investor. The formula is straightforward:</p>
+                    <p><strong>Net Profit = (Coins Purchased × Exit Price) - Initial Investment - Total Fees</strong></p>
+                    <p>Let's break this down with a real example. Imagine you invest <strong>$1,000</strong> in Bitcoin at <strong>$50,000 per BTC</strong>:</p>
+                    <ul>
+                        <li>Coins purchased: $1,000 ÷ $50,000 = <strong>0.02 BTC</strong></li>
+                        <li>If Bitcoin rises to $75,000: 0.02 × $75,000 = <strong>$1,500</strong></li>
+                        <li>Minus $10 in fees: $1,500 - $1,000 - $10 = <strong>$490 profit</strong></li>
+                        <li>ROI: ($490 ÷ $1,000) × 100 = <strong>49%</strong></li>
+                    </ul>
+                    <p>This calculator handles all of this automatically, including the break-even price which tells you the minimum exit needed just to get your money back.</p>
+
+                    <h3>Understanding Key Metrics</h3>
+                    <h4>ROI (Return on Investment)</h4>
+                    <p><strong>ROI</strong> measures how much you've gained relative to what you invested. An ROI of 100% means you doubled your money. In crypto, experienced traders often target 50-100% gains per trade, while long-term holders (HODLers) may see 1,000%+ returns over years.</p>
+
+                    <h4>Break-Even Price</h4>
+                    <p>The <strong>break-even price</strong> is the minimum exit price needed to recover your investment plus all fees. It's calculated as: <em>Entry Price × (Investment + Fees) ÷ Investment</em>. Knowing this number prevents you from selling at a loss thinking you made a profit.</p>
+
+                    <h4>Understanding Multipliers (2x, 3x, 10x)</h4>
+                    <p>When crypto traders talk about <strong>"10x gains"</strong>, they mean the asset's price increased 10 times. A $1,000 investment at 10x becomes $10,000. To calculate your target exit, simply multiply your buy price by your desired multiplier (e.g., $50,000 × 2 = $100,000 for a 2x).</p>
+
+                    <h3>Crypto Trading Fees Explained</h3>
+                    <p>Fees can significantly eat into your profits, especially for smaller trades. Here's what to account for:</p>
+                    <ul>
+                        <li><strong>Maker/Taker Fees:</strong> Exchange trading fees, typically 0.1% to 0.5% per trade. Makers (limit orders) usually pay less than takers (market orders).</li>
+                        <li><strong>Gas Fees:</strong> Network transaction costs for on-chain transfers. Ethereum gas can range from $1 to $100+ depending on congestion.</li>
+                        <li><strong>Withdrawal Fees:</strong> Fixed fees to move crypto off exchanges. Bitcoin withdrawals typically cost $1-5.</li>
+                        <li><strong>Spread:</strong> The difference between buy and sell prices. On less liquid exchanges, this hidden cost can be 1-2%.</li>
+                    </ul>
+                    <p>Always factor in <strong>both entry AND exit fees</strong> when calculating your actual profit. A 0.5% fee on each side means you need at least 1% gain just to break even.</p>
+
+                    <h3>Crypto Taxes: What You Need to Know in 2026</h3>
+                    <p>In most countries, cryptocurrency gains are subject to <strong>capital gains tax</strong>. The rate depends on how long you held the asset and your total income. Use the Tax Rate field to estimate your after-tax profit.</p>
+                    <ul>
+                        <li><strong>Short-term gains:</strong> If you sell within 1 year (in the US), profits are taxed as ordinary income (up to 37%).</li>
+                        <li><strong>Long-term gains:</strong> Hold for over 1 year and you may qualify for lower rates (0%, 15%, or 20% in the US).</li>
+                        <li><strong>Tax-loss harvesting:</strong> You can offset gains by selling losing positions to reduce your tax bill.</li>
+                    </ul>
+                    <p><strong>Important:</strong> Every trade is a taxable event. Even swapping one crypto for another (like BTC to ETH) triggers capital gains tax in most jurisdictions.</p>
+
+                    <h3>Common Trading Scenarios</h3>
+                    <h4>Day Trading</h4>
+                    <p>If you're buying and selling within the same day, fees matter more because gains are smaller. Aim for trades with at least 2-3% profit potential to cover fees and leave room for profit. Use this calculator to confirm your target exit price before entering.</p>
+
+                    <h4>HODLing for Long-Term</h4>
+                    <p>If you're holding for more than a year, short-term volatility matters less. Focus on your entry price and long-term target. The break-even price helps you understand how much buffer you have during dips.</p>
+
+                    <h4>DCA (Dollar Cost Averaging)</h4>
+                    <p>If you're regularly buying (weekly or monthly), your average cost basis changes with each purchase. For DCA strategies, calculate your total investment and total coins owned, then use this calculator to see your current profit/loss.</p>
+
+                    <h3>Tips for Maximizing Crypto Profits</h3>
+                    <ul>
+                        <li><strong>Never invest more than you can afford to lose.</strong> Crypto is extremely volatile.</li>
+                        <li><strong>Set profit targets before you buy.</strong> Know your exit price before entering.</li>
+                        <li><strong>Account for taxes upfront.</strong> A 50% gain might only be 35% after taxes.</li>
+                        <li><strong>Use limit orders</strong> to reduce taker fees on exchanges.</li>
+                        <li><strong>Track all transactions</strong> for accurate tax reporting at year end.</li>
+                    </ul>
                 </div>
             `,
             es: `
                 <div class="prose">
                     <h3>Planifica tus Operaciones Cripto como un Pro</h3>
-                    <p>No entres en una operación a ciegas. Esta calculadora te ayuda a <strong>planificar antes de comprar</strong> y <strong>conocer tu salida</strong> antes de vender.</p>
+                    <p>No entres en una operación a ciegas. Esta calculadora te ayuda a <strong>planificar antes de comprar</strong> y <strong>conocer tu salida</strong> antes de vender. Ya sea que operes con Bitcoin, Ethereum, Solana o cualquier altcoin, conocer tus números es la diferencia entre operar como amateur o profesional.</p>
                     <ul>
-                        <li><strong>Multiplicador Objetivo:</strong> Establece tu meta (2x, 3x, 10x) y mira al instante el precio de salida necesario.</li>
+                        <li><strong>Beneficio Neto:</strong> Mira tu ganancia real después de comisiones e impuestos.</li>
                         <li><strong>Precio de Equilibrio:</strong> Conoce el precio mínimo para recuperar tu inversión más comisiones.</li>
                         <li><strong>% de ROI:</strong> Mira tu porcentaje de ganancia o pérdida de un vistazo.</li>
-                        <li><strong>Monedas Compradas:</strong> Sabrás exactamente cuántos tokens poseerás.</li>
+                        <li><strong>Estimación de Impuestos:</strong> Ten en cuenta el impuesto sobre las ganancias de capital.</li>
                     </ul>
-                    <p><strong>Consejo Pro:</strong> Usa el Multiplicador Objetivo para establecer metas realistas. Si alcanzar un 2x requiere un precio absurdo, quizá no sea la entrada correcta.</p>
+                    <p><strong>Consejo Pro:</strong> Siempre calcula tu precio de equilibrio antes de entrar. Si está muy cerca de tu precio de compra, hasta un pequeño fee puede dejarte en rojo.</p>
+
+                    <h3>Cómo Calcular Ganancias y Pérdidas en Cripto</h3>
+                    <p>La fórmula es sencilla: <strong>Beneficio Neto = (Monedas Compradas × Precio de Salida) - Inversión Inicial - Comisiones Totales</strong>.</p>
+                    <p>Ejemplo real: Inviertes <strong>$1,000</strong> en Bitcoin a <strong>$50,000 por BTC</strong>:</p>
+                    <ul>
+                        <li>Monedas compradas: $1,000 ÷ $50,000 = <strong>0.02 BTC</strong></li>
+                        <li>Si Bitcoin sube a $75,000: 0.02 × $75,000 = <strong>$1,500</strong></li>
+                        <li>Menos $10 en comisiones: $1,500 - $1,000 - $10 = <strong>$490 de beneficio</strong></li>
+                        <li>ROI: ($490 ÷ $1,000) × 100 = <strong>49%</strong></li>
+                    </ul>
+
+                    <h3>Entendiendo las Métricas Clave</h3>
+                    <h4>ROI (Retorno de Inversión)</h4>
+                    <p>El <strong>ROI</strong> mide cuánto has ganado en relación con lo invertido. Un ROI del 100% significa que has duplicado tu dinero.</p>
+
+                    <h4>Precio de Equilibrio (Break-Even)</h4>
+                    <p>Es el precio de salida mínimo necesario para recuperar tu inversión más todas las comisiones. Conocer este número evita que vendas con pérdidas pensando que has obtenido beneficios.</p>
+
+                    <h3>Impuestos Cripto: Lo que necesitas saber en 2026</h3>
+                    <p>En la mayoría de los países, las ganancias en criptomonedas están sujetas al <strong>impuesto sobre ganancias de capital</strong>. Utiliza el campo "Impuestos" para estimar tu beneficio real después de impuestos.</p>
                 </div>
             `,
             de: `
                 <div class="prose">
                     <h3>Planen Sie Ihre Krypto-Trades wie ein Profi</h3>
-                    <p>Gehen Sie nicht blind in einen Trade. Dieser Rechner hilft Ihnen, <strong>vor dem Kauf zu planen</strong> und <strong>Ihren Ausstieg zu kennen</strong>, bevor Sie verkaufen.</p>
+                    <p>Gehen Sie nicht blind in einen Trade. Dieser Rechner hilft Ihnen, <strong>vor dem Kauf zu planen</strong> und <strong>Ihren Ausstieg zu kennen</strong>, bevor Sie verkaufen. Egal ob Bitcoin, Ethereum oder Altcoins – Ihre Zahlen zu kennen ist der Unterschied zwischen Amateur und Profi.</p>
                     <ul>
-                        <li><strong>Ziel-Multiplikator:</strong> Setzen Sie Ihr Ziel (2x, 3x, 10x) und sehen Sie sofort den benötigten Ausstiegspreis.</li>
+                        <li><strong>Nettogewinn:</strong> Sehen Sie Ihren tatsächlichen Gewinn nach Gebühren und Steuern.</li>
                         <li><strong>Break-Even-Preis:</strong> Kennen Sie den Mindestpreis, um Ihre Investition + Gebühren zurückzuerhalten.</li>
                         <li><strong>ROI %:</strong> Sehen Sie Ihren prozentualen Gewinn/Verlust auf einen Blick.</li>
-                        <li><strong>Gekaufte Coins:</strong> Wissen Sie genau, wie viele Token Sie besitzen werden.</li>
+                        <li><strong>Steuerschätzung:</strong> Berücksichtigen Sie die Kapitalertragsteuer.</li>
                     </ul>
-                    <p><strong>Profi-Tipp:</strong> Nutzen Sie den Ziel-Multiplikator, um realistische Gewinnziele zu setzen. Wenn ein 2x einen absurden Preis erfordert, ist es vielleicht nicht der richtige Einstieg.</p>
+                    <p><strong>Profi-Tipp:</strong> Berechnen Sie immer Ihren Break-Even-Preis, bevor Sie einsteigen. Wenn er zu nah am Kaufpreis liegt, kann schon eine kleine Gebühr Sie ins Minus bringen.</p>
+
+                    <h3>Wie man Krypto-Gewinn & Verlust berechnet</h3>
+                    <p>Die Formel ist einfach: <strong>Nettogewinn = (Gekaufte Coins × Ausstiegspreis) - Investition - Gesamtgebühren</strong>.</p>
+                    <p>Beispiel: Sie investieren <strong>1.000 $</strong> in Bitcoin bei <strong>50.000 $ pro BTC</strong>:</p>
+                    <ul>
+                        <li>Gekaufte Coins: 1.000 $ ÷ 50.000 $ = <strong>0,02 BTC</strong></li>
+                        <li>Wenn Bitcoin auf 75.000 $ steigt: 0,02 × 75.000 $ = <strong>1.500 $</strong></li>
+                        <li>Abzüglich 10 $ Gebühren: 1.500 $ - 1.000 $ - 10 $ = <strong>490 $ Gewinn</strong></li>
+                        <li>ROI: (490 $ ÷ 1.000 $) × 100 = <strong>49%</strong></li>
+                    </ul>
+
+                    <h3>Wichtige Kennzahlen verstehen</h3>
+                    <h4>ROI (Return on Investment)</h4>
+                    <p>Der <strong>ROI</strong> misst, wie viel Sie im Verhältnis zu Ihrer Investition gewonnen haben. Ein ROI von 100% bedeutet eine Verdoppelung Ihres Geldes.</p>
+
+                    <h4>Break-Even-Preis</h4>
+                    <p>Der Mindest-Ausstiegspreis, um Ihre Investition plus alle Gebühren zurückzuerhalten. Diese Zahl zu kennen, verhindert Verluste aus Unwissenheit.</p>
                 </div>
             `,
             fr: `
                 <div class="prose">
                     <h3>Planifiez vos transactions crypto comme un pro</h3>
-                    <p>N'entrez pas dans une transaction à l'aveugle. Ce calculateur vous aide à <strong>planifier avant d'acheter</strong> et à <strong>connaître votre sortie</strong> avant de vendre.</p>
+                    <p>N'entrez pas dans une transaction à l'aveugle. Ce calculateur vous aide à <strong>planifier avant d'acheter</strong> et à <strong>connaître votre sortie</strong> avant de vendre. Que vous tradiez Bitcoin, Ethereum, Solana ou des altcoins, connaître vos chiffres est la différence entre amateur et professionnel.</p>
                     <ul>
-                        <li><strong>Multiplicateur cible:</strong> Fixez votre objectif (2x, 3x, 10x) et voyez instantanément le prix de sortie nécessaire.</li>
+                        <li><strong>Bénéfice Net:</strong> Voyez votre gain réel après frais et impôts.</li>
                         <li><strong>Prix d'équilibre:</strong> Connaissez le prix minimum pour récupérer votre investissement + frais.</li>
                         <li><strong>% de ROI:</strong> Visualisez votre gain ou perte en pourcentage en un coup d'œil.</li>
-                        <li><strong>Jetons achetés:</strong> Sachez exactement combien de jetons vous posséderez.</li>
+                        <li><strong>Estimation Fiscale:</strong> Intégrez l'impôt sur les plus-values dans votre résultat.</li>
                     </ul>
-                    <p><strong>Conseil de pro:</strong> Utilisez le multiplicateur cible pour fixer des objectifs de profit réalistes. Si atteindre 2x demande un prix absurde, ce n'est peut-être pas la bonne entrée.</p>
+                    <p><strong>Conseil de pro:</strong> Calculez toujours votre prix d'équilibre avant d'entrer. S'il est trop proche de votre prix d'achat, même un petit frais peut vous mettre en négatif.</p>
+
+                    <h3>Comment calculer profits et pertes crypto</h3>
+                    <p>La formule est simple : <strong>Bénéfice Net = (Jetons Achetés × Prix de Sortie) - Investissement - Frais Totaux</strong>.</p>
+                    <p>Exemple réel : Vous investissez <strong>1 000 $</strong> dans Bitcoin à <strong>50 000 $ par BTC</strong> :</p>
+                    <ul>
+                        <li>Jetons achetés : 1 000 $ ÷ 50 000 $ = <strong>0,02 BTC</strong></li>
+                        <li>Si Bitcoin monte à 75 000 $ : 0,02 × 75 000 $ = <strong>1 500 $</strong></li>
+                        <li>Moins 10 $ de frais : 1 500 $ - 1 000 $ - 10 $ = <strong>490 $ de profit</strong></li>
+                        <li>ROI : (490 $ ÷ 1 000 $) × 100 = <strong>49%</strong></li>
+                    </ul>
+
+                    <h3>Comprendre les Métriques Clés</h3>
+                    <h4>ROI (Retour sur Investissement)</h4>
+                    <p>Le <strong>ROI</strong> mesure combien vous avez gagné par rapport à ce que vous avez investi. Un ROI de 100% signifie que vous avez doublé votre argent.</p>
+
+                    <h4>Prix d'équilibre (Break-Even)</h4>
+                    <p>C'est le prix de sortie minimum nécessaire pour récupérer votre investissement plus tous les frais. Connaître ce chiffre vous évite de vendre à perte en pensant avoir fait un profit.</p>
                 </div>
             `,
             pt: `
                 <div class="prose">
                     <h3>Planeje suas negociações de cripto como um profissional</h3>
-                    <p>Não entre em uma negociação às cegas. Esta calculadora ajuda você a <strong>planejar antes de comprar</strong> e <strong>saber sua saída</strong> antes de vender.</p>
+                    <p>Não entre em uma negociação às cegas. Esta calculadora ajuda você a <strong>planejar antes de comprar</strong> e <strong>saber sua saída</strong> antes de vender. Seja negociando Bitcoin, Ethereum ou altcoins, conhecer seus números é a diferença entre amador e profissional.</p>
                     <ul>
-                        <li><strong>Multiplicador Alvo:</strong> Defina sua meta (2x, 3x, 10x) e veja instantaneamente o preço de saída necessário.</li>
+                        <li><strong>Lucro Líquido:</strong> Veja seu ganho real após taxas e impostos.</li>
                         <li><strong>Preço de Equilíbrio:</strong> Saiba o preço mínimo para recuperar seu investimento + taxas.</li>
                         <li><strong>% de ROI:</strong> Veja sua porcentagem de ganho/perda de relance.</li>
-                        <li><strong>Moedas Compradas:</strong> Saiba exatamente quantos tokens você possuirá.</li>
+                        <li><strong>Estimativa Fiscal:</strong> Considere o imposto sobre ganhos de capital no seu resultado real.</li>
                     </ul>
-                    <p><strong>Dica profissional:</strong> Use o Multiplicador Alvo para definir metas de lucro realistas. Se atingir 2x exigir um preço absurdo, talvez não seja a entrada certa.</p>
+                    <p><strong>Dica profissional:</strong> Sempre calcule seu preço de equilíbrio antes de entrar. Se estiver muito perto do preço de compra, até uma pequena taxa pode te deixar no vermelho.</p>
+
+                    <h3>Como Calcular Lucros e Perdas em Cripto</h3>
+                    <p>A fórmula é simples: <strong>Lucro Líquido = (Moedas Compradas × Preço de Saída) - Investimento - Taxas Totais</strong>.</p>
+                    <p>Exemplo real: Você investe <strong>$1.000</strong> em Bitcoin a <strong>$50.000 por BTC</strong>:</p>
+                    <ul>
+                        <li>Moedas compradas: $1.000 ÷ $50.000 = <strong>0,02 BTC</strong></li>
+                        <li>Se o Bitcoin subir para $75.000: 0,02 × $75.000 = <strong>$1.500</strong></li>
+                        <li>Menos $10 em taxas: $1.500 - $1.000 - $10 = <strong>$490 de lucro</strong></li>
+                        <li>ROI: ($490 ÷ $1.000) × 100 = <strong>49%</strong></li>
+                    </ul>
+
+                    <h3>Entendendo as Métricas Chave</h3>
+                    <h4>ROI (Retorno sobre o Investimento)</h4>
+                    <p>O <strong>ROI</strong> mede quanto você ganhou em relação ao que investiu. Um ROI de 100% significa que você dobrou seu dinheiro.</p>
+
+                    <h4>Preço de Equilíbrio (Break-Even)</h4>
+                    <p>É o preço de saída mínimo necessário para recuperar seu investimento mais todas as taxas. Saber esse número evita que você venda com prejuízo pensando que lucrou.</p>
                 </div>
             `,
             it: `
                 <div class="prose">
                     <h3>Pianifica i tuoi trade crypto come un professionista</h3>
-                    <p>Non entrare in un trade alla cieca. Questo calcolatore ti aiuta a <strong>pianificare prima di acquistare</strong> e <strong>conoscere la tua uscita</strong> prima di vendere.</p>
+                    <p>Non entrare in un trade alla cieca. Questo calcolatore ti aiuta a <strong>pianificare prima di acquistare</strong> e <strong>conoscere la tua uscita</strong> prima di vendere. Che tu faccia trading su Bitcoin, Ethereum, Solana o altcoin, conoscere i tuoi numeri fa la differenza tra un principiante e un professionista.</p>
                     <ul>
-                        <li><strong>Moltiplicatore Obiettivo:</strong> Imposta il tuo obiettivo (2x, 3x, 10x) e vedi istantaneamente il prezzo di uscita necessario.</li>
+                        <li><strong>Utile Netto:</strong> Vedi il tuo guadagno reale dopo commissioni e tasse.</li>
                         <li><strong>Prezzo di Pareggio:</strong> Conosci il prezzo minimo per recuperare il tuo investimento + commissioni.</li>
                         <li><strong>% di ROI:</strong> Visualizza la tua percentuale di guadagno/perdita a colpo d'occhio.</li>
-                        <li><strong>Monete Acquistate:</strong> Sappi esattamente quanti token possiederai.</li>
+                        <li><strong>Stima Fiscale:</strong> Considera l'imposta sulle plusvalenze nel tuo profitto reale.</li>
                     </ul>
-                    <p><strong>Consiglio da pro:</strong> Usa il Moltiplicatore Obiettivo per impostare obiettivi di profitto realistici. Se raggiungere il 2x richiede un prezzo assurdo, forse non è l'entrata giusta.</p>
+                    <p><strong>Consiglio da pro:</strong> Calcola sempre il tuo prezzo di pareggio prima di entrare. Se è troppo vicino al prezzo d'acquisto, anche una piccola commissione può metterti in rosso.</p>
+
+                    <h3>Come Calcolare Profitti e Perdite Crypto</h3>
+                    <p>La formula è semplice: <strong>Utile Netto = (Monete Acquistate × Prezzo Uscita) - Investimento - Totale Commissioni</strong>.</p>
+                    <p>Esempio reale: Investi <strong>$1.000</strong> in Bitcoin a <strong>$50.000 per BTC</strong>:</p>
+                    <ul>
+                        <li>Monete acquistate: $1.000 ÷ $50.000 = <strong>0,02 BTC</strong></li>
+                        <li>Se Bitcoin sale a $75.000: 0,02 × $75.000 = <strong>$1.500</strong></li>
+                        <li>Meno $10 di commissioni: $1.500 - $1.000 - $10 = <strong>$490 di profitto</strong></li>
+                        <li>ROI: ($490 ÷ $1.000) × 100 = <strong>49%</strong></li>
+                    </ul>
+
+                    <h3>Comprendere le Metriche Chiave</h3>
+                    <h4>ROI (Ritorno sull'Investimento)</h4>
+                    <p>Il <strong>ROI</strong> misura quanto hai guadagnato rispetto a quanto hai investito. Un ROI del 100% significa che hai raddoppiato il tuo denaro.</p>
+
+                    <h4>Prezzo di Pareggio (Break-Even)</h4>
+                    <p>È il prezzo di uscita minimo necessario per recuperare il tuo investimento più tutte le commissioni. Conoscere questo numero ti evita di vendere in perdita pensando di aver guadagnato.</p>
                 </div>
             `,
             nl: `
                 <div class="prose">
                     <h3>Plan uw crypto-trades als een pro</h3>
-                    <p>Stap niet blindelings in een trade. Deze calculator helpt u om <strong>te plannen voordat u koopt</strong> en <strong>uw uitgang te kennen</strong> voordat u verkoopt.</p>
+                    <p>Stap niet blindelings in een trade. Deze calculator helpt u om <strong>te plannen voordat u koopt</strong> en <strong>uw uitgang te kennen</strong> voordat u verkoopt. Of u nu handelt in Bitcoin, Ethereum, Solana of altcoins, het kennen van uw cijfers is het verschil tussen een amateur en een professional.</p>
                     <ul>
-                        <li><strong>Doel-multiplier:</strong> Stel uw doel in (2x, 3x, 10x) en zie direct de benodigde uitstapprijs.</li>
+                        <li><strong>Nettowinst:</strong> Zie uw werkelijke winst na kosten en belastingen.</li>
                         <li><strong>Break-even prijs:</strong> Ken de minimumprijs om uw investering + kosten terug te verdienen.</li>
                         <li><strong>ROI %:</strong> Zie uw procentuele winst/verlies in één oogopslag.</li>
-                        <li><strong>Gekochte munten:</strong> Weet precies hoeveel tokens u zult bezitten.</li>
+                        <li><strong>Belastingschatting:</strong> Neem vermogensrendementsheffing mee in uw berekening.</li>
                     </ul>
-                    <p><strong>Pro-tip:</strong> Gebruik de doel-multiplier om realistische winstdoelen te stellen. Als het bereiken van 2x een absurde prijs vereist, is het misschien niet de juiste instap.</p>
+                    <p><strong>Pro-tip:</strong> Bereken altijd uw break-even prijs voordat u instapt. Als deze te dicht bij uw koopprijs ligt, kan zelfs een kleine vergoeding u in het rood brengen.</p>
+
+                    <h3>Hoe crypto winst & verlies berekenen</h3>
+                    <p>De formule is eenvoudig: <strong>Nettowinst = (Gekochte Munten × Uitstapprijs) - Investering - Totale Kosten</strong>.</p>
+                    <p>Praktijkvoorbeeld: U investeert <strong>$1.000</strong> in Bitcoin tegen <strong>$50.000 per BTC</strong>:</p>
+                    <ul>
+                        <li>Gekochte munten: $1.000 ÷ $50.000 = <strong>0,02 BTC</strong></li>
+                        <li>Als Bitcoin stijgt naar $75.000: 0,02 × $75.000 = <strong>$1.500</strong></li>
+                        <li>Min $10 kosten: $1.500 - $1.000 - $10 = <strong>$490 winst</strong></li>
+                        <li>ROI: ($490 ÷ $1.000) × 100 = <strong>49%</strong></li>
+                    </ul>
+
+                    <h3>Belangrijke statistieken begrijpen</h3>
+                    <h4>ROI (Return on Investment)</h4>
+                    <p>De <strong>ROI</strong> meet hoeveel u hebt gewonnen ten opzichte van uw investering. Een ROI van 100% betekent dat u uw geld hebt verdubbeld.</p>
+
+                    <h4>Break-even prijs</h4>
+                    <p>De minimale uitstapprijs die nodig is om uw investering plus alle kosten terug te verdienen. Dit cijfer kennen voorkomt dat u met verlies verkoopt terwijl u denkt winst te maken.</p>
                 </div>
             `,
             pl: `
                 <div class="prose">
                     <h3>Planuj swoje transakcje krypto jak profesjonalista</h3>
-                    <p>Nie wchodź w transakcję w ciemno. Ten kalkulator pomoże Ci <strong>zaplanować przed zakupem</strong> i <strong>poznać wyjście</strong> przed sprzedażą.</p>
+                    <p>Nie wchodź w transakcję w ciemno. Ten kalkulator pomoże Ci <strong>zaplanować przed zakupem</strong> i <strong>poznać wyjście</strong> przed sprzedażą. Niezależnie od tego, czy handlujesz Bitcoinem, Ethereum, Solaną czy altcoinami, znajomość liczb to różnica między amatorem a zawodowcem.</p>
                     <ul>
-                        <li><strong>Mnożnik docelowy:</strong> Ustaw swój cel (2x, 3x, 10x) i natychmiast zobacz potrzebną cenę wyjścia.</li>
+                        <li><strong>Zysk netto:</strong> Zobacz swój rzeczywisty zysk po opłatach i podatkach.</li>
                         <li><strong>Cena progowa:</strong> Poznaj minimalną cenę potrzebną do odzyskania inwestycji + opłat.</li>
                         <li><strong>% ROI:</strong> Zobacz swój procentowy zysk/stratę na pierwszy rzut oka.</li>
-                        <li><strong>Zakupione monety:</strong> Dowiedz się dokładnie, ile tokenów będziesz posiadać.</li>
+                        <li><strong>Szacunek podatkowy:</strong> Uwzględnij podatek od zysków kapitałowych.</li>
                     </ul>
-                    <p><strong>Wskazówka:</strong> Użyj mnożnika docelowego, aby ustawić realistyczne cele zysku. Jeśli osiągnięcie 2x wymaga absurdalnej ceny, być może nie jest to właściwe wejście.</p>
+                    <p><strong>Wskazówka:</strong> Zawsze oblicz cenę progową przed wejściem. Jeśli jest zbyt blisko ceny zakupu, nawet niewielka opłata może sprawić, że będziesz na minusie.</p>
+
+                    <h3>Jak obliczyć zysk i stratę w krypto</h3>
+                    <p>Wzór jest prosty: <strong>Zysk netto = (Kupione Monety × Cena Wyjścia) - Inwestycja - Opłaty Całkowite</strong>.</p>
+                    <p>Przykład: Inwestujesz <strong>1000 USD</strong> w Bitcoin po kursie <strong>50 000 USD za BTC</strong>:</p>
+                    <ul>
+                        <li>Kupione monety: 1000 USD ÷ 50 000 USD = <strong>0,02 BTC</strong></li>
+                        <li>Jeśli Bitcoin wzrośnie do 75 000 USD: 0,02 × 75 000 USD = <strong>1500 USD</strong></li>
+                        <li>Minus 10 USD opłat: 1500 USD - 1000 USD - 10 USD = <strong>490 USD zysku</strong></li>
+                        <li>ROI: (490 USD ÷ 1000 USD) × 100 = <strong>49%</strong></li>
+                    </ul>
+
+                    <h3>Zrozumienie kluczowych wskaźników</h3>
+                    <h4>ROI (Zwrot z inwestycji)</h4>
+                    <p><strong>ROI</strong> mierzy, ile zyskałeś w stosunku do zainwestowanej kwoty. ROI wynoszące 100% oznacza podwojenie pieniędzy.</p>
+
+                    <h4>Cena progowa (Break-Even)</h4>
+                    <p>Minimalna cena wyjścia potrzebna do odzyskania inwestycji i pokrycia wszystkich opłat. Znajomość tej liczby chroni przed sprzedażą ze stratą z myślą, że zarobiłeś.</p>
                 </div>
             `,
             sv: `
                 <div class="prose">
                     <h3>Planera dina kryptotransaktioner som ett proffs</h3>
-                    <p>Gå inte in i en affär i blindo. Denna kalkylator hjälper dig att <strong>planera innan du köper</strong> och <strong>veta din utgångspunkt</strong> innan du säljer.</p>
+                    <p>Gå inte in i en affär i blindo. Denna kalkylator hjälper dig att <strong>planera innan du köper</strong> och <strong>veta din utgångspunkt</strong> innan du säljer. Oavsett om du handlar Bitcoin, Ethereum eller altcoins är koll på siffrorna skillnaden mellan en amatör och ett proffs.</p>
                     <ul>
-                        <li><strong>Målmulitiplikator:</strong> Sätt ditt mål (2x, 3x, 10x) och se direkt vilket utgångspris du behöver.</li>
+                        <li><strong>Nettovinst:</strong> Se din verkliga vinst efter avgifter och skatter.</li>
                         <li><strong>Break-even pris:</strong> Ta reda på minimipriset för att få tillbaka din investering + avgifter.</li>
                         <li><strong>ROI %:</strong> Se din procentuella vinst/förlust på ett ögonblick.</li>
-                        <li><strong>Köpta mynt:</strong> Vet exakt hur många tokens du kommer att äga.</li>
+                        <li><strong>Skatteuppskattning:</strong> Ta hänsyn till kapitalvinstskatt i din kalkyl.</li>
                     </ul>
-                    <p><strong>Proffstips:</strong> Använd målmulitiplikatorn för att sätta realistiska vinstmål. Om det krävs ett absurt pris för att nå 2x, är det kanske inte rätt läge att gå in.</p>
+                    <p><strong>Proffstips:</strong> Beräkna alltid ditt break-even pris innan du går in. Om det är för nära ditt köppris kan även en liten avgift sätta dig i minus.</p>
+
+                    <h3>Hur man beräknar vinst & förlust i krypto</h3>
+                    <p>Formeln är enkel: <strong>Nettovinst = (Köpta Mynt × Säljpris) - Investering - Totala Avgifter</strong>.</p>
+                    <p>Exempel: Du investerar <strong>$1 000</strong> i Bitcoin till <strong>$50 000 per BTC</strong>:</p>
+                    <ul>
+                        <li>Köpta mynt: $1 000 ÷ $50 000 = <strong>0,02 BTC</strong></li>
+                        <li>Om Bitcoin stiger till $75 000: 0,02 × $75 000 = <strong>$1 500</strong></li>
+                        <li>Minus $10 i avgifter: $1 500 - $1 000 - $10 = <strong>$490 vinst</strong></li>
+                        <li>ROI: ($490 ÷ $1 000) × 100 = <strong>49%</strong></li>
+                    </ul>
+
+                    <h3>Förstå nyckeltal</h3>
+                    <h4>ROI (Avkastning på investering)</h4>
+                    <p><strong>ROI</strong> mäter hur mycket du har tjänat i förhållande till vad du investerade. En ROI på 100 % betyder att du har dubblat dina pengar.</p>
+
+                    <h4>Break-even pris</h4>
+                    <p>Det lägsta säljpriset som krävs för att få tillbaka din investering plus alla avgifter. Att veta detta nummer hindrar dig från att sälja med förlust när du tror att du har gått med vinst.</p>
                 </div>
             `,
             no: `
                 <div class="prose">
                     <h3>Planlegg kryptohandlene dine som en proff</h3>
-                    <p>Ikke gå inn i en handel i blinde. Denne kalkulatoren hjelper deg med å <strong>planlegge før du kjøper</strong> og <strong>vite utgangen din</strong> før du selger.</p>
+                    <p>Ikke gå inn i en handel i blinde. Denne kalkulatoren hjelper deg med å <strong>planlegge før du kjøper</strong> og <strong>vite utgangen din</strong> før du selger. Enten du handler Bitcoin, Ethereum eller altcoins, er kjennskap til tallene dine forskjellen mellom amatør og profesjonell.</p>
                     <ul>
-                        <li><strong>Målmultiplikator:</strong> Sett målet ditt (2x, 3x, 10x) og se umiddelbart hvilken utgangspris du trenger.</li>
+                        <li><strong>Nettogevinst:</strong> Se din faktiske gevinst etter gebyrer og skatter.</li>
                         <li><strong>Break-even pris:</strong> Vit minsteprisen for å få tilbake investeringen din + gebyrer.</li>
                         <li><strong>ROI %:</strong> Se din prosentvise gevinst/tap på et øyeblikk.</li>
-                        <li><strong>Kjøpte mynter:</strong> Vit nøyaktig hvor mange tokens du vil eie.</li>
+                        <li><strong>Skatteestimat:</strong> Ta hensyn til kapitalgevinstskatt i beregningen.</li>
                     </ul>
-                    <p><strong>Profftips:</strong> Bruk målmultiplikatoren til å sette realistiske gevinstmål. Hvis det kreves en absurd pris for å nå 2x, er det kanskje ikke riktig inngang.</p>
+                    <p><strong>Profftips:</strong> Beregn alltid break-even-prisen din før du går inn. Hvis den er for nær kjøpsprisen, kan selv et lite gebyr sette deg i minus.</p>
+
+                    <h3>Hvordan beregne gevinst & tap i krypto</h3>
+                    <p>Formelen er enkel: <strong>Nettogevinst = (Mynter Kjøpt × Salgspris) - Investering - Totale Gebyrer</strong>.</p>
+                    <p>Faktisk eksempel: Du investerer <strong>$1000</strong> i Bitcoin til <strong>$50 000 per BTC</strong>:</p>
+                    <ul>
+                        <li>Mynter kjøpt: $1000 ÷ $50 000 = <strong>0,02 BTC</strong></li>
+                        <li>Hvis Bitcoin stiger til $75 000: 0,02 × $75 000 = <strong>$1500</strong></li>
+                        <li>Minus $10 i gebyrer: $1500 - $1000 - $10 = <strong>$490 gevinst</strong></li>
+                        <li>ROI: ($490 ÷ $1000) × 100 = <strong>49%</strong></li>
+                    </ul>
+
+                    <h3>Forstå nøkkelmetrikker</h3>
+                    <h4>ROI (Avkastning på investering)</h4>
+                    <p><strong>ROI</strong> måler hvor mye du har tjent i forhold til hva du investerte. En ROI på 100% betyr at du har doblet pengene dine.</p>
+
+                    <h4>Break-Even Pris</h4>
+                    <p>Den minste salgsprisen som trengs for å få tilbake investeringen din pluss alle gebyrer. Å vite dette tallet hindrer deg i å selge med tap når du tror du har gått i pluss.</p>
                 </div>
             `,
             da: `
                 <div class="prose">
                     <h3>Planlæg dine kryptohandler som en professionel</h3>
-                    <p>Gå ikke ind i en handel i blinde. Denne beregner hjælper dig med at <strong>planlægge før du køber</strong> og <strong>kende din udgang</strong> før du sælger.</p>
+                    <p>Gå ikke ind i en handel i blinde. Denne beregner hjælper dig med at <strong>planlægge før du køber</strong> og <strong>kende din udgang</strong> før du sælger. Uanset om du handler Bitcoin, Ethereum eller altcoins, er kendskab til dine tal forskellen mellem amatør og professionel.</p>
                     <ul>
-                        <li><strong>Målmultiplikator:</strong> Sæt dit mål (2x, 3x, 10x) og se med det samme den udgangspris, du har brug for.</li>
+                        <li><strong>Nettofortjeneste:</strong> Se din faktiske fortjeneste efter gebyrer og skat.</li>
                         <li><strong>Break-even pris:</strong> Kend minimumsprisen for at få din investering + gebyrer tilbage.</li>
                         <li><strong>ROI %:</strong> Se din procentvise gevinst/tab med et øjekast.</li>
-                        <li><strong>Købte mønter:</strong> Ved præcis hvor mange tokens, du vil eje.</li>
+                        <li><strong>Skatteestimat:</strong> Indregn kapitalvindingsafgift i dit resultat.</li>
                     </ul>
-                    <p><strong>Proff-tip:</strong> Brug målmultiplikatoren til at sætte realistiske overskudsmål. Hvis det kræver en absurd pris at nå 2x, er det måske ikke den rigtige indgang.</p>
+                    <p><strong>Proff-tip:</strong> Beregn altid din break-even-pris, før du går ind. Hvis den er for tæt på din købspris, kan selv et lille gebyr sætte dig i minus.</p>
+
+                    <h3>Sådan beregnes krypto gevinst & tab</h3>
+                    <p>Formlen er enkel: <strong>Nettofortjeneste = (Mønter Købt × Salgspris) - Investering - Samlede Gebyrer</strong>.</p>
+                    <p>Eksempel: Du investerer <strong>$1.000</strong> i Bitcoin til <strong>$50.000 pr. BTC</strong>:</p>
+                    <ul>
+                        <li>Mønter købt: $1.000 ÷ $50.000 = <strong>0,02 BTC</strong></li>
+                        <li>Hvis Bitcoin stiger til $75.000: 0,02 × $75.000 = <strong>$1.500</strong></li>
+                        <li>Minus $10 i gebyrer: $1.500 - $1.000 - $10 = <strong>$490 fortjeneste</strong></li>
+                        <li>ROI: ($490 ÷ $1.000) × 100 = <strong>49%</strong></li>
+                    </ul>
+
+                    <h3>Forstå vigtige nøgletal</h3>
+                    <h4>ROI (Afkast af investering)</h4>
+                    <p><strong>ROI</strong> måler, hvor meget du har tjent i forhold til det, du investerede. Et ROI på 100% betyder, at du har fordoblet dine penge.</p>
+
+                    <h4>Break-Even Pris</h4>
+                    <p>Den mindste salgspris, der er nødvendig for at få din investering plus alle gebyrer tilbage. At kende dette tal forhindrer dig i at sælge med tab, når du tror, du har lavet en fortjeneste.</p>
                 </div>
             `,
             fi: `
                 <div class="prose">
                     <h3>Suunnittele kryptokauppasi kuin ammattilainen</h3>
-                    <p>Älä aloita kauppaa sokeasti. Tämä laskuri auttaa sinua <strong>suunnittelemaan ennen ostamista</strong> ja <strong>tietämään poistumistiesi</strong> ennen myymistä.</p>
+                    <p>Älä aloita kauppaa sokeasti. Tämä laskuri auttaa sinua <strong>suunnittelemaan ennen ostamista</strong> ja <strong>tietämään poistumistiesi</strong> ennen myymistä. Kaupankäynti Bitcoinilla, Ethereumilla tai altcoineilla vaatii numeroiden hallintaa – se on ero amatöörin ja ammattilaisen välillä.</p>
                     <ul>
-                        <li><strong>Tavoitekerroin:</strong> Aseta tavoitteesi (2x, 3x, 10x) ja näe välittömästi tarvittava myyntihinta.</li>
+                        <li><strong>Nettovoitto:</strong> Näe todellinen voittosi kulujen ja verojen jälkeen.</li>
                         <li><strong>Nollatulos-hinta:</strong> Tiedä minimihinta sijoituksesi ja kulujen kattamiseksi.</li>
                         <li><strong>ROI %:</strong> Näe prosentuaalinen voittosi/tappiosi yhdellä silmäyksellä.</li>
-                        <li><strong>Ostetut kolikot:</strong> Tiedä tarkalleen, kuinka monta tokenia omistat.</li>
+                        <li><strong>Veroarvio:</strong> Ota huomioon pääomatulovero laskelmassasi.</li>
                     </ul>
-                    <p><strong>Ammattilaisvinkki:</strong> Käytä tavoitekerrointa asettaaksesi realistisia voittotavoitteita. Jos 2x saavuttaminen vaatii absurdin hinnan, se ei ehkä ole oikea ostohetki.</p>
+                    <p><strong>Ammattilaisvinkki:</strong> Laske aina nollatulos-hintasi ennen kauppaan ryhtymistä. Jos se on liian lähellä ostohintaasi, pienikin kulu voi viedä sinut tappiolle.</p>
+
+                    <h3>Miten krypto-voitto & tappio lasketaan</h3>
+                    <p>Kaava on yksinkertainen: <strong>Nettovoitto = (Ostetut Kolikot × Myyntihinta) - Sijoitus - Kokonaiskulut</strong>.</p>
+                    <p>Esimerkki: Sijoitat <strong>1 000 $</strong> Bitcoiniin hintaan <strong>50 000 $ / BTC</strong>:</p>
+                    <ul>
+                        <li>Ostetut kolikot: 1 000 $ ÷ 50 000 $ = <strong>0,02 BTC</strong></li>
+                        <li>Jos Bitcoin nousee 75 000 $:iin: 0,02 × 75 000 $ = <strong>1 500 $</strong></li>
+                        <li>Miinus 10 $ kuluja: 1 500 $ - 1 000 $ - 10 $ = <strong>490 $ voittoa</strong></li>
+                        <li>ROI: (490 $ ÷ 1 000 $) × 100 = <strong>49%</strong></li>
+                    </ul>
+
+                    <h3>Tärkeiden lukujen ymmärtäminen</h3>
+                    <h4>ROI (Sijoitetun pääoman tuotto)</h4>
+                    <p><strong>ROI</strong> mittaa, kuinka paljon olet tienannut suhteessa sijoitukseesi. 100 % ROI tarkoittaa, että olet tuplannut rahasi.</p>
+
+                    <h4>Nollatulos-hinta (Break-Even)</h4>
+                    <p>Pienin myyntihinta, joka tarvitaan sijoituksen ja kaikkien kulujen kattamiseen. Tämän luvun tietäminen estää sinua myymästä tappiolla luullessasi tekeväsi voittoa.</p>
                 </div>
             `
         },
         seo: {
             en: {
-                synonyms: ["bitcoin profit calculator", "crypto roi calculator", "trading fee calculator", "ethereum profit estimator", "BTC calculator", "ETH profit calculator", "altcoin gains calculator", "cryptocurrency investment calculator", "DeFi profit calculator", "crypto P&L calculator"],
-                useCases: ["Day traders planning entries/exits", "HODLers estimating portfolio value", "Calculating break-even prices", "Tax planning for crypto gains", "Comparing trade scenarios"],
-                relatedTerms: ["ROI", "maker fee", "taker fee", "gas fees", "profit margin", "break-even price", "HODL", "slippage", "market order", "limit order"],
-                relatedCalculators: ["roi", "loan"]
+                synonyms: [
+                    "bitcoin profit calculator", "crypto roi calculator", "trading fee calculator",
+                    "ethereum profit estimator", "BTC calculator", "ETH profit calculator",
+                    "altcoin gains calculator", "cryptocurrency investment calculator",
+                    "DeFi profit calculator", "crypto P&L calculator",
+                    "crypto tax calculator", "bitcoin gain calculator", "crypto gains calculator",
+                    "hodl calculator", "bitcoin investment calculator", "crypto return calculator",
+                    "cryptocurrency profit loss calculator", "crypto exit strategy calculator",
+                    "solana profit calculator", "doge profit calculator", "xrp calculator",
+                    "crypto trading calculator", "bitcoin earnings calculator"
+                ],
+                useCases: [
+                    "Day traders planning entries/exits", "HODLers estimating portfolio value",
+                    "Calculating break-even prices", "Tax planning for crypto gains",
+                    "Comparing trade scenarios", "DCA investors tracking average cost",
+                    "Calculating historical what-if returns", "Determining tax liability before selling",
+                    "Planning profit-taking exit strategies", "Estimating future gains at target prices"
+                ],
+                relatedTerms: [
+                    "ROI", "maker fee", "taker fee", "gas fees", "profit margin",
+                    "break-even price", "HODL", "slippage", "market order", "limit order",
+                    "capital gains", "FIFO", "LIFO", "HIFO", "cost basis",
+                    "unrealized gains", "realized gains", "tax-loss harvesting",
+                    "short-term gains", "long-term gains", "DCA", "dollar cost averaging"
+                ],
+                relatedCalculators: ["roi", "loan", "mortgage"]
             },
             es: {
                 synonyms: ["calculadora de beneficios bitcoin", "calculadora de ROI cripto", "calculadora de comisiones de trading", "estimador de ganancias ethereum"],
@@ -1331,11 +1687,21 @@ module.exports = {
         },
         faqs: {
             en: [
-                { q: "How do I calculate crypto profit?", a: "Crypto profit = (Coins Purchased × Exit Price) - Initial Investment - Fees. Our calculator handles this automatically, showing you Net Profit, ROI %, and Break-Even Price." },
-                { q: "What is the break-even price in crypto?", a: "The break-even price is the minimum exit price needed to recover your initial investment plus all fees. It's calculated as: Entry Price × (1 + Fees/Investment)." },
-                { q: "Does this calculator work for Bitcoin, Ethereum, and Altcoins?", a: "Yes! This calculator works for any cryptocurrency - Bitcoin (BTC), Ethereum (ETH), Solana (SOL), XRP, Dogecoin (DOGE), and all other altcoins." },
-                { q: "What fees should I include?", a: "Include all trading fees: exchange fees (maker/taker), network gas fees, withdrawal fees, and any other transaction costs." },
-                { q: "How is crypto ROI calculated?", a: "ROI = ((Exit Value - Entry Value - Fees) / Entry Value) × 100. A positive ROI means profit; negative means loss." }
+                { q: "How do I calculate crypto profit?", a: "Crypto profit is calculated using the formula: Net Profit = (Coins Purchased × Exit Price) - Initial Investment - Total Fees. For example, if you invest $1,000 at $50,000 per Bitcoin (0.02 BTC) and sell when BTC reaches $75,000, your gross value is $1,500. After subtracting your $1,000 investment and $10 in fees, your net profit is $490, representing a 49% ROI." },
+                { q: "What is the break-even price in crypto?", a: "The break-even price is the minimum exit price needed to recover your initial investment plus all trading fees. It's calculated as: Entry Price × (Investment + Fees) ÷ Investment. For instance, if you bought at $50,000 with $10 in fees on a $1,000 investment, your break-even is $50,500. Knowing this helps you avoid selling at a loss when you think you're breaking even." },
+                { q: "Does this calculator work for Bitcoin, Ethereum, and Altcoins?", a: "Yes! This calculator works for any cryptocurrency including Bitcoin (BTC), Ethereum (ETH), Solana (SOL), XRP, Dogecoin (DOGE), Cardano (ADA), Polygon (MATIC), and thousands of other altcoins. The math is the same regardless of which coin you're trading - simply enter your investment amount, entry price, and exit price." },
+                { q: "What fees should I include in my calculation?", a: "Include all trading fees for accurate profit calculation: exchange trading fees (typically 0.1%-0.5% per trade), network gas fees for on-chain transactions (varies by blockchain), withdrawal fees when moving crypto off exchanges, deposit fees if applicable, and any spread costs. Don't forget you pay fees on both buying AND selling, so factor in fees for both transactions." },
+                { q: "How is crypto ROI calculated?", a: "ROI (Return on Investment) for crypto is calculated as: ((Exit Value - Entry Value - Fees) ÷ Entry Value) × 100. A positive ROI means profit, negative means loss. For example, if you invested $1,000 and your position is now worth $1,500 after fees, your ROI is 50%. This percentage helps you compare performance across different investments and time periods." },
+                { q: "Is cryptocurrency taxed as capital gains?", a: "Yes, in most countries including the US, UK, Canada, Australia, and most of Europe, cryptocurrency is treated as property and subject to capital gains tax. When you sell crypto for profit, you owe taxes on the gain. In the US, short-term gains (held less than 1 year) are taxed as ordinary income (up to 37%), while long-term gains (held over 1 year) qualify for lower rates (0%, 15%, or 20%)." },
+                { q: "What is FIFO, LIFO, and HIFO for crypto taxes?", a: "FIFO (First In, First Out), LIFO (Last In, First Out), and HIFO (Highest In, First Out) are accounting methods for determining which coins you're selling when you have multiple purchase lots. FIFO sells your oldest coins first, LIFO sells newest, and HIFO sells highest-cost coins first. HIFO typically results in the lowest tax bill since you're recognizing smaller gains. Check your country's rules - some only allow specific methods." },
+                { q: "How do I calculate profit if I bought crypto at different prices?", a: "When you've purchased the same cryptocurrency at different prices (like through DCA), you need to calculate your average cost basis. Add up your total investment across all purchases, then divide by total coins owned. For example: if you bought 0.01 BTC at $40,000 ($400) and 0.01 BTC at $50,000 ($500), your average cost is $900 ÷ 0.02 BTC = $45,000 per BTC. Use this average as your entry price." },
+                { q: "What is the difference between realized and unrealized gains?", a: "Unrealized gains (paper profits) are profits that exist only on paper - you haven't sold yet. Realized gains are profits locked in after you actually sell. Only realized gains are taxable. For example, if your Bitcoin investment grew from $1,000 to $5,000 but you haven't sold, you have $4,000 in unrealized gains. You don't owe taxes until you sell and realize those gains." },
+                { q: "How much tax will I owe on crypto gains?", a: "Tax rates vary by country and how long you held the asset. In the US: short-term gains (under 1 year) are taxed at your income rate (10-37%), long-term gains (over 1 year) at 0%, 15%, or 20% based on income. UK uses 10% or 20% rates. Use our Tax Rate field to estimate your after-tax profit. Always consult a tax professional for personalized advice." },
+                { q: "How do gas fees affect my crypto profit?", a: "Gas fees directly reduce your profit and should always be included in your calculations. On Ethereum, gas fees can range from $1 during low congestion to $100+ during peak times. For smaller trades, high gas fees can wipe out your entire profit. Always check current gas prices before trading, and consider using Layer 2 solutions or chains with lower fees for smaller transactions." },
+                { q: "What is slippage and why does it matter?", a: "Slippage is the difference between the expected price of a trade and the actual execution price. It occurs when there isn't enough liquidity at your desired price. For example, if you try to buy at $50,000 but actually pay $50,100, that's 0.2% slippage. Slippage is a hidden cost that affects your real profit. Use limit orders instead of market orders to avoid slippage on larger trades." },
+                { q: "How do I calculate DCA (Dollar Cost Averaging) returns?", a: "For DCA investments, track your total amount invested and total coins purchased across all buys. Your average cost basis = Total Invested ÷ Total Coins. Then use this calculator with your average cost as the entry price. For example: 5 monthly purchases of $200 at prices of $40K, $35K, $45K, $38K, $42K would give you different coin amounts each time. Sum them up to find your average cost and total holdings." },
+                { q: "Should I use FIFO or LIFO for tax purposes?", a: "The best method depends on your situation. FIFO (First In, First Out) is the default in most countries and sells your oldest coins first - this usually means selling coins with the lowest cost basis, resulting in higher taxes. Specific identification or HIFO can minimize taxes by selling highest-cost coins first. In the US, you can choose your method but must be consistent. Some countries like the UK require FIFO." },
+                { q: "Is there a free crypto tax calculator?", a: "This calculator helps estimate your profit and taxes for individual trades. For comprehensive tax reporting across multiple exchanges and wallets, dedicated crypto tax software like Koinly, CoinLedger, or TaxBit can import your transaction history and generate tax forms. Our calculator is perfect for quick profit/loss estimates and planning trades before you execute them - completely free with no signup required." }
             ],
             es: [
                 { q: "¿Cómo calculo las ganancias en cripto?", a: "Ganancia = (Monedas × Precio de Salida) - Inversión Inicial - Comisiones. Nuestra calculadora lo hace automáticamente, mostrando el beneficio neto, el % de ROI y el precio de equilibrio." },
@@ -1419,12 +1785,11 @@ module.exports = {
             currency: { en: "USD", es: "EUR", de: "EUR", fr: "EUR", pt: "BRL", it: "EUR", nl: "EUR", pl: "PLN", sv: "SEK", no: "NOK", da: "DKK", fi: "EUR" },
             locale: { en: "en-US", es: "es-ES", de: "de-DE", fr: "fr-FR", pt: "pt-BR", it: "it-IT", nl: "nl-NL", pl: "pl-PL", sv: "sv-SE", no: "no-NO", da: "da-DK", fi: "fi-FI" },
             fields: [
-                { id: "investment", type: "number", label: { en: "Invested Amount", fi: "Sijoitettu summa", de: "Investierter Betrag", es: "Monto Invertido", fr: "Montant Investi", pt: "Valor Investido", it: "Importo Investito", nl: "Geïnvesteerd Bedrag", pl: "Zainwestowana Kwota", sv: "Investerat Belopp", no: "Investert Beløp", da: "Investeret Beløb" }, default: 1000, step: 100, format: "currency" },
-                { id: "entryPrice", type: "number", label: { en: "Entry Price ($)", fi: "Ostohinta ($)", de: "Einstiegspreis ($)", es: "Precio de Entrada ($)", fr: "Prix d'Entrée ($)", pt: "Preço de Entrada ($)", it: "Prezzo di Entrata ($)", nl: "Instapprijs ($)", pl: "Cena Wejścia ($)", sv: "Ingångspris ($)", no: "Inngangspris ($)", da: "Indgangspris ($)" }, default: 50000, step: 100 },
-                { id: "exitPrice", type: "number", label: { en: "Exit Price ($)", fi: "Myyntihinta ($)", de: "Ausstiegspreis ($)", es: "Precio de Salida ($)", fr: "Prix de Sortie ($)", pt: "Preço de Saída ($)", it: "Prezzo di Uscita ($)", nl: "Uitstapprijs ($)", pl: "Cena Wyjścia ($)", sv: "Utgångspris ($)", no: "Utgangspris ($)", da: "Udgangspris ($)" }, default: 55000, step: 100 },
-                { id: "fees", type: "number", label: { en: "Total Fees ($)", fi: "Kulut yhteensä ($)", de: "Gebühren Gesamt ($)", es: "Comisiones Totales ($)", fr: "Frais Totaux ($)", pt: "Taxas Totais ($)", it: "Commissioni Totali ($)", nl: "Totale Kosten ($)", pl: "Opłaty Razem ($)", sv: "Totala Avgifter ($)", no: "Totale Gebyrer ($)", da: "Samlede Gebyrer ($)" }, default: 10, step: 1, format: "currency" },
-                { id: "taxRate", type: "number", label: { en: "Tax Rate (%)", fi: "Vero (%)", de: "Steuersatz (%)", es: "Impuestos (%)", fr: "Impôts (%)", pt: "Imposto (%)", it: "Tasse (%)", nl: "Belastingtarief (%)", pl: "Podatek (%)", sv: "Skattesats (%)", no: "Skattesats (%)", da: "Skattesats (%)" }, default: 0, min: 0, max: 100, step: 1, format: "percent", help: { en: "Capital gains tax rate. Leave 0 for pre-tax profit.", es: "Impuesto sobre ganancias de capital. Deja 0 para beneficio bruto.", de: "Kapitalertragsteuer. Für Bruttogewinn auf 0 lassen.", fr: "Taux d'imposition sur les plus-values. Laissez à 0 pour le profit brut.", pt: "Imposto sobre ganhos de capital. Deixe 0 para lucro bruto.", it: "Aliquota fiscale sulle plusvalenze. Lascia 0 per l'utile lordo.", nl: "Vermogensrendementsheffing. Laat op 0 voor brutowinst.", pl: "Podatek od zysków kapitałowych. Pozostaw 0 dla zysku brutto.", sv: "Kapitalvinstskatt. Lämna 0 för bruttovinst.", no: "Kapitalgevinstskattesats. La stå på 0 for bruttogevinst.", da: "Kapitalvindingsafgift. Lad stå på 0 for bruttofortjeneste.", fi: "Pääomatulovero. Jätä nollaksi, jos haluat laskea bruttovoiton." } },
-                { id: "targetMultiplier", type: "number", label: { en: "Profit Goal (x)", fi: "Voittotavoite (x)", de: "Gewinnziel (x)", es: "Meta de Ganancia (x)", fr: "Objectif de Gain (x)", pt: "Meta de Lucro (x)", it: "Obiettivo di Profitto (x)", nl: "Winstdoel (x)", pl: "Cel Zysku (x)", sv: "Vinstmål (x)", no: "Gevinstmål (x)", da: "Gevinstmål (x)" }, default: 2, min: 1.1, max: 1000, step: 0.1, help: { en: "Set your target return (e.g. 2x = double your money). We calculate the price needed.", es: "Establece tu retorno objetivo (ej. 2x = duplicar). Calculamos el precio necesario.", de: "Geben Sie Ihr Ziel an (z. B. 2x = Verdopplung). Wir berechnen den nötigen Preis.", fr: "Définissez votre objectif de rendement (ex : 2x = doubler). Nous calculons le prix nécessaire.", pt: "Defina seu retorno alvo (ex: 2x = dobrar seu dinheiro). Calculamos o preço necessário.", it: "Imposta il tuo rendimento obiettivo (es. 2x = raddoppia i soldi). Calcoliamo il prezzo necessario.", nl: "Stel uw doelrendement in (bijv. 2x = verdubbeling). Wij berekenen de benodigde prijs.", pl: "Wybierz swój cel zwrotu (np. 2x = podwojenie). Obliczymy potrzebną cenę.", sv: "Sätt ditt målavkastning (t.ex. 2x = dubbla dina pengar). Vi beräknar det pris som behövs.", no: "Angi ønsket avkastning (f.eks. 2x = dobbel innsats). Vi beregner nødvendig pris.", da: "Indstil dit mål afkast (f.eks. 2x = dobbelt op). Vi beregner den nødvendige pris.", fi: "Aseta tavoitetuottosi (esim. 2x = tuplaa rahasi). Laskemme tarvittavan hinnan." } }
+                { id: "investment", type: "number", label: { en: "Invested Amount", fi: "Sijoitettu summa", de: "Investierter Betrag", es: "Monto Invertido", fr: "Montant Investi", pt: "Valor Investido", it: "Importo Investito", nl: "Geïnvesteerd Bedrag", pl: "Zainwestowana Kwota", sv: "Investerat Belopp", no: "Investert Beløp", da: "Investeret Beløb" }, default: 1000, step: 100, format: "currency", help: { en: "Total amount you invested or plan to invest.", es: "Monto total que invertiste o planeas invertir.", de: "Gesamtbetrag, den Sie investiert haben oder planen zu investieren.", fr: "Montant total que vous avez investi ou prévoyez d'investir.", pt: "Valor total que você investiu ou planeja investir.", it: "Importo totale che hai investito o prevedi di investire.", nl: "Totaal bedrag dat u hebt geïnvesteerd of van plan bent te investeren.", pl: "Całkowita kwota, którą zainwestowałeś lub planujesz zainwestować.", sv: "Totalt belopp du investerat eller planerar att investera.", no: "Totalt beløp du har investert eller planlegger å investere.", da: "Samlet beløb du har investeret eller planlægger at investere.", fi: "Kokonaissumma, jonka sijoitit tai aiot sijoittaa." } },
+                { id: "entryPrice", type: "number", label: { en: "Buy Price", fi: "Ostohinta", de: "Kaufpreis", es: "Precio de Compra", fr: "Prix d'Achat", pt: "Preço de Compra", it: "Prezzo di Acquisto", nl: "Aankoopprijs", pl: "Cena Zakupu", sv: "Köppris", no: "Kjøpspris", da: "Købspris" }, default: 50000, step: 100, format: "currency", help: { en: "Price per coin when you bought (e.g. $50,000 for Bitcoin).", es: "Precio por moneda cuando compraste (ej. $50,000 para Bitcoin).", de: "Preis pro Coin beim Kauf (z.B. 50.000$ für Bitcoin).", fr: "Prix par pièce lors de l'achat (ex: 50 000$ pour Bitcoin).", pt: "Preço por moeda quando você comprou (ex: $50.000 para Bitcoin).", it: "Prezzo per moneta quando hai comprato (es. $50.000 per Bitcoin).", nl: "Prijs per munt bij aankoop (bijv. $50.000 voor Bitcoin).", pl: "Cena za monetę przy zakupie (np. 50 000$ za Bitcoin).", sv: "Pris per mynt när du köpte (t.ex. $50 000 för Bitcoin).", no: "Pris per mynt da du kjøpte (f.eks. $50 000 for Bitcoin).", da: "Pris pr. mønt da du købte (f.eks. $50.000 for Bitcoin).", fi: "Kolikon hinta ostohetkellä (esim. 50 000 $ Bitcoinille)." } },
+                { id: "exitPrice", type: "number", label: { en: "Sell Price", fi: "Myyntihinta", de: "Verkaufspreis", es: "Precio de Venta", fr: "Prix de Vente", pt: "Preço de Venda", it: "Prezzo di Vendita", nl: "Verkoopprijs", pl: "Cena Sprzedaży", sv: "Säljpris", no: "Salgspris", da: "Salgspris" }, default: 55000, step: 100, format: "currency", help: { en: "Current price or the price you want to sell at.", es: "Precio actual o el precio al que quieres vender.", de: "Aktueller Preis oder der Preis, zu dem Sie verkaufen möchten.", fr: "Prix actuel ou le prix auquel vous souhaitez vendre.", pt: "Preço atual ou o preço pelo qual você quer vender.", it: "Prezzo attuale o il prezzo a cui vuoi vendere.", nl: "Huidige prijs of de prijs waartegen u wilt verkopen.", pl: "Aktualna cena lub cena, po której chcesz sprzedać.", sv: "Nuvarande pris eller priset du vill sälja till.", no: "Gjeldende pris eller prisen du vil selge til.", da: "Nuværende pris eller den pris du vil sælge til.", fi: "Nykyinen hinta tai hinta, jolla haluat myydä." } },
+                { id: "fees", type: "number", label: { en: "Fees", fi: "Kulut", de: "Gebühren", es: "Comisiones", fr: "Frais", pt: "Taxas", it: "Commissioni", nl: "Kosten", pl: "Opłaty", sv: "Avgifter", no: "Gebyrer", da: "Gebyrer" }, default: 10, step: 1, format: "currency", help: { en: "Total trading fees (exchange fees, gas fees, etc.).", es: "Total de comisiones de trading (exchange, gas, etc.).", de: "Gesamte Handelsgebühren (Börsengebühren, Gasgebühren usw.).", fr: "Total des frais de trading (frais de plateforme, gas, etc.).", pt: "Total de taxas de negociação (taxas de exchange, gas, etc.).", it: "Totale delle commissioni di trading (commissioni exchange, gas, ecc.).", nl: "Totale handelskosten (exchange-kosten, gaskosten, etc.).", pl: "Całkowite opłaty handlowe (opłaty giełdowe, gas, itp.).", sv: "Totala handelsavgifter (börsavgifter, gasavgifter, etc.).", no: "Totale handelsgebyrer (børsgebyrer, gassgebyrer, osv.).", da: "Samlede handelsgebyrer (børsgebyrer, gasgebyrer osv.).", fi: "Kokonaiskaupankäyntikulut (pörssimaksut, gas-maksut jne.)." } },
+                { id: "taxRate", type: "number", label: { en: "Tax Rate (%)", fi: "Vero (%)", de: "Steuersatz (%)", es: "Impuestos (%)", fr: "Impôts (%)", pt: "Imposto (%)", it: "Tasse (%)", nl: "Belastingtarief (%)", pl: "Podatek (%)", sv: "Skattesats (%)", no: "Skattesats (%)", da: "Skattesats (%)" }, default: 0, min: 0, max: 100, step: 1, format: "percent", help: { en: "Capital gains tax rate. Leave 0 for pre-tax profit.", es: "Impuesto sobre ganancias de capital. Deja 0 para beneficio bruto.", de: "Kapitalertragsteuer. Für Bruttogewinn auf 0 lassen.", fr: "Taux d'imposition sur les plus-values. Laissez à 0 pour le profit brut.", pt: "Imposto sobre ganhos de capital. Deixe 0 para lucro bruto.", it: "Aliquota fiscale sulle plusvalenze. Lascia 0 per l'utile lordo.", nl: "Vermogensrendementsheffing. Laat op 0 voor brutowinst.", pl: "Podatek od zysków kapitałowych. Pozostaw 0 dla zysku brutto.", sv: "Kapitalvinstskatt. Lämna 0 för bruttovinst.", no: "Kapitalgevinstskattesats. La stå på 0 for bruttogevinst.", da: "Kapitalvindingsafgift. Lad stå på 0 for bruttofortjeneste.", fi: "Pääomatulovero. Jätä nollaksi, jos haluat laskea bruttovoiton." } }
             ],
             formula: "entryPrice > 0 ? ((((investment / entryPrice) * exitPrice) - investment - fees) > 0 ? (((investment / entryPrice) * exitPrice) - investment - fees) * (1 - (taxRate / 100)) : (((investment / entryPrice) * exitPrice) - investment - fees)) : 0",
             resultFormat: "currency",
@@ -1438,8 +1803,7 @@ module.exports = {
             metrics: [
                 { label: { en: "ROI %", fi: "ROI %", de: "ROI %", es: "ROI %", fr: "ROI %", pt: "ROI %", it: "ROI %", nl: "ROI %", pl: "ROI %", sv: "ROI %", no: "ROI %", da: "ROI %" }, formula: "((((investment / entryPrice) * exitPrice) - investment - fees) > 0 ? (((investment / entryPrice) * exitPrice) - investment - fees) * (1 - (taxRate / 100)) : (((investment / entryPrice) * exitPrice) - investment - fees)) / investment * 100", format: "percent" },
                 { label: { en: "Break-Even Price", fi: "Nollatulos-hinta", de: "Break-Even Preis", es: "Precio de Equilibrio", fr: "Prix d'Équilibre", pt: "Preço de Equilíbrio", it: "Prezzo di Pareggio", nl: "Break-Even Prijs", pl: "Cena Progowa", sv: "Break-Even Pris", no: "Break-Even Pris", da: "Break-Even Pris" }, formula: "entryPrice * (investment + fees) / investment", format: "currency" },
-                { label: { en: "🔥 Recovery Pump Needed", fi: "🔥 Tarvittava nousu", de: "🔥 Nötiger Anstieg", es: "🔥 Subida Necesaria", fr: "🔥 Hausse Nécessaire", pt: "🔥 Subida Necessária", it: "🔥 Rialzo Necessario", nl: "🔥 Benodigde Stijging", pl: "🔥 Wymagany Wzrost", sv: "🔥 Nödvändig Uppgång", no: "🔥 Nødvendig Oppgang", da: "🔥 Nødvendig Stigning" }, formula: "((entryPrice - exitPrice) / exitPrice * 100)", format: "percent", condition: "exitPrice < entryPrice", tooltip: { en: "The percentage pump needed just to get back to break-even.", es: "El porcentaje de subida necesario para recuperar tu inversión.", de: "Der prozentuale Anstieg, der benötigt wird, um die Gewinnschwelle zu erreichen.", fr: "Le pourcentage de hausse nécessaire pour revenir au point mort.", pt: "A porcentagem de subida necessária para recuperar seu investimento.", it: "La percentuale di rialzo necessaria per tornare in pareggio.", nl: "Het percentage stijging dat nodig is om weer quitte te draaien.", pl: "Procentowy wzrost potrzebny do wyjścia na zero.", sv: "Den procentuella uppgång som behövs för att nå break-even.", no: "Den prosentvise oppgangen som trengs for å nå break-even.", da: "Den procentvise stigning, der er nødvendig for at nå break-even.", fi: "Nousuprosentti, joka tarvitaan omilleen pääsemiseen." } },
-                { label: { en: "🚀 Target Price", fi: "🚀 Tavoitehinta", de: "🚀 Zielpreis", es: "🚀 Precio Objetivo", fr: "🚀 Prix Cible", pt: "🚀 Preço Alvo", it: "🚀 Prezzo Obiettivo", nl: "🚀 Doelprijs", pl: "🚀 Cena Docelowa", sv: "🚀 Målpris", no: "🚀 Målpris", da: "🚀 Målpris" }, formula: "entryPrice * (targetMultiplier * investment + fees) / investment", format: "currency", tooltip: { en: "The price needed to hit your Profit Goal.", es: "El precio necesario para alcanzar tu Meta de Ganancia.", de: "Der Preis, der benötigt wird, um Ihr Gewinnziel zu erreichen.", fr: "Le prix nécessaire pour atteindre votre objectif de profit.", pt: "O preço necessário para atingir sua meta de lucro.", it: "Il prezzo necessario per raggiungere il tuo obiettivo di profitto.", nl: "De prijs die nodig is om uw winstdoel te bereiken.", pl: "Cena potrzebna do osiągnięcia Twojego celu zysku.", sv: "Priset som behövs för att nå ditt vinstmål.", no: "Prisen som trengs for å nå ditt gevinstmål.", da: "Den pris, der er nødvendig for at nå dit profitmål.", fi: "Hinta, joka tarvitaan voittotavoitteesi saavuttamiseen." } }
+                { label: { en: "🔥 Recovery Pump Needed", fi: "🔥 Tarvittava nousu", de: "🔥 Nötiger Anstieg", es: "🔥 Subida Necesaria", fr: "🔥 Hausse Nécessaire", pt: "🔥 Subida Necessária", it: "🔥 Rialzo Necessario", nl: "🔥 Benodigde Stijging", pl: "🔥 Wymagany Wzrost", sv: "🔥 Nödvändig Uppgång", no: "🔥 Nødvendig Oppgang", da: "🔥 Nødvendig Stigning" }, formula: "((entryPrice - exitPrice) / exitPrice * 100)", format: "percent", condition: "exitPrice < entryPrice", tooltip: { en: "The percentage pump needed just to get back to break-even.", es: "El porcentaje de subida necesario para recuperar tu inversión.", de: "Der prozentuale Anstieg, der benötigt wird, um die Gewinnschwelle zu erreichen.", fr: "Le pourcentage de hausse nécessaire pour revenir au point mort.", pt: "A porcentagem de subida necessária para recuperar seu investimento.", it: "La percentuale di rialzo necessaria per tornare in pareggio.", nl: "Het percentage stijging dat nodig is om weer quitte te draaien.", pl: "Procentowy wzrost potrzebny do wyjścia na zero.", sv: "Den procentuella uppgång som behövs för att nå break-even.", no: "Den prosentvise oppgangen som trengs for å nå break-even.", da: "Den procentvise stigning, der er nødvendig for at nå break-even.", fi: "Nousuprosentti, joka tarvitaan omilleen pääsemiseen." } }
             ],
             notices: [
                 { message: { en: "🚀 Nice! This trade is in profit by +${Math.abs(result).toLocaleString()}", es: "🚀 ¡Genial! Esta operación tiene una ganancia de +${Math.abs(result).toLocaleString()}", de: "🚀 Super! Dieser Trade bringt +${Math.abs(result).toLocaleString()}", fr: "🚀 Super ! Ce trade est en profit de +${Math.abs(result).toLocaleString()}", pt: "🚀 Boa! Esta operação está em lucro de +${Math.abs(result).toLocaleString()}", it: "🚀 Ottimo! Questa operazione è in utile di +${Math.abs(result).toLocaleString()}", nl: "🚀 Mooi! Deze trade staat op winst van +${Math.abs(result).toLocaleString()}", pl: "🚀 Świetnie! Ta transakcja daje zysk +${Math.abs(result).toLocaleString()}", sv: "🚀 Härligt! Denna affär går med vinst på +${Math.abs(result).toLocaleString()}", no: "🚀 Bra! Denne handelen gir en gevinst på +${Math.abs(result).toLocaleString()}", da: "🚀 Godt klaret! Denne handel giver et afkast på +${Math.abs(result).toLocaleString()}", fi: "🚀 Hienoa! Tämän kaupan voitto on +${Math.abs(result).toLocaleString()}" }, condition: "result > 0", type: "success" },
@@ -1510,145 +1874,205 @@ module.exports = {
             en: `
                 <div class="prose">
                     <h3>Is Solar Worth It in 2026?</h3>
-                    <p>With electricity prices rising and solar costs dropping, going solar has never been more attractive. This calculator helps you estimate your <strong>payback period</strong> and annual ROI based on your current electricity usage.</p>
+                    <p>With electricity prices rising and solar technology improving, going solar has never been more attractive. This calculator helps you estimate your <strong>payback period</strong> and annual ROI.</p>
                     <ul>
-                        <li><strong>Peak Sun Hours:</strong> Varies by region (4-6 hours average in most US states)</li>
-                        <li><strong>Federal Tax Credit:</strong> The 30% ITC is still available through 2032</li>
-                        <li><strong>Payback Period:</strong> Most systems pay for themselves in 6-10 years</li>
+                        <li><strong>Peak Sun Hours:</strong> Varies by region (4-6 hours average).</li>
+                        <li><strong>Incentives:</strong> The 30% Federal Tax Credit (ITC) helps offset costs in the US.</li>
+                        <li><strong>Property Value:</strong> Homes with solar sell for ~4.1% more on average.</li>
                     </ul>
-                    <p>Remember to factor in <strong>local incentives</strong> and net metering policies for the most accurate estimate.</p>
+
+                    <h4>2026 Technology Trends</h4>
+                    <p>New PV panels are exceeding 22% efficiency. Combining solar with <strong>battery storage</strong> is becoming standard for energy independence.</p>
+
+                    <h4>Hidden Value</h4>
+                    <p>Beyond bill savings, solar protects you from future utility rate hikes. It's a hedge against inflation for your energy costs.</p>
                 </div>
             `,
             es: `
                 <div class="prose">
                     <h3>¿Vale la pena la Energía Solar en 2026?</h3>
-                    <p>Con el aumento de los precios de la electricidad y la caída de los costos solares, pasarse a la energía solar nunca ha sido tan atractivo. Esta calculadora te ayuda a estimar tu <strong>periodo de amortización</strong> y el ROI anual basado en tu consumo actual.</p>
+                    <p>Con el aumento de los precios de la electricidad y la mejora tecnológica, pasarse a la energía solar es muy atractivo. Esta calculadora te ayuda a estimar tu <strong>periodo de amortización</strong> y el ROI anual.</p>
                     <ul>
                         <li><strong>Horas Pico de Sol:</strong> Varía según la región (4-6 horas de promedio).</li>
-                        <li><strong>Créditos Fiscales:</strong> Muchos países ofrecen incentivos por instalación.</li>
-                        <li><strong>Periodo de Retorno:</strong> La mayoría de los sistemas se pagan solos en 6-10 años.</li>
+                        <li><strong>Incentivos:</strong> Muchos gobiernos ofrecen subvenciones o deducciones fiscales.</li>
+                        <li><strong>Valor de la Propiedad:</strong> Las casas con paneles se venden por un ~4% más.</li>
                     </ul>
-                    <p>Recuerda tener en cuenta los <strong>incentivos locales</strong> para obtener la estimación más precisa.</p>
+
+                    <h4>Tendencias Tecnológicas 2026</h4>
+                    <p>Los nuevos paneles superan el 22% de eficiencia. Combinar solar con <strong>baterías</strong> es cada vez más común para lograr independencia energética.</p>
+
+                    <h4>Valor Oculto</h4>
+                    <p>Más allá del ahorro, la energía solar te protege de futuras subidas de tarifas. Es un seguro contra la inflación energética.</p>
                 </div>
             `,
             de: `
                 <div class="prose">
                     <h3>Lohnt sich Solar im Jahr 2026?</h3>
-                    <p>Bei steigenden Strompreisen und sinkenden Solarkosten war der Umstieg auf Solar noch nie so attraktiv. Dieser Rechner hilft Ihnen, Ihre <strong>Amortisationszeit</strong> und den jährlichen ROI basierend auf Ihrem aktuellen Stromverbrauch zu schätzen.</p>
+                    <p>Bei steigenden Strompreisen und effizienterer Technik war der Umstieg auf Solar noch nie so attraktiv. Dieser Rechner schätzt Ihre <strong>Amortisationszeit</strong> und den jährlichen ROI.</p>
                     <ul>
-                        <li><strong>Sonnenstunden:</strong> Variiert je nach Region (Durchschnittlich 4-6 Stunden).</li>
-                        <li><strong>Förderungen:</strong> Staatliche Zuschüsse und Einspeisevergütungen nutzen.</li>
-                        <li><strong>Amortisation:</strong> Die meisten Anlagen rechnen sich nach 6-10 Jahren.</li>
+                        <li><strong>Sonnenstunden:</strong> Variiert je nach Region (Ø 4-6 Stunden).</li>
+                        <li><strong>Förderungen:</strong> Nutzen Sie staatliche Zuschüsse und Einspeisevergütungen.</li>
+                        <li><strong>Immobilienwert:</strong> Häuser mit Solar verkaufen sich durchschnittlich um ~4% teurer.</li>
                     </ul>
-                    <p>Berücksichtigen Sie auch <strong>lokale Anreize</strong> für eine möglichst genaue Schätzung.</p>
+
+                    <h4>Technologie-Trends 2026</h4>
+                    <p>Neue Module erreichen über 22% Effizienz. Die Kombination mit <strong>Batteriespeichern</strong> wird zum Standard für mehr Unabhängigkeit.</p>
+
+                    <h4>Versteckter Wert</h4>
+                    <p>Solar schützt Sie vor künftigen Strompreiserhöhungen und dient als Inflationsschutz für Ihre Energiekosten.</p>
                 </div>
             `,
             fr: `
                 <div class="prose">
                     <h3>Le solaire en vaut-il la peine en 2026 ?</h3>
-                    <p>Avec l'augmentation des prix de l'électricité et la baisse des coûts du solaire, franchir le pas n'a jamais été aussi intéressant. Ce calculateur vous aide à estimer votre <strong>période de récupération</strong> et votre ROI annuel.</p>
+                    <p>Avec l'augmentation des prix de l'électricité et l'efficacité accrue, passer au solaire est très attractif. Ce calculateur estime votre <strong>période de retour sur investissement</strong> et votre ROI annuel.</p>
                     <ul>
-                        <li><strong>Heures d'ensoleillement :</strong> Varie selon la région (moyenne de 4 à 6 heures).</li>
-                        <li><strong>Aides d'État :</strong> Des crédits d'impôt et des primes sont souvent disponibles.</li>
-                        <li><strong>Retour sur investissement :</strong> La plupart des systèmes sont rentabilisés en 6 à 10 ans.</li>
+                        <li><strong>Heures d'ensoleillement :</strong> Varie selon la région (moyenne 4-6h).</li>
+                        <li><strong>Aides d'État :</strong> Profitez des crédits d'impôt et primes à l'autoconsommation.</li>
+                        <li><strong>Valeur Immobilière :</strong> Les maisons solaires se vendent en moyenne ~4% plus cher.</li>
                     </ul>
-                    <p>N'oubliez pas d'inclure les <strong>incitations locales</strong> pour obtenir l'estimation la plus précise.</p>
+
+                    <h4>Tendances Technologiques 2026</h4>
+                    <p>Les nouveaux panneaux dépassent 22% d'efficacité. Le couplage avec des <strong>batteries</strong> devient la norme pour l'autonomie.</p>
+
+                    <h4>Valeur Cachée</h4>
+                    <p>Au-delà des économies, le solaire vous protège des futures hausses de tarifs. C'est une assurance contre l'inflation énergétique.</p>
                 </div>
             `,
             pt: `
                 <div class="prose">
                     <h3>Vale a pena usar energia solar em 2026?</h3>
-                    <p>Com o aumento dos preços da eletricidade e a queda dos custos solares, a energia solar nunca foi tão atraente. Esta calculadora ajuda você a estimar seu <strong>período de retorno</strong> e o ROI anual.</p>
+                    <p>Com o aumento das tarifas e melhor tecnologia, a energia solar nunca foi tão atraente. Esta calculadora estima seu <strong>período de retorno</strong> e o ROI anual.</p>
                     <ul>
-                        <li><strong>Horas de Sol de Pico:</strong> Varia de acordo com a região (média de 4 a 6 horas).</li>
-                        <li><strong>Incentivos Fiscais:</strong> Muitos governos oferecem benefícios para sistemas solares.</li>
-                        <li><strong>Período de Retorno:</strong> A maioria dos sistemas se paga em 6 a 10 anos.</li>
+                        <li><strong>Horas de Sol:</strong> Varia por região (média de 4-6 horas).</li>
+                        <li><strong>Incentivos:</strong> Aproveite isenções fiscais e benefícios locais.</li>
+                        <li><strong>Valor do Imóvel:</strong> Casas com energia solar valorizam cerca de 4%.</li>
                     </ul>
-                    <p>Lembre-se de considerar os <strong>incentivos locais</strong> para obter a estimativa mais precisa.</p>
+
+                    <h4>Tendências 2026</h4>
+                    <p>Novos painéis superam 22% de eficiência. O uso de <strong>baterias</strong> está se tornando padrão para independência energética.</p>
+
+                    <h4>Valor Oculto</h4>
+                    <p>A energia solar protege você de futuros aumentos na conta de luz. É uma proteção contra a inflação energética.</p>
                 </div>
             `,
             it: `
                 <div class="prose">
                     <h3>Il solare conviene nel 2026?</h3>
-                    <p>Con i prezzi dell'elettricità in aumento e i costi del solare in calo, passare al solare non è mai stato così vantaggioso. Questo calcolatore ti aiuta a stimare il tuo <strong>periodo di rientro</strong> e il ROI annuo.</p>
+                    <p>Con l'aumento dei costi dell'energia e la tecnologia più efficiente, passare al solare è molto vantaggioso. Questo calcolatore stima il tuo <strong>periodo di rientro</strong> e il ROI annuo.</p>
                     <ul>
-                        <li><strong>Ore di sole di picco:</strong> Varia in base alla regione (media di 4-6 ore).</li>
-                        <li><strong>Incentivi statali:</strong> Sono spesso disponibili detrazioni fiscali o bonus.</li>
-                        <li><strong>Periodo di rientro:</strong> La maggior parte dei sistemi si ripaga in 6-10 anni.</li>
+                        <li><strong>Ore di Sole:</strong> Varia in base alla regione (media 4-6 ore).</li>
+                        <li><strong>Incentivi:</strong> Sfrutta le detrazioni fiscali e i bonus disponibili.</li>
+                        <li><strong>Valore Immobile:</strong> Le case con fotovoltaico valgono in media il 4% in più.</li>
                     </ul>
-                    <p>Ricorda di includere gli <strong>incentivi locali</strong> per la stima più accurata.</p>
+
+                    <h4>Trend Tecnologici 2026</h4>
+                    <p>I nuovi pannelli superano il 22% di efficienza. L'abbinamento con <strong>batterie di accumulo</strong> sta diventando standard.</p>
+
+                    <h4>Valore Nascosto</h4>
+                    <p>Il solare ti protegge dai futuri aumenti delle bollette. È una copertura contro l'inflazione energetica.</p>
                 </div>
             `,
             nl: `
                 <div class="prose">
                     <h3>Is zonnenergie de moeite waard in 2026?</h3>
-                    <p>Met stijgende elektriciteitsprijzen en dalende kosten voor zonnepanelen is de overstap nog nooit zo aantrekkelijk geweest. Deze calculator helpt u bij het schatten van uw <strong>terugverdientijd</strong> en jaarlijkse ROI.</p>
+                    <p>Met stijgende energieprijzen en betere technologie is zonne-energie aantrekkelijker dan ooit. Deze calculator schat uw <strong>terugverdientijd</strong> en jaarlijkse ROI.</p>
                     <ul>
-                        <li><strong>Piekuur zon:</strong> Varieert per regio (gemiddeld 4-6 uur).</li>
-                        <li><strong>Belastingvoordelen:</strong> Veel overheden bieden subsidies voor zonnepanelen.</li>
-                        <li><strong>Terugverdientijd:</strong> De meeste systemen verdienen zichzelf in 6-10 jaar terug.</li>
+                        <li><strong>Zonne-uren:</strong> Varieert per regio (gemiddeld 4-6 uur).</li>
+                        <li><strong>Subsidies:</strong> Profiteer van BTW-nultarief en salderingsregeling.</li>
+                        <li><strong>Woningwaarde:</strong> Huizen met zonnepanelen verkopen gemiddeld ~4% hoger.</li>
                     </ul>
-                    <p>Vergeet niet om <strong>lokale stimuleringsmaatregelen</strong> mee te rekenen voor de meest nauwkeurige schatting.</p>
+
+                    <h4>Technologische trends 2026</h4>
+                    <p>Nieuwe panelen halen meer dan 22% efficiëntie. De combinatie met <strong>thuisbatterijen</strong> wordt de standaard voor onafhankelijkheid.</p>
+
+                    <h4>Verborgen waarde</h4>
+                    <p>Naast besparingen beschermt zonne-energie u tegen toekomstige prijsstijgingen. Het is een verzekering tegen energie-inflatie.</p>
                 </div>
             `,
             pl: `
                 <div class="prose">
                     <h3>Czy fotowoltaika opłaca się w 2026 roku?</h3>
-                    <p>Przy rosnących cenach energii i spadających kosztach instalacji, przejście na słońce nigdy nie było bardziej atrakcyjne. Ten kalkulator pomaga oszacować <strong>czas zwrotu</strong> i roczny ROI.</p>
+                    <p>Przy rosnących cenach energii i lepszej technologii, przejście na słońce jest bardzo opłacalne. Ten kalkulator szacuje Twój <strong>czas zwrotu</strong> i roczny ROI.</p>
                     <ul>
-                        <li><strong>Szczytowe godziny nasłonecznienia:</strong> Zależą od regionu (średnio 4-6 godzin).</li>
-                        <li><strong>Ulgi podatkowe:</strong> Wiele programów oferuje dofinansowanie do instalacji.</li>
-                        <li><strong>Czas zwrotu:</strong> Większość systemów zwraca się w ciągu 6-10 lat.</li>
+                        <li><strong>Godziny słoneczne:</strong> Zależnie od regionu (śr. 4-6h).</li>
+                        <li><strong>Dotacje:</strong> Skorzystaj z programów Mój Prąd i ulg podatkowych.</li>
+                        <li><strong>Wartość domu:</strong> Domy z fotowoltaiką sprzedają się średnio o ~4% drożej.</li>
                     </ul>
-                    <p>Pamiętaj, aby uwzględnić <strong>lokalne dotacje</strong>, aby uzyskać jak najdokładniejszy wynik.</p>
+
+                    <h4>Trendy technologiczne 2026</h4>
+                    <p>Nowe panele przekraczają 22% wydajności. Połączenie z <strong>magazynami energii</strong> staje się standardem niezależności.</p>
+
+                    <h4>Ukryta wartość</h4>
+                    <p>Poza oszczędnościami, fotowoltaika chroni przed podwyżkami cen prądu. To zabezpieczenie przed inflacją energetyczną.</p>
                 </div>
             `,
             sv: `
                 <div class="prose">
                     <h3>Är solceller värt det 2026?</h3>
-                    <p>Med stigande elpriser och sjunkande solcellskostnader har det aldrig varit mer attraktivt att satsa på solenergi. Denna kalkylator hjälper dig att uppskatta din <strong>återbetalningstid</strong> och årliga ROI.</p>
+                    <p>Med stigande elpriser och effektivare teknik är solenergi mer attraktivt än någonsin. Denna kalkylator uppskattar din <strong>återbetalningstid</strong> och årliga ROI.</p>
                     <ul>
-                        <li><strong>Soltimmar:</strong> Varierar beroende på region (i genomsnitt 4-6 timmar).</li>
-                        <li><strong>Skattereduktion:</strong> Många länder erbjuder stöd för grön teknik.</li>
-                        <li><strong>Återbetalningstid:</strong> De flesta system betalar sig själva på 6-10 år.</li>
+                        <li><strong>Soltimmar:</strong> Varierar efter region (snitt 4-6 timmar).</li>
+                        <li><strong>Stöd:</strong> Utnyttja Grön Teknik-avdraget för installation och batteri.</li>
+                        <li><strong>Husvärde:</strong> Hus med solceller säljs i snitt för ~4% mer.</li>
                     </ul>
-                    <p>Kom ihåg att räkna med <strong>lokala incitament</strong> för den mest exakta uppskattningen.</p>
+
+                    <h4>Tekniktrender 2026</h4>
+                    <p>Nya paneler når över 22% effektivitet. Att kombinera solceller med <strong>batterilagring</strong> blir standard för oberoende.</p>
+
+                    <h4>Dolt värde</h4>
+                    <p>Utöver besparingar skyddar solenergi dig mot framtida prishöjningar. Det är en försäkring mot energiinflation.</p>
                 </div>
             `,
             no: `
                 <div class="prose">
                     <h3>Er solceller verdt det i 2026?</h3>
-                    <p>Med stigende strømpriser og synkende solcellekostnader har det aldri vært mer attraktivt med solenergi. Denne kalkulatoren hjelper deg med å anslå <strong>nedbetalingstiden</strong> din og årlig ROI.</p>
+                    <p>Med økende strømpriser og bedre teknologi er solenergi svært attraktivt. Denne kalkulatoren anslår din <strong>nedbetalingstid</strong> og årlig avkastning.</p>
                     <ul>
-                        <li><strong>Soltimer:</strong> Varierer etter region (gjennomsnittlig 4-6 timer).</li>
-                        <li><strong>Støtteordningar:</strong> Sjekk lokale støtteordninger som Enova.</li>
-                        <li><strong>Nedbetalingstid:</strong> De fleste anlegg tjener seg selv inn på 6-10 år.</li>
+                        <li><strong>Soltimer:</strong> Varierer etter region (snitt 4-6 timer).</li>
+                        <li><strong>Støtte:</strong> Utnytt Enova-støtte og andre insentiver.</li>
+                        <li><strong>Boligverdi:</strong> Boliger med solceller selges i snitt for ~4% mer.</li>
                     </ul>
-                    <p>Husk å ta med <strong>lokale insentiver</strong> for å få et mest mulig nøyaktig estimat.</p>
+
+                    <h4>Teknologitrender 2026</h4>
+                    <p>Nye paneler har over 22% effektivitet. Kombinasjon med <strong>batterilagring</strong> blir standard for energiuavhengighet.</p>
+
+                    <h4>Skjult verdi</h4>
+                    <p>Utover sparing beskytter solenergi deg mot fremtidige prisøkninger. Det er en sikring mot energiinflasjon.</p>
                 </div>
             `,
             da: `
                 <div class="prose">
                     <h3>Er solenergi det værd i 2026?</h3>
-                    <p>Med stigende elpriser og faldende solcelleomkostninger har det aldrig været mere attraktivt at skifte til solenergi. Denne beregner hjælper dig med at estimere din <strong>tilbagebetalingstid</strong> og årlige ROI.</p>
+                    <p>Med stigende elpriser og mere effektiv teknologi er solenergi mere attraktivt end nogensinde. Denne beregner estimerer din <strong>tilbagebetalingstid</strong> og årlige ROI.</p>
                     <ul>
-                        <li><strong>Soltimer :</strong> Varierer fra region til region (genomsnitligt 4-6 timer).</li>
-                        <li><strong>Tilskudsordninger:</strong> Mange lande tilbyder støtte til vedvarende energi.</li>
-                        <li><strong>Tilbagebetalingstid:</strong> De fleste anlæg har tjent sig selv hjem på 6-10 år.</li>
+                        <li><strong>Soltimer:</strong> Varierer efter region (gns. 4-6 timer).</li>
+                        <li><strong>Tilskud:</strong> Udnyt eventuelle håndværkerfradrag og støtteordninger.</li>
+                        <li><strong>Boligværdi:</strong> Huse med solceller sælges i gennemsnit for ~4% mere.</li>
                     </ul>
-                    <p>Husk at indregne <strong>lokale tilskud</strong> for at få det mest præcise estimat.</p>
+
+                    <h4>Teknologiske trends 2026</h4>
+                    <p>Nye paneler overstiger 22% effektivitet. Kombination med <strong>batterilagring</strong> bliver standard for uafhængighed.</p>
+
+                    <h4>Skjult værdi</h4>
+                    <p>Udover besparelser beskytter solenergi dig mod fremtidige prisstigninger. Det er en sikring mod energiinflation.</p>
                 </div>
             `,
             fi: `
                 <div class="prose">
                     <h3>Kannattaako aurinkoenergia vuonna 2026?</h3>
-                    <p>Sähkön hintojen noustessa ja aurinkoenergian kustannusten laskiessa aurinkoon siirtyminen ei ole koskaan ollut houkuttelevampaa. Tämä laskuri auttaa sinua arvioimaan <strong>takaisinmaksuajan</strong> ja vuotuisen ROI:n.</p>
+                    <p>Sähkön hintojen noustessa ja teknologian kehittyessä aurinkoenergia on houkuttelevampaa kuin koskaan. Tämä laskuri arvioi <strong>takaisinmaksuaikasi</strong> ja vuotuisen tuoton.</p>
                     <ul>
                         <li><strong>Aurinkotunnit:</strong> Vaihtelee alueittain (keskimäärin 4-6 tuntia).</li>
-                        <li><strong>Tuet:</strong> Monet maat tarjoavat verovähennyksiä tai tukea järjestelmille.</li>
-                        <li><strong>Takaisinmaksuaika:</strong> Useimmat järjestelmät maksavat itsensä takaisin 6-10 vuodessa.</li>
+                        <li><strong>Tuet:</strong> Hyödynnä kotitalousvähennys ja mahdolliset energiatuet.</li>
+                        <li><strong>Kiinteistön arvo:</strong> Aurinkopaneelitalot myydään keskimäärin ~4 % kalliimmalla.</li>
                     </ul>
-                    <p>Muista huomioida <strong>paikalliset kannustimet</strong> saadaksesi tarkimman arvion.</p>
+
+                    <h4>Teknologiatrendit 2026</h4>
+                    <p>Uudet paneelit ylittävät 22 % hyötysuhteen. Yhdistäminen <strong>akustoon</strong> on tulossa standardiksi omavaraisuudelle.</p>
+
+                    <h4>Piiloarvo</h4>
+                    <p>Säästöjen lisäksi aurinkoenergia suojaa tulevilta hinnankorotuksilta. Se on vakuutus energiainflaatiota vastaan.</p>
                 </div>
             `
         },
@@ -1861,48 +2285,80 @@ module.exports = {
                 <div class="prose">
                     <h3>Plan Your Dream Wedding in 2026</h3>
                     <p>The average wedding in 2026 costs between <strong>$30,000 and $50,000</strong>, but your budget depends entirely on your priorities. This calculator helps you see the <em>complete picture</em> before you commit to vendors.</p>
+                    
+                    <h4>Smart Budget Allocation</h4>
                     <ul>
-                        <li><strong>Venue & Reception:</strong> Usually 40-50% of total budget</li>
-                        <li><strong>Catering:</strong> Expect $75-200 per guest for food and drinks</li>
-                        <li><strong>Photography:</strong> Don't skimp here—these are your lasting memories</li>
+                        <li><strong>Venue & Reception (40-50%):</strong> The biggest expense. Includes rent, food, and drinks.</li>
+                        <li><strong>Photography (10-12%):</strong> Don't skimp here—these are your lasting memories.</li>
+                        <li><strong>Attire & Rings (8-10%):</strong> Dress, suit, alterations, and wedding bands.</li>
+                        <li><strong>Flowers & Decor (8-10%):</strong> Lighting, centerpieces, and bouquets.</li>
                     </ul>
-                    <p>Use the <strong>cost per guest</strong> metric to compare venues fairly and stay within budget.</p>
+
+                    <h4>Hidden Costs to Watch For</h4>
+                    <p>Couples often forget: <strong>Service fees & gratuities</strong> (add 20-25%), <strong>overtime charges</strong> from vendors, and <strong>alterations</strong> for attire.</p>
+
+                    <h4>2026 Wedding Trends</h4>
+                    <p>Micro-weddings and "sequel weddings" are trending, focusing on <strong>guest experience</strong> quality over quantity.</p>
                 </div>
             `,
             es: `
                 <div class="prose">
                     <h3>Planifica la Boda de tus Sueños en 2026</h3>
                     <p>Una boda promedio en 2026 cuesta entre <strong>30.000 y 50.000 €</strong>, pero tu presupuesto depende de tus prioridades. Esta calculadora te ayuda a ver el <em>panorama completo</em> antes de contratar proveedores.</p>
+                    
+                    <h4>Asignación Inteligente del Presupuesto</h4>
                     <ul>
-                        <li><strong>Lugar y Recepción:</strong> Normalmente el 40-50% del presupuesto total.</li>
-                        <li><strong>Catering:</strong> Calcula entre 75 y 200 € por invitado.</li>
-                        <li><strong>Fotografía:</strong> No escatimes aquí; son tus recuerdos para siempre.</li>
+                        <li><strong>Lugar y Recepción (40-50%):</strong> El mayor gasto. Incluye alquiler, comida y bebida.</li>
+                        <li><strong>Fotografía (10-12%):</strong> No escatimes aquí; son tus recuerdos para siempre.</li>
+                        <li><strong>Atuendo y Anillos (8-10%):</strong> Vestido, traje, arreglos y alianzas.</li>
+                        <li><strong>Flores y Decoración (8-10%):</strong> Iluminación, centros de mesa y ramos.</li>
                     </ul>
-                    <p>Usa la métrica de <strong>costo por invitado</strong> para comparar lugares de forma justa.</p>
+
+                    <h4>Costos Ocultos a Vigilar</h4>
+                    <p>Las parejas suelen olvidar: <strong>Propinas y tasas de servicio</strong> (añade 20-25%), <strong>horas extra</strong> de proveedores y <strong>arreglos</strong> de ropa.</p>
+
+                    <h4>Tendencias de Bodas 2026</h4>
+                    <p>Las micro-bodas y "bodas secuela" son tendencia, centrándose más en la <strong>experiencia del invitado</strong> que en la cantidad.</p>
                 </div>
             `,
             de: `
                 <div class="prose">
                     <h3>Planen Sie Ihre Traumhochzeit im Jahr 2026</h3>
                     <p>Eine durchschnittliche Hochzeit im Jahr 2026 kostet zwischen <strong>30.000 und 50.000 €</strong>, aber Ihr Budget hängt ganz von Ihren Prioritäten ab. Dieser Rechner hilft Ihnen, das <em>Gesamtbild</em> zu sehen.</p>
+                    
+                    <h4>Intelligente Budgetverteilung</h4>
                     <ul>
-                        <li><strong>Ort & Empfang:</strong> In der Regel 40-50% des Gesamtbudgets.</li>
-                        <li><strong>Catering:</strong> Rechnen Sie mit 75-200 € pro Gast für Speisen und Getränke.</li>
-                        <li><strong>Fotografie:</strong> Sparen Sie hier nicht – das sind Ihre bleibenden Erinnerungen.</li>
+                        <li><strong>Location & Empfang (40-50%):</strong> Der größte Posten. Inklusive Miete, Essen und Getränke.</li>
+                        <li><strong>Fotografie (10-12%):</strong> Sparen Sie hier nicht – das sind Ihre bleibenden Erinnerungen.</li>
+                        <li><strong>Kleidung & Ringe (8-10%):</strong> Kleid, Anzug, Änderungen und Eheringe.</li>
+                        <li><strong>Blumen & Deko (8-10%):</strong> Beleuchtung, Tischdeko und Sträuße.</li>
                     </ul>
-                    <p>Nutzen Sie die Kennzahl <strong>Kosten pro Gast</strong>, um Locations fair zu vergleichen.</p>
+
+                    <h4>Versteckte Kosten beachten</h4>
+                    <p>Paare vergessen oft: <strong>Servicegebühren & Trinkgelder</strong> (+20-25%), <strong>Überstunden</strong> der Dienstleister und <strong>Änderungskosten</strong> für Kleidung.</p>
+
+                    <h4>Hochzeitstrends 2026</h4>
+                    <p>Mikro-Hochzeiten und "Sequel-Weddings" liegen im Trend, mit Fokus auf <strong>Gästeerlebnis</strong> statt Quantität.</p>
                 </div>
             `,
             fr: `
                 <div class="prose">
                     <h3>Planifiez le mariage de vos rêves en 2026</h3>
                     <p>Un mariage moyen en 2026 coûte entre <strong>30 000 et 50 000 €</strong>, mais votre budget dépend entièrement de vos priorités. Ce calculateur vous aide à voir la <em>vue d'ensemble</em> avant de vous engager.</p>
+                    
+                    <h4>Répartition Intelligente du Budget</h4>
                     <ul>
-                        <li><strong>Lieu et Réception :</strong> Généralement 40 à 50 % du budget total.</li>
-                        <li><strong>Traiteur :</strong> Comptez 75 à 200 € par invité.</li>
-                        <li><strong>Photographie :</strong> Ne lésinez pas ici, ce sont vos souvenirs durables.</li>
+                        <li><strong>Lieu et Réception (40-50%) :</strong> La plus grosse dépense. Inclut location, repas et boissons.</li>
+                        <li><strong>Photographie (10-12%) :</strong> Ne lésinez pas ici, ce sont vos souvenirs durables.</li>
+                        <li><strong>Tenues et Alliances (8-10%) :</strong> Robe, costume, retouches et bagues.</li>
+                        <li><strong>Fleurs et Décoration (8-10%) :</strong> Éclairage, centres de table et bouquets.</li>
                     </ul>
-                    <p>Utilisez la métrique du <strong>coût par invité</strong> pour comparer équitablement les lieux.</p>
+
+                    <h4>Coûts Cachés à Surveiller</h4>
+                    <p>On oublie souvent : <strong>Frais de service et pourboires</strong> (+20-25%), <strong>heures supplémentaires</strong> des prestataires et <strong>retouches</strong>.</p>
+
+                    <h4>Tendances Mariage 2026</h4>
+                    <p>Les micro-mariages et mariages "séquencés" sont tendance, privilégiant la <strong>qualité de l'expérience</strong> à la quantité d'invités.</p>
                 </div>
             `,
             pt: `
@@ -1915,6 +2371,12 @@ module.exports = {
                         <li><strong>Fotografia:</strong> Não economize aqui — estas são suas memórias eternas.</li>
                     </ul>
                     <p>Use a métrica de <strong>custo por convidado</strong> para comparar locais de forma justa.</p>
+
+                    <h4>Custos Ocultos de 2026</h4>
+                    <p>Cuidado com: <strong>Taxas de serviço</strong> (20-25%), <strong>horas extras</strong> de fornecedores e <strong>ajustes</strong> de trajes.</p>
+
+                    <h4>Tendências de Casamento</h4>
+                    <p>Micro-casamentos e foco na <strong>experiência do convidado</strong> (qualidade sobre quantidade) estão em alta.</p>
                 </div>
             `,
             it: `
@@ -1927,6 +2389,12 @@ module.exports = {
                         <li><strong>Fotografia:</strong> Non risparmiare qui: sono i tuoi ricordi per la vita.</li>
                     </ul>
                     <p>Usa la metrica del <strong>costo per invitato</strong> per confrontare equamente le location.</p>
+
+                    <h4>Costi Nascosti nel 2026</h4>
+                    <p>Attenzione a: <strong>Costi di servizio</strong> (20-25%), <strong>straordinari</strong> dei fornitori e <strong>modifiche</strong> agli abiti.</p>
+
+                    <h4>Trend Matrimoni</h4>
+                    <p>I micro-matrimoni e l'attenzione all'<strong>esperienza degli ospiti</strong> (qualità sopra quantità) sono in crescita.</p>
                 </div>
             `,
             nl: `
@@ -1939,6 +2407,12 @@ module.exports = {
                         <li><strong>Fotografie:</strong> Bespaar hier niet op – dit zijn uw blijvende herinneringen.</li>
                     </ul>
                     <p>Gebruik de <strong>kosten per gast</strong> om locaties eerlijk te vergelijken.</p>
+
+                    <h4>Verborgen Kosten in 2026</h4>
+                    <p>Let op: <strong>Servicekosten</strong> (20-25%), <strong>overuren</strong> van leveranciers en <strong>kledingaanpassingen</strong>.</p>
+
+                    <h4>Bruiloft Trends</h4>
+                    <p>Micro-bruiloften en focus op <strong>gastbeleving</strong> (kwaliteit boven kwantiteit) zijn populair.</p>
                 </div>
             `,
             pl: `
@@ -1951,6 +2425,12 @@ module.exports = {
                         <li><strong>Fotografia:</strong> Nie oszczędzaj tutaj — to Twoje pamiątki na całe życie.</li>
                     </ul>
                     <p>Użyj wskaźnika <strong>kosztu na gościa</strong>, aby sprawiedliwie porównać oferty.</p>
+
+                    <h4>Ukryte Koszty 2026</h4>
+                    <p>Uwaga na: <strong>Opłaty serwisowe</strong> (20-25%), <strong>nadgodziny</strong> usługodawców i <strong>poprawki krawieckie</strong>.</p>
+
+                    <h4>Trendy Weselne</h4>
+                    <p>Mikrowesela i skupienie na <strong>doświadczeniu gości</strong> (jakość ponad ilość) są na czasie.</p>
                 </div>
             `,
             sv: `
@@ -1963,6 +2443,12 @@ module.exports = {
                         <li><strong>Fotografi:</strong> Snåla inte här – det här är dina livslånga minnen.</li>
                     </ul>
                     <p>Använd mätvärdet <strong>kostnad per gäst</strong> för att jämföra lokaler på ett rättvist sätt.</p>
+
+                    <h4>Dolda Kostnader 2026</h4>
+                    <p>Se upp för: <strong>Serviceavgifter</strong> (20-25%), <strong>övertid</strong> och <strong>skrädderiändringar</strong>.</p>
+
+                    <h4>Bröllopstrender</h4>
+                    <p>Mikrobröllop och fokus på <strong>gästupplevelse</strong> (kvalitet över kvantitet) är trendigt.</p>
                 </div>
             `,
             no: `
@@ -1975,6 +2461,12 @@ module.exports = {
                         <li><strong>Fotografering:</strong> Ikke spar her – dette er minnene dine for livet.</li>
                     </ul>
                     <p>Bruk <strong>kostnad per gjest</strong> for å sammenligne lokaler og holde deg innenfor budsjettet.</p>
+
+                    <h4>Skjulte Kostnader i 2026</h4>
+                    <p>Se opp for: <strong>Servicegebyrer</strong> (20-25%), <strong>overtid</strong> og <strong>tilpasning av klær</strong>.</p>
+
+                    <h4>Bryllupstrender</h4>
+                    <p>Mikrobryllup og fokus på <strong>gjesteopplevelse</strong> (kvalitet over kvantitet) er i vinden.</p>
                 </div>
             `,
             da: `
@@ -1987,6 +2479,12 @@ module.exports = {
                         <li><strong>Fotografi:</strong> Spar ikke her – det er dine varige minder.</li>
                     </ul>
                     <p>Brug <strong>omkostning pr. gæst</strong> til at sammenligne steder på en retfærdig måde.</p>
+
+                    <h4>Skjulte Omkostninger 2026</h4>
+                    <p>Vær opmærksom på: <strong>Servicegebyrer</strong> (20-25%), <strong>overarbejde</strong> og <strong>skrædderændringer</strong>.</p>
+
+                    <h4>Bryllupstrends</h4>
+                    <p>Mikrobryllupper og fokus på <strong>gæsteoplevelse</strong> (kvalitet frem for kvantitet) er populært.</p>
                 </div>
             `,
             fi: `
@@ -1999,6 +2497,12 @@ module.exports = {
                         <li><strong>Valokuvaus:</strong> Älä säästä tässä — nämä ovat elinikäisiä muistojasi.</li>
                     </ul>
                     <p>Käytä <strong>kustannus per vieras</strong> -mittaria vertaillaksesi hääpaikkoja tasapuolisesti.</p>
+
+                    <h4>Vuoden 2026 Piilokulut</h4>
+                    <p>Varo: <strong>Palvelumaksut</strong> (20-25%), <strong>ylityöt</strong> ja <strong>pukujen korjausompelu</strong>.</p>
+
+                    <h4>Häätrendit</h4>
+                    <p>Mikrohäät ja panostus <strong>vieraskokemukseen</strong> (laatu määrän sijaan) ovat nousussa.</p>
                 </div>
             `
         },
@@ -2214,157 +2718,193 @@ module.exports = {
             en: `
                 <div class="prose">
                     <h3>How Much Does New Flooring Cost in 2026?</h3>
-                    <p>Flooring costs vary dramatically based on material and labor rates. This calculator accounts for <strong>material waste</strong> (typically 10% extra for cuts and mistakes) to give you a realistic budget.</p>
+                    <p>Flooring costs vary dramatically based on material and labor. This calculator includes a <strong>10% waste factor</strong> for cuts and mistakes.</p>
                     <ul>
-                        <li><strong>Hardwood:</strong> $6-12 per sq ft installed</li>
-                        <li><strong>Laminate:</strong> $3-8 per sq ft installed</li>
-                        <li><strong>Tile:</strong> $5-15 per sq ft installed</li>
-                        <li><strong>Carpet:</strong> $2-6 per sq ft installed</li>
+                        <li><strong>Luxury Vinyl Plank (LVP):</strong> $4-8/sq ft. Trending in 2026 for durability & waterproofing.</li>
+                        <li><strong>Hardwood:</strong> $8-15/sq ft. Timeless and adds ~2.5% to home value.</li>
+                        <li><strong>Tile:</strong> $9-20/sq ft. Best for bathrooms but labor-intensive.</li>
                     </ul>
-                    <p>Always get quotes from <strong>3+ contractors</strong> and ask about warranty on both materials and labor.</p>
+
+                    <h4>DIY vs. Professional Installation</h4>
+                    <p>Installing LVP yourself can save <strong>$2-4 per sq ft</strong> in labor. However, hardwood and tile require professional leveling and tools for best results.</p>
+                    
+                    <p><strong>Pro Tip:</strong> Buy 20% extra material if laying tile in a diagonal pattern.</p>
                 </div>
             `,
             es: `
                 <div class="prose">
                     <h3>¿Cuánto cuesta un suelo nuevo en 2026?</h3>
-                    <p>Los costos varían según el material y la mano de obra. Esta calculadora incluye un <strong>margen de desperdicio</strong> (generalmente un 10%) para darte un presupuesto realista.</p>
+                    <p>Los costos varían según el material. Esta calculadora incluye un <strong>10% de desperdicio</strong> para cortes y errores.</p>
                     <ul>
-                        <li><strong>Madera:</strong> 60-120 € por m² instalado.</li>
-                        <li><strong>Laminado:</strong> 30-80 € por m² instalado.</li>
-                        <li><strong>Baldosa:</strong> 50-150 € por m² instalado.</li>
-                        <li><strong>Moqueta:</strong> 20-60 € por m² instalado.</li>
+                        <li><strong>Vinilo de Lujo (LVP):</strong> 40-80 €/m². Tendencia 2026 por ser impermeable y duradero.</li>
+                        <li><strong>Madera Maciza:</strong> 80-150 €/m². Atemporal y añade ~2.5% al valor de casa.</li>
+                        <li><strong>Baldosa/Cerámica:</strong> 90-200 €/m². Ideal para baños pero requiere instalación experta.</li>
                     </ul>
-                    <p>Pide siempre presupuesto a <strong>más de 3 contratistas</strong> y consulta la garantía.</p>
+
+                    <h4>Instalación: ¿Bricolaje o Profesional?</h4>
+                    <p>Instalar vinilo tú mismo ahorra <strong>20-40 € por m²</strong>. Sin embargo, la madera y la cerámica requieren nivelación profesional.</p>
+                    
+                    <p><strong>Consejo Pro:</strong> Compra un 20% extra si colocas baldosas en diagonal.</p>
                 </div>
             `,
             de: `
                 <div class="prose">
                     <h3>Was kostet ein neuer Boden im Jahr 2026?</h3>
-                    <p>Die Kosten variieren je nach Material und Arbeitsaufwand. Dieser Rechner berücksichtigt den <strong>Materialverschnitt</strong> (ca. 10%), um ein realistisches Budget zu bieten.</p>
+                    <p>Kosten variieren je nach Material. Dieser Rechner plant <strong>10% Verschnitt</strong> für Zuschnitte ein.</p>
                     <ul>
-                        <li><strong>Hartholz:</strong> 60-120 € pro m² inkl. Verlegung.</li>
-                        <li><strong>Laminat:</strong> 30-80 € pro m² inkl. Verlegung.</li>
-                        <li><strong>Fliesen:</strong> 50-150 € pro m² inkl. Verlegung.</li>
-                        <li><strong>Teppich:</strong> 20-60 € pro m² inkl. Verlegung.</li>
+                        <li><strong>Vinyl (LVP):</strong> 40-80 €/m². Trend 2026, da wasserfest und langlebig.</li>
+                        <li><strong>Echtholzparkett:</strong> 80-150 €/m². Zeitlos und steigert den Hauswert um ~2.5%.</li>
+                        <li><strong>Fliesen:</strong> 90-200 €/m². Beste Wahl für Bäder, aber aufwendig zu verlegen.</li>
                     </ul>
-                    <p>Holen Sie Angebote von <strong>mindestens 3 Firmen</strong> ein und achten Sie auf die Garantie.</p>
+
+                    <h4>Selbst verlegen oder Profi?</h4>
+                    <p>Vinyl selbst zu verlegen spart <strong>20-40 € pro m²</strong>. Parkett und Fliesen erfordern jedoch professionelles Nivellieren.</p>
+                    
+                    <p><strong>Profi-Tipp:</strong> Kaufen Sie 20% mehr Material bei diagonaler Verlegung.</p>
                 </div>
             `,
             fr: `
                 <div class="prose">
                     <h3>Quel est le coût d'un nouveau sol en 2026 ?</h3>
-                    <p>Les coûts varient selon le matériau et la main-d'œuvre. Ce calculateur inclut une <strong>marge de perte</strong> (10% en moyenne) pour un budget réaliste.</p>
+                    <p>Les prix varient selon les matériaux. Ce calculateur inclut <strong>10% de marge</strong> pour les découpes.</p>
                     <ul>
-                        <li><strong>Parquet massif :</strong> 60-120 € par m² posé.</li>
-                        <li><strong>Stratifié :</strong> 30-80 € par m² posé.</li>
-                        <li><strong>Carrelage :</strong> 50-150 € par m² posé.</li>
-                        <li><strong>Moquette :</strong> 20-60 € par m² posé.</li>
+                        <li><strong>Vinyle de Luxe (LVP):</strong> 40-80 €/m². Tendance 2026, étanche et durable.</li>
+                        <li><strong>Parquet Massif:</strong> 80-150 €/m². Intemporel et ajoute ~2.5% à la valeur immo.</li>
+                        <li><strong>Carrelage:</strong> 90-200 €/m². Idéal pour pièces humides mais pose complexe.</li>
                     </ul>
-                    <p>Demandez toujours des devis à <strong>plus de 3 entrepreneurs</strong> et vérifiez les garanties.</p>
+
+                    <h4>Bricolage ou Pro ?</h4>
+                    <p>Poser du vinyle soi-même économise <strong>20-40 € par m²</strong>. Le parquet et le carrelage nécessitent un ragréage professionnel.</p>
+                    
+                    <p><strong>Conseil Pro :</strong> Achetez 20% de rab si vous posez en diagonale.</p>
                 </div>
             `,
             pt: `
                 <div class="prose">
                     <h3>Quanto custa um piso novo em 2026?</h3>
-                    <p>Os custos variam conforme o material e a mão de obra. Esta calculadora considera o <strong>desperdício de material</strong> (cerca de 10%) para um orçamento realista.</p>
+                    <p>Os custos variam por material. Esta calculadora inclui <strong>10% de quebra</strong> para cortes.</p>
                     <ul>
-                        <li><strong>Madeira:</strong> R$ 60-120 por m² instalado.</li>
-                        <li><strong>Laminado:</strong> R$ 30-80 por m² instalado.</li>
-                        <li><strong>Porcelanato:</strong> R$ 50-150 por m² instalado.</li>
-                        <li><strong>Carpete:</strong> R$ 20-60 por m² instalado.</li>
+                        <li><strong>Vinílico (LVP):</strong> R$ 40-80/m². Tendência 2026 por ser à prova d'água.</li>
+                        <li><strong>Madeira Nobre:</strong> R$ 150-300/m². Valoriza o imóvel em ~2.5%.</li>
+                        <li><strong>Porcelanato:</strong> R$ 100-250/m². Melhor para áreas úmidas.</li>
                     </ul>
-                    <p>Solicite orçamentos de <strong>ao menos 3 profissionais</strong> e pergunte sobre garantias.</p>
+
+                    <h4>DIY vs Profissional</h4>
+                    <p>Instalar vinílico você mesmo economiza <strong>R$ 30-60 por m²</strong>. Já madeira e porcelanato exigem nivelamento profissional.</p>
+                    
+                    <p><strong>Dica Pro:</strong> Compre 20% a mais se for instalar na diagonal.</p>
                 </div>
             `,
             it: `
                 <div class="prose">
                     <h3>Quanto costa un nuovo pavimento nel 2026?</h3>
-                    <p>I costi variano in base al materiale e alla manodopera. Questo calcolatore include lo <strong>sfrido</strong> (circa il 10%) per un budget realistico.</p>
+                    <p>I costi dipendono dai materiali. Il calcolatore include il <strong>10% di scarto</strong> per i tagli.</p>
                     <ul>
-                        <li><strong>Parquet:</strong> 60-120 € al m² posato.</li>
-                        <li><strong>Laminato:</strong> 30-80 € al m² posato.</li>
-                        <li><strong>Piastrelle:</strong> 50-150 € al m² posato.</li>
-                        <li><strong>Moquette:</strong> 20-60 € al m² posato.</li>
+                        <li><strong>Vinile (LVP):</strong> 40-80 €/m². Trend 2026, impermeabile e resistente.</li>
+                        <li><strong>Parquet:</strong> 80-150 €/m². Aumenta il valore della casa del ~2.5%.</li>
+                        <li><strong>Gres/Piastrelle:</strong> 90-200 €/m². Ideale per bagni ma posa complessa.</li>
                     </ul>
-                    <p>Chiedi sempre preventivi a <strong>più di 3 ditte</strong> e verifica le garanzie su materiali e posa.</p>
+
+                    <h4>Fai da Te o Professionista?</h4>
+                    <p>La posa fai da te del vinile fa risparmiare <strong>20-40 € al m²</strong>. Parquet e gres richiedono un massetto perfetto.</p>
+                    
+                    <p><strong>Consiglio Pro:</strong> Prendi il 20% in più se posi in diagonale.</p>
                 </div>
             `,
             nl: `
                 <div class="prose">
                     <h3>Wat kost een nieuwe vloer in 2026?</h3>
-                    <p>De kosten variëren per materiaal en arbeidstarief. Deze calculator houdt rekening met <strong>materiaalverlies</strong> (ca. 10%) voor een realistisch budget.</p>
+                    <p>Kosten variëren per materiaal. Deze calculator rekent <strong>10% snijverlies</strong> mee.</p>
                     <ul>
-                        <li><strong>Hardhout:</strong> € 60-120 per m² gelegd.</li>
-                        <li><strong>Laminaat:</strong> € 30-80 per m² gelegd.</li>
-                        <li><strong>Tegels:</strong> € 50-150 per m² gelegd.</li>
-                        <li><strong>Tapijt:</strong> € 20-60 per m² gelegd.</li>
+                        <li><strong>PVC (LVP):</strong> € 40-80/m². Trend 2026, waterbestendig en slijtvast.</li>
+                        <li><strong>Hardhout:</strong> € 80-150/m². Tijdloos en verhoogt woningwaarde ~2.5%.</li>
+                        <li><strong>Tegels:</strong> € 90-200/m². Beste voor badkamers, wel arbeidsintensief.</li>
                     </ul>
-                    <p>Vraag altijd offertes aan bij <strong>3+ aannemers</strong> en let op de garantie.</p>
+
+                    <h4>Zelf doen of laten leggen?</h4>
+                    <p>PVC zelf leggen bespaart <strong>€ 20-40 per m²</strong>. Hout en tegels vereisen vaak een professional voor egalisatie.</p>
+                    
+                    <p><strong>Pro Tip:</strong> Koop 20% extra bij diagonaal leggen.</p>
                 </div>
             `,
             pl: `
                 <div class="prose">
                     <h3>Ile kosztuje nowa podłoga w 2026 roku?</h3>
-                    <p>Koszty zależą od materiału i stawek robocizny. Kalkulator uwzględnia <strong>naddatek na odpady</strong> (ok. 10%), aby podać realistyczny budżet.</p>
+                    <p>Koszty zależą od materiału. Kalkulator dolicza <strong>10% na odpady</strong>.</p>
                     <ul>
-                        <li><strong>Drewno:</strong> 60-120 zł za m² z montażem.</li>
-                        <li><strong>Panele:</strong> 30-80 zł za m² z montażem.</li>
-                        <li><strong>Płytki:</strong> 50-150 zł za m² z montażem.</li>
-                        <li><strong>Wykładzina:</strong> 20-60 zł za m² z montażem.</li>
+                        <li><strong>Panele winylowe (LVP):</strong> 80-160 zł/m². Hit 2026, wodoodporne i trwałe.</li>
+                        <li><strong>Deska lita:</strong> 250-500 zł/m². Ponadczasowa, podnosi wartość domu o ~2.5%.</li>
+                        <li><strong>Płytki:</strong> 150-400 zł/m². Idealne do łazienek, ale trudne w montażu.</li>
                     </ul>
-                    <p>Zawsze zbieraj oferty od <strong>min. 3 wykonawców</strong> i pytaj o gwarancję.</p>
+
+                    <h4>Samodzielnie czy z fachowcem?</h4>
+                    <p>Układanie paneli samemu oszczędza <strong>50-100 zł za m²</strong>. Drewno i płytki wymagają fachowca do wylewki.</p>
+                    
+                    <p><strong>Porada:</strong> Kup 20% więcej przy układaniu w karo.</p>
                 </div>
             `,
-            sv: SwedishContent = `
+            sv: `
                 <div class="prose">
                     <h3>Vad kostar ett nytt golv 2026?</h3>
-                    <p>Golvkostnader varierar kraftigt beroende på material och arbetskostnad. Denna kalkylator räknar med <strong>spill</strong> (ca 10 %) för en realistisk budget.</p>
+                    <p>Kostnaden beror på material. Kalkylatorn lägger på <strong>10 % spill</strong>.</p>
                     <ul>
-                        <li><strong>Trägolv:</strong> 600-1200 kr per m² lagt.</li>
-                        <li><strong>Laminat:</strong> 300-800 kr per m² lagt.</li>
-                        <li><strong>Klinker:</strong> 500-1500 kr per m² lagt.</li>
-                        <li><strong>Matta:</strong> 200-600 kr per m² lagt.</li>
+                        <li><strong>Vinylklick (LVP):</strong> 400-800 kr/m². Trend 2026, vattentåligt och hållbart.</li>
+                        <li><strong>Massivt trä:</strong> 800-1500 kr/m². Tidlöst och ökar husvärdet med ~2.5 %.</li>
+                        <li><strong>Klinker:</strong> 900-2000 kr/m². Bäst för badrum men arbetskrävande.</li>
                     </ul>
-                    <p>Ta alltid in offerter från <strong>mer än 3 entreprenörer</strong> och kolla garantierna.</p>
+
+                    <h4>Göra själv eller anlita?</h4>
+                    <p>Att lägga golv själv sparar <strong>300-600 kr per m²</strong>. Trä och klinker kräver ofta proffs för underarbetet.</p>
+                    
+                    <p><strong>Tips:</strong> Köp 20 % extra vid diagonal läggning.</p>
                 </div>
             `,
             no: `
                 <div class="prose">
                     <h3>Hva koster nytt gulv i 2026?</h3>
-                    <p>Gulvkostnader varierer etter materialvalg og arbeid. Denne kalkulatoren tar hensyn til <strong>svinn</strong> (ca. 10 %) for et realistisk budsjett.</p>
+                    <p>Kostnaden avhenger av materialet. Kalkulatoren legger til <strong>10 % svinn</strong>.</p>
                     <ul>
-                        <li><strong>Heltre:</strong> 600-1200 kr per m² lagt.</li>
-                        <li><strong>Laminat:</strong> 300-800 kr per m² lagt.</li>
-                        <li><strong>Fliser:</strong> 500-1500 kr per m² lagt.</li>
-                        <li><strong>Teppe:</strong> 200-600 kr per m² lagt.</li>
+                        <li><strong>Klikkvinyl (LVP):</strong> 400-800 kr/m². Trend 2026, vanntett og slitesterkt.</li>
+                        <li><strong>Heltre:</strong> 800-1500 kr/m². Tidløst og øker boligverdien med ~2.5 %.</li>
+                        <li><strong>Fliser:</strong> 900-2000 kr/m². Best for bad, men krever mye arbeid.</li>
                     </ul>
-                    <p>Hent alltid inn tilbud fra <strong>minst 3 firmaer</strong> og sjekk garantivilkårene.</p>
+
+                    <h4>Gjøre selv eller fagfolk?</h4>
+                    <p>Å legge gulv selv sparer <strong>300-600 kr per m²</strong>. Tre og flis krever ofte fagfolk for avretting.</p>
+                    
+                    <p><strong>Tips:</strong> Kjøp 20 % ekstra ved diagonal legging.</p>
                 </div>
             `,
             da: `
                 <div class="prose">
                     <h3>Hvad koster et nyt gulv i 2026?</h3>
-                    <p>Gulvpriser varierer efter materiale og arbejdsløn. Denne beregner inkluderer <strong>spild</strong> (ca. 10 %) for et realistisk budget.</p>
+                    <p>Prisen afhænger af materialet. Beregneren inkluderer <strong>10 % spild</strong> til tilskæring.</p>
                     <ul>
-                        <li><strong>Trægulv:</strong> 600-1.200 kr. pr. m² lagt.</li>
-                        <li><strong>Laminat:</strong> 300-800 kr. pr. m² lagt.</li>
-                        <li><strong>Fliser:</strong> 500-1.500 kr. pr. m² lagt.</li>
-                        <li><strong>Tæppe:</strong> 200-600 kr. pr. m² lagt.</li>
+                        <li><strong>Klikvinyl (LVP):</strong> 400-800 kr. pr. m². Hit i 2026, vandtæt og slidstærkt.</li>
+                        <li><strong>Massivt træ:</strong> 800-1.500 kr. pr. m². Tidløst og øger boligværdien med ~2.5 %.</li>
+                        <li><strong>Fliser:</strong> 900-2.000 kr. pr. m². Bedst til badeværelser, men arbejdskrævende.</li>
                     </ul>
-                    <p>Indhent altid tilbud fra <strong>mindst 3 entreprenører</strong> og spørg ind til garantien.</p>
+
+                    <h4>Gør-det-selv eller håndværker?</h4>
+                    <p>At lægge gulv selv sparer <strong>300-600 kr. pr. m²</strong>. Træ og fliser kræver ofte fagfolk til opretning.</p>
+                    
+                    <p><strong>Tip:</strong> Køb 20 % ekstra ved diagonal lægning.</p>
                 </div>
             `,
             fi: `
                 <div class="prose">
                     <h3>Paljonko uusi lattia maksaa vuonna 2026?</h3>
-                    <p>Lattian hinta vaihtelee materiaalin ja työn hinnan mukaan. Laskuri huomioi <strong>materiaalin hukan</strong> (noin 10 %) realistisen budjetin saamiseksi.</p>
+                    <p>Hinta riippuu materiaalista. Laskuri huomioi <strong>10 % hukan</strong>.</p>
                     <ul>
-                        <li><strong>Puu:</strong> 60–120 € / m² asennettuna.</li>
-                        <li><strong>Laminaatti:</strong> 30–80 € / m² asennettuna.</li>
-                        <li><strong>Laatta:</strong> 50–150 € / m² asennettuna.</li>
-                        <li><strong>Matto:</strong> 20–60 € / m² asennettuna.</li>
+                        <li><strong>Vinyylilankku (LVP):</strong> 40–80 €/m². Vuoden 2026 trendi, vedenkestävä.</li>
+                        <li><strong>Massiivipuu:</strong> 80–150 €/m². Ajaton, nostaa asunnon arvoa ~2.5 %.</li>
+                        <li><strong>Laatta:</strong> 90–200 €/m². Paras kosteisiin tiloihin, mutta työläs.</li>
                     </ul>
-                    <p>Pyydä tarjoukset <strong>vähintään kolmelta urakoitsijalta</strong> ja tarkista takuuehdot.</p>
+
+                    <h4>Tee-se-itse vai ammattilainen?</h4>
+                    <p>Vinyylin asentaminen itse säästää <strong>20–40 € / m²</strong>. Puu ja laatta vaativat ammattilaisen tasoituksen.</p>
+                    
+                    <p><strong>Vinkki:</strong> Osta 20 % ylimääräistä, jos asennat vinoon.</p>
                 </div>
             `
         },
@@ -2575,145 +3115,169 @@ module.exports = {
             en: `
                 <div class="prose">
                     <h3>Roof Replacement Cost in 2026</h3>
-                    <p>A new roof is one of the largest home improvement investments. This calculator factors in <strong>roof pitch</strong> and <strong>waste allowance</strong> to give you an accurate cost estimate.</p>
+                    <p>A new roof is a major investment. This calculator factors in <strong>pitch</strong> and <strong>waste</strong>.</p>
                     <ul>
-                        <li><strong>Asphalt Shingles:</strong> $350-500 per square (100 sq ft)</li>
-                        <li><strong>Metal Roofing:</strong> $600-1,200 per square</li>
-                        <li><strong>Tile/Slate:</strong> $1,000-2,500 per square</li>
+                        <li><strong>Asphalt Shingles:</strong> $350-550/square. Lifespan: 15-30 years. Most common choice.</li>
+                        <li><strong>Metal Roofing:</strong> $800-1,500/square. Lifespan: 40-70 years. Energy efficient & durable.</li>
+                        <li><strong>Tile/Slate:</strong> $1,200-3,000/square. Lifespan: 50+ years. Heavy, requires reinforced structure.</li>
                     </ul>
-                    <p>Steeper roofs (higher pitch) require more material and labor. The <strong>pitch multiplier</strong> accounts for this.</p>
+
+                    <h4>Hidden Costs to Watch</h4>
+                    <p><strong>Tear-off:</strong> Removing old shingles adds $1-2 per sq ft. <strong>Steep Pitch:</strong> Roofs steeper than 6:12 cost 20-50% more due to safety requirements.</p>
                 </div>
             `,
             es: `
                 <div class="prose">
                     <h3>Costo de Reemplazo de Techo en 2026</h3>
-                    <p>Un techo nuevo es una gran inversión. Esta calculadora considera la <strong>inclinación</strong> y el <strong>margen de desperdicio</strong> para darte una estimación precisa.</p>
+                    <p>Una gran inversión para tu hogar. Esta calculadora considera <strong>inclinación</strong> y <strong>desperdicio</strong>.</p>
                     <ul>
-                        <li><strong>Tejas Asfálticas:</strong> 350-500 € por cuadrado (9.3 m²).</li>
-                        <li><strong>Techos de Metal:</strong> 600-1.200 € por cuadrado.</li>
-                        <li><strong>Teja/Pizarra:</strong> 1.000-2.500 € por cuadrado.</li>
+                        <li><strong>Tejas Asfálticas:</strong> 350-550 €/cuadrado. Vida útil: 15-30 años. Opción más común.</li>
+                        <li><strong>Techo de Metal:</strong> 800-1.500 €/cuadrado. Vida útil: 40-70 años. Eficiente y duradero.</li>
+                        <li><strong>Teja/Pizarra:</strong> 1.200-3.000 €/cuadrado. Vida útil: 50+ años. Pesado, requiere refuerzo.</li>
                     </ul>
-                    <p>Los techos más inclinados requieren más material y mano de obra.</p>
+
+                    <h4>Costos Ocultos</h4>
+                    <p><strong>Retirada:</strong> Quitar el techo viejo suma 10-20 €/m². <strong>Inclinación:</strong> Techos muy inclinados cuestan 20-50% más por seguridad.</p>
                 </div>
             `,
             de: `
                 <div class="prose">
                     <h3>Kosten für Dachsanierung im Jahr 2026</h3>
-                    <p>Ein neues Dach ist eine große Investition. Dieser Rechner berücksichtigt die <strong>Dachneigung</strong> und den <strong>Verschnitt</strong> für eine genaue Kostenschätzung.</p>
+                    <p>Eine wichtige Investition. Dieser Rechner berücksichtigt <strong>Neigung</strong> und <strong>Verschnitt</strong>.</p>
                     <ul>
-                        <li><strong>Bitumenschindeln:</strong> 350-500 € pro Quadrat (ca. 10 m²).</li>
-                        <li><strong>Metalldach:</strong> 600-1.200 € pro Quadrat.</li>
-                        <li><strong>Ziegel/Schiefer:</strong> 1.000-2.500 € pro Quadrat.</li>
+                        <li><strong>Bitumenschindeln:</strong> 35-55 €/m². Lebensdauer: 15-30 Jahre. Standardwahl.</li>
+                        <li><strong>Metalldach:</strong> 80-150 €/m². Lebensdauer: 40-70 Jahre. Energieeffizient & langlebig.</li>
+                        <li><strong>Ziegel/Schiefer:</strong> 120-300 €/m². Lebensdauer: 50+ Jahre. Schwer, erfordert stabile Struktur.</li>
                     </ul>
-                    <p>Steilere Dächer erfordern mehr Material und Arbeitszeit.</p>
+
+                    <h4>Versteckte Kosten</h4>
+                    <p><strong>Abriss:</strong> Altes Dach entfernen kostet 10-20 €/m². <strong>Steilheit:</strong> Dächer über 30° Neigung kosten 20-50% mehr wegen Sicherung.</p>
                 </div>
             `,
             fr: `
                 <div class="prose">
                     <h3>Coût de remplacement de toiture en 2026</h3>
-                    <p>Une nouvelle toiture est un investissement majeur. Ce calculateur prend en compte la <strong>pente du toit</strong> et la <strong>marge de perte</strong>.</p>
+                    <p>Un investissement majeur. Ce calculateur inclut <strong>pente</strong> et <strong>pertes</strong>.</p>
                     <ul>
-                        <li><strong>Bardeaux d'asphalte :</strong> 350-500 € par carré (approx. 9,3 m²).</li>
-                        <li><strong>Toiture métallique :</strong> 600-1 200 € par carré.</li>
-                        <li><strong>Tuile / Ardoise :</strong> 1 000-2 500 € par carré.</li>
+                        <li><strong>Bardeaux d'Asphalte :</strong> 35-55 €/m². Durée : 15-30 ans. Choix standard.</li>
+                        <li><strong>Toiture Métallique :</strong> 80-150 €/m². Durée : 40-70 ans. Durable et isolant.</li>
+                        <li><strong>Tuile/Ardoise :</strong> 120-300 €/m². Durée : 50+ ans. Lourd, structure renforcée requise.</li>
                     </ul>
-                    <p>Les toits plus pentus nécessitent plus de matériaux et de main-d'œuvre.</p>
+
+                    <h4>Coûts Cachés</h4>
+                    <p><strong>Dépose :</strong> Enlever l'ancien toit coûte 10-20 €/m². <strong>Pente :</strong> Les toits très pentus coûtent 20-50% plus cher (sécurité).</p>
                 </div>
             `,
             pt: `
                 <div class="prose">
                     <h3>Custo de substituição de telhado em 2026</h3>
-                    <p>Um telhado novo é um grande investimento. Esta calculadora considera a <strong>inclinação do telhado</strong> e a <strong>margem de desperdício</strong>.</p>
+                    <p>Um grande investimento. Esta calculadora fatora <strong>inclinação</strong> e <strong>desperdício</strong>.</p>
                     <ul>
-                        <li><strong>Telhas Asfálticas:</strong> R$ 350-500 por quadrado (aprox. 9,3 m²).</li>
-                        <li><strong>Telhado de Metal:</strong> R$ 600-1.200 por quadrado.</li>
-                        <li><strong>Telha/Vantagem:</strong> R$ 1.000-2.500 por quadrado.</li>
+                        <li><strong>Telhas Asfálticas:</strong> R$ 150-250/m². Vida útil: 15-30 anos. Mais comum.</li>
+                        <li><strong>Telhado de Metal:</strong> R$ 300-600/m². Vida útil: 40-70 anos. Eficiente e durável.</li>
+                        <li><strong>Cerâmica/Ardósia:</strong> R$ 400-800/m². Vida útil: 50+ anos. Pesado, exige reforço.</li>
                     </ul>
-                    <p>Telhados mais inclinados exigem mais material e mão de obra.</p>
+
+                    <h4>Custos Ocultos</h4>
+                    <p><strong>Remoção:</strong> Retirar telhado antigo custa R$ 30-50/m². <strong>Inclinação:</strong> Telhados íngremes custam 20-50% mais pela segurança.</p>
                 </div>
             `,
             it: `
                 <div class="prose">
                     <h3>Costo rifacimento tetto nel 2026</h3>
-                    <p>Un nuovo tetto è un investimento importante. Questo calcolatore considera la <strong>pendenza</strong> e lo <strong>sfrido dei materiali</strong>.</p>
+                    <p>Un investimento importante. Il calcolatore considera <strong>pendenza</strong> e <strong>scarto</strong>.</p>
                     <ul>
-                        <li><strong>Tegole canadesi:</strong> 350-500 € per quadrato (circa 9,3 m²).</li>
-                        <li><strong>Tetto in metallo:</strong> 600-1.200 € per quadrato.</li>
-                        <li><strong>Tegole/Ardesia:</strong> 1.000-2.500 € per quadrato.</li>
+                        <li><strong>Tegole Bituminose:</strong> 35-55 €/m². Durata: 15-30 anni. Scelta standard.</li>
+                        <li><strong>Tetto in Metallo:</strong> 80-150 €/m². Durata: 40-70 anni. Efficiente e durevole.</li>
+                        <li><strong>Coppi/Ardesia:</strong> 120-300 €/m². Durata: 50+ anni. Pesante, richiede rinforzo.</li>
                     </ul>
-                    <p>I tetti più ripidi richiedono più materiale e manodopera.</p>
+
+                    <h4>Costi Nascosti</h4>
+                    <p><strong>Rimozione:</strong> Togliere il vecchio tetto costa 15-25 €/m². <strong>Pendenza:</strong> Tetti ripidi costano il 20-50% in più per la sicurezza.</p>
                 </div>
             `,
             nl: `
                 <div class="prose">
                     <h3>Kosten voor dakvervanging in 2026</h3>
-                    <p>Een nieuw dak is een grote investering. Deze calculator houdt rekening met de <strong>dakhelling</strong> en <strong>materiaalverlies</strong>.</p>
+                    <p>Een grote investering. Deze calculator berekent <strong>helling</strong> en <strong>verlies</strong>.</p>
                     <ul>
-                        <li><strong>Bitumen shingles:</strong> € 350-500 per square (ca. 9,3 m²).</li>
-                        <li><strong>Metalen dakbedekking:</strong> € 600-1.200 per square.</li>
-                        <li><strong>Dakpannen/Leisteen:</strong> € 1.000-2.500 per square.</li>
+                        <li><strong>Bitumen Shingles:</strong> € 35-50/m². Levensduur: 15-30 jaar. Populairste keuze.</li>
+                        <li><strong>Metaal:</strong> € 60-120/m². Levensduur: 40-70 jaar. Energiezuinig.</li>
+                        <li><strong>Dakpannen/Leisteen:</strong> € 100-250/m². Levensduur: 50+ jaar. Zwaar, eist stevige constructie.</li>
                     </ul>
-                    <p>Steilere daken vereisen meer materiaal en arbeidsuren.</p>
+
+                    <h4>Verborgen kosten</h4>
+                    <p><strong>Sloop:</strong> Oud dak verwijderen kost € 10-20/m². <strong>Helling:</strong> Steile daken kosten 20-50% meer door veiligheidseisen.</p>
                 </div>
             `,
             pl: `
                 <div class="prose">
                     <h3>Koszt wymiany dachu w 2026 roku</h3>
-                    <p>Nowy dach to wielka inwestycja. Ten kalkulator uwzględnia <strong>nachylenie dachu</strong> oraz <strong>naddatek na odpady</strong>.</p>
+                    <p>Poważna inwestycja. Kalkulator uwzględnia <strong>nachylenie</strong> i <strong>odpady</strong>.</p>
                     <ul>
-                        <li><strong>Gont bitumiczny:</strong> 350-500 zł za square (ok. 9,3 m²).</li>
-                        <li><strong>Dach metalowy:</strong> 600-1 200 zł za square.</li>
-                        <li><strong>Dachówka/Łupek:</strong> 1 000-2 500 zł za square.</li>
+                        <li><strong>Gont bitumiczny:</strong> 35-50 zł/m². Trwałość: 15-30 lat. Najczęstszy wybór.</li>
+                        <li><strong>Blachodachówka:</strong> 60-120 zł/m². Trwałość: 40-70 lat. Energooszczędna.</li>
+                        <li><strong>Dachówka/Łupek:</strong> 100-250 zł/m². Trwałość: 50+ lat. Ciężka, wymaga mocnej więźby.</li>
                     </ul>
-                    <p>Strome dachy wymagają więcej materiału i czasu pracy.</p>
+
+                    <h4>Ukryte koszty</h4>
+                    <p><strong>Demontaż:</strong> Usunięcie starego dachu to 20-50 zł/m². <strong>Stromość:</strong> Dachy o dużym nachyleniu są o 20-50% droższe (bezpieczeństwo).</p>
                 </div>
             `,
             sv: `
                 <div class="prose">
                     <h3>Kostnad för takbyte 2026</h3>
-                    <p>Ett nytt tak är en stor investering. Denna kalkylator tar hänsyn till <strong>taklutning</strong> och <strong>spillmängd</strong>.</p>
+                    <p>En stor investering. Kalkylatorn räknar in <strong>lutning</strong> och <strong>spill</strong>.</p>
                     <ul>
-                        <li><strong>Asfaltschiffer:</strong> 3 500-5 000 kr per segment (ca 9,3 m²).</li>
-                        <li><strong>Plåttak:</strong> 6 000-12 000 kr per segment.</li>
-                        <li><strong>Tegel/Skiffer:</strong> 10 000-25 000 kr per segment.</li>
+                        <li><strong>Asfaltsshsingel:</strong> 350-500 kr/m². Livslängd: 15-30 år. Vanligast.</li>
+                        <li><strong>Plåttak:</strong> 600-1200 kr/m². Livslängd: 40-70 år. Hållbart och lätt.</li>
+                        <li><strong>Tegel/Skiffer:</strong> 1000-2500 kr/m². Livslängd: 50+ år. Tungt, kräver förstärkning.</li>
                     </ul>
-                    <p>Brantare tak kräver mer material och mer arbete.</p>
+
+                    <h4>Dolda kostnader</h4>
+                    <p><strong>Rivning:</strong> Att ta bort gammalt tak kostar 100-200 kr/m². <strong>Lutning:</strong> Branta tak kostar 20-50 % mer pga säkerhet.</p>
                 </div>
             `,
             no: `
                 <div class="prose">
                     <h3>Kostnad for takfornyelse i 2026</h3>
-                    <p>Et nytt tak er en stor investering. Denne kalkulatoren tar hensyn til <strong>takvinkel</strong> og <strong>svinn</strong>.</p>
+                    <p>En stor investering. Kalkulatoren tar hensyn til <strong>takvinkel</strong> og <strong>svinn</strong>.</p>
                     <ul>
-                        <li><strong>Asfalttakshingel:</strong> 3 500-5 000 kr per felt (ca. 9,3 m²).</li>
-                        <li><strong>Metalltak:</strong> 6 000-12 000 kr per felt.</li>
-                        <li><strong>Takstein/Skifer:</strong> 10 000-25 000 kr per felt.</li>
+                        <li><strong>Asfalttakshingel:</strong> 350-500 kr/m². Levetid: 15-30 år. Vanligst.</li>
+                        <li><strong>Metalltak:</strong> 600-1200 kr/m². Levetid: 40-70 år. Holdbart.</li>
+                        <li><strong>Takstein/Skifer:</strong> 1000-2500 kr/m². Levetid: 50+ år. Tungt.</li>
                     </ul>
-                    <p>Brattere tak krever mer materiale og arbeidstid.</p>
+
+                    <h4>Skjulte kostnader</h4>
+                    <p><strong>Riving:</strong> Fjerning av gammelt tak koster 100-200 kr/m². <strong>Bratt tak:</strong> Tak over 30 grader koster 20-50 % mer.</p>
                 </div>
             `,
             da: `
                 <div class="prose">
                     <h3>Omkostninger til nyt tag i 2026</h3>
-                    <p>Et nyt tag er en stor investering. Denne beregner tager højde for <strong>taghældning</strong> og <strong>spild</strong>.</p>
+                    <p>En stor investering. Beregneren tager højde for <strong>hældning</strong> og <strong>spild</strong>.</p>
                     <ul>
-                        <li><strong>Tagpap/Shingles:</strong> 3.500-5.000 kr. pr. felt (ca. 9,3 m²).</li>
-                        <li><strong>Metaltag:</strong> 6.000-12.000 kr. pr. felt.</li>
-                        <li><strong>Tegl/Skifer:</strong> 10.000-25.000 kr. pr. felt.</li>
+                        <li><strong>Tagpap/Shingles:</strong> 350-500 kr./m². Levetid: 15-30 år. Mest almindelig.</li>
+                        <li><strong>Metaltag:</strong> 600-1.200 kr./m². Levetid: 40-70 år. Holdbart.</li>
+                        <li><strong>Tegl/Skifer:</strong> 1.000-2.500 kr./m². Levetid: 50+ år. Tungt.</li>
                     </ul>
-                    <p>Stejlere tage kræver mere materiale og flere arbejdstimer.</p>
+
+                    <h4>Skjulte omkostninger</h4>
+                    <p><strong>Nedrivning:</strong> Fjernelse af gammelt tag koster 100-200 kr./m². <strong>Hældning:</strong> Stejle tage koster 20-50 % mere.</p>
                 </div>
             `,
             fi: `
                 <div class="prose">
                     <h3>Katon uusimisen hinta vuonna 2026</h3>
-                    <p>Uusi katto on suuri investointi. Tämä laskuri huomioi <strong>katon kaltevuuden</strong> ja <strong>materiaalin hukan</strong>.</p>
+                    <p>Suuri investointi. Laskuri huomioi <strong>kaltevuuden</strong> ja <strong>hukan</strong>.</p>
                     <ul>
-                        <li><strong>Bitumikattolaatta:</strong> 350–500 € / neliö (n. 9,3 m²).</li>
-                        <li><strong>Peltikatto:</strong> 600–1 200 € / neliö.</li>
-                        <li><strong>Tiili/Liuskekivi:</strong> 1 000–2 500 € / neliö.</li>
+                        <li><strong>Bitumikattolaatta:</strong> 35–50 €/m². Käyttöikä: 15-30 vuotta. Yleisin.</li>
+                        <li><strong>Peltikatto:</strong> 60–120 €/m². Käyttöikä: 40-70 vuotta. Kestävä.</li>
+                        <li><strong>Tiili/Liuskekivi:</strong> 100–250 €/m². Käyttöikä: 50+ vuotta. Painava, vaatii vahvan rakenteen.</li>
                     </ul>
-                    <p>Jyrkemmät katot vaativat enemmän materiaalia ja työtunteja.</p>
+
+                    <h4>Piilokulut</h4>
+                    <p><strong>Purku:</strong> Vanhan katon poisto maksaa 15–30 €/m². <strong>Jyrkkyys:</strong> Jyrkät katot maksavat 20–50 % enemmän turvatoimien takia.</p>
                 </div>
             `
         },

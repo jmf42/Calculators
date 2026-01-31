@@ -24,8 +24,45 @@ permalink: "{{ pageData.lang }}/{{ pageData.slug }}/index.html"
     {%- endif %}
 
     <link rel="icon" type="image/png" href="/assets/images/logo_calculator.png">
+
+    <!-- Preconnect to improve Core Web Vitals -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link rel="stylesheet" href="/assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Article Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": {{ pageData.title | jsonify | safe }},
+        "description": {{ pageData.metaDescription | jsonify | safe }},
+        "url": {{ (pageData.canonicalUrl | canonicalUrl) | jsonify | safe }},
+        "datePublished": {{ site.buildDate | jsonify | safe }},
+        "dateModified": {{ site.buildDate | jsonify | safe }},
+        "author": {
+            "@type": "Person",
+            "name": {{ site.author.name | jsonify | safe }},
+            "jobTitle": {{ site.author.jobTitle | jsonify | safe }}
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": {{ site.name | jsonify | safe }},
+            "url": {{ site.url | jsonify | safe }},
+            "logo": {
+                "@type": "ImageObject",
+                "url": {{ (site.url + "/assets/images/logo.png") | jsonify | safe }}
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": {{ (pageData.canonicalUrl | canonicalUrl) | jsonify | safe }}
+        }
+    }
+    </script>
+
     {% include "components/language-redirect.njk" %}
 </head>
 <body>
@@ -43,21 +80,24 @@ permalink: "{{ pageData.lang }}/{{ pageData.slug }}/index.html"
         </div>
     </nav>
 
-    <article class="hero" style="padding: 80px 0 40px;">
-        <div class="container" style="max-width: 800px;">
+    <article class="hero page-hero">
+        <div class="container content-narrow">
             <h1>{{ pageData.title }}</h1>
-            <p class="lead" style="font-size: 20px; color: var(--text-muted); line-height: 1.6;">{{ pageData.metaDescription }}</p>
+            <p class="lead">{{ pageData.metaDescription }}</p>
         </div>
     </article>
 
     <section class="content-section">
-        <div class="container" style="max-width: 800px;">
+        <div class="container content-narrow">
             <div class="prose guide-content">
                 {{ pageData.content | safe }}
             </div>
             
             <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border);">
-                 <p style="color: var(--text-muted); font-size: 14px;">Written by <strong>{{ site.author.name }}</strong> • Data Sources: <a href="/{{ pageData.lang }}/about">Methodology</a></p>
+                 <p style="color: var(--text-muted); font-size: 14px;">
+                    {{ ui.articleMeta.writtenBy[pageData.lang] }} <strong>{{ site.author.name }}</strong> •
+                    {{ ui.whyTrust[pageData.lang].dataLabel }} <a href="/{{ pageData.lang }}/about">{{ ui.about.methodologyTitle[pageData.lang] }}</a>
+                 </p>
             </div>
         </div>
     </section>
@@ -70,5 +110,7 @@ permalink: "{{ pageData.lang }}/{{ pageData.slug }}/index.html"
             <p style="text-align: center; color: var(--text-muted);">© {{ site.year }} {{ site.name }}.</p>
         </div>
     </footer>
+    {% include "components/consent-loader.njk" %}
+    {% include "components/cookie-banner.njk" %}
 </body>
 </html>

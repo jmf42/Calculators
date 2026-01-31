@@ -55,13 +55,15 @@
                 });
             }
 
-            // Track as conversion in Google Ads if applicable
+            /* 
             // TODO: Set AD_CONVERSION_ID environment variable for production
+            // Track as conversion in Google Ads if applicable
             if (window.gtag) {
                 gtag('event', 'conversion', {
-                    'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL'
+                    'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL' // Replace with actual ID
                 });
             }
+            */
         },
 
         // Track plugin link clicks
@@ -148,7 +150,9 @@
     let tracked100 = false;
 
     window.addEventListener('scroll', () => {
-        const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+        const scrollable = document.body.scrollHeight - window.innerHeight;
+        if (scrollable <= 0) return;
+        const scrollPercent = (window.scrollY / scrollable) * 100;
         maxScroll = Math.max(maxScroll, scrollPercent);
 
         if (maxScroll >= 25 && !tracked25) {
@@ -196,14 +200,18 @@
     let calculatorType = document.body.dataset.calculatorType || 'unknown';
     let changeTimeout;
 
-    document.addEventListener('input', (e) => {
-        if (e.target.matches('input[data-field-id], select[data-field-id]')) {
-            clearTimeout(changeTimeout);
-            changeTimeout = setTimeout(() => {
-                Analytics.trackCalculatorUse(calculatorType, 'field_change', e.target.dataset.fieldId);
-            }, 2000);
-        }
-    });
+    const handleFieldInput = (e) => {
+        const path = typeof e.composedPath === 'function' ? e.composedPath() : [e.target];
+        const fieldEl = path.find(el => el && el.matches && el.matches('input[data-field-id], select[data-field-id]'));
+        if (!fieldEl) return;
+        clearTimeout(changeTimeout);
+        changeTimeout = setTimeout(() => {
+            Analytics.trackCalculatorUse(calculatorType, 'field_change', fieldEl.dataset.fieldId);
+        }, 2000);
+    };
+
+    document.addEventListener('input', handleFieldInput);
+    document.addEventListener('change', handleFieldInput);
 
     // Expose to global scope for manual tracking
     window.CalcKitAnalytics = Analytics;

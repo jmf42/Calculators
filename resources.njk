@@ -13,6 +13,14 @@ permalink: "/{% if langItem.code != 'en' %}{{ langItem.code }}/{% endif %}resour
     <title>{{ ui.resources.title[langItem.code] }} | {{ site.name }}</title>
     <meta name="description" content="{{ ui.resources.description[langItem.code] }}">
     <meta name="robots" content="index, follow">
+    {% set langPrefix = '' if langItem.code == site.defaultLang else '/' + langItem.code %}
+    {% set canonicalPath = langPrefix + '/resources' %}
+    <link rel="canonical" href="{{ (site.url + canonicalPath) | canonicalUrl }}">
+    {%- for altLang in site.languages %}
+    {% set altPrefix = '' if altLang.code == site.defaultLang else '/' + altLang.code %}
+    <link rel="alternate" hreflang="{{ altLang.code }}" href="{{ (site.url + altPrefix + '/resources') | canonicalUrl }}">
+    {%- endfor %}
+    <link rel="alternate" hreflang="x-default" href="{{ (site.url + '/resources') | canonicalUrl }}">
     <link rel="icon" type="image/png" href="/assets/images/logo_calculator.png">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -33,19 +41,19 @@ permalink: "/{% if langItem.code != 'en' %}{{ langItem.code }}/{% endif %}resour
         </div>
     </nav>
 
-    <section class="hero" style="padding: 80px 0 60px;">
-        <div class="container" style="max-width: 800px;">
+    <section class="hero page-hero">
+        <div class="container content-narrow">
             <h1>{{ ui.resources.title[langItem.code] }}</h1>
-            <p class="lead" style="font-size: 20px; color: var(--text-muted); line-height: 1.6;">{{ ui.resources.description[langItem.code] }}</p>
+            <p class="lead">{{ ui.resources.description[langItem.code] }}</p>
         </div>
     </section>
 
     <section class="content-section">
-        <div class="container" style="max-width: 800px;">
-            <div class="resource-grid" style="display: grid; gap: 32px;">
+        <div class="container content-narrow">
+            <div class="resource-grid">
                 {% for article in collections.articlePages %}
                     {% if article.lang == langItem.code %}
-                        <div class="card" style="padding: 32px;">
+                        <div class="card">
                             <h2 style="margin-top: 0; margin-bottom: 12px; font-size: 24px;">
                                 <a href="/{{ article.lang }}/{{ article.slug }}" style="color: var(--text); text-decoration: none;">{{ article.title }}</a>
                             </h2>
@@ -60,16 +68,18 @@ permalink: "/{% if langItem.code != 'en' %}{{ langItem.code }}/{% endif %}resour
 
     <footer class="footer">
         <div class="container">
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-bottom: 16px;">
-                {% set langPrefix = '' if langItem.code == 'en' else '/' + langItem.code %}
-                <a href="{{ langPrefix }}/about" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">{{ ui.about.title[langItem.code] }}</a>
-                <a href="{{ langPrefix }}/resources" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">{{ ui.resources.title[langItem.code] }}</a>
-                <a href="{{ langPrefix }}/contact" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">{{ ui.contact.title[langItem.code] }}</a>
-                <a href="{{ langPrefix }}/privacy" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">{{ ui.footer[langItem.code].privacy }}</a>
-                <a href="{{ langPrefix }}/terms" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">{{ ui.footer[langItem.code].terms }}</a>
-            </div>
+            {% set langPrefix = '' if langItem.code == 'en' else '/' + langItem.code %}
+            <ul class="footer-links">
+                <li><a href="{{ langPrefix }}/about">{{ ui.about.title[langItem.code] }}</a></li>
+                <li><a href="{{ langPrefix }}/resources">{{ ui.resources.title[langItem.code] }}</a></li>
+                <li><a href="{{ langPrefix }}/contact">{{ ui.contact.title[langItem.code] }}</a></li>
+                <li><a href="{{ langPrefix }}/privacy">{{ ui.footer[langItem.code].privacy }}</a></li>
+                <li><a href="{{ langPrefix }}/terms">{{ ui.footer[langItem.code].terms }}</a></li>
+            </ul>
             <p style="text-align: center; color: var(--text-muted);">© {{ site.year }} {{ site.name }}.</p>
         </div>
     </footer>
+    {% include "components/consent-loader.njk" %}
+    {% include "components/cookie-banner.njk" %}
 </body>
 </html>

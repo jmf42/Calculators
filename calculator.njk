@@ -13,10 +13,7 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ calc.title | escape }} | {{ site.name | escape }}</title>
     <meta name="description" content="{{ calc.metaDescription | escape }}">
-    
-    <!-- Google AdSense Verification -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.analytics.adSenseId }}" crossorigin="anonymous"></script>
-    
+
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="{{ calc.canonicalUrl | canonicalUrl }}">
     
@@ -63,27 +60,37 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     <link rel="apple-touch-icon" href="/assets/images/logo_calculator.png">
 
     {%- set howTo = ui.howTo or {} -%}
-    {%- if calc.howTo and calc.howTo[calc.lang or 'en'] -%}
-        {%- set howToSteps = calc.howTo[calc.lang or 'en'] -%}
+    {%- set langKey = calc.lang or 'en' -%}
+    {%- if calc.howTo and calc.howTo[langKey] -%}
+        {%- set howToSteps = calc.howTo[langKey] -%}
     {%- else -%}
         {%- set howToSteps = [
             {
-                name: (howTo.step1Name[calc.lang or 'en'] if howTo.step1Name else "Enter your values"),
-                text: (howTo.step1Text[calc.lang or 'en'] if howTo.step1Text else "Fill in the required fields to start the calculation.")
+                name: (howTo.step1Name[langKey] if howTo.step1Name else "Enter your values"),
+                text: (howTo.step1Text[langKey] if howTo.step1Text else "Fill in the required fields to start the calculation.")
             },
             {
-                name: (howTo.step2Name[calc.lang or 'en'] if howTo.step2Name else "Review the result"),
-                text: (howTo.step2Text[calc.lang or 'en'] if howTo.step2Text else "Check the main result to understand the estimate.")
+                name: (howTo.step2Name[langKey] if howTo.step2Name else "Review the result"),
+                text: (howTo.step2Text[langKey] if howTo.step2Text else "Check the main result to understand the estimate.")
             },
             {
-                name: (howTo.step3Name[calc.lang or 'en'] if howTo.step3Name else "Inspect the breakdown"),
-                text: (howTo.step3Text[calc.lang or 'en'] if howTo.step3Text else "Use the breakdown to see how the total is composed.")
+                name: (howTo.step3Name[langKey] if howTo.step3Name else "Inspect the breakdown"),
+                text: (howTo.step3Text[langKey] if howTo.step3Text else "Use the breakdown to see how the total is composed.")
             },
             {
-                name: (howTo.step4Name[calc.lang or 'en'] if howTo.step4Name else "Adjust and compare"),
-                text: (howTo.step4Text[calc.lang or 'en'] if howTo.step4Text else "Tweak inputs to explore different scenarios.")
+                name: (howTo.step4Name[langKey] if howTo.step4Name else "Adjust and compare"),
+                text: (howTo.step4Text[langKey] if howTo.step4Text else "Tweak inputs to explore different scenarios.")
             }
         ] -%}
+    {%- endif -%}
+
+    {%- set locationRegion = "" -%}
+    {%- if calc.location -%}
+        {%- set locationRegion = calc.location.stateFull or calc.location.state or (calc.countryData and (calc.countryData.nameLocalized or calc.countryData.name)) or "" -%}
+    {%- endif -%}
+    {%- set locationLabel = (calc.location.name if calc.location else "") -%}
+    {%- if locationLabel and locationRegion -%}
+        {%- set locationLabel = locationLabel ~ ", " ~ locationRegion -%}
     {%- endif -%}
     
     <!-- Schema.org Calculator -->
@@ -150,7 +157,10 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     {
         "@context": "https://schema.org",
         "@type": "HowTo",
-        {% set howToName = "How to Calculate " ~ (calc.config.resultLabel[calc.lang or 'en'] | default('Results')) ~ " with " ~ calc.title %}
+        {% set howToNamePrefix = (howTo.namePrefix[calc.lang or 'en'] if howTo.namePrefix else "How to Calculate") %}
+        {% set howToWith = (howTo.nameWith[calc.lang or 'en'] if howTo.nameWith else "with") %}
+        {% set howToResult = (calc.config.resultLabel[calc.lang or 'en'] or calc.config.resultLabel.en or calc.config.resultLabel or 'Results') %}
+        {% set howToName = howToNamePrefix ~ " " ~ howToResult ~ " " ~ howToWith ~ " " ~ calc.title %}
         "name": {{ howToName | jsonify | safe }},
         "description": {{ calc.metaDescription | jsonify | safe }},
         "dateModified": {{ site.buildDate | jsonify | safe }},
@@ -183,6 +193,9 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     }
     </script>
 
+    {% set updatedForPrefix = (ui.faqExtras.updatedFor[calc.lang or 'en'] if ui.faqExtras and ui.faqExtras.updatedFor else "Updated for") %}
+    {% set specificToPrefix = (ui.faqExtras.specificTo[calc.lang or 'en'] if ui.faqExtras and ui.faqExtras.specificTo else "Use our calculator to estimate costs specifically for") %}
+
     <!-- FAQ Schema -->
     {%- if calc.faqs and calc.faqs.length > 0 %}
     <script type="application/ld+json">
@@ -194,18 +207,27 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
             {
                 "@type": "Question",
                 {% set faqSuffix = "" %}
-                {% if calc.stateData %}{% set faqSuffix = " in " ~ calc.stateData.name %}{% elif calc.countryData %}{% set faqSuffix = " " ~ (calc.countryData.nameLocalized or calc.countryData.name) %}{% elif calc.location %}{% set faqSuffix = " in " ~ calc.location.name %}{% endif %}
+                {# Keep FAQ question text natural in the page language. Add geo suffix only for English. #}
+                {% if langKey == 'en' %}
+                    {% if calc.stateData %}
+                        {% set faqSuffix = " in " ~ calc.stateData.name %}
+                    {% elif calc.countryData %}
+                        {% set faqSuffix = " in " ~ (calc.countryData.nameLocalized or calc.countryData.name) %}
+                    {% elif calc.location %}
+                        {% set faqSuffix = " in " ~ (locationLabel or calc.location.name) %}
+                    {% endif %}
+                {% endif %}
                 {% set faqName = faq.q ~ faqSuffix %}
                 "name": {{ faqName | jsonify | safe }},
                 "acceptedAnswer": {
                     "@type": "Answer",
                     {% set answerExtra = "" %}
                     {% if calc.stateData %}
-                        {% set answerExtra = " This calculator uses " ~ calc.stateData.name ~ "'s actual property tax rate of " ~ (calc.stateData.mortgage.propertyTaxRate | default('')) ~ "% and average insurance of $" ~ (calc.stateData.mortgage.homeInsurance | default('')) ~ "/year." %}
+                        {% set answerExtra = " " ~ updatedForPrefix ~ " " ~ calc.stateData.name ~ "." %}
                     {% elif calc.countryData %}
-                        {% set answerExtra = " Updated for " ~ (calc.countryData.nameLocalized or calc.countryData.name) ~ " with typical rates of " ~ (calc.countryData.mortgage.typicalRate | default('')) ~ "% and " ~ (calc.countryData.mortgage.downPayment | default('')) ~ "% down payment." %}
+                        {% set answerExtra = " " ~ updatedForPrefix ~ " " ~ (calc.countryData.nameLocalized or calc.countryData.name) ~ "." %}
                     {% elif calc.location %}
-                        {% set answerExtra = " Use our calculator to estimate costs specifically for " ~ calc.location.name ~ ", " ~ calc.location.state ~ "." %}
+                        {% set answerExtra = " " ~ specificToPrefix ~ " " ~ (locationLabel or calc.location.name) ~ "." %}
                     {% endif %}
                     {% set answerText = faq.a ~ answerExtra %}
                     "text": {{ answerText | jsonify | safe }}
@@ -229,21 +251,15 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     </script>
     {%- endif %}
 
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.gaId }}"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '{{ site.analytics.gaId }}');
-    </script>
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/{{ manifest['style.css'] | default('style.css') }}">
     <link rel="manifest" href="/assets/site.webmanifest">
     <meta name="theme-color" content="#6366f1">
+    {% if site.analytics.adSenseId %}
+    <meta name="google-adsense-account" content="{{ site.analytics.adSenseId }}">
+    {% endif %}
     {% include "components/language-redirect.njk" %}
 </head>
 
@@ -293,7 +309,7 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
         <div class="container">
 	            <div class="utility-bar">
                     <!-- Mobile Back Link (kept for small screens) -->
-	                <a href="{% if calc.lang == site.defaultLang %}/{% else %}/{{ calc.lang }}{% endif %}" class="back-nav" style="display: none;">
+	                <a href="{% if calc.lang == site.defaultLang %}/{% else %}/{{ calc.lang }}{% endif %}" class="back-nav">
 	                    <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
 	                    {{ ui.nav[calc.lang or 'en'].backToCalculators }}
 	                </a>
@@ -306,8 +322,8 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
             <div class="freshness-badge" style="margin-top: 24px; display: flex; justify-content: center; gap: 8px; font-size: 13px; color: var(--text-muted); opacity: 0.7;">
                 <span class="freshness-label">{{ ui.footer[calc.lang or 'en'].lastUpdated }}:</span>
                 <span class="freshness-date">{{ site.buildDate }}</span>
-                {%- if calc.stateData %}<span class="freshness-sep">•</span><span class="freshness-loc">{{ calc.stateData.name }} {{ ui.localInsights.tips[calc.lang or 'en'] }}</span>{% endif %}
-                {%- if calc.countryData %}<span class="freshness-sep">•</span><span class="freshness-loc">{{ calc.countryData.nameLocalized }} {{ ui.localInsights.tips[calc.lang or 'en'] }}</span>{% endif %}
+                {%- if calc.stateData %}<span class="freshness-sep">•</span><span class="freshness-loc">{{ calc.stateData.name }}</span>{% endif %}
+                {%- if calc.countryData %}<span class="freshness-sep">•</span><span class="freshness-loc">{{ calc.countryData.nameLocalized }}</span>{% endif %}
             </div>
         </div>
     </section>
@@ -349,35 +365,8 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
 	            <div class="local-insights-card" style="background: var(--surface); border-radius: 20px; padding: 32px 40px; border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: var(--shadow-sm);">
 	                <div class="insights-header" style="margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between;">
 	                    <h3 style="margin: 0; font-size: 24px; font-weight: 800; color: var(--text);">{{ ui.calculator.localInsightsTitle[calc.lang or 'en'] }}</h3>
-	                    <div class="live-badge" style="background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 6px; border: 1px solid rgba(16, 185, 129, 0.2);">
-	                        <span class="dot" style="width: 8px; height: 8px; background: #10b981; border-radius: 50%; display: inline-block; box-shadow: 0 0 10px #10b981;"></span>
-	                        {{ ui.calculator.liveDataBadge[calc.lang or 'en'] }}
-	                    </div>
+	                    {# Removed "live data" badge to avoid implying real-time verified stats #}
 	                </div>
-
-                {# State-specific data display #}
-                {%- if calc.stateData and calc.stateData.mortgage and ui['market'] %}
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; margin-bottom: 28px;">
-                    <div style="background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
-                        <div style="color: var(--text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">{{ ui['market']['medianHomePrice'][calc.lang or 'en'] }}</div>
-                        <div style="font-size: 24px; font-weight: 700; color: var(--primary-light);">${{ calc.stateData.mortgage.medianPrice | default(0) }}</div>
-                    </div>
-                    <div style="background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
-                        <div style="color: var(--text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">{{ ui['market']['propertyTaxRate'][calc.lang or 'en'] }}</div>
-                        <div style="font-size: 24px; font-weight: 700; color: var(--primary-light);">{{ calc.stateData.mortgage.propertyTaxRate }}%</div>
-                    </div>
-                    <div style="background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
-                        <div style="color: var(--text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">{{ ui['market']['avgHomeInsurance'][calc.lang or 'en'] }}</div>
-                        <div style="font-size: 24px; font-weight: 700; color: var(--primary-light);">${{ calc.stateData.mortgage.homeInsurance }}{{ ui['market']['perYear'][calc.lang or 'en'] }}</div>
-                    </div>
-                    <div style="background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
-                        <div style="color: var(--text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">{{ ui['market']['stateIncomeTax'][calc.lang or 'en'] }}</div>
-                        <div style="font-size: 24px; font-weight: 700; color: {% if calc.stateData.mortgage.hasStateIncomeTax %}var(--text-muted){% else %}#10b981{% endif %};">
-                            {%- if calc.stateData.mortgage.hasStateIncomeTax %}{{ ui['market']['yes'][calc.lang or 'en'] }}{% else %}{{ ui['market']['none'][calc.lang or 'en'] }} ✓{% endif %}
-                        </div>
-                    </div>
-                </div>
-                {%- endif %}
 
                 {# Tips list #}
                 <div style="margin-top: 20px;">
@@ -486,11 +475,11 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
             {%- for faq in calc.faqs %}
             <div class="faq-item">
                 <div class="faq-question">
-                    {{ faq.q }}{% if calc.stateData %} in {{ calc.stateData.name }}{% elif calc.countryData %} {{ calc.countryData.nameLocalized }}{% elif calc.location %} in {{ calc.location.name }}{% endif %}
+                    {{ faq.q }}{% if langKey == 'en' %}{% if calc.stateData %} in {{ calc.stateData.name }}{% elif calc.countryData %} in {{ calc.countryData.nameLocalized }}{% elif calc.location %} in {{ locationLabel or calc.location.name }}{% endif %}{% endif %}
                     <span class="faq-icon">+</span>
                 </div>
                 <div class="faq-answer">
-                    <p>{{ faq.a }}{% if calc.stateData %} This calculator uses {{ calc.stateData.name }}'s actual property tax rate of {{ calc.stateData.mortgage.propertyTaxRate }}%.{% elif calc.countryData %} Updated for {{ calc.countryData.nameLocalized }} with typical rates of {{ calc.countryData.mortgage.typicalRate }}%.{% elif calc.location %} Use our calculator to estimate costs specifically for {{ calc.location.name }}, {{ calc.location.state }}.{% endif %}</p>
+                    <p>{{ faq.a }}{% if calc.stateData %} {{ updatedForPrefix }} {{ calc.stateData.name }}.{% elif calc.countryData %} {{ updatedForPrefix }} {{ calc.countryData.nameLocalized }}.{% elif calc.location %} {{ specificToPrefix }} {{ locationLabel or calc.location.name }}.{% endif %}</p>
                 </div>
             </div>
             {%- endfor %}
@@ -583,12 +572,92 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
         </div>
     </section>
 
+    <!-- Related Articles Section -->
+    {%- if calc.relatedArticles and calc.relatedArticles.length > 0 %}
+    <section class="content-section" style="background: var(--bg-secondary); padding: 60px 0;">
+        <div class="container" style="max-width: 900px;">
+            <h2 style="text-align: center; margin-bottom: 40px; font-size: 28px;">
+                {%- if calc.lang == 'es' %}Artículos Relacionados
+                {%- elif calc.lang == 'de' %}Verwandte Artikel
+                {%- elif calc.lang == 'fr' %}Articles Connexes
+                {%- elif calc.lang == 'pt' %}Artigos Relacionados
+                {%- elif calc.lang == 'it' %}Articoli Correlati
+                {%- elif calc.lang == 'nl' %}Gerelateerde Artikelen
+                {%- elif calc.lang == 'pl' %}Powiązane Artykuły
+                {%- elif calc.lang == 'sv' %}Relaterade Artiklar
+                {%- elif calc.lang == 'no' %}Relaterte Artikler
+                {%- elif calc.lang == 'da' %}Relaterede Artikler
+                {%- elif calc.lang == 'fi' %}Liittyvät Artikkelit
+                {%- else %}Related Articles
+                {%- endif %}
+            </h2>
+            <div style="display: grid; gap: 24px;">
+                {%- for article in calc.relatedArticles %}
+                <div class="card">
+                    <h3 style="margin-top: 0; margin-bottom: 12px; font-size: 20px;">
+                        <a href="/{{ calc.lang }}/{{ article.slug }}" style="color: var(--text); text-decoration: none;">{{ article.title }}</a>
+                    </h3>
+                    <p style="color: var(--text-muted); margin-bottom: 20px; line-height: 1.6;">{{ article.description }}</p>
+                    <a href="/{{ calc.lang }}/{{ article.slug }}" class="btn btn-primary-outline" style="display: inline-block;">
+                        {%- if calc.lang == 'es' %}Leer Más
+                        {%- elif calc.lang == 'de' %}Mehr Lesen
+                        {%- elif calc.lang == 'fr' %}Lire Plus
+                        {%- elif calc.lang == 'pt' %}Ler Mais
+                        {%- elif calc.lang == 'it' %}Leggi di Più
+                        {%- elif calc.lang == 'nl' %}Lees Meer
+                        {%- elif calc.lang == 'pl' %}Czytaj Więcej
+                        {%- elif calc.lang == 'sv' %}Läs Mer
+                        {%- elif calc.lang == 'no' %}Les Mer
+                        {%- elif calc.lang == 'da' %}Læs Mere
+                        {%- elif calc.lang == 'fi' %}Lue Lisää
+                        {%- else %}Read More
+                        {%- endif %} →
+                    </a>
+                </div>
+                {%- endfor %}
+            </div>
+        </div>
+    </section>
+    {%- endif %}
+
     <!-- [SEO LINK MESH] Specialized & Regional Tools -->
-    {%- if (calc.childNiches and calc.childNiches.length > 0) or (calc.relatedLocations and calc.relatedLocations.length > 0) or (calc.featuredLocations and calc.featuredLocations.length > 0) %}
+    {%- if (calc.relatedCalculators and calc.relatedCalculators.length > 0) or (calc.childNiches and calc.childNiches.length > 0) or (calc.relatedLocations and calc.relatedLocations.length > 0) or (calc.featuredLocations and calc.featuredLocations.length > 0) %}
     <section class="mesh-links-section">
         <div class="container">
             <div class="mesh-grid" data-mesh-container>
-                
+
+                {# Related Calculators by Type #}
+                {%- if calc.relatedCalculators and calc.relatedCalculators.length > 0 %}
+                <div class="mesh-card">
+                    <h3 class="mesh-title">
+                        <span class="mesh-icon">🔗</span>
+                        {%- if calc.lang == 'es' %}Calculadoras Relacionadas
+                        {%- elif calc.lang == 'de' %}Verwandte Rechner
+                        {%- elif calc.lang == 'fr' %}Calculatrices Connexes
+                        {%- elif calc.lang == 'pt' %}Calculadoras Relacionadas
+                        {%- elif calc.lang == 'it' %}Calcolatori Correlati
+                        {%- elif calc.lang == 'nl' %}Gerelateerde Calculators
+                        {%- elif calc.lang == 'pl' %}Powiązane Kalkulatory
+                        {%- elif calc.lang == 'sv' %}Relaterade Kalkylatorer
+                        {%- elif calc.lang == 'no' %}Relaterte Kalkulatorer
+                        {%- elif calc.lang == 'da' %}Relaterede Beregnere
+                        {%- elif calc.lang == 'fi' %}Liittyvät Laskurit
+                        {%- else %}Related Calculators
+                        {%- endif %}
+                    </h3>
+                    <ul class="mesh-list">
+                        {%- for related in calc.relatedCalculators %}
+                        <li>
+                            <a href="/{{ calc.lang }}/{{ related.slug }}" class="mesh-link">
+                                <span class="mesh-link-text">{{ related.title }}</span>
+                                <span class="mesh-link-arrow">→</span>
+                            </a>
+                        </li>
+                        {%- endfor %}
+                    </ul>
+                </div>
+                {%- endif %}
+
                 {# Specialized Calculators (Verticals) #}
                 {%- if calc.childNiches and calc.childNiches.length > 0 %}
                 <div class="mesh-card">
@@ -708,8 +777,6 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     <!-- Calculator Engine -->
     <script src="/assets/js/{{ manifest['calculator.js'] | default('calculator.js') }}"></script>
     
-    <!-- Analytics Tracking -->
-    <script src="/assets/js/{{ manifest['analytics.js'] | default('analytics.js') }}"></script>
     
 	    <script>
 	        // Build config for this specific language
@@ -817,6 +884,7 @@ permalink: "{{ calc.lang }}/{{ calc.slug }}/index.html"
     <!-- Geo-Detection: Automatically show local market insights based on user location -->
     <script src="/assets/js/{{ manifest['geo-detect.js'] | default('geo-detect.js') }}" defer></script>
     
+    {% include "components/consent-loader.njk" %}
     {% include "components/cookie-banner.njk" %}
 </body>
 </html>

@@ -50,6 +50,21 @@
         padding: 8px 16px;
         font-size: 14px;
     }
+
+    @media (max-width: 640px) {
+        .cookie-content {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .cookie-buttons {
+            width: 100%;
+            flex-direction: column;
+        }
+        .cookie-buttons .btn {
+            width: 100%;
+            justify-content: center;
+        }
+    }
 </style>
 
 <script>
@@ -61,6 +76,9 @@
         document.getElementById('accept-cookies').addEventListener('click', function() {
             localStorage.setItem('cookieconfig', 'accepted');
             document.getElementById('cookie-consent').style.display = 'none';
+            if (window.__calckitLoadTracking) {
+                window.__calckitLoadTracking();
+            }
         });
 
         document.getElementById('decline-cookies').addEventListener('click', function() {

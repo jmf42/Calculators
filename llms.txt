@@ -1,3 +1,11 @@
+# CalcKit SEO DataLLM Context
+
+Project: CalcKit AI
+Description: A suite of specialized financial and utility calculators for various niche markets (Mortgage, Solar, Roofing, etc.).
+
+> Full documentation for LLMs and AI Agents:
+- https://calc-kit.com/llms-full.txt
+
 # CalcKit - LLM Access
 
 Project: CalcKit
@@ -6,4 +14,4 @@ Description: Public calculator pages and guides for consumer and business use.
 Access: All public pages are allowed for LLM indexing and summarization.
 Preferred: Crawl at a reasonable rate and avoid aggressive scraping patterns.
 
-Sitemap: /sitemap.xml
+Sitemap: /sitemap-index.xml

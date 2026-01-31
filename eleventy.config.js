@@ -75,75 +75,89 @@ module.exports = function (eleventyConfig) {
         en: {
             cityMortgage: " Calculate for homes in {{city}}, {{region}}.",
             city: " Calculate for {{city}}, {{region}}.",
-            state: " Updated for {{state}} mortgage rates, taxes, and insurance.",
-            country: " Updated for {{country}} with mortgage rates, taxes, and typical down payment."
+            state: " Updated for {{state}}.",
+            country: " Updated for {{country}}."
         },
         es: {
             cityMortgage: " Calcula para viviendas en {{city}}, {{region}}.",
             city: " Calcula para {{city}}, {{region}}.",
-            state: " Actualizado para tasas, impuestos y seguros hipotecarios de {{state}}.",
-            country: " Actualizado para {{country}} con tasas hipotecarias, impuestos y pago inicial típicos."
+            state: " Actualizado para {{state}}.",
+            country: " Actualizado para {{country}}."
         },
         de: {
             cityMortgage: " Für Häuser in {{city}}, {{region}} berechnen.",
             city: " Für {{city}}, {{region}} berechnen.",
-            state: " Aktualisiert für {{state}}-Hypothekenzinsen, Steuern und Versicherungen.",
-            country: " Aktualisiert für {{country}} mit Hypothekenzinsen, Steuern und typischer Anzahlung."
+            state: " Aktualisiert für {{state}}.",
+            country: " Aktualisiert für {{country}}."
         },
         fr: {
             cityMortgage: " Calculez pour des maisons à {{city}}, {{region}}.",
             city: " Calculez pour {{city}}, {{region}}.",
-            state: " Mis à jour pour les taux, taxes et assurances hypothécaires de {{state}}.",
-            country: " Mis à jour pour {{country}} avec taux hypothécaires, taxes et apport typiques."
+            state: " Mis à jour pour {{state}}.",
+            country: " Mis à jour pour {{country}}."
         },
         pt: {
             cityMortgage: " Calcule para imóveis em {{city}}, {{region}}.",
             city: " Calcule para {{city}}, {{region}}.",
-            state: " Atualizado para taxas, impostos e seguros de hipoteca de {{state}}.",
-            country: " Atualizado para {{country}} com taxas de hipoteca, impostos e entrada típica."
+            state: " Atualizado para {{state}}.",
+            country: " Atualizado para {{country}}."
         },
         it: {
             cityMortgage: " Calcola per case a {{city}}, {{region}}.",
             city: " Calcola per {{city}}, {{region}}.",
-            state: " Aggiornato per tassi, imposte e assicurazioni ipotecarie di {{state}}.",
-            country: " Aggiornato per {{country}} con tassi ipotecari, imposte e anticipo tipici."
+            state: " Aggiornato per {{state}}.",
+            country: " Aggiornato per {{country}}."
         },
         nl: {
             cityMortgage: " Bereken voor woningen in {{city}}, {{region}}.",
             city: " Bereken voor {{city}}, {{region}}.",
-            state: " Bijgewerkt voor hypotheekrentes, belastingen en verzekeringen van {{state}}.",
-            country: " Bijgewerkt voor {{country}} met hypotheekrentes, belastingen en typische aanbetaling."
+            state: " Bijgewerkt voor {{state}}.",
+            country: " Bijgewerkt voor {{country}}."
         },
         pl: {
             cityMortgage: " Oblicz dla domów w {{city}}, {{region}}.",
             city: " Oblicz dla {{city}}, {{region}}.",
-            state: " Zaktualizowane o stawki, podatki i ubezpieczenia hipoteczne w {{state}}.",
-            country: " Zaktualizowane dla {{country}} z typowymi stopami hipotecznymi, podatkami i wkładem własnym."
+            state: " Zaktualizowane dla {{state}}.",
+            country: " Zaktualizowane dla {{country}}."
         },
         sv: {
             cityMortgage: " Beräkna för bostäder i {{city}}, {{region}}.",
             city: " Beräkna för {{city}}, {{region}}.",
-            state: " Uppdaterat för {{state}}-bolåneräntor, skatter och försäkringar.",
-            country: " Uppdaterat för {{country}} med bolåneräntor, skatter och typisk kontantinsats."
+            state: " Uppdaterat för {{state}}.",
+            country: " Uppdaterat för {{country}}."
         },
         no: {
             cityMortgage: " Beregn for boliger i {{city}}, {{region}}.",
             city: " Beregn for {{city}}, {{region}}.",
-            state: " Oppdatert for {{state}}-boliglånsrenter, skatter og forsikring.",
-            country: " Oppdatert for {{country}} med boliglånsrenter, skatter og typisk egenkapital."
+            state: " Oppdatert for {{state}}.",
+            country: " Oppdatert for {{country}}."
         },
         da: {
             cityMortgage: " Beregn for boliger i {{city}}, {{region}}.",
             city: " Beregn for {{city}}, {{region}}.",
-            state: " Opdateret til {{state}}-boliglånsrenter, skatter og forsikringer.",
-            country: " Opdateret til {{country}} med boliglånsrenter, skatter og typisk udbetaling."
+            state: " Opdateret for {{state}}.",
+            country: " Opdateret for {{country}}."
         },
         fi: {
             cityMortgage: " Laske asunnoille paikassa {{city}}, {{region}}.",
             city: " Laske {{city}}, {{region}}.",
-            state: " Päivitetty {{state}}-asuntolainakoroille, veroille ja vakuutuksille.",
-            country: " Päivitetty {{country}}-tyypillisille asuntolainakoroille, veroille ja käsirahalle."
+            state: " Päivitetty alueelle {{state}}.",
+            country: " Päivitetty alueelle {{country}}."
         }
+    };
+    const locationMetaSuffixesGeneric = {
+        en: " Updated for {{country}}.",
+        es: " Actualizado para {{country}}.",
+        de: " Aktualisiert für {{country}}.",
+        fr: " Mis à jour pour {{country}}.",
+        pt: " Atualizado para {{country}}.",
+        it: " Aggiornato per {{country}}.",
+        nl: " Bijgewerkt voor {{country}}.",
+        pl: " Zaktualizowane dla {{country}}.",
+        sv: " Uppdaterat för {{country}}.",
+        no: " Oppdatert for {{country}}.",
+        da: " Opdateret til {{country}}.",
+        fi: " Päivitetty {{country}}."
     };
 
     const fillTemplate = (template, values) => {
@@ -159,9 +173,10 @@ module.exports = function (eleventyConfig) {
             const template = (type === "mortgage" ? suffixes.cityMortgage : suffixes.city)
                 || (type === "mortgage" ? fallback.cityMortgage : fallback.city)
                 || "";
+            const region = location.stateFull || location.state || countryData?.nameLocalized || countryData?.name || "";
             return fillTemplate(template, {
                 city: location.name,
-                region: location.stateFull || location.state
+                region: region
             });
         }
 
@@ -171,8 +186,11 @@ module.exports = function (eleventyConfig) {
         }
 
         if (countryData) {
-            const template = suffixes.country || fallback.country || "";
-            return fillTemplate(template, { country: countryData.nameLocalized || countryData.name });
+            const countryName = countryData.nameLocalized || countryData.name;
+            const template = type === "mortgage"
+                ? (suffixes.country || fallback.country || "")
+                : (locationMetaSuffixesGeneric[lang] || locationMetaSuffixesGeneric.en);
+            return fillTemplate(template, { country: countryName });
         }
 
         return "";
@@ -243,9 +261,15 @@ module.exports = function (eleventyConfig) {
             }
 
             const fallbackLocation = 'your area';
-            const locName = location ? `${location.name}, ${location.state}` : (stateData ? stateData.name : (countryData ? (countryData.nameLocalized || countryData.name) : fallbackLocation));
-            const city = location ? location.name : locName;
-            const state = location ? location.state : (stateData ? stateData.name : (countryData ? (countryData.nameLocalized || countryData.name) : fallbackLocation));
+            const countryName = countryData ? (countryData.nameLocalized || countryData.name) : "";
+            const locationRegion = location ? (location.stateFull || location.state || countryName) : "";
+            const locName = location
+                ? [location.name, locationRegion].filter(Boolean).join(", ")
+                : (stateData ? stateData.name : (countryName || fallbackLocation));
+            const city = location ? location.name : (stateData ? stateData.name : (countryName || fallbackLocation));
+            const state = location
+                ? (location.state || location.stateFull || countryName || fallbackLocation)
+                : (stateData ? stateData.name : (countryName || fallbackLocation));
 
             // Enhance content with Content Mixins if available
             // Now supports ALL languages if mixins exist
@@ -271,6 +295,25 @@ module.exports = function (eleventyConfig) {
                     const taxRate = stateData?.mortgage?.propertyTaxRate || '1.2'; // Default avg
                     const insuranceCost = stateData?.mortgage?.homeInsurance || '1200'; // Default avg
                     const downPayment = (countryData?.mortgage?.downPayment || 20) + '%';
+                    const currencyCode = countryData?.currency || baseCalc?.config?.currency?.[lang] || 'USD';
+                    const currencySymbolMap = {
+                        USD: "$",
+                        EUR: "€",
+                        GBP: "£",
+                        SEK: "kr",
+                        NOK: "kr",
+                        DKK: "kr",
+                        PLN: "zł",
+                        BRL: "R$",
+                        CHF: "CHF",
+                        CAD: "$",
+                        AUD: "$",
+                        NZD: "$",
+                        MXN: "$",
+                        COP: "$",
+                        CRC: "₡"
+                    };
+                    const currencySymbol = countryData?.currencySymbol || baseCalc?.config?.currencySymbol || currencySymbolMap[currencyCode] || "$";
 
                     const fillPlaceholders = (text) => {
                         return text
@@ -279,6 +322,7 @@ module.exports = function (eleventyConfig) {
                             .replace(/\{\{title\}\}/g, baseCalc.titles[lang] || baseCalc.titles['en'])
                             .replace(/\{\{tax_rate\}\}/g, taxRate)
                             .replace(/\{\{insurance_cost\}\}/g, formatNumber(insuranceCost)) // Helper needed? formatNumber is a filter not available here directly
+                            .replace(/\{\{currency_symbol\}\}/g, currencySymbol)
                             .replace(/\{\{down_payment\}\}/g, downPayment);
                     };
 
@@ -324,13 +368,7 @@ module.exports = function (eleventyConfig) {
             }
 
             // 2. Standard Replacements for inner content vars
-            if (location && lang === 'en' && location.medianPrice) {
-                const median = new Intl.NumberFormat('en-US').format(location.medianPrice);
-                const downVal = Math.round(location.medianPrice * 0.2);
-                const downFormatted = new Intl.NumberFormat('en-US').format(downVal);
-                content += `<h2>${location.name} Home Price Snapshot</h2>`;
-                content += `<ul><li>Median home price: <strong>$${median}</strong></li><li>20% down payment example: <strong>$${downFormatted}</strong></li></ul>`;
-            }
+            // Note: Avoid injecting location-specific numeric snapshots without verified sources.
 
             return replaceYearTokens(content)
                 .replace(/{{location}}/g, locName)
@@ -361,41 +399,7 @@ module.exports = function (eleventyConfig) {
                 });
             }
 
-            // Apply Location Specifics (e.g. median price)
-            if (location) {
-                const priceField = config.fields.find(f => f.id === 'price' || f.id === 'amount');
-                if (priceField && location.medianPrice) {
-                    priceField.default = location.medianPrice;
-                }
-            }
-
-            // Apply State-specific defaults for mortgage
-            if (stateData && stateData.mortgage && type === 'mortgage') {
-                const priceField = config.fields.find(f => f.id === 'price');
-                if (priceField && stateData.mortgage.medianPrice) {
-                    priceField.default = stateData.mortgage.medianPrice;
-                }
-            }
-
-            // Apply Country-specific defaults for mortgage
-            if (countryData && countryData.mortgage && type === 'mortgage') {
-                const priceField = config.fields.find(f => f.id === 'price');
-                if (priceField && countryData.mortgage.medianPrice) {
-                    priceField.default = countryData.mortgage.medianPrice;
-                }
-                const rateField = config.fields.find(f => f.id === 'rate');
-                if (rateField && countryData.mortgage.typicalRate) {
-                    rateField.default = countryData.mortgage.typicalRate;
-                }
-                const termField = config.fields.find(f => f.id === 'term' || f.id === 'years');
-                if (termField && countryData.mortgage.typicalTerm) {
-                    termField.default = countryData.mortgage.typicalTerm;
-                }
-                const downField = config.fields.find(f => f.id === 'downPayment' || f.id === 'down');
-                if (downField && countryData.mortgage.downPayment) {
-                    downField.default = countryData.mortgage.downPayment;
-                }
-            }
+            // Avoid overriding calculator defaults with unverified local stats.
 
             const resolvedCurrencyCode = countryData?.currency || config.currency?.[lang] || 'USD';
             const resolvedLocaleCode = countryData?.locale || config.locale?.[lang] || 'en-US';
@@ -461,6 +465,41 @@ module.exports = function (eleventyConfig) {
             const mergedFaqs = seo?.faqBoost ? baseFaqs.concat(seo.faqBoost) : baseFaqs;
             const appCategory = appCategoryMap[type] || "UtilitiesApplication";
 
+            // Build related calculators based on baseType (for internal linking)
+            const currentBaseType = baseCalc.baseType || type;
+            const relatedCalculators = (!location && !stateData && !countryData)
+                ? Object.keys(calculators)
+                    .filter(calcType => {
+                        const calc = calculators[calcType];
+                        return (calc.baseType === currentBaseType || calcType === currentBaseType) && calcType !== type;
+                    })
+                    .slice(0, 4)
+                    .map(calcType => {
+                        const calc = calculators[calcType];
+                        return {
+                            title: replaceYearTokens(calc.titles[lang] || calc.titles['en']),
+                            slug: calc.slugs[lang] || calc.slugs['en'],
+                            subtitle: calc.subtitles?.[lang] || calc.subtitles?.['en'] || ''
+                        };
+                    })
+                : null;
+
+            // Build related articles for this calculator type (for content marketing SEO)
+            const articleTypeMap = {
+                'mortgage': ['mortgage-guide-2026', 'closing-costs-explained'],
+                'crypto': ['crypto-profit-strategy']
+            };
+            const relatedArticleIds = articleTypeMap[currentBaseType] || articleTypeMap[type] || [];
+            const relatedArticles = (!location && !stateData && !countryData && relatedArticleIds.length > 0)
+                ? articles
+                    .filter(article => relatedArticleIds.includes(article.id))
+                    .map(article => ({
+                        title: article.titles[lang] || article.titles['en'],
+                        slug: article.slugs[lang] || article.slugs['en'],
+                        description: article.metaDescription[lang] || article.metaDescription['en']
+                    }))
+                : null;
+
             return {
                 type: type,
                 lang: lang,
@@ -474,11 +513,13 @@ module.exports = function (eleventyConfig) {
                 seo: seo,
                 location: location,
                 isNiche: isNiche,
-                localTips: localTips,
+                localTips: (localTips && localTips.length) ? localTips : null,
                 currencySymbol: resolvedCurrencySymbol,
                 stateData: stateData,
                 countryData: countryData,
                 childNiches: childNiches,
+                relatedCalculators: relatedCalculators,
+                relatedArticles: relatedArticles,
                 relatedLocations: relatedLocations,
                 featuredLocations: featuredLocations,
                 canonicalUrl: canonicalUrl,
@@ -566,13 +607,13 @@ module.exports = function (eleventyConfig) {
                         } else {
                             // US Format (Existing)
                             if (niche.id === 'pool-loan') {
-                                locTitle = `${loc.name} Pool Financing ${site.year} | Loan Calculator`;
+                                locTitle = `${loc.name}, ${loc.state} Pool Financing ${site.year} | Loan Calculator`;
                                 locSubtitle = `Compare pool loan rates in ${loc.name}, ${loc.stateFull}`;
                             } else if (niche.id === 'business-loan') {
-                                locTitle = `${loc.name} Business Loans ${site.year} | Calculator`;
+                                locTitle = `${loc.name}, ${loc.state} Business Loans ${site.year} | Calculator`;
                                 locSubtitle = `Estimate payments for business expansion in ${loc.name}, ${loc.stateFull}`;
                             } else {
-                                locTitle = `${loc.name} Mortgage Calculator ${site.year}`;
+                                locTitle = `${loc.name}, ${loc.state} Mortgage Calculator ${site.year}`;
                                 locSubtitle = `Calculate mortgage payments for homes in ${loc.name}, ${loc.stateFull}`;
                             }
                         }
@@ -588,7 +629,7 @@ module.exports = function (eleventyConfig) {
                             isNiche: true,
                             // Content Salt Injection
                             countryData: targetCountry, // Inject Country Data for Intl Cities
-                            localTips: targetCountry?.mortgage?.tips?.[lang] || targetCountry?.mortgage?.tips || [], // Inherit Country Tips
+                            localTips: null, // Avoid unverified local tips
                             currencySymbol: targetCountry?.currencySymbol // Force currency
                         }));
                     });
@@ -605,7 +646,7 @@ module.exports = function (eleventyConfig) {
             // Create state-specific mortgage page
             const slug = `mortgage-calculator-${state.slug}`;
             const title = `Mortgage Calculator ${state.name} (${state.abbr}) ${site.year}`;
-            const subtitle = `Calculate mortgage payments with ${state.name} tax rates and insurance costs`;
+            const subtitle = `Calculate mortgage payments and compare scenarios for ${state.name}`;
 
             pages.push(createPage({
                 type: 'mortgage',
@@ -614,8 +655,8 @@ module.exports = function (eleventyConfig) {
                 title: title,
                 subtitle: subtitle,
                 stateData: state,
-                localTips: state.mortgage?.tips || [],
-                localFaqs: state.mortgage?.faqs || []
+                localTips: null,
+                localFaqs: null
             }));
         });
 
@@ -649,8 +690,8 @@ module.exports = function (eleventyConfig) {
                         subtitle: subtitle,
                         countryData: country,
                         currencySymbol: country.currencySymbol,
-                        localTips: country.mortgage?.tips?.[lang] || country.mortgage?.tips || [],
-                        localFaqs: country.mortgage?.faqs?.[lang] || country.mortgage?.faqs || [],
+                        localTips: null,
+                        localFaqs: null,
                         overrides: niche.overrides, // Important for niche defaults
                         isNiche: true
                     }));
@@ -677,8 +718,8 @@ module.exports = function (eleventyConfig) {
                         subtitle: subtitle,
                         countryData: country,
                         currencySymbol: country.currencySymbol,
-                        localTips: country.mortgage?.tips?.[lang] || country.mortgage?.tips || [],
-                        localFaqs: country.mortgage?.faqs?.[lang] || country.mortgage?.faqs || []
+                        localTips: null,
+                        localFaqs: null
                     }));
                 }
             }

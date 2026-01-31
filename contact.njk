@@ -11,7 +11,16 @@ permalink: "/{% if langItem.code != 'en' %}{{ langItem.code }}/{% endif %}contac
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ ui.contact.title[langItem.code] }} | {{ site.name }}</title>
+    <meta name="description" content="{{ ui.contact.intro[langItem.code] }}">
     <meta name="robots" content="index, follow">
+    {% set langPrefix = '' if langItem.code == site.defaultLang else '/' + langItem.code %}
+    {% set canonicalPath = langPrefix + '/contact' %}
+    <link rel="canonical" href="{{ (site.url + canonicalPath) | canonicalUrl }}">
+    {%- for altLang in site.languages %}
+    {% set altPrefix = '' if altLang.code == site.defaultLang else '/' + altLang.code %}
+    <link rel="alternate" hreflang="{{ altLang.code }}" href="{{ (site.url + altPrefix + '/contact') | canonicalUrl }}">
+    {%- endfor %}
+    <link rel="alternate" hreflang="x-default" href="{{ (site.url + '/contact') | canonicalUrl }}">
     <link rel="icon" type="image/png" href="/assets/images/logo_calculator.png">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -32,36 +41,38 @@ permalink: "/{% if langItem.code != 'en' %}{{ langItem.code }}/{% endif %}contac
         </div>
     </nav>
 
-    <section class="hero" style="padding: 80px 0 60px;">
-        <div class="container" style="max-width: 600px; text-align: center;">
+    <section class="hero page-hero">
+        <div class="container content-narrow-sm content-center">
             <h1>{{ ui.contact.title[langItem.code] }}</h1>
-            <p class="lead" style="font-size: 18px; color: var(--text-muted); line-height: 1.6;">{{ ui.contact.intro[langItem.code] }}</p>
+            <p class="lead">{{ ui.contact.intro[langItem.code] }}</p>
         </div>
     </section>
 
     <section class="content-section">
-        <div class="container" style="max-width: 600px;">
-            <div class="contact-card" style="background: var(--surface); padding: 40px; border-radius: 16px; border: 1px solid var(--border); text-align: center;">
+        <div class="container content-narrow-sm">
+            <div class="contact-card">
                 <div style="font-size: 48px; margin-bottom: 24px;">📧</div>
                 <h2 style="font-size: 24px; margin-bottom: 16px;">{{ ui.contact.emailLabel[langItem.code] }}</h2>
-                <a href="mailto:worthit.tuliai@gmail.com" style="display: inline-block; font-size: 20px; font-weight: 600; color: var(--primary); text-decoration: none; padding: 12px 24px; background: rgba(99, 102, 241, 0.1); border-radius: 8px; margin-bottom: 24px;">worthit.tuliai@gmail.com</a>
-                <p style="color: var(--text-muted); font-size: 14px;">{{ ui.contact.responseTime[langItem.code] }}</p>
+                <a href="mailto:worthit.tuliai@gmail.com" class="contact-email">worthit.tuliai@gmail.com</a>
+                <p style="color: var(--text-muted); font-size: 14px; margin-top: 16px;">{{ ui.contact.responseTime[langItem.code] }}</p>
             </div>
         </div>
     </section>
 
     <footer class="footer">
         <div class="container">
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-bottom: 16px;">
-                {% set langPrefix = '' if langItem.code == 'en' else '/' + langItem.code %}
-                <a href="{{ langPrefix }}/about" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">{{ ui.about.title[langItem.code] }}</a>
-                <a href="{{ langPrefix }}/resources" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">{{ ui.resources.title[langItem.code] }}</a>
-                <a href="{{ langPrefix }}/contact" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">{{ ui.contact.title[langItem.code] }}</a>
-                <a href="{{ langPrefix }}/privacy" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">{{ ui.footer[langItem.code].privacy }}</a>
-                <a href="{{ langPrefix }}/terms" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">{{ ui.footer[langItem.code].terms }}</a>
-            </div>
+            {% set langPrefix = '' if langItem.code == 'en' else '/' + langItem.code %}
+            <ul class="footer-links">
+                <li><a href="{{ langPrefix }}/about">{{ ui.about.title[langItem.code] }}</a></li>
+                <li><a href="{{ langPrefix }}/resources">{{ ui.resources.title[langItem.code] }}</a></li>
+                <li><a href="{{ langPrefix }}/contact">{{ ui.contact.title[langItem.code] }}</a></li>
+                <li><a href="{{ langPrefix }}/privacy">{{ ui.footer[langItem.code].privacy }}</a></li>
+                <li><a href="{{ langPrefix }}/terms">{{ ui.footer[langItem.code].terms }}</a></li>
+            </ul>
             <p style="text-align: center; color: var(--text-muted);">© {{ site.year }} {{ site.name }}.</p>
         </div>
     </footer>
+    {% include "components/consent-loader.njk" %}
+    {% include "components/cookie-banner.njk" %}
 </body>
 </html>

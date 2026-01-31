@@ -34,7 +34,7 @@ module.exports = {
 
     // Email service
     email: {
-        apiEndpoint: process.env.EMAIL_API_ENDPOINT || "/api/subscribe"
+        apiEndpoint: process.env.EMAIL_API_ENDPOINT || ""
     },
 
     // Environment flags

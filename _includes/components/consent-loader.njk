@@ -1,0 +1,55 @@
+<script>
+(function() {
+    const gaId = {{ site.analytics.gaId | jsonify | safe }};
+    const adSenseId = {{ site.analytics.adSenseId | jsonify | safe }};
+    const analyticsSrc = {{ ("/assets/js/" + (manifest['analytics.js'] or 'analytics.js')) | jsonify | safe }};
+
+    function loadScript(src, attrs) {
+        if (!src) return;
+        const script = document.createElement('script');
+        script.src = src;
+        if (attrs) {
+            Object.keys(attrs).forEach(key => {
+                script[key] = attrs[key];
+            });
+        }
+        document.head.appendChild(script);
+    }
+
+    function initTracking() {
+        if (window.__calckitTrackingLoaded) return;
+        window.__calckitTrackingLoaded = true;
+
+        if (gaId) {
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            window.gtag = window.gtag || gtag;
+            gtag('js', new Date());
+            gtag('config', gaId);
+            loadScript('https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(gaId), { async: true });
+        }
+
+        if (adSenseId) {
+            loadScript('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + encodeURIComponent(adSenseId), { async: true, crossOrigin: 'anonymous' });
+        }
+
+        if (analyticsSrc) {
+            loadScript(analyticsSrc, { defer: true });
+        }
+    }
+
+    window.__calckitLoadTracking = initTracking;
+
+    // Auto-load tracking (User requested removal of consent gate)
+    initTracking();
+
+    /* 
+    // Previous consent logic (disabled)
+    try {
+        if (localStorage.getItem('cookieconfig') === 'accepted') {
+            initTracking();
+        }
+    } catch (e) {} 
+    */
+})();
+</script>

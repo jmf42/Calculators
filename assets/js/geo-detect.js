@@ -10,6 +10,13 @@
     const DEBUG = window.CALCKIT_DEBUG || false;
     const log = (...args) => { if (DEBUG) console.log(...args); };
 
+    // Feature flags to prevent unverified local stats from being shown
+    const ENABLE_LOCAL_INSIGHTS = true;
+    const ENABLE_LOCAL_STATS = false;
+    const ENABLE_CRYPTO_TAX_INSIGHTS = false;
+    const APPLY_LOCATION_DEFAULTS = false;
+    const USE_GENERIC_TIPS_ONLY = true;
+
     // US States data (key = state code lowercase)
     const US_STATES = {
         'tx': { name: 'Texas', abbr: 'TX', mortgage: { medianPrice: 340000, propertyTaxRate: 1.80, homeInsurance: 2400, hasStateIncomeTax: false, tips: ['Texas has no state income tax, but property taxes average 1.8% — among the highest in the US.', 'Home insurance is higher in coastal and northern areas due to hurricane and tornado risk.', 'Apply for the homestead exemption to reduce your taxable home value by up to $100,000.', 'Many Texas cities have additional local property taxes on top of county rates.'] } },
@@ -457,6 +464,19 @@
         return 'en';
     }
 
+    function getRegionDisplayName(regionCode, pageLang, fallback) {
+        try {
+            if (typeof Intl !== 'undefined' && Intl.DisplayNames) {
+                const displayNames = new Intl.DisplayNames([pageLang], { type: 'region' });
+                const name = displayNames.of(regionCode);
+                if (name) return name;
+            }
+        } catch (e) {
+            // ignore and fallback
+        }
+        return fallback;
+    }
+
     /**
      * Detect user location via IP geolocation API
      * using geojs.io (supports HTTPS and is free)
@@ -488,33 +508,26 @@
     function getLocationData(location, pageLang = 'en') {
         if (!location) return null;
 
-        // If user is in the US, try to get state data
+        // If user is in the US, use state label only (avoid unverified stats)
         if (location.countryCode === 'us') {
             const stateCode = location.region?.toLowerCase();
-            if (stateCode && US_STATES[stateCode]) {
+            if (stateCode) {
+                const fallbackName = location.regionName || stateCode.toUpperCase();
                 return {
                     type: 'state',
-                    data: US_STATES[stateCode],
-                    displayName: US_STATES[stateCode].name
+                    data: { name: fallbackName },
+                    displayName: getRegionDisplayName(`US-${stateCode.toUpperCase()}`, pageLang, fallbackName)
                 };
             }
         }
 
-        // Otherwise try country data
-        if (COUNTRIES[location.countryCode]) {
-            const countryData = COUNTRIES[location.countryCode];
-
-            // Get tips in the page language if available, fallback to English or first available
-            let tips = countryData.tips;
-            if (typeof tips === 'object' && !Array.isArray(tips)) {
-                // Multilingual tips object
-                tips = tips[pageLang] || tips['en'] || tips[Object.keys(tips)[0]];
-            }
-
+        // Otherwise use country label only (avoid unverified stats)
+        if (location.countryCode) {
+            const fallbackName = location.country || location.countryCode.toUpperCase();
             return {
                 type: 'country',
-                data: { ...countryData, tips },
-                displayName: countryData.nameLocalized
+                data: { name: fallbackName },
+                displayName: getRegionDisplayName(location.countryCode.toUpperCase(), pageLang, fallbackName)
             };
         }
 
@@ -530,19 +543,167 @@
 
     // Localization Dictionary for Dynamic JS Content
     const TRANSLATIONS = {
-        en: { insights: "Market Insights", personalized: "Live Market Data", medianPrice: "Median Price", typicalRate: "Typical Rate", loanTerm: "Loan Term", downPayment: "Down Payment", sunHours: "Sun Hours", electricRate: "Electric Rate", potential: "Potential", high: "High", moderate: "Moderate", laborRate: "Labor Rate", season: "Season", active: "Active", propertyTax: "Property Tax", homeInsurance: "Home Insurance", stateTax: "State Income Tax", yes: "Yes", none: "None", unitHrs: "hrs/day", unitSqFt: "/sq.ft", unitKwh: "/kWh", unitYr: "/yr", years: "years", show: "Show", hide: "Hide", localFactors: "Local Factors", cryptoInsights: "Crypto Tax Insights", capitalGains: "Capital Gains Tax", shortTerm: "Short-term", longTerm: "Long-term", holdBenefit: "Holding Benefit", months: "months", taxFree: "Tax-Free", afterHold: "after holding", year: "year", exemption: "Exemption", disclaimer: "Tax laws change frequently. Consult a qualified tax professional.", cryptoFactors: "Key Tax Considerations", taxYear: "Tax Year" },
-        es: { insights: "Datos de Mercado", personalized: "Datos en Tiempo Real", medianPrice: "Precio Medio", typicalRate: "Tasa Típica", loanTerm: "Plazo", downPayment: "Enganche", sunHours: "Horas de Sol", electricRate: "Tarifa Eléc.", potential: "Potencial", high: "Alto", moderate: "Moderado", laborRate: "Mano de Obra", season: "Temporada", active: "Activa", propertyTax: "Impuesto Predial", homeInsurance: "Seguro", stateTax: "Impuesto Estatal", yes: "Sí", none: "No", unitHrs: "hr/día", unitSqFt: "/pie²", unitKwh: "/kWh", unitYr: "/año", years: "años", show: "Mostrar", hide: "Ocultar", localFactors: "Factores Locales", cryptoInsights: "Impuestos Cripto", capitalGains: "Impuesto Ganancias", shortTerm: "Corto plazo", longTerm: "Largo plazo", holdBenefit: "Beneficio Holding", months: "meses", taxFree: "Libre de Impuestos", afterHold: "después de mantener", year: "año", exemption: "Exención", disclaimer: "Las leyes fiscales cambian. Consulta a un profesional.", cryptoFactors: "Consideraciones Fiscales", taxYear: "Año Fiscal" },
-        de: { insights: "Markteinblicke", personalized: "Live-Marktdaten", medianPrice: "Medianpreis", typicalRate: "Typischer Zins", loanTerm: "Laufzeit", downPayment: "Anzahlung", sunHours: "Sonnenstunden", electricRate: "Strompreis", potential: "Potenzial", high: "Hoch", moderate: "Mittel", laborRate: "Arbeitskosten", season: "Saison", active: "Aktiv", propertyTax: "Grundsteuer", homeInsurance: "Versicherung", stateTax: "Einkommenssteuer", yes: "Ja", none: "Keine", unitHrs: "Std/Tag", unitSqFt: "/qf", unitKwh: "/kWh", unitYr: "/Jahr", years: "Jahre", show: "Anzeigen", hide: "Verbergen", localFactors: "Lokale Faktoren", cryptoInsights: "Krypto-Steuer Info", capitalGains: "Kapitalertragssteuer", shortTerm: "Kurzfristig", longTerm: "Langfristig", holdBenefit: "Haltefrist-Vorteil", months: "Monate", taxFree: "Steuerfrei", afterHold: "nach Halten von", year: "Jahr", exemption: "Freibetrag", disclaimer: "Steuergesetze ändern sich. Konsultieren Sie einen Steuerberater.", cryptoFactors: "Steuer-Hinweise", taxYear: "Steuerjahr" },
-        fr: { insights: "Aperçu du Marché", personalized: "Données en Direct", medianPrice: "Prix Médian", typicalRate: "Taux Moyen", loanTerm: "Durée", downPayment: "Apport", sunHours: "Ensoleillement", electricRate: "Tarif Élec.", potential: "Potentiel", high: "Élevé", moderate: "Modéré", laborRate: "Main d'Œuvre", season: "Saison", active: "Active", propertyTax: "Taxe Foncière", homeInsurance: "Assurance", stateTax: "Impôt État", yes: "Oui", none: "Aucun", unitHrs: "h/jour", unitSqFt: "/pi²", unitKwh: "/kWh", unitYr: "/an", years: "ans", show: "Afficher", hide: "Masquer", localFactors: "Facteurs Locaux", cryptoInsights: "Fiscalité Crypto", capitalGains: "Impôt Plus-Values", shortTerm: "Court terme", longTerm: "Long terme", holdBenefit: "Avantage Détention", months: "mois", taxFree: "Exonéré", afterHold: "après détention de", year: "an", exemption: "Exonération", disclaimer: "Les lois fiscales changent fréquemment. Consultez un professionnel.", cryptoFactors: "Points Clés Fiscaux", taxYear: "Année Fiscale" },
-        pt: { insights: "Dados de Mercado", personalized: "Dados ao Vivo", medianPrice: "Preço Médio", typicalRate: "Taxa Típica", loanTerm: "Prazo", downPayment: "Entrada", sunHours: "Horas de Sol", electricRate: "Tarifa", potential: "Potencial", high: "Alto", moderate: "Moderado", laborRate: "Mão de Obra", season: "Temporada", active: "Ativa", propertyTax: "IPTU", homeInsurance: "Seguro", stateTax: "Imposto Est.", yes: "Sim", none: "Não", unitHrs: "h/dia", unitSqFt: "/pé²", unitKwh: "/kWh", unitYr: "/ano", years: "anos", show: "Mostrar", hide: "Ocultar", localFactors: "Fatores Locais", cryptoInsights: "Impostos Cripto", capitalGains: "Imposto Ganhos", shortTerm: "Curto prazo", longTerm: "Longo prazo", holdBenefit: "Benefício de Hold", months: "meses", taxFree: "Isento", afterHold: "após manter por", year: "ano", exemption: "Isenção", disclaimer: "Leis fiscais mudam frequentemente. Consulte um profissional.", cryptoFactors: "Pontos Fiscais", taxYear: "Ano Fiscal" },
-        it: { insights: "Dati di Mercato", personalized: "Dati in Tempo Reale", medianPrice: "Prezzo Medio", typicalRate: "Tasso Tipico", loanTerm: "Durata", downPayment: "Anticipo", sunHours: "Ore di Sole", electricRate: "Tariffa Elettr.", potential: "Potenziale", high: "Alto", moderate: "Moderato", laborRate: "Manodopera", season: "Stagione", active: "Attiva", propertyTax: "Tasse Proprietà", homeInsurance: "Assicurazione", stateTax: "Tasse Statali", yes: "Sì", none: "No", unitHrs: "ore/giorno", unitSqFt: "/mq", unitKwh: "/kWh", unitYr: "/anno", years: "anni", show: "Mostra", hide: "Nascondi", localFactors: "Fattori Locali", cryptoInsights: "Tasse Crypto", capitalGains: "Imposta Plusvalenze", shortTerm: "Breve termine", longTerm: "Lungo termine", holdBenefit: "Vantaggio Detenzione", months: "mesi", taxFree: "Esente", afterHold: "dopo detenzione", year: "anno", exemption: "Esenzione", disclaimer: "Le leggi fiscali cambiano. Consulta un professionista.", cryptoFactors: "Punti Fiscali Chiave", taxYear: "Anno Fiscale" },
-        nl: { insights: "Marktinformatie", personalized: "Live Marktgegevens", medianPrice: "Middenprijs", typicalRate: "Typisch Tarief", loanTerm: "Looptijd", downPayment: "Aanbetaling", sunHours: "Zonuren", electricRate: "Stroomtarief", potential: "Potentieel", high: "Hoog", moderate: "Gemiddeld", laborRate: "Arbeidskosten", season: "Seizoen", active: "Actief", propertyTax: "OZB", homeInsurance: "Verzekering", stateTax: "Inkomstenbel.", yes: "Ja", none: "Geen", unitHrs: "u/dag", unitSqFt: "/vkt", unitKwh: "/kWh", unitYr: "/jr", years: "jaar", show: "Tonen", hide: "Verbergen", localFactors: "Lokale Factoren", cryptoInsights: "Crypto Belasting", capitalGains: "Vermogenswinstbelasting", shortTerm: "Kort termijn", longTerm: "Lang termijn", holdBenefit: "Houdperiode Voordeel", months: "maanden", taxFree: "Belastingvrij", afterHold: "na houding van", year: "jaar", exemption: "Vrijstelling", disclaimer: "Belastingwetten veranderen. Raadpleeg een professional.", cryptoFactors: "Fiscale Overwegingen", taxYear: "Belastingjaar" },
-        pl: { insights: "Dane Rynkowe", personalized: "Dane na Żywo", medianPrice: "Średnia Cena", typicalRate: "Typowa Stawka", loanTerm: "Okres", downPayment: "Wkład Własny", sunHours: "Godziny Słoneczne", electricRate: "Stawka za Prąd", potential: "Potencjał", high: "Wysoki", moderate: "Średni", laborRate: "Robocizna", season: "Sezon", active: "Aktywny", propertyTax: "Podatek", homeInsurance: "Ubezpieczenie", stateTax: "Podatek Stanowy", yes: "Tak", none: "Brak", unitHrs: "h/dzień", unitSqFt: "/st.kw", unitKwh: "/kWh", unitYr: "/rok", years: "lat", show: "Pokaż", hide: "Ukryj", localFactors: "Czynniki Lokalne", cryptoInsights: "Podatki Crypto", capitalGains: "Podatek od zysków", shortTerm: "Krótkoterminowe", longTerm: "Długoterminowe", holdBenefit: "Korzyść z trzymania", months: "miesięcy", taxFree: "Bez podatku", afterHold: "po trzymaniu", year: "rok", exemption: "Zwolnienie", disclaimer: "Przepisy podatkowe się zmieniają. Skonsultuj się z ekspertem.", cryptoFactors: "Kwestie Podatkowe", taxYear: "Rok Podatkowy" },
-        sv: { insights: "Marknadsinsikter", personalized: "Live Marknadsdata", medianPrice: "Medianpris", typicalRate: "Typisk Ränta", loanTerm: "Löptid", downPayment: "Kontantinsats", sunHours: "Soltimmar", electricRate: "Elpris", potential: "Potential", high: "Hög", moderate: "Måttlig", laborRate: "Arbetskostnad", season: "Säsong", active: "Aktiv", propertyTax: "Fastighetsskatt", homeInsurance: "Försäkring", stateTax: "Inkomstskatt", yes: "Ja", none: "Ingen", unitHrs: "tim/dag", unitSqFt: "/kvfot", unitKwh: "/kWh", unitYr: "/år", years: "år", show: "Visa", hide: "Dölj", localFactors: "Lokala Faktorer", cryptoInsights: "Kryptoskatt Info", capitalGains: "Kapitalvinstskatt", shortTerm: "Kort sikt", longTerm: "Lång sikt", holdBenefit: "Innehavsfördel", months: "månader", taxFree: "Skattefritt", afterHold: "efter innehav", year: "år", exemption: "Undantag", disclaimer: "Skattelagar ändras. Konsultera en expert.", cryptoFactors: "Skatteöverväganden", taxYear: "Skatteår" },
-        no: { insights: "Markedsinnsikt", personalized: "Live Markedsdata", medianPrice: "Medianpris", typicalRate: "Typisk Rente", loanTerm: "Løpetid", downPayment: "Egenkapital", sunHours: "Soltimer", electricRate: "Strømpris", potential: "Potensial", high: "Høyt", moderate: "Moderat", laborRate: "Arbeidskostnad", season: "Sesong", active: "Aktiv", propertyTax: "Eiendomsskatt", homeInsurance: "Forsikring", stateTax: "Inntektsskatt", yes: "Ja", none: "Ingen", unitHrs: "t/dag", unitSqFt: "/kvfot", unitKwh: "/kWh", unitYr: "/år", years: "år", show: "Vis", hide: "Skjul", localFactors: "Lokale Faktorer", cryptoInsights: "Krypto Skatt", capitalGains: "Gevinstskatt", shortTerm: "Kortsiktig", longTerm: "Langsiktig", holdBenefit: "Holdingsfordel", months: "måneder", taxFree: "Skattefritt", afterHold: "etter holding", year: "år", exemption: "Unntak", disclaimer: "Skattelover endres. Konsulter en ekspert.", cryptoFactors: "Skattem essige forhold", taxYear: "Skatteår" },
-        da: { insights: "Markedsindsigt", personalized: "Live Markedsdata", medianPrice: "Medianpris", typicalRate: "Typisk Rente", loanTerm: "Løbetid", downPayment: "Udbetaling", sunHours: "Soltimer", electricRate: "Elpris", potential: "Potentiale", high: "Højt", moderate: "Moderat", laborRate: "Arbejdsløn", season: "Sæson", active: "Aktiv", propertyTax: "Ejendomsskat", homeInsurance: "Forsikring", stateTax: "Indkomstskat", yes: "Ja", none: "Ingen", unitHrs: "b/dag", unitSqFt: "/kvfod", unitKwh: "/kWh", unitYr: "/år", years: "år", show: "Vis", hide: "Skjul", localFactors: "Lokale Faktorer", cryptoInsights: "Krypto Skat", capitalGains: "Kapitalgevinstskat", shortTerm: "Kort sigt", longTerm: "Lang sigt", holdBenefit: "Holdingsfordel", months: "måneder", taxFree: "Skattefri", afterHold: "efter holding", year: "år", exemption: "Fritagelse", disclaimer: "Skattelove ændrer sig. Konsulter en ekspert.", cryptoFactors: "Skatteovervejelser", taxYear: "Skatteår" },
-        fi: { insights: "Markkinatiedot", personalized: "Live Markkinadata", medianPrice: "Mediaanihinta", typicalRate: "Tyypillinen Korko", loanTerm: "Laina-aika", downPayment: "Käsiraha", sunHours: "Aurinkotunnit", electricRate: "Sähkönhinta", potential: "Potentiaali", high: "Korkea", moderate: "Kohtalainen", laborRate: "Työkustannus", season: "Sesonki", active: "Aktiivinen", propertyTax: "Kiinteistövero", homeInsurance: "Vakuutus", stateTax: "Tulovero", yes: "Kyllä", none: "Ei", unitHrs: "h/pv", unitSqFt: "/neliöjalka", unitKwh: "/kWh", unitYr: "/vuosi", years: "vuotta", show: "Näytä", hide: "Piilota", localFactors: "Paikalliset Tekijät", cryptoInsights: "Krypto Verotus", capitalGains: "Luovutusvoittovero", shortTerm: "Lyhyt aika", longTerm: "Pitkä aika", holdBenefit: "Pitoajan etu", months: "kuukautta", taxFree: "Verovapaa", afterHold: "pitoajan jälkeen", year: "vuosi", exemption: "Vapautus", disclaimer: "Verolait muuttuvat. Konsultoi asiantuntijaa.", cryptoFactors: "Veronäkökohdat", taxYear: "Verovuosi" }
+        en: { insights: "Market Insights", personalized: "Local context", medianPrice: "Median Price", typicalRate: "Typical Rate", loanTerm: "Loan Term", downPayment: "Down Payment", sunHours: "Sun Hours", electricRate: "Electric Rate", potential: "Potential", high: "High", moderate: "Moderate", laborRate: "Labor Rate", season: "Season", active: "Active", propertyTax: "Property Tax", homeInsurance: "Home Insurance", stateTax: "State Income Tax", yes: "Yes", none: "None", unitHrs: "hrs/day", unitSqFt: "/sq.ft", unitKwh: "/kWh", unitYr: "/yr", years: "years", show: "Show", hide: "Hide", localFactors: "Local Factors", cryptoInsights: "Crypto Tax Insights", capitalGains: "Capital Gains Tax", shortTerm: "Short-term", longTerm: "Long-term", holdBenefit: "Holding Benefit", months: "months", taxFree: "Tax-Free", afterHold: "after holding", year: "year", exemption: "Exemption", disclaimer: "Tax laws change frequently. Consult a qualified tax professional.", cryptoFactors: "Key Tax Considerations", taxYear: "Tax Year" },
+        es: { insights: "Datos de Mercado", personalized: "Contexto local", medianPrice: "Precio Medio", typicalRate: "Tasa Típica", loanTerm: "Plazo", downPayment: "Enganche", sunHours: "Horas de Sol", electricRate: "Tarifa Eléc.", potential: "Potencial", high: "Alto", moderate: "Moderado", laborRate: "Mano de Obra", season: "Temporada", active: "Activa", propertyTax: "Impuesto Predial", homeInsurance: "Seguro", stateTax: "Impuesto Estatal", yes: "Sí", none: "No", unitHrs: "hr/día", unitSqFt: "/pie²", unitKwh: "/kWh", unitYr: "/año", years: "años", show: "Mostrar", hide: "Ocultar", localFactors: "Factores Locales", cryptoInsights: "Impuestos Cripto", capitalGains: "Impuesto Ganancias", shortTerm: "Corto plazo", longTerm: "Largo plazo", holdBenefit: "Beneficio Holding", months: "meses", taxFree: "Libre de Impuestos", afterHold: "después de mantener", year: "año", exemption: "Exención", disclaimer: "Las leyes fiscales cambian. Consulta a un profesional.", cryptoFactors: "Consideraciones Fiscales", taxYear: "Año Fiscal" },
+        de: { insights: "Markteinblicke", personalized: "Lokaler Kontext", medianPrice: "Medianpreis", typicalRate: "Typischer Zins", loanTerm: "Laufzeit", downPayment: "Anzahlung", sunHours: "Sonnenstunden", electricRate: "Strompreis", potential: "Potenzial", high: "Hoch", moderate: "Mittel", laborRate: "Arbeitskosten", season: "Saison", active: "Aktiv", propertyTax: "Grundsteuer", homeInsurance: "Versicherung", stateTax: "Einkommenssteuer", yes: "Ja", none: "Keine", unitHrs: "Std/Tag", unitSqFt: "/qf", unitKwh: "/kWh", unitYr: "/Jahr", years: "Jahre", show: "Anzeigen", hide: "Verbergen", localFactors: "Lokale Faktoren", cryptoInsights: "Krypto-Steuer Info", capitalGains: "Kapitalertragssteuer", shortTerm: "Kurzfristig", longTerm: "Langfristig", holdBenefit: "Haltefrist-Vorteil", months: "Monate", taxFree: "Steuerfrei", afterHold: "nach Halten von", year: "Jahr", exemption: "Freibetrag", disclaimer: "Steuergesetze ändern sich. Konsultieren Sie einen Steuerberater.", cryptoFactors: "Steuer-Hinweise", taxYear: "Steuerjahr" },
+        fr: { insights: "Aperçu du Marché", personalized: "Contexte local", medianPrice: "Prix Médian", typicalRate: "Taux Moyen", loanTerm: "Durée", downPayment: "Apport", sunHours: "Ensoleillement", electricRate: "Tarif Élec.", potential: "Potentiel", high: "Élevé", moderate: "Modéré", laborRate: "Main d'Œuvre", season: "Saison", active: "Active", propertyTax: "Taxe Foncière", homeInsurance: "Assurance", stateTax: "Impôt État", yes: "Oui", none: "Aucun", unitHrs: "h/jour", unitSqFt: "/pi²", unitKwh: "/kWh", unitYr: "/an", years: "ans", show: "Afficher", hide: "Masquer", localFactors: "Facteurs Locaux", cryptoInsights: "Fiscalité Crypto", capitalGains: "Impôt Plus-Values", shortTerm: "Court terme", longTerm: "Long terme", holdBenefit: "Avantage Détention", months: "mois", taxFree: "Exonéré", afterHold: "après détention de", year: "an", exemption: "Exonération", disclaimer: "Les lois fiscales changent fréquemment. Consultez un professionnel.", cryptoFactors: "Points Clés Fiscaux", taxYear: "Année Fiscale" },
+        pt: { insights: "Dados de Mercado", personalized: "Contexto local", medianPrice: "Preço Médio", typicalRate: "Taxa Típica", loanTerm: "Prazo", downPayment: "Entrada", sunHours: "Horas de Sol", electricRate: "Tarifa", potential: "Potencial", high: "Alto", moderate: "Moderado", laborRate: "Mão de Obra", season: "Temporada", active: "Ativa", propertyTax: "IPTU", homeInsurance: "Seguro", stateTax: "Imposto Est.", yes: "Sim", none: "Não", unitHrs: "h/dia", unitSqFt: "/pé²", unitKwh: "/kWh", unitYr: "/ano", years: "anos", show: "Mostrar", hide: "Ocultar", localFactors: "Fatores Locais", cryptoInsights: "Impostos Cripto", capitalGains: "Imposto Ganhos", shortTerm: "Curto prazo", longTerm: "Longo prazo", holdBenefit: "Benefício de Hold", months: "meses", taxFree: "Isento", afterHold: "após manter por", year: "ano", exemption: "Isenção", disclaimer: "Leis fiscais mudam frequentemente. Consulte um profissional.", cryptoFactors: "Pontos Fiscais", taxYear: "Ano Fiscal" },
+        it: { insights: "Dati di Mercato", personalized: "Contesto locale", medianPrice: "Prezzo Medio", typicalRate: "Tasso Tipico", loanTerm: "Durata", downPayment: "Anticipo", sunHours: "Ore di Sole", electricRate: "Tariffa Elettr.", potential: "Potenziale", high: "Alto", moderate: "Moderato", laborRate: "Manodopera", season: "Stagione", active: "Attiva", propertyTax: "Tasse Proprietà", homeInsurance: "Assicurazione", stateTax: "Tasse Statali", yes: "Sì", none: "No", unitHrs: "ore/giorno", unitSqFt: "/mq", unitKwh: "/kWh", unitYr: "/anno", years: "anni", show: "Mostra", hide: "Nascondi", localFactors: "Fattori Locali", cryptoInsights: "Tasse Crypto", capitalGains: "Imposta Plusvalenze", shortTerm: "Breve termine", longTerm: "Lungo termine", holdBenefit: "Vantaggio Detenzione", months: "mesi", taxFree: "Esente", afterHold: "dopo detenzione", year: "anno", exemption: "Esenzione", disclaimer: "Le leggi fiscali cambiano. Consulta un professionista.", cryptoFactors: "Punti Fiscali Chiave", taxYear: "Anno Fiscale" },
+        nl: { insights: "Marktinformatie", personalized: "Lokale context", medianPrice: "Middenprijs", typicalRate: "Typisch Tarief", loanTerm: "Looptijd", downPayment: "Aanbetaling", sunHours: "Zonuren", electricRate: "Stroomtarief", potential: "Potentieel", high: "Hoog", moderate: "Gemiddeld", laborRate: "Arbeidskosten", season: "Seizoen", active: "Actief", propertyTax: "OZB", homeInsurance: "Verzekering", stateTax: "Inkomstenbel.", yes: "Ja", none: "Geen", unitHrs: "u/dag", unitSqFt: "/vkt", unitKwh: "/kWh", unitYr: "/jr", years: "jaar", show: "Tonen", hide: "Verbergen", localFactors: "Lokale Factoren", cryptoInsights: "Crypto Belasting", capitalGains: "Vermogenswinstbelasting", shortTerm: "Kort termijn", longTerm: "Lang termijn", holdBenefit: "Houdperiode Voordeel", months: "maanden", taxFree: "Belastingvrij", afterHold: "na houding van", year: "jaar", exemption: "Vrijstelling", disclaimer: "Belastingwetten veranderen. Raadpleeg een professional.", cryptoFactors: "Fiscale Overwegingen", taxYear: "Belastingjaar" },
+        pl: { insights: "Dane Rynkowe", personalized: "Kontekst lokalny", medianPrice: "Średnia Cena", typicalRate: "Typowa Stawka", loanTerm: "Okres", downPayment: "Wkład Własny", sunHours: "Godziny Słoneczne", electricRate: "Stawka za Prąd", potential: "Potencjał", high: "Wysoki", moderate: "Średni", laborRate: "Robocizna", season: "Sezon", active: "Aktywny", propertyTax: "Podatek", homeInsurance: "Ubezpieczenie", stateTax: "Podatek Stanowy", yes: "Tak", none: "Brak", unitHrs: "h/dzień", unitSqFt: "/st.kw", unitKwh: "/kWh", unitYr: "/rok", years: "lat", show: "Pokaż", hide: "Ukryj", localFactors: "Czynniki Lokalne", cryptoInsights: "Podatki Crypto", capitalGains: "Podatek od zysków", shortTerm: "Krótkoterminowe", longTerm: "Długoterminowe", holdBenefit: "Korzyść z trzymania", months: "miesięcy", taxFree: "Bez podatku", afterHold: "po trzymaniu", year: "rok", exemption: "Zwolnienie", disclaimer: "Przepisy podatkowe się zmieniają. Skonsultuj się z ekspertem.", cryptoFactors: "Kwestie Podatkowe", taxYear: "Rok Podatkowy" },
+        sv: { insights: "Marknadsinsikter", personalized: "Lokal kontext", medianPrice: "Medianpris", typicalRate: "Typisk Ränta", loanTerm: "Löptid", downPayment: "Kontantinsats", sunHours: "Soltimmar", electricRate: "Elpris", potential: "Potential", high: "Hög", moderate: "Måttlig", laborRate: "Arbetskostnad", season: "Säsong", active: "Aktiv", propertyTax: "Fastighetsskatt", homeInsurance: "Försäkring", stateTax: "Inkomstskatt", yes: "Ja", none: "Ingen", unitHrs: "tim/dag", unitSqFt: "/kvfot", unitKwh: "/kWh", unitYr: "/år", years: "år", show: "Visa", hide: "Dölj", localFactors: "Lokala Faktorer", cryptoInsights: "Kryptoskatt Info", capitalGains: "Kapitalvinstskatt", shortTerm: "Kort sikt", longTerm: "Lång sikt", holdBenefit: "Innehavsfördel", months: "månader", taxFree: "Skattefritt", afterHold: "efter innehav", year: "år", exemption: "Undantag", disclaimer: "Skattelagar ändras. Konsultera en expert.", cryptoFactors: "Skatteöverväganden", taxYear: "Skatteår" },
+        no: { insights: "Markedsinnsikt", personalized: "Lokal kontekst", medianPrice: "Medianpris", typicalRate: "Typisk Rente", loanTerm: "Løpetid", downPayment: "Egenkapital", sunHours: "Soltimer", electricRate: "Strømpris", potential: "Potensial", high: "Høyt", moderate: "Moderat", laborRate: "Arbeidskostnad", season: "Sesong", active: "Aktiv", propertyTax: "Eiendomsskatt", homeInsurance: "Forsikring", stateTax: "Inntektsskatt", yes: "Ja", none: "Ingen", unitHrs: "t/dag", unitSqFt: "/kvfot", unitKwh: "/kWh", unitYr: "/år", years: "år", show: "Vis", hide: "Skjul", localFactors: "Lokale Faktorer", cryptoInsights: "Krypto Skatt", capitalGains: "Gevinstskatt", shortTerm: "Kortsiktig", longTerm: "Langsiktig", holdBenefit: "Holdingsfordel", months: "måneder", taxFree: "Skattefritt", afterHold: "etter holding", year: "år", exemption: "Unntak", disclaimer: "Skattelover endres. Konsulter en ekspert.", cryptoFactors: "Skattem essige forhold", taxYear: "Skatteår" },
+        da: { insights: "Markedsindsigt", personalized: "Lokal kontekst", medianPrice: "Medianpris", typicalRate: "Typisk Rente", loanTerm: "Løbetid", downPayment: "Udbetaling", sunHours: "Soltimer", electricRate: "Elpris", potential: "Potentiale", high: "Højt", moderate: "Moderat", laborRate: "Arbejdsløn", season: "Sæson", active: "Aktiv", propertyTax: "Ejendomsskat", homeInsurance: "Forsikring", stateTax: "Indkomstskat", yes: "Ja", none: "Ingen", unitHrs: "b/dag", unitSqFt: "/kvfod", unitKwh: "/kWh", unitYr: "/år", years: "år", show: "Vis", hide: "Skjul", localFactors: "Lokale Faktorer", cryptoInsights: "Krypto Skat", capitalGains: "Kapitalgevinstskat", shortTerm: "Kort sigt", longTerm: "Lang sigt", holdBenefit: "Holdingsfordel", months: "måneder", taxFree: "Skattefri", afterHold: "efter holding", year: "år", exemption: "Fritagelse", disclaimer: "Skattelove ændrer sig. Konsulter en ekspert.", cryptoFactors: "Skatteovervejelser", taxYear: "Skatteår" },
+        fi: { insights: "Markkinatiedot", personalized: "Paikallinen konteksti", medianPrice: "Mediaanihinta", typicalRate: "Tyypillinen Korko", loanTerm: "Laina-aika", downPayment: "Käsiraha", sunHours: "Aurinkotunnit", electricRate: "Sähkönhinta", potential: "Potentiaali", high: "Korkea", moderate: "Kohtalainen", laborRate: "Työkustannus", season: "Sesonki", active: "Aktiivinen", propertyTax: "Kiinteistövero", homeInsurance: "Vakuutus", stateTax: "Tulovero", yes: "Kyllä", none: "Ei", unitHrs: "h/pv", unitSqFt: "/neliöjalka", unitKwh: "/kWh", unitYr: "/vuosi", years: "vuotta", show: "Näytä", hide: "Piilota", localFactors: "Paikalliset Tekijät", cryptoInsights: "Krypto Verotus", capitalGains: "Luovutusvoittovero", shortTerm: "Lyhyt aika", longTerm: "Pitkä aika", holdBenefit: "Pitoajan etu", months: "kuukautta", taxFree: "Verovapaa", afterHold: "pitoajan jälkeen", year: "vuosi", exemption: "Vapautus", disclaimer: "Verolait muuttuvat. Konsultoi asiantuntijaa.", cryptoFactors: "Veronäkökohdat", taxYear: "Verovuosi" }
     };
+
+    const GENERIC_TIPS = {
+        mortgage: {
+            en: [
+                "Adjust down payment and term to see the impact on monthly cost and total interest.",
+                "Include taxes, insurance, and HOA for a realistic payment estimate.",
+                "Compare a few rates — small changes can move the monthly payment a lot."
+            ],
+            es: [
+                "Ajusta el enganche y el plazo para ver el impacto en la cuota y los intereses totales.",
+                "Incluye impuestos, seguros y HOA para una estimación realista.",
+                "Compara varias tasas; pequeños cambios pueden mover mucho la cuota mensual."
+            ],
+            de: [
+                "Passe Anzahlung und Laufzeit an, um den Effekt auf Rate und Gesamtzinsen zu sehen.",
+                "Berücksichtige Steuern, Versicherungen und HOA für eine realistische Schätzung.",
+                "Vergleiche mehrere Zinssätze — kleine Änderungen wirken stark auf die Monatsrate."
+            ],
+            fr: [
+                "Ajustez l’apport et la durée pour voir l’impact sur la mensualité et les intérêts totaux.",
+                "Incluez taxes, assurances et HOA pour une estimation réaliste.",
+                "Comparez plusieurs taux — de petits écarts changent fortement la mensualité."
+            ],
+            pt: [
+                "Ajuste a entrada e o prazo para ver o impacto na parcela e nos juros totais.",
+                "Inclua impostos, seguros e HOA para uma estimativa realista.",
+                "Compare taxas — pequenas diferenças mudam bastante a parcela mensal."
+            ],
+            it: [
+                "Regola anticipo e durata per vedere l’impatto su rata e interessi totali.",
+                "Includi tasse, assicurazioni e HOA per una stima realistica.",
+                "Confronta più tassi — piccole differenze cambiano molto la rata."
+            ],
+            nl: [
+                "Pas aanbetaling en looptijd aan om het effect op maandlasten en totale rente te zien.",
+                "Neem belastingen, verzekeringen en HOA mee voor een realistische schatting.",
+                "Vergelijk meerdere rentes — kleine verschillen veranderen de maandlast sterk."
+            ],
+            pl: [
+                "Zmień wkład własny i okres, by zobaczyć wpływ na ratę i odsetki całkowite.",
+                "Uwzględnij podatki, ubezpieczenie i HOA dla realistycznej wyceny.",
+                "Porównaj kilka stóp — małe różnice mogą mocno zmienić ratę."
+            ],
+            sv: [
+                "Justera kontantinsats och löptid för att se effekt på månadskostnad och total ränta.",
+                "Räkna in skatter, försäkring och HOA för en realistisk uppskattning.",
+                "Jämför flera räntor — små skillnader påverkar månadskostnaden mycket."
+            ],
+            no: [
+                "Juster egenkapital og løpetid for å se effekt på månedsbetaling og totale renter.",
+                "Ta med skatt, forsikring og HOA for et realistisk estimat.",
+                "Sammenlign flere renter — små endringer påvirker månedsbetalingen mye."
+            ],
+            da: [
+                "Juster udbetaling og løbetid for at se effekt på ydelse og samlede renter.",
+                "Medregn skatter, forsikring og HOA for et realistisk estimat.",
+                "Sammenlign flere renter — små forskelle ændrer ydelsen markant."
+            ],
+            fi: [
+                "Muuta käsirahaa ja laina-aikaa nähdäksesi vaikutus erään ja kokonaiskorkoihin.",
+                "Sisällytä verot, vakuutukset ja HOA realistiseen arvioon.",
+                "Vertaa korkoja — pienet erot vaikuttavat kuukausierään paljon."
+            ]
+        },
+        crypto: {
+            en: [
+                "Crypto gains are often taxed — check short-term vs long-term rules.",
+                "Each trade can be a taxable event; track dates, cost basis, and fees.",
+                "Rules vary by country — confirm with a local professional."
+            ],
+            es: [
+                "Las ganancias cripto suelen pagar impuestos — revisa corto vs largo plazo.",
+                "Cada operación puede ser imponible; registra fechas, costo base y comisiones.",
+                "Las reglas varían por país — confirma con un profesional local."
+            ],
+            de: [
+                "Krypto-Gewinne werden oft besteuert — prüfe kurz- vs langfristig.",
+                "Jeder Trade kann steuerpflichtig sein; erfasse Datum, Anschaffungskosten und Gebühren.",
+                "Regeln unterscheiden sich je Land — mit einem lokalen Profi abstimmen."
+            ],
+            fr: [
+                "Les gains crypto sont souvent imposés — vérifiez court vs long terme.",
+                "Chaque trade peut être imposable; suivez dates, prix de revient et frais.",
+                "Les règles varient selon le pays — vérifiez avec un pro local."
+            ],
+            pt: [
+                "Ganhos em cripto normalmente são tributados — veja curto vs longo prazo.",
+                "Cada trade pode ser fato gerador; registre datas, custo base e taxas.",
+                "As regras variam por país — confirme com um profissional local."
+            ],
+            it: [
+                "I guadagni crypto sono spesso tassati — verifica breve vs lungo termine.",
+                "Ogni trade può essere imponibile; annota date, costo base e commissioni.",
+                "Le regole cambiano per paese — verifica con un professionista locale."
+            ],
+            nl: [
+                "Crypto‑winsten worden vaak belast — check kort vs lang termijn.",
+                "Elke trade kan belastbaar zijn; noteer data, kostprijs en fees.",
+                "Regels verschillen per land — controleer bij een lokale professional."
+            ],
+            pl: [
+                "Zyski z krypto często są opodatkowane — sprawdź krótko vs długoterminowo.",
+                "Każda transakcja może być opodatkowana; zapisuj daty, koszt bazowy i opłaty.",
+                "Przepisy różnią się między krajami — potwierdź u lokalnego eksperta."
+            ],
+            sv: [
+                "Kryptovinster beskattas ofta — kontrollera kort vs lång sikt.",
+                "Varje trade kan vara skattepliktig; notera datum, anskaffningsvärde och avgifter.",
+                "Reglerna varierar per land — kolla med lokal expert."
+            ],
+            no: [
+                "Kryptogevinster beskattes ofte — sjekk kort vs lang sikt.",
+                "Hver handel kan være skattepliktig; noter datoer, kostbasis og gebyrer.",
+                "Regler varierer per land — bekreft med en lokal ekspert."
+            ],
+            da: [
+                "Kryptogevinster beskattes ofte — tjek kort vs lang sigt.",
+                "Hver handel kan være skattepligtig; noter datoer, kostpris og gebyrer.",
+                "Regler varierer per land — bekræft hos en lokal ekspert."
+            ],
+            fi: [
+                "Kryptovoitot verotetaan usein — tarkista lyhyt vs pitkä pito.",
+                "Jokainen kauppa voi olla verotapahtuma; kirjaa päivämäärät, hankintahinta ja kulut.",
+                "Säännöt vaihtelevat maittain — varmista paikalliselta asiantuntijalta."
+            ]
+        }
+    };
+
+    function getLocalizedTips(tipsList, pageLang, dataLocale, category) {
+        const fallbackGroup = GENERIC_TIPS[category] || {};
+        const fallback = fallbackGroup[pageLang] || fallbackGroup.en || [];
+
+        if (!tipsList) return fallback;
+
+        if (Array.isArray(tipsList)) {
+            if (pageLang === 'en') return tipsList;
+            if (dataLocale && dataLocale.toLowerCase().startsWith(pageLang)) return tipsList;
+            return fallback;
+        }
+
+        if (typeof tipsList === 'object') {
+            if (Array.isArray(tipsList[pageLang])) return tipsList[pageLang];
+            if (pageLang === 'en' && Array.isArray(tipsList.en)) return tipsList.en;
+            return fallback;
+        }
+
+        return fallback;
+    }
 
     /**
      * Sanitize HTML to prevent XSS
@@ -561,98 +722,20 @@
      * Render the local insights section as a prominent banner
      */
     function renderInsightsSection(locationInfo, calcType) {
+        if (!ENABLE_LOCAL_INSIGHTS) return '';
+
         const { type, data, displayName } = locationInfo;
         const pageLang = detectPageLanguage();
         const t = TRANSLATIONS[pageLang] || TRANSLATIONS['en'];
 
-        // Select data source based on calculator type
-        let sourceData, sourceKey;
-        if (calcType === 'solar') { sourceData = data.solar; sourceKey = 'solar'; }
-        else if (calcType === 'roofing') { sourceData = data.roofing; sourceKey = 'roofing'; }
-        else { sourceData = data.mortgage; sourceKey = 'mortgage'; }
-
-        if (!sourceData) return '';
-
         let statsHTML = '';
-        const currency = data.currency || '$';
-        const formatNumber = (num) => new Intl.NumberFormat(pageLang).format(num);
-
-        // Generate stats grid
-        if (calcType === 'solar') {
-            statsHTML = `
-                <div class="geo-stats-grid">
-                    <div class="geo-stat-card">
-                        <div class="geo-stat-label">${t.sunHours}</div>
-                        <div class="geo-stat-value">${escapeHtml(String(sourceData.sunHours))} <span class="unit">${t.unitHrs}</span></div>
-                    </div>
-                    <div class="geo-stat-card">
-                        <div class="geo-stat-label">${t.electricRate}</div>
-                        <div class="geo-stat-value">${currency}${escapeHtml(String(sourceData.electricRate))}<span class="unit">${t.unitKwh}</span></div>
-                    </div>
-                    <div class="geo-stat-card">
-                        <div class="geo-stat-label">${t.potential}</div>
-                        <div class="geo-stat-value">${sourceData.sunHours > 4 ? `${t.high} 🔥` : `${t.moderate} ⛅`}</div>
-                    </div>
-                </div>`;
-        } else if (calcType === 'roofing') {
-            statsHTML = `
-                <div class="geo-stats-grid">
-                    <div class="geo-stat-card">
-                        <div class="geo-stat-label">${t.laborRate}</div>
-                        <div class="geo-stat-value">${currency}${escapeHtml(String(sourceData.laborRate))}<span class="unit">${t.unitSqFt}</span></div>
-                    </div>
-                    <div class="geo-stat-card">
-                        <div class="geo-stat-label">${t.season}</div>
-                        <div class="geo-stat-value">${t.active}</div>
-                    </div>
-                </div>`;
-        } else {
-            // Mortgage
-            if (type === 'state') {
-                statsHTML = `
-                    <div class="geo-stats-grid">
-                        <div class="geo-stat-card">
-                            <div class="geo-stat-label">${t.medianPrice}</div>
-                            <div class="geo-stat-value">${currency}${formatNumber(sourceData.medianPrice)}</div>
-                        </div>
-                        <div class="geo-stat-card">
-                            <div class="geo-stat-label">${t.propertyTax}</div>
-                            <div class="geo-stat-value">${escapeHtml(String(sourceData.propertyTaxRate))}%</div>
-                        </div>
-                        <div class="geo-stat-card">
-                            <div class="geo-stat-label">${t.homeInsurance}</div>
-                            <div class="geo-stat-value">${currency}${formatNumber(sourceData.homeInsurance)}${t.unitYr}</div>
-                        </div>
-                        <div class="geo-stat-card ${sourceData.hasStateIncomeTax ? '' : 'geo-stat-highlight'}">
-                            <div class="geo-stat-label">${t.stateTax}</div>
-                            <div class="geo-stat-value">${sourceData.hasStateIncomeTax ? t.yes : `${t.none} ✓`}</div>
-                        </div>
-                    </div>`;
-            } else {
-                statsHTML = `
-                    <div class="geo-stats-grid">
-                        <div class="geo-stat-card">
-                            <div class="geo-stat-label">${t.medianPrice}</div>
-                            <div class="geo-stat-value">${currency}${formatNumber(sourceData.medianPrice)}</div>
-                        </div>
-                        <div class="geo-stat-card">
-                            <div class="geo-stat-label">${t.typicalRate}</div>
-                            <div class="geo-stat-value">${escapeHtml(String(sourceData.typicalRate))}%</div>
-                        </div>
-                        <div class="geo-stat-card">
-                            <div class="geo-stat-label">${t.loanTerm}</div>
-                            <div class="geo-stat-value">${escapeHtml(String(sourceData.typicalTerm))} ${t.years}</div>
-                        </div>
-                        <div class="geo-stat-card">
-                            <div class="geo-stat-label">${t.downPayment}</div>
-                            <div class="geo-stat-value">${escapeHtml(String(sourceData.downPayment))}%</div>
-                        </div>
-                    </div>`;
-            }
+        if (ENABLE_LOCAL_STATS) {
+            // Keep legacy stats rendering available, but disabled by default to avoid unverified data.
+            // (Intentionally left blank unless ENABLE_LOCAL_STATS is toggled on.)
         }
 
-        const tipsList = sourceData.tips || data.tips;
-        const tips = Array.isArray(tipsList) ? tipsList : (tipsList && typeof tipsList === 'object' ? (tipsList[pageLang] || tipsList['en'] || Object.values(tipsList)[0]) : []);
+        const tipsList = USE_GENERIC_TIPS_ONLY ? null : (data && (data.tips || data.mortgage?.tips));
+        const tips = getLocalizedTips(tipsList, pageLang, data && data.locale, 'mortgage');
 
         const tipsHTML = tips.map(tip => `
             <div class="geo-tip-item">
@@ -662,6 +745,8 @@
                 <span class="geo-tip-text">${escapeHtml(tip)}</span>
             </div>
         `).join('');
+
+        if (!tipsHTML) return '';
 
         const html = `
             <style>
@@ -806,6 +891,11 @@
                     .geo-banner-header { margin-bottom: 20px; }
                     .geo-banner-flag { font-size: 26px; }
                 }
+                @media (max-width: 480px) {
+                    .geo-stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+                    .geo-stat-card { padding: 12px; }
+                    .geo-stat-value { font-size: 16px; }
+                }
             </style>
             <div class="geo-insights-banner">
                 <div class="geo-banner-header">
@@ -842,6 +932,8 @@
      * Render crypto tax insights section
      */
     function renderCryptoInsightsSection(location, pageLang) {
+        if (!ENABLE_CRYPTO_TAX_INSIGHTS) return '';
+
         const t = TRANSLATIONS[pageLang] || TRANSLATIONS['en'];
 
         // Get country code, handling CA for Canada vs CA for California
@@ -867,7 +959,7 @@
             // Add state-specific note if available
             if (stateCode && US_STATE_CRYPTO[stateCode]) {
                 const stateInfo = US_STATE_CRYPTO[stateCode];
-                stateNote = stateInfo.notes[pageLang] || stateInfo.notes['en'];
+                stateNote = stateInfo.notes[pageLang] || (pageLang === 'en' ? stateInfo.notes['en'] : null);
             }
         } else if (countryCode === 'ca') {
             // Canada the country
@@ -891,7 +983,7 @@
         }
 
         // Get tips in user's language, fallback to English
-        const tips = cryptoData.tips[pageLang] || cryptoData.tips['en'] || Object.values(cryptoData.tips)[0];
+        const tips = getLocalizedTips(cryptoData.tips, pageLang, null, 'crypto');
 
         // Build hold benefit text
         let holdBenefitHTML = '';
@@ -931,7 +1023,7 @@
                 <span class="geo-tip-icon" style="color: #f59e0b;">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
                 </span>
-                <span class="geo-tip-text"><strong>📍 ${escapeHtml(US_STATES[stateCode]?.name || stateCode.toUpperCase())}:</strong> ${escapeHtml(stateNote)}</span>
+                <span class="geo-tip-text"><strong>📍 ${escapeHtml(getRegionDisplayName(`US-${stateCode.toUpperCase()}`, pageLang, US_STATES[stateCode]?.name || stateCode.toUpperCase()))}:</strong> ${escapeHtml(stateNote)}</span>
             </div>
         ` : '';
 
@@ -1080,6 +1172,11 @@
                     .geo-banner-header { margin-bottom: 20px; }
                     .geo-banner-flag { font-size: 26px; }
                 }
+                @media (max-width: 480px) {
+                    .geo-stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+                    .geo-stat-card { padding: 12px; }
+                    .geo-stat-value { font-size: 16px; }
+                }
             </style>
             <div class="geo-insights-banner">
                 <div class="geo-banner-header">
@@ -1089,7 +1186,7 @@
                             <h2>${displayName} ${t.cryptoInsights}</h2>
                             <p>
                                 <span style="display:inline-block; width:6px; height:6px; background:#f59e0b; border-radius:50%;"></span>
-                                2025-2026 ${t.taxYear || 'Tax Year'}
+                                ${t.taxYear || 'Tax Year'}
                             </p>
                         </div>
                     </div>
@@ -1131,6 +1228,8 @@
  * Update calculator defaults based on location
  */
     function updateCalculatorDefaults(locationInfo, calcType) {
+        if (!APPLY_LOCATION_DEFAULTS) return;
+
         const { data, type } = locationInfo;
         const mortgage = data.mortgage;
 
@@ -1203,7 +1302,7 @@
         const calcType = calculatorBody.getAttribute('data-calculator-type');
 
         // Define allowed types for geo-features
-        const allowedTypes = ['mortgage', 'solar', 'roofing', 'crypto'];
+        const allowedTypes = ['mortgage'];
         if (!allowedTypes.includes(calcType)) {
             // Silently exit for other calculator types
             return;
@@ -1217,16 +1316,8 @@
         const pageLang = detectPageLanguage();
         log('CalcKit Geo: Page language detected as', pageLang);
 
-        // Handle crypto calculator separately - only needs country code
+        // Crypto insights disabled by default to avoid unverified tax guidance.
         if (calcType === 'crypto') {
-            const calculatorSection = document.querySelector('.calculator-section');
-            if (calculatorSection && location.countryCode) {
-                const cryptoInsightsHTML = renderCryptoInsightsSection(location, pageLang);
-                if (cryptoInsightsHTML) {
-                    calculatorSection.insertAdjacentHTML('beforebegin', cryptoInsightsHTML);
-                    log('CalcKit Geo: Crypto tax insights rendered for', location.countryCode);
-                }
-            }
             return;
         }
 
@@ -1236,10 +1327,8 @@
             return;
         }
 
-        // Check data availability for specific type
-        if (calcType === 'solar' && !locationInfo.data.solar) return;
-        if (calcType === 'roofing' && !locationInfo.data.roofing) return;
-        if (calcType === 'mortgage' && !locationInfo.data.mortgage) return;
+        // Skip if insights are disabled
+        if (!ENABLE_LOCAL_INSIGHTS) return;
 
         log('CalcKit Geo: Detected', locationInfo.displayName);
 

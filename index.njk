@@ -39,9 +39,9 @@ permalink: "/{% if home.lang != 'en' %}{{ home.lang }}/{% endif %}index.html"
     <meta name="twitter:description" content="{{ ui.homeDesc[home.lang] | escape }}">
     <link rel="manifest" href="/assets/site.webmanifest">
     <meta name="theme-color" content="#6366f1">
-    
-    <!-- Google AdSense Verification -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.analytics.adSenseId }}" crossorigin="anonymous"></script>
+    {% if site.analytics.adSenseId %}
+    <meta name="google-adsense-account" content="{{ site.analytics.adSenseId }}">
+    {% endif %}
 
     <!-- Google Search Logo & Organization Structured Data -->
     <script type="application/ld+json">
@@ -250,12 +250,12 @@ permalink: "/{% if home.lang != 'en' %}{{ home.lang }}/{% endif %}index.html"
 </head>
 <body>
     <nav class="nav">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="container">
             <a href="{% if home.lang == 'en' %}/{% else %}/{{ home.lang }}/{% endif %}" class="logo">
                 <img class="logo-mark" src="/assets/images/logo_calculator.png" width="32" height="32" alt="" aria-hidden="true" style="width: 32px; height: 32px;">
                 <span class="logo-type">{{ site.name }}</span>
             </a>
-            <div class="nav-links" style="display: flex; align-items: center; gap: 16px;">
+            <div class="nav-links">
                 <a href="{% if home.lang == 'en' %}/{% else %}/{{ home.lang }}/{% endif %}" class="nav-btn">
                     <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
                     {{ ui.nav[home.lang].home }}
@@ -398,6 +398,7 @@ permalink: "/{% if home.lang != 'en' %}{{ home.lang }}/{% endif %}index.html"
             <p>© {{ site.year }} {{ site.name }}. {{ ui.footer[home.lang].copyright }}.</p>
         </div>
     </footer>
+    {% include "components/consent-loader.njk" %}
     {% include "components/cookie-banner.njk" %}
 </body>
 </html>

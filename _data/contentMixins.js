@@ -3,181 +3,181 @@ const mixins = {
     mortgage: {
         en: {
             intros: [
-                "Buying a home in {{location}} is a big step. With average property taxes around {{tax_rate}}% and insurance costs of roughly ${{insurance_cost}}, it's vital to know your true monthly payment.",
+                "Buying a home in {{location}} is a big step. With average property taxes around {{tax_rate}}% and insurance costs of roughly {{currency_symbol}}{{insurance_cost}}, it's vital to know your true monthly payment.",
                 "Navigating the {{location}} market? Our {{year}} Mortgage Calculator estimates typical costs, including the {{tax_rate}}% tax rate common in this area.",
                 "Planning to buy in {{location}}? Don't let the {{tax_rate}}% property tax surprise you. Calculate your PITI (Principal, Interest, Taxes, Insurance) instantly."
             ],
             marketContext: [
-                "In {{location}}, the {{tax_rate}}% property tax rate can significantly impact affordability. Lenders will also look at the ${{insurance_cost}} insurance average.",
+                "In {{location}}, the {{tax_rate}}% property tax rate can significantly impact affordability. Lenders will also look at the {{currency_symbol}}{{insurance_cost}} insurance average.",
                 "Understanding {{location}}'s specific costs like the {{tax_rate}}% tax rate helps you set a realistic budget compared to national averages."
             ],
             closers: [
-                "Ready for {{location}}? Use these estimates, including the ${{insurance_cost}} insurance factor, to talk confidently with lenders.",
+                "Ready for {{location}}? Use these estimates, including the {{currency_symbol}}{{insurance_cost}} insurance factor, to talk confidently with lenders.",
                 "Smart buyers in {{location}} plan for total costs, including the ~{{tax_rate}}% tax. We hope this tool helps you find your dream home."
             ]
         },
         es: {
             intros: [
-                "Comprar casa en {{location}} es un gran paso. Con impuestos prediales del {{tax_rate}}% y seguros de ${{insurance_cost}}, es vital conocer tu pago real.",
+                "Comprar casa en {{location}} es un gran paso. Con impuestos prediales del {{tax_rate}}% y seguros de {{currency_symbol}}{{insurance_cost}}, es vital conocer tu pago real.",
                 "¿Navegando el mercado de {{location}}? Nuestra Calculadora {{year}} estima costos típicos, incluyendo la tasa de impuestos del {{tax_rate}}%.",
                 "¿Planeas comprar en {{location}}? Que el impuesto del {{tax_rate}}% no te sorprenda. Calcula tu pago mensual total al instante."
             ],
             marketContext: [
-                "En {{location}}, la tasa de impuestos del {{tax_rate}}% impacta tu capacidad de compra. Considera también el seguro promedio de ${{insurance_cost}}.",
+                "En {{location}}, la tasa de impuestos del {{tax_rate}}% impacta tu capacidad de compra. Considera también el seguro promedio de {{currency_symbol}}{{insurance_cost}}.",
                 "Entender los costos de {{location}}, como el {{tax_rate}}% de impuestos, te ayuda a crear un presupuesto realista."
             ],
             closers: [
-                "¿Listo para {{location}}? Usa estos estimados, incluyendo el factor de seguro de ${{insurance_cost}}, para negociar con prestamistas.",
+                "¿Listo para {{location}}? Usa estos estimados, incluyendo el factor de seguro de {{currency_symbol}}{{insurance_cost}}, para negociar con prestamistas.",
                 "Compradores inteligentes en {{location}} planean con costos totales. Esperamos que esta herramienta te ayude."
             ]
         },
         de: {
             intros: [
-                "Ein Hauskauf in {{location}} ist ein großer Schritt. Mit Grundsteuern um {{tax_rate}}% und Versicherungskosten von ca. {{insurance_cost}}$, ist Klarheit wichtig.",
+                "Ein Hauskauf in {{location}} ist ein großer Schritt. Mit Grundsteuern um {{tax_rate}}% und Versicherungskosten von ca. {{insurance_cost}}{{currency_symbol}}, ist Klarheit wichtig.",
                 "Im Immobilienmarkt von {{location}} unterwegs? Unser Rechner {{year}} schätzt typische Kosten, inklusive der {{tax_rate}}% Steuer.",
                 "Planen Sie einen Kauf in {{location}}? Lassen Sie sich nicht von der {{tax_rate}}% Steuer überraschen. Berechnen Sie Ihre monatliche Rate sofort."
             ],
             marketContext: [
-                "In {{location}} kann die Steuer von {{tax_rate}}% die Bezahlbarkeit beeinflussen. Banken achten auch auf die {{insurance_cost}}$ Versicherung.",
+                "In {{location}} kann die Steuer von {{tax_rate}}% die Bezahlbarkeit beeinflussen. Banken achten auch auf die {{insurance_cost}}{{currency_symbol}} Versicherung.",
                 "Die spezifischen Kosten in {{location}} wie {{tax_rate}}% Steuer zu verstehen, hilft bei der realistischen Budgetplanung."
             ],
             closers: [
-                "Bereit für {{location}}? Nutzen Sie diese Schätzungen inklusive {{insurance_cost}}$ Versicherung für Gespräche mit Banken.",
+                "Bereit für {{location}}? Nutzen Sie diese Schätzungen inklusive {{insurance_cost}}{{currency_symbol}} Versicherung für Gespräche mit Banken.",
                 "Kluge Käufer in {{location}} planen mit Gesamtkosten. Wir hoffen, dieses Tool hilft Ihnen."
             ]
         },
         fr: {
             intros: [
-                "Acheter à {{location}} est une étape majeure. Avec des taxes foncières d'environ {{tax_rate}}% et une assurance de {{insurance_cost}}$, il faut connaître son vrai paiement.",
+                "Acheter à {{location}} est une étape majeure. Avec des taxes foncières d'environ {{tax_rate}}% et une assurance de {{insurance_cost}}{{currency_symbol}}, il faut connaître son vrai paiement.",
                 "Vous explorez le marché de {{location}} ? Notre Calculateur {{year}} estime les coûts, incluant le taux de taxe de {{tax_rate}}%.",
                 "Un projet à {{location}} ? Ne laissez pas la taxe de {{tax_rate}}% vous surprendre. Calculez votre mensualité totale instantanément."
             ],
             marketContext: [
-                "À {{location}}, le taux de taxe de {{tax_rate}}% impacte l'accessibilité. Les banques regardent aussi l'assurance moyenne de {{insurance_cost}}$.",
+                "À {{location}}, le taux de taxe de {{tax_rate}}% impacte l'accessibilité. Les banques regardent aussi l'assurance moyenne de {{insurance_cost}}{{currency_symbol}}.",
                 "Comprendre les coûts de {{location}} comme les {{tax_rate}}% de taxes aide à fixer un budget réaliste."
             ],
             closers: [
-                "Prêt pour {{location}} ? Utilisez ces estimations avec l'assurance de {{insurance_cost}}$ pour discuter avec les prêteurs.",
+                "Prêt pour {{location}} ? Utilisez ces estimations avec l'assurance de {{insurance_cost}}{{currency_symbol}} pour discuter avec les prêteurs.",
                 "Les acheteurs avisés à {{location}} prévoient tout. Espérons que cet outil vous aide."
             ]
         },
         pt: {
             intros: [
-                "Comprar casa em {{location}} é um grande passo. Com impostos de {{tax_rate}}% e seguro de ${{insurance_cost}}, saiba seu pagamento real.",
+                "Comprar casa em {{location}} é um grande passo. Com impostos de {{tax_rate}}% e seguro de {{currency_symbol}}{{insurance_cost}}, saiba seu pagamento real.",
                 "Explorando o mercado de {{location}}? Nossa Calculadora {{year}} estima custos, incluindo a taxa de imposto de {{tax_rate}}%.",
                 "Vai comprar em {{location}}? Não deixe o imposto de {{tax_rate}}% te surpreender. Calcule sua parcela total agora."
             ],
             marketContext: [
-                "Em {{location}}, a taxa de {{tax_rate}}% afeta o financiamento. Considere também o seguro médio de ${{insurance_cost}}.",
+                "Em {{location}}, a taxa de {{tax_rate}}% afeta o financiamento. Considere também o seguro médio de {{currency_symbol}}{{insurance_cost}}.",
                 "Entender custos de {{location}} como {{tax_rate}}% de imposto ajuda a criar um orçamento realista."
             ],
             closers: [
-                "Pronto para {{location}}? Use estas estimativas com seguro de ${{insurance_cost}} para falar com bancos.",
+                "Pronto para {{location}}? Use estas estimativas com seguro de {{currency_symbol}}{{insurance_cost}} para falar com bancos.",
                 "Compradores em {{location}} planejam custos totais. Esperamos que esta ferramenta ajude."
             ]
         },
         it: {
             intros: [
-                "Comprare casa a {{location}} è un grande passo. Con tasse del {{tax_rate}}% e assicurazione di ${{insurance_cost}}, calcola la tua rata vera.",
+                "Comprare casa a {{location}} è un grande passo. Con tasse del {{tax_rate}}% e assicurazione di {{currency_symbol}}{{insurance_cost}}, calcola la tua rata vera.",
                 "Nel mercato immobiliare di {{location}}? Il nostro Calcolatore {{year}} stima i costi, inclusa l'aliquota del {{tax_rate}}%.",
                 "Pensi di comprare a {{location}}? Non farti sorprendere dal {{tax_rate}}% di tasse. Calcola subito la tua rata mensile."
             ],
             marketContext: [
-                "A {{location}}, il tasso del {{tax_rate}}% incide sui costi. Le banche considerano anche i ${{insurance_cost}} di assicurazione.",
+                "A {{location}}, il tasso del {{tax_rate}}% incide sui costi. Le banche considerano anche i {{currency_symbol}}{{insurance_cost}} di assicurazione.",
                 "Capire i costi di {{location}} come il {{tax_rate}}% di tasse aiuta a fare un budget realistico."
             ],
             closers: [
-                "Pronto per {{location}}? Usa queste stime con i ${{insurance_cost}} di assicurazione per parlare con i finanziatori.",
+                "Pronto per {{location}}? Usa queste stime con i {{currency_symbol}}{{insurance_cost}} di assicurazione per parlare con i finanziatori.",
                 "Chi compra a {{location}} pianifica tutto. Speriamo che questo strumento ti sia utile."
             ]
         },
         nl: {
             intros: [
-                "Een huis kopen in {{location}} is een grote stap. Met belastingen rond {{tax_rate}}% en verzekering van ${{insurance_cost}} is inzicht cruciaal.",
+                "Een huis kopen in {{location}} is een grote stap. Met belastingen rond {{tax_rate}}% en verzekering van {{currency_symbol}}{{insurance_cost}} is inzicht cruciaal.",
                 "Op de markt in {{location}}? Onze Calculator {{year}} schat kosten, inclusief het {{tax_rate}}% belastingtarief.",
                 "Kopen in {{location}}? Laat u niet verrassen door {{tax_rate}}% belasting. Bereken direct uw maandlasten."
             ],
             marketContext: [
-                "In {{location}} beïnvloedt de {{tax_rate}}% belasting de betaalbaarheid. Banken kijken ook naar de ${{insurance_cost}} verzekering.",
+                "In {{location}} beïnvloedt de {{tax_rate}}% belasting de betaalbaarheid. Banken kijken ook naar de {{currency_symbol}}{{insurance_cost}} verzekering.",
                 "Inzicht in kosten in {{location}} zoals {{tax_rate}}% belasting helpt bij een realistisch budget."
             ],
             closers: [
-                "Klaar voor {{location}}? Gebruik deze cijfers inclusief ${{insurance_cost}} verzekering voor gesprekken met kredietverstrekkers.",
+                "Klaar voor {{location}}? Gebruik deze cijfers inclusief {{currency_symbol}}{{insurance_cost}} verzekering voor gesprekken met kredietverstrekkers.",
                 "Slimme kopers in {{location}} plannen alles. We hopen dat deze tool helpt."
             ]
         },
         pl: {
             intros: [
-                "Kupno domu w {{location}} to duży krok. Z podatkami od nieruchomości około {{tax_rate}}% i kosztami ubezpieczenia około ${{insurance_cost}}, ważne jest poznanie rzeczywistej raty.",
+                "Kupno domu w {{location}} to duży krok. Z podatkami od nieruchomości około {{tax_rate}}% i kosztami ubezpieczenia około {{currency_symbol}}{{insurance_cost}}, ważne jest poznanie rzeczywistej raty.",
                 "Szukasz na rynku {{location}}? Nasz Kalkulator {{year}} szacuje typowe koszty, w tym stawkę podatkową {{tax_rate}}%.",
                 "Planujesz kupić w {{location}}? Nie daj się zaskoczyć {{tax_rate}}% podatkiem. Oblicz całkowitą ratę natychmiast."
             ],
             marketContext: [
-                "W {{location}} stawka podatkowa {{tax_rate}}% może znacząco wpłynąć na dostępność. Banki zwracają też uwagę na średnie ubezpieczenie ${{insurance_cost}}.",
+                "W {{location}} stawka podatkowa {{tax_rate}}% może znacząco wpłynąć na dostępność. Banki zwracają też uwagę na średnie ubezpieczenie {{currency_symbol}}{{insurance_cost}}.",
                 "Zrozumienie kosztów w {{location}}, takich jak {{tax_rate}}% podatku, pomaga ustalić realistyczny budżet."
             ],
             closers: [
-                "Gotowy na {{location}}? Użyj tych szacunków, w tym czynnika ubezpieczenia ${{insurance_cost}}, w rozmowach z kredytodawcami.",
+                "Gotowy na {{location}}? Użyj tych szacunków, w tym czynnika ubezpieczenia {{currency_symbol}}{{insurance_cost}}, w rozmowach z kredytodawcami.",
                 "Mądrzy kupujący w {{location}} planują wszystkie koszty. Mamy nadzieję, że to narzędzie pomoże."
             ]
         },
         sv: {
             intros: [
-                "Att köpa bostad i {{location}} är ett stort steg. Med fastighetsskatter runt {{tax_rate}}% och försäkringskostnader på cirka ${{insurance_cost}} är det viktigt att veta din verkliga månadskostnad.",
+                "Att köpa bostad i {{location}} är ett stort steg. Med fastighetsskatter runt {{tax_rate}}% och försäkringskostnader på cirka {{currency_symbol}}{{insurance_cost}} är det viktigt att veta din verkliga månadskostnad.",
                 "Navigerar du på {{location}}-marknaden? Vår kalkylator {{year}} uppskattar typiska kostnader, inklusive {{tax_rate}}% skattesats.",
                 "Planerar du att köpa i {{location}}? Bli inte överraskad av {{tax_rate}}% fastighetsskatt. Beräkna din totala månadskostnad direkt."
             ],
             marketContext: [
-                "I {{location}} kan skattesatsen på {{tax_rate}}% påverka överkomligheten betydligt. Banker tittar också på den genomsnittliga försäkringen på ${{insurance_cost}}.",
+                "I {{location}} kan skattesatsen på {{tax_rate}}% påverka överkomligheten betydligt. Banker tittar också på den genomsnittliga försäkringen på {{currency_symbol}}{{insurance_cost}}.",
                 "Att förstå {{location}}s specifika kostnader som {{tax_rate}}% skatt hjälper dig att sätta en realistisk budget."
             ],
             closers: [
-                "Redo för {{location}}? Använd dessa uppskattningar, inklusive försäkringsfaktorn ${{insurance_cost}}, för samtal med långivare.",
+                "Redo för {{location}}? Använd dessa uppskattningar, inklusive försäkringsfaktorn {{currency_symbol}}{{insurance_cost}}, för samtal med långivare.",
                 "Smarta köpare i {{location}} planerar för totala kostnader. Vi hoppas att detta verktyg hjälper dig."
             ]
         },
         no: {
             intros: [
-                "Å kjøpe bolig i {{location}} er et stort skritt. Med eiendomsskatt rundt {{tax_rate}}% og forsikringskostnader på ca. ${{insurance_cost}}, er det viktig å vite din faktiske månedlige betaling.",
+                "Å kjøpe bolig i {{location}} er et stort skritt. Med eiendomsskatt rundt {{tax_rate}}% og forsikringskostnader på ca. {{currency_symbol}}{{insurance_cost}}, er det viktig å vite din faktiske månedlige betaling.",
                 "Navigerer du i {{location}}-markedet? Vår kalkulator {{year}} estimerer typiske kostnader, inkludert {{tax_rate}}% skattesats.",
                 "Planlegger du å kjøpe i {{location}}? Ikke bli overrasket av {{tax_rate}}% eiendomsskatt. Beregn din totale månedlige betaling umiddelbart."
             ],
             marketContext: [
-                "I {{location}} kan skattesatsen på {{tax_rate}}% påvirke overkommeligheten betydelig. Banker ser også på gjennomsnittlig forsikring på ${{insurance_cost}}.",
+                "I {{location}} kan skattesatsen på {{tax_rate}}% påvirke overkommeligheten betydelig. Banker ser også på gjennomsnittlig forsikring på {{currency_symbol}}{{insurance_cost}}.",
                 "Å forstå {{location}}s spesifikke kostnader som {{tax_rate}}% skatt hjelper deg med å sette et realistisk budsjett."
             ],
             closers: [
-                "Klar for {{location}}? Bruk disse estimatene, inkludert forsikringsfaktoren ${{insurance_cost}}, i samtaler med långivere.",
+                "Klar for {{location}}? Bruk disse estimatene, inkludert forsikringsfaktoren {{currency_symbol}}{{insurance_cost}}, i samtaler med långivere.",
                 "Smarte kjøpere i {{location}} planlegger for totale kostnader. Vi håper dette verktøyet hjelper deg."
             ]
         },
         da: {
             intros: [
-                "At købe bolig i {{location}} er et stort skridt. Med ejendomsskatter omkring {{tax_rate}}% og forsikringsomkostninger på ca. ${{insurance_cost}}, er det vigtigt at kende din reelle månedlige ydelse.",
+                "At købe bolig i {{location}} er et stort skridt. Med ejendomsskatter omkring {{tax_rate}}% og forsikringsomkostninger på ca. {{currency_symbol}}{{insurance_cost}}, er det vigtigt at kende din reelle månedlige ydelse.",
                 "Navigerer du på {{location}}-markedet? Vores beregner {{year}} estimerer typiske omkostninger, inklusive {{tax_rate}}% skattesats.",
                 "Planlægger du at købe i {{location}}? Bliv ikke overrasket af {{tax_rate}}% ejendomsskat. Beregn din samlede månedlige ydelse med det samme."
             ],
             marketContext: [
-                "I {{location}} kan skattesatsen på {{tax_rate}}% påvirke overkommeligheden betydeligt. Banker ser også på gennemsnitsforsikringen på ${{insurance_cost}}.",
+                "I {{location}} kan skattesatsen på {{tax_rate}}% påvirke overkommeligheden betydeligt. Banker ser også på gennemsnitsforsikringen på {{currency_symbol}}{{insurance_cost}}.",
                 "At forstå {{location}}s specifikke omkostninger som {{tax_rate}}% skat hjælper dig med at sætte et realistisk budget."
             ],
             closers: [
-                "Klar til {{location}}? Brug disse estimater, inklusive forsikringsfaktoren ${{insurance_cost}}, i samtaler med långivere.",
+                "Klar til {{location}}? Brug disse estimater, inklusive forsikringsfaktoren {{currency_symbol}}{{insurance_cost}}, i samtaler med långivere.",
                 "Kloge købere i {{location}} planlægger for samlede omkostninger. Vi håber, dette værktøj hjælper dig."
             ]
         },
         fi: {
             intros: [
-                "Asunnon ostaminen paikassa {{location}} on iso askel. Kiinteistöverojen ollessa noin {{tax_rate}}% ja vakuutuskustannusten noin ${{insurance_cost}}, on tärkeää tietää todellinen kuukausimaksusi.",
+                "Asunnon ostaminen paikassa {{location}} on iso askel. Kiinteistöverojen ollessa noin {{tax_rate}}% ja vakuutuskustannusten noin {{currency_symbol}}{{insurance_cost}}, on tärkeää tietää todellinen kuukausimaksusi.",
                 "Navigoidko {{location}}-markkinoilla? Laskurimme {{year}} arvioi tyypilliset kustannukset, mukaan lukien {{tax_rate}}% verokanta.",
                 "Suunnitteletko ostoa paikassa {{location}}? Älä anna {{tax_rate}}% kiinteistöveron yllättää. Laske kokonaiskuukausimaksusi välittömästi."
             ],
             marketContext: [
-                "Paikassa {{location}} {{tax_rate}}% verokanta voi vaikuttaa merkittävästi saatavuuteen. Pankit tarkastelevat myös keskimääräistä vakuutusta ${{insurance_cost}}.",
+                "Paikassa {{location}} {{tax_rate}}% verokanta voi vaikuttaa merkittävästi saatavuuteen. Pankit tarkastelevat myös keskimääräistä vakuutusta {{currency_symbol}}{{insurance_cost}}.",
                 "{{location}}n erityisten kustannusten, kuten {{tax_rate}}% veron, ymmärtäminen auttaa asettamaan realistisen budjetin."
             ],
             closers: [
-                "Valmis kohteeseen {{location}}? Käytä näitä arvioita, mukaan lukien vakuutustekijä ${{insurance_cost}}, keskusteluissa lainanantajien kanssa.",
+                "Valmis kohteeseen {{location}}? Käytä näitä arvioita, mukaan lukien vakuutustekijä {{currency_symbol}}{{insurance_cost}}, keskusteluissa lainanantajien kanssa.",
                 "Älykkäät ostajat paikassa {{location}} suunnittelevat kokonaiskustannukset. Toivomme, että tämä työkalu auttaa sinua."
             ]
         }
@@ -415,6 +415,155 @@ const mixins = {
         }
     }
 };
+
+const safeMortgageMixins = {
+    en: {
+        intros: [
+            "Buying in {{location}}? Taxes, insurance, and fees can change your true monthly cost.",
+            "Use this {{year}} mortgage calculator to compare scenarios and plan your budget."
+        ],
+        marketContext: [
+            "Local tax rules and insurance costs vary—check official sources and lenders for current figures."
+        ],
+        closers: [
+            "Use these estimates as a starting point and confirm details with local professionals."
+        ]
+    },
+    es: {
+        intros: [
+            "¿Compras en {{location}}? Impuestos, seguros y costos adicionales pueden cambiar tu cuota real.",
+            "Usa esta calculadora hipotecaria {{year}} para comparar escenarios y planificar tu presupuesto."
+        ],
+        marketContext: [
+            "Las reglas fiscales y los costos de seguro varían según la zona; consulta fuentes oficiales y prestamistas."
+        ],
+        closers: [
+            "Usa estas estimaciones como punto de partida y confirma los detalles con profesionales locales."
+        ]
+    },
+    de: {
+        intros: [
+            "Kauf in {{location}}? Steuern, Versicherungen und Gebühren können Ihre reale Monatsrate verändern.",
+            "Nutzen Sie diesen Hypothekenrechner {{year}}, um Szenarien zu vergleichen und Ihr Budget zu planen."
+        ],
+        marketContext: [
+            "Steuerregeln und Versicherungskosten unterscheiden sich lokal—prüfen Sie offizielle Quellen und Kreditgeber."
+        ],
+        closers: [
+            "Nutzen Sie diese Schätzungen als Ausgangspunkt und bestätigen Sie Details mit lokalen Fachleuten."
+        ]
+    },
+    fr: {
+        intros: [
+            "Acheter à {{location}} ? Les taxes, assurances et frais peuvent changer votre mensualité réelle.",
+            "Utilisez cette calculatrice {{year}} pour comparer des scénarios et planifier votre budget."
+        ],
+        marketContext: [
+            "Les règles fiscales et les coûts d’assurance varient selon la région—vérifiez les sources officielles et les prêteurs."
+        ],
+        closers: [
+            "Utilisez ces estimations comme point de départ et confirmez les détails avec des professionnels locaux."
+        ]
+    },
+    pt: {
+        intros: [
+            "Comprando em {{location}}? Impostos, seguros e taxas podem alterar sua parcela real.",
+            "Use esta calculadora de hipoteca {{year}} para comparar cenários e planejar seu orçamento."
+        ],
+        marketContext: [
+            "Regras fiscais e custos de seguro variam por região—consulte fontes oficiais e bancos."
+        ],
+        closers: [
+            "Use estas estimativas como ponto de partida e confirme detalhes com profissionais locais."
+        ]
+    },
+    it: {
+        intros: [
+            "Stai comprando a {{location}}? Tasse, assicurazioni e spese possono cambiare la tua rata reale.",
+            "Usa questo calcolatore {{year}} per confrontare scenari e pianificare il budget."
+        ],
+        marketContext: [
+            "Regole fiscali e costi assicurativi variano per zona—verifica fonti ufficiali e istituti."
+        ],
+        closers: [
+            "Usa queste stime come punto di partenza e conferma i dettagli con professionisti locali."
+        ]
+    },
+    nl: {
+        intros: [
+            "Kopen in {{location}}? Belastingen, verzekeringen en kosten kunnen je echte maandlasten veranderen.",
+            "Gebruik deze hypotheekcalculator {{year}} om scenario's te vergelijken en je budget te plannen."
+        ],
+        marketContext: [
+            "Belastingregels en verzekeringskosten verschillen per regio—raadpleeg officiële bronnen en geldverstrekkers."
+        ],
+        closers: [
+            "Gebruik deze schattingen als startpunt en bevestig details bij lokale professionals."
+        ]
+    },
+    pl: {
+        intros: [
+            "Kupujesz w {{location}}? Podatki, ubezpieczenia i opłaty mogą zmienić realną ratę.",
+            "Użyj kalkulatora {{year}}, aby porównać scenariusze i zaplanować budżet."
+        ],
+        marketContext: [
+            "Zasady podatkowe i koszty ubezpieczenia różnią się lokalnie—sprawdź źródła oficjalne i kredytodawców."
+        ],
+        closers: [
+            "Traktuj te szacunki jako punkt wyjścia i potwierdź szczegóły lokalnie."
+        ]
+    },
+    sv: {
+        intros: [
+            "Köper du i {{location}}? Skatter, försäkringar och avgifter kan ändra din verkliga månadskostnad.",
+            "Använd denna bolånekalkylator {{year}} för att jämföra scenarier och planera budgeten."
+        ],
+        marketContext: [
+            "Skatteregler och försäkringskostnader varierar lokalt—kontrollera officiella källor och långivare."
+        ],
+        closers: [
+            "Använd dessa uppskattningar som startpunkt och bekräfta detaljer lokalt."
+        ]
+    },
+    no: {
+        intros: [
+            "Kjøper du i {{location}}? Skatter, forsikringer og gebyrer kan endre den reelle månedsbetalingen.",
+            "Bruk denne boliglånskalkulatoren {{year}} for å sammenligne scenarier og planlegge budsjett."
+        ],
+        marketContext: [
+            "Skatteregler og forsikringskostnader varierer lokalt—sjekk offisielle kilder og långivere."
+        ],
+        closers: [
+            "Bruk disse estimatene som startpunkt og bekreft detaljer lokalt."
+        ]
+    },
+    da: {
+        intros: [
+            "Køber du i {{location}}? Skatter, forsikringer og gebyrer kan ændre din reelle månedlige ydelse.",
+            "Brug denne realkreditberegner {{year}} til at sammenligne scenarier og planlægge dit budget."
+        ],
+        marketContext: [
+            "Skatteregler og forsikringsomkostninger varierer lokalt—tjek officielle kilder og långivere."
+        ],
+        closers: [
+            "Brug disse estimater som udgangspunkt og bekræft detaljer lokalt."
+        ]
+    },
+    fi: {
+        intros: [
+            "Ostatko kohteesta {{location}}? Verot, vakuutukset ja kulut voivat muuttaa todellista kuukausierää.",
+            "Käytä tätä asuntolainalaskuria {{year}} vertaillaksesi skenaarioita ja suunnitellaksesi budjetin."
+        ],
+        marketContext: [
+            "Verosäännöt ja vakuutuskustannukset vaihtelevat paikallisesti—tarkista viralliset lähteet ja lainanantajat."
+        ],
+        closers: [
+            "Käytä näitä arvioita lähtökohtana ja varmista yksityiskohdat paikallisesti."
+        ]
+    }
+};
+
+mixins.mortgage = safeMortgageMixins;
 
 // Helper to provide defaults for missing languages
 const supportedLangs = ['en', 'es', 'de', 'fr', 'pt', 'it', 'nl', 'pl', 'sv', 'no', 'da', 'fi'];

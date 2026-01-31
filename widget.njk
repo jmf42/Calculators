@@ -8,15 +8,21 @@ lang: en
 
 <style>
 .widget-preview { background: #1a1a2e; border-radius: 12px; padding: 24px; margin: 2rem 0; text-align: center; }
-.widget-preview iframe { border: none; border-radius: 8px; }
+.widget-preview iframe { border: none; border-radius: 8px; width: 100%; max-width: 420px; height: 380px; }
 .code-block { background: #0f172a; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 16px; margin: 1rem 0; overflow-x: auto; }
-.code-block code { color: #a5b4fc; font-size: 0.85rem; white-space: pre-wrap; word-break: break-all; }
+.code-block code { color: #a5b4fc; font-size: 0.85rem; white-space: pre-wrap; word-break: break-word; }
 .copy-btn { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin-top: 1rem; font-weight: 600; }
 .copy-btn:hover { filter: brightness(1.1); }
 .benefits { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0; }
 .benefit { background: var(--surface); border-radius: 10px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1); }
 .benefit h3 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--primary); }
 .benefit p { font-size: 0.9rem; color: var(--text-muted); margin: 0; }
+
+@media (max-width: 600px) {
+  .widget-preview { padding: 16px; }
+  .widget-preview iframe { height: 360px; }
+  .code-block code { font-size: 0.8rem; }
+}
 </style>
 
 <p>Add a <strong>free mortgage calculator</strong> to your real estate, finance, or blog website. Just copy the code below—no signup required.</p>

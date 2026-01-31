@@ -1,0 +1,41 @@
+---
+permalink: /404.html
+layout: null
+---
+<!DOCTYPE html>
+<html lang="{{ site.defaultLang or 'en' }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ ui.notFound.title.en or 'Page Not Found' }} | {{ site.name }}</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" href="/assets/images/logo_calculator.png">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="nav">
+        <div class="container">
+            <a href="/" class="logo">
+                <img class="logo-mark" src="/assets/images/logo_calculator.png" alt="" aria-hidden="true" style="width: 32px; height: 32px;">
+                <span class="logo-type">{{ site.name }}</span>
+            </a>
+        </div>
+    </nav>
+
+    <section class="hero page-hero" style="min-height: 60vh; display: flex; align-items: center;">
+        <div class="container content-narrow" style="text-align: center;">
+            <h1 style="font-size: 4rem; margin-bottom: 1rem;">404</h1>
+            <h2 style="margin-bottom: 2rem;">{{ ui.notFound.title.en or 'Page Not Found' }}</h2>
+            <p class="lead" style="margin-bottom: 2rem;">{{ ui.notFound.text.en or "Sorry, the page you are looking for doesn't exist or has been moved." }}</p>
+            <a href="/" class="btn btn-primary">Return Home</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p style="text-align: center; color: var(--text-muted);">© {{ site.year }} {{ site.name }}.</p>
+        </div>
+    </footer>
+</body>
+</html>
