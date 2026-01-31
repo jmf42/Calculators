@@ -13,7 +13,7 @@
     // Feature flags to prevent unverified local stats from being shown
     const ENABLE_LOCAL_INSIGHTS = true;
     const ENABLE_LOCAL_STATS = false;
-    const ENABLE_CRYPTO_TAX_INSIGHTS = false;
+    const ENABLE_CRYPTO_TAX_INSIGHTS = true;
     const APPLY_LOCATION_DEFAULTS = false;
     const USE_GENERIC_TIPS_ONLY = true;
 
@@ -1302,7 +1302,7 @@
         const calcType = calculatorBody.getAttribute('data-calculator-type');
 
         // Define allowed types for geo-features
-        const allowedTypes = ['mortgage'];
+        const allowedTypes = ['mortgage', 'crypto'];
         if (!allowedTypes.includes(calcType)) {
             // Silently exit for other calculator types
             return;
@@ -1316,8 +1316,16 @@
         const pageLang = detectPageLanguage();
         log('CalcKit Geo: Page language detected as', pageLang);
 
-        // Crypto insights disabled by default to avoid unverified tax guidance.
+        // Inject insights banner BEFORE calculator section
+        const calculatorSection = document.querySelector('.calculator-section');
+
         if (calcType === 'crypto') {
+            if (calculatorSection) {
+                const insightsHTML = renderCryptoInsightsSection(location, pageLang);
+                if (insightsHTML) {
+                    calculatorSection.insertAdjacentHTML('beforebegin', insightsHTML);
+                }
+            }
             return;
         }
 
@@ -1332,8 +1340,6 @@
 
         log('CalcKit Geo: Detected', locationInfo.displayName);
 
-        // Inject insights banner BEFORE calculator section
-        const calculatorSection = document.querySelector('.calculator-section');
         if (calculatorSection) {
             const insightsHTML = renderInsightsSection(locationInfo, calcType);
             calculatorSection.insertAdjacentHTML('beforebegin', insightsHTML);
